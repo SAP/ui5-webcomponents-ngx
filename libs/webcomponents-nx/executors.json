@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "executors": {
+    "sync": {
+      "implementation": "./src/executors/sync/executor",
+      "schema": "./src/executors/sync/schema.json",
+      "description": "Sync executor"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "angular-generator": "libs/angular-generator",
+    "api-json-parser": "libs/api-json-parser",
+    "commit-fs-commit": "libs/commit/fs-commit",
+    "playground": "apps/playground",
+    "playground-e2e": "apps/playground-e2e",
+    "ui5-angular": "libs/ui5-angular",
+    "webcomponents-nx": "libs/webcomponents-nx",
+    "wrapper": "libs/wrapper"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "webcomponents-nx",
+  "version": "0.0.1",
+  "generators": {
+    "webcomponents-nx": {
+      "factory": "./src/generators/webcomponents-nx/generator",
+      "schema": "./src/generators/webcomponents-nx/schema.json",
+      "description": "webcomponents-nx generator"
+    },
+    "generate-components": {
+      "factory": "./src/generators/sync/index",
+      "schema": "./src/generators/sync/schema.json",
+      "description": "sync generator"
+    }
+  }
+}

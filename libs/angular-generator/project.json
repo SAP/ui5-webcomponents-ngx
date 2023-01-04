@@ -1,0 +1,26 @@
+{
+  "name": "angular-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/angular-generator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/angular-generator",
+        "main": "libs/angular-generator/src/index.ts",
+        "tsConfig": "libs/angular-generator/tsconfig.lib.json",
+        "assets": ["libs/angular-generator/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/angular-generator/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

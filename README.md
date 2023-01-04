@@ -1,32 +1,81 @@
-# SAP Repository Template
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-webcomponents-ngx)](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx)
 
-Default templates for SAP open source repositories, including LICENSE, .reuse/dep5, Code of Conduct, etc... All repositories on github.com/SAP will be created based on this template.
-
-## To-Do
-
-In case you are the maintainer of a new SAP open source project, these are the steps to do with the template files:
-
-- Check if the default license (Apache 2.0) also applies to your project. A license change should only be required in exceptional cases. If this is the case, please change the [license file](LICENSE).
-- Enter the correct metadata for the REUSE tool. See our [wiki page](https://wiki.wdf.sap.corp/wiki/display/ospodocs/Using+the+Reuse+Tool+of+FSFE+for+Copyright+and+License+Information) for details how to do it. You can find an initial .reuse/dep5 file to build on. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository and be sure to run the REUSE tool to validate that the metadata is correct.
-- Adjust the contribution guidelines (e.g. add coding style guidelines, pull request checklists, different license if needed etc.)
-- Add information about your project to this README (name, description, requirements etc). Especially take care for the <your-project> placeholders - those ones need to be replaced with your project name. See the sections below the horizontal line and [our guidelines on our wiki page](https://wiki.wdf.sap.corp/wiki/display/ospodocs/Guidelines+for+README.md+file) what is required and recommended.
-- Remove all content in this README above and including the horizontal line ;)
-
-***
-
-# Our new open source project
+# UI5 Web Components for Angular
 
 ## About this project
 
-*Insert a short description of your project here...*
+This is a wrapper around [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) project to make it work with Angular without
+needing to use the [CUSTOM_ELEMENTS_SCHEMA](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) or [NO_ERRORS_SCHEMA](https://angular.io/api/core/NO_ERRORS_SCHEMA) schemas,
+while providing full type safety and access to underlying web components in a type safe environment.
+Everything that works and is available on the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) side, will work here as well, with few minor differences.
+
+- Every component in this library is using `camelCase` for naming attributes, whereas the original library uses `kebab-case`.
+- We have added a directive for compact content density setting. `[ui5Compact]` - **soon**
+- We have added a directive for RTL setting. `[ui5Rtl]` - **soon**
+
+Themes and assets are imported into angular applications same way you would import with pure
+[@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) library. It is recommended to import them
+in the `main.ts` file of your application.
 
 ## Requirements and Setup
 
-*Insert a short description what is required to get your project running...*
+* Angular 15 or higher. Other versions might work, but are not tested.
+
+
+### Installation
+
+Via npm:
+```bash
+npm install @ui5/webcomponents-ngx
+```
+Via yarn:
+```bash
+yarn add @ui5/webcomponents-ngx
+```
+### Usage
+
+Import the module in your `app.module.ts` file:
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { Ui5AngularModule } from '@ui5/webcomponents-ngx'; // here it is
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    Ui5AngularModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+And that is it, you can now use any component described in the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents)
+documentation.
+
+### Angular Forms
+
+Every form-capable component can be used with Angular's native form approaches. Meaning all the
+`formControlName` and `ngModel`s will work as expected.
+
+### Building by yourself
+
+Even though this library is published as already created wrapper library for Angular, you still can
+generate it yourself using the schematic `ng add @ui5/webcomponents-ngx:create-local`. This will generate locally
+compiled version of the library, which you can then use in your application. You can change naming for example, add postfix
+and prefix to the components, or even change the path to the assets, divide them into the modules as you want them to be
+and basically do whatever you want with it just the way you want it.
+
+For more detailed information about the structure and usage of the library or development of it, please refer to the [MAINTAINERS.md](MAINTAINERS.md) file.
 
 ## Support, Feedback, Contributing
 
-This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/<your-project>/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
+This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
 
 ## Code of Conduct
 
@@ -34,4 +83,7 @@ We as members, contributors, and leaders pledge to make participation in our com
 
 ## Licensing
 
-Copyright (20xx-)20xx SAP SE or an SAP affiliate company and <your-project> contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/<your-project>).
+Copyright 2022 SAP SE or an SAP affiliate company and ui5-webcomponents-ngx contributors. Please see our [LICENSE](LICENSES/Apache-2.0.txt) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx).
+
+
+

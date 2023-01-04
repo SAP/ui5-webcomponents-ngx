@@ -1,0 +1,6 @@
+<form [formGroup]="form" #formElement="ngForm" (ngSubmit)="onFormSubmit()">
+  <ui5-input formControlName="name"></ui5-input>
+  <ui5-button design="Default" (click)="formElement.ngSubmit.emit()">
+    Submit
+  </ui5-button>
+</form>

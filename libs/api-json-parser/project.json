@@ -1,0 +1,26 @@
+{
+  "name": "api-json-parser",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api-json-parser/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api-json-parser",
+        "main": "libs/api-json-parser/src/index.ts",
+        "tsConfig": "libs/api-json-parser/tsconfig.lib.json",
+        "assets": ["libs/api-json-parser/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api-json-parser/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

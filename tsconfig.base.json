@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ui5/webcomponents-api-json-parser": [
+        "libs/api-json-parser/src/index.ts"
+      ],
+      "@ui5/webcomponents-ngx": ["libs/ui5-angular/src/index.ts"],
+      "@ui5/webcomponents-ngx-generator": [
+        "libs/angular-generator/src/index.ts"
+      ],
+      "@ui5/webcomponents-nx": ["libs/webcomponents-nx/src/index.ts"],
+      "@ui5/webcomponents-wrapper": ["libs/wrapper/src/index.ts"],
+      "@ui5/webcomponents-wrapper-fs-commit": [
+        "libs/commit/fs-commit/src/index.ts"
+      ]
+    },
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

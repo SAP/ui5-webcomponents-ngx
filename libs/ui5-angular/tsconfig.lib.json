@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [],
+    "target": "ES2022",
+    "useDefineForClassFields": false
+  },
+  "exclude": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts"],
+  "include": [
+    "**/*.ts",
+    "../../node_modules/@types/node/globals.d.ts"
+  ]
+}

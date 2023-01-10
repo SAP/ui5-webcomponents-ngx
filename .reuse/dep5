@@ -1,6 +1,5 @@
-
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: UI5 Web Components for Angular
+Upstream-Name: ui5-webcomponents-ngx
 Upstream-Contact: SAP Open Source Program Office <ospo@sap.com>
 Source: https://github.com/SAP/ui5-webcomponents-ngx
 Disclaimer: The code in this project may include calls to APIs (“API Calls”) of
@@ -25,6 +24,6 @@ Disclaimer: The code in this project may include calls to APIs (“API Calls”)
  you any rights to use or access any SAP External Product, or provide any third
  parties the right to use of access any SAP External Product, through API Calls.
 
-Files: **
+Files: *
 Copyright: 2022-2023 SAP SE or an SAP affiliate company and UI5 Web Components for Angular contributors
 License: Apache-2.0

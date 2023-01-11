@@ -4,6 +4,12 @@
   "sourceRoot": "libs/ui5-angular/src",
   "prefix": "ui-angular",
   "targets": {
+    "prepare": {
+      "executor": "@ui5/webcomponents-nx:prepare",
+      "options": {
+
+      }
+    },
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {

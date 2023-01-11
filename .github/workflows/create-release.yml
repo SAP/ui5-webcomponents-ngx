@@ -1,0 +1,21 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-release:
+    name: Run release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch from origin repo
+        uses: actions/checkout@v3
+        with:
+          ref: main # always fetch from main branch
+          fetch-depth: 0
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs

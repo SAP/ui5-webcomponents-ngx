@@ -4,5 +4,6 @@
   "version": "0.0.0",
   "conventionalCommits": true,
   "tagVersionPrefix": "v",
-  "message": "chore(release): publish %v"
+  "message": "chore(release): publish %v",
+  "npmClient": "yarn"
 }

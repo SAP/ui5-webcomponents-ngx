@@ -1,0 +1,16 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+    greeting:
+        runs-on: ubuntu-22.04
+        permissions:
+            issues: write
+            pull-requests: write
+        steps:
+            - uses: actions/first-interaction@v1
+              with:
+                  repo-token: ${{ secrets.GITHUB_TOKEN }}
+                  issue-message: 'Hello @${{ github.actor }}, thank you for using ui5-webcomponents-ngx! The ui5-webcomponents-ngx team will triage your issue as soon as possible.'
+                  pr-message: 'Hello @${{ github.actor }} , thank you submitting a pull request! Please make sure you have followed our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/CONTRIBUTING.md).'

@@ -1,0 +1,6 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+
+# Changes to eslint or tsconfig files should be reviewed carefully
+**/.eslint.json @mikerodonnell89 @droshev @InnaAtanasova
+**/tsconfig.base.json @mikerodonnell89 @droshev @InnaAtanasova

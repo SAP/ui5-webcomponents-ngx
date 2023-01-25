@@ -1,0 +1,45 @@
+name: Publish new version
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-release:
+    name: Init release publish
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore(release): publish')"
+    steps:
+      - name: Fetch from origin repo
+        uses: actions/checkout@v3
+        with:
+          ref: main # always fetch from main branch
+          fetch-depth: 0
+
+      - uses: ./.github/actions/set-up-git
+        name: Set up git user
+        with:
+          name: github-actions
+          email: github-actions@github.com
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Get next version
+        id: bumpVersion
+        uses: ./.github/actions/bump-version
+        with:
+          isPrerelease: ${{ github.event_name == 'push' }}
+
+      - name: Update using lerna
+        id: update
+        run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  create-release:
+    name: Create release
+    uses: ./.github/workflows/create-release.yml
+    needs: run-release
+    secrets: inherit

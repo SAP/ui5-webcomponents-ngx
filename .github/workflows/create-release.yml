@@ -1,10 +1,8 @@
 name: Create release
 
 on:
+  workflow_call:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   run-release:
@@ -17,5 +15,49 @@ jobs:
           ref: main # always fetch from main branch
           fetch-depth: 0
 
+      - uses: ./.github/actions/set-up-git
+        name: Set up git user
+        with:
+          name: github-actions
+          email: github-actions@github.com
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+
+      - name: Get next version
+        id: bumpVersion
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: ./.github/actions/bump-version
+        with:
+          isPrerelease: false
+
+      - name: Update version
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish
+
+      - name: Generate Release Body
+        id: generate_body
+        uses: ./.github/actions/generate-conventional-release-notes
+
+      - name: Prepare
+        run: npx nx run-many --target=prepare --all
+
+      - name: Analyze current version
+        id: analyzedVersion
+        uses: ./.github/actions/analyze-version
+
+      - name: Publish on npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: dist/libs/ui5-angular/package.json
+          token: ${{ secrets.NPM_TOKEN }}
+          tag: ${{ steps.analyzedVersion.outputs.releaseTag }}
+          access: public
+          dry-run: true
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          prerelease: ${{ steps.analyzedVersion.outputs.isPrerelease }}
+          tag: v${{ steps.analyzedVersion.outputs.version }}
+          body: ${{ steps.generate_body.outputs.generatedReleaseNotes }}

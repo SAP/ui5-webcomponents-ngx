@@ -1,12 +1,14 @@
-name: Create release
+name: Publish new version
 
 on:
-  workflow_call:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  run-release:
-    name: Run release
+  create-release:
+    name: Create release
     runs-on: ubuntu-latest
     steps:
       - name: Fetch from origin repo
@@ -15,49 +17,45 @@ jobs:
           ref: main # always fetch from main branch
           fetch-depth: 0
 
-      - uses: ./.github/actions/set-up-git
-        name: Set up git user
-        with:
-          name: github-actions
-          email: github-actions@github.com
+      - name: Set up git user
+        run: |
+          git config --global user.email "github-actions"
+          git config --global user.name "github-actions@github.com"
 
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
       - name: Get next version
         id: bumpVersion
-        if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: ./.github/actions/bump-version
         with:
-          isPrerelease: false
+          isPrerelease: ${{ github.event_name == 'push' }}
 
-      - name: Update version
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish
-
-      - name: Generate Release Body
-        id: generate_body
-        uses: ./.github/actions/generate-conventional-release-notes
+      - name: Update using lerna
+        run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --no-push # Skipping push, in case something goes wrong later during build/prepare
 
       - name: Prepare
         run: npx nx run-many --target=prepare --all
-
-      - name: Analyze current version
-        id: analyzedVersion
-        uses: ./.github/actions/analyze-version
 
       - name: Publish on npm
         uses: JS-DevTools/npm-publish@v1
         with:
           package: dist/libs/ui5-angular/package.json
           token: ${{ secrets.NPM_TOKEN }}
-          tag: ${{ steps.analyzedVersion.outputs.releaseTag }}
+          tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
           dry-run: true
 
+      - name: Push changes
+        run: git push --follow-tags # This Will NOT trigger this workflow again, so it is okay
+
+      - name: Generate Release Body # This will delete locally some tags to properly generate the release notes, so it should go after the push to upstream
+        id: generate_body
+        uses: ./.github/actions/generate-conventional-release-notes
+
       - name: Create Release
-        uses: ncipollo/release-action@v1.10.0
+        uses: ncipollo/release-action@v1.12.0
         with:
-          prerelease: ${{ steps.analyzedVersion.outputs.isPrerelease }}
-          tag: v${{ steps.analyzedVersion.outputs.version }}
+          prerelease: ${{ steps.bumpVersion.outputs.isPrerelease }}
+          tag: v${{ steps.bumpVersion.outputs.newVersion }}
           body: ${{ steps.generate_body.outputs.generatedReleaseNotes }}

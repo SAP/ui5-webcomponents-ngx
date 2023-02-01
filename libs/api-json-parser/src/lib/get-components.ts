@@ -50,9 +50,6 @@ export function getComponents({
   }
 
   function getPropertyType(type: string, tagname: string, identifier: string, component: ComponentData): string | ComponentData[] {
-    if (!type) {
-      debugger
-    }
     const isArray = type.endsWith('[]');
     if (isArray) {
       type = type.slice(0, -2);
@@ -85,6 +82,7 @@ export function getComponents({
   function getInputs(symbol: SymbolObject, component: ComponentData): ComponentData['inputs'] {
     return symbol.properties.filter(prop => prop.visibility === 'public').map((property) => {
       return {
+        description: property.description,
         publicName: kebabCase(property.name),
         name: camelCase(property.name),
         type: getPropertyType(property.type, symbol.tagname, camelCase(property.name), component),
@@ -106,6 +104,7 @@ export function getComponents({
       }, {});
       const eventType = !event.parameters?.length ? 'void' : `{ ${Object.keys(parameters).map(key => `'${key}': ${parameters[key]}`).join(',')} }`;
       return {
+        description: event.description,
         name: eventNames.camel,
         publicName: eventNames.camel === eventNames.kebab ? eventNames.camel : eventNames.kebab,
         type: eventType,
@@ -131,6 +130,7 @@ export function getComponents({
         type = `Array<${type}>`;
       }
       return {
+        description: slot.description,
         name: slot.name,
         type,
         supportedElements,
@@ -143,12 +143,14 @@ export function getComponents({
     return symbol.methods.map((method) => {
       const parameters: ParameterType[] = (method.parameters || []).map(parameter => {
         return {
+          description: parameter.description,
           name: parameter.name,
           type: parameter.type.split('|').map(t => getPropertyType(t.trim(), symbol.tagname, method.name, componentData) as string).join(' | '),
         }
       });
       const returnValue = method.returnValue ? getPropertyType(method.returnValue.type, symbol.tagname, method.name, componentData) as string : 'any';
       return {
+        description: method.description,
         name: method.name,
         parameters,
         returnValue,
@@ -161,6 +163,7 @@ export function getComponents({
     if (cache[symbol.basename]) return cache[symbol.basename];
     const dependencies: Array<ComponentData> = [];
     const component: ComponentData = {
+      description: symbol.description,
       baseName: symbol.basename,
       dependencies,
       implements: symbol.implements,

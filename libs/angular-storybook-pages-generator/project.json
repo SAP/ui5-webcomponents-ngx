@@ -1,0 +1,26 @@
+{
+  "name": "angular-storybook-pages-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/angular-storybook-pages-generator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/angular-storybook-pages-generator",
+        "main": "libs/angular-storybook-pages-generator/src/index.ts",
+        "tsConfig": "libs/angular-storybook-pages-generator/tsconfig.lib.json",
+        "assets": ["libs/angular-storybook-pages-generator/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/angular-storybook-pages-generator/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

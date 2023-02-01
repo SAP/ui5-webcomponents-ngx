@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "angular-generator": "libs/angular-generator",
+    "angular-storybook-pages-generator": "libs/angular-storybook-pages-generator",
     "api-json-parser": "libs/api-json-parser",
     "commit-fs-commit": "libs/commit/fs-commit",
     "docs": "apps/docs",

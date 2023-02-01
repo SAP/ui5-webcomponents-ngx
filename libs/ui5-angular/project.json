@@ -1,4 +1,5 @@
 {
+  "name": "ui5-angular",
   "projectType": "library",
   "sourceRoot": "libs/ui5-angular/src",
   "prefix": "ui-angular",
@@ -37,6 +38,5 @@
       }
     }
   },
-  "tags": [],
-  "name": "ui5-angular"
+  "tags": []
 }

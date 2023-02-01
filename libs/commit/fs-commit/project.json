@@ -1,5 +1,5 @@
 {
-  "name": "fs-commit",
+  "name": "commit-fs-commit",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/commit/fs-commit/src",
   "projectType": "library",

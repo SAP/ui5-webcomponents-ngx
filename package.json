@@ -60,7 +60,13 @@
     "@nrwl/linter": "15.4.4",
     "@nrwl/nx-cloud": "15.0.2",
     "@nrwl/nx-plugin": "15.4.4",
+    "@nrwl/storybook": "15.4.4",
     "@nrwl/workspace": "15.4.4",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/angular": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/core-server": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.37.0",
@@ -69,13 +75,13 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "2.12.1",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "8.0.2",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "12.2.3",
     "jsonc-eslint-parser": "2.1.0",
     "lerna": "^6.4.0",
-    "madge": "5.0.1",
     "ng-packagr": "15.0.2",
     "nx": "15.4.4",
     "postcss": "8.4.16",
@@ -85,10 +91,7 @@
     "prettier": "2.8.1",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
-    "typescript": "4.8.2"
-  },
-  "workspaces": [
-    "libs/*",
-    "libs/*/*"
-  ]
+    "typescript": "4.8.2",
+    "webpack": "^5.64.0"
+  }
 }

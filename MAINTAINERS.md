@@ -53,3 +53,25 @@ It expects that it will receive the paths to the API JSONs, which should be in t
 If there are multiple API JSONs, which depend on each other(e.g `@ui5/webcomponents` depends on `@ui5/webcomponents-base` for some types),
 it will combine then and return the single `ComponentData` object per component. Additionally resulted `ComponentData` may have reference
 to other `ComponentData` objects.
+
+### Versioning
+
+Versioning is done using Lerna and it is configured to use fixed versioning. This means that all packages will have the same version,
+no matter if they have changed or not. This is done in order to avoid having different versions of the packages in the same project.
+All the versioning is done by the CI, so you don't have to worry about it, but if you want to bump the version manually, you can do it
+by running `lerna version` command, how you like it and push the changes to the main or create a PR with a version bump and title
+`chore(release)`. CI will release that version when it is merged to the main.
+
+Releasing RC is done automatically, after every push to the main(merges included).
+
+Releasing stable versions is done manually from GitHub action workflow dispatch of workflow `Create Release` or by running `lerna version` command and pushing the changes.
+
+Hotfixes are done in the same way, check out the tag version you want to bump, then add your changes and then just run
+`create:hotfix` script. It will create a new branch, bump the version and push it to the remote. Then CI will release the new version.
+
+**notes about the latest version after hotfixes**
+
+When you create hotfix and if the version of that hotfix is higher than the latest version on main, then the latest version will be updated on main too,
+but only in `lerna.json` and `package.json` files. This is done in order to make sure that the next release will be done with the correct version.
+If the version is lower, it will not have any effect on the main branch contents.
+

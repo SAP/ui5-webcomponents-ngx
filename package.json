@@ -12,7 +12,8 @@
     "script": "nx workspace-generator ui5-adapter --verbose",
     "version:prerelease": "npx lerna version prerelease",
     "version:release": "npx lerna version --conventional-graduate",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "create:hotfix": "node scripts/release-hotfix.js"
   },
   "private": true,
   "dependencies": {

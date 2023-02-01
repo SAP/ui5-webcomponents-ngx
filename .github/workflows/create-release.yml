@@ -1,10 +1,15 @@
-name: Publish new version
+name: Create Release
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+      - tmp_hotfix_branch
+env:
+  IS_HOTFIX: ${{ github.ref == 'refs/heads/tmp_hotfix_branch' }}
+  IS_PRERELEASE: ${{ github.event_name == 'push' && github.ref != 'refs/heads/tmp_hotfix_branch' }}
+  IS_MANUAL: ${{ contains(github.event.head_commit.message, 'chore(release)') }}
 
 jobs:
   create-release:
@@ -14,7 +19,7 @@ jobs:
       - name: Fetch from origin repo
         uses: actions/checkout@v3
         with:
-          ref: main # always fetch from main branch
+          ref: ${{ fromJSON('["tmp_hotfix_branch", "main"]')[env.IS_HOTFIX] }}
           fetch-depth: 0
 
       - name: Set up git user
@@ -29,9 +34,12 @@ jobs:
         id: bumpVersion
         uses: ./.github/actions/bump-version
         with:
-          isPrerelease: ${{ github.event_name == 'push' }}
+          isManual: ${{ env.IS_MANUAL }}
+          isPrerelease: ${{ env.IS_PRERELEASE }}
+          isHotfix: ${{ env.IS_HOTFIX }}
 
       - name: Update using lerna
+        if: env.IS_MANUAL == 'false'
         run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --no-push # Skipping push, in case something goes wrong later during build/prepare
 
       - name: Prepare
@@ -47,6 +55,7 @@ jobs:
           dry-run: true
 
       - name: Push changes
+        if: env.IS_MANUAL == 'false'
         run: git push --follow-tags # This Will NOT trigger this workflow again, so it is okay
 
       - name: Generate Release Body # This will delete locally some tags to properly generate the release notes, so it should go after the push to upstream
@@ -59,3 +68,16 @@ jobs:
           prerelease: ${{ steps.bumpVersion.outputs.isPrerelease }}
           tag: v${{ steps.bumpVersion.outputs.newVersion }}
           body: ${{ steps.generate_body.outputs.generatedReleaseNotes }}
+
+      - name: Update version on main
+        if: env.IS_HOTFIX == 'true' && steps.bumpVersion.outputs.releaseTag == 'latest'
+        run: |
+          git checkout -f main
+          npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --no-push --no-changelog --no-git-tag-version --no-changelog
+          git add .
+          git commit -m "chore(release): sync version after hotfix v${{ steps.bumpVersion.outputs.newVersion }}"
+          git push origin main
+
+      - name: Delete Temporary hotfix branch
+        if: env.IS_HOTFIX == 'true'
+        run: git push origin --delete tmp_hotfix_branch

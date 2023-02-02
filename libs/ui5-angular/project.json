@@ -1,4 +1,5 @@
 {
+  "name": "ui5-angular",
   "projectType": "library",
   "sourceRoot": "libs/ui5-angular/src",
   "prefix": "ui-angular",
@@ -9,9 +10,22 @@
         "configFile": "libs/ui5-angular/wrapper.conf.ts"
       }
     },
+    "build-schematics": {
+      "executor": "@ui5/webcomponents-nx:build-schematics",
+      "options": {
+        "configFile": "libs/ui5-angular/wrapper.conf.ts",
+        "distPath": "dist/libs/ui5-angular",
+        "schematics": {
+          "tsConfig": "tsconfig.schematics.json",
+          "collection": "schematics"
+        }
+      }
+    },
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/ui5-angular"],
+      "outputs": [
+        "dist/libs/ui5-angular"
+      ],
       "options": {
         "project": "libs/ui5-angular/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -25,7 +39,9 @@
         }
       },
       "defaultConfiguration": "production",
-      "dependsOn": ["sync"]
+      "dependsOn": [
+        "sync"
+      ]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -37,6 +53,5 @@
       }
     }
   },
-  "tags": [],
-  "name": "ui5-angular"
+  "tags": []
 }

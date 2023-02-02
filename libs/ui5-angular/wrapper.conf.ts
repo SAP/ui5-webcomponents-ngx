@@ -1,4 +1,4 @@
-import {GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
 import {AngularExportSpecifierType, angularGenerator} from "@ui5/webcomponents-ngx-generator";
 import {kebabCase} from "lodash";
@@ -18,7 +18,7 @@ export default {
         fileName: 'ui5-angular.module.ts',
         className: 'Ui5AngularModule',
         primary: true,
-        included: (file) => {
+        included: () => {
           return true;
         }
       },
@@ -43,4 +43,4 @@ export default {
       return join(module || 'main', 'directives/' + finalPath.map(kebabCase).join('/') + '.ts')
     }
   })
-} as Partial<WrapperConfig>;
+} as Partial<WrapperConfig<ComponentData>>;

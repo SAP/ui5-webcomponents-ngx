@@ -20,7 +20,14 @@
   },
   "targetDefaults": {
     "sync": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "build-schematics": {
+      "dependsOn": [
+        "^build"
+      ]
     },
     "build": {
       "dependsOn": [

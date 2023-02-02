@@ -1,11 +1,14 @@
 {
+  "name": "playground",
   "projectType": "application",
   "sourceRoot": "apps/playground/src",
   "prefix": "ui-angular",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/playground",
         "index": "apps/playground/src/index.html",
@@ -17,7 +20,14 @@
           "apps/playground/src/favicon.ico",
           "apps/playground/src/assets"
         ],
-        "styles": ["apps/playground/src/styles.scss"],
+        "styles": [
+          "apps/playground/src/styles.scss",
+          "node_modules/@fundamental-styles/common-css/dist/sap-normalize.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-padding.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-typography.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-shadow.css",
+          "node_modules/@fundamental-styles/common-css/dist/sap-display.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -40,7 +50,12 @@
               "with": "apps/playground/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "optimization": true,
+          "buildOptimizer": true,
+          "vendorChunk": true,
+          "extractLicenses": true,
+          "namedChunks": true
         },
         "development": {
           "buildOptimizer": false,
@@ -82,13 +97,14 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/playground"],
+      "outputs": [
+        "coverage/apps/playground"
+      ],
       "options": {
         "jestConfig": "apps/playground/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [],
-  "name": "playground"
+  "tags": []
 }

@@ -8,6 +8,7 @@
     "playground": "apps/playground",
     "playground-e2e": "apps/playground-e2e",
     "ui5-angular": "libs/ui5-angular",
+    "ui5-angular-theming": "libs/ui5-angular-theming",
     "webcomponents-nx": "libs/webcomponents-nx",
     "wrapper": "libs/wrapper"
   }

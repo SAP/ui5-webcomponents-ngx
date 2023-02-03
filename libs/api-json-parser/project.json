@@ -6,19 +6,27 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/api-json-parser",
         "main": "libs/api-json-parser/src/index.ts",
         "tsConfig": "libs/api-json-parser/tsconfig.lib.json",
-        "assets": ["libs/api-json-parser/*.md"]
+        "assets": [
+          "libs/api-json-parser/*.md"
+        ]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/api-json-parser/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/api-json-parser/**/*.ts"
+        ]
       }
     }
   },

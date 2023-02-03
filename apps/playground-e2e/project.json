@@ -1,4 +1,5 @@
 {
+  "name": "playground-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/playground-e2e/src",
   "projectType": "application",
@@ -18,13 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/playground-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/playground-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["playground"],
-  "name": "playground-e2e"
+  "implicitDependencies": [
+    "playground"
+  ]
 }

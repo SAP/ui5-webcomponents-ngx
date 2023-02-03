@@ -5,6 +5,11 @@
       "implementation": "./src/executors/sync/executor",
       "schema": "./src/executors/sync/schema.json",
       "description": "Sync executor"
+    },
+    "build-schematics": {
+      "implementation": "./src/executors/build-schematics/executor",
+      "schema": "./src/executors/build-schematics/schema.json",
+      "description": "Builds the schematics for the library"
     }
   }
 }

@@ -17,6 +17,7 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
+      "@ui5/theming-ngx": ["libs/ui5-angular-theming/src/index.ts"],
       "@ui5/webcomponents-api-json-parser": [
         "libs/api-json-parser/src/index.ts"
       ],

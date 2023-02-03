@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ButtonDirective, MultiComboBoxDirective} from "@ui5/webcomponents-ngx";
 import {FormControl, FormGroup} from "@angular/forms";
+import { AvailableThemes, Ui5ThemingService } from '@ui5/theming-ngx';
 
 @Component({
   selector: 'ui-angular-root',
@@ -13,7 +14,9 @@ export class AppComponent {
   multiComboBox!: MultiComboBoxDirective;
   form: FormGroup;
 
-  constructor() {
+  constructor(
+    private theming: Ui5ThemingService
+  ) {
     this.form = new FormGroup({
       name: new FormControl(''),
     });
@@ -25,5 +28,9 @@ export class AppComponent {
 
   onFormSubmit() {
     console.log(this.form.value);
+  }
+
+  changeTheme(theme: AvailableThemes): void {
+    this.theming.setTheme(theme);
   }
 }

@@ -487,3 +487,5 @@ export {
 export { Ui5FioriModule } from './fiori/ui5-fiori.module';
 export { Ui5MainModule } from './main/ui5-main.module';
 export { Ui5AngularModule } from './ui5-angular.module';
+export { Ui5WebcomponentsThemingModule } from './main/ui5-webcomponents-theming.module';
+export { Ui5WebcomponentsThemingService } from './main/ui5-webcomponents-theming.service';

@@ -4,7 +4,7 @@ import {wrapper, WrapperConfig} from "@ui5/webcomponents-wrapper";
 
 export default async function generateComponents(
   tree: Tree,
-  options: WrapperConfig & { project: string }
+  options: WrapperConfig<unknown> & { project: string }
 ) {
   const fsAdapter = new NxFsImplementation(tree);
   const projectConfiguration = readProjectConfiguration(tree, options.project);
@@ -14,6 +14,7 @@ export default async function generateComponents(
     ...options
   });
   await formatFiles(tree);
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   return () => {
   };
 }

@@ -19,13 +19,13 @@ export class WebcomponentsThemingGenerator {
   }
 
   constructor() {
-    this.module = new WebcomponentsThemingModule(this.config);
     this.service = new WebcomponentsThemingService(this.config);
+    this.module = new WebcomponentsThemingModule(this.config, this.service);
   }
 }
 
 export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpecifierType> {
-  constructor(public config: ThemingGeneratorConfig) {
+  constructor(public config: ThemingGeneratorConfig, private service: WebcomponentsThemingService) {
     super();
     this.move(`${this.config.themingPath}/${this.config.themingModuleFileName}.ts`);
     this.initializeImportsAndExports();
@@ -44,7 +44,7 @@ export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpeci
     );
     this.addImport(
       ['Ui5WebcomponentsThemingService'],
-      `./${this.config.themingServiceFileName}`
+      this.service.relativePathFrom
     );
   }
 

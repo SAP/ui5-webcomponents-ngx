@@ -10,14 +10,14 @@ export function themingGenerator() {
     themingModuleFileName: 'ui5-theming.module',
     themingServiceFileName: 'ui5-theming.service'
   }
-  const themingModule = new Ui5GlobalThemingModule(config);
-  const themingService = new Ui5GlobalThemingService(config);
-  const themignModels = new Ui5ThemingModels(config);
-  const indexFile = new IndexFile([themingModule, themingService, themignModels]);
+  const themingModels = new Ui5ThemingModels(config);
+  const themingService = new Ui5GlobalThemingService(config, themingModels);
+  const themingModule = new Ui5GlobalThemingModule(config, themingService, themingModels);
+  const indexFile = new IndexFile([themingModule, themingService, themingModels]);
   return {
     indexFile,
     themingModule,
     themingService,
-    themignModels
+    themingModels
   };
 }

@@ -1,21 +1,26 @@
 import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
 import { format } from "prettier";
+import { ThemingConfig } from "./theming-config.interface";
 
 export class Ui5GlobalThemingModule extends GeneratedFile {
-  constructor() {
+  constructor(public config: ThemingConfig) {
     super();
-    this.move('ui5-theming.module.ts');
+    this.move(`${this.config.themingModuleFileName}.ts`);
+    this.initializeImportsAndExports();
+  }
+
+  initializeImportsAndExports(): void {
     this.addExport({
       local: 'Ui5ThemingModule',
       exported: 'Ui5ThemingModule',
       types: [ExportSpecifierType.Class],
     });
+    this.addImport(['NgModule', 'ModuleWithProviders', 'Optional', 'isDevMode'], '@angular/core');
+    this.addImport(['Ui5ThemingService'], `./${this.config.themingServiceFileName}`);
+    this.addImport(['ThemingConfig', 'UI5_THEMING_CONFIGURATION'], `./${this.config.themingModelsFileName}`);
   }
 
   override getCode(): string {
-    this.addImport(['NgModule', 'ModuleWithProviders', 'Optional', 'isDevMode', 'InjectionToken'], '@angular/core');
-    this.addImport(['Ui5ThemingService'], './ui5-theming.service');
-    this.addImport(['ThemingConfig', 'UI5_THEMING_CONFIGURATION'], './ui5-theming.models');
 
     return format([
       this.getImportsCode(),

@@ -1,12 +1,6 @@
-import {
-  NgModule,
-  ModuleWithProviders,
-  Optional,
-  isDevMode,
-} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Ui5WebcomponentsThemingService } from './ui5-webcomponents-theming.service';
 
-const declarations = [];
 @NgModule({
   exports: [],
   declarations: [],

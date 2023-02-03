@@ -1,16 +1,22 @@
 import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
 import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
 import { format } from "prettier";
+import { ThemingConfig } from "./theming-config.interface";
 
 export class Ui5ThemingModels extends GeneratedFile {
-  constructor() {
+  constructor(public config: ThemingConfig) {
     super();
-    this.move('ui5-theming.models.ts');
+    this.move(`${this.config.themingModelsFileName}.ts`);
+    this.initializeImportsAndExports();
+  }
+
+  initializeImportsAndExports(): void {
     this.addExport({
       local: '*',
       exported: '*',
       types: [ExportSpecifierType.Variable],
     });
+    this.addImport(['InjectionToken'], '@angular/core');
   }
 
   getThemeNames(): string[] {
@@ -22,7 +28,6 @@ export class Ui5ThemingModels extends GeneratedFile {
   }
 
   override getCode(): string {
-    this.addImport(['InjectionToken'], '@angular/core');
       return format(`
       ${this.getImportsCode()}
       // TODO: This should come from somewhere.

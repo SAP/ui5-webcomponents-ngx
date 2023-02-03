@@ -2,43 +2,57 @@ import { ExportSpecifierType, GeneratedFile } from '@ui5/webcomponents-wrapper';
 import { format } from 'prettier';
 import { AngularExportSpecifierType } from './angular-export-specifier-type';
 
+export interface ThemingGeneratorConfig {
+  themingPath: string;
+  themingModuleFileName: string;
+  themingServiceFileName: string;
+}
+
 export class WebcomponentsThemingGenerator {
   public module: WebcomponentsThemingModule;
   public service: WebcomponentsThemingService;
 
+  config: ThemingGeneratorConfig = {
+    themingPath: 'main',
+    themingModuleFileName: 'ui5-webcomponents-theming.module',
+    themingServiceFileName: 'ui5-webcomponents-theming.service'
+  }
+
   constructor() {
-    this.module = new WebcomponentsThemingModule();
-    this.service = new WebcomponentsThemingService();
+    this.module = new WebcomponentsThemingModule(this.config);
+    this.service = new WebcomponentsThemingService(this.config);
   }
 }
 
-export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpecifierType>{
-  constructor() {
+export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpecifierType> {
+  constructor(public config: ThemingGeneratorConfig) {
     super();
-    this.move('main/ui5-webcomponents-theming.module.ts');
+    this.move(`${this.config.themingPath}/${this.config.themingModuleFileName}.ts`);
+    this.initializeImportsAndExports();
+  }
+
+  initializeImportsAndExports(): void {
     this.addExport({
       local: 'Ui5WebcomponentsThemingModule',
       exported: 'Ui5WebcomponentsThemingModule',
-      types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
-    })
+      types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule],
+    });
+
+    this.addImport(
+      ['NgModule'],
+      '@angular/core'
+    );
+    this.addImport(
+      ['Ui5WebcomponentsThemingService'],
+      `./${this.config.themingServiceFileName}`
+    );
   }
 
   override getCode(): string {
-    this.addImport(
-      ['NgModule', 'ModuleWithProviders', 'Optional', 'isDevMode'],
-      '@angular/core'
-    );
-    const imports: string[] = [];
-    this.addImport(
-      ['Ui5WebcomponentsThemingService'],
-      './ui5-webcomponents-theming.service'
-    );
-
     return format(
-      [
-        this.getImportsCode(),
-        `
-      const declarations = [${imports.join(', ')}];
+      `
+      ${this.getImportsCode()}
+
       @NgModule({
         exports: [],
         declarations: [],
@@ -49,32 +63,38 @@ export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpeci
         }
       }
       `,
-      ].join('\n'),
       { parser: 'typescript' }
     );
   }
 }
 
 export class WebcomponentsThemingService extends GeneratedFile {
-  constructor() {
+  constructor(public config: ThemingGeneratorConfig) {
     super();
-    this.move('main/ui5-webcomponents-theming.service.ts');
+    this.move(`${this.config.themingPath}/${this.config.themingServiceFileName}.ts`);
+    this.initializeImportsAndExports();
+  }
+
+  initializeImportsAndExports(): void {
     this.addExport({
       local: 'Ui5WebcomponentsThemingService',
       exported: 'Ui5WebcomponentsThemingService',
-      path: 'main/ui5-webcomponents-theming.service.ts',
-      types: [ExportSpecifierType.Class]
+      types: [ExportSpecifierType.Class],
     });
+
+    this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
+    this.addImport(
+      ['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'],
+      '@ui5/theming-ngx'
+    );
+    this.addImport('setTheme', '@ui5/webcomponents-base/dist/config/Theme.js');
   }
 
   override getCode(): string {
-    this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
-    this.addImport(['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'], '@ui5/theming-ngx');
-    this.addImport('setTheme', '@ui5/webcomponents-base/dist/config/Theme.js');
     return format(
       `
       ${this.getImportsCode()}
-    /**
+      /**
        * Theming service specifically for the ui5/webcomponents-ngx components.
        */
       @Injectable({

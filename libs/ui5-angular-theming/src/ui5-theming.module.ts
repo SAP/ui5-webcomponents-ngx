@@ -3,7 +3,6 @@ import {
   ModuleWithProviders,
   Optional,
   isDevMode,
-  InjectionToken,
 } from '@angular/core';
 import { Ui5ThemingService } from './ui5-theming.service';
 import { ThemingConfig, UI5_THEMING_CONFIGURATION } from './ui5-theming.models';

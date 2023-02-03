@@ -11434,13 +11434,6 @@ mute-stream@0.0.8, mute-stream@~0.0.4:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-n1xus-ui5-theming-ngx@latest:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/n1xus-ui5-theming-ngx/-/n1xus-ui5-theming-ngx-0.0.1.tgz#d95f556e319bab21220f3efd3032d821faaffe83"
-  integrity sha512-hfTw4sDbFVtc7g/sQgFNqsHXPODBHE8+o7kbChdiv7mX2HWfveEy7CA92ttCFLpY338JboRan+dlwQ/wx0PojA==
-  dependencies:
-    tslib "^2.3.0"
-
 nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
@@ -11485,10 +11478,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha512-mc/caHeUcdjnC/boPWJefDr4KUIWQNv+tlnFnJd38QMou86QtxQzBJfxgGRzvx8jazYRqrVlaHarfO72uNxPOg==
 
-ng-packagr@~15.0.0:
-  version "15.0.3"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-15.0.3.tgz#6f9e47183e3183161253d78b0e4ebeb30af1600e"
-  integrity sha512-QRP6X2cuO3AmukYOr+b84gamDWbE2R/cdAedhUSRRYaYD9IhQWVYr64pNiu5VwWNf43zaWWp8UGfKuDjoYYMvg==
+ng-packagr@15.0.2:
+  version "15.0.2"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-15.0.2.tgz#dcff97c8b6ccb998ac49396293b0bd00223b3156"
+  integrity sha512-cQ0Tna1s0BBvXzrsqk6biwrkOO1iHlxj278Jekm+3XPfXU8mjddkXkF2BsKnjcZsDew3nqFYxEU4wFx3dgh+wg==
   dependencies:
     "@rollup/plugin-json" "^5.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"

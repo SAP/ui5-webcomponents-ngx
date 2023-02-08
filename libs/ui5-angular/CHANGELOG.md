@@ -5,14 +5,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.1-rc.0 (2023-02-08)
 
-### Bug Fixes
-
-- added dependency on build for sync targets ([#5](https://github.com/SAP/ui5-webcomponents-ngx/issues/5)) ([c343867](https://github.com/SAP/ui5-webcomponents-ngx/commit/c343867f45e692557c9a1d8d614c8d995a7da6c2))
-- fixed temporarily problems with executor resolution in yarn workspaces ([7dd7b58](https://github.com/SAP/ui5-webcomponents-ngx/commit/7dd7b581a460c7a87f62e6ad04d3b9cfa806980e))
-
 ### Features
 
 - automatic publishing ([#22](https://github.com/SAP/ui5-webcomponents-ngx/issues/22)) ([e2223b5](https://github.com/SAP/ui5-webcomponents-ngx/commit/e2223b53a12d52c6cf05aea90bbc2fcbe4dbb5ae))
 - bring the initial content of the library ([c0d8ae5](https://github.com/SAP/ui5-webcomponents-ngx/commit/c0d8ae5c96d5d5aa5f0975920b86229140adb231))
-- introduced lerna ([#6](https://github.com/SAP/ui5-webcomponents-ngx/issues/6)) ([d325402](https://github.com/SAP/ui5-webcomponents-ngx/commit/d3254024516c90d0bfb56af2340484257b32995a))
 - theming support with schematics ([#23](https://github.com/SAP/ui5-webcomponents-ngx/issues/23)) ([f8266be](https://github.com/SAP/ui5-webcomponents-ngx/commit/f8266bee3e44a4186cf803b5f54187f446804486)), closes [#25](https://github.com/SAP/ui5-webcomponents-ngx/issues/25)

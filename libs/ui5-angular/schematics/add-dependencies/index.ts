@@ -15,9 +15,8 @@ export function addDependencies(options: Schema): Rule {
       addPackageToPackageJson(tree, '@fundamental-styles/common-css', 'latest');
     }
 
-    // TODO: Change n1xus-ui5-theming-ngx to @ui5/theming-ngx when it becomes available
-    if (options.theming && !getPackageVersionFromPackageJson(tree, 'n1xus-ui5-theming-ngx')) {
-      addPackageToPackageJson(tree, 'n1xus-ui5-theming-ngx', 'latest');
+    if (options.theming && !getPackageVersionFromPackageJson(tree, '@ui5/theming-ngx')) {
+      addPackageToPackageJson(tree, '@ui5/theming-ngx', 'latest');
     }
 
     context.addTask(new NodePackageInstallTask());

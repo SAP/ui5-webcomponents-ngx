@@ -1,0 +1,47 @@
+name: Action for Node.js
+description: Node.js setup cache
+
+inputs:
+    node-version:
+        description: Node.js version
+        required: false
+        default: 16.x
+    frozen-lockfile:
+        description: Install dependencies from lock file
+        required: false
+        default: 'true'
+
+runs:
+    using: composite
+    steps:
+        - name: Use Node.js ${{ inputs.node-version }}
+          uses: actions/setup-node@v3
+          with:
+              node-version: ${{ inputs.node-version }}
+
+        - name: Get yarn cache directory path
+          id: yarn-cache-dir-path
+          run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+          shell: bash
+
+        - name: Use the global Yarn cache if available
+          uses: actions/cache@v3
+          with:
+              path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+              key: ${{ runner.os }}-node-${{ inputs.node_version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+              restore-keys: |
+                  ${{ runner.os }}-node-${{ inputs.node_version }}-yarn-
+
+        - uses: actions/cache@v3
+          id: node_modules
+          name: Use project node_modules cache if available
+          with:
+              path: '**/node_modules/'
+              key: ${{ runner.os }}-${{ inputs.node-version }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+              restore-keys: |
+                  ${{ runner.os }}-${{ inputs.node-version }}-node-modules-
+
+        - name: Install dependencies
+          if: inputs.frozen-lockfile != 'true' || steps.node_modules.outputs.cache-hit != 'true'
+          run: yarn install ${{ inputs.frozen-lockfile == 'true' && '--frozen-lockfile' || '' }}
+          shell: bash

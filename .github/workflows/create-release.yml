@@ -39,9 +39,10 @@ jobs:
           isPrerelease: ${{ env.IS_PRERELEASE }}
           isHotfix: ${{ env.IS_HOTFIX }}
 
-      - name: Update using lerna
+      - name: Update using lerna  # Skipping push, in case something goes wrong later during build/prepare
         if: env.IS_MANUAL == 'false'
-        run: npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --no-push # Skipping push, in case something goes wrong later during build/prepare
+        run: |
+          npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --message="chore(release): publish %v [ci skip]" --no-push
 
       - name: Prepare
         run: npx nx run-many --target=prepare --all

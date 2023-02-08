@@ -7,24 +7,18 @@
     "prepare": {
       "executor": "@ui5/webcomponents-nx:prepare",
       "options": {
-
-      }
-    },
-    "sync": {
-      "executor": "@ui5/webcomponents-nx:sync",
-      "options": {
-        "configFile": "libs/ui5-angular/wrapper.conf.ts"
-      }
-    },
-    "build-schematics": {
-      "executor": "@ui5/webcomponents-nx:build-schematics",
-      "options": {
         "configFile": "libs/ui5-angular/wrapper.conf.ts",
         "distPath": "dist/libs/ui5-angular",
         "schematics": {
           "tsConfig": "tsconfig.schematics.json",
           "collection": "schematics"
         }
+      }
+    },
+    "sync": {
+      "executor": "@ui5/webcomponents-nx:sync",
+      "options": {
+        "configFile": "libs/ui5-angular/wrapper.conf.ts"
       }
     },
     "build": {

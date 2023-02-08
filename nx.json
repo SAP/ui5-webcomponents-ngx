@@ -24,11 +24,6 @@
         "^build"
       ]
     },
-    "build-schematics": {
-      "dependsOn": [
-        "^build"
-      ]
-    },
     "prepare": {
       "dependsOn": ["build"]
     },

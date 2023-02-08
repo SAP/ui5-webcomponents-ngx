@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.1...v0.0.1-rc.2) (2023-02-08)
+
+### Bug Fixes
+
+- added ci skip to the loop back push ([#28](https://github.com/SAP/ui5-webcomponents-ngx/issues/28)) ([84fbf2b](https://github.com/SAP/ui5-webcomponents-ngx/commit/84fbf2b08243bcb2656dc186284030a3225637ae))
+
 ## 0.0.1-rc.1 (2023-02-08)
 
 ### Bug Fixes

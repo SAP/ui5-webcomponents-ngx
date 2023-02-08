@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.2...v0.0.1-rc.3) (2023-02-08)
+
+### Bug Fixes
+
+- fixed ng-add schematic and ui5 theme loading ([#30](https://github.com/SAP/ui5-webcomponents-ngx/issues/30)) ([2c423d6](https://github.com/SAP/ui5-webcomponents-ngx/commit/2c423d6123a168a8f4c66e1b9407a43f0c65d86c))
+
 ## [0.0.1-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.1...v0.0.1-rc.2) (2023-02-08)
 
 **Note:** Version bump only for package @ui5/webcomponents-ngx

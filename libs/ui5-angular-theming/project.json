@@ -20,7 +20,8 @@
         "dist/libs/ui5-angular-theming"
       ],
       "options": {
-        "project": "libs/ui5-angular-theming/ng-package.json"
+        "project": "libs/ui5-angular-theming/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
       },
       "configurations": {
         "production": {

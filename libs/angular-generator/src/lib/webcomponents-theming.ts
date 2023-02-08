@@ -87,6 +87,8 @@ export class WebcomponentsThemingService extends GeneratedFile {
       ['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'],
       '@ui5/theming-ngx'
     );
+
+    this.addImport('registerThemePropertiesLoader', '@ui5/webcomponents-base/dist/asset-registries/Themes.js');
     this.addImport('setTheme', '@ui5/webcomponents-base/dist/config/Theme.js');
   }
 
@@ -112,8 +114,13 @@ export class WebcomponentsThemingService extends GeneratedFile {
         }
 
         async setTheme(theme: AvailableThemes): Promise<boolean> {
+          registerThemePropertiesLoader("@ui5/webcomponents-theming", theme, this.loadTheme);
           setTheme(theme);
           return true;
+        }
+
+        private async loadTheme(theme: AvailableThemes): Promise<any> {
+            return (await import(\`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`)).default;
         }
       }
     `,

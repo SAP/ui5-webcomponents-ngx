@@ -2,7 +2,7 @@ import {PrepareOptions} from "./prepareOptions";
 import {logger, ProjectConfiguration} from "@nrwl/devkit";
 import {SchematicsOptions} from "./schematicsOptions";
 import {exec} from "child_process";
-import {copySync, pathExistsSync} from "fs-extra";
+import {copySync, pathExistsSync, readFileSync, writeFileSync} from "fs-extra";
 
 const runTsc = async (tsConfigPath: string) => {
   return new Promise((resolve, reject) => {
@@ -40,8 +40,13 @@ export async function copySchematics(
   const tsConfigPath = `${rootFolder}/${tsConfig}`;
   const schematicsPath = `${rootFolder}/${collection}`;
   if (pathExistsSync(schematicsPath) && pathExistsSync(tsConfigPath)) {
+    // Doing this, because tsc will overwrite the package.json with the one from the source folder
+    const existingPackageJson = readFileSync(`${distPath}/package.json`, {encoding: 'utf-8'});
     await runTsc(tsConfigPath);
-    copySync(schematicsPath, `${distPath}/schematics`);
+    copySync(schematicsPath, `${distPath}/schematics`, {
+      filter: (src) => !src.endsWith('.ts')
+    });
+    writeFileSync(`${distPath}/package.json`, existingPackageJson);
     logger.info(`✅ Copied schematics for project ${projectName}`);
   } else {
     throw new Error(`No schematics found for project ${projectName}`);

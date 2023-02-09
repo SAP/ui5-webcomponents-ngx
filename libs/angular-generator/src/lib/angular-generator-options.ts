@@ -20,4 +20,11 @@ export interface AngularGeneratorOptions {
     valueMapper?: [any, any][]; // [from, to][]
     input: InputType;
   });
+
+  storybookConfig?: {
+    getStorySections: (rootElement: Document) => HTMLElement[];
+    getStoryName: (storySection: HTMLElement) => string;
+    getStoryCode: (storySection: HTMLElement) => string;
+    samples: Array<{html: string; componentName: string, storyPath: string}>;
+  }
 }

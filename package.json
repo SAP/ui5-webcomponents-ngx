@@ -13,7 +13,8 @@
     "version:prerelease": "npx lerna version prerelease",
     "version:release": "npx lerna version --conventional-graduate",
     "prepare": "husky install",
-    "create:hotfix": "node scripts/release-hotfix.js"
+    "create:hotfix": "node scripts/release-hotfix.js",
+    "storybook": "nx storybook ui5-angular"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +28,13 @@
     "@angular/platform-browser-dynamic": "15.0.4",
     "@angular/router": "15.0.4",
     "@fundamental-styles/common-css": "^0.26.5",
+    "@babel/core": "^7.20.5",
+    "@babel/generator": "^7.20.5",
+    "@babel/parser": "^7.20.5",
+    "@babel/traverse": "^7.20.5",
     "@nrwl/angular": "15.4.4",
+    "@storybook/angular": "6.5.14",
+    "@swc/helpers": "0.4.11",
     "@types/lodash": "4.14.191",
     "@ui5/tooling-webc": "0.1.4",
     "@ui5/webcomponents": "1.9.3",
@@ -38,8 +45,10 @@
     "@ui5/webcomponents-icons-tnt": "1.9.3",
     "fast-deep-equal": "3.1.3",
     "fast-glob": "3.2.12",
+    "jsdom": "20.0.3",
     "lodash": "4.17.21",
     "rxjs": "~7.5.0",
+    "storybook": "6.5.14",
     "tslib": "2.4.1",
     "zone.js": "~0.11.4"
   },
@@ -63,8 +72,17 @@
     "@nrwl/linter": "15.4.4",
     "@nrwl/nx-cloud": "15.0.2",
     "@nrwl/nx-plugin": "15.4.4",
+    "@nrwl/storybook": "15.3.3",
+    "@nrwl/webpack": "15.3.3",
     "@nrwl/workspace": "15.4.4",
     "@types/fs-extra": "^11.0.1",
+    "@storybook/addon-essentials": "6.5.9",
+    "@storybook/builder-webpack5": "6.5.9",
+    "@storybook/core-server": "6.5.9",
+    "@storybook/manager-webpack5": "6.5.9",
+    "@swc-node/register": "1.4.2",
+    "@swc/cli": "0.1.55",
+    "@swc/core": "^1.2.173",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.37.0",
@@ -95,6 +113,7 @@
     "through2": "^4.0.2",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
-    "typescript": "4.8.2"
+    "typescript": "4.8.2",
+    "webpack": "5.64.0"
   }
 }

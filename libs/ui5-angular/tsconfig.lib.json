@@ -10,7 +10,13 @@
     "target": "ES2022",
     "useDefineForClassFields": false
   },
-  "exclude": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts"],
+  "exclude": [
+    "jest.config.ts",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.stories.ts",
+    "**/*.stories.js"
+  ],
   "include": [
     "**/*.ts",
     "../../node_modules/@types/node/globals.d.ts"

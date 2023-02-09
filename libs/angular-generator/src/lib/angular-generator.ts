@@ -5,6 +5,8 @@ import {GeneratedAngularModuleFile} from "./generated-angular-module-file";
 import {IndexFile} from "./index_file";
 import {genericCva} from "./generic-cva";
 import { WebcomponentsThemingGenerator } from "./webcomponents-theming";
+import {JSDOM} from 'jsdom';
+import {AngularComponentStoryFile} from "./angular-component-story-file";
 
 export function angularGenerator(components: ComponentData[], options: AngularGeneratorOptions): Record<string, GeneratedFile> {
   const generatedComponents = components.reduce((acc, component) => {
@@ -19,6 +21,26 @@ export function angularGenerator(components: ComponentData[], options: AngularGe
   const pModules = primaryModules.map(m => new GeneratedAngularModuleFile(m, [...modules, themingModuleGenerator.module], options));
   const indexFile = new IndexFile([...generatedComponentsArr, ...modules, ...pModules, themingModuleGenerator.module, themingModuleGenerator.service]);
 
+  let storyFiles: GeneratedFile[] = [];
+  if (options.storybookConfig) {
+    const config = options.storybookConfig;
+
+    storyFiles = config.samples.map(({html: sample, componentName, storyPath}) => {
+      const sampleJsDom = new JSDOM(sample);
+      const sections = config.getStorySections(sampleJsDom.window.document);
+
+      return sections.map((section) => {
+        return {
+          componentName,
+          storyName: config.getStoryName(section),
+          code: config.getStoryCode(section),
+          storyPath,
+        }
+      })
+    }).map(stories => {
+      return new AngularComponentStoryFile(stories, stories[0].componentName, stories[0].storyPath);
+    });
+  }
   return {
     ...generatedComponents,
     ...modules.reduce((acc, module) => {
@@ -32,6 +54,10 @@ export function angularGenerator(components: ComponentData[], options: AngularGe
     'index.ts': indexFile,
     [genericCva.path]: genericCva,
     [themingModuleGenerator.module.path]: themingModuleGenerator.module,
-    [themingModuleGenerator.service.path]: themingModuleGenerator.service
+    [themingModuleGenerator.service.path]: themingModuleGenerator.service,
+    ...storyFiles.reduce((acc, storyFile) => {
+      acc[storyFile.path] = storyFile;
+      return acc;
+    }, {}),
   };
 }

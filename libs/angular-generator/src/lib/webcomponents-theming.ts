@@ -114,7 +114,7 @@ export class WebcomponentsThemingService extends GeneratedFile {
         }
 
         async setTheme(theme: AvailableThemes): Promise<boolean> {
-          registerThemePropertiesLoader("@ui5/webcomponents-theming", theme, this.loadTheme);
+          registerThemePropertiesLoader("@ui5/webcomponents-theming", theme, this.loadTheme as any);
           setTheme(theme);
           return true;
         }

@@ -18,7 +18,10 @@ interface UploadCollectionItemDirectiveEventsMap
 interface UploadCollectionItemDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'selected'
+    | 'navigated'
     | 'type'
     | 'disableDeleteButton'
     | 'file'
@@ -36,8 +39,11 @@ interface UploadCollectionItemDirectiveElement
     | 'deleteButton'
     | 'thumbnail'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   selected: boolean;
-  type: 'Active' | 'Detail' | 'Inactive';
+  navigated: boolean;
+  type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
   disableDeleteButton: boolean;
   file: any;
   fileName: string;
@@ -76,6 +82,44 @@ interface UploadCollectionItemDirectiveElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
 }
 
 @Directive({
@@ -84,11 +128,35 @@ interface UploadCollectionItemDirectiveElement
 })
 class UploadCollectionItemDirective {
   @Input()
+  set effectiveDir(val: UploadCollectionItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): UploadCollectionItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: UploadCollectionItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): UploadCollectionItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
   set selected(val: UploadCollectionItemDirectiveElement['selected']) {
     this.elementRef.nativeElement.selected = val;
   }
   get selected(): UploadCollectionItemDirectiveElement['selected'] {
     return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set navigated(val: UploadCollectionItemDirectiveElement['navigated']) {
+    this.elementRef.nativeElement.navigated = val;
+  }
+  get navigated(): UploadCollectionItemDirectiveElement['navigated'] {
+    return this.elementRef.nativeElement.navigated;
   }
 
   @Input()
@@ -197,6 +265,87 @@ class UploadCollectionItemDirective {
   }
   get thumbnail(): HTMLElement {
     return this.elementRef.nativeElement.thumbnail;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 }
 

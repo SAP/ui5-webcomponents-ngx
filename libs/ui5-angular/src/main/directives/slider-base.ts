@@ -11,6 +11,8 @@ interface SliderBaseDirectiveEventsMap
 interface SliderBaseDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'accessibleName'
     | 'disabled'
     | 'labelInterval'
@@ -22,6 +24,8 @@ interface SliderBaseDirectiveElement
     | 'change'
     | 'input'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   accessibleName: string;
   disabled: boolean;
   labelInterval: any;
@@ -58,33 +62,43 @@ interface SliderBaseDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
-  clipValue(): any;
+  _render(): any;
 
-  computedValueFromPageX(): any;
+  attachInvalidate(callback: any): any;
 
-  focusInnerElement(): any;
+  define(): any;
 
-  getPageXValueFromEvent(): any;
+  detachInvalidate(callback: any): any;
 
-  getSteppedValue(): any;
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
 
-  getStoredPropertyState(): any;
+  focus(): any;
 
-  getValueFromInteraction(): any;
+  getDomRef(): any;
 
-  handleDownBase(): any;
+  getFocusDomRef(): any;
 
-  handleUpBase(): any;
+  getFocusDomRefAsync(): any;
 
-  isCurrentStateOutdated(): any;
+  getMetadata(): any;
 
-  isPropertyUpdated(): any;
+  getSlottedNodes(): any;
 
-  storePropertyState(): any;
+  getStaticAreaItemDomRef(): any;
 
-  syncUIAndState(): any;
+  getUniqueDependencies(): any;
 
-  updateValue(): any;
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
 }
 
 @Directive({
@@ -92,6 +106,22 @@ interface SliderBaseDirectiveElement
   exportAs: 'ui5Slider',
 })
 class SliderBaseDirective {
+  @Input()
+  set effectiveDir(val: SliderBaseDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): SliderBaseDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: SliderBaseDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): SliderBaseDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
   @Input()
   set accessibleName(val: SliderBaseDirectiveElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -165,60 +195,85 @@ class SliderBaseDirective {
     return this.elementRef.nativeElement;
   }
 
-  clipValue(): any {
-    return this.elementRef.nativeElement.clipValue();
+  _render(): any {
+    return this.elementRef.nativeElement._render();
   }
 
-  computedValueFromPageX(): any {
-    return this.elementRef.nativeElement.computedValueFromPageX();
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
   }
 
-  focusInnerElement(): any {
-    return this.elementRef.nativeElement.focusInnerElement();
+  define(): any {
+    return this.elementRef.nativeElement.define();
   }
 
-  getPageXValueFromEvent(): any {
-    return this.elementRef.nativeElement.getPageXValueFromEvent();
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
   }
 
-  getSteppedValue(): any {
-    return this.elementRef.nativeElement.getSteppedValue();
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
   }
 
-  getStoredPropertyState(): any {
-    return this.elementRef.nativeElement.getStoredPropertyState();
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
   }
 
-  getValueFromInteraction(): any {
-    return this.elementRef.nativeElement.getValueFromInteraction();
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
   }
 
-  handleDownBase(): any {
-    return this.elementRef.nativeElement.handleDownBase();
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
   }
 
-  handleUpBase(): any {
-    return this.elementRef.nativeElement.handleUpBase();
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
   }
 
-  isCurrentStateOutdated(): any {
-    return this.elementRef.nativeElement.isCurrentStateOutdated();
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
   }
 
-  isPropertyUpdated(): any {
-    return this.elementRef.nativeElement.isPropertyUpdated();
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
   }
 
-  storePropertyState(): any {
-    return this.elementRef.nativeElement.storePropertyState();
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
   }
 
-  syncUIAndState(): any {
-    return this.elementRef.nativeElement.syncUIAndState();
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
   }
 
-  updateValue(): any {
-    return this.elementRef.nativeElement.updateValue();
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 }
 

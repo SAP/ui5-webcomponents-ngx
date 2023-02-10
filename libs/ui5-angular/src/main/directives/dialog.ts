@@ -16,6 +16,8 @@ interface DialogDirectiveEventsMap
 interface DialogDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'accessibleName'
     | 'accessibleNameRef'
     | 'initialFocus'
@@ -33,6 +35,8 @@ interface DialogDirectiveElement
     | 'footer'
     | 'header'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   initialFocus: string;
@@ -74,29 +78,49 @@ interface DialogDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
-  _addOpenedPopup(): any;
+  _render(): any;
 
-  _open(): any;
+  attachInvalidate(callback: any): any;
 
-  _removeOpenedPopup(): any;
+  define(): any;
 
-  _show(): any;
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
 
   applyFocus(): any;
 
-  applyInitialFocus(): any;
-
-  blockPageScrolling(): any;
-
   close(): any;
 
-  hide(): any;
-
   isOpen(): boolean;
-
-  resetFocus(): any;
-
-  unblockPageScrolling(): any;
 
   show(preventInitialFocus: boolean): any;
 }
@@ -106,6 +130,22 @@ interface DialogDirectiveElement
   exportAs: 'ui5Dialog',
 })
 class DialogDirective {
+  @Input()
+  set effectiveDir(val: DialogDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): DialogDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: DialogDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): DialogDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
   @Input()
   set accessibleName(val: DialogDirectiveElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -206,52 +246,97 @@ class DialogDirective {
     return this.elementRef.nativeElement.header;
   }
 
-  _addOpenedPopup(): any {
-    return this.elementRef.nativeElement._addOpenedPopup();
+  _render(): any {
+    return this.elementRef.nativeElement._render();
   }
 
-  _open(): any {
-    return this.elementRef.nativeElement._open();
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
   }
 
-  _removeOpenedPopup(): any {
-    return this.elementRef.nativeElement._removeOpenedPopup();
+  define(): any {
+    return this.elementRef.nativeElement.define();
   }
 
-  _show(): any {
-    return this.elementRef.nativeElement._show();
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 
   applyFocus(): any {
     return this.elementRef.nativeElement.applyFocus();
   }
 
-  applyInitialFocus(): any {
-    return this.elementRef.nativeElement.applyInitialFocus();
-  }
-
-  blockPageScrolling(): any {
-    return this.elementRef.nativeElement.blockPageScrolling();
-  }
-
   close(): any {
     return this.elementRef.nativeElement.close();
   }
 
-  hide(): any {
-    return this.elementRef.nativeElement.hide();
-  }
-
   isOpen(): boolean {
     return this.elementRef.nativeElement.isOpen();
-  }
-
-  resetFocus(): any {
-    return this.elementRef.nativeElement.resetFocus();
-  }
-
-  unblockPageScrolling(): any {
-    return this.elementRef.nativeElement.unblockPageScrolling();
   }
 
   show(preventInitialFocus: boolean): any {

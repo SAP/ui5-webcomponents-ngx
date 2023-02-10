@@ -31,7 +31,7 @@ export class Ui5WebcomponentsThemingService
     registerThemePropertiesLoader(
       '@ui5/webcomponents-theming',
       theme,
-      this.loadTheme
+      this.loadTheme as any
     );
     setTheme(theme);
     return true;

@@ -11,6 +11,8 @@ interface YearPickerDirectiveEventsMap
 interface YearPickerDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'formatPattern'
     | 'maxDate'
     | 'minDate'
@@ -20,6 +22,8 @@ interface YearPickerDirectiveElement
     | 'change'
     | 'navigate'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   formatPattern: string;
   maxDate: string;
   minDate: string;
@@ -64,17 +68,47 @@ interface YearPickerDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
   _safelyModifyTimestampBy(amount: any, unit: any): any;
 
   _safelySetTimestamp(timestamp: any): any;
-
-  _hasNextPage(): any;
-
-  _hasPreviousPage(): any;
-
-  _showNextPage(): any;
-
-  _showPreviousPage(): any;
 }
 
 @Directive({
@@ -82,6 +116,22 @@ interface YearPickerDirectiveElement
   exportAs: 'ui5Yearpicker',
 })
 class YearPickerDirective {
+  @Input()
+  set effectiveDir(val: YearPickerDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): YearPickerDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: YearPickerDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): YearPickerDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
   @Input()
   set formatPattern(val: YearPickerDirectiveElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -143,28 +193,93 @@ class YearPickerDirective {
     return this.elementRef.nativeElement;
   }
 
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
   _safelyModifyTimestampBy(amount: any, unit: any): any {
     return this.elementRef.nativeElement._safelyModifyTimestampBy(amount, unit);
   }
 
   _safelySetTimestamp(timestamp: any): any {
     return this.elementRef.nativeElement._safelySetTimestamp(timestamp);
-  }
-
-  _hasNextPage(): any {
-    return this.elementRef.nativeElement._hasNextPage();
-  }
-
-  _hasPreviousPage(): any {
-    return this.elementRef.nativeElement._hasPreviousPage();
-  }
-
-  _showNextPage(): any {
-    return this.elementRef.nativeElement._showNextPage();
-  }
-
-  _showPreviousPage(): any {
-    return this.elementRef.nativeElement._showPreviousPage();
   }
 }
 

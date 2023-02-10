@@ -19,6 +19,8 @@ interface DatePickerDirectiveEventsMap
 interface DatePickerDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'formatPattern'
     | 'maxDate'
     | 'minDate'
@@ -39,6 +41,8 @@ interface DatePickerDirectiveElement
     | 'input'
     | 'valueStateMessage'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   formatPattern: string;
   maxDate: string;
   minDate: string;
@@ -95,15 +99,43 @@ interface DatePickerDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
-  _checkValueValidity(): any;
+  _render(): any;
 
-  _modifyDateValue(amount: any, unit: any): any;
+  attachInvalidate(callback: any): any;
 
-  _onInputChange(): any;
+  define(): any;
 
-  _onInputInput(): any;
+  detachInvalidate(callback: any): any;
 
-  _onInputSubmit(): any;
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
 
   closePicker(): any;
 
@@ -115,12 +147,6 @@ interface DatePickerDirectiveElement
 
   isValid(value: string): boolean;
 
-  normalizeValue(): any;
-
-  onResponsivePopoverAfterClose(): any;
-
-  onSelectedDatesChange(event: any): any;
-
   openPicker(): any;
 }
 
@@ -129,6 +155,22 @@ interface DatePickerDirectiveElement
   exportAs: 'ui5DatePicker',
 })
 class DatePickerDirective {
+  @Input()
+  set effectiveDir(val: DatePickerDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): DatePickerDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: DatePickerDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): DatePickerDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
   @Input()
   set formatPattern(val: DatePickerDirectiveElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -274,24 +316,85 @@ class DatePickerDirective {
     return this.elementRef.nativeElement.valueStateMessage;
   }
 
-  _checkValueValidity(): any {
-    return this.elementRef.nativeElement._checkValueValidity();
+  _render(): any {
+    return this.elementRef.nativeElement._render();
   }
 
-  _modifyDateValue(amount: any, unit: any): any {
-    return this.elementRef.nativeElement._modifyDateValue(amount, unit);
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
   }
 
-  _onInputChange(): any {
-    return this.elementRef.nativeElement._onInputChange();
+  define(): any {
+    return this.elementRef.nativeElement.define();
   }
 
-  _onInputInput(): any {
-    return this.elementRef.nativeElement._onInputInput();
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
   }
 
-  _onInputSubmit(): any {
-    return this.elementRef.nativeElement._onInputSubmit();
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 
   closePicker(): any {
@@ -312,18 +415,6 @@ class DatePickerDirective {
 
   isValid(value: string): boolean {
     return this.elementRef.nativeElement.isValid(value);
-  }
-
-  normalizeValue(): any {
-    return this.elementRef.nativeElement.normalizeValue();
-  }
-
-  onResponsivePopoverAfterClose(): any {
-    return this.elementRef.nativeElement.onResponsivePopoverAfterClose();
-  }
-
-  onSelectedDatesChange(event: any): any {
-    return this.elementRef.nativeElement.onSelectedDatesChange(event);
   }
 
   openPicker(): any {

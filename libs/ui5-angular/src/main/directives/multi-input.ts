@@ -9,8 +9,6 @@ import '@ui5/webcomponents/dist/MultiInput.js';
 import { Observable, fromEvent, merge, NEVER } from 'rxjs';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { GenericControlValueAccessor } from '../../generic-cva';
-import { SuggestionGroupItemDirective } from './suggestion-group-item';
-import { SuggestionItemDirective } from './suggestion-item';
 import { IconDirective } from './icon';
 import { TokenDirective } from './token';
 
@@ -38,6 +36,8 @@ interface MultiInputDirectiveEventsMap
 interface MultiInputDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'accessibleName'
     | 'accessibleNameRef'
     | 'disabled'
@@ -64,6 +64,8 @@ interface MultiInputDirectiveElement
     | 'valueStateMessage'
     | 'tokens'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
@@ -71,9 +73,7 @@ interface MultiInputDirectiveElement
   name: string;
   noTypeahead: boolean;
   placeholder: string;
-  previewItem:
-    | SuggestionGroupItemDirective['element']
-    | SuggestionItemDirective['element'];
+  previewItem: any;
   readonly: boolean;
   required: boolean;
   showClearIcon: boolean;
@@ -114,11 +114,45 @@ interface MultiInputDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
-  getCaretPosition(): any;
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
 
   openPicker(): any;
-
-  setCaretPosition(pos: any): any;
 }
 
 @Directive({
@@ -126,6 +160,22 @@ interface MultiInputDirectiveElement
   exportAs: 'ui5MultiInput',
 })
 class MultiInputDirective {
+  @Input()
+  set effectiveDir(val: MultiInputDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): MultiInputDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: MultiInputDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): MultiInputDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
   @Input()
   set accessibleName(val: MultiInputDirectiveElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -285,16 +335,89 @@ class MultiInputDirective {
     return this.elementRef.nativeElement.tokens;
   }
 
-  getCaretPosition(): any {
-    return this.elementRef.nativeElement.getCaretPosition();
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 
   openPicker(): any {
     return this.elementRef.nativeElement.openPicker();
-  }
-
-  setCaretPosition(pos: any): any {
-    return this.elementRef.nativeElement.setCaretPosition(pos);
   }
 }
 

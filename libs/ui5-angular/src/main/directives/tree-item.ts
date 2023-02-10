@@ -11,7 +11,10 @@ interface TreeItemDirectiveEventsMap
 interface TreeItemDirectiveElement
   extends Omit<
     HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
     | 'selected'
+    | 'navigated'
     | 'type'
     | 'accessibleName'
     | 'additionalTextState'
@@ -19,21 +22,22 @@ interface TreeItemDirectiveElement
     | 'hasChildren'
     | 'icon'
     | 'indeterminate'
-    | 'isTreeItem'
     | 'additionalText'
     | 'text'
     | 'detailClick'
     | 'deleteButton'
   > {
+  effectiveDir: any;
+  isUi5Element: any;
   selected: boolean;
-  type: 'Active' | 'Detail' | 'Inactive';
+  navigated: boolean;
+  type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
   accessibleName: string;
   additionalTextState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   expanded: boolean;
   hasChildren: boolean;
   icon: string;
   indeterminate: boolean;
-  isTreeItem: boolean;
   additionalText: string;
   text: string;
 
@@ -66,6 +70,44 @@ interface TreeItemDirectiveElement
     options?: boolean | EventListenerOptions
   ): void;
 
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
   toggle(): any;
 }
 
@@ -75,11 +117,35 @@ interface TreeItemDirectiveElement
 })
 class TreeItemDirective {
   @Input()
+  set effectiveDir(val: TreeItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): TreeItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: TreeItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): TreeItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
   set selected(val: TreeItemDirectiveElement['selected']) {
     this.elementRef.nativeElement.selected = val;
   }
   get selected(): TreeItemDirectiveElement['selected'] {
     return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set navigated(val: TreeItemDirectiveElement['navigated']) {
+    this.elementRef.nativeElement.navigated = val;
+  }
+  get navigated(): TreeItemDirectiveElement['navigated'] {
+    return this.elementRef.nativeElement.navigated;
   }
 
   @Input()
@@ -141,14 +207,6 @@ class TreeItemDirective {
   }
 
   @Input()
-  set isTreeItem(val: TreeItemDirectiveElement['isTreeItem']) {
-    this.elementRef.nativeElement.isTreeItem = val;
-  }
-  get isTreeItem(): TreeItemDirectiveElement['isTreeItem'] {
-    return this.elementRef.nativeElement.isTreeItem;
-  }
-
-  @Input()
   set additionalText(val: TreeItemDirectiveElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
   }
@@ -173,6 +231,87 @@ class TreeItemDirective {
 
   get deleteButton(): ButtonDirective['element'] {
     return this.elementRef.nativeElement.deleteButton;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
   }
 
   toggle(): any {

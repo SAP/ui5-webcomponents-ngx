@@ -83,6 +83,7 @@ export class WebcomponentsThemingService extends GeneratedFile {
     });
 
     this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
+    this.addImport(['Observable', 'of'], 'rxjs');
     this.addImport(
       ['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'],
       '@ui5/theming-ngx'
@@ -113,10 +114,14 @@ export class WebcomponentsThemingService extends GeneratedFile {
           this._globalThemingService?.unregisterProvider(this);
         }
 
-        async setTheme(theme: AvailableThemes): Promise<boolean> {
-          registerThemePropertiesLoader("@ui5/webcomponents-theming", theme, this.loadTheme as any);
+        setTheme(theme: AvailableThemes): Observable<boolean> {
+          registerThemePropertiesLoader(
+            '@ui5/webcomponents-theming',
+            theme,
+            this.loadTheme as any
+          );
           setTheme(theme);
-          return true;
+          return of(true);
         }
 
         private async loadTheme(theme: AvailableThemes): Promise<any> {

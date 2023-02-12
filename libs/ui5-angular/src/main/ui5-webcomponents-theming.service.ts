@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy, Optional } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import {
   Ui5ThemingProvider,
   Ui5ThemingService,
@@ -27,14 +28,14 @@ export class Ui5WebcomponentsThemingService
     this._globalThemingService?.unregisterProvider(this);
   }
 
-  async setTheme(theme: AvailableThemes): Promise<boolean> {
+  setTheme(theme: AvailableThemes): Observable<boolean> {
     registerThemePropertiesLoader(
       '@ui5/webcomponents-theming',
       theme,
       this.loadTheme as any
     );
     setTheme(theme);
-    return true;
+    return of(true);
   }
 
   private async loadTheme(theme: AvailableThemes): Promise<any> {

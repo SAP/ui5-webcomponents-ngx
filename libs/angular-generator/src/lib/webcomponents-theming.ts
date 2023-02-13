@@ -87,7 +87,7 @@ export class WebcomponentsThemingService extends GeneratedFile {
     });
 
     this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
-    this.addImport(['Observable', 'of'], 'rxjs');
+    this.addImport(['BehaviorSubject', 'map', 'Observable', 'of', 'from', 'tap', 'switchMap'], 'rxjs');
     this.addImport(
       ['Ui5ThemingProvider', 'Ui5ThemingService'],
       '@ui5/theming-ngx'
@@ -108,8 +108,24 @@ export class WebcomponentsThemingService extends GeneratedFile {
         providedIn: 'root'
       })
       export class Ui5WebcomponentsThemingService implements Ui5ThemingProvider, OnDestroy {
+        private availableThemes$ = new BehaviorSubject<string[]>(${JSON.stringify(this._fs.readDir(this._ui5ThemingPath))});
+
+        private themeSetters = new Map<string, () => Observable<boolean>>(this.availableThemes$.value.map((themeName) => {
+          return [themeName, () => {
+            registerThemePropertiesLoader(
+              '@ui5/webcomponents-theming',
+              themeName,
+              this.loadTheme as any
+            );
+            setTheme(themeName);
+            return of(true);
+          }];
+        }));
+
         /** @hidden */
-        constructor(@Optional() private readonly _globalThemingService: Ui5ThemingService) {
+        constructor(
+          @Optional() private readonly _globalThemingService: Ui5ThemingService
+        ) {
           this._globalThemingService?.registerProvider(this);
         }
 
@@ -118,22 +134,48 @@ export class WebcomponentsThemingService extends GeneratedFile {
           this._globalThemingService?.unregisterProvider(this);
         }
 
-        getAvailableThemes(): string[] {
-            return ${JSON.stringify(this._fs.readDir(this._ui5ThemingPath))}
+        supportsTheme(theme: string): Observable<boolean> {
+          return this.getAvailableThemes().pipe(
+            map((themes) => themes.includes(theme))
+          );
+        }
+
+        getAvailableThemes(): Observable<string[]> {
+          return this.availableThemes$.asObservable();
         }
 
         setTheme(theme: string): Observable<boolean> {
-          registerThemePropertiesLoader(
-            '@ui5/webcomponents-theming',
-            theme,
-            this.loadTheme as any
-          );
-          setTheme(theme);
-          return of(true);
+          const setter = this.themeSetters.get(theme);
+          if (setter) {
+            return setter();
+          }
+          return of(false);
         }
 
-        private async loadTheme(theme: string): Promise<any> {
-            return (await import(\`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`)).default;
+        registerTheme(params: { theme: string, setTheme: () => Observable<{ packageName: string, fileName: string, content: string }> }): void {
+          if (this.themeSetters.has(params.theme)) {
+            throw new Error(\`Theme \${params.theme} is already registered.\`);
+          }
+          this.themeSetters.set(params.theme, () =>
+            params.setTheme().pipe(
+              tap((r) => {
+                registerThemePropertiesLoader(r.packageName, params.theme, () =>
+                  Promise.resolve(r)
+                );
+              }),
+              switchMap(() => from(setTheme(params.theme))),
+              map(() => true)
+            )
+          );
+          this.availableThemes$.next([...this.themeSetters.keys()]);
+        }
+
+        private loadTheme(theme: string): Promise<any> {
+          return import(
+              \`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`
+            ).then((module) => {
+            return module.default;
+          });
         }
       }
     `,

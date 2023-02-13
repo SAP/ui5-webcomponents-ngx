@@ -10,6 +10,7 @@ export const UI5_THEMING_CONFIGURATION = new InjectionToken<ThemingConfig>(
 
 export interface Ui5ThemingProvider {
   getAvailableThemes(): string[] | Observable<string[]>;
+  supportsTheme(themeName: string): boolean | Observable<boolean>;
   setTheme(themeName: string): Observable<boolean>;
 }
 

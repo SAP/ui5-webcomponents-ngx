@@ -56,6 +56,12 @@ export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
       .subscribe();
   }
 
+  supportsTheme(themeName: string): Observable<boolean> {
+    return this.getAvailableThemes().pipe(
+      map((themes) => themes.includes(themeName))
+    );
+  }
+
   getAvailableThemes(): Observable<string[]> {
     return this._providers$.pipe(
       switchMap((providers) => {

@@ -1,0 +1,21 @@
+name: PR checks
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Setup Node.js and Cache
+          uses: ./.github/actions/nodejs
+        - name: Run prepare
+          run: npx nx run-many --target=prepare --all
+        - name: Check git status
+          run: |
+            if ! git diff-index --quiet HEAD; then echo "Preparation resulted in unsynced files" && exit 1; fi

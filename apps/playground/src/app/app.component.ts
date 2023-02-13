@@ -34,8 +34,8 @@ export class AppComponent {
     console.log(this.form.value);
   }
 
-  changeTheme(themes: string[]): void {
-    const next = (() => {
+  changeTheme(themes: string[], explicitNext?: string): void {
+    const next = explicitNext || (() => {
       const index = themes.indexOf(this.currentTheme);
       if (index === themes.length - 1) {
         return themes[0];

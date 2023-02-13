@@ -1,10 +1,9 @@
-import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
-import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
-import { template } from "lodash";
-import { format } from "prettier";
+import {ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {NodeFsImplementation} from "@ui5/webcomponents-wrapper-fs-commit";
+import {template} from "lodash";
+import {format} from "prettier";
 
 export class FundamentalThemingService extends GeneratedFile {
-  public themes = this.getThemes();
   constructor() {
     super();
     this.move('theming.service.ts');
@@ -14,11 +13,11 @@ export class FundamentalThemingService extends GeneratedFile {
       types: [ExportSpecifierType.Class]
     });
   }
-  override getCode(): string {
-    const themes = this.themes;
 
+  override getCode(): string {
     this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
-    this.addImport(['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'], '@ui5/theming-ngx');
+    this.addImport(['Ui5ThemingProvider', 'Ui5ThemingService'], '@ui5/theming-ngx');
+    this.addImport('Observable', 'rxjs');
 
     const serviceTemplate = template(`
       /**
@@ -28,6 +27,8 @@ export class FundamentalThemingService extends GeneratedFile {
         providedIn: 'root'
       })
       export class Ui5FundamentalThemingService implements Ui5ThemingProvider, OnDestroy {
+        name = 'fundamental-styles-theming-service';
+
         /** @hidden */
         private readonly _themeSheet = new CSSStyleSheet();
 
@@ -51,25 +52,33 @@ export class FundamentalThemingService extends GeneratedFile {
           document.adoptedStyleSheets.splice(stylesheetIndex, 1);
         }
 
-        async setTheme(theme: AvailableThemes): Promise<boolean> {
-          let themeDefinition: string;
-          switch(theme) {
-            <% themes.forEach((theme) => { %>
-              case '<%= theme %>':
-                themeDefinition = (await import('fundamental-styles/dist/js/theming/<%= theme %>')).default.cssSource;
-                break;
-            <% }) %>
-          }
+        supportsTheme(themeName: string): boolean {
+          return this.getAvailableThemes().includes(themeName);
+        }
 
-          await this._themeSheet.replace(themeDefinition);
-          return true;
+        getAvailableThemes(): string[] {
+          return ${JSON.stringify(this.getThemes())};
+        }
+
+        setTheme(theme: string): Observable<boolean> {
+          return new Observable<boolean>((subscriber) => {
+            this.loadTheme(theme).then((themeDefinition) => {
+              return this._themeSheet.replace(themeDefinition);
+            }).then(() => subscriber.next(true));
+          });
+        }
+
+        private loadTheme(themeName: string): Promise<string> {
+            ${this.getThemes().map((theme) => `if(themeName === ${JSON.stringify(theme)}) import('fundamental-styles/dist/js/theming/${theme}').then(m => m.default.cssSource);`).join('\n')}
+            return Promise.resolve('');
         }
       }
     `)
 
 
-    return format([this.getImportsCode(), serviceTemplate({themes})].join('\n'), {parser: 'typescript'});
+    return format([this.getImportsCode(), serviceTemplate({themes: this.getThemes()})].join('\n'), {parser: 'typescript'});
   }
+
   getThemes(): string[] {
     const nodeFs = new NodeFsImplementation();
 
@@ -78,8 +87,7 @@ export class FundamentalThemingService extends GeneratedFile {
     const themes = nodeFs.queryFiles(`${fdPath}**.css`, []);
 
     return themes.map((theme) => {
-      const themeName = nodeFs.basename(theme, nodeFs.extname(theme));
-      return themeName;
+      return nodeFs.basename(theme, nodeFs.extname(theme));
     });
   }
 }

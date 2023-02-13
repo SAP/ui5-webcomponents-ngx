@@ -234,9 +234,10 @@
 </section>
 
 <div class="fd-tokenizer"></div>
-
-<button class="fd-button" (click)="changeTheme('sap_fiori_3')">Default Button</button>
-<button class="fd-button fd-button--emphasized" (click)="changeTheme('sap_horizon')">Emphasized Button</button>
+<ng-container *ngIf="themes | async as availableThemes">
+  <button class="fd-button" (click)="changeTheme(availableThemes, 'sap_fiori_3')">Default Button</button>
+  <button class="fd-button fd-button--emphasized" (click)="changeTheme(availableThemes, 'sap_horizon')">Emphasized Button</button>
+</ng-container>
 <button class="fd-button fd-button--ghost">Ghost Button</button>
 <button class="fd-button fd-button--positive">Positive Button</button>
 <button class="fd-button fd-button--negative">Negative Button</button>

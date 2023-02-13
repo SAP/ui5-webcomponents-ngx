@@ -8461,10 +8461,10 @@ functions-have-names@^1.2.2:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
-fundamental-styles@^0.26.5:
-  version "0.26.5"
-  resolved "https://registry.yarnpkg.com/fundamental-styles/-/fundamental-styles-0.26.5.tgz#6d955ae1b2e0ddc26872a1bde2da0d58a4c4beaf"
-  integrity sha512-ZZ04HOXBessPFEUWMPxWpxp5GGb8ZliVN0D4/gGN57pKkcDhb3V+T/2GgRI21MoUzVBx2Xd3wYbVBeTw17ZOpg==
+fundamental-styles@^0.27.0-rc.6:
+  version "0.27.0-rc.6"
+  resolved "https://registry.yarnpkg.com/fundamental-styles/-/fundamental-styles-0.27.0-rc.6.tgz#d3d27fee15c5bbbb15b7ec51a64d8f0aefb2d0c9"
+  integrity sha512-83QZbmHgjXGvDwFUonN6IKoXEbQGDRGq7FeKtePhH2N+pHL2HA/XW32TIT/DrOjloUpxoPlZp0xTB6wrXdY+9w==
 
 gauge@^4.0.3:
   version "4.0.4"
@@ -11469,6 +11469,13 @@ mute-stream@0.0.8, mute-stream@~0.0.4:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
+
+n1xus-ui5-theming-ngx@latest:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/n1xus-ui5-theming-ngx/-/n1xus-ui5-theming-ngx-0.0.1.tgz#d95f556e319bab21220f3efd3032d821faaffe83"
+  integrity sha512-hfTw4sDbFVtc7g/sQgFNqsHXPODBHE8+o7kbChdiv7mX2HWfveEy7CA92ttCFLpY338JboRan+dlwQ/wx0PojA==
+  dependencies:
+    tslib "^2.3.0"
 
 nanoid@^3.3.4:
   version "3.3.4"

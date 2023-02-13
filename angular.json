@@ -5,6 +5,7 @@
     "angular-generator": "libs/angular-generator",
     "api-json-parser": "libs/api-json-parser",
     "commit-fs-commit": "libs/commit/fs-commit",
+    "fundamental-styles": "libs/fundamental-styles",
     "playground": "apps/playground",
     "playground-e2e": "apps/playground-e2e",
     "ui5-angular": "libs/ui5-angular",

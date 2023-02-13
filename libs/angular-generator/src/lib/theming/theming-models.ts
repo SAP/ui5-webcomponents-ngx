@@ -1,7 +1,7 @@
-import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
-import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
-import { format } from "prettier";
-import { ThemingConfig } from "./theming-config.interface";
+import {ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {NodeFsImplementation} from "@ui5/webcomponents-wrapper-fs-commit";
+import {format} from "prettier";
+import {ThemingConfig} from "./theming-config.interface";
 
 export class Ui5ThemingModels extends GeneratedFile {
   constructor(public config: ThemingConfig) {
@@ -16,15 +16,20 @@ export class Ui5ThemingModels extends GeneratedFile {
       exported: '*',
       types: [ExportSpecifierType.Variable],
     });
-    this.addImport(['InjectionToken'], '@angular/core');
+    this.addImport('InjectionToken', '@angular/core');
+    this.addImport('Observable', 'rxjs');
   }
 
   getThemeNames(): string[] {
     const nodeFs = new NodeFsImplementation();
 
     const fdPath = nodeFs.normalize('node_modules/fundamental-styles/dist/theming/');
+    const ui5Path = nodeFs.normalize('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/');
 
-    return nodeFs.queryFiles(`${fdPath}**.css`, []).map((themePath) => nodeFs.basename(themePath, nodeFs.extname(themePath)));
+    const fdThemes = nodeFs.queryFiles(`${fdPath}**.css`, []).map((themePath) => nodeFs.basename(themePath, nodeFs.extname(themePath)));
+    const ui5Themes = nodeFs.readDir(ui5Path).map((themePath) => nodeFs.basename(themePath, nodeFs.extname(themePath)));
+
+    return fdThemes.filter((item) => ui5Themes.includes(item));
   }
 
   override getCode(): string {
@@ -38,7 +43,7 @@ export class Ui5ThemingModels extends GeneratedFile {
       export const UI5_THEMING_CONFIGURATION = new InjectionToken<ThemingConfig>('Ui5 global theming configuration.');
 
       export interface Ui5ThemingProvider {
-        setTheme(themeName: AvailableThemes): Promise<boolean>;
+        setTheme(themeName: AvailableThemes): Observable<boolean>;
       }
 
       export interface Ui5ThemingConsumer extends Ui5ThemingProvider {

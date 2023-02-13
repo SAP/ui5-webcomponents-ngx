@@ -16,7 +16,8 @@ export class Ui5GlobalThemingService extends GeneratedFile {
       exported: 'Ui5ThemingService',
       types: [ExportSpecifierType.Class],
     });
-    this.addImport(['Inject', 'Injectable', 'isDevMode'], '@angular/core');
+    this.addImport(['Inject', 'Injectable', 'OnDestroy'], '@angular/core');
+    this.addImport(['BehaviorSubject', 'combineLatest', 'map', 'Observable', 'Subject', 'switchMap', 'takeUntil', 'tap'], 'rxjs');
     this.addImport(['AvailableThemes', 'ThemingConfig', 'UI5_THEMING_CONFIGURATION', 'Ui5ThemingProvider', 'Ui5ThemingConsumer'], this.themingModels.relativePathFrom);
   }
 
@@ -28,47 +29,79 @@ export class Ui5GlobalThemingService extends GeneratedFile {
       @Injectable({
         providedIn: 'root',
       })
-      export class Ui5ThemingService implements Ui5ThemingConsumer {
-        private readonly _providers: Ui5ThemingProvider[] = [];
+      export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
+        private readonly _providers$ = new BehaviorSubject<Ui5ThemingProvider[]>([]);
+        private _currentTheme$ = new BehaviorSubject<[AvailableThemes, AvailableThemes]>([this._config.defaultTheme, this._config.defaultTheme]);
 
-        private _currentTheme: AvailableThemes;
+        private _themeChanged$ = new Subject<AvailableThemes>();
 
-        constructor(@Inject(UI5_THEMING_CONFIGURATION) private readonly _config: ThemingConfig) {
-          this._currentTheme = this._config.defaultTheme;
-          this.setTheme(this._config.defaultTheme);
+        private _destroyed$ = new Subject<void>();
+
+        constructor(
+          @Inject(UI5_THEMING_CONFIGURATION) private readonly _config: ThemingConfig
+        ) {
+          combineLatest([this._providers$, this._currentTheme$])
+            .pipe(
+              switchMap(
+                ([providers, [previousTheme, newTheme]]) => {
+                  return combineLatest(
+                    providers.map(provider => provider.setTheme(newTheme))
+                  )
+                    .pipe(
+                      map((providerResponses) => {
+                        if (providerResponses.every(Boolean)) {
+                          return newTheme;
+                        }
+                        return previousTheme;
+                      })
+                    );
+                }
+              ),
+              tap((theme) => {
+                this._themeChanged$.next(theme)
+              }),
+              takeUntil(this._destroyed$)
+            )
+            .subscribe();
         }
 
         /** Registers theming provider for further usage. */
         async registerProvider(provider: Ui5ThemingProvider): Promise<void> {
-          await provider.setTheme(this._currentTheme);
-          this._providers.push(provider);
+          const providers = this._providers$.value;
+          providers.push(provider);
+          this._providers$.next(providers);
         }
-        /** Unregisteres previously registered theming provider. */
+
+        /** Unregisters previously registered theming provider. */
         unregisterProvider(provider: Ui5ThemingProvider): void {
-          const providerIndex = this._providers.findIndex(pr => pr === provider);
-
-          if (providerIndex === -1) {
-            return;
+          const providers = this._providers$.value;
+          const index = providers.indexOf(provider);
+          if (index !== -1) {
+            providers.splice(index, 1);
+            this._providers$.next(providers);
           }
-
-          this._providers.splice(providerIndex, 1);
         }
 
-        async setTheme(theme: AvailableThemes): Promise<boolean> {
-          this._currentTheme = theme;
+        /** Sets the theme to the providers */
+        setTheme(theme: AvailableThemes): Observable<boolean> {
+          return new Observable<boolean>((subscriber) => {
+            const finalizer$ = new Subject<void>();
+            this._themeChanged$.pipe(takeUntil(finalizer$)).subscribe((changedTheme) => {
+              if (changedTheme === theme) {
+                finalizer$.next();
+                finalizer$.complete();
+              }
+              subscriber.next(changedTheme === theme);
+              subscriber.complete();
+            });
+            this._currentTheme$.next([this._currentTheme$.value[1], theme]);
+          })
+        }
 
-          try {
-            for (const provider of this._providers) {
-              await provider.setTheme(this._currentTheme);
-            }
-          } catch(e) {
-            if (isDevMode()) {
-              console.error(e);
-            }
-            return false;
-          }
-
-          return true;
+        /** @hidden */
+        ngOnDestroy(): void {
+          this._destroyed$.next();
+          this._destroyed$.complete();
         }
       }
       `

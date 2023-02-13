@@ -3,6 +3,8 @@ export interface FileSystemInterface {
 
   read(path: string): string;
 
+  readDir(path: string): string[];
+
   write(path: string, content: string): void;
 
   move(from: string, to: string): void;

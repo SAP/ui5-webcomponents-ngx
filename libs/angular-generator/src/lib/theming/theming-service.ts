@@ -16,7 +16,7 @@ export class Ui5GlobalThemingService extends GeneratedFile {
       exported: 'Ui5ThemingService',
       types: [ExportSpecifierType.Class],
     });
-    this.addImport(['Inject', 'Injectable', 'OnDestroy'], '@angular/core');
+    this.addImport(['Inject', 'Injectable', 'isDevMode', 'OnDestroy'], '@angular/core');
     this.addImport(['BehaviorSubject', 'combineLatest', 'map', 'Observable', 'Subject', 'switchMap', 'takeUntil', 'tap', 'of'], 'rxjs');
     this.addImport(['ThemingConfig', 'UI5_THEMING_CONFIGURATION', 'Ui5ThemingProvider', 'Ui5ThemingConsumer'], this.themingModels.relativePathFrom);
   }
@@ -42,23 +42,38 @@ export class Ui5GlobalThemingService extends GeneratedFile {
         ) {
           combineLatest([this._providers$, this._currentTheme$])
             .pipe(
-              switchMap(
-                ([providers, [previousTheme, newTheme]]) => {
-                  return combineLatest(
-                    providers.map(provider => provider.setTheme(newTheme))
-                  )
-                    .pipe(
-                      map((providerResponses) => {
-                        if (providerResponses.every(Boolean)) {
-                          return newTheme;
-                        }
-                        return previousTheme;
-                      })
-                    );
-                }
-              ),
+              switchMap(([providers, [previousTheme, newTheme]]) => {
+                return combineLatest(
+                  providers.map((provider): Observable<[Ui5ThemingProvider, boolean]> => {
+                    const isSupported = provider.supportsTheme(newTheme);
+                    if (typeof isSupported === 'boolean') {
+                      return of([provider, isSupported]);
+                    }
+                    return isSupported.pipe(map((supported) => [provider, supported]));
+                  })
+                ).pipe(
+                  switchMap((providers) => {
+                    const unsupportedProviders = providers.filter(([, supported]) => !supported);
+                    if (unsupportedProviders.length) {
+                      if (isDevMode()) {
+                        console.warn(
+                          \`The following providers do not support the theme "\${newTheme}":\`,
+                          unsupportedProviders.map(([provider]) => provider.name)
+                        );
+                      }
+                    }
+                    return combineLatest(providers.map(([provider]) => provider.setTheme(newTheme)));
+                  }),
+                  map((providerResponses) => {
+                    if (providerResponses.every(Boolean)) {
+                      return newTheme;
+                    }
+                    return previousTheme;
+                  })
+                );
+              }),
               tap((theme) => {
-                this._themeChanged$.next(theme)
+                this._themeChanged$.next(theme);
               }),
               takeUntil(this._destroyed$)
             )

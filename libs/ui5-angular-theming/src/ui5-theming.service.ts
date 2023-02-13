@@ -1,4 +1,4 @@
-import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { Inject, Injectable, isDevMode, OnDestroy } from '@angular/core';
 import {
   BehaviorSubject,
   combineLatest,
@@ -38,8 +38,34 @@ export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
       .pipe(
         switchMap(([providers, [previousTheme, newTheme]]) => {
           return combineLatest(
-            providers.map((provider) => provider.setTheme(newTheme))
+            providers.map(
+              (provider): Observable<[Ui5ThemingProvider, boolean]> => {
+                const isSupported = provider.supportsTheme(newTheme);
+                if (typeof isSupported === 'boolean') {
+                  return of([provider, isSupported]);
+                }
+                return isSupported.pipe(
+                  map((supported) => [provider, supported])
+                );
+              }
+            )
           ).pipe(
+            switchMap((providers) => {
+              const unsupportedProviders = providers.filter(
+                ([, supported]) => !supported
+              );
+              if (unsupportedProviders.length) {
+                if (isDevMode()) {
+                  console.warn(
+                    `The following providers do not support the theme "${newTheme}":`,
+                    unsupportedProviders.map(([provider]) => provider.name)
+                  );
+                }
+              }
+              return combineLatest(
+                providers.map(([provider]) => provider.setTheme(newTheme))
+              );
+            }),
             map((providerResponses) => {
               if (providerResponses.every(Boolean)) {
                 return newTheme;

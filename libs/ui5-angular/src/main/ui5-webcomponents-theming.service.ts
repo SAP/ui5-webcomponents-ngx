@@ -20,6 +20,8 @@ import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 export class Ui5WebcomponentsThemingService
   implements Ui5ThemingProvider, OnDestroy
 {
+  name = 'ui5-webcomponents-theming-service';
+
   private availableThemes$ = new BehaviorSubject<string[]>([
     'sap_belize',
     'sap_belize_hcb',

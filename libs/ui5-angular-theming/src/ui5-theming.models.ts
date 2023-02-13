@@ -1,6 +1,5 @@
 import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
-// TODO: This should come from somewhere.
 export interface ThemingConfig {
   defaultTheme: string;
 }
@@ -9,12 +8,13 @@ export const UI5_THEMING_CONFIGURATION = new InjectionToken<ThemingConfig>(
 );
 
 export interface Ui5ThemingProvider {
+  name: string;
   getAvailableThemes(): string[] | Observable<string[]>;
   supportsTheme(themeName: string): boolean | Observable<boolean>;
   setTheme(themeName: string): Observable<boolean>;
 }
 
-export interface Ui5ThemingConsumer extends Ui5ThemingProvider {
+export interface Ui5ThemingConsumer extends Omit<Ui5ThemingProvider, 'name'> {
   registerProvider(provider: Ui5ThemingProvider): void;
   unregisterProvider(provider: Ui5ThemingProvider): void;
 }

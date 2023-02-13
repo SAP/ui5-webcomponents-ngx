@@ -108,6 +108,8 @@ export class WebcomponentsThemingService extends GeneratedFile {
         providedIn: 'root'
       })
       export class Ui5WebcomponentsThemingService implements Ui5ThemingProvider, OnDestroy {
+        name = 'ui5-webcomponents-theming-service';
+
         private availableThemes$ = new BehaviorSubject<string[]>(${JSON.stringify(this._fs.readDir(this._ui5ThemingPath))});
 
         private themeSetters = new Map<string, () => Observable<boolean>>(this.availableThemes$.value.map((themeName) => {

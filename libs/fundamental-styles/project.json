@@ -1,0 +1,54 @@
+{
+  "name": "fundamental-styles",
+  "projectType": "library",
+  "sourceRoot": "libs/fundamental-styles/src",
+  "prefix": "ui-angular",
+  "targets": {
+    "prepare": {
+      "executor": "@ui5/webcomponents-nx:prepare",
+      "options": {
+        "configFile": "libs/fundamental-styles/wrapper.conf.ts",
+        "distPath": "dist/libs/fundamental-styles",
+        "schematics": {
+          "tsConfig": "tsconfig.schematics.json",
+          "collection": "schematics"
+        }
+      }
+    },
+    "sync": {
+      "executor": "@ui5/webcomponents-nx:sync",
+      "options": {
+        "configFile": "libs/fundamental-styles/wrapper.conf.ts"
+      }
+    },
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": [
+        "dist/libs/fundamental-styles"
+      ],
+      "options": {
+        "project": "libs/fundamental-styles/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": false
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/fundamental-styles/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/fundamental-styles/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/fundamental-styles/**/*.ts",
+          "libs/fundamental-styles/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

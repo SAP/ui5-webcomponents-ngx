@@ -17,6 +17,19 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
+      "@fundamental-styles/theming-ngx": [
+        "libs/fundamental-styles/src/index.ts"
+      ],
+      "@fundamental-styles/theming-ngx/src/directives/*": [
+        "libs/fundamental-styles/src/directives/*"
+      ],
+      "@fundamental-styles/theming-ngx/src/themes/*": [
+        "libs/fundamental-styles/src/themes/*"
+      ],
+      "@ui5/library-one": ["libs/library-one/src/index.ts"],
+      "@ui5/library-one/library-two": [
+        "libs/library-one/library-two/src/index.ts"
+      ],
       "@ui5/theming-ngx": ["libs/ui5-angular-theming/src/index.ts"],
       "@ui5/webcomponents-api-json-parser": [
         "libs/api-json-parser/src/index.ts"

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { Ui5AngularModule } from '@ui5/webcomponents-ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ui5ThemingModule } from '@ui5/theming-ngx';
+import { FundamentalStylesThemingModule } from '@fundamental-styles/theming-ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { Ui5ThemingModule } from '@ui5/theming-ngx';
     FormsModule,
     ReactiveFormsModule,
     Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}),
+    FundamentalStylesThemingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

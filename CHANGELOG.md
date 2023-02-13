@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-rc.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.5...v0.0.1-rc.6) (2023-02-13)
+
+### Features
+
+- added initial pr checks ([#36](https://github.com/SAP/ui5-webcomponents-ngx/issues/36)) ([2ed5213](https://github.com/SAP/ui5-webcomponents-ngx/commit/2ed5213cdf2666f7076f020fcd11068b51de1c83))
+
 ## [0.0.1-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.4...v0.0.1-rc.5) (2023-02-13)
 
 ### Bug Fixes

@@ -1,6 +1,7 @@
 import { ExportSpecifierType, GeneratedFile } from '@ui5/webcomponents-wrapper';
 import { format } from 'prettier';
 import { AngularExportSpecifierType } from './angular-export-specifier-type';
+import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
 
 export interface ThemingGeneratorConfig {
   themingPath: string;
@@ -69,6 +70,9 @@ export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpeci
 }
 
 export class WebcomponentsThemingService extends GeneratedFile {
+  private _fs = new NodeFsImplementation();
+  private _ui5ThemingPath = this._fs.normalize('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/');
+
   constructor(public config: ThemingGeneratorConfig) {
     super();
     this.move(`${this.config.themingPath}/${this.config.themingServiceFileName}.ts`);
@@ -83,9 +87,9 @@ export class WebcomponentsThemingService extends GeneratedFile {
     });
 
     this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
-    this.addImport(['Observable', 'of'], 'rxjs');
+    this.addImport(['BehaviorSubject', 'map', 'Observable', 'of', 'from', 'tap', 'switchMap'], 'rxjs');
     this.addImport(
-      ['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'],
+      ['Ui5ThemingProvider', 'Ui5ThemingService'],
       '@ui5/theming-ngx'
     );
 
@@ -104,8 +108,26 @@ export class WebcomponentsThemingService extends GeneratedFile {
         providedIn: 'root'
       })
       export class Ui5WebcomponentsThemingService implements Ui5ThemingProvider, OnDestroy {
+        name = 'ui5-webcomponents-theming-service';
+
+        private availableThemes$ = new BehaviorSubject<string[]>(${JSON.stringify(this._fs.readDir(this._ui5ThemingPath))});
+
+        private themeSetters = new Map<string, () => Observable<boolean>>(this.availableThemes$.value.map((themeName) => {
+          return [themeName, () => {
+            registerThemePropertiesLoader(
+              '@ui5/webcomponents-theming',
+              themeName,
+              this.loadTheme as any
+            );
+            setTheme(themeName);
+            return of(true);
+          }];
+        }));
+
         /** @hidden */
-        constructor(@Optional() private readonly _globalThemingService: Ui5ThemingService) {
+        constructor(
+          @Optional() private readonly _globalThemingService: Ui5ThemingService
+        ) {
           this._globalThemingService?.registerProvider(this);
         }
 
@@ -114,18 +136,48 @@ export class WebcomponentsThemingService extends GeneratedFile {
           this._globalThemingService?.unregisterProvider(this);
         }
 
-        setTheme(theme: AvailableThemes): Observable<boolean> {
-          registerThemePropertiesLoader(
-            '@ui5/webcomponents-theming',
-            theme,
-            this.loadTheme as any
+        supportsTheme(theme: string): Observable<boolean> {
+          return this.getAvailableThemes().pipe(
+            map((themes) => themes.includes(theme))
           );
-          setTheme(theme);
-          return of(true);
         }
 
-        private async loadTheme(theme: AvailableThemes): Promise<any> {
-            return (await import(\`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`)).default;
+        getAvailableThemes(): Observable<string[]> {
+          return this.availableThemes$.asObservable();
+        }
+
+        setTheme(theme: string): Observable<boolean> {
+          const setter = this.themeSetters.get(theme);
+          if (setter) {
+            return setter();
+          }
+          return of(false);
+        }
+
+        registerTheme(params: { theme: string, setTheme: () => Observable<{ packageName: string, fileName: string, content: string }> }): void {
+          if (this.themeSetters.has(params.theme)) {
+            throw new Error(\`Theme \${params.theme} is already registered.\`);
+          }
+          this.themeSetters.set(params.theme, () =>
+            params.setTheme().pipe(
+              tap((r) => {
+                registerThemePropertiesLoader(r.packageName, params.theme, () =>
+                  Promise.resolve(r)
+                );
+              }),
+              switchMap(() => from(setTheme(params.theme))),
+              map(() => true)
+            )
+          );
+          this.availableThemes$.next([...this.themeSetters.keys()]);
+        }
+
+        private loadTheme(theme: string): Promise<any> {
+          return import(
+              \`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`
+            ).then((module) => {
+            return module.default;
+          });
         }
       }
     `,

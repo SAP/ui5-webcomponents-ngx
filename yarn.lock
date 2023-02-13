@@ -11470,13 +11470,6 @@ mute-stream@0.0.8, mute-stream@~0.0.4:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-n1xus-ui5-theming-ngx@latest:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/n1xus-ui5-theming-ngx/-/n1xus-ui5-theming-ngx-0.0.1.tgz#d95f556e319bab21220f3efd3032d821faaffe83"
-  integrity sha512-hfTw4sDbFVtc7g/sQgFNqsHXPODBHE8+o7kbChdiv7mX2HWfveEy7CA92ttCFLpY338JboRan+dlwQ/wx0PojA==
-  dependencies:
-    tslib "^2.3.0"
-
 nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"

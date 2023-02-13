@@ -1,6 +1,13 @@
 {
   "name": "@fundamental-styles/theming-ngx",
   "version": "0.0.1",
+  "license": "Apache-2.0",
+  "author": "SAP SE (https://www.sap.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
+    "directory": "libs/fundamental-styles"
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"

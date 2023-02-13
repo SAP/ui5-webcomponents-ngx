@@ -23,7 +23,6 @@ export class Ui5GlobalThemingModule extends GeneratedFile {
   }
 
   override getCode(): string {
-
     return format([
       this.getImportsCode(),
       `

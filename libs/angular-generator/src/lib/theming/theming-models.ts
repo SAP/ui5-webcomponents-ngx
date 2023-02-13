@@ -36,14 +36,14 @@ export class Ui5ThemingModels extends GeneratedFile {
       return format(`
       ${this.getImportsCode()}
       // TODO: This should come from somewhere.
-      export type AvailableThemes = ${this.getThemeNames().map((theme) => `'${theme}'`).join('|')};
       export interface ThemingConfig {
-        defaultTheme: AvailableThemes;
+        defaultTheme: string;
       }
       export const UI5_THEMING_CONFIGURATION = new InjectionToken<ThemingConfig>('Ui5 global theming configuration.');
 
       export interface Ui5ThemingProvider {
-        setTheme(themeName: AvailableThemes): Observable<boolean>;
+        getAvailableThemes(): string[] | Observable<string[]>;
+        setTheme(themeName: string): Observable<boolean>;
       }
 
       export interface Ui5ThemingConsumer extends Ui5ThemingProvider {

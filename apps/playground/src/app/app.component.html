@@ -4,7 +4,9 @@
     Submit
   </ui5-button>
 </form>
-<ui5-button (click)="changeTheme()">Change</ui5-button>
+<ng-container *ngIf="themes | async as availableThemes">
+  <ui5-button (click)="changeTheme(availableThemes)">Change</ui5-button>
+</ng-container>
 
 <section
   class="fd-dynamic-page fd-dynamic-page--xl"

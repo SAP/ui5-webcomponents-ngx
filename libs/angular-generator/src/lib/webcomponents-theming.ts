@@ -1,6 +1,7 @@
 import { ExportSpecifierType, GeneratedFile } from '@ui5/webcomponents-wrapper';
 import { format } from 'prettier';
 import { AngularExportSpecifierType } from './angular-export-specifier-type';
+import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
 
 export interface ThemingGeneratorConfig {
   themingPath: string;
@@ -69,6 +70,9 @@ export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpeci
 }
 
 export class WebcomponentsThemingService extends GeneratedFile {
+  private _fs = new NodeFsImplementation();
+  private _ui5ThemingPath = this._fs.normalize('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/');
+
   constructor(public config: ThemingGeneratorConfig) {
     super();
     this.move(`${this.config.themingPath}/${this.config.themingServiceFileName}.ts`);
@@ -85,7 +89,7 @@ export class WebcomponentsThemingService extends GeneratedFile {
     this.addImport(['Injectable', 'OnDestroy', 'Optional'], '@angular/core');
     this.addImport(['Observable', 'of'], 'rxjs');
     this.addImport(
-      ['Ui5ThemingProvider', 'Ui5ThemingService', 'AvailableThemes'],
+      ['Ui5ThemingProvider', 'Ui5ThemingService'],
       '@ui5/theming-ngx'
     );
 
@@ -114,7 +118,11 @@ export class WebcomponentsThemingService extends GeneratedFile {
           this._globalThemingService?.unregisterProvider(this);
         }
 
-        setTheme(theme: AvailableThemes): Observable<boolean> {
+        getAvailableThemes(): string[] {
+            return ${JSON.stringify(this._fs.readDir(this._ui5ThemingPath))}
+        }
+
+        setTheme(theme: string): Observable<boolean> {
           registerThemePropertiesLoader(
             '@ui5/webcomponents-theming',
             theme,
@@ -124,7 +132,7 @@ export class WebcomponentsThemingService extends GeneratedFile {
           return of(true);
         }
 
-        private async loadTheme(theme: AvailableThemes): Promise<any> {
+        private async loadTheme(theme: string): Promise<any> {
             return (await import(\`@ui5/webcomponents-theming/dist/generated/assets/themes/\${theme}/parameters-bundle.css.json\`)).default;
         }
       }

@@ -8,11 +8,7 @@
       "executor": "@ui5/webcomponents-nx:prepare",
       "options": {
         "configFile": "libs/fundamental-styles/wrapper.conf.ts",
-        "distPath": "dist/libs/fundamental-styles",
-        "schematics": {
-          "tsConfig": "tsconfig.schematics.json",
-          "collection": "schematics"
-        }
+        "distPath": "dist/libs/fundamental-styles"
       }
     },
     "sync": {

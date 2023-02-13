@@ -69,7 +69,7 @@ export class FundamentalThemingService extends GeneratedFile {
         }
 
         private loadTheme(themeName: string): Promise<string> {
-            ${this.getThemes().map((theme) => `if(themeName === ${JSON.stringify(theme)}) import('fundamental-styles/dist/js/theming/${theme}').then(m => m.default.cssSource);`).join('\n')}
+            ${this.getThemes().map((theme) => `if(themeName === ${JSON.stringify(theme)}) return import('fundamental-styles/dist/js/theming/${theme}').then(m => m.default.cssSource);`).join('\n')}
             return Promise.resolve('');
         }
       }

@@ -70,39 +70,39 @@ export class Ui5FundamentalThemingService
 
   private loadTheme(themeName: string): Promise<string> {
     if (themeName === 'sap_fiori_3')
-      import('fundamental-styles/dist/js/theming/sap_fiori_3').then(
+      return import('fundamental-styles/dist/js/theming/sap_fiori_3').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_fiori_3_dark')
-      import('fundamental-styles/dist/js/theming/sap_fiori_3_dark').then(
+      return import('fundamental-styles/dist/js/theming/sap_fiori_3_dark').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_fiori_3_hcb')
-      import('fundamental-styles/dist/js/theming/sap_fiori_3_hcb').then(
+      return import('fundamental-styles/dist/js/theming/sap_fiori_3_hcb').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_fiori_3_hcw')
-      import('fundamental-styles/dist/js/theming/sap_fiori_3_hcw').then(
+      return import('fundamental-styles/dist/js/theming/sap_fiori_3_hcw').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_fiori_3_light_dark')
-      import('fundamental-styles/dist/js/theming/sap_fiori_3_light_dark').then(
-        (m) => m.default.cssSource
-      );
+      return import(
+        'fundamental-styles/dist/js/theming/sap_fiori_3_light_dark'
+      ).then((m) => m.default.cssSource);
     if (themeName === 'sap_horizon')
-      import('fundamental-styles/dist/js/theming/sap_horizon').then(
+      return import('fundamental-styles/dist/js/theming/sap_horizon').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_horizon_dark')
-      import('fundamental-styles/dist/js/theming/sap_horizon_dark').then(
+      return import('fundamental-styles/dist/js/theming/sap_horizon_dark').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_horizon_hcb')
-      import('fundamental-styles/dist/js/theming/sap_horizon_hcb').then(
+      return import('fundamental-styles/dist/js/theming/sap_horizon_hcb').then(
         (m) => m.default.cssSource
       );
     if (themeName === 'sap_horizon_hcw')
-      import('fundamental-styles/dist/js/theming/sap_horizon_hcw').then(
+      return import('fundamental-styles/dist/js/theming/sap_horizon_hcw').then(
         (m) => m.default.cssSource
       );
     return Promise.resolve('');

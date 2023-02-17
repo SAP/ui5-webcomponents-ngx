@@ -19,7 +19,13 @@
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
         "configFile": "libs/ui5-angular/wrapper.conf.ts"
-      }
+      },
+      "outputs": [
+        "libs/ui5-angular/fiori",
+        "libs/ui5-angular/main",
+        "libs/ui5-angular/generic-cva",
+        "libs/ui5-angular/index.ts"
+      ]
     },
     "build": {
       "executor": "@nrwl/angular:package",

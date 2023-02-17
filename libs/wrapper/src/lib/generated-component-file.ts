@@ -1,7 +1,10 @@
 import {ComponentData} from './types/component-data';
 import {GeneratedFile} from "./generated-file";
+import {ParsedPath} from "path";
+import {dependencyRelativePath} from "./dependency-relative-path";
 
 export abstract class GeneratedComponentFile<ExportsType, OptionsType = any> extends GeneratedFile<ExportsType> {
+  relativePathFrom = (requester: ParsedPath) => dependencyRelativePath(requester, this.parsedPath);
   componentData: ComponentData;
   dependencies: Set<GeneratedComponentFile<ExportsType, OptionsType>> = new Set();
   dependents: Set<GeneratedComponentFile<ExportsType, OptionsType>> = new Set();

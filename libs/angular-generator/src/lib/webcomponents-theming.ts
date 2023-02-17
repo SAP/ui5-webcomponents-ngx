@@ -1,4 +1,4 @@
-import { ExportSpecifierType, GeneratedFile } from '@ui5/webcomponents-wrapper';
+import {dependencyRelativePath, ExportSpecifierType, GeneratedFile} from '@ui5/webcomponents-wrapper';
 import { format } from 'prettier';
 import { AngularExportSpecifierType } from './angular-export-specifier-type';
 import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
@@ -26,6 +26,8 @@ export class WebcomponentsThemingGenerator {
 }
 
 export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpecifierType> {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
+
   constructor(public config: ThemingGeneratorConfig, private service: WebcomponentsThemingService) {
     super();
     this.move(`${this.config.themingPath}/${this.config.themingModuleFileName}.ts`);
@@ -70,6 +72,8 @@ export class WebcomponentsThemingModule extends GeneratedFile<AngularExportSpeci
 }
 
 export class WebcomponentsThemingService extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
+
   private _fs = new NodeFsImplementation();
   private _ui5ThemingPath = this._fs.normalize('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/');
 

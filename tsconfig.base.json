@@ -38,6 +38,7 @@
       "@ui5/webcomponents-ngx-generator": [
         "libs/angular-generator/src/index.ts"
       ],
+      "@ui5/webcomponents-ngx/*": ["libs/ui5-angular/*"],
       "@ui5/webcomponents-nx": ["libs/webcomponents-nx/src/index.ts"],
       "@ui5/webcomponents-wrapper": ["libs/wrapper/src/index.ts"],
       "@ui5/webcomponents-wrapper-fs-commit": [

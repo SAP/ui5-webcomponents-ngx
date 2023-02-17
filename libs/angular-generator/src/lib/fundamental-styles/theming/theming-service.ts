@@ -1,9 +1,10 @@
-import {ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {dependencyRelativePath, ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
 import {NodeFsImplementation} from "@ui5/webcomponents-wrapper-fs-commit";
 import {template} from "lodash";
 import {format} from "prettier";
 
 export class FundamentalThemingService extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
   constructor() {
     super();
     this.move('theming.service.ts');

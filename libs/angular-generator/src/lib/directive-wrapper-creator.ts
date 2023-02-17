@@ -1,14 +1,69 @@
-import {GeneratedAngularComponentFile} from "./generated-angular-component-file";
 import {AngularGeneratorOptions} from "./angular-generator-options";
-import {ComponentData, InputType} from "@ui5/webcomponents-wrapper";
+import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
 import {camelCase} from 'lodash';
+import {ComponentFile} from "./ui5-webcomponents/component-file";
+import {genericCva} from "./generic-cva";
+
+function CvaBaseClassExtends(componentFile: ComponentFile): string {
+  if (componentFile.componentData.formData.length === 0) {
+    return '';
+  }
+  return `extends ${genericCva.exports[0].specifiers[0].exported}`;
+}
+
+function providers(componentFile: ComponentFile) {
+  if (componentFile.componentData.formData.length === 0) {
+    return '';
+  }
+  return `{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${componentFile.wrapperExportSpecifier.local}), multi: true }`
+}
+
+export function CvaConstructor(componentFile: ComponentFile): string {
+  if (componentFile.componentData.formData.length > 0) {
+    let getValue, setValue;
+    const outputEvents = [...(new Set(componentFile.componentData.formData.reduce((acc: OutputType[], form) => {
+      return acc.concat(form.events);
+    }, []))).values()];
+    if (componentFile.componentData.formData.length > 1) {
+      getValue = `{
+          ${componentFile.componentData.formData.map(({property}) => `${property.name}: elementRef.nativeElement.${property.name}`).join(',\n')}
+        }`;
+      setValue = `
+          ${componentFile.componentData.formData.map(({property}) => `elementRef.nativeElement.${property.name} = val?.${property.name}`).join(';\n')}
+        `;
+    } else {
+      try {
+        getValue = `elementRef.nativeElement.${componentFile.componentData.formData[0].property.name}`;
+        setValue = `elementRef.nativeElement.${componentFile.componentData.formData[0].property.name} = val;`;
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    return `super({
+              get value() {
+                return ${getValue}
+              },
+              set value(val) {
+                ${setValue}
+              },
+              valueUpdatedNotifier$: merge(
+                ${outputEvents.map((event) => `fromEvent(elementRef.nativeElement, '${event.name}')`).join(',\n')}
+              ),
+              setDisabledState: (isDisabled: boolean): void => {
+                elementRef.nativeElement.disabled = isDisabled;
+              }
+            })`;
+  }
+  return '';
+}
 
 export function DirectiveWrapperCreator(
-  componentFile: GeneratedAngularComponentFile,
+  componentFile: ComponentFile,
   elementTypeName: string,
   eventsMapName: string,
   options: AngularGeneratorOptions,
-  ComponentsMap: Map<ComponentData, GeneratedAngularComponentFile>
+  ComponentsMap: Map<ComponentData, ComponentFile>
 ): string {
   const getInputType = (input: InputType) => {
     const t = typeof input.type === 'string' ? input.type : input.type.map((cmp: ComponentData) => {
@@ -111,12 +166,18 @@ export function DirectiveWrapperCreator(
       ${elementType}
       @Directive({
         selector: '${componentFile.selector}',
-        exportAs: '${camelCase(componentFile.selector)}'
+        exportAs: '${camelCase(componentFile.selector)}',
+        standalone: true,
+        providers: [
+            ${providers(componentFile)}
+        ]
       })
-      class ${componentFile.wrapperExportSpecifier.local} {
+      class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
         ${inputsStr.join('\n')}
         ${outputsStr.join('\n')}
-        constructor(private elementRef: ElementRef<${elementTypeName}>) {}
+        constructor(private elementRef: ElementRef<${elementTypeName}>) {
+          ${CvaConstructor(componentFile)}
+        }
 
         get element(): typeof this.elementRef.nativeElement {
           return this.elementRef.nativeElement;

@@ -1,7 +1,7 @@
 {
   "name": "ui5-angular",
   "projectType": "library",
-  "sourceRoot": "libs/ui5-angular/src",
+  "sourceRoot": "libs/ui5-angular",
   "prefix": "ui-angular",
   "targets": {
     "prepare": {

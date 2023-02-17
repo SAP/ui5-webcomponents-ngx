@@ -1,5 +1,3 @@
-import {ParsedPath} from "path";
-
 export interface ImportSpecifier {
   local: string | (() => string);
   imported: string | (() => string);
@@ -7,7 +5,7 @@ export interface ImportSpecifier {
 
 export interface ImportData {
   specifiers: ImportSpecifier[];
-  path: string | ((callerParsedPath: ParsedPath) => string);
+  path: string | ((caller: any) => string);
 }
 
 export function isImportSpecifier(data: any): data is ImportSpecifier {

@@ -1,6 +1,6 @@
-import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import {ComponentData, WrapperConfig} from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
-import {AngularExportSpecifierType, angularGenerator} from "@ui5/webcomponents-ngx-generator";
+import {transformer} from "@ui5/webcomponents-ngx-generator";
 import {kebabCase} from "lodash";
 import {join} from "path";
 
@@ -12,27 +12,17 @@ export default {
       '@ui5/webcomponents/dist/api.json'
     ]
   }),
-  generator: (components) => angularGenerator(components, {
+  generator: (components) => transformer(components, {
     modules: [
       {
-        fileName: 'ui5-angular.module.ts',
-        className: 'Ui5AngularModule',
-        primary: true,
-        included: () => {
-          return true;
-        }
-      },
-      {
         fileName: 'fiori/ui5-fiori.module.ts',
-        className: 'Ui5FioriModule',
-        included: (file: GeneratedFile<AngularExportSpecifierType>) => {
+        included: (file) => {
           return file.path.startsWith('fiori');
         }
       },
       {
         fileName: 'main/ui5-main.module.ts',
-        className: 'Ui5MainModule',
-        included: (file: GeneratedFile<AngularExportSpecifierType>) => {
+        included: (file) => {
           return file.path.startsWith('main');
         }
       }
@@ -40,7 +30,16 @@ export default {
     exportFileNameFactory: (path) => {
       const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
       const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)\.js$/, '$2').split('/');
-      return join(module || 'main', 'directives/' + finalPath.map(kebabCase).join('/') + '.ts')
+      return join(module || 'main', finalPath.map(kebabCase).join('/'), 'index.ts')
+    },
+    apfPathFactory: (path) => {
+      if (path.endsWith('.ts')) {
+        const pathSegments = path.split('/').slice(0, -1);
+        return join('@ui5', 'webcomponents-ngx', ...pathSegments);
+      }
+      const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
+      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
+      return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
     }
   })
 } as Partial<WrapperConfig<ComponentData>>;

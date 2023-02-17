@@ -1,10 +1,11 @@
-import {ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {ExportSpecifierType} from "@ui5/webcomponents-wrapper";
 import {format} from "prettier";
+import {AngularGeneratedFile} from "./angular-generated-file";
 
-export class GenericCva extends GeneratedFile {
+export class GenericCva extends AngularGeneratedFile {
   constructor() {
     super();
-    this.move('generic-cva.ts');
+    this.move('generic-cva/index.ts');
     this.addExport({
       local: 'GenericControlValueAccessor',
       exported: 'GenericControlValueAccessor',

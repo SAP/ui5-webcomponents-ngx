@@ -1,10 +1,12 @@
-import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
+import {dependencyRelativePath, ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
 import { format } from "prettier";
 import { ThemingConfig } from "./theming-config.interface";
 import { Ui5GlobalThemingService } from "./theming-service";
 import { Ui5ThemingModels } from "./theming-models";
 
 export class Ui5GlobalThemingModule extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
+
   constructor(public config: ThemingConfig, private themingService: Ui5GlobalThemingService, private themingModels: Ui5ThemingModels) {
     super();
     this.move(`${this.config.themingModuleFileName}.ts`);

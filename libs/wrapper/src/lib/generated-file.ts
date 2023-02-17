@@ -1,18 +1,20 @@
 import { parse, ParsedPath } from 'path';
 import { ExportData, ExportSpecifier, isExportData } from './export-data';
 import {
-  dependencyRelativePath,
   ImportData,
   ImportSpecifier,
   isImportData,
   isImportSpecifier,
-} from '@ui5/webcomponents-wrapper';
+} from './import-data';
 
 type CanBeArray<T> = T | T[];
 
 export abstract class GeneratedFile<ExportsType = void> {
   abstract getCode(): string;
-
+  abstract relativePathFrom: (requester: any) => string;
+  get relativePathCaller(): any {
+    return this.parsedPath;
+  }
   get parsedPath(): ParsedPath {
     return this._parsedPath;
   }
@@ -40,10 +42,6 @@ export abstract class GeneratedFile<ExportsType = void> {
   protected _imports: Map<ImportData['path'], ImportSpecifier[]> = new Map();
   protected _path!: string;
   protected _parsedPath!: ParsedPath;
-
-  relativePathFrom = (path: ParsedPath): string => {
-    return dependencyRelativePath(path, this.parsedPath);
-  };
 
   move(newPath: string) {
     this._exports[newPath] = this._exports[this._path];
@@ -95,9 +93,9 @@ export abstract class GeneratedFile<ExportsType = void> {
     return Array.from(this._imports.entries())
       .map(([path, specifiers]) => {
         const relativePath =
-          typeof path === 'function' ? path(this.parsedPath) : path;
+          typeof path === 'function' ? path(this.relativePathCaller) : path;
         const isSelfImport =
-          relativePath === this.relativePathFrom(this.parsedPath);
+          relativePath === this.relativePathFrom(this.relativePathCaller);
         const uniqueSpecifiers = Object.values(
           specifiers.reduce(
             (
@@ -156,9 +154,9 @@ export abstract class GeneratedFile<ExportsType = void> {
     return Array.from(this._exports.entries())
       .map(([path, specifiers]) => {
         const relativePath =
-          typeof path === 'function' ? path(this.parsedPath) : path;
+          typeof path === 'function' ? path(this.relativePathCaller) : path;
         const isSelfExport =
-          relativePath === this.relativePathFrom(this.parsedPath);
+          relativePath === this.relativePathFrom(this.relativePathCaller);
         const uniqueSpecifiers = Object.values(
           specifiers.reduce(
             (

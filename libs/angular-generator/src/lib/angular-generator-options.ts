@@ -1,14 +1,14 @@
-import {ComponentData, GeneratedFile, InputType} from "@ui5/webcomponents-wrapper";
+import {ComponentData, InputType} from "@ui5/webcomponents-wrapper";
+import {AngularGeneratedFile} from "./angular-generated-file";
 
 export interface ModuleDescription {
   fileName: string;
-  className: string;
-  primary?: boolean;
-  included: (file: GeneratedFile<any>) => boolean;
+  included: (file: AngularGeneratedFile) => boolean;
 }
 
 export interface AngularGeneratorOptions {
   exportFileNameFactory: (sourceFilePath: string) => string;
+  apfPathFactory: (sourceFilePath: string) => string;
   modules: ModuleDescription[];
   selectorPostfix?: string;
   selectorFactory?: (componentData: ComponentData) => string;

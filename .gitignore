@@ -17,6 +17,11 @@ node_modules
 .settings/
 *.sublime-workspace
 
+libs/ui5-angular/fiori/
+libs/ui5-angular/main/
+libs/ui5-angular/generic-cva/
+libs/ui5-angular/index.ts
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

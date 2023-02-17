@@ -12,34 +12,38 @@ export default {
       '@ui5/webcomponents/dist/api.json'
     ]
   }),
-  generator: (components) => ui5componentsWrapper(components, {
-    modules: [
-      {
-        fileName: 'fiori/ui5-fiori.module.ts',
-        included: (file) => {
-          return file.path.startsWith('fiori');
+  generator: (components) => {
+    const files = ui5componentsWrapper(components, {
+      modules: [
+        {
+          fileName: 'fiori/ui5-fiori.module.ts',
+          included: (file) => {
+            return file.path.startsWith('fiori');
+          }
+        },
+        {
+          fileName: 'main/ui5-main.module.ts',
+          included: (file) => {
+            return file.path.startsWith('main');
+          }
         }
+      ],
+      exportFileNameFactory: (path) => {
+        const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
+        const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)\.js$/, '$2').split('/');
+        return join(module || 'main', finalPath.map(kebabCase).join('/'), 'index.ts')
       },
-      {
-        fileName: 'main/ui5-main.module.ts',
-        included: (file) => {
-          return file.path.startsWith('main');
+      apfPathFactory: (path) => {
+        if (path.endsWith('.ts')) {
+          const pathSegments = path.split('/').slice(0, -1);
+          return join('@ui5', 'webcomponents-ngx', ...pathSegments);
         }
+        const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
+        const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
+        return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
       }
-    ],
-    exportFileNameFactory: (path) => {
-      const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
-      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)\.js$/, '$2').split('/');
-      return join(module || 'main', finalPath.map(kebabCase).join('/'), 'index.ts')
-    },
-    apfPathFactory: (path) => {
-      if (path.endsWith('.ts')) {
-        const pathSegments = path.split('/').slice(0, -1);
-        return join('@ui5', 'webcomponents-ngx', ...pathSegments);
-      }
-      const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
-      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
-      return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
-    }
-  })
+    });
+    files['index.ts'].addExport(['Ui5WebcomponentsThemingModule', 'Ui5WebcomponentsThemingService'], '@ui5/webcomponents-ngx/theming');
+    return files;
+  }
 } as Partial<WrapperConfig<ComponentData>>;

@@ -52,7 +52,7 @@ export abstract class GeneratedFile<ExportsType = void> {
 
   addExport(
     exportData: CanBeArray<
-      ExportData<ExportsType> | ExportSpecifier<ExportsType>
+      ExportData<ExportsType> | ExportSpecifier<ExportsType> | string
     >,
     path: ExportData['path'] = this.relativePathFrom
   ): void {
@@ -225,9 +225,21 @@ export abstract class GeneratedFile<ExportsType = void> {
   }
 
   protected _normalizeExportData(
-    exportData: ExportData<ExportsType> | ExportSpecifier<ExportsType>,
+    exportData: ExportData<ExportsType> | ExportSpecifier<ExportsType> | string,
     path: ExportData['path']
   ): ExportData<ExportsType> {
+    if (typeof exportData === 'string') {
+      return {
+        path: path,
+        specifiers: [
+          {
+            exported: exportData,
+            local: exportData,
+            types: []
+          },
+        ],
+      };
+    }
     if (isExportData(exportData)) {
       return exportData as ExportData<ExportsType>;
     }

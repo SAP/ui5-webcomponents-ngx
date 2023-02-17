@@ -18,7 +18,10 @@
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
-        "configFile": "libs/ui5-angular/wrapper.conf.ts"
+        "configFiles": [
+          "libs/ui5-angular/wrapper.conf.ts",
+          "libs/ui5-angular/theming.conf.ts"
+        ]
       },
       "outputs": [
         "libs/ui5-angular/fiori",

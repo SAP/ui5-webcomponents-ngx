@@ -1,5 +1,5 @@
 import {ComponentData, InputType} from "@ui5/webcomponents-wrapper";
-import {AngularGeneratedFile} from "./angular-generated-file";
+import {AngularGeneratedFile} from "../angular-generated-file";
 
 export interface ModuleDescription {
   fileName: string;

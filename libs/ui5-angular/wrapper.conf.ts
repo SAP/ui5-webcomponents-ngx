@@ -1,6 +1,6 @@
 import {ComponentData, WrapperConfig} from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
-import {transformer} from "@ui5/webcomponents-ngx-generator";
+import {ui5componentsWrapper} from "@ui5/webcomponents-ngx-generator";
 import {kebabCase} from "lodash";
 import {join} from "path";
 
@@ -12,7 +12,7 @@ export default {
       '@ui5/webcomponents/dist/api.json'
     ]
   }),
-  generator: (components) => transformer(components, {
+  generator: (components) => ui5componentsWrapper(components, {
     modules: [
       {
         fileName: 'fiori/ui5-fiori.module.ts',

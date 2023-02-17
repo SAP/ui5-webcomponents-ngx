@@ -1,5 +1,5 @@
 import {AngularGeneratedFile} from "../angular-generated-file";
-import {AngularGeneratorOptions, ModuleDescription} from "../angular-generator-options";
+import {AngularGeneratorOptions, ModuleDescription} from "./angular-generator-options";
 import {startCase} from "lodash";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {ExportSpecifier} from "@ui5/webcomponents-wrapper";

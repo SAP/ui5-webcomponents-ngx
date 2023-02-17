@@ -1,7 +1,7 @@
 import {AngularGeneratorOptions} from "./angular-generator-options";
 import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
 import {camelCase} from 'lodash';
-import {ComponentFile} from "./ui5-webcomponents/component-file";
+import {ComponentFile} from "./component-file";
 import {genericCva} from "./generic-cva";
 
 function CvaBaseClassExtends(componentFile: ComponentFile): string {

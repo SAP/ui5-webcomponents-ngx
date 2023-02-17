@@ -1,6 +1,6 @@
 import {ExportSpecifierType} from "@ui5/webcomponents-wrapper";
 import {format} from "prettier";
-import {AngularGeneratedFile} from "./angular-generated-file";
+import {AngularGeneratedFile} from "../angular-generated-file";
 
 export class GenericCva extends AngularGeneratedFile {
   constructor() {

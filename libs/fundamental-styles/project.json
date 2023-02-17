@@ -8,7 +8,12 @@
       "executor": "@ui5/webcomponents-nx:prepare",
       "options": {
         "configFile": "libs/fundamental-styles/wrapper.conf.ts",
-        "distPath": "dist/libs/fundamental-styles"
+        "distPath": "dist/libs/fundamental-styles",
+        "schematics": {
+          "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",
+          "tsConfig": "tsconfig.schematics.json",
+          "collection": "schematics"
+        }
       }
     },
     "sync": {

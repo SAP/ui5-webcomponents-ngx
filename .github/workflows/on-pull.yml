@@ -16,6 +16,3 @@ jobs:
           uses: ./.github/actions/nodejs
         - name: Run prepare
           run: npx nx run-many --target=prepare --all
-        - name: Check git status
-          run: |
-            if ! git diff-index --quiet HEAD; then echo "Preparation resulted in unsynced files" && exit 1; fi

@@ -1,13 +1,13 @@
 import {ComponentData, GeneratedFile} from "@ui5/webcomponents-wrapper";
-import {AngularGeneratorOptions} from "./angular-generator-options";
+import {AngularGeneratorOptions} from "../angular-generator-options";
 import {ComponentFile} from "./component-file";
 import {AngularGeneratedFile} from "../angular-generated-file";
-import {NgPackageFile} from "./ng-package-file";
+import {NgPackageFile} from "../ng-package-file";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
-import {IndexFile} from "./index-file";
-import {ModuleFile} from "./module-file";
+import {IndexFile} from "../index-file";
 import {join} from "path";
+import {AngularModuleFile} from "../angular-module-file";
 
 function getComponentFile(componentData: ComponentData, options: AngularGeneratorOptions, cache: Map<ComponentData, ComponentFile>): ComponentFile {
   const cached = cache.get(componentData);
@@ -42,7 +42,8 @@ export const ui5componentsWrapper = (components: ComponentData[], options: Angul
     genericCva.apfPath = options.apfPathFactory(genericCva.path);
   }
   options.modules.forEach(moduleDescription => {
-    const moduleFile = new ModuleFile(Object.values(files), moduleDescription, options);
+    const moduleFile = new AngularModuleFile(Object.values(files), moduleDescription);
+    moduleFile.apfPath = options.apfPathFactory(moduleDescription.fileName);
     files[moduleFile.path] = moduleFile;
     const moduleIndexFile = new IndexFile([moduleFile], options, join(moduleFile.parsedPath.dir, 'index.ts'));
     files[moduleIndexFile.path] = moduleIndexFile;

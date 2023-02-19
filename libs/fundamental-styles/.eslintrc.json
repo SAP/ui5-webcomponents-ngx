@@ -5,15 +5,7 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": ["warning"],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "ui-angular",
-            "style": "kebab-case"
-          }
-        ]
+        "@nrwl/nx/enforce-module-boundaries": ["warning"]
       },
       "extends": [
         "plugin:@nrwl/nx/angular",

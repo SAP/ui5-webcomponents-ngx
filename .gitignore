@@ -22,6 +22,10 @@ libs/ui5-angular/main/
 libs/ui5-angular/generic-cva/
 libs/ui5-angular/theming/supported-themes.ts
 libs/ui5-angular/index.ts
+libs/fundamental-styles/components/
+libs/fundamental-styles/index.ts
+libs/fundamental-styles/theming/theming.config.ts
+libs/fundamental-styles/fundamental-styles-components.module.ts
 
 # IDE - VSCode
 .vscode/*

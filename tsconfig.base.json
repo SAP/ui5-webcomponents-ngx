@@ -20,9 +20,7 @@
       "@fundamental-styles/theming-ngx": [
         "libs/fundamental-styles/src/index.ts"
       ],
-      "@fundamental-styles/theming-ngx/src/directives/*": [
-        "libs/fundamental-styles/src/directives/*"
-      ],
+      "@fundamental-styles/theming-ngx/*": ["libs/fundamental-styles/*"],
       "@fundamental-styles/theming-ngx/src/themes/*": [
         "libs/fundamental-styles/src/themes/*"
       ],

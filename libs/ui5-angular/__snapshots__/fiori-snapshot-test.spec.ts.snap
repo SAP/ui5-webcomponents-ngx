@@ -1,0 +1,7420 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test Fiori Bar should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/Bar.js';
+
+interface BarDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'design' | 'endContent' | 'startContent'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  design: 'FloatingFooter' | 'Footer' | 'Header' | 'Subheader';
+
+  endContent: Array<HTMLElement>;
+  startContent: Array<HTMLElement>;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-bar',
+  exportAs: 'ui5Bar',
+  standalone: true,
+  providers: [],
+})
+class BarDirective {
+  @Input()
+  set effectiveDir(val: BarDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): BarDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: BarDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): BarDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set design(val: BarDirectiveElement['design']) {
+    this.elementRef.nativeElement.design = val;
+  }
+  get design(): BarDirectiveElement['design'] {
+    return this.elementRef.nativeElement.design;
+  }
+
+  constructor(private elementRef: ElementRef<BarDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get endContent(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.endContent;
+  }
+  get startContent(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.startContent;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { BarDirective, BarDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Barcode Scanner Dialog should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface BarcodeScannerDialogDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'scanError' | 'scanSuccess'> {
+  scanError: CustomEvent<{ message: string }>;
+  scanSuccess: CustomEvent<{ text: string; rawBytes: Record<string, any> }>;
+}
+
+interface BarcodeScannerDialogDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'scanError' | 'scanSuccess'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+
+  addEventListener<K extends keyof BarcodeScannerDialogDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: BarcodeScannerDialogDirectiveElement,
+      ev: BarcodeScannerDialogDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof BarcodeScannerDialogDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: BarcodeScannerDialogDirectiveElement,
+      ev: BarcodeScannerDialogDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
+  close(): any;
+
+  show(): any;
+}
+
+@Directive({
+  selector: 'ui5-barcode-scanner-dialog',
+  exportAs: 'ui5BarcodeScannerDialog',
+  standalone: true,
+  providers: [],
+})
+class BarcodeScannerDialogDirective {
+  @Input()
+  set effectiveDir(val: BarcodeScannerDialogDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): BarcodeScannerDialogDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: BarcodeScannerDialogDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): BarcodeScannerDialogDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+  @Output() scanError: Observable<
+    BarcodeScannerDialogDirectiveEventsMap['scanError']
+  > = NEVER as any;
+  @Output() scanSuccess: Observable<
+    BarcodeScannerDialogDirectiveEventsMap['scanSuccess']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<BarcodeScannerDialogDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
+  close(): any {
+    return this.elementRef.nativeElement.close();
+  }
+
+  show(): any {
+    return this.elementRef.nativeElement.show();
+  }
+}
+
+export {
+  BarcodeScannerDialogDirective,
+  BarcodeScannerDialogDirectiveEventsMap,
+  BarcodeScannerDialogDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Dynamic Side Content should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface DynamicSideContentDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'layoutChange'> {
+  layoutChange: CustomEvent<{
+    currentBreakpoint: string;
+    previousBreakpoint: string;
+    mainContentVisible: boolean;
+    sideContentVisible: boolean;
+  }>;
+}
+
+interface DynamicSideContentDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'equalSplit'
+    | 'hideMainContent'
+    | 'hideSideContent'
+    | 'sideContentFallDown'
+    | 'sideContentPosition'
+    | 'sideContentVisibility'
+    | 'layoutChange'
+    | 'sideContent'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  equalSplit: boolean;
+  hideMainContent: boolean;
+  hideSideContent: boolean;
+  sideContentFallDown: 'BelowL' | 'BelowM' | 'BelowXL' | 'OnMinimumWidth';
+  sideContentPosition: 'End' | 'Start';
+  sideContentVisibility:
+    | 'AlwaysShow'
+    | 'NeverShow'
+    | 'ShowAboveL'
+    | 'ShowAboveM'
+    | 'ShowAboveS';
+
+  sideContent: Array<HTMLElement>;
+
+  addEventListener<K extends keyof DynamicSideContentDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: DynamicSideContentDirectiveElement,
+      ev: DynamicSideContentDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof DynamicSideContentDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: DynamicSideContentDirectiveElement,
+      ev: DynamicSideContentDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
+  toggleContents(): any;
+}
+
+@Directive({
+  selector: 'ui5-dynamic-side-content',
+  exportAs: 'ui5DynamicSideContent',
+  standalone: true,
+  providers: [],
+})
+class DynamicSideContentDirective {
+  @Input()
+  set effectiveDir(val: DynamicSideContentDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): DynamicSideContentDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: DynamicSideContentDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): DynamicSideContentDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set equalSplit(val: DynamicSideContentDirectiveElement['equalSplit']) {
+    this.elementRef.nativeElement.equalSplit = val;
+  }
+  get equalSplit(): DynamicSideContentDirectiveElement['equalSplit'] {
+    return this.elementRef.nativeElement.equalSplit;
+  }
+
+  @Input()
+  set hideMainContent(
+    val: DynamicSideContentDirectiveElement['hideMainContent']
+  ) {
+    this.elementRef.nativeElement.hideMainContent = val;
+  }
+  get hideMainContent(): DynamicSideContentDirectiveElement['hideMainContent'] {
+    return this.elementRef.nativeElement.hideMainContent;
+  }
+
+  @Input()
+  set hideSideContent(
+    val: DynamicSideContentDirectiveElement['hideSideContent']
+  ) {
+    this.elementRef.nativeElement.hideSideContent = val;
+  }
+  get hideSideContent(): DynamicSideContentDirectiveElement['hideSideContent'] {
+    return this.elementRef.nativeElement.hideSideContent;
+  }
+
+  @Input()
+  set sideContentFallDown(
+    val: DynamicSideContentDirectiveElement['sideContentFallDown']
+  ) {
+    this.elementRef.nativeElement.sideContentFallDown = val;
+  }
+  get sideContentFallDown(): DynamicSideContentDirectiveElement['sideContentFallDown'] {
+    return this.elementRef.nativeElement.sideContentFallDown;
+  }
+
+  @Input()
+  set sideContentPosition(
+    val: DynamicSideContentDirectiveElement['sideContentPosition']
+  ) {
+    this.elementRef.nativeElement.sideContentPosition = val;
+  }
+  get sideContentPosition(): DynamicSideContentDirectiveElement['sideContentPosition'] {
+    return this.elementRef.nativeElement.sideContentPosition;
+  }
+
+  @Input()
+  set sideContentVisibility(
+    val: DynamicSideContentDirectiveElement['sideContentVisibility']
+  ) {
+    this.elementRef.nativeElement.sideContentVisibility = val;
+  }
+  get sideContentVisibility(): DynamicSideContentDirectiveElement['sideContentVisibility'] {
+    return this.elementRef.nativeElement.sideContentVisibility;
+  }
+  @Output() layoutChange: Observable<
+    DynamicSideContentDirectiveEventsMap['layoutChange']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<DynamicSideContentDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get sideContent(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.sideContent;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
+  toggleContents(): any {
+    return this.elementRef.nativeElement.toggleContents();
+  }
+}
+
+export {
+  DynamicSideContentDirective,
+  DynamicSideContentDirectiveEventsMap,
+  DynamicSideContentDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Filter Item Option should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
+
+interface FilterItemOptionDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'selected' | 'text'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  text: string;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-filter-item-option',
+  exportAs: 'ui5FilterItemOption',
+  standalone: true,
+  providers: [],
+})
+class FilterItemOptionDirective {
+  @Input()
+  set effectiveDir(val: FilterItemOptionDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): FilterItemOptionDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: FilterItemOptionDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): FilterItemOptionDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: FilterItemOptionDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): FilterItemOptionDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set text(val: FilterItemOptionDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): FilterItemOptionDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  constructor(
+    private elementRef: ElementRef<FilterItemOptionDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { FilterItemOptionDirective, FilterItemOptionDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Filter Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/FilterItem.js';
+import { FilterItemOptionDirective } from '@ui5/webcomponents-ngx/fiori/filter-item-option';
+
+interface FilterItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'additionalText' | 'text' | 'values'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  additionalText: string;
+  text: string;
+
+  values: Array<FilterItemOptionDirective['element']>;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-filter-item',
+  exportAs: 'ui5FilterItem',
+  standalone: true,
+  providers: [],
+})
+class FilterItemDirective {
+  @Input()
+  set effectiveDir(val: FilterItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): FilterItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: FilterItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): FilterItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set additionalText(val: FilterItemDirectiveElement['additionalText']) {
+    this.elementRef.nativeElement.additionalText = val;
+  }
+  get additionalText(): FilterItemDirectiveElement['additionalText'] {
+    return this.elementRef.nativeElement.additionalText;
+  }
+
+  @Input()
+  set text(val: FilterItemDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): FilterItemDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  constructor(private elementRef: ElementRef<FilterItemDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get values(): Array<FilterItemOptionDirective['element']> {
+    return this.elementRef.nativeElement.values;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { FilterItemDirective, FilterItemDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Flexible Column Layout should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface FlexibleColumnLayoutDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'layoutChange'> {
+  layoutChange: CustomEvent<{
+    layout:
+      | 'EndColumnFullScreen'
+      | 'MidColumnFullScreen'
+      | 'OneColumn'
+      | 'ThreeColumnsEndExpanded'
+      | 'ThreeColumnsMidExpanded'
+      | 'ThreeColumnsMidExpandedEndHidden'
+      | 'ThreeColumnsStartExpandedEndHidden'
+      | 'TwoColumnsMidExpanded'
+      | 'TwoColumnsStartExpanded';
+    columnLayout: Array<any>;
+    startColumnVisible: boolean;
+    midColumnVisible: boolean;
+    endColumnVisible: boolean;
+    arrowsUsed: boolean;
+    resize: boolean;
+  }>;
+}
+
+interface FlexibleColumnLayoutDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'accessibilityRoles'
+    | 'accessibilityTexts'
+    | 'columnLayout'
+    | 'endColumnVisible'
+    | 'hideArrows'
+    | 'layout'
+    | 'midColumnVisible'
+    | 'startColumnVisible'
+    | 'visibleColumns'
+    | 'layoutChange'
+    | 'endColumn'
+    | 'midColumn'
+    | 'startColumn'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  accessibilityRoles: Record<string, any>;
+  accessibilityTexts: Record<string, any>;
+  columnLayout: Array<any>;
+  endColumnVisible: boolean;
+  hideArrows: boolean;
+  layout:
+    | 'EndColumnFullScreen'
+    | 'MidColumnFullScreen'
+    | 'OneColumn'
+    | 'ThreeColumnsEndExpanded'
+    | 'ThreeColumnsMidExpanded'
+    | 'ThreeColumnsMidExpandedEndHidden'
+    | 'ThreeColumnsStartExpandedEndHidden'
+    | 'TwoColumnsMidExpanded'
+    | 'TwoColumnsStartExpanded';
+  midColumnVisible: boolean;
+  startColumnVisible: boolean;
+  visibleColumns: any;
+
+  endColumn: HTMLElement;
+  midColumn: HTMLElement;
+  startColumn: HTMLElement;
+
+  addEventListener<K extends keyof FlexibleColumnLayoutDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: FlexibleColumnLayoutDirectiveElement,
+      ev: FlexibleColumnLayoutDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof FlexibleColumnLayoutDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: FlexibleColumnLayoutDirectiveElement,
+      ev: FlexibleColumnLayoutDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-flexible-column-layout',
+  exportAs: 'ui5FlexibleColumnLayout',
+  standalone: true,
+  providers: [],
+})
+class FlexibleColumnLayoutDirective {
+  @Input()
+  set effectiveDir(val: FlexibleColumnLayoutDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): FlexibleColumnLayoutDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: FlexibleColumnLayoutDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): FlexibleColumnLayoutDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set accessibilityRoles(
+    val: FlexibleColumnLayoutDirectiveElement['accessibilityRoles']
+  ) {
+    this.elementRef.nativeElement.accessibilityRoles = val;
+  }
+  get accessibilityRoles(): FlexibleColumnLayoutDirectiveElement['accessibilityRoles'] {
+    return this.elementRef.nativeElement.accessibilityRoles;
+  }
+
+  @Input()
+  set accessibilityTexts(
+    val: FlexibleColumnLayoutDirectiveElement['accessibilityTexts']
+  ) {
+    this.elementRef.nativeElement.accessibilityTexts = val;
+  }
+  get accessibilityTexts(): FlexibleColumnLayoutDirectiveElement['accessibilityTexts'] {
+    return this.elementRef.nativeElement.accessibilityTexts;
+  }
+
+  @Input()
+  set columnLayout(val: FlexibleColumnLayoutDirectiveElement['columnLayout']) {
+    this.elementRef.nativeElement.columnLayout = val;
+  }
+  get columnLayout(): FlexibleColumnLayoutDirectiveElement['columnLayout'] {
+    return this.elementRef.nativeElement.columnLayout;
+  }
+
+  @Input()
+  set endColumnVisible(
+    val: FlexibleColumnLayoutDirectiveElement['endColumnVisible']
+  ) {
+    this.elementRef.nativeElement.endColumnVisible = val;
+  }
+  get endColumnVisible(): FlexibleColumnLayoutDirectiveElement['endColumnVisible'] {
+    return this.elementRef.nativeElement.endColumnVisible;
+  }
+
+  @Input()
+  set hideArrows(val: FlexibleColumnLayoutDirectiveElement['hideArrows']) {
+    this.elementRef.nativeElement.hideArrows = val;
+  }
+  get hideArrows(): FlexibleColumnLayoutDirectiveElement['hideArrows'] {
+    return this.elementRef.nativeElement.hideArrows;
+  }
+
+  @Input()
+  set layout(val: FlexibleColumnLayoutDirectiveElement['layout']) {
+    this.elementRef.nativeElement.layout = val;
+  }
+  get layout(): FlexibleColumnLayoutDirectiveElement['layout'] {
+    return this.elementRef.nativeElement.layout;
+  }
+
+  @Input()
+  set midColumnVisible(
+    val: FlexibleColumnLayoutDirectiveElement['midColumnVisible']
+  ) {
+    this.elementRef.nativeElement.midColumnVisible = val;
+  }
+  get midColumnVisible(): FlexibleColumnLayoutDirectiveElement['midColumnVisible'] {
+    return this.elementRef.nativeElement.midColumnVisible;
+  }
+
+  @Input()
+  set startColumnVisible(
+    val: FlexibleColumnLayoutDirectiveElement['startColumnVisible']
+  ) {
+    this.elementRef.nativeElement.startColumnVisible = val;
+  }
+  get startColumnVisible(): FlexibleColumnLayoutDirectiveElement['startColumnVisible'] {
+    return this.elementRef.nativeElement.startColumnVisible;
+  }
+
+  @Input()
+  set visibleColumns(
+    val: FlexibleColumnLayoutDirectiveElement['visibleColumns']
+  ) {
+    this.elementRef.nativeElement.visibleColumns = val;
+  }
+  get visibleColumns(): FlexibleColumnLayoutDirectiveElement['visibleColumns'] {
+    return this.elementRef.nativeElement.visibleColumns;
+  }
+  @Output() layoutChange: Observable<
+    FlexibleColumnLayoutDirectiveEventsMap['layoutChange']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<FlexibleColumnLayoutDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get endColumn(): HTMLElement {
+    return this.elementRef.nativeElement.endColumn;
+  }
+  get midColumn(): HTMLElement {
+    return this.elementRef.nativeElement.midColumn;
+  }
+  get startColumn(): HTMLElement {
+    return this.elementRef.nativeElement.startColumn;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  FlexibleColumnLayoutDirective,
+  FlexibleColumnLayoutDirectiveEventsMap,
+  FlexibleColumnLayoutDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Illustrated Message should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
+
+interface IllustratedMessageDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'accessibleNameRef'
+    | 'name'
+    | 'size'
+    | 'subtitleText'
+    | 'titleText'
+    | 'subtitle'
+    | 'title'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  accessibleNameRef: string;
+  name:
+    | 'AddColumn'
+    | 'AddDimensions'
+    | 'AddPeople'
+    | 'BalloonSky'
+    | 'BeforeSearch'
+    | 'Connection'
+    | 'EmptyCalendar'
+    | 'EmptyList'
+    | 'EmptyPlanningCalendar'
+    | 'ErrorScreen'
+    | 'FilterTable'
+    | 'GroupTable'
+    | 'NoActivities'
+    | 'NoData'
+    | 'NoDimensionsSet'
+    | 'NoEntries'
+    | 'NoFilterResults'
+    | 'NoMail'
+    | 'NoMail_v1'
+    | 'NoNotifications'
+    | 'NoSavedItems'
+    | 'NoSavedItems_v1'
+    | 'NoSearchResults'
+    | 'NoTasks'
+    | 'NoTasks_v1'
+    | 'PageNotFound'
+    | 'ReloadScreen'
+    | 'ResizeColumn'
+    | 'SearchEarth'
+    | 'SearchFolder'
+    | 'SimpleBalloon'
+    | 'SimpleBell'
+    | 'SimpleCalendar'
+    | 'SimpleCheckMark'
+    | 'SimpleConnection'
+    | 'SimpleEmptyDoc'
+    | 'SimpleEmptyList'
+    | 'SimpleError'
+    | 'SimpleMagnifier'
+    | 'SimpleMail'
+    | 'SimpleNoSavedItems'
+    | 'SimpleNotFoundMagnifier'
+    | 'SimpleReload'
+    | 'SimpleTask'
+    | 'SleepingBell'
+    | 'SortColumn'
+    | 'SuccessBalloon'
+    | 'SuccessCheckMark'
+    | 'SuccessHighFive'
+    | 'SuccessScreen'
+    | 'Tent'
+    | 'TntChartArea'
+    | 'TntChartArea2'
+    | 'TntChartBar'
+    | 'TntChartBPMNFlow'
+    | 'TntChartBullet'
+    | 'TntChartDoughnut'
+    | 'TntChartFlow'
+    | 'TntChartGantt'
+    | 'TntChartOrg'
+    | 'TntChartPie'
+    | 'TntCodePlaceholder'
+    | 'TntCompany'
+    | 'TntComponents'
+    | 'TntExternalLink'
+    | 'TntFaceID'
+    | 'TntFingerprint'
+    | 'TntLock'
+    | 'TntMission'
+    | 'TntNoApplications'
+    | 'TntNoFlows'
+    | 'TntNoUsers'
+    | 'TntRadar'
+    | 'TntSecrets'
+    | 'TntServices'
+    | 'TntSessionExpired'
+    | 'TntSessionExpiring'
+    | 'TntSuccess'
+    | 'TntSuccessfulAuth'
+    | 'TntSystems'
+    | 'TntTeams'
+    | 'TntTools'
+    | 'TntUnableToLoad'
+    | 'TntUnlock'
+    | 'TntUnsuccessfulAuth'
+    | 'TntUser2'
+    | 'UnableToLoad'
+    | 'UnableToLoadImage'
+    | 'UnableToUpload'
+    | 'UploadCollection'
+    | 'UploadToCloud';
+  size: 'Auto' | 'Base' | 'Dialog' | 'Scene' | 'Spot';
+  subtitleText: string;
+  titleText: string;
+
+  subtitle: HTMLElement;
+  title: HTMLElement;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-illustrated-message',
+  exportAs: 'ui5IllustratedMessage',
+  standalone: true,
+  providers: [],
+})
+class IllustratedMessageDirective {
+  @Input()
+  set effectiveDir(val: IllustratedMessageDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): IllustratedMessageDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: IllustratedMessageDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): IllustratedMessageDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set accessibleNameRef(
+    val: IllustratedMessageDirectiveElement['accessibleNameRef']
+  ) {
+    this.elementRef.nativeElement.accessibleNameRef = val;
+  }
+  get accessibleNameRef(): IllustratedMessageDirectiveElement['accessibleNameRef'] {
+    return this.elementRef.nativeElement.accessibleNameRef;
+  }
+
+  @Input()
+  set name(val: IllustratedMessageDirectiveElement['name']) {
+    this.elementRef.nativeElement.name = val;
+  }
+  get name(): IllustratedMessageDirectiveElement['name'] {
+    return this.elementRef.nativeElement.name;
+  }
+
+  @Input()
+  set size(val: IllustratedMessageDirectiveElement['size']) {
+    this.elementRef.nativeElement.size = val;
+  }
+  get size(): IllustratedMessageDirectiveElement['size'] {
+    return this.elementRef.nativeElement.size;
+  }
+
+  @Input()
+  set subtitleText(val: IllustratedMessageDirectiveElement['subtitleText']) {
+    this.elementRef.nativeElement.subtitleText = val;
+  }
+  get subtitleText(): IllustratedMessageDirectiveElement['subtitleText'] {
+    return this.elementRef.nativeElement.subtitleText;
+  }
+
+  @Input()
+  set titleText(val: IllustratedMessageDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): IllustratedMessageDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+
+  constructor(
+    private elementRef: ElementRef<IllustratedMessageDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get subtitle(): HTMLElement {
+    return this.elementRef.nativeElement.subtitle;
+  }
+  get title(): HTMLElement {
+    return this.elementRef.nativeElement.title;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { IllustratedMessageDirective, IllustratedMessageDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Index Ts should match the snapshot 1`] = `
+"export { Ui5FioriModule } from './ui5-fiori.module';
+"
+`;
+
+exports[`Snapshot test Fiori Media Gallery Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
+
+interface MediaGalleryItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'disabled'
+    | 'layout'
+    | 'selected'
+    | 'thumbnail'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  disabled: boolean;
+  layout: 'Square' | 'Wide';
+  selected: boolean;
+
+  thumbnail: HTMLElement;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-media-gallery-item',
+  exportAs: 'ui5MediaGalleryItem',
+  standalone: true,
+  providers: [],
+})
+class MediaGalleryItemDirective {
+  @Input()
+  set effectiveDir(val: MediaGalleryItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): MediaGalleryItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: MediaGalleryItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): MediaGalleryItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set disabled(val: MediaGalleryItemDirectiveElement['disabled']) {
+    this.elementRef.nativeElement.disabled = val;
+  }
+  get disabled(): MediaGalleryItemDirectiveElement['disabled'] {
+    return this.elementRef.nativeElement.disabled;
+  }
+
+  @Input()
+  set layout(val: MediaGalleryItemDirectiveElement['layout']) {
+    this.elementRef.nativeElement.layout = val;
+  }
+  get layout(): MediaGalleryItemDirectiveElement['layout'] {
+    return this.elementRef.nativeElement.layout;
+  }
+
+  @Input()
+  set selected(val: MediaGalleryItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): MediaGalleryItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  constructor(
+    private elementRef: ElementRef<MediaGalleryItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get thumbnail(): HTMLElement {
+    return this.elementRef.nativeElement.thumbnail;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { MediaGalleryItemDirective, MediaGalleryItemDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Media Gallery should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface MediaGalleryDirectiveEventsMap
+  extends Omit<
+    HTMLElementEventMap,
+    'displayAreaClick' | 'overflowClick' | 'selectionChange'
+  > {
+  displayAreaClick: CustomEvent<void>;
+  overflowClick: CustomEvent<void>;
+  selectionChange: CustomEvent<{ item: HTMLElement }>;
+}
+
+interface MediaGalleryDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'interactiveDisplayArea'
+    | 'layout'
+    | 'menuHorizontalAlign'
+    | 'menuVerticalAlign'
+    | 'showAllThumbnails'
+    | 'displayAreaClick'
+    | 'overflowClick'
+    | 'selectionChange'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  interactiveDisplayArea: boolean;
+  layout: 'Auto' | 'Horizontal' | 'Vertical';
+  menuHorizontalAlign: 'Left' | 'Right';
+  menuVerticalAlign: 'Bottom' | 'Top';
+  showAllThumbnails: boolean;
+
+  addEventListener<K extends keyof MediaGalleryDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: MediaGalleryDirectiveElement,
+      ev: MediaGalleryDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof MediaGalleryDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: MediaGalleryDirectiveElement,
+      ev: MediaGalleryDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-media-gallery',
+  exportAs: 'ui5MediaGallery',
+  standalone: true,
+  providers: [],
+})
+class MediaGalleryDirective {
+  @Input()
+  set effectiveDir(val: MediaGalleryDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): MediaGalleryDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: MediaGalleryDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): MediaGalleryDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set interactiveDisplayArea(
+    val: MediaGalleryDirectiveElement['interactiveDisplayArea']
+  ) {
+    this.elementRef.nativeElement.interactiveDisplayArea = val;
+  }
+  get interactiveDisplayArea(): MediaGalleryDirectiveElement['interactiveDisplayArea'] {
+    return this.elementRef.nativeElement.interactiveDisplayArea;
+  }
+
+  @Input()
+  set layout(val: MediaGalleryDirectiveElement['layout']) {
+    this.elementRef.nativeElement.layout = val;
+  }
+  get layout(): MediaGalleryDirectiveElement['layout'] {
+    return this.elementRef.nativeElement.layout;
+  }
+
+  @Input()
+  set menuHorizontalAlign(
+    val: MediaGalleryDirectiveElement['menuHorizontalAlign']
+  ) {
+    this.elementRef.nativeElement.menuHorizontalAlign = val;
+  }
+  get menuHorizontalAlign(): MediaGalleryDirectiveElement['menuHorizontalAlign'] {
+    return this.elementRef.nativeElement.menuHorizontalAlign;
+  }
+
+  @Input()
+  set menuVerticalAlign(
+    val: MediaGalleryDirectiveElement['menuVerticalAlign']
+  ) {
+    this.elementRef.nativeElement.menuVerticalAlign = val;
+  }
+  get menuVerticalAlign(): MediaGalleryDirectiveElement['menuVerticalAlign'] {
+    return this.elementRef.nativeElement.menuVerticalAlign;
+  }
+
+  @Input()
+  set showAllThumbnails(
+    val: MediaGalleryDirectiveElement['showAllThumbnails']
+  ) {
+    this.elementRef.nativeElement.showAllThumbnails = val;
+  }
+  get showAllThumbnails(): MediaGalleryDirectiveElement['showAllThumbnails'] {
+    return this.elementRef.nativeElement.showAllThumbnails;
+  }
+  @Output() displayAreaClick: Observable<
+    MediaGalleryDirectiveEventsMap['displayAreaClick']
+  > = NEVER as any;
+  @Output() overflowClick: Observable<
+    MediaGalleryDirectiveEventsMap['overflowClick']
+  > = NEVER as any;
+  @Output() selectionChange: Observable<
+    MediaGalleryDirectiveEventsMap['selectionChange']
+  > = NEVER as any;
+  constructor(private elementRef: ElementRef<MediaGalleryDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  MediaGalleryDirective,
+  MediaGalleryDirectiveEventsMap,
+  MediaGalleryDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Ng Package Json should match the snapshot 1`] = `
+"{ \\"lib\\": { \\"entryFile\\": \\"./index.ts\\" } }
+"
+`;
+
+exports[`Snapshot test Fiori Notification Action should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
+
+interface NotificationActionDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'design' | 'disabled' | 'icon' | 'text'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  design:
+    | 'Attention'
+    | 'Default'
+    | 'Emphasized'
+    | 'Negative'
+    | 'Positive'
+    | 'Transparent';
+  disabled: boolean;
+  icon: string;
+  text: string;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-notification-action',
+  exportAs: 'ui5NotificationAction',
+  standalone: true,
+  providers: [],
+})
+class NotificationActionDirective {
+  @Input()
+  set effectiveDir(val: NotificationActionDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): NotificationActionDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: NotificationActionDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): NotificationActionDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set design(val: NotificationActionDirectiveElement['design']) {
+    this.elementRef.nativeElement.design = val;
+  }
+  get design(): NotificationActionDirectiveElement['design'] {
+    return this.elementRef.nativeElement.design;
+  }
+
+  @Input()
+  set disabled(val: NotificationActionDirectiveElement['disabled']) {
+    this.elementRef.nativeElement.disabled = val;
+  }
+  get disabled(): NotificationActionDirectiveElement['disabled'] {
+    return this.elementRef.nativeElement.disabled;
+  }
+
+  @Input()
+  set icon(val: NotificationActionDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): NotificationActionDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set text(val: NotificationActionDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): NotificationActionDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  constructor(
+    private elementRef: ElementRef<NotificationActionDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { NotificationActionDirective, NotificationActionDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Notification List Group Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import { Observable, NEVER } from 'rxjs';
+import { NotificationActionDirective } from '@ui5/webcomponents-ngx/fiori/notification-action';
+
+interface NotificationListGroupItemDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'close' | 'toggle'> {
+  close: CustomEvent<{ item: HTMLElement }>;
+  toggle: CustomEvent<void>;
+}
+
+interface NotificationListGroupItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'selected'
+    | 'busy'
+    | 'busyDelay'
+    | 'priority'
+    | 'read'
+    | 'showClose'
+    | 'titleText'
+    | 'collapsed'
+    | 'showCounter'
+    | 'close'
+    | 'toggle'
+    | 'actions'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  busy: boolean;
+  busyDelay: any;
+  priority: 'High' | 'Low' | 'Medium' | 'None';
+  read: boolean;
+  showClose: boolean;
+  titleText: string;
+  collapsed: boolean;
+  showCounter: boolean;
+
+  actions: Array<NotificationActionDirective['element']>;
+
+  addEventListener<K extends keyof NotificationListGroupItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationListGroupItemDirectiveElement,
+      ev: NotificationListGroupItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<
+    K extends keyof NotificationListGroupItemDirectiveEventsMap
+  >(
+    type: K,
+    listener: (
+      this: NotificationListGroupItemDirectiveElement,
+      ev: NotificationListGroupItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-li-notification-group',
+  exportAs: 'ui5LiNotificationGroup',
+  standalone: true,
+  providers: [],
+})
+class NotificationListGroupItemDirective {
+  @Input()
+  set effectiveDir(
+    val: NotificationListGroupItemDirectiveElement['effectiveDir']
+  ) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): NotificationListGroupItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(
+    val: NotificationListGroupItemDirectiveElement['isUi5Element']
+  ) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): NotificationListGroupItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: NotificationListGroupItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): NotificationListGroupItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set busy(val: NotificationListGroupItemDirectiveElement['busy']) {
+    this.elementRef.nativeElement.busy = val;
+  }
+  get busy(): NotificationListGroupItemDirectiveElement['busy'] {
+    return this.elementRef.nativeElement.busy;
+  }
+
+  @Input()
+  set busyDelay(val: NotificationListGroupItemDirectiveElement['busyDelay']) {
+    this.elementRef.nativeElement.busyDelay = val;
+  }
+  get busyDelay(): NotificationListGroupItemDirectiveElement['busyDelay'] {
+    return this.elementRef.nativeElement.busyDelay;
+  }
+
+  @Input()
+  set priority(val: NotificationListGroupItemDirectiveElement['priority']) {
+    this.elementRef.nativeElement.priority = val;
+  }
+  get priority(): NotificationListGroupItemDirectiveElement['priority'] {
+    return this.elementRef.nativeElement.priority;
+  }
+
+  @Input()
+  set read(val: NotificationListGroupItemDirectiveElement['read']) {
+    this.elementRef.nativeElement.read = val;
+  }
+  get read(): NotificationListGroupItemDirectiveElement['read'] {
+    return this.elementRef.nativeElement.read;
+  }
+
+  @Input()
+  set showClose(val: NotificationListGroupItemDirectiveElement['showClose']) {
+    this.elementRef.nativeElement.showClose = val;
+  }
+  get showClose(): NotificationListGroupItemDirectiveElement['showClose'] {
+    return this.elementRef.nativeElement.showClose;
+  }
+
+  @Input()
+  set titleText(val: NotificationListGroupItemDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): NotificationListGroupItemDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+
+  @Input()
+  set collapsed(val: NotificationListGroupItemDirectiveElement['collapsed']) {
+    this.elementRef.nativeElement.collapsed = val;
+  }
+  get collapsed(): NotificationListGroupItemDirectiveElement['collapsed'] {
+    return this.elementRef.nativeElement.collapsed;
+  }
+
+  @Input()
+  set showCounter(
+    val: NotificationListGroupItemDirectiveElement['showCounter']
+  ) {
+    this.elementRef.nativeElement.showCounter = val;
+  }
+  get showCounter(): NotificationListGroupItemDirectiveElement['showCounter'] {
+    return this.elementRef.nativeElement.showCounter;
+  }
+  @Output() close: Observable<
+    NotificationListGroupItemDirectiveEventsMap['close']
+  > = NEVER as any;
+  @Output() toggle: Observable<
+    NotificationListGroupItemDirectiveEventsMap['toggle']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<NotificationListGroupItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get actions(): Array<NotificationActionDirective['element']> {
+    return this.elementRef.nativeElement.actions;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  NotificationListGroupItemDirective,
+  NotificationListGroupItemDirectiveEventsMap,
+  NotificationListGroupItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Notification List Item Base should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
+import { Observable, NEVER } from 'rxjs';
+import { NotificationActionDirective } from '@ui5/webcomponents-ngx/fiori/notification-action';
+
+interface NotificationListItemBaseDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'close'> {
+  close: CustomEvent<{ item: HTMLElement }>;
+}
+
+interface NotificationListItemBaseDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'selected'
+    | 'busy'
+    | 'busyDelay'
+    | 'priority'
+    | 'read'
+    | 'showClose'
+    | 'titleText'
+    | 'close'
+    | 'actions'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  busy: boolean;
+  busyDelay: any;
+  priority: 'High' | 'Low' | 'Medium' | 'None';
+  read: boolean;
+  showClose: boolean;
+  titleText: string;
+
+  actions: Array<NotificationActionDirective['element']>;
+
+  addEventListener<K extends keyof NotificationListItemBaseDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationListItemBaseDirectiveElement,
+      ev: NotificationListItemBaseDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<
+    K extends keyof NotificationListItemBaseDirectiveEventsMap
+  >(
+    type: K,
+    listener: (
+      this: NotificationListItemBaseDirectiveElement,
+      ev: NotificationListItemBaseDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-li-notification-group',
+  exportAs: 'ui5LiNotificationGroup',
+  standalone: true,
+  providers: [],
+})
+class NotificationListItemBaseDirective {
+  @Input()
+  set effectiveDir(
+    val: NotificationListItemBaseDirectiveElement['effectiveDir']
+  ) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): NotificationListItemBaseDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(
+    val: NotificationListItemBaseDirectiveElement['isUi5Element']
+  ) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): NotificationListItemBaseDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: NotificationListItemBaseDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): NotificationListItemBaseDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set busy(val: NotificationListItemBaseDirectiveElement['busy']) {
+    this.elementRef.nativeElement.busy = val;
+  }
+  get busy(): NotificationListItemBaseDirectiveElement['busy'] {
+    return this.elementRef.nativeElement.busy;
+  }
+
+  @Input()
+  set busyDelay(val: NotificationListItemBaseDirectiveElement['busyDelay']) {
+    this.elementRef.nativeElement.busyDelay = val;
+  }
+  get busyDelay(): NotificationListItemBaseDirectiveElement['busyDelay'] {
+    return this.elementRef.nativeElement.busyDelay;
+  }
+
+  @Input()
+  set priority(val: NotificationListItemBaseDirectiveElement['priority']) {
+    this.elementRef.nativeElement.priority = val;
+  }
+  get priority(): NotificationListItemBaseDirectiveElement['priority'] {
+    return this.elementRef.nativeElement.priority;
+  }
+
+  @Input()
+  set read(val: NotificationListItemBaseDirectiveElement['read']) {
+    this.elementRef.nativeElement.read = val;
+  }
+  get read(): NotificationListItemBaseDirectiveElement['read'] {
+    return this.elementRef.nativeElement.read;
+  }
+
+  @Input()
+  set showClose(val: NotificationListItemBaseDirectiveElement['showClose']) {
+    this.elementRef.nativeElement.showClose = val;
+  }
+  get showClose(): NotificationListItemBaseDirectiveElement['showClose'] {
+    return this.elementRef.nativeElement.showClose;
+  }
+
+  @Input()
+  set titleText(val: NotificationListItemBaseDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): NotificationListItemBaseDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+  @Output() close: Observable<
+    NotificationListItemBaseDirectiveEventsMap['close']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<NotificationListItemBaseDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get actions(): Array<NotificationActionDirective['element']> {
+    return this.elementRef.nativeElement.actions;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  NotificationListItemBaseDirective,
+  NotificationListItemBaseDirectiveEventsMap,
+  NotificationListItemBaseDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Notification List Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
+import { Observable, NEVER } from 'rxjs';
+import { NotificationActionDirective } from '@ui5/webcomponents-ngx/fiori/notification-action';
+import { AvatarDirective } from '@ui5/webcomponents-ngx/main/avatar';
+
+interface NotificationListItemDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'close'> {
+  close: CustomEvent<{ item: HTMLElement }>;
+}
+
+interface NotificationListItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'selected'
+    | 'busy'
+    | 'busyDelay'
+    | 'priority'
+    | 'read'
+    | 'showClose'
+    | 'titleText'
+    | 'wrappingType'
+    | 'close'
+    | 'actions'
+    | 'avatar'
+    | 'footnotes'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  busy: boolean;
+  busyDelay: any;
+  priority: 'High' | 'Low' | 'Medium' | 'None';
+  read: boolean;
+  showClose: boolean;
+  titleText: string;
+  wrappingType: 'None' | 'Normal';
+
+  actions: Array<NotificationActionDirective['element']>;
+  avatar: AvatarDirective['element'];
+  footnotes: Array<HTMLElement>;
+
+  addEventListener<K extends keyof NotificationListItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationListItemDirectiveElement,
+      ev: NotificationListItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof NotificationListItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationListItemDirectiveElement,
+      ev: NotificationListItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-li-notification',
+  exportAs: 'ui5LiNotification',
+  standalone: true,
+  providers: [],
+})
+class NotificationListItemDirective {
+  @Input()
+  set effectiveDir(val: NotificationListItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): NotificationListItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: NotificationListItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): NotificationListItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: NotificationListItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): NotificationListItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set busy(val: NotificationListItemDirectiveElement['busy']) {
+    this.elementRef.nativeElement.busy = val;
+  }
+  get busy(): NotificationListItemDirectiveElement['busy'] {
+    return this.elementRef.nativeElement.busy;
+  }
+
+  @Input()
+  set busyDelay(val: NotificationListItemDirectiveElement['busyDelay']) {
+    this.elementRef.nativeElement.busyDelay = val;
+  }
+  get busyDelay(): NotificationListItemDirectiveElement['busyDelay'] {
+    return this.elementRef.nativeElement.busyDelay;
+  }
+
+  @Input()
+  set priority(val: NotificationListItemDirectiveElement['priority']) {
+    this.elementRef.nativeElement.priority = val;
+  }
+  get priority(): NotificationListItemDirectiveElement['priority'] {
+    return this.elementRef.nativeElement.priority;
+  }
+
+  @Input()
+  set read(val: NotificationListItemDirectiveElement['read']) {
+    this.elementRef.nativeElement.read = val;
+  }
+  get read(): NotificationListItemDirectiveElement['read'] {
+    return this.elementRef.nativeElement.read;
+  }
+
+  @Input()
+  set showClose(val: NotificationListItemDirectiveElement['showClose']) {
+    this.elementRef.nativeElement.showClose = val;
+  }
+  get showClose(): NotificationListItemDirectiveElement['showClose'] {
+    return this.elementRef.nativeElement.showClose;
+  }
+
+  @Input()
+  set titleText(val: NotificationListItemDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): NotificationListItemDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+
+  @Input()
+  set wrappingType(val: NotificationListItemDirectiveElement['wrappingType']) {
+    this.elementRef.nativeElement.wrappingType = val;
+  }
+  get wrappingType(): NotificationListItemDirectiveElement['wrappingType'] {
+    return this.elementRef.nativeElement.wrappingType;
+  }
+  @Output() close: Observable<NotificationListItemDirectiveEventsMap['close']> =
+    NEVER as any;
+  constructor(
+    private elementRef: ElementRef<NotificationListItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get actions(): Array<NotificationActionDirective['element']> {
+    return this.elementRef.nativeElement.actions;
+  }
+  get avatar(): AvatarDirective['element'] {
+    return this.elementRef.nativeElement.avatar;
+  }
+  get footnotes(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.footnotes;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  NotificationListItemDirective,
+  NotificationListItemDirectiveEventsMap,
+  NotificationListItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Page should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/Page.js';
+import { BarDirective } from '@ui5/webcomponents-ngx/fiori/bar';
+
+interface PageDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'backgroundDesign'
+    | 'disableScrolling'
+    | 'floatingFooter'
+    | 'hideFooter'
+    | 'footer'
+    | 'header'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  backgroundDesign: 'List' | 'Solid' | 'Transparent';
+  disableScrolling: boolean;
+  floatingFooter: boolean;
+  hideFooter: boolean;
+
+  footer: BarDirective['element'];
+  header: BarDirective['element'];
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-page',
+  exportAs: 'ui5Page',
+  standalone: true,
+  providers: [],
+})
+class PageDirective {
+  @Input()
+  set effectiveDir(val: PageDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): PageDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: PageDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): PageDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set backgroundDesign(val: PageDirectiveElement['backgroundDesign']) {
+    this.elementRef.nativeElement.backgroundDesign = val;
+  }
+  get backgroundDesign(): PageDirectiveElement['backgroundDesign'] {
+    return this.elementRef.nativeElement.backgroundDesign;
+  }
+
+  @Input()
+  set disableScrolling(val: PageDirectiveElement['disableScrolling']) {
+    this.elementRef.nativeElement.disableScrolling = val;
+  }
+  get disableScrolling(): PageDirectiveElement['disableScrolling'] {
+    return this.elementRef.nativeElement.disableScrolling;
+  }
+
+  @Input()
+  set floatingFooter(val: PageDirectiveElement['floatingFooter']) {
+    this.elementRef.nativeElement.floatingFooter = val;
+  }
+  get floatingFooter(): PageDirectiveElement['floatingFooter'] {
+    return this.elementRef.nativeElement.floatingFooter;
+  }
+
+  @Input()
+  set hideFooter(val: PageDirectiveElement['hideFooter']) {
+    this.elementRef.nativeElement.hideFooter = val;
+  }
+  get hideFooter(): PageDirectiveElement['hideFooter'] {
+    return this.elementRef.nativeElement.hideFooter;
+  }
+
+  constructor(private elementRef: ElementRef<PageDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get footer(): BarDirective['element'] {
+    return this.elementRef.nativeElement.footer;
+  }
+  get header(): BarDirective['element'] {
+    return this.elementRef.nativeElement.header;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { PageDirective, PageDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Product Switch Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface ProductSwitchItemDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<void>;
+}
+
+interface ProductSwitchItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'icon'
+    | 'subtitleText'
+    | 'target'
+    | 'targetSrc'
+    | 'titleText'
+    | 'click'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  icon: string;
+  subtitleText: string;
+  target: string;
+  targetSrc: string;
+  titleText: string;
+
+  addEventListener<K extends keyof ProductSwitchItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ProductSwitchItemDirectiveElement,
+      ev: ProductSwitchItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ProductSwitchItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ProductSwitchItemDirectiveElement,
+      ev: ProductSwitchItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-product-switch-item',
+  exportAs: 'ui5ProductSwitchItem',
+  standalone: true,
+  providers: [],
+})
+class ProductSwitchItemDirective {
+  @Input()
+  set effectiveDir(val: ProductSwitchItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): ProductSwitchItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: ProductSwitchItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): ProductSwitchItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set icon(val: ProductSwitchItemDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): ProductSwitchItemDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set subtitleText(val: ProductSwitchItemDirectiveElement['subtitleText']) {
+    this.elementRef.nativeElement.subtitleText = val;
+  }
+  get subtitleText(): ProductSwitchItemDirectiveElement['subtitleText'] {
+    return this.elementRef.nativeElement.subtitleText;
+  }
+
+  @Input()
+  set target(val: ProductSwitchItemDirectiveElement['target']) {
+    this.elementRef.nativeElement.target = val;
+  }
+  get target(): ProductSwitchItemDirectiveElement['target'] {
+    return this.elementRef.nativeElement.target;
+  }
+
+  @Input()
+  set targetSrc(val: ProductSwitchItemDirectiveElement['targetSrc']) {
+    this.elementRef.nativeElement.targetSrc = val;
+  }
+  get targetSrc(): ProductSwitchItemDirectiveElement['targetSrc'] {
+    return this.elementRef.nativeElement.targetSrc;
+  }
+
+  @Input()
+  set titleText(val: ProductSwitchItemDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): ProductSwitchItemDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+  @Output() click: Observable<ProductSwitchItemDirectiveEventsMap['click']> =
+    NEVER as any;
+  constructor(
+    private elementRef: ElementRef<ProductSwitchItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  ProductSwitchItemDirective,
+  ProductSwitchItemDirectiveEventsMap,
+  ProductSwitchItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Product Switch should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
+
+interface ProductSwitchDirectiveElement
+  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element'> {
+  effectiveDir: any;
+  isUi5Element: any;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-product-switch',
+  exportAs: 'ui5ProductSwitch',
+  standalone: true,
+  providers: [],
+})
+class ProductSwitchDirective {
+  @Input()
+  set effectiveDir(val: ProductSwitchDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): ProductSwitchDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: ProductSwitchDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): ProductSwitchDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  constructor(private elementRef: ElementRef<ProductSwitchDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { ProductSwitchDirective, ProductSwitchDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Shell Bar Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface ShellBarItemDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<{ targetRef: HTMLElement }>;
+}
+
+interface ShellBarItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'count' | 'icon' | 'text' | 'click'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  count: string;
+  icon: string;
+  text: string;
+
+  addEventListener<K extends keyof ShellBarItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ShellBarItemDirectiveElement,
+      ev: ShellBarItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ShellBarItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ShellBarItemDirectiveElement,
+      ev: ShellBarItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-shellbar-item',
+  exportAs: 'ui5ShellbarItem',
+  standalone: true,
+  providers: [],
+})
+class ShellBarItemDirective {
+  @Input()
+  set effectiveDir(val: ShellBarItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): ShellBarItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: ShellBarItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): ShellBarItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set count(val: ShellBarItemDirectiveElement['count']) {
+    this.elementRef.nativeElement.count = val;
+  }
+  get count(): ShellBarItemDirectiveElement['count'] {
+    return this.elementRef.nativeElement.count;
+  }
+
+  @Input()
+  set icon(val: ShellBarItemDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): ShellBarItemDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set text(val: ShellBarItemDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): ShellBarItemDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+  @Output() click: Observable<ShellBarItemDirectiveEventsMap['click']> =
+    NEVER as any;
+  constructor(private elementRef: ElementRef<ShellBarItemDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  ShellBarItemDirective,
+  ShellBarItemDirectiveEventsMap,
+  ShellBarItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Shell Bar should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ShellBar.js';
+import { Observable, NEVER } from 'rxjs';
+import { AvatarDirective } from '@ui5/webcomponents-ngx/main/avatar';
+import { NotificationListGroupItemDirective } from '@ui5/webcomponents-ngx/fiori/notification-list-group-item';
+import { NotificationListItemDirective } from '@ui5/webcomponents-ngx/fiori/notification-list-item';
+import { CustomListItemDirective } from '@ui5/webcomponents-ngx/main/custom-list-item';
+import { GroupHeaderListItemDirective } from '@ui5/webcomponents-ngx/main/group-header-list-item';
+import { StandardListItemDirective } from '@ui5/webcomponents-ngx/main/standard-list-item';
+import { InputDirective } from '@ui5/webcomponents-ngx/main/input';
+import { ButtonDirective } from '@ui5/webcomponents-ngx/main/button';
+
+interface ShellBarDirectiveEventsMap
+  extends Omit<
+    HTMLElementEventMap,
+    | 'coPilotClick'
+    | 'logoClick'
+    | 'menuItemClick'
+    | 'notificationsClick'
+    | 'productSwitchClick'
+    | 'profileClick'
+  > {
+  coPilotClick: CustomEvent<{ targetRef: HTMLElement }>;
+  logoClick: CustomEvent<{ targetRef: HTMLElement }>;
+  menuItemClick: CustomEvent<{ item: HTMLElement }>;
+  notificationsClick: CustomEvent<{ targetRef: HTMLElement }>;
+  productSwitchClick: CustomEvent<{ targetRef: HTMLElement }>;
+  profileClick: CustomEvent<{ targetRef: HTMLElement }>;
+}
+
+interface ShellBarDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'accessibilityAttributes'
+    | 'accessibilityRoles'
+    | 'accessibilityTexts'
+    | 'copilotDomRef'
+    | 'logoDomRef'
+    | 'notificationsCount'
+    | 'notificationsDomRef'
+    | 'overflowDomRef'
+    | 'primaryTitle'
+    | 'productSwitchDomRef'
+    | 'profileDomRef'
+    | 'secondaryTitle'
+    | 'showCoPilot'
+    | 'showNotifications'
+    | 'showProductSwitch'
+    | 'showSearchField'
+    | 'coPilotClick'
+    | 'logoClick'
+    | 'menuItemClick'
+    | 'notificationsClick'
+    | 'productSwitchClick'
+    | 'profileClick'
+    | 'logo'
+    | 'menuItems'
+    | 'profile'
+    | 'searchField'
+    | 'startButton'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  accessibilityAttributes: Record<string, any>;
+  accessibilityRoles: Record<string, any>;
+  accessibilityTexts: Record<string, any>;
+  copilotDomRef: HTMLElement;
+  logoDomRef: HTMLElement;
+  notificationsCount: string;
+  notificationsDomRef: HTMLElement;
+  overflowDomRef: HTMLElement;
+  primaryTitle: string;
+  productSwitchDomRef: HTMLElement;
+  profileDomRef: HTMLElement;
+  secondaryTitle: string;
+  showCoPilot: boolean;
+  showNotifications: boolean;
+  showProductSwitch: boolean;
+  showSearchField: boolean;
+
+  logo: AvatarDirective['element'];
+  menuItems: Array<
+    | NotificationListGroupItemDirective['element']
+    | NotificationListItemDirective['element']
+    | CustomListItemDirective['element']
+    | GroupHeaderListItemDirective['element']
+    | StandardListItemDirective['element']
+  >;
+  profile: AvatarDirective['element'];
+  searchField: InputDirective['element'];
+  startButton: ButtonDirective['element'];
+
+  addEventListener<K extends keyof ShellBarDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ShellBarDirectiveElement,
+      ev: ShellBarDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ShellBarDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ShellBarDirectiveElement,
+      ev: ShellBarDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
+  closeOverflow(): any;
+}
+
+@Directive({
+  selector: 'ui5-shellbar',
+  exportAs: 'ui5Shellbar',
+  standalone: true,
+  providers: [],
+})
+class ShellBarDirective {
+  @Input()
+  set effectiveDir(val: ShellBarDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): ShellBarDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: ShellBarDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): ShellBarDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set accessibilityAttributes(
+    val: ShellBarDirectiveElement['accessibilityAttributes']
+  ) {
+    this.elementRef.nativeElement.accessibilityAttributes = val;
+  }
+  get accessibilityAttributes(): ShellBarDirectiveElement['accessibilityAttributes'] {
+    return this.elementRef.nativeElement.accessibilityAttributes;
+  }
+
+  @Input()
+  set accessibilityRoles(val: ShellBarDirectiveElement['accessibilityRoles']) {
+    this.elementRef.nativeElement.accessibilityRoles = val;
+  }
+  get accessibilityRoles(): ShellBarDirectiveElement['accessibilityRoles'] {
+    return this.elementRef.nativeElement.accessibilityRoles;
+  }
+
+  @Input()
+  set accessibilityTexts(val: ShellBarDirectiveElement['accessibilityTexts']) {
+    this.elementRef.nativeElement.accessibilityTexts = val;
+  }
+  get accessibilityTexts(): ShellBarDirectiveElement['accessibilityTexts'] {
+    return this.elementRef.nativeElement.accessibilityTexts;
+  }
+
+  @Input()
+  set copilotDomRef(val: ShellBarDirectiveElement['copilotDomRef']) {
+    this.elementRef.nativeElement.copilotDomRef = val;
+  }
+  get copilotDomRef(): ShellBarDirectiveElement['copilotDomRef'] {
+    return this.elementRef.nativeElement.copilotDomRef;
+  }
+
+  @Input()
+  set logoDomRef(val: ShellBarDirectiveElement['logoDomRef']) {
+    this.elementRef.nativeElement.logoDomRef = val;
+  }
+  get logoDomRef(): ShellBarDirectiveElement['logoDomRef'] {
+    return this.elementRef.nativeElement.logoDomRef;
+  }
+
+  @Input()
+  set notificationsCount(val: ShellBarDirectiveElement['notificationsCount']) {
+    this.elementRef.nativeElement.notificationsCount = val;
+  }
+  get notificationsCount(): ShellBarDirectiveElement['notificationsCount'] {
+    return this.elementRef.nativeElement.notificationsCount;
+  }
+
+  @Input()
+  set notificationsDomRef(
+    val: ShellBarDirectiveElement['notificationsDomRef']
+  ) {
+    this.elementRef.nativeElement.notificationsDomRef = val;
+  }
+  get notificationsDomRef(): ShellBarDirectiveElement['notificationsDomRef'] {
+    return this.elementRef.nativeElement.notificationsDomRef;
+  }
+
+  @Input()
+  set overflowDomRef(val: ShellBarDirectiveElement['overflowDomRef']) {
+    this.elementRef.nativeElement.overflowDomRef = val;
+  }
+  get overflowDomRef(): ShellBarDirectiveElement['overflowDomRef'] {
+    return this.elementRef.nativeElement.overflowDomRef;
+  }
+
+  @Input()
+  set primaryTitle(val: ShellBarDirectiveElement['primaryTitle']) {
+    this.elementRef.nativeElement.primaryTitle = val;
+  }
+  get primaryTitle(): ShellBarDirectiveElement['primaryTitle'] {
+    return this.elementRef.nativeElement.primaryTitle;
+  }
+
+  @Input()
+  set productSwitchDomRef(
+    val: ShellBarDirectiveElement['productSwitchDomRef']
+  ) {
+    this.elementRef.nativeElement.productSwitchDomRef = val;
+  }
+  get productSwitchDomRef(): ShellBarDirectiveElement['productSwitchDomRef'] {
+    return this.elementRef.nativeElement.productSwitchDomRef;
+  }
+
+  @Input()
+  set profileDomRef(val: ShellBarDirectiveElement['profileDomRef']) {
+    this.elementRef.nativeElement.profileDomRef = val;
+  }
+  get profileDomRef(): ShellBarDirectiveElement['profileDomRef'] {
+    return this.elementRef.nativeElement.profileDomRef;
+  }
+
+  @Input()
+  set secondaryTitle(val: ShellBarDirectiveElement['secondaryTitle']) {
+    this.elementRef.nativeElement.secondaryTitle = val;
+  }
+  get secondaryTitle(): ShellBarDirectiveElement['secondaryTitle'] {
+    return this.elementRef.nativeElement.secondaryTitle;
+  }
+
+  @Input()
+  set showCoPilot(val: ShellBarDirectiveElement['showCoPilot']) {
+    this.elementRef.nativeElement.showCoPilot = val;
+  }
+  get showCoPilot(): ShellBarDirectiveElement['showCoPilot'] {
+    return this.elementRef.nativeElement.showCoPilot;
+  }
+
+  @Input()
+  set showNotifications(val: ShellBarDirectiveElement['showNotifications']) {
+    this.elementRef.nativeElement.showNotifications = val;
+  }
+  get showNotifications(): ShellBarDirectiveElement['showNotifications'] {
+    return this.elementRef.nativeElement.showNotifications;
+  }
+
+  @Input()
+  set showProductSwitch(val: ShellBarDirectiveElement['showProductSwitch']) {
+    this.elementRef.nativeElement.showProductSwitch = val;
+  }
+  get showProductSwitch(): ShellBarDirectiveElement['showProductSwitch'] {
+    return this.elementRef.nativeElement.showProductSwitch;
+  }
+
+  @Input()
+  set showSearchField(val: ShellBarDirectiveElement['showSearchField']) {
+    this.elementRef.nativeElement.showSearchField = val;
+  }
+  get showSearchField(): ShellBarDirectiveElement['showSearchField'] {
+    return this.elementRef.nativeElement.showSearchField;
+  }
+  @Output() coPilotClick: Observable<
+    ShellBarDirectiveEventsMap['coPilotClick']
+  > = NEVER as any;
+  @Output() logoClick: Observable<ShellBarDirectiveEventsMap['logoClick']> =
+    NEVER as any;
+  @Output() menuItemClick: Observable<
+    ShellBarDirectiveEventsMap['menuItemClick']
+  > = NEVER as any;
+  @Output() notificationsClick: Observable<
+    ShellBarDirectiveEventsMap['notificationsClick']
+  > = NEVER as any;
+  @Output() productSwitchClick: Observable<
+    ShellBarDirectiveEventsMap['productSwitchClick']
+  > = NEVER as any;
+  @Output() profileClick: Observable<
+    ShellBarDirectiveEventsMap['profileClick']
+  > = NEVER as any;
+  constructor(private elementRef: ElementRef<ShellBarDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get logo(): AvatarDirective['element'] {
+    return this.elementRef.nativeElement.logo;
+  }
+  get menuItems(): Array<
+    | NotificationListGroupItemDirective['element']
+    | NotificationListItemDirective['element']
+    | CustomListItemDirective['element']
+    | GroupHeaderListItemDirective['element']
+    | StandardListItemDirective['element']
+  > {
+    return this.elementRef.nativeElement.menuItems;
+  }
+  get profile(): AvatarDirective['element'] {
+    return this.elementRef.nativeElement.profile;
+  }
+  get searchField(): InputDirective['element'] {
+    return this.elementRef.nativeElement.searchField;
+  }
+  get startButton(): ButtonDirective['element'] {
+    return this.elementRef.nativeElement.startButton;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
+  closeOverflow(): any {
+    return this.elementRef.nativeElement.closeOverflow();
+  }
+}
+
+export {
+  ShellBarDirective,
+  ShellBarDirectiveEventsMap,
+  ShellBarDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
+
+interface SideNavigationItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'expanded'
+    | 'icon'
+    | 'selected'
+    | 'text'
+    | 'wholeItemToggleable'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  expanded: boolean;
+  icon: string;
+  selected: boolean;
+  text: string;
+  wholeItemToggleable: boolean;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-side-navigation-item',
+  exportAs: 'ui5SideNavigationItem',
+  standalone: true,
+  providers: [],
+})
+class SideNavigationItemDirective {
+  @Input()
+  set effectiveDir(val: SideNavigationItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): SideNavigationItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: SideNavigationItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): SideNavigationItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set expanded(val: SideNavigationItemDirectiveElement['expanded']) {
+    this.elementRef.nativeElement.expanded = val;
+  }
+  get expanded(): SideNavigationItemDirectiveElement['expanded'] {
+    return this.elementRef.nativeElement.expanded;
+  }
+
+  @Input()
+  set icon(val: SideNavigationItemDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): SideNavigationItemDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set selected(val: SideNavigationItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): SideNavigationItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set text(val: SideNavigationItemDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): SideNavigationItemDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  @Input()
+  set wholeItemToggleable(
+    val: SideNavigationItemDirectiveElement['wholeItemToggleable']
+  ) {
+    this.elementRef.nativeElement.wholeItemToggleable = val;
+  }
+  get wholeItemToggleable(): SideNavigationItemDirectiveElement['wholeItemToggleable'] {
+    return this.elementRef.nativeElement.wholeItemToggleable;
+  }
+
+  constructor(
+    private elementRef: ElementRef<SideNavigationItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { SideNavigationItemDirective, SideNavigationItemDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
+
+interface SideNavigationSubItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'icon' | 'selected' | 'text'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  icon: string;
+  selected: boolean;
+  text: string;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-side-navigation-sub-item',
+  exportAs: 'ui5SideNavigationSubItem',
+  standalone: true,
+  providers: [],
+})
+class SideNavigationSubItemDirective {
+  @Input()
+  set effectiveDir(val: SideNavigationSubItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): SideNavigationSubItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: SideNavigationSubItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): SideNavigationSubItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set icon(val: SideNavigationSubItemDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): SideNavigationSubItemDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set selected(val: SideNavigationSubItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): SideNavigationSubItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set text(val: SideNavigationSubItemDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): SideNavigationSubItemDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  constructor(
+    private elementRef: ElementRef<SideNavigationSubItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  SideNavigationSubItemDirective,
+  SideNavigationSubItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Side Navigation should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
+import { Observable, NEVER } from 'rxjs';
+import { SideNavigationItemDirective } from '@ui5/webcomponents-ngx/fiori/side-navigation-item';
+
+interface SideNavigationDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'selectionChange'> {
+  selectionChange: CustomEvent<{ item: HTMLElement }>;
+}
+
+interface SideNavigationDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'collapsed'
+    | 'selectionChange'
+    | 'fixedItems'
+    | 'header'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  collapsed: boolean;
+
+  fixedItems: Array<SideNavigationItemDirective['element']>;
+  header: Array<HTMLElement>;
+
+  addEventListener<K extends keyof SideNavigationDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationDirectiveElement,
+      ev: SideNavigationDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof SideNavigationDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationDirectiveElement,
+      ev: SideNavigationDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-side-navigation',
+  exportAs: 'ui5SideNavigation',
+  standalone: true,
+  providers: [],
+})
+class SideNavigationDirective {
+  @Input()
+  set effectiveDir(val: SideNavigationDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): SideNavigationDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: SideNavigationDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): SideNavigationDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set collapsed(val: SideNavigationDirectiveElement['collapsed']) {
+    this.elementRef.nativeElement.collapsed = val;
+  }
+  get collapsed(): SideNavigationDirectiveElement['collapsed'] {
+    return this.elementRef.nativeElement.collapsed;
+  }
+  @Output() selectionChange: Observable<
+    SideNavigationDirectiveEventsMap['selectionChange']
+  > = NEVER as any;
+  constructor(private elementRef: ElementRef<SideNavigationDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get fixedItems(): Array<SideNavigationItemDirective['element']> {
+    return this.elementRef.nativeElement.fixedItems;
+  }
+  get header(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.header;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  SideNavigationDirective,
+  SideNavigationDirectiveEventsMap,
+  SideNavigationDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Sort Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SortItem.js';
+
+interface SortItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'selected' | 'text'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  text: string;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-sort-item',
+  exportAs: 'ui5SortItem',
+  standalone: true,
+  providers: [],
+})
+class SortItemDirective {
+  @Input()
+  set effectiveDir(val: SortItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): SortItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: SortItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): SortItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: SortItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): SortItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set text(val: SortItemDirectiveElement['text']) {
+    this.elementRef.nativeElement.text = val;
+  }
+  get text(): SortItemDirectiveElement['text'] {
+    return this.elementRef.nativeElement.text;
+  }
+
+  constructor(private elementRef: ElementRef<SortItemDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { SortItemDirective, SortItemDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Timeline Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface TimelineItemDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'nameClick'> {
+  nameClick: CustomEvent<void>;
+}
+
+interface TimelineItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'icon'
+    | 'name'
+    | 'nameClickable'
+    | 'subtitleText'
+    | 'titleText'
+    | 'nameClick'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  icon: string;
+  name: string;
+  nameClickable: boolean;
+  subtitleText: string;
+  titleText: string;
+
+  addEventListener<K extends keyof TimelineItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: TimelineItemDirectiveElement,
+      ev: TimelineItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof TimelineItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: TimelineItemDirectiveElement,
+      ev: TimelineItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
+  focusLink(): any;
+}
+
+@Directive({
+  selector: 'ui5-timeline-item',
+  exportAs: 'ui5TimelineItem',
+  standalone: true,
+  providers: [],
+})
+class TimelineItemDirective {
+  @Input()
+  set effectiveDir(val: TimelineItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): TimelineItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: TimelineItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): TimelineItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set icon(val: TimelineItemDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): TimelineItemDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set name(val: TimelineItemDirectiveElement['name']) {
+    this.elementRef.nativeElement.name = val;
+  }
+  get name(): TimelineItemDirectiveElement['name'] {
+    return this.elementRef.nativeElement.name;
+  }
+
+  @Input()
+  set nameClickable(val: TimelineItemDirectiveElement['nameClickable']) {
+    this.elementRef.nativeElement.nameClickable = val;
+  }
+  get nameClickable(): TimelineItemDirectiveElement['nameClickable'] {
+    return this.elementRef.nativeElement.nameClickable;
+  }
+
+  @Input()
+  set subtitleText(val: TimelineItemDirectiveElement['subtitleText']) {
+    this.elementRef.nativeElement.subtitleText = val;
+  }
+  get subtitleText(): TimelineItemDirectiveElement['subtitleText'] {
+    return this.elementRef.nativeElement.subtitleText;
+  }
+
+  @Input()
+  set titleText(val: TimelineItemDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): TimelineItemDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+  @Output() nameClick: Observable<TimelineItemDirectiveEventsMap['nameClick']> =
+    NEVER as any;
+  constructor(private elementRef: ElementRef<TimelineItemDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
+  focusLink(): any {
+    return this.elementRef.nativeElement.focusLink();
+  }
+}
+
+export {
+  TimelineItemDirective,
+  TimelineItemDirectiveEventsMap,
+  TimelineItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Timeline should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/Timeline.js';
+
+interface TimelineDirectiveElement
+  extends Omit<
+    HTMLElement,
+    'effectiveDir' | 'isUi5Element' | 'accessibleName' | 'layout'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  accessibleName: string;
+  layout: 'Horizontal' | 'Vertical';
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-timeline',
+  exportAs: 'ui5Timeline',
+  standalone: true,
+  providers: [],
+})
+class TimelineDirective {
+  @Input()
+  set effectiveDir(val: TimelineDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): TimelineDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: TimelineDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): TimelineDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set accessibleName(val: TimelineDirectiveElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName(): TimelineDirectiveElement['accessibleName'] {
+    return this.elementRef.nativeElement.accessibleName;
+  }
+
+  @Input()
+  set layout(val: TimelineDirectiveElement['layout']) {
+    this.elementRef.nativeElement.layout = val;
+  }
+  get layout(): TimelineDirectiveElement['layout'] {
+    return this.elementRef.nativeElement.layout;
+  }
+
+  constructor(private elementRef: ElementRef<TimelineDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { TimelineDirective, TimelineDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Ui 5 Fiori Module Ts should match the snapshot 1`] = `
+"import { NgModule } from '@angular/core';
+import { BarDirective } from '@ui5/webcomponents-ngx/fiori/bar';
+import { BarcodeScannerDialogDirective } from '@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog';
+import { DynamicSideContentDirective } from '@ui5/webcomponents-ngx/fiori/dynamic-side-content';
+import { FilterItemDirective } from '@ui5/webcomponents-ngx/fiori/filter-item';
+import { FilterItemOptionDirective } from '@ui5/webcomponents-ngx/fiori/filter-item-option';
+import { FlexibleColumnLayoutDirective } from '@ui5/webcomponents-ngx/fiori/flexible-column-layout';
+import { IllustratedMessageDirective } from '@ui5/webcomponents-ngx/fiori/illustrated-message';
+import { MediaGalleryDirective } from '@ui5/webcomponents-ngx/fiori/media-gallery';
+import { MediaGalleryItemDirective } from '@ui5/webcomponents-ngx/fiori/media-gallery-item';
+import { NotificationActionDirective } from '@ui5/webcomponents-ngx/fiori/notification-action';
+import { NotificationListGroupItemDirective } from '@ui5/webcomponents-ngx/fiori/notification-list-group-item';
+import { NotificationListItemDirective } from '@ui5/webcomponents-ngx/fiori/notification-list-item';
+import { NotificationListItemBaseDirective } from '@ui5/webcomponents-ngx/fiori/notification-list-item-base';
+import { PageDirective } from '@ui5/webcomponents-ngx/fiori/page';
+import { ProductSwitchDirective } from '@ui5/webcomponents-ngx/fiori/product-switch';
+import { ProductSwitchItemDirective } from '@ui5/webcomponents-ngx/fiori/product-switch-item';
+import { ShellBarDirective } from '@ui5/webcomponents-ngx/fiori/shell-bar';
+import { ShellBarItemDirective } from '@ui5/webcomponents-ngx/fiori/shell-bar-item';
+import { SideNavigationDirective } from '@ui5/webcomponents-ngx/fiori/side-navigation';
+import { SideNavigationItemDirective } from '@ui5/webcomponents-ngx/fiori/side-navigation-item';
+import { SideNavigationSubItemDirective } from '@ui5/webcomponents-ngx/fiori/side-navigation-sub-item';
+import { SortItemDirective } from '@ui5/webcomponents-ngx/fiori/sort-item';
+import { TimelineDirective } from '@ui5/webcomponents-ngx/fiori/timeline';
+import { TimelineItemDirective } from '@ui5/webcomponents-ngx/fiori/timeline-item';
+import { UploadCollectionDirective } from '@ui5/webcomponents-ngx/fiori/upload-collection';
+import { UploadCollectionItemDirective } from '@ui5/webcomponents-ngx/fiori/upload-collection-item';
+import { ViewSettingsDialogDirective } from '@ui5/webcomponents-ngx/fiori/view-settings-dialog';
+import { WizardDirective } from '@ui5/webcomponents-ngx/fiori/wizard';
+import { WizardStepDirective } from '@ui5/webcomponents-ngx/fiori/wizard-step';
+
+const declarations = [];
+const imports = [
+  BarDirective,
+  BarcodeScannerDialogDirective,
+  DynamicSideContentDirective,
+  FilterItemDirective,
+  FilterItemOptionDirective,
+  FlexibleColumnLayoutDirective,
+  IllustratedMessageDirective,
+  MediaGalleryDirective,
+  MediaGalleryItemDirective,
+  NotificationActionDirective,
+  NotificationListGroupItemDirective,
+  NotificationListItemDirective,
+  NotificationListItemBaseDirective,
+  PageDirective,
+  ProductSwitchDirective,
+  ProductSwitchItemDirective,
+  ShellBarDirective,
+  ShellBarItemDirective,
+  SideNavigationDirective,
+  SideNavigationItemDirective,
+  SideNavigationSubItemDirective,
+  SortItemDirective,
+  TimelineDirective,
+  TimelineItemDirective,
+  UploadCollectionDirective,
+  UploadCollectionItemDirective,
+  ViewSettingsDialogDirective,
+  WizardDirective,
+  WizardStepDirective,
+];
+const providers = [];
+
+@NgModule({
+  imports: [...imports],
+  declarations: [...declarations],
+  providers: [...providers],
+  exports: [...imports, ...declarations],
+})
+class Ui5FioriModule {}
+export { Ui5FioriModule };
+"
+`;
+
+exports[`Snapshot test Fiori Upload Collection Item should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
+import { Observable, NEVER } from 'rxjs';
+import { ButtonDirective } from '@ui5/webcomponents-ngx/main/button';
+
+interface UploadCollectionItemDirectiveEventsMap
+  extends Omit<
+    HTMLElementEventMap,
+    'detailClick' | 'fileNameClick' | 'rename' | 'retry' | 'terminate'
+  > {
+  detailClick: CustomEvent<void>;
+  fileNameClick: CustomEvent<void>;
+  rename: CustomEvent<void>;
+  retry: CustomEvent<void>;
+  terminate: CustomEvent<void>;
+}
+
+interface UploadCollectionItemDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'selected'
+    | 'navigated'
+    | 'type'
+    | 'disableDeleteButton'
+    | 'file'
+    | 'fileName'
+    | 'fileNameClickable'
+    | 'hideRetryButton'
+    | 'hideTerminateButton'
+    | 'progress'
+    | 'uploadState'
+    | 'detailClick'
+    | 'fileNameClick'
+    | 'rename'
+    | 'retry'
+    | 'terminate'
+    | 'deleteButton'
+    | 'thumbnail'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  selected: boolean;
+  navigated: boolean;
+  type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
+  disableDeleteButton: boolean;
+  file: any;
+  fileName: string;
+  fileNameClickable: boolean;
+  hideRetryButton: boolean;
+  hideTerminateButton: boolean;
+  progress: any;
+  uploadState: 'Complete' | 'Error' | 'Ready' | 'Uploading';
+
+  deleteButton: ButtonDirective['element'];
+  thumbnail: HTMLElement;
+
+  addEventListener<K extends keyof UploadCollectionItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: UploadCollectionItemDirectiveElement,
+      ev: UploadCollectionItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof UploadCollectionItemDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: UploadCollectionItemDirectiveElement,
+      ev: UploadCollectionItemDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-upload-collection-item',
+  exportAs: 'ui5UploadCollectionItem',
+  standalone: true,
+  providers: [],
+})
+class UploadCollectionItemDirective {
+  @Input()
+  set effectiveDir(val: UploadCollectionItemDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): UploadCollectionItemDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: UploadCollectionItemDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): UploadCollectionItemDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set selected(val: UploadCollectionItemDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): UploadCollectionItemDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set navigated(val: UploadCollectionItemDirectiveElement['navigated']) {
+    this.elementRef.nativeElement.navigated = val;
+  }
+  get navigated(): UploadCollectionItemDirectiveElement['navigated'] {
+    return this.elementRef.nativeElement.navigated;
+  }
+
+  @Input()
+  set type(val: UploadCollectionItemDirectiveElement['type']) {
+    this.elementRef.nativeElement.type = val;
+  }
+  get type(): UploadCollectionItemDirectiveElement['type'] {
+    return this.elementRef.nativeElement.type;
+  }
+
+  @Input()
+  set disableDeleteButton(
+    val: UploadCollectionItemDirectiveElement['disableDeleteButton']
+  ) {
+    this.elementRef.nativeElement.disableDeleteButton = val;
+  }
+  get disableDeleteButton(): UploadCollectionItemDirectiveElement['disableDeleteButton'] {
+    return this.elementRef.nativeElement.disableDeleteButton;
+  }
+
+  @Input()
+  set file(val: UploadCollectionItemDirectiveElement['file']) {
+    this.elementRef.nativeElement.file = val;
+  }
+  get file(): UploadCollectionItemDirectiveElement['file'] {
+    return this.elementRef.nativeElement.file;
+  }
+
+  @Input()
+  set fileName(val: UploadCollectionItemDirectiveElement['fileName']) {
+    this.elementRef.nativeElement.fileName = val;
+  }
+  get fileName(): UploadCollectionItemDirectiveElement['fileName'] {
+    return this.elementRef.nativeElement.fileName;
+  }
+
+  @Input()
+  set fileNameClickable(
+    val: UploadCollectionItemDirectiveElement['fileNameClickable']
+  ) {
+    this.elementRef.nativeElement.fileNameClickable = val;
+  }
+  get fileNameClickable(): UploadCollectionItemDirectiveElement['fileNameClickable'] {
+    return this.elementRef.nativeElement.fileNameClickable;
+  }
+
+  @Input()
+  set hideRetryButton(
+    val: UploadCollectionItemDirectiveElement['hideRetryButton']
+  ) {
+    this.elementRef.nativeElement.hideRetryButton = val;
+  }
+  get hideRetryButton(): UploadCollectionItemDirectiveElement['hideRetryButton'] {
+    return this.elementRef.nativeElement.hideRetryButton;
+  }
+
+  @Input()
+  set hideTerminateButton(
+    val: UploadCollectionItemDirectiveElement['hideTerminateButton']
+  ) {
+    this.elementRef.nativeElement.hideTerminateButton = val;
+  }
+  get hideTerminateButton(): UploadCollectionItemDirectiveElement['hideTerminateButton'] {
+    return this.elementRef.nativeElement.hideTerminateButton;
+  }
+
+  @Input()
+  set progress(val: UploadCollectionItemDirectiveElement['progress']) {
+    this.elementRef.nativeElement.progress = val;
+  }
+  get progress(): UploadCollectionItemDirectiveElement['progress'] {
+    return this.elementRef.nativeElement.progress;
+  }
+
+  @Input()
+  set uploadState(val: UploadCollectionItemDirectiveElement['uploadState']) {
+    this.elementRef.nativeElement.uploadState = val;
+  }
+  get uploadState(): UploadCollectionItemDirectiveElement['uploadState'] {
+    return this.elementRef.nativeElement.uploadState;
+  }
+  @Output() detailClick: Observable<
+    UploadCollectionItemDirectiveEventsMap['detailClick']
+  > = NEVER as any;
+  @Output() fileNameClick: Observable<
+    UploadCollectionItemDirectiveEventsMap['fileNameClick']
+  > = NEVER as any;
+  @Output() rename: Observable<
+    UploadCollectionItemDirectiveEventsMap['rename']
+  > = NEVER as any;
+  @Output() retry: Observable<UploadCollectionItemDirectiveEventsMap['retry']> =
+    NEVER as any;
+  @Output() terminate: Observable<
+    UploadCollectionItemDirectiveEventsMap['terminate']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<UploadCollectionItemDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get deleteButton(): ButtonDirective['element'] {
+    return this.elementRef.nativeElement.deleteButton;
+  }
+  get thumbnail(): HTMLElement {
+    return this.elementRef.nativeElement.thumbnail;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  UploadCollectionItemDirective,
+  UploadCollectionItemDirectiveEventsMap,
+  UploadCollectionItemDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Upload Collection should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface UploadCollectionDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'drop' | 'itemDelete' | 'selectionChange'> {
+  drop: CustomEvent<{ dataTransfer: any }>;
+  itemDelete: CustomEvent<{ item: HTMLElement }>;
+  selectionChange: CustomEvent<{ selectedItems: Array<any> }>;
+}
+
+interface UploadCollectionDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'accessibleName'
+    | 'hideDragOverlay'
+    | 'mode'
+    | 'noDataDescription'
+    | 'noDataText'
+    | 'drop'
+    | 'itemDelete'
+    | 'selectionChange'
+    | 'header'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  accessibleName: string;
+  hideDragOverlay: boolean;
+  mode:
+    | 'Delete'
+    | 'MultiSelect'
+    | 'None'
+    | 'SingleSelect'
+    | 'SingleSelectAuto'
+    | 'SingleSelectBegin'
+    | 'SingleSelectEnd';
+  noDataDescription: string;
+  noDataText: string;
+
+  header: Array<HTMLElement>;
+
+  addEventListener<K extends keyof UploadCollectionDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: UploadCollectionDirectiveElement,
+      ev: UploadCollectionDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof UploadCollectionDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: UploadCollectionDirectiveElement,
+      ev: UploadCollectionDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-upload-collection',
+  exportAs: 'ui5UploadCollection',
+  standalone: true,
+  providers: [],
+})
+class UploadCollectionDirective {
+  @Input()
+  set effectiveDir(val: UploadCollectionDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): UploadCollectionDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: UploadCollectionDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): UploadCollectionDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set accessibleName(val: UploadCollectionDirectiveElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName(): UploadCollectionDirectiveElement['accessibleName'] {
+    return this.elementRef.nativeElement.accessibleName;
+  }
+
+  @Input()
+  set hideDragOverlay(
+    val: UploadCollectionDirectiveElement['hideDragOverlay']
+  ) {
+    this.elementRef.nativeElement.hideDragOverlay = val;
+  }
+  get hideDragOverlay(): UploadCollectionDirectiveElement['hideDragOverlay'] {
+    return this.elementRef.nativeElement.hideDragOverlay;
+  }
+
+  @Input()
+  set mode(val: UploadCollectionDirectiveElement['mode']) {
+    this.elementRef.nativeElement.mode = val;
+  }
+  get mode(): UploadCollectionDirectiveElement['mode'] {
+    return this.elementRef.nativeElement.mode;
+  }
+
+  @Input()
+  set noDataDescription(
+    val: UploadCollectionDirectiveElement['noDataDescription']
+  ) {
+    this.elementRef.nativeElement.noDataDescription = val;
+  }
+  get noDataDescription(): UploadCollectionDirectiveElement['noDataDescription'] {
+    return this.elementRef.nativeElement.noDataDescription;
+  }
+
+  @Input()
+  set noDataText(val: UploadCollectionDirectiveElement['noDataText']) {
+    this.elementRef.nativeElement.noDataText = val;
+  }
+  get noDataText(): UploadCollectionDirectiveElement['noDataText'] {
+    return this.elementRef.nativeElement.noDataText;
+  }
+  @Output() drop: Observable<UploadCollectionDirectiveEventsMap['drop']> =
+    NEVER as any;
+  @Output() itemDelete: Observable<
+    UploadCollectionDirectiveEventsMap['itemDelete']
+  > = NEVER as any;
+  @Output() selectionChange: Observable<
+    UploadCollectionDirectiveEventsMap['selectionChange']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<UploadCollectionDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get header(): Array<HTMLElement> {
+    return this.elementRef.nativeElement.header;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export {
+  UploadCollectionDirective,
+  UploadCollectionDirectiveEventsMap,
+  UploadCollectionDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori View Settings Dialog should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
+import { Observable, NEVER } from 'rxjs';
+import { FilterItemDirective } from '@ui5/webcomponents-ngx/fiori/filter-item';
+import { SortItemDirective } from '@ui5/webcomponents-ngx/fiori/sort-item';
+
+interface ViewSettingsDialogDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'beforeOpen' | 'cancel' | 'confirm'> {
+  beforeOpen: CustomEvent<void>;
+  cancel: CustomEvent<{
+    sortOrder: string;
+    sortBy: string;
+    sortByItem: HTMLElement;
+    sortDescending: boolean;
+    filterItems: Array<any>;
+  }>;
+  confirm: CustomEvent<{
+    sortOrder: string;
+    sortBy: string;
+    sortByItem: HTMLElement;
+    sortDescending: boolean;
+    filterItems: Array<any>;
+  }>;
+}
+
+interface ViewSettingsDialogDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'sortDescending'
+    | 'beforeOpen'
+    | 'cancel'
+    | 'confirm'
+    | 'filterItems'
+    | 'sortItems'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  sortDescending: boolean;
+
+  filterItems: Array<FilterItemDirective['element']>;
+  sortItems: Array<SortItemDirective['element']>;
+
+  addEventListener<K extends keyof ViewSettingsDialogDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ViewSettingsDialogDirectiveElement,
+      ev: ViewSettingsDialogDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ViewSettingsDialogDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: ViewSettingsDialogDirectiveElement,
+      ev: ViewSettingsDialogDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+
+  setConfirmedSettings(settings: Record<string, any>): any;
+
+  show(): any;
+}
+
+@Directive({
+  selector: 'ui5-view-settings-dialog',
+  exportAs: 'ui5ViewSettingsDialog',
+  standalone: true,
+  providers: [],
+})
+class ViewSettingsDialogDirective {
+  @Input()
+  set effectiveDir(val: ViewSettingsDialogDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): ViewSettingsDialogDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: ViewSettingsDialogDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): ViewSettingsDialogDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set sortDescending(
+    val: ViewSettingsDialogDirectiveElement['sortDescending']
+  ) {
+    this.elementRef.nativeElement.sortDescending = val;
+  }
+  get sortDescending(): ViewSettingsDialogDirectiveElement['sortDescending'] {
+    return this.elementRef.nativeElement.sortDescending;
+  }
+  @Output() beforeOpen: Observable<
+    ViewSettingsDialogDirectiveEventsMap['beforeOpen']
+  > = NEVER as any;
+  @Output() cancel: Observable<ViewSettingsDialogDirectiveEventsMap['cancel']> =
+    NEVER as any;
+  @Output() confirm: Observable<
+    ViewSettingsDialogDirectiveEventsMap['confirm']
+  > = NEVER as any;
+  constructor(
+    private elementRef: ElementRef<ViewSettingsDialogDirectiveElement>
+  ) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get filterItems(): Array<FilterItemDirective['element']> {
+    return this.elementRef.nativeElement.filterItems;
+  }
+  get sortItems(): Array<SortItemDirective['element']> {
+    return this.elementRef.nativeElement.sortItems;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+
+  setConfirmedSettings(settings: Record<string, any>): any {
+    return this.elementRef.nativeElement.setConfirmedSettings(settings);
+  }
+
+  show(): any {
+    return this.elementRef.nativeElement.show();
+  }
+}
+
+export {
+  ViewSettingsDialogDirective,
+  ViewSettingsDialogDirectiveEventsMap,
+  ViewSettingsDialogDirectiveElement,
+};
+"
+`;
+
+exports[`Snapshot test Fiori Wizard Step should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/WizardStep.js';
+
+interface WizardStepDirectiveElement
+  extends Omit<
+    HTMLElement,
+    | 'effectiveDir'
+    | 'isUi5Element'
+    | 'branching'
+    | 'disabled'
+    | 'icon'
+    | 'selected'
+    | 'subtitleText'
+    | 'titleText'
+  > {
+  effectiveDir: any;
+  isUi5Element: any;
+  branching: boolean;
+  disabled: boolean;
+  icon: string;
+  selected: boolean;
+  subtitleText: string;
+  titleText: string;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-wizard-step',
+  exportAs: 'ui5WizardStep',
+  standalone: true,
+  providers: [],
+})
+class WizardStepDirective {
+  @Input()
+  set effectiveDir(val: WizardStepDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): WizardStepDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: WizardStepDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): WizardStepDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+
+  @Input()
+  set branching(val: WizardStepDirectiveElement['branching']) {
+    this.elementRef.nativeElement.branching = val;
+  }
+  get branching(): WizardStepDirectiveElement['branching'] {
+    return this.elementRef.nativeElement.branching;
+  }
+
+  @Input()
+  set disabled(val: WizardStepDirectiveElement['disabled']) {
+    this.elementRef.nativeElement.disabled = val;
+  }
+  get disabled(): WizardStepDirectiveElement['disabled'] {
+    return this.elementRef.nativeElement.disabled;
+  }
+
+  @Input()
+  set icon(val: WizardStepDirectiveElement['icon']) {
+    this.elementRef.nativeElement.icon = val;
+  }
+  get icon(): WizardStepDirectiveElement['icon'] {
+    return this.elementRef.nativeElement.icon;
+  }
+
+  @Input()
+  set selected(val: WizardStepDirectiveElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected(): WizardStepDirectiveElement['selected'] {
+    return this.elementRef.nativeElement.selected;
+  }
+
+  @Input()
+  set subtitleText(val: WizardStepDirectiveElement['subtitleText']) {
+    this.elementRef.nativeElement.subtitleText = val;
+  }
+  get subtitleText(): WizardStepDirectiveElement['subtitleText'] {
+    return this.elementRef.nativeElement.subtitleText;
+  }
+
+  @Input()
+  set titleText(val: WizardStepDirectiveElement['titleText']) {
+    this.elementRef.nativeElement.titleText = val;
+  }
+  get titleText(): WizardStepDirectiveElement['titleText'] {
+    return this.elementRef.nativeElement.titleText;
+  }
+
+  constructor(private elementRef: ElementRef<WizardStepDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { WizardStepDirective, WizardStepDirectiveElement };
+"
+`;
+
+exports[`Snapshot test Fiori Wizard should match the snapshot 1`] = `
+"import { Directive, ElementRef, Input, Output } from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/Wizard.js';
+import { Observable, NEVER } from 'rxjs';
+
+interface WizardDirectiveEventsMap
+  extends Omit<HTMLElementEventMap, 'stepChange'> {
+  stepChange: CustomEvent<{
+    step: HTMLElement;
+    previousStep: HTMLElement;
+    changeWithClick: boolean;
+  }>;
+}
+
+interface WizardDirectiveElement
+  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element' | 'stepChange'> {
+  effectiveDir: any;
+  isUi5Element: any;
+
+  addEventListener<K extends keyof WizardDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: WizardDirectiveElement,
+      ev: WizardDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof WizardDirectiveEventsMap>(
+    type: K,
+    listener: (
+      this: WizardDirectiveElement,
+      ev: WizardDirectiveEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+
+  _render(): any;
+
+  attachInvalidate(callback: any): any;
+
+  define(): any;
+
+  detachInvalidate(callback: any): any;
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
+
+  focus(): any;
+
+  getDomRef(): any;
+
+  getFocusDomRef(): any;
+
+  getFocusDomRefAsync(): any;
+
+  getMetadata(): any;
+
+  getSlottedNodes(): any;
+
+  getStaticAreaItemDomRef(): any;
+
+  getUniqueDependencies(): any;
+
+  onAfterRendering(): any;
+
+  onBeforeRendering(): any;
+
+  onDefine(): any;
+
+  onEnterDOM(): any;
+
+  onExitDOM(): any;
+
+  onInvalidation(changeInfo: any): any;
+}
+
+@Directive({
+  selector: 'ui5-wizard',
+  exportAs: 'ui5Wizard',
+  standalone: true,
+  providers: [],
+})
+class WizardDirective {
+  @Input()
+  set effectiveDir(val: WizardDirectiveElement['effectiveDir']) {
+    this.elementRef.nativeElement.effectiveDir = val;
+  }
+  get effectiveDir(): WizardDirectiveElement['effectiveDir'] {
+    return this.elementRef.nativeElement.effectiveDir;
+  }
+
+  @Input()
+  set isUi5Element(val: WizardDirectiveElement['isUi5Element']) {
+    this.elementRef.nativeElement.isUi5Element = val;
+  }
+  get isUi5Element(): WizardDirectiveElement['isUi5Element'] {
+    return this.elementRef.nativeElement.isUi5Element;
+  }
+  @Output() stepChange: Observable<WizardDirectiveEventsMap['stepChange']> =
+    NEVER as any;
+  constructor(private elementRef: ElementRef<WizardDirectiveElement>) {}
+
+  get element(): typeof this.elementRef.nativeElement {
+    return this.elementRef.nativeElement;
+  }
+
+  _render(): any {
+    return this.elementRef.nativeElement._render();
+  }
+
+  attachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.attachInvalidate(callback);
+  }
+
+  define(): any {
+    return this.elementRef.nativeElement.define();
+  }
+
+  detachInvalidate(callback: any): any {
+    return this.elementRef.nativeElement.detachInvalidate(callback);
+  }
+
+  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean {
+    return this.elementRef.nativeElement.fireEvent(
+      name,
+      data,
+      cancelable,
+      bubbles
+    );
+  }
+
+  focus(): any {
+    return this.elementRef.nativeElement.focus();
+  }
+
+  getDomRef(): any {
+    return this.elementRef.nativeElement.getDomRef();
+  }
+
+  getFocusDomRef(): any {
+    return this.elementRef.nativeElement.getFocusDomRef();
+  }
+
+  getFocusDomRefAsync(): any {
+    return this.elementRef.nativeElement.getFocusDomRefAsync();
+  }
+
+  getMetadata(): any {
+    return this.elementRef.nativeElement.getMetadata();
+  }
+
+  getSlottedNodes(): any {
+    return this.elementRef.nativeElement.getSlottedNodes();
+  }
+
+  getStaticAreaItemDomRef(): any {
+    return this.elementRef.nativeElement.getStaticAreaItemDomRef();
+  }
+
+  getUniqueDependencies(): any {
+    return this.elementRef.nativeElement.getUniqueDependencies();
+  }
+
+  onAfterRendering(): any {
+    return this.elementRef.nativeElement.onAfterRendering();
+  }
+
+  onBeforeRendering(): any {
+    return this.elementRef.nativeElement.onBeforeRendering();
+  }
+
+  onDefine(): any {
+    return this.elementRef.nativeElement.onDefine();
+  }
+
+  onEnterDOM(): any {
+    return this.elementRef.nativeElement.onEnterDOM();
+  }
+
+  onExitDOM(): any {
+    return this.elementRef.nativeElement.onExitDOM();
+  }
+
+  onInvalidation(changeInfo: any): any {
+    return this.elementRef.nativeElement.onInvalidation(changeInfo);
+  }
+}
+
+export { WizardDirective, WizardDirectiveEventsMap, WizardDirectiveElement };
+"
+`;

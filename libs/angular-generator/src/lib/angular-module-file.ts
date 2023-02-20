@@ -6,6 +6,7 @@ import {getExported} from "./utils/get-exported";
 import {isDeclaration} from "./utils/is-declaration";
 import {isModule} from "./utils/is-module";
 import {isProvider} from "./utils/is-provider";
+import {format as prettierFormat} from "prettier";
 
 export class AngularModuleFile extends AngularGeneratedFile {
   protected includedFiles: AngularGeneratedFile[];
@@ -51,28 +52,44 @@ export class AngularModuleFile extends AngularGeneratedFile {
         });
       });
     });
+    const exports = ['...imports', '...declarations'].filter((_, i) => [imports, declarations][i].size > 0);
     const needsConstructor = [...providers.values()].filter(className => this.providers.get(className));
+    const moduleContents = ((contents) => {
+      return Object.keys(contents).reduce((acc, key) => {
+        if (contents[key].length === 0) {
+          return acc;
+        }
+        acc[key] = contents[key];
+        return acc;
+      }, {});
+    })({
+      imports: [...imports],
+      declarations: [...declarations],
+      providers: [...providers],
+      exports
+    });
+    const variableDeclarations = Object.keys(moduleContents).map(key => {
+      return `const ${key} = [${moduleContents[key].join(',')}]`
+    }).join('\n');
 
-    return `
+    const moduleMetadata = Object.keys(moduleContents).map(key => {
+      return `${key}: [...${key}]`;
+    }).join(',\n');
+    return prettierFormat(`
       ${this.getImportsCode()}
 
-      const declarations = [${[...declarations.values()].join(',\n')}];
-      const imports = [${[...imports.values()].join(',\n')}];
-      const providers = [${[...providers.values()].join(',\n')}];
+      ${variableDeclarations}
 
       @NgModule({
-        imports: [...imports],
-        declarations: [...declarations],
-        providers: [...providers],
-        exports: [...imports, ...declarations]
+        ${moduleMetadata}
       })
       class ${this.className} {
         ${
-          needsConstructor.length > 0 ? `constructor(${needsConstructor.map(className => camelCase(className) + ': ' + className).join(', ')}) {}` : ''
-        }
+      needsConstructor.length > 0 ? `constructor(${needsConstructor.map(className => camelCase(className) + ': ' + className).join(', ')}) {}` : ''
+    }
       }
       ${this.getExportsCode()}
-    `;
+    `, {parser: 'typescript'});
   }
 
   addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false): void {

@@ -1,6 +1,6 @@
 import {AngularGeneratedFile} from "./angular-generated-file";
 import {ModuleDescription} from "./angular-generator-options";
-import {startCase} from "lodash";
+import {camelCase, startCase} from "lodash";
 import {AngularExportSpecifierType} from "./angular-export-specifier-type";
 import {getExported} from "./utils/get-exported";
 import {isDeclaration} from "./utils/is-declaration";
@@ -10,6 +10,7 @@ import {isProvider} from "./utils/is-provider";
 export class AngularModuleFile extends AngularGeneratedFile {
   protected includedFiles: AngularGeneratedFile[];
   protected className: string;
+  protected providers = new Map<string, boolean>();
 
   constructor(protected potentialFilesToInclude: AngularGeneratedFile[], protected moduleDescription: ModuleDescription) {
     super();
@@ -30,7 +31,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
   override getCode(): string {
     const declarations = new Set<string>();
     const imports = new Set<string>();
-    const providers = new Set<string>();
+    const providers = new Set(this.providers.keys());
     this.includedFiles.forEach(file => {
       file.exports.forEach(exportData => {
         exportData.specifiers.forEach(specifier => {
@@ -50,6 +51,8 @@ export class AngularModuleFile extends AngularGeneratedFile {
         });
       });
     });
+    const needsConstructor = [...providers.values()].filter(className => this.providers.get(className));
+
     return `
       ${this.getImportsCode()}
 
@@ -63,8 +66,17 @@ export class AngularModuleFile extends AngularGeneratedFile {
         providers: [...providers],
         exports: [...imports, ...declarations]
       })
-      class ${this.className} {}
+      class ${this.className} {
+        ${
+          needsConstructor.length > 0 ? `constructor(${needsConstructor.map(className => camelCase(className) + ': ' + className).join(', ')}) {}` : ''
+        }
+      }
       ${this.getExportsCode()}
     `;
+  }
+
+  addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false): void {
+    this.addImport(specifier, file.relativePathFrom);
+    this.providers.set(specifier, shouldInitialize);
   }
 }

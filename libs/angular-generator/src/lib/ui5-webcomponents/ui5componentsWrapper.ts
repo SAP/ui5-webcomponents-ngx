@@ -22,7 +22,7 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
   return componentFile;
 }
 
-export const ui5componentsWrapper = (components: ComponentData[], options: AngularGeneratorOptions): Record<string, GeneratedFile<AngularExportSpecifierType>> => {
+export const ui5componentsWrapper = (components: ComponentData[], options: AngularGeneratorOptions): Record<string, AngularGeneratedFile> => {
   const cache = new Map<ComponentData, ComponentFile>;
   const files: Record<string, AngularGeneratedFile> = {};
   let needsCva = false;

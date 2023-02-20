@@ -1,8 +1,51 @@
 import {ComponentData, WrapperConfig} from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
-import {ui5componentsWrapper} from "@ui5/webcomponents-ngx-generator";
-import {kebabCase} from "lodash";
+import {
+  AngularExportSpecifierType,
+  AngularGeneratedFile, AngularModuleFile,
+  NgPackageFile,
+  ui5componentsWrapper
+} from "@ui5/webcomponents-ngx-generator";
+import {camelCase, kebabCase} from "lodash";
 import {join} from "path";
+
+const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
+
+class ThemingServiceFile extends AngularGeneratedFile {
+  className: string;
+  override apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
+
+  constructor(protected baseDir: string, protected packageName: 'fiori' | 'main') {
+    super();
+    this.addImport('WebcomponentsThemingProvider', '@ui5/webcomponents-ngx/theming');
+    this.addImport('Injectable', '@angular/core');
+    this.move(`${baseDir}/index.ts`);
+    this.className = `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
+    this.addExport({
+      local: () => this.className,
+      exported: () => this.className,
+      types: [AngularExportSpecifierType.Provider]
+    })
+  }
+
+  getServiceCode(): string {
+    return `
+      @Injectable()
+      class ${this.className} extends WebcomponentsThemingProvider {
+        name = ${JSON.stringify(kebabCase(this.className))};
+        constructor() {
+          super(() => import('@ui5/webcomponents${this.packageName === 'main' ? '' : '-fiori'}/dist/generated/json-imports/Themes.js'))
+        }
+      }
+    `
+  }
+
+  override getCode(): string {
+    return [this.getImportsCode(), this.getServiceCode(), this.getExportsCode()].join('\n');
+  }
+}
+
+const packageNames = ['fiori', 'main'];
 
 export default {
   getComponents: () => apiJsonParser({
@@ -15,16 +58,16 @@ export default {
   generator: (components) => {
     const files = ui5componentsWrapper(components, {
       modules: [
-        {
-          fileName: 'fiori/ui5-fiori.module.ts',
+        ...packageNames.map(packageName => ({
+          fileName: `${packageName}/ui5-${packageName}.module.ts`,
           included: (file) => {
-            return file.path.startsWith('fiori');
+            return file.path.startsWith(packageName);
           }
-        },
+        })),
         {
-          fileName: 'main/ui5-main.module.ts',
+          fileName: 'ui5-webcomponents.module.ts',
           included: (file) => {
-            return file.path.startsWith('main');
+            return file.path.endsWith('module.ts');
           }
         }
       ],
@@ -43,7 +86,16 @@ export default {
         return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
       }
     });
-    files['index.ts'].addExport(['Ui5WebcomponentsThemingModule', 'Ui5WebcomponentsThemingService'], '@ui5/webcomponents-ngx/theming');
+    files['index.ts'].addExport(['Ui5WebcomponentsThemingModule'], '@ui5/webcomponents-ngx/theming');
+
+    packageNames.forEach(packageName => {
+      files[`${packageName}/theming/index.ts`] = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main');
+      files[`${packageName}/theming/ng-package.json`] = new NgPackageFile(files[`${packageName}/theming/index.ts`], `${packageName}/theming`);
+      files['index.ts'].addExport('*', `@ui5/webcomponents-ngx/${packageName}/theming`);
+
+      (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addProvider(files[`${packageName}/theming/index.ts`], `Ui5Webcomponents${pascalCase(packageName)}ThemingService`, true);
+    });
+
     return files;
   }
 } as Partial<WrapperConfig<ComponentData>>;

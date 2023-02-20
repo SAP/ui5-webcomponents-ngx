@@ -6,9 +6,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Ui5ThemingModule} from '@ui5/theming-ngx';
 import {Ui5MainModule} from "@ui5/webcomponents-ngx/main/ui5-main.module";
 import {Ui5FioriModule} from "@ui5/webcomponents-ngx/fiori/ui5-fiori.module";
-import {FundamentalStylesComponentsModule} from "@fundamental-styles/theming-ngx/fundamental-styles-components.module";
+import {FundamentalStylesComponentsModule} from "@fundamental-styles/theming-ngx";
 import {Ui5FundamentalThemingModule} from "@fundamental-styles/theming-ngx/theming";
 import {Ui5WebcomponentsThemingModule} from "@ui5/webcomponents-ngx/theming";
+import {Ui5WebcomponentsIconsModule} from "@ui5/webcomponents-ngx/icons";
+import {Ui5WebcomponentsModule} from '@ui5/webcomponents-ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,11 +21,12 @@ import {Ui5WebcomponentsThemingModule} from "@ui5/webcomponents-ngx/theming";
     FormsModule,
     ReactiveFormsModule,
     Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}),
-    Ui5WebcomponentsThemingModule,
+    Ui5WebcomponentsIconsModule.forRoot(['sap-icons', 'tnt-icons', "business-suite-icons"]),
+    Ui5WebcomponentsModule,
+    Ui5WebcomponentsThemingModule.forRoot(),
     FundamentalStylesComponentsModule,
     Ui5FundamentalThemingModule
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

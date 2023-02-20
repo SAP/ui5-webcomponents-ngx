@@ -1,12 +1,18 @@
-import {NgModule} from "@angular/core";
+import {ModuleWithProviders, NgModule} from "@angular/core";
 import {Ui5WebcomponentsThemingService} from "./theming.service";
 
 @NgModule({
   exports: [],
-  declarations: [],
-  providers: [Ui5WebcomponentsThemingService]
+  declarations: []
 })
 export class Ui5WebcomponentsThemingModule {
-  constructor(public theming: Ui5WebcomponentsThemingService) {
+  constructor(readonly theming: Ui5WebcomponentsThemingService) {
+  }
+
+  static forRoot(): ModuleWithProviders<Ui5WebcomponentsThemingModule> {
+    return {
+      ngModule: Ui5WebcomponentsThemingModule,
+      providers: [Ui5WebcomponentsThemingService]
+    }
   }
 }

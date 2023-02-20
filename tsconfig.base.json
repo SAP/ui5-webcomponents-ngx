@@ -17,9 +17,7 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@fundamental-styles/theming-ngx": [
-        "libs/fundamental-styles/src/index.ts"
-      ],
+      "@fundamental-styles/theming-ngx": ["libs/fundamental-styles/index.ts"],
       "@fundamental-styles/theming-ngx/*": ["libs/fundamental-styles/*"],
       "@fundamental-styles/theming-ngx/src/themes/*": [
         "libs/fundamental-styles/src/themes/*"
@@ -32,7 +30,7 @@
       "@ui5/webcomponents-api-json-parser": [
         "libs/api-json-parser/src/index.ts"
       ],
-      "@ui5/webcomponents-ngx": ["libs/ui5-angular/src/index.ts"],
+      "@ui5/webcomponents-ngx": ["libs/ui5-angular/index.ts"],
       "@ui5/webcomponents-ngx-generator": [
         "libs/angular-generator/src/index.ts"
       ],

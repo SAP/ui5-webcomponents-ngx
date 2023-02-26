@@ -11,12 +11,12 @@ import {format as prettierFormat} from "prettier";
 export class AngularModuleFile extends AngularGeneratedFile {
   protected includedFiles: AngularGeneratedFile[];
   protected className: string;
-  protected providers = new Map<string, boolean>();
+  protected providers = new Map<string, Partial<{init?: boolean; providersArray: boolean}>>();
 
   constructor(protected potentialFilesToInclude: AngularGeneratedFile[], protected moduleDescription: ModuleDescription) {
     super();
     this.move(this.moduleDescription.fileName);
-    this.className = startCase(this.moduleDescription.fileName.split('/').pop()!.match(/(.*)\.ts$/)![1]).split(' ').join('');
+    this.className = startCase(this.moduleDescription.fileName.split('/').pop()?.match(/(.*)\.ts$/)?.[1]).split(' ').join('');
     this.includedFiles = potentialFilesToInclude.filter(moduleDescription.included);
     this.addImport(['NgModule'], '@angular/core');
     this.addExport({
@@ -26,13 +26,10 @@ export class AngularModuleFile extends AngularGeneratedFile {
     });
   }
 
-  addToImportsMetadata(): void {
-  }
-
   override getCode(): string {
     const declarations = new Set<string>();
     const imports = new Set<string>();
-    const providers = new Set(this.providers.keys());
+    const providers = new Set([...this.providers.keys()].filter(className => !!this.providers.get(className)?.providersArray));
     this.includedFiles.forEach(file => {
       file.exports.forEach(exportData => {
         exportData.specifiers.forEach(specifier => {
@@ -53,7 +50,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
       });
     });
     const exports = ['...imports', '...declarations'].filter((_, i) => [imports, declarations][i].size > 0);
-    const needsConstructor = [...providers.values()].filter(className => this.providers.get(className));
+    const needsConstructor = [...this.providers.keys()].filter(className => !!this.providers.get(className)?.init);
     const moduleContents = ((contents) => {
       return Object.keys(contents).reduce((acc, key) => {
         if (contents[key].length === 0) {
@@ -92,8 +89,8 @@ export class AngularModuleFile extends AngularGeneratedFile {
     `, {parser: 'typescript'});
   }
 
-  addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false): void {
+  addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false, providerInMetadata = false): void {
     this.addImport(specifier, file.relativePathFrom);
-    this.providers.set(specifier, shouldInitialize);
+    this.providers.set(specifier, {init: shouldInitialize, providersArray: providerInMetadata});
   }
 }

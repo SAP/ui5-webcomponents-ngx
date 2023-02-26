@@ -47,37 +47,13 @@ export const ui5componentsWrapper = (components: ComponentData[], options: Angul
     files[moduleFile.path] = moduleFile;
     const moduleIndexFile = new IndexFile([moduleFile], options, join(moduleFile.parsedPath.dir, 'index.ts'));
     files[moduleIndexFile.path] = moduleIndexFile;
-    const moduleNgPackageFile = new NgPackageFile(moduleIndexFile, moduleIndexFile.parsedPath.dir);
-    files[moduleNgPackageFile.path] = moduleNgPackageFile;
+    const isPrimary = moduleFile.apfPath === options.apfPathFactory('index.ts');
+    if (!isPrimary) {
+      const moduleNgPackageFile = new NgPackageFile(moduleIndexFile, moduleIndexFile.parsedPath.dir);
+      files[moduleNgPackageFile.path] = moduleNgPackageFile;
+    }
   });
   const indexFile = new IndexFile(Object.values(files), options);
   files[indexFile.path] = indexFile;
-  // const generatedComponents = components.reduce((acc, component) => {
-  //   acc[component.path] = generatedFileCreator(component, options);
-  //   return acc;
-  // }, {});
-  // const generatedComponentsArr: GeneratedAngularComponentFile[] = Object.values(generatedComponents);
-  // const secondaryModules = options.modules.filter(module => !module.primary);
-  // const primaryModules = options.modules.filter(module => module.primary);
-  // const themingModuleGenerator = new WebcomponentsThemingGenerator();
-  // const modules = secondaryModules.map(m => new GeneratedAngularModuleFile(m, generatedComponentsArr, options));
-  // const pModules = primaryModules.map(m => new GeneratedAngularModuleFile(m, [...modules, themingModuleGenerator.module], options));
-  // const indexFile = new IndexFile([...generatedComponentsArr, ...modules, ...pModules, themingModuleGenerator.module, themingModuleGenerator.service]);
-  //
-  // return {
-  //   ...generatedComponents,
-  //   ...modules.reduce((acc, module) => {
-  //     acc[module.path] = module;
-  //     return acc;
-  //   }, {}),
-  //   ...pModules.reduce((acc, module) => {
-  //     acc[module.path] = module;
-  //     return acc;
-  //   }, {}),
-  //   'index.ts': indexFile,
-  //   [genericCva.path]: genericCva,
-  //   [themingModuleGenerator.module.path]: themingModuleGenerator.module,
-  //   [themingModuleGenerator.service.path]: themingModuleGenerator.service
-  // };
   return files;
 }

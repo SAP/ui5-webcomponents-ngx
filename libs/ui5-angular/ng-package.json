@@ -1,5 +1,7 @@
 {
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/ui5-angular",
   "lib": {
-    "entryFile": "./Users/giorgicheishvili/Projects/SAP/ui5-webcomponents-ngx/index.ts"
+    "entryFile": "./index.ts"
   }
 }

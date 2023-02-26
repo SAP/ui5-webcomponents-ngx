@@ -30,7 +30,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
 
   getServiceCode(): string {
     return `
-      @Injectable()
+      @Injectable({providedIn: 'root'})
       class ${this.className} extends WebcomponentsThemingProvider {
         name = ${JSON.stringify(kebabCase(this.className))};
         constructor() {
@@ -86,16 +86,19 @@ export default {
         return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
       }
     });
-    files['index.ts'].addExport(['Ui5WebcomponentsThemingModule'], '@ui5/webcomponents-ngx/theming');
+    files['index.ts'].addExport('*', '@ui5/webcomponents-ngx/theming');
+    files['index.ts'].addExport('*', '@ui5/webcomponents-ngx/icons');
+    files['index.ts'].addExport('*', '@ui5/webcomponents-ngx/config');
 
     packageNames.forEach(packageName => {
       files[`${packageName}/theming/index.ts`] = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main');
       files[`${packageName}/theming/ng-package.json`] = new NgPackageFile(files[`${packageName}/theming/index.ts`], `${packageName}/theming`);
       files['index.ts'].addExport('*', `@ui5/webcomponents-ngx/${packageName}/theming`);
 
-      (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addProvider(files[`${packageName}/theming/index.ts`], `Ui5Webcomponents${pascalCase(packageName)}ThemingService`, true);
+      (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addProvider(files[`${packageName}/theming/index.ts`], `Ui5Webcomponents${pascalCase(packageName)}ThemingService`, true, false);
+      (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addImport({specifiers: [], path: `@ui5/webcomponents${packageName === 'main' ? '' : '-fiori'}/dist/Assets.js`})
     });
-
+    delete files['ng-package.json']; // There is a bug and I have no idea how to fix it
     return files;
   }
 } as Partial<WrapperConfig<ComponentData>>;

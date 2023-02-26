@@ -5552,6 +5552,25 @@ export { SortItemDirective, SortItemDirectiveElement };
 "
 `;
 
+exports[`Snapshot test Fiori Theming should match the snapshot 1`] = `
+"import { WebcomponentsThemingProvider } from '@ui5/webcomponents-ngx/theming';
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+class Ui5WebcomponentsFioriThemingService extends WebcomponentsThemingProvider {
+  name = 'ui-5-webcomponents-fiori-theming-service';
+  constructor() {
+    super(
+      () =>
+        import('@ui5/webcomponents-fiori/dist/generated/json-imports/Themes.js')
+    );
+  }
+}
+
+export { Ui5WebcomponentsFioriThemingService };
+"
+`;
+
 exports[`Snapshot test Fiori Timeline Item should match the snapshot 1`] = `
 "import { Directive, ElementRef, Input, Output } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
@@ -6000,6 +6019,8 @@ export { TimelineDirective, TimelineDirectiveElement };
 
 exports[`Snapshot test Fiori Ui 5 Fiori Module Ts should match the snapshot 1`] = `
 "import { NgModule } from '@angular/core';
+import { Ui5WebcomponentsFioriThemingService } from '@ui5/webcomponents-ngx/fiori/theming';
+import '@ui5/webcomponents-fiori/dist/Assets.js';
 import { BarDirective } from '@ui5/webcomponents-ngx/fiori/bar';
 import { BarcodeScannerDialogDirective } from '@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog';
 import { DynamicSideContentDirective } from '@ui5/webcomponents-ngx/fiori/dynamic-side-content';
@@ -6030,7 +6051,6 @@ import { ViewSettingsDialogDirective } from '@ui5/webcomponents-ngx/fiori/view-s
 import { WizardDirective } from '@ui5/webcomponents-ngx/fiori/wizard';
 import { WizardStepDirective } from '@ui5/webcomponents-ngx/fiori/wizard-step';
 
-const declarations = [];
 const imports = [
   BarDirective,
   BarcodeScannerDialogDirective,
@@ -6062,15 +6082,17 @@ const imports = [
   WizardDirective,
   WizardStepDirective,
 ];
-const providers = [];
+const exports = [...imports];
 
 @NgModule({
   imports: [...imports],
-  declarations: [...declarations],
-  providers: [...providers],
-  exports: [...imports, ...declarations],
+  exports: [...exports],
 })
-class Ui5FioriModule {}
+class Ui5FioriModule {
+  constructor(
+    ui5WebcomponentsFioriThemingService: Ui5WebcomponentsFioriThemingService
+  ) {}
+}
 export { Ui5FioriModule };
 "
 `;

@@ -19133,6 +19133,24 @@ export {
 "
 `;
 
+exports[`Snapshot test Main Theming should match the snapshot 1`] = `
+"import { WebcomponentsThemingProvider } from '@ui5/webcomponents-ngx/theming';
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+class Ui5WebcomponentsMainThemingService extends WebcomponentsThemingProvider {
+  name = 'ui-5-webcomponents-main-theming-service';
+  constructor() {
+    super(
+      () => import('@ui5/webcomponents/dist/generated/json-imports/Themes.js')
+    );
+  }
+}
+
+export { Ui5WebcomponentsMainThemingService };
+"
+`;
+
 exports[`Snapshot test Main Time Picker should match the snapshot 1`] = `
 "import {
   Directive,
@@ -21415,6 +21433,8 @@ export { TreeDirective, TreeDirectiveEventsMap, TreeDirectiveElement };
 
 exports[`Snapshot test Main Ui 5 Main Module Ts should match the snapshot 1`] = `
 "import { NgModule } from '@angular/core';
+import { Ui5WebcomponentsMainThemingService } from '@ui5/webcomponents-ngx/main/theming';
+import '@ui5/webcomponents/dist/Assets.js';
 import { AvatarDirective } from '@ui5/webcomponents-ngx/main/avatar';
 import { AvatarGroupDirective } from '@ui5/webcomponents-ngx/main/avatar-group';
 import { BadgeDirective } from '@ui5/webcomponents-ngx/main/badge';
@@ -21495,7 +21515,6 @@ import { TreeItemCustomDirective } from '@ui5/webcomponents-ngx/main/tree-item-c
 import { WheelSliderDirective } from '@ui5/webcomponents-ngx/main/wheel-slider';
 import { YearPickerDirective } from '@ui5/webcomponents-ngx/main/year-picker';
 
-const declarations = [];
 const imports = [
   AvatarDirective,
   AvatarGroupDirective,
@@ -21577,15 +21596,17 @@ const imports = [
   WheelSliderDirective,
   YearPickerDirective,
 ];
-const providers = [];
+const exports = [...imports];
 
 @NgModule({
   imports: [...imports],
-  declarations: [...declarations],
-  providers: [...providers],
-  exports: [...imports, ...declarations],
+  exports: [...exports],
 })
-class Ui5MainModule {}
+class Ui5MainModule {
+  constructor(
+    ui5WebcomponentsMainThemingService: Ui5WebcomponentsMainThemingService
+  ) {}
+}
 export { Ui5MainModule };
 "
 `;

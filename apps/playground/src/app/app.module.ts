@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {inject, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -13,6 +13,7 @@ import {Ui5WebcomponentsConfigModule} from '@ui5/webcomponents-ngx/config';
 import {Ui5I18nModule} from "@ui5/webcomponents-ngx/i18n";
 import {RouterModule} from "@angular/router";
 import {MainComponent} from "./main.component";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
@@ -23,14 +24,20 @@ import {MainComponent} from "./main.component";
     Ui5ThemingModule.forRoot({defaultTheme: 'sap_fiori_3'}),
     Ui5WebcomponentsIconsModule.forRoot(['sap-icons', 'tnt-icons', "business-suite-icons"]),
     Ui5WebcomponentsConfigModule.forRoot({}),
+    HttpClientModule,
     Ui5I18nModule.forRoot({
       language: 'ru',
       fetchDefaultLanguage: true,
       bundle: {
         name: 'i18n_root',
         translations: {
-          en: fetch('assets/i18n/messages_en').then(r => r.text()),
-          ru: fetch('assets/i18n/messages_ru').then(r => r.text())
+          useFactory: () => {
+            const http = inject(HttpClient);
+            return {
+              en: http.get('assets/i18n/messages_en', {responseType: 'text'}),
+              ru: http.get('assets/i18n/messages_ru', {responseType: 'text'})
+            }
+          }
         }
       }
     }),

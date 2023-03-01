@@ -3,7 +3,9 @@ import I18nBundle, {getI18nBundle, registerI18nLoader} from "@ui5/webcomponents-
 import parseProperties from "@ui5/webcomponents-base/dist/PropertiesFileFormat.js";
 
 import {getLanguage, setLanguage} from "@ui5/webcomponents-base/dist/config/Language.js";
-import {BehaviorSubject, from, map, Observable, of, switchMap} from "rxjs";
+import {BehaviorSubject, firstValueFrom, from, isObservable, map, Observable, of, switchMap} from "rxjs";
+import {I18N_ROOT_CONFIG, I18N_NAMESPACE, I18N_TRANSLATIONS} from "./i18n.tokens";
+import {I18nConfig, Translations} from "./i18n.types";
 
 @Injectable()
 export class I18nService {
@@ -12,13 +14,18 @@ export class I18nService {
   private readonly i18nBundle$: Observable<I18nBundle>;
 
   constructor(
-    @Inject('rootI18nConfig') private config: { language?: string },
-    @Inject('i18nNamespace') private namespace: string,
-    @Inject('i18nTranslations') private bundles: Record<string, string | Promise<string>> = {}
+    @Inject(I18N_ROOT_CONFIG) private config: I18nConfig,
+    @Inject(I18N_NAMESPACE) private namespace: string,
+    @Inject(I18N_TRANSLATIONS) private bundles: Translations = {}
   ) {
     Object.keys(bundles).forEach((lang) => {
       registerI18nLoader(this.namespace, lang, async (localeId: string) => {
-        return parseProperties(await this.bundles[localeId]);
+        const val = this.bundles[localeId];
+        const result = isObservable(val) ? await firstValueFrom(val) : await val;
+        if (typeof result === 'string') {
+          return parseProperties(result);
+        }
+        return result;
       });
     });
     this.i18nBundle$ = from(getI18nBundle(this.namespace));

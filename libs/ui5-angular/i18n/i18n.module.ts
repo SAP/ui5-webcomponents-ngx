@@ -2,17 +2,9 @@ import {Inject, ModuleWithProviders, NgModule} from "@angular/core";
 import {setLanguage, setFetchDefaultLanguage} from "@ui5/webcomponents-base/dist/config/Language.js";
 import {I18nPipe} from "./i18n.pipe";
 import {I18nService} from "./i18n.service";
+import {I18nConfig} from "./i18n.types";
+import {I18N_ROOT_CONFIG, I18N_NAMESPACE, I18N_TRANSLATIONS} from "./i18n.tokens";
 
-const availableLanguages = ['ar', 'bg', 'ca', 'cs', 'cy', 'da', 'de', 'el', 'en', 'en_GB', 'es', 'es_MX', 'et', 'fi', 'fr', 'fr_CA', 'hi', 'hr', 'hu', 'in', 'it', 'iw', 'ja', 'kk', 'ko', 'lt', 'lv', 'ms', 'nl', 'no', 'pl', 'pt_PT', 'pt', 'ro', 'ru', 'sh', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'vi', 'zh_CN', 'zh_TW'] as const;
-
-interface I18nConfig {
-  language?: typeof availableLanguages[number] | string;
-  fetchDefaultLanguage?: boolean;
-  bundle?: {
-    name?: string;
-    translations?: Record<string, string | Promise<string>>
-  };
-}
 
 let childIds = 0;
 
@@ -22,7 +14,7 @@ let childIds = 0;
 })
 export class Ui5I18nModule {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(@Inject('rootI18nConfig') config: I18nConfig) {
+  constructor(@Inject(I18N_ROOT_CONFIG) private config: I18nConfig) {
   }
 
   static forRoot(config: I18nConfig = {}): ModuleWithProviders<Ui5I18nModule> {
@@ -30,7 +22,7 @@ export class Ui5I18nModule {
       ngModule: Ui5I18nModule,
       providers: [
         {
-          provide: 'rootI18nConfig',
+          provide: I18N_ROOT_CONFIG,
           useFactory: () => {
             if (config.language) {
               setLanguage(config.language);
@@ -42,11 +34,11 @@ export class Ui5I18nModule {
           }
         },
         {
-          provide: 'i18nNamespace',
+          provide: I18N_NAMESPACE,
           useValue: config.bundle?.name || 'root_i18n'
         },
         {
-          provide: 'i18nTranslations',
+          provide: I18N_TRANSLATIONS,
           useValue: config.bundle?.translations || {}
         },
         I18nService
@@ -59,11 +51,11 @@ export class Ui5I18nModule {
       ngModule: Ui5I18nModule,
       providers: [
         {
-          provide: 'i18nNamespace',
+          provide: I18N_NAMESPACE,
           useValue: config?.name || ++childIds + '_i18n'
         },
         {
-          provide: 'i18nTranslations',
+          provide: I18N_TRANSLATIONS,
           useValue: config?.translations || {}
         },
         I18nService

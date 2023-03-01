@@ -1,9 +1,10 @@
 import {Inject, ModuleWithProviders, NgModule} from "@angular/core";
-import {setLanguage, setFetchDefaultLanguage} from "@ui5/webcomponents-base/dist/config/Language.js";
+import {setFetchDefaultLanguage, setLanguage} from "@ui5/webcomponents-base/dist/config/Language.js";
 import {I18nPipe} from "./i18n.pipe";
 import {I18nService} from "./i18n.service";
 import {I18nConfig} from "./i18n.types";
-import {I18N_ROOT_CONFIG, I18N_NAMESPACE, I18N_TRANSLATIONS} from "./i18n.tokens";
+import {I18N_NAMESPACE, I18N_ROOT_CONFIG} from "./i18n.tokens";
+import {resolveTranslationsProvider} from "./i18n.utils";
 
 
 let childIds = 0;
@@ -18,6 +19,7 @@ export class Ui5I18nModule {
   }
 
   static forRoot(config: I18nConfig = {}): ModuleWithProviders<Ui5I18nModule> {
+
     return {
       ngModule: Ui5I18nModule,
       providers: [
@@ -37,10 +39,7 @@ export class Ui5I18nModule {
           provide: I18N_NAMESPACE,
           useValue: config.bundle?.name || 'root_i18n'
         },
-        {
-          provide: I18N_TRANSLATIONS,
-          useValue: config.bundle?.translations || {}
-        },
+        resolveTranslationsProvider(config.bundle?.translations),
         I18nService
       ]
     }
@@ -54,10 +53,7 @@ export class Ui5I18nModule {
           provide: I18N_NAMESPACE,
           useValue: config?.name || ++childIds + '_i18n'
         },
-        {
-          provide: I18N_TRANSLATIONS,
-          useValue: config?.translations || {}
-        },
+        resolveTranslationsProvider(config?.translations),
         I18nService
       ]
     }

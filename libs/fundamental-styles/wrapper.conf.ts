@@ -23,14 +23,14 @@ export default {
         }
       ],
       exportFileNameFactory: (sourceFilePath) => {
-        return sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/g, 'components/$1/index.ts');
+        return sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/g, 'directives/$1/index.ts');
       },
       apfPathFactory: (sourceFilePath) => {
         if (sourceFilePath.endsWith('.ts')) {
           const pathSegments = sourceFilePath.split('/').slice(0, -1);
           return join('@fundamental-styles/theming-ngx', ...pathSegments);
         }
-        return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'components/$1'));
+        return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'directives/$1'));
       }
     }),
 } as Partial<WrapperConfig<string>>;

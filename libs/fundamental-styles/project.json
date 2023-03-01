@@ -17,7 +17,7 @@
         "configFiles": ["libs/fundamental-styles/wrapper.conf.ts", "libs/fundamental-styles/theming.conf.ts"]
       },
       "outputs": [
-        "libs/fundamental-styles/components",
+        "libs/fundamental-styles/directives",
         "libs/fundamental-styles/theming/theming.config.ts",
         "libs/fundamental-styles/fundamental-styles-components.module.ts",
         "libs/fundamental-styles/index.ts"

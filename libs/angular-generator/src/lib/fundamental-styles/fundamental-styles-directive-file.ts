@@ -5,7 +5,7 @@ import {parse, join, dirname, basename} from "path";
 import {pascalCase} from "./helpers";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 
-export class FundamentalStylesComponentFile extends AngularGeneratedFile {
+export class FundamentalStylesDirectiveFile extends AngularGeneratedFile {
   protected sourceFilePath: string;
   protected selector: string;
   protected className: string;

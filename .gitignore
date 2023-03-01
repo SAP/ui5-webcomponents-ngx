@@ -23,7 +23,7 @@ libs/ui5-angular/generic-cva/
 libs/ui5-angular/theming/supported-themes.ts
 libs/ui5-angular/index.ts
 libs/ui5-angular/ui5-webcomponents.module.ts
-libs/fundamental-styles/components/
+libs/fundamental-styles/directives/
 libs/fundamental-styles/index.ts
 libs/fundamental-styles/theming/theming.config.ts
 libs/fundamental-styles/fundamental-styles-components.module.ts

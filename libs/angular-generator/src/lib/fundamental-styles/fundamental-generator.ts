@@ -1,13 +1,13 @@
 import {IndexFile} from '../index-file';
 import {AngularGeneratorOptions} from "../angular-generator-options";
-import {FundamentalStylesComponentFile} from "./fundamental-styles-component-file";
+import {FundamentalStylesDirectiveFile} from "./fundamental-styles-directive-file";
 import {NgPackageFile} from "../ng-package-file";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {AngularModuleFile} from "../angular-module-file";
 
 export function fundamentalGenerator(styles: string[], options: AngularGeneratorOptions) {
   const generatedFiles = styles.reduce((files: AngularGeneratedFile[], style) => {
-    const componentFile = new FundamentalStylesComponentFile(style, options);
+    const componentFile = new FundamentalStylesDirectiveFile(style, options);
     const ngPackageFile = new NgPackageFile(componentFile, componentFile.parsedPath.dir);
     files.push(componentFile, ngPackageFile);
     return files;

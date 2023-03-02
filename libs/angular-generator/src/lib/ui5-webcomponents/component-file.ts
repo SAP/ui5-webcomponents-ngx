@@ -21,7 +21,7 @@ export class ComponentFile extends AngularGeneratedFile {
     return this.componentData.selector;
   }
 
-  constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions, private componentsMap: Map<ComponentData, ComponentFile>) {
+  constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions, private componentsMap: Map<ComponentData, AngularGeneratedFile>) {
     super();
     this.move(options.exportFileNameFactory(componentData.path));
     this.apfPath = options.apfPathFactory(componentData.path);
@@ -54,7 +54,7 @@ export class ComponentFile extends AngularGeneratedFile {
           if (!cmp) {
             throw new Error(`Component ${type.baseName} not found in the map`);
           }
-          this.addImport(cmp.wrapperExportSpecifier.exported, cmp.relativePathFrom);
+          this.addImport(cmp.exports[0].specifiers[0].exported, cmp.relativePathFrom);
         });
       });
     }
@@ -74,7 +74,7 @@ export class ComponentFile extends AngularGeneratedFile {
         if (!cmp) {
           throw new Error(`Component ${type.baseName} not found in the map`);
         }
-        this.addImport(cmp.wrapperExportSpecifier.exported, cmp.relativePathFrom);
+        this.addImport(cmp.exports[0].specifiers[0].exported, cmp.relativePathFrom);
       })
     });
     this.addExport([

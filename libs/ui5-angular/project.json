@@ -1,7 +1,7 @@
 {
   "name": "ui5-angular",
   "projectType": "library",
-  "sourceRoot": "libs/ui5-angular/src",
+  "sourceRoot": "libs/ui5-angular",
   "prefix": "ui-angular",
   "targets": {
     "prepare": {
@@ -18,14 +18,22 @@
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
-        "configFile": "libs/ui5-angular/wrapper.conf.ts"
-      }
+        "configFiles": [
+          "libs/ui5-angular/wrapper.conf.ts",
+          "libs/ui5-angular/theming.conf.ts"
+        ]
+      },
+      "outputs": [
+        "libs/ui5-angular/fiori",
+        "libs/ui5-angular/main",
+        "libs/ui5-angular/generic-cva",
+        "libs/ui5-angular/index.ts",
+        "libs/ui5-angular/theming/supported-themes.ts"
+      ]
     },
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/ui5-angular"
-      ],
+      "outputs": ["dist/libs/ui5-angular"],
       "options": {
         "project": "libs/ui5-angular/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -39,9 +47,7 @@
         }
       },
       "defaultConfiguration": "production",
-      "dependsOn": [
-        "sync"
-      ]
+      "dependsOn": ["sync"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -50,6 +56,14 @@
           "libs/ui5-angular/**/*.ts",
           "libs/ui5-angular/**/*.html"
         ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/ui5-angular/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

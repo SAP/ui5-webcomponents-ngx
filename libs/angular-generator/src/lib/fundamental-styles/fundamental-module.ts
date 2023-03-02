@@ -1,8 +1,9 @@
-import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
+import {dependencyRelativePath, ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
 import { format } from "prettier";
 import { FundamentalStaticDirectiveLibrary } from "./fundamental-directive";
 
 export class FundamentalStaticModule extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
   constructor(public directives: Record<string, FundamentalStaticDirectiveLibrary>) {
     super();
     this.move('fundamental-styles-theming.module.ts');

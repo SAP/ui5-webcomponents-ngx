@@ -8,12 +8,6 @@
     "prepare": {
       "executor": "@ui5/webcomponents-nx:prepare"
     },
-    "sync": {
-      "executor": "@ui5/webcomponents-nx:sync",
-      "options": {
-        "configFile": "libs/ui5-angular-theming/wrapper.conf.ts"
-      }
-    },
     "build": {
       "executor": "@nrwl/angular:package",
       "outputs": [

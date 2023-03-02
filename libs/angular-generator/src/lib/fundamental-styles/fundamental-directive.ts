@@ -1,8 +1,9 @@
-import { ExportSpecifierType, GeneratedFile } from "@ui5/webcomponents-wrapper";
+import {dependencyRelativePath, ExportSpecifierType, GeneratedFile} from "@ui5/webcomponents-wrapper";
 import { format } from "prettier";
 import { pascalCase } from "./helpers";
 
 export class FundamentalStaticDirectiveLibrary extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
   public directive: FundamentalStaticDirective;
   public package: FundamentalStaticDirectivePackage;
   constructor(public file: string) {
@@ -20,6 +21,8 @@ export class FundamentalStaticDirectiveLibrary extends GeneratedFile {
 }
 
 export class FundamentalStaticDirectivePackage extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
+
   constructor(public file: string) {
     super()
     this.move(`directives/${this.file}/ng-package.json`);
@@ -38,6 +41,7 @@ export class FundamentalStaticDirectivePackage extends GeneratedFile {
 }
 
 export class FundamentalStaticDirective extends GeneratedFile {
+  relativePathFrom = (path) => dependencyRelativePath(path, this.parsedPath);
   public directiveName: string;
   public fileName: string;
   constructor(public file: string) {

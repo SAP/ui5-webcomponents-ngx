@@ -1,7 +1,7 @@
 {
   "name": "fundamental-styles",
   "projectType": "library",
-  "sourceRoot": "libs/fundamental-styles/src",
+  "sourceRoot": "libs/fundamental-styles",
   "prefix": "ui-angular",
   "targets": {
     "prepare": {
@@ -14,8 +14,14 @@
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
-        "configFile": "libs/fundamental-styles/wrapper.conf.ts"
-      }
+        "configFiles": ["libs/fundamental-styles/wrapper.conf.ts", "libs/fundamental-styles/theming.conf.ts"]
+      },
+      "outputs": [
+        "libs/fundamental-styles/directives",
+        "libs/fundamental-styles/theming/theming.config.ts",
+        "libs/fundamental-styles/fundamental-styles-components.module.ts",
+        "libs/fundamental-styles/index.ts"
+      ]
     },
     "build": {
       "executor": "@nrwl/angular:package",

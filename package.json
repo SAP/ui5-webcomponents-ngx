@@ -66,8 +66,14 @@
     "@nrwl/linter": "15.8.3",
     "@nrwl/nx-cloud": "15.1.1",
     "@nrwl/nx-plugin": "15.8.3",
+    "@nrwl/storybook": "15.4.4",
     "@nrwl/workspace": "15.8.3",
     "@schematics/angular": "15.2.1",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/angular": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/core-server": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "29.4.0",
     "@types/node": "16.11.7",
@@ -82,6 +88,7 @@
     "eslint-plugin-cypress": "2.12.1",
     "fundamental-styles": "^0.27.0-rc.6",
     "git-semver-tags": "^4.1.1",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "8.0.2",
     "jest": "29.4.3",
     "jest-environment-jsdom": "29.4.3",
@@ -99,6 +106,7 @@
     "through2": "^4.0.2",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "webpack": "^5.64.0"
   }
 }

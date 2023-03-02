@@ -1,6 +1,10 @@
-import {Component} from "@angular/core";
+import {AfterViewInit, Component, ViewChild} from "@angular/core";
+import {ButtonDirective} from "@ui5/webcomponents-ngx/main/button";
+import ButtonDesign from "@ui5/webcomponents/dist/types/ButtonDesign";
 
 @Component({
-  template: `<ui5-button routerLink="/child-module">{{ 'SOMETHING' | ui5I18n : 'text from the root' }}</ui5-button>`
+  templateUrl: './main.component.html',
 })
-export class MainComponent {}
+export class MainComponent {
+  @ViewChild('button') button!: ButtonDirective;
+}

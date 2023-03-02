@@ -21,7 +21,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    Ui5ThemingModule.forRoot({defaultTheme: 'sap_fiori_3'}),
+    Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}),
     Ui5WebcomponentsIconsModule.forRoot(['sap-icons', 'tnt-icons', "business-suite-icons"]),
     Ui5WebcomponentsConfigModule.forRoot({}),
     HttpClientModule,

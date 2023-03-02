@@ -32,7 +32,8 @@ export class TsComponentFile extends AngularGeneratedFile {
       exported: this.directiveClassName,
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
-    this.addImport(['Directive', 'ElementRef'], '@angular/core');
+    this.addImport(['Directive', 'ElementRef', 'NgZone'], '@angular/core');
+    this.addImport(['ProxyInputs', 'ProxyMethods'], '@ui5/webcomponents-ngx/utils'); // @todo replace this with proper import
     if (this.componentData.outputs.length) {
       this.addImport(['EventEmitter', 'Output'], '@angular/core');
       this.addImport('NEVER', 'rxjs');
@@ -118,7 +119,10 @@ export class TsComponentFile extends AngularGeneratedFile {
       }
       return '';
     }
-    return `@Directive({
+    return `
+      @ProxyInputs(${JSON.stringify(this.componentData.inputs.map(i => i.name))})
+      @ProxyMethods(${JSON.stringify(this.componentData.methods.map(m => m.name))})
+      @Directive({
         selector: '${this.selector}',
         exportAs: '${camelCase('ui5-' + this.componentData.baseName)}',
         standalone: true,
@@ -134,7 +138,7 @@ export class TsComponentFile extends AngularGeneratedFile {
       })
       export class ${this.directiveClassName} ${baseClass()}{
         ${this.componentData.outputs.map((output) => `@Output(${output.name === output.publicName ? '' : JSON.stringify(output.publicName)}) ${output.name}: EventEmitter<${this.directiveClassName}EventsMap['${output.name}']> = NEVER as any;`).join('\n')}
-        constructor(private elementRef: ElementRef<${this.componentData.baseName}Element>) {
+        constructor(private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone) {
           ${cvaConstructor()}
         }
 

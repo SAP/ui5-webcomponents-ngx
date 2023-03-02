@@ -3,6 +3,7 @@ import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
 import {camelCase} from 'lodash';
 import {ComponentFile} from "./component-file";
 import {genericCva} from "./generic-cva";
+import {AngularGeneratedFile} from "../angular-generated-file";
 
 function CvaBaseClassExtends(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
@@ -63,12 +64,12 @@ export function DirectiveWrapperCreator(
   elementTypeName: string,
   eventsMapName: string,
   options: AngularGeneratorOptions,
-  ComponentsMap: Map<ComponentData, ComponentFile>
+  ComponentsMap: Map<ComponentData, AngularGeneratedFile>
 ): string {
   const getInputType = (input: InputType) => {
     const t = typeof input.type === 'string' ? input.type : input.type.map((cmp: ComponentData) => {
       const generatedFile = ComponentsMap.get(cmp);
-      const exported = generatedFile!.wrapperExportSpecifier.exported;
+      const exported = generatedFile!.exports[0].specifiers[0].exported;
       return (typeof exported === 'string' ? exported : exported()) + '["element"]';
     }).join(' | ');
     return input.isArray ? `Array<${t}>` : t;
@@ -105,7 +106,7 @@ export function DirectiveWrapperCreator(
   const analyzedSlots = componentFile.componentData.slots.map((slot) => {
     const supportedElements = slot.supportedElements.map((element) => {
       const componentGeneratedFile = ComponentsMap.get(element);
-      const exportedWrapperClassName = componentGeneratedFile!.wrapperExportSpecifier.exported;
+      const exportedWrapperClassName = componentGeneratedFile!.exports[0].specifiers[0].exported;
       if (!exportedWrapperClassName) {
         throw new Error(`Component ${element.baseName} is not exported`);
       }

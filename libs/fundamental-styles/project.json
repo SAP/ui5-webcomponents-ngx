@@ -14,7 +14,10 @@
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
-        "configFiles": ["libs/fundamental-styles/wrapper.conf.ts", "libs/fundamental-styles/theming.conf.ts"]
+        "configFiles": [
+          "libs/fundamental-styles/wrapper.conf.ts",
+          "libs/fundamental-styles/theming.conf.ts"
+        ]
       },
       "outputs": [
         "libs/fundamental-styles/directives",
@@ -25,9 +28,7 @@
     },
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/fundamental-styles"
-      ],
+      "outputs": ["dist/libs/fundamental-styles"],
       "options": {
         "project": "libs/fundamental-styles/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false

@@ -15,6 +15,17 @@
         ]
       }
     },
+    "sync": {
+      "executor": "@ui5/webcomponents-nx:sync",
+      "options": {
+        "configFiles": [
+          "apps/documentation/stories-sync.conf.ts"
+        ]
+      },
+      "outputs": [
+        "apps/documentation/src/app/stories"
+      ]
+    },
     "serve": {
       "executor": "@storybook/angular:start-storybook",
       "options": {

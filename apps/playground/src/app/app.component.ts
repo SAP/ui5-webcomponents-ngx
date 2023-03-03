@@ -4,7 +4,6 @@ import {FormControl, FormGroup} from "@angular/forms";
 @Component({
   selector: 'ui-angular-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'ng-add-test';

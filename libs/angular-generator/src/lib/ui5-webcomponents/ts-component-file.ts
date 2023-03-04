@@ -5,6 +5,7 @@ import {format as prettierFormat} from "prettier";
 import {camelCase} from "lodash";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
+import { utilsFile } from "./utils";
 
 export class TsComponentFile extends AngularGeneratedFile {
   private directiveClassName = `${this.componentData.baseName}Directive`;
@@ -33,7 +34,7 @@ export class TsComponentFile extends AngularGeneratedFile {
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
     this.addImport(['Directive', 'ElementRef', 'NgZone'], '@angular/core');
-    this.addImport(['ProxyInputs', 'ProxyMethods'], '@ui5/webcomponents-ngx/utils'); // @todo replace this with proper import
+    this.addImport(['ProxyInputs', 'ProxyMethods'], utilsFile.relativePathFrom);
     if (this.componentData.outputs.length) {
       this.addImport(['EventEmitter', 'Output'], '@angular/core');
       this.addImport('NEVER', 'rxjs');

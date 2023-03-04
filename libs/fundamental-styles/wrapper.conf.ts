@@ -28,9 +28,9 @@ export default {
       apfPathFactory: (sourceFilePath) => {
         if (sourceFilePath.endsWith('.ts')) {
           const pathSegments = sourceFilePath.split('/').slice(0, -1);
-          return join('@fundamental-styles/theming-ngx', ...pathSegments);
+          return join('@fundamental-styles/theming-ngx', ...pathSegments).split('\\').join('/');
         }
-        return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'components/$1'));
+        return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'components/$1')).split('\\').join('/');
       }
     }),
 } as Partial<WrapperConfig<string>>;

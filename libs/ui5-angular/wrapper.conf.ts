@@ -79,11 +79,11 @@ export default {
       apfPathFactory: (path) => {
         if (path.endsWith('.ts')) {
           const pathSegments = path.split('/').slice(0, -1);
-          return join('@ui5', 'webcomponents-ngx', ...pathSegments);
+          return join('@ui5', 'webcomponents-ngx', ...pathSegments).split('\\').join('/');
         }
         const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
         const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
-        return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
+        return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/')).split('\\').join('/')
       }
     });
     files['index.ts'].addExport('*', '@ui5/webcomponents-ngx/theming');

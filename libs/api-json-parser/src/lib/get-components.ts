@@ -50,9 +50,6 @@ export function getComponents({
   }
 
   function getPropertyType(type: string, tagname: string, identifier: string, component: ComponentData): string | ComponentData[] {
-    if (!type) {
-      debugger
-    }
     const isArray = type.endsWith('[]');
     if (isArray) {
       type = type.slice(0, -2);

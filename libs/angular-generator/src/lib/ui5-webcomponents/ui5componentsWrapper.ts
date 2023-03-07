@@ -8,6 +8,7 @@ import {join} from "path";
 import {AngularModuleFile} from "../angular-module-file";
 import {TsComponentFile} from "./ts-component-file";
 import {ComponentFile} from "./component-file";
+import { utilsFile } from "./utils";
 
 function getComponentFile(componentData: ComponentData, options: AngularGeneratorOptions, cache: Map<ComponentData, AngularGeneratedFile>): AngularGeneratedFile {
   const cached = cache.get(componentData);
@@ -41,12 +42,21 @@ export const ui5componentsWrapper = (components: ComponentData[], options: Angul
     const ngPackageFile = new NgPackageFile(componentFile, componentFile.parsedPath.dir);
     files[ngPackageFile.path] = ngPackageFile;
   }
+
   if (needsCva) {
     files[genericCva.path] = genericCva;
     const ngPackageFile = new NgPackageFile(genericCva, genericCva.parsedPath.dir);
     files[ngPackageFile.path] = ngPackageFile;
     genericCva.apfPath = options.apfPathFactory(genericCva.path);
   }
+
+  (() => {
+    files[utilsFile.path] = utilsFile;
+    const ngPackageFile = new NgPackageFile(utilsFile, utilsFile.parsedPath.dir);
+    files[ngPackageFile.path] = utilsFile;
+    utilsFile.apfPath = options.apfPathFactory(utilsFile.path);
+  })();
+
   options.modules.forEach(moduleDescription => {
     const moduleFile = new AngularModuleFile(Object.values(files), moduleDescription);
     moduleFile.apfPath = options.apfPathFactory(moduleDescription.fileName);

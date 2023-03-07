@@ -20,6 +20,7 @@ node_modules
 libs/ui5-angular/fiori/
 libs/ui5-angular/main/
 libs/ui5-angular/generic-cva/
+libs/ui5-angular/utils/
 libs/ui5-angular/theming/supported-themes.ts
 libs/ui5-angular/index.ts
 libs/ui5-angular/ui5-webcomponents.module.ts

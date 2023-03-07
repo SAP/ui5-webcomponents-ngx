@@ -74,16 +74,6 @@ export function DirectiveWrapperCreator(
     }).join(' | ');
     return input.isArray ? `Array<${t}>` : t;
   }
-  const inputsStr = componentFile.componentData.inputs.map((input: InputType): string => {
-    return `
-  @Input()
-  set ${input.name}(val: ${elementTypeName}['${input.name}']) {
-  this.elementRef.nativeElement.${input.name} = val;
-  }
-  get ${input.name}(): ${elementTypeName}['${input.name}'] {
-  return this.elementRef.nativeElement.${input.name};
-  }`;
-  });
   const outputs = componentFile.componentData.outputs;
 
   const eventsMap = `
@@ -137,16 +127,6 @@ export function DirectiveWrapperCreator(
     `;
   }).join('\n');
 
-  const methodsStr = componentFile.componentData.methods.map((method) => {
-    const parameters = method.parameters.map((parameter) => {
-      return `${parameter.name}: ${parameter.type}`;
-    }).join(', ');
-    return `
-    ${method.name}(${parameters}): ${method.returnValue} {
-      return this.elementRef.nativeElement.${method.name}(${method.parameters.map((parameter) => parameter.name).join(', ')});
-    }
-    `;
-  }).join('\n');
   const elementType = `
       ${outputs.length > 0 ? eventsMap : ''}
 
@@ -160,11 +140,11 @@ export function DirectiveWrapperCreator(
         ${methodsTypeStr}
       }
     `;
-  const outputsStr = outputs.map((output) => {
-    return `@Output() ${output.name}: Observable<${eventsMapName}['${output.name}']> = NEVER as any;`;
-  });
   return `
       ${elementType}
+      @ProxyInputs([${componentFile.componentData.inputs.map((input) => `'${input.name}'`)}])
+      @ProxyOutputs([${componentFile.componentData.outputs.map((output) => `'${output.name}'`)}])
+      @ProxyMethods([${componentFile.componentData.methods.map((method) => `'${method.name}'`)}])
       @Directive({
         selector: '${componentFile.selector}',
         exportAs: '${camelCase(componentFile.selector)}',
@@ -173,9 +153,7 @@ export function DirectiveWrapperCreator(
             ${providers(componentFile)}
         ]
       })
-      class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
-        ${inputsStr.join('\n')}
-        ${outputsStr.join('\n')}
+      export class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
         constructor(private elementRef: ElementRef<${elementTypeName}>) {
           ${CvaConstructor(componentFile)}
         }
@@ -185,7 +163,7 @@ export function DirectiveWrapperCreator(
         }
 
         ${slotsStr}
-        ${methodsStr}
       }
+      export declare interface ${componentFile.wrapperExportSpecifier.local} extends ${elementTypeName} {}
     `;
 }

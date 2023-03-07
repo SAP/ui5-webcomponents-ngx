@@ -5,6 +5,7 @@ import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
 import {DirectiveWrapperCreator} from "./directive-wrapper-creator";
 import {format as prettierFormat} from "prettier";
+import {utilsFile} from "./utils";
 
 export class ComponentFile extends AngularGeneratedFile {
   wrapperExportSpecifier!: ExportSpecifier<AngularExportSpecifierType>;
@@ -38,7 +39,8 @@ export class ComponentFile extends AngularGeneratedFile {
     }
     this.addExport(this.wrapperExportSpecifier);
     this.addImport(['Directive', 'ElementRef'], '@angular/core');
-    this.addImport({specifiers: [], path: this.componentData.path})
+    this.addImport({specifiers: [], path: this.componentData.path});
+    this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], utilsFile.relativePathFrom);
     if (this.componentData.formData.length > 0) {
       this.addImport('forwardRef', '@angular/core');
       this.addImport(['Observable', 'fromEvent', 'merge'], 'rxjs');
@@ -46,7 +48,6 @@ export class ComponentFile extends AngularGeneratedFile {
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
     }
     if (this.componentData.inputs.length > 0) {
-      this.addImport('Input', '@angular/core');
       this.componentData.inputs.filter(i => typeof i.type !== 'string').forEach((input) => {
         const types = input.type as ComponentData[];
         types.forEach(type => {
@@ -56,15 +57,6 @@ export class ComponentFile extends AngularGeneratedFile {
           }
           this.addImport(cmp.exports[0].specifiers[0].exported, cmp.relativePathFrom);
         });
-      });
-    }
-    if (this.componentData.outputs.length > 0) {
-      this.addImport(['Observable', 'NEVER'], 'rxjs');
-      this.addImport('Output', '@angular/core');
-      this.addExport({
-        exported: () => this.eventsNameMapName,
-        local: () => this.eventsNameMapName,
-        types: [ExportSpecifierType.Type]
       });
     }
 
@@ -77,16 +69,9 @@ export class ComponentFile extends AngularGeneratedFile {
         this.addImport(cmp.exports[0].specifiers[0].exported, cmp.relativePathFrom);
       })
     });
-    this.addExport([
-      {
-        exported: () => this.elementTypeName,
-        local: () => this.elementTypeName,
-        types: [ExportSpecifierType.Type]
-      }
-    ]);
   }
   override getCode(): string {
-    const fragments = [this.getImportsCode(), this.getDirectiveCode(), this.getExportsCode()];
+    const fragments = [this.getImportsCode(), this.getDirectiveCode()];
     return prettierFormat(fragments.join('\n'), {parser: 'typescript'});
   }
 }

@@ -6,7 +6,7 @@ export class UtilsFile extends AngularGeneratedFile {
   constructor() {
     super();
     this.move('utils/index.ts');
-    this.addImport('fromEvent', 'rxjs');
+    this.addImport(['fromEvent', 'map'], 'rxjs');
     this.addExport([
       {
         local: 'ProxyInputs',
@@ -63,7 +63,7 @@ export class UtilsFile extends AngularGeneratedFile {
           outputNames.forEach((outputName) => {
             Object.defineProperty(cls.prototype, outputName, {
               get(): any {
-                return fromEvent(this.element, outputName);
+                return fromEvent<CustomEvent<any>>(this.element, outputName).pipe(map(e => e.detail));
               }
             });
           });

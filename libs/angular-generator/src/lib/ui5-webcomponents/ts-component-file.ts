@@ -6,9 +6,10 @@ import {camelCase} from "lodash";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
 import {utilsFile} from "./utils";
+import {inputsJson, outputsJson} from "./metadata-tools";
 
 export class TsComponentFile extends AngularGeneratedFile {
-  private directiveClassName = `${this.componentData.baseName}Directive`;
+  private componentClassName = `${this.componentData.baseName}Component`;
 
   constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions) {
     super();
@@ -29,15 +30,14 @@ export class TsComponentFile extends AngularGeneratedFile {
 
   private initializeImportsAndExports() {
     this.addExport({
-      local: this.directiveClassName,
-      exported: this.directiveClassName,
+      local: this.componentClassName,
+      exported: this.componentClassName,
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
-    this.addImport(['Directive', 'ElementRef', 'NgZone'], '@angular/core');
+    this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef'], '@angular/core');
     this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], utilsFile.relativePathFrom);
     if (this.componentData.outputs.length) {
-      this.addImport(['EventEmitter', 'Output'], '@angular/core');
-      this.addImport('NEVER', 'rxjs');
+      this.addImport(['EventEmitter'], '@angular/core');
     }
     if (this.componentData.formData.length > 0) {
       this.addImport(['NG_VALUE_ACCESSOR'], '@angular/forms');
@@ -54,7 +54,7 @@ export class TsComponentFile extends AngularGeneratedFile {
       return '';
     }
     return `
-      interface ${this.directiveClassName}EventsMap extends Omit<HTMLElementEventMap, ${this.componentData.outputs.map(output => `'${output.name}'`).join(' | ')}> {
+      interface ${this.componentClassName}EventsMap extends Omit<HTMLElementEventMap, ${this.componentData.outputs.map(output => `'${output.name}'`).join(' | ')}> {
         ${this.componentData.outputs.map((output) => `${output.name}: CustomEvent<${output.type}>;`).join('\n')}
       }
     `;
@@ -79,14 +79,14 @@ export class TsComponentFile extends AngularGeneratedFile {
     return `
       export declare interface ${this.componentData.baseName}Element extends Partial<${baseInterface}> {
         ${interfaceBody}
-        addEventListener<K extends keyof ${this.directiveClassName}EventsMap>(type: K, listener: (this: ${this.componentData.baseName}Element, ev: ${this.directiveClassName}EventsMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof ${this.componentClassName}EventsMap>(type: K, listener: (this: ${this.componentData.baseName}Element, ev: ${this.componentClassName}EventsMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof ${this.directiveClassName}EventsMap>(type: K, listener: (this: ${this.componentData.baseName}Element, ev: ${this.directiveClassName}EventsMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof ${this.componentClassName}EventsMap>(type: K, listener: (this: ${this.componentData.baseName}Element, ev: ${this.componentClassName}EventsMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
       }`
   }
 
-  private getDirectiveCode(): string {
+  private getComponentCode(): string {
     const baseClass = () => {
       if (this.componentData.formData.length === 0) {
         return '';
@@ -133,26 +133,29 @@ export class TsComponentFile extends AngularGeneratedFile {
       return '';
     }
     return `
+      // TS source file
       @ProxyInputs(${JSON.stringify(this.componentData.inputs.map(i => i.name))})
       @ProxyOutputs(${JSON.stringify(this.componentData.outputs.map(o => o.name))})
       @ProxyMethods(${JSON.stringify(this.componentData.methods.map(m => m.name))})
-      @Directive({
+      @Component({
         selector: '${this.selector}',
+        template: \`<ng-content></ng-content>\`,
         exportAs: '${camelCase('ui5-' + this.componentData.baseName)}',
         standalone: true,
-        inputs: ${JSON.stringify(this.componentData.inputs.map(i => i.name))},
-        outputs: ${JSON.stringify(this.componentData.outputs.map(o => o.publicName))},
+        inputs: ${inputsJson(this.componentData.inputs)},
+        outputs: ${outputsJson(this.componentData.outputs)},
         providers: [
             ${this.componentData.formData.length > 0 ? `{
               provide: NG_VALUE_ACCESSOR,
-              useExisting: forwardRef(() => ${this.directiveClassName}),
+              useExisting: forwardRef(() => ${this.componentClassName}),
               multi: true
             }` : ''}
         ]
       })
-      export class ${this.directiveClassName} ${baseClass()}{
-        ${this.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name, type}) => `${name}?: ${type};`).join('\n')}
-        constructor(private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone) {
+      export class ${this.componentClassName} ${baseClass()}{
+        ${this.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${this.componentData.baseName}Element['${name}'];`).join('\n')}
+        constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone) {
+          c.detach();
           ${cvaConstructor()}
         }
 
@@ -169,9 +172,9 @@ export class TsComponentFile extends AngularGeneratedFile {
       `import type ${this.componentData.baseName} from '${this.componentData.path}';`,
       this.getEventsMapInterface(),
       this.getElementInterface(),
-      this.getDirectiveCode(),
-      `export declare interface ${this.directiveClassName} extends Partial<${this.componentData.baseName}Element> {
-        ${this.componentData.outputs.map((output) => `${output.name}: EventEmitter<${this.directiveClassName}EventsMap['${output.name}']>;`).join('\n')}
+      this.getComponentCode(),
+      `export declare interface ${this.componentClassName} extends Partial<${this.componentData.baseName}Element> {
+        ${this.componentData.outputs.map((output) => `${output.name}: EventEmitter<${this.componentClassName}EventsMap['${output.name}']>;`).join('\n')}
       }`
     ].join('\n'), {parser: 'typescript'});
   }

@@ -1,4 +1,4 @@
-import { fromEvent } from 'rxjs';
+import { fromEvent, map } from 'rxjs';
 
 function ProxyInputs(inputNames: string[]) {
   return (cls: any) => {
@@ -33,7 +33,9 @@ function ProxyOutputs(outputNames: string[]) {
     outputNames.forEach((outputName) => {
       Object.defineProperty(cls.prototype, outputName, {
         get(): any {
-          return fromEvent(this.element, outputName);
+          return fromEvent<CustomEvent<any>>(this.element, outputName).pipe(
+            map((e) => e.detail)
+          );
         },
       });
     });

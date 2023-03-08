@@ -4,6 +4,7 @@ import {camelCase} from 'lodash';
 import {ComponentFile} from "./component-file";
 import {genericCva} from "./generic-cva";
 import {AngularGeneratedFile} from "../angular-generated-file";
+import {inputsJson, outputsJson} from "./metadata-tools";
 
 function CvaBaseClassExtends(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
@@ -59,7 +60,7 @@ export function CvaConstructor(componentFile: ComponentFile): string {
   return '';
 }
 
-export function DirectiveWrapperCreator(
+export function ComponentWrapperCreator(
   componentFile: ComponentFile,
   elementTypeName: string,
   eventsMapName: string,
@@ -142,19 +143,25 @@ export function DirectiveWrapperCreator(
     `;
   return `
       ${elementType}
+      // JS source file
       @ProxyInputs([${componentFile.componentData.inputs.map((input) => `'${input.name}'`)}])
       @ProxyOutputs([${componentFile.componentData.outputs.map((output) => `'${output.name}'`)}])
       @ProxyMethods([${componentFile.componentData.methods.map((method) => `'${method.name}'`)}])
-      @Directive({
+      @Component({
+        template: \`<ng-content></ng-content>\`,
         selector: '${componentFile.selector}',
         exportAs: '${camelCase(componentFile.selector)}',
         standalone: true,
         providers: [
             ${providers(componentFile)}
-        ]
+        ],
+        inputs: ${inputsJson(componentFile.componentData.inputs)},
+        outputs: ${outputsJson(outputs)},
       })
       export class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
-        constructor(private elementRef: ElementRef<${elementTypeName}>) {
+        ${componentFile.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${elementTypeName}['${name}'];`).join('\n')}
+        constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${elementTypeName}>, private zone: NgZone) {
+          c.detach();
           ${CvaConstructor(componentFile)}
         }
 
@@ -164,6 +171,6 @@ export function DirectiveWrapperCreator(
 
         ${slotsStr}
       }
-      export declare interface ${componentFile.wrapperExportSpecifier.local} extends ${elementTypeName} {}
+      export declare interface ${componentFile.wrapperExportSpecifier.local} extends Partial<${elementTypeName}> {}
     `;
 }

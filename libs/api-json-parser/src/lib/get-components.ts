@@ -101,11 +101,15 @@ export function getComponents({
         acc[parameter.name] = getPropertyType(parameter.type, symbol.tagname, eventNames.camel, component);
         return acc;
       }, {});
-      const eventType = !event.parameters?.length ? 'void' : `{ ${Object.keys(parameters).map(key => `'${key}': ${parameters[key]}`).join(',')} }`;
+      const eventType = !event.parameters?.length ? 'void' : `{ ${Object.keys(parameters).map((key) => `'${key}': ${typeof parameters[key] === 'string' ? parameters[key] : `{${key}}`}`).join(',')} }`;
       return {
         name: eventNames.camel,
         publicName: eventNames.camel === eventNames.kebab ? eventNames.camel : eventNames.kebab,
         type: eventType,
+        placeholderValues: Object.entries(parameters).reduce((acc, next) => {
+          acc[next[0]] = next[1];
+          return acc
+        }, {})
       }
     });
   }

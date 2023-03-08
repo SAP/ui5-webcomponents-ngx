@@ -6,6 +6,7 @@ import {genericCva} from "./generic-cva";
 import {ComponentWrapperCreator} from "./component-wrapper-creator";
 import {format as prettierFormat} from "prettier";
 import {utilsFile} from "./utils";
+import {outputTypesImportData} from "./output-types-import-data";
 
 export class ComponentFile extends AngularGeneratedFile {
   wrapperExportSpecifier!: ExportSpecifier<AngularExportSpecifierType>;
@@ -24,6 +25,7 @@ export class ComponentFile extends AngularGeneratedFile {
 
   constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions, private componentsMap: Map<ComponentData, AngularGeneratedFile>) {
     super();
+    this.componentsMap.set(componentData, this);
     this.move(options.exportFileNameFactory(componentData.path));
     this.apfPath = options.apfPathFactory(componentData.path);
     this.initializeImportsAndExports();
@@ -46,6 +48,9 @@ export class ComponentFile extends AngularGeneratedFile {
       this.addImport(['Observable', 'fromEvent', 'merge'], 'rxjs');
       this.addImport('NG_VALUE_ACCESSOR', '@angular/forms');
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
+    }
+    if (this.componentData.outputs.length > 0) {
+      this.addImport(outputTypesImportData(this.componentData, this.componentsMap));
     }
     if (this.componentData.inputs.length > 0) {
       this.componentData.inputs.filter(i => typeof i.type !== 'string').forEach((input) => {

@@ -5,6 +5,7 @@ import {ComponentFile} from "./component-file";
 import {genericCva} from "./generic-cva";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {inputsJson, outputsJson} from "./metadata-tools";
+import {outputType} from "./output-type";
 
 function CvaBaseClassExtends(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
@@ -79,7 +80,7 @@ export function ComponentWrapperCreator(
 
   const eventsMap = `
       interface ${eventsMapName} extends Omit<HTMLElementEventMap, ${outputs.map(output => `'${output.name}'`).join(' | ')}> {
-        ${outputs.map((output) => `${output.name}: CustomEvent<${output.type}>;`).join('\n')}
+        ${outputs.map((output) => `${output.name}: CustomEvent<${outputType(output, ComponentsMap)}>;`).join('\n')}
       }
     `;
 

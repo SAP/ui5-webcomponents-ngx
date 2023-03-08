@@ -21,7 +21,7 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
   let componentFile: AngularGeneratedFile;
   try {
     require.resolve(componentData.path.replace(/\.js$/, '.d.ts'));
-    componentFile = new TsComponentFile(componentData, options);
+    componentFile = new TsComponentFile(componentData, options, cache);
   } catch (e) {
     componentFile = new ComponentFile(componentData, options, cache);
   }

@@ -6,13 +6,15 @@ exports[`Snapshot test Main Avatar Group should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/AvatarGroup.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/AvatarGroup.js';
+import type AvatarGroup from '@ui5/webcomponents/dist/AvatarGroup.js';
 
 interface AvatarGroupComponentEventsMap
   extends Omit<HTMLElementEventMap, 'click' | 'overflow'> {
@@ -23,21 +25,14 @@ interface AvatarGroupComponentEventsMap
   overflow: CustomEvent<void>;
 }
 
-interface AvatarGroupComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'colorScheme'
-    | 'hiddenItems'
-    | 'type'
-    | 'click'
-    | 'overflow'
-    | 'overflowButton'
+export declare interface AvatarGroupElement
+  extends Partial<
+    Omit<
+      AvatarGroup,
+      'click' | 'overflow' | 'colorScheme' | 'hiddenItems' | 'type'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  colorScheme: Array<
+  colorScheme:
     | 'Accent1'
     | 'Accent10'
     | 'Accent2'
@@ -48,17 +43,13 @@ interface AvatarGroupComponentElement
     | 'Accent7'
     | 'Accent8'
     | 'Accent9'
-    | 'Placeholder'
-  >;
-  hiddenItems: Array<HTMLElement>;
+    | 'Placeholder';
+  hiddenItems: HTMLElement;
   type: 'Group' | 'Individual';
-
-  overflowButton: HTMLElement;
-
   addEventListener<K extends keyof AvatarGroupComponentEventsMap>(
     type: K,
     listener: (
-      this: AvatarGroupComponentElement,
+      this: AvatarGroupElement,
       ev: AvatarGroupComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -71,7 +62,7 @@ interface AvatarGroupComponentElement
   removeEventListener<K extends keyof AvatarGroupComponentEventsMap>(
     type: K,
     listener: (
-      this: AvatarGroupComponentElement,
+      this: AvatarGroupElement,
       ev: AvatarGroupComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -81,47 +72,9 @@ interface AvatarGroupComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -152,11 +105,10 @@ interface AvatarGroupComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-avatar-group',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5AvatarGroup',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -165,29 +117,30 @@ interface AvatarGroupComponentElement
     'type',
   ],
   outputs: ['click: ui5Click', 'overflow: ui5Overflow'],
+  providers: [],
 })
 export class AvatarGroupComponent {
-  colorScheme?: AvatarGroupComponentElement['colorScheme'];
-  hiddenItems?: AvatarGroupComponentElement['hiddenItems'];
-  type?: AvatarGroupComponentElement['type'];
+  colorScheme?: AvatarGroupElement['colorScheme'];
+  hiddenItems?: AvatarGroupElement['hiddenItems'];
+  type?: AvatarGroupElement['type'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<AvatarGroupComponentElement>,
+    private elementRef: ElementRef<AvatarGroupElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): AvatarGroupElement {
     return this.elementRef.nativeElement;
   }
-
-  get overflowButton(): HTMLElement {
-    return this.elementRef.nativeElement.overflowButton;
-  }
 }
+
 export declare interface AvatarGroupComponent
-  extends Partial<AvatarGroupComponentElement> {}
+  extends Partial<AvatarGroupElement> {
+  click: EventEmitter<AvatarGroupComponentEventsMap['click']>;
+  overflow: EventEmitter<AvatarGroupComponentEventsMap['overflow']>;
+}
 "
 `;
 
@@ -2073,59 +2026,20 @@ exports[`Snapshot test Main Combo Box Group Item should match the snapshot 1`] =
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
+import type ComboBoxGroupItem from '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 
-interface ComboBoxGroupItemComponentElement
-  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element' | 'text'> {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface ComboBoxGroupItemElement
+  extends Partial<Omit<ComboBoxGroupItem, 'text'>> {
   text: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -2150,34 +2064,35 @@ interface ComboBoxGroupItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-cb-group-item',
-  exportAs: 'ui5CbGroupItem',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ComboBoxGroupItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'text',
   ],
   outputs: [],
+  providers: [],
 })
 export class ComboBoxGroupItemComponent {
-  text?: ComboBoxGroupItemComponentElement['text'];
+  text?: ComboBoxGroupItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ComboBoxGroupItemComponentElement>,
+    private elementRef: ElementRef<ComboBoxGroupItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ComboBoxGroupItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface ComboBoxGroupItemComponent
-  extends Partial<ComboBoxGroupItemComponentElement> {}
+  extends Partial<ComboBoxGroupItemElement> {}
 "
 `;
 
@@ -2188,63 +2103,21 @@ exports[`Snapshot test Main Combo Box Item should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/ComboBoxItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ComboBoxItem.js';
+import type ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem.js';
 
-interface ComboBoxItemComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'additionalText' | 'text'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface ComboBoxItemElement
+  extends Partial<Omit<ComboBoxItem, 'additionalText' | 'text'>> {
   additionalText: string;
   text: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'additionalText', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -2269,11 +2142,10 @@ interface ComboBoxItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-cb-item',
-  exportAs: 'ui5CbItem',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ComboBoxItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2281,24 +2153,26 @@ interface ComboBoxItemComponentElement
     'text',
   ],
   outputs: [],
+  providers: [],
 })
 export class ComboBoxItemComponent {
-  additionalText?: ComboBoxItemComponentElement['additionalText'];
-  text?: ComboBoxItemComponentElement['text'];
+  additionalText?: ComboBoxItemElement['additionalText'];
+  text?: ComboBoxItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ComboBoxItemComponentElement>,
+    private elementRef: ElementRef<ComboBoxItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ComboBoxItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface ComboBoxItemComponent
-  extends Partial<ComboBoxItemComponentElement> {}
+  extends Partial<ComboBoxItemElement> {}
 "
 `;
 
@@ -2308,49 +2182,52 @@ exports[`Snapshot test Main Combo Box should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
   forwardRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/ComboBox.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { Observable, fromEvent, merge } from 'rxjs';
+import { ComboBoxGroupItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-group-item';
+import { ComboBoxItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-item';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
-import { IconComponent } from '@ui5/webcomponents-ngx/main/icon';
+import '@ui5/webcomponents/dist/ComboBox.js';
+import type ComboBox from '@ui5/webcomponents/dist/ComboBox.js';
 
 interface ComboBoxComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change' | 'input' | 'selectionChange'> {
   change: CustomEvent<void>;
   input: CustomEvent<void>;
-  selectionChange: CustomEvent<{ item: HTMLElement }>;
+  selectionChange: CustomEvent<{
+    item:
+      | ComboBoxGroupItemComponent['element']
+      | ComboBoxItemComponent['element'];
+  }>;
 }
 
-interface ComboBoxComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'disabled'
-    | 'filter'
-    | 'loading'
-    | 'placeholder'
-    | 'readonly'
-    | 'required'
-    | 'value'
-    | 'valueState'
-    | 'change'
-    | 'input'
-    | 'selectionChange'
-    | 'icon'
-    | 'valueStateMessage'
+export declare interface ComboBoxElement
+  extends Partial<
+    Omit<
+      ComboBox,
+      | 'change'
+      | 'input'
+      | 'selectionChange'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'filter'
+      | 'loading'
+      | 'placeholder'
+      | 'readonly'
+      | 'required'
+      | 'value'
+      | 'valueState'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
@@ -2361,16 +2238,9 @@ interface ComboBoxComponentElement
   required: boolean;
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
-
-  icon: Array<IconComponent['element']>;
-  valueStateMessage: Array<HTMLElement>;
-
   addEventListener<K extends keyof ComboBoxComponentEventsMap>(
     type: K,
-    listener: (
-      this: ComboBoxComponentElement,
-      ev: ComboBoxComponentEventsMap[K]
-    ) => any,
+    listener: (this: ComboBoxElement, ev: ComboBoxComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -2380,10 +2250,7 @@ interface ComboBoxComponentElement
   ): void;
   removeEventListener<K extends keyof ComboBoxComponentEventsMap>(
     type: K,
-    listener: (
-      this: ComboBoxComponentElement,
-      ev: ComboBoxComponentEventsMap[K]
-    ) => any,
+    listener: (this: ComboBoxElement, ev: ComboBoxComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -2391,47 +2258,9 @@ interface ComboBoxComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -2469,17 +2298,10 @@ interface ComboBoxComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-combobox',
-  exportAs: 'ui5Combobox',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ComboBox',
   standalone: true,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ComboBoxComponent),
-      multi: true,
-    },
-  ],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2499,21 +2321,28 @@ interface ComboBoxComponentElement
     'input: ui5Input',
     'selectionChange: ui5SelectionChange',
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ComboBoxComponent),
+      multi: true,
+    },
+  ],
 })
 export class ComboBoxComponent extends GenericControlValueAccessor {
-  accessibleName?: ComboBoxComponentElement['accessibleName'];
-  accessibleNameRef?: ComboBoxComponentElement['accessibleNameRef'];
-  disabled?: ComboBoxComponentElement['disabled'];
-  filter?: ComboBoxComponentElement['filter'];
-  loading?: ComboBoxComponentElement['loading'];
-  placeholder?: ComboBoxComponentElement['placeholder'];
-  readonly?: ComboBoxComponentElement['readonly'];
-  required?: ComboBoxComponentElement['required'];
-  value?: ComboBoxComponentElement['value'];
-  valueState?: ComboBoxComponentElement['valueState'];
+  accessibleName?: ComboBoxElement['accessibleName'];
+  accessibleNameRef?: ComboBoxElement['accessibleNameRef'];
+  disabled?: ComboBoxElement['disabled'];
+  filter?: ComboBoxElement['filter'];
+  loading?: ComboBoxElement['loading'];
+  placeholder?: ComboBoxElement['placeholder'];
+  readonly?: ComboBoxElement['readonly'];
+  required?: ComboBoxElement['required'];
+  value?: ComboBoxElement['value'];
+  valueState?: ComboBoxElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ComboBoxComponentElement>,
+    private elementRef: ElementRef<ComboBoxElement>,
     private zone: NgZone
   ) {
     c.detach();
@@ -2534,19 +2363,16 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
     });
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ComboBoxElement {
     return this.elementRef.nativeElement;
   }
-
-  get icon(): Array<IconComponent['element']> {
-    return this.elementRef.nativeElement.icon;
-  }
-  get valueStateMessage(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.valueStateMessage;
-  }
 }
-export declare interface ComboBoxComponent
-  extends Partial<ComboBoxComponentElement> {}
+
+export declare interface ComboBoxComponent extends Partial<ComboBoxElement> {
+  change: EventEmitter<ComboBoxComponentEventsMap['change']>;
+  input: EventEmitter<ComboBoxComponentEventsMap['input']>;
+  selectionChange: EventEmitter<ComboBoxComponentEventsMap['selectionChange']>;
+}
 "
 `;
 
@@ -3614,6 +3440,7 @@ export declare interface DialogElement
       | 'beforeOpen'
       | 'accessibleName'
       | 'accessibleNameRef'
+      | 'accessibleRole'
       | 'initialFocus'
       | 'open'
       | 'preventFocusRestore'
@@ -3626,6 +3453,7 @@ export declare interface DialogElement
   > {
   accessibleName: string;
   accessibleNameRef: string;
+  accessibleRole: 'AlertDialog' | 'Dialog' | 'None';
   initialFocus: string;
   open: boolean;
   preventFocusRestore: boolean;
@@ -3662,6 +3490,7 @@ export declare interface DialogElement
   'isUi5Element',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleRole',
   'initialFocus',
   'open',
   'preventFocusRestore',
@@ -3707,6 +3536,7 @@ export declare interface DialogElement
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
+    'accessibleRole: accessible-role',
     'initialFocus: initial-focus',
     'open',
     'preventFocusRestore: prevent-focus-restore',
@@ -3727,6 +3557,7 @@ export declare interface DialogElement
 export class DialogComponent {
   accessibleName?: DialogElement['accessibleName'];
   accessibleNameRef?: DialogElement['accessibleNameRef'];
+  accessibleRole?: DialogElement['accessibleRole'];
   initialFocus?: DialogElement['initialFocus'];
   open?: DialogElement['open'];
   preventFocusRestore?: DialogElement['preventFocusRestore'];
@@ -5393,59 +5224,20 @@ exports[`Snapshot test Main Multi Combo Box Group Item should match the snapshot
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
+import type MultiComboBoxGroupItem from '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
 
-interface MultiComboBoxGroupItemComponentElement
-  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element' | 'text'> {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface MultiComboBoxGroupItemElement
+  extends Partial<Omit<MultiComboBoxGroupItem, 'text'>> {
   text: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -5470,34 +5262,35 @@ interface MultiComboBoxGroupItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-mcb-group-item',
-  exportAs: 'ui5McbGroupItem',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5MultiComboBoxGroupItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'text',
   ],
   outputs: [],
+  providers: [],
 })
 export class MultiComboBoxGroupItemComponent {
-  text?: MultiComboBoxGroupItemComponentElement['text'];
+  text?: MultiComboBoxGroupItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MultiComboBoxGroupItemComponentElement>,
+    private elementRef: ElementRef<MultiComboBoxGroupItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MultiComboBoxGroupItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface MultiComboBoxGroupItemComponent
-  extends Partial<MultiComboBoxGroupItemComponentElement> {}
+  extends Partial<MultiComboBoxGroupItemElement> {}
 "
 `;
 
@@ -5508,64 +5301,24 @@ exports[`Snapshot test Main Multi Combo Box Item should match the snapshot 1`] =
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
+import type MultiComboBoxItem from '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 
-interface MultiComboBoxItemComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'additionalText' | 'text' | 'selected'
+export declare interface MultiComboBoxItemElement
+  extends Partial<
+    Omit<MultiComboBoxItem, 'additionalText' | 'text' | 'selected'>
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   additionalText: string;
   text: string;
   selected: boolean;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -5596,11 +5349,10 @@ interface MultiComboBoxItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-mcb-item',
-  exportAs: 'ui5McbItem',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5MultiComboBoxItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -5609,25 +5361,27 @@ interface MultiComboBoxItemComponentElement
     'selected',
   ],
   outputs: [],
+  providers: [],
 })
 export class MultiComboBoxItemComponent {
-  additionalText?: MultiComboBoxItemComponentElement['additionalText'];
-  text?: MultiComboBoxItemComponentElement['text'];
-  selected?: MultiComboBoxItemComponentElement['selected'];
+  additionalText?: MultiComboBoxItemElement['additionalText'];
+  text?: MultiComboBoxItemElement['text'];
+  selected?: MultiComboBoxItemElement['selected'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MultiComboBoxItemComponentElement>,
+    private elementRef: ElementRef<MultiComboBoxItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MultiComboBoxItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface MultiComboBoxItemComponent
-  extends Partial<MultiComboBoxItemComponentElement> {}
+  extends Partial<MultiComboBoxItemElement> {}
 "
 `;
 
@@ -5637,18 +5391,19 @@ exports[`Snapshot test Main Multi Combo Box should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
   forwardRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/MultiComboBox.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { Observable, fromEvent, merge } from 'rxjs';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
-import { IconComponent } from '@ui5/webcomponents-ngx/main/icon';
+import '@ui5/webcomponents/dist/MultiComboBox.js';
+import type MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox.js';
 
 interface MultiComboBoxComponentEventsMap
   extends Omit<
@@ -5661,32 +5416,28 @@ interface MultiComboBoxComponentEventsMap
   selectionChange: CustomEvent<{ items: Array<any> }>;
 }
 
-interface MultiComboBoxComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'allowCustomValues'
-    | 'disabled'
-    | 'filter'
-    | 'noTypeahead'
-    | 'open'
-    | 'placeholder'
-    | 'readonly'
-    | 'required'
-    | 'value'
-    | 'valueState'
-    | 'change'
-    | 'input'
-    | 'openChange'
-    | 'selectionChange'
-    | 'icon'
-    | 'valueStateMessage'
+export declare interface MultiComboBoxElement
+  extends Partial<
+    Omit<
+      MultiComboBox,
+      | 'change'
+      | 'input'
+      | 'openChange'
+      | 'selectionChange'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'allowCustomValues'
+      | 'disabled'
+      | 'filter'
+      | 'noTypeahead'
+      | 'open'
+      | 'placeholder'
+      | 'readonly'
+      | 'required'
+      | 'value'
+      | 'valueState'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   allowCustomValues: boolean;
@@ -5699,14 +5450,10 @@ interface MultiComboBoxComponentElement
   required: boolean;
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
-
-  icon: Array<IconComponent['element']>;
-  valueStateMessage: Array<HTMLElement>;
-
   addEventListener<K extends keyof MultiComboBoxComponentEventsMap>(
     type: K,
     listener: (
-      this: MultiComboBoxComponentElement,
+      this: MultiComboBoxElement,
       ev: MultiComboBoxComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -5719,7 +5466,7 @@ interface MultiComboBoxComponentElement
   removeEventListener<K extends keyof MultiComboBoxComponentEventsMap>(
     type: K,
     listener: (
-      this: MultiComboBoxComponentElement,
+      this: MultiComboBoxElement,
       ev: MultiComboBoxComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -5729,47 +5476,9 @@ interface MultiComboBoxComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -5809,17 +5518,10 @@ interface MultiComboBoxComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-multi-combobox',
-  exportAs: 'ui5MultiCombobox',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5MultiComboBox',
   standalone: true,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MultiComboBoxComponent),
-      multi: true,
-    },
-  ],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -5842,23 +5544,30 @@ interface MultiComboBoxComponentElement
     'openChange: ui5OpenChange',
     'selectionChange: ui5SelectionChange',
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MultiComboBoxComponent),
+      multi: true,
+    },
+  ],
 })
 export class MultiComboBoxComponent extends GenericControlValueAccessor {
-  accessibleName?: MultiComboBoxComponentElement['accessibleName'];
-  accessibleNameRef?: MultiComboBoxComponentElement['accessibleNameRef'];
-  allowCustomValues?: MultiComboBoxComponentElement['allowCustomValues'];
-  disabled?: MultiComboBoxComponentElement['disabled'];
-  filter?: MultiComboBoxComponentElement['filter'];
-  noTypeahead?: MultiComboBoxComponentElement['noTypeahead'];
-  open?: MultiComboBoxComponentElement['open'];
-  placeholder?: MultiComboBoxComponentElement['placeholder'];
-  readonly?: MultiComboBoxComponentElement['readonly'];
-  required?: MultiComboBoxComponentElement['required'];
-  value?: MultiComboBoxComponentElement['value'];
-  valueState?: MultiComboBoxComponentElement['valueState'];
+  accessibleName?: MultiComboBoxElement['accessibleName'];
+  accessibleNameRef?: MultiComboBoxElement['accessibleNameRef'];
+  allowCustomValues?: MultiComboBoxElement['allowCustomValues'];
+  disabled?: MultiComboBoxElement['disabled'];
+  filter?: MultiComboBoxElement['filter'];
+  noTypeahead?: MultiComboBoxElement['noTypeahead'];
+  open?: MultiComboBoxElement['open'];
+  placeholder?: MultiComboBoxElement['placeholder'];
+  readonly?: MultiComboBoxElement['readonly'];
+  required?: MultiComboBoxElement['required'];
+  value?: MultiComboBoxElement['value'];
+  valueState?: MultiComboBoxElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MultiComboBoxComponentElement>,
+    private elementRef: ElementRef<MultiComboBoxElement>,
     private zone: NgZone
   ) {
     c.detach();
@@ -5879,19 +5588,20 @@ export class MultiComboBoxComponent extends GenericControlValueAccessor {
     });
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MultiComboBoxElement {
     return this.elementRef.nativeElement;
   }
-
-  get icon(): Array<IconComponent['element']> {
-    return this.elementRef.nativeElement.icon;
-  }
-  get valueStateMessage(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.valueStateMessage;
-  }
 }
+
 export declare interface MultiComboBoxComponent
-  extends Partial<MultiComboBoxComponentElement> {}
+  extends Partial<MultiComboBoxElement> {
+  change: EventEmitter<MultiComboBoxComponentEventsMap['change']>;
+  input: EventEmitter<MultiComboBoxComponentEventsMap['input']>;
+  openChange: EventEmitter<MultiComboBoxComponentEventsMap['openChange']>;
+  selectionChange: EventEmitter<
+    MultiComboBoxComponentEventsMap['selectionChange']
+  >;
+}
 "
 `;
 
@@ -5901,19 +5611,19 @@ exports[`Snapshot test Main Multi Input should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
   forwardRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/MultiInput.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { Observable, fromEvent, merge } from 'rxjs';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
-import { IconComponent } from '@ui5/webcomponents-ngx/main/icon';
-import { TokenComponent } from '@ui5/webcomponents-ngx/main/token';
+import '@ui5/webcomponents/dist/MultiInput.js';
+import type MultiInput from '@ui5/webcomponents/dist/MultiInput.js';
 
 interface MultiInputComponentEventsMap
   extends Omit<
@@ -5936,47 +5646,40 @@ interface MultiInputComponentEventsMap
   valueHelpTrigger: CustomEvent<void>;
 }
 
-interface MultiInputComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'disabled'
-    | 'maxlength'
-    | 'name'
-    | 'noTypeahead'
-    | 'placeholder'
-    | 'previewItem'
-    | 'readonly'
-    | 'required'
-    | 'showClearIcon'
-    | 'showSuggestions'
-    | 'type'
-    | 'value'
-    | 'valueState'
-    | 'showValueHelpIcon'
-    | 'change'
-    | 'input'
-    | 'suggestionItemPreview'
-    | 'suggestionItemSelect'
-    | 'tokenDelete'
-    | 'valueHelpTrigger'
-    | 'icon'
-    | 'valueStateMessage'
-    | 'tokens'
+export declare interface MultiInputElement
+  extends Partial<
+    Omit<
+      MultiInput,
+      | 'change'
+      | 'input'
+      | 'suggestionItemPreview'
+      | 'suggestionItemSelect'
+      | 'tokenDelete'
+      | 'valueHelpTrigger'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'name'
+      | 'noTypeahead'
+      | 'placeholder'
+      | 'readonly'
+      | 'required'
+      | 'showClearIcon'
+      | 'showSuggestions'
+      | 'type'
+      | 'value'
+      | 'valueState'
+      | 'showValueHelpIcon'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-  maxlength: any;
+
   name: string;
   noTypeahead: boolean;
   placeholder: string;
-  previewItem: any;
+
   readonly: boolean;
   required: boolean;
   showClearIcon: boolean;
@@ -5985,15 +5688,10 @@ interface MultiInputComponentElement
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   showValueHelpIcon: boolean;
-
-  icon: Array<IconComponent['element']>;
-  valueStateMessage: Array<HTMLElement>;
-  tokens: Array<TokenComponent['element']>;
-
   addEventListener<K extends keyof MultiInputComponentEventsMap>(
     type: K,
     listener: (
-      this: MultiInputComponentElement,
+      this: MultiInputElement,
       ev: MultiInputComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -6006,7 +5704,7 @@ interface MultiInputComponentElement
   removeEventListener<K extends keyof MultiInputComponentEventsMap>(
     type: K,
     listener: (
-      this: MultiInputComponentElement,
+      this: MultiInputElement,
       ev: MultiInputComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -6016,49 +5714,9 @@ interface MultiInputComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  openPicker(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -6110,17 +5768,10 @@ interface MultiInputComponentElement
   'openPicker',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-multi-input',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5MultiInput',
   standalone: true,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MultiInputComponent),
-      multi: true,
-    },
-  ],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -6149,25 +5800,32 @@ interface MultiInputComponentElement
     'tokenDelete: ui5TokenDelete',
     'valueHelpTrigger: ui5ValueHelpTrigger',
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MultiInputComponent),
+      multi: true,
+    },
+  ],
 })
 export class MultiInputComponent extends GenericControlValueAccessor {
-  accessibleName?: MultiInputComponentElement['accessibleName'];
-  accessibleNameRef?: MultiInputComponentElement['accessibleNameRef'];
-  disabled?: MultiInputComponentElement['disabled'];
-  name?: MultiInputComponentElement['name'];
-  noTypeahead?: MultiInputComponentElement['noTypeahead'];
-  placeholder?: MultiInputComponentElement['placeholder'];
-  readonly?: MultiInputComponentElement['readonly'];
-  required?: MultiInputComponentElement['required'];
-  showClearIcon?: MultiInputComponentElement['showClearIcon'];
-  showSuggestions?: MultiInputComponentElement['showSuggestions'];
-  type?: MultiInputComponentElement['type'];
-  value?: MultiInputComponentElement['value'];
-  valueState?: MultiInputComponentElement['valueState'];
-  showValueHelpIcon?: MultiInputComponentElement['showValueHelpIcon'];
+  accessibleName?: MultiInputElement['accessibleName'];
+  accessibleNameRef?: MultiInputElement['accessibleNameRef'];
+  disabled?: MultiInputElement['disabled'];
+  name?: MultiInputElement['name'];
+  noTypeahead?: MultiInputElement['noTypeahead'];
+  placeholder?: MultiInputElement['placeholder'];
+  readonly?: MultiInputElement['readonly'];
+  required?: MultiInputElement['required'];
+  showClearIcon?: MultiInputElement['showClearIcon'];
+  showSuggestions?: MultiInputElement['showSuggestions'];
+  type?: MultiInputElement['type'];
+  value?: MultiInputElement['value'];
+  valueState?: MultiInputElement['valueState'];
+  showValueHelpIcon?: MultiInputElement['showValueHelpIcon'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MultiInputComponentElement>,
+    private elementRef: ElementRef<MultiInputElement>,
     private zone: NgZone
   ) {
     c.detach();
@@ -6188,22 +5846,26 @@ export class MultiInputComponent extends GenericControlValueAccessor {
     });
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MultiInputElement {
     return this.elementRef.nativeElement;
   }
-
-  get icon(): Array<IconComponent['element']> {
-    return this.elementRef.nativeElement.icon;
-  }
-  get valueStateMessage(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.valueStateMessage;
-  }
-  get tokens(): Array<TokenComponent['element']> {
-    return this.elementRef.nativeElement.tokens;
-  }
 }
+
 export declare interface MultiInputComponent
-  extends Partial<MultiInputComponentElement> {}
+  extends Partial<MultiInputElement> {
+  change: EventEmitter<MultiInputComponentEventsMap['change']>;
+  input: EventEmitter<MultiInputComponentEventsMap['input']>;
+  suggestionItemPreview: EventEmitter<
+    MultiInputComponentEventsMap['suggestionItemPreview']
+  >;
+  suggestionItemSelect: EventEmitter<
+    MultiInputComponentEventsMap['suggestionItemSelect']
+  >;
+  tokenDelete: EventEmitter<MultiInputComponentEventsMap['tokenDelete']>;
+  valueHelpTrigger: EventEmitter<
+    MultiInputComponentEventsMap['valueHelpTrigger']
+  >;
+}
 "
 `;
 
@@ -6219,72 +5881,26 @@ exports[`Snapshot test Main Option should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Option.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/Option.js';
+import type Option from '@ui5/webcomponents/dist/Option.js';
 
-interface OptionComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'additionalText'
-    | 'disabled'
-    | 'icon'
-    | 'selected'
-    | 'value'
+export declare interface OptionElement
+  extends Partial<
+    Omit<Option, 'additionalText' | 'disabled' | 'icon' | 'selected' | 'value'>
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   additionalText: string;
   disabled: boolean;
   icon: string;
   selected: boolean;
   value: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -6317,11 +5933,10 @@ interface OptionComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-option',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Option',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -6332,27 +5947,28 @@ interface OptionComponentElement
     'value',
   ],
   outputs: [],
+  providers: [],
 })
 export class OptionComponent {
-  additionalText?: OptionComponentElement['additionalText'];
-  disabled?: OptionComponentElement['disabled'];
-  icon?: OptionComponentElement['icon'];
-  selected?: OptionComponentElement['selected'];
-  value?: OptionComponentElement['value'];
+  additionalText?: OptionElement['additionalText'];
+  disabled?: OptionElement['disabled'];
+  icon?: OptionElement['icon'];
+  selected?: OptionElement['selected'];
+  value?: OptionElement['value'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<OptionComponentElement>,
+    private elementRef: ElementRef<OptionElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): OptionElement {
     return this.elementRef.nativeElement;
   }
 }
-export declare interface OptionComponent
-  extends Partial<OptionComponentElement> {}
+
+export declare interface OptionComponent extends Partial<OptionElement> {}
 "
 `;
 
@@ -6536,6 +6152,7 @@ export declare interface PopoverElement
       | 'beforeOpen'
       | 'accessibleName'
       | 'accessibleNameRef'
+      | 'accessibleRole'
       | 'initialFocus'
       | 'open'
       | 'preventFocusRestore'
@@ -6551,6 +6168,7 @@ export declare interface PopoverElement
   > {
   accessibleName: string;
   accessibleNameRef: string;
+  accessibleRole: 'AlertDialog' | 'Dialog' | 'None';
   initialFocus: string;
   open: boolean;
   preventFocusRestore: boolean;
@@ -6591,6 +6209,7 @@ export declare interface PopoverElement
   'isUi5Element',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleRole',
   'initialFocus',
   'open',
   'preventFocusRestore',
@@ -6640,6 +6259,7 @@ export declare interface PopoverElement
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
+    'accessibleRole: accessible-role',
     'initialFocus: initial-focus',
     'open',
     'preventFocusRestore: prevent-focus-restore',
@@ -6664,6 +6284,7 @@ export declare interface PopoverElement
 export class PopoverComponent {
   accessibleName?: PopoverElement['accessibleName'];
   accessibleNameRef?: PopoverElement['accessibleNameRef'];
+  accessibleRole?: PopoverElement['accessibleRole'];
   initialFocus?: PopoverElement['initialFocus'];
   open?: PopoverElement['open'];
   preventFocusRestore?: PopoverElement['preventFocusRestore'];
@@ -6804,43 +6425,43 @@ exports[`Snapshot test Main Radio Button should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
   forwardRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/RadioButton.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { Observable, fromEvent, merge } from 'rxjs';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import '@ui5/webcomponents/dist/RadioButton.js';
+import type RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
 
 interface RadioButtonComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change'> {
   change: CustomEvent<void>;
 }
 
-interface RadioButtonComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'checked'
-    | 'disabled'
-    | 'name'
-    | 'readonly'
-    | 'required'
-    | 'text'
-    | 'value'
-    | 'valueState'
-    | 'wrappingType'
-    | 'change'
+export declare interface RadioButtonElement
+  extends Partial<
+    Omit<
+      RadioButton,
+      | 'change'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'checked'
+      | 'disabled'
+      | 'name'
+      | 'readonly'
+      | 'required'
+      | 'text'
+      | 'value'
+      | 'valueState'
+      | 'wrappingType'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   checked: boolean;
@@ -6852,11 +6473,10 @@ interface RadioButtonComponentElement
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   wrappingType: 'None' | 'Normal';
-
   addEventListener<K extends keyof RadioButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: RadioButtonComponentElement,
+      this: RadioButtonElement,
       ev: RadioButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -6869,7 +6489,7 @@ interface RadioButtonComponentElement
   removeEventListener<K extends keyof RadioButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: RadioButtonComponentElement,
+      this: RadioButtonElement,
       ev: RadioButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -6879,47 +6499,9 @@ interface RadioButtonComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -6958,17 +6540,10 @@ interface RadioButtonComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-radio-button',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5RadioButton',
   standalone: true,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioButtonComponent),
-      multi: true,
-    },
-  ],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -6985,22 +6560,29 @@ interface RadioButtonComponentElement
     'wrappingType: wrapping-type',
   ],
   outputs: ['change: ui5Change'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RadioButtonComponent),
+      multi: true,
+    },
+  ],
 })
 export class RadioButtonComponent extends GenericControlValueAccessor {
-  accessibleName?: RadioButtonComponentElement['accessibleName'];
-  accessibleNameRef?: RadioButtonComponentElement['accessibleNameRef'];
-  checked?: RadioButtonComponentElement['checked'];
-  disabled?: RadioButtonComponentElement['disabled'];
-  name?: RadioButtonComponentElement['name'];
-  readonly?: RadioButtonComponentElement['readonly'];
-  required?: RadioButtonComponentElement['required'];
-  text?: RadioButtonComponentElement['text'];
-  value?: RadioButtonComponentElement['value'];
-  valueState?: RadioButtonComponentElement['valueState'];
-  wrappingType?: RadioButtonComponentElement['wrappingType'];
+  accessibleName?: RadioButtonElement['accessibleName'];
+  accessibleNameRef?: RadioButtonElement['accessibleNameRef'];
+  checked?: RadioButtonElement['checked'];
+  disabled?: RadioButtonElement['disabled'];
+  name?: RadioButtonElement['name'];
+  readonly?: RadioButtonElement['readonly'];
+  required?: RadioButtonElement['required'];
+  text?: RadioButtonElement['text'];
+  value?: RadioButtonElement['value'];
+  valueState?: RadioButtonElement['valueState'];
+  wrappingType?: RadioButtonElement['wrappingType'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<RadioButtonComponentElement>,
+    private elementRef: ElementRef<RadioButtonElement>,
     private zone: NgZone
   ) {
     c.detach();
@@ -7020,12 +6602,15 @@ export class RadioButtonComponent extends GenericControlValueAccessor {
     });
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): RadioButtonElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface RadioButtonComponent
-  extends Partial<RadioButtonComponentElement> {}
+  extends Partial<RadioButtonElement> {
+  change: EventEmitter<RadioButtonComponentEventsMap['change']>;
+}
 "
 `;
 
@@ -7217,43 +6802,34 @@ exports[`Snapshot test Main Rating Indicator should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/RatingIndicator.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/RatingIndicator.js';
+import type RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
 
 interface RatingIndicatorComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change'> {
   change: CustomEvent<void>;
 }
 
-interface RatingIndicatorComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'disabled'
-    | 'max'
-    | 'readonly'
-    | 'value'
-    | 'change'
+export declare interface RatingIndicatorElement
+  extends Partial<
+    Omit<RatingIndicator, 'change' | 'accessibleName' | 'disabled' | 'readonly'>
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   disabled: boolean;
-  max: any;
+
   readonly: boolean;
-  value: any;
 
   addEventListener<K extends keyof RatingIndicatorComponentEventsMap>(
     type: K,
     listener: (
-      this: RatingIndicatorComponentElement,
+      this: RatingIndicatorElement,
       ev: RatingIndicatorComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -7266,7 +6842,7 @@ interface RatingIndicatorComponentElement
   removeEventListener<K extends keyof RatingIndicatorComponentEventsMap>(
     type: K,
     listener: (
-      this: RatingIndicatorComponentElement,
+      this: RatingIndicatorElement,
       ev: RatingIndicatorComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -7276,47 +6852,9 @@ interface RatingIndicatorComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -7349,11 +6887,10 @@ interface RatingIndicatorComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-rating-indicator',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5RatingIndicator',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -7364,25 +6901,29 @@ interface RatingIndicatorComponentElement
     'value',
   ],
   outputs: ['change: ui5Change'],
+  providers: [],
 })
 export class RatingIndicatorComponent {
-  accessibleName?: RatingIndicatorComponentElement['accessibleName'];
-  disabled?: RatingIndicatorComponentElement['disabled'];
-  readonly?: RatingIndicatorComponentElement['readonly'];
+  accessibleName?: RatingIndicatorElement['accessibleName'];
+  disabled?: RatingIndicatorElement['disabled'];
+  readonly?: RatingIndicatorElement['readonly'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<RatingIndicatorComponentElement>,
+    private elementRef: ElementRef<RatingIndicatorElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): RatingIndicatorElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface RatingIndicatorComponent
-  extends Partial<RatingIndicatorComponentElement> {}
+  extends Partial<RatingIndicatorElement> {
+  change: EventEmitter<RatingIndicatorComponentEventsMap['change']>;
+}
 "
 `;
 
@@ -7423,6 +6964,7 @@ export declare interface ResponsivePopoverElement
       | 'beforeOpen'
       | 'accessibleName'
       | 'accessibleNameRef'
+      | 'accessibleRole'
       | 'initialFocus'
       | 'open'
       | 'preventFocusRestore'
@@ -7438,6 +6980,7 @@ export declare interface ResponsivePopoverElement
   > {
   accessibleName: string;
   accessibleNameRef: string;
+  accessibleRole: 'AlertDialog' | 'Dialog' | 'None';
   initialFocus: string;
   open: boolean;
   preventFocusRestore: boolean;
@@ -7484,6 +7027,7 @@ export declare interface ResponsivePopoverElement
   'isUi5Element',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleRole',
   'initialFocus',
   'open',
   'preventFocusRestore',
@@ -7533,6 +7077,7 @@ export declare interface ResponsivePopoverElement
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
+    'accessibleRole: accessible-role',
     'initialFocus: initial-focus',
     'open',
     'preventFocusRestore: prevent-focus-restore',
@@ -7557,6 +7102,7 @@ export declare interface ResponsivePopoverElement
 export class ResponsivePopoverComponent {
   accessibleName?: ResponsivePopoverElement['accessibleName'];
   accessibleNameRef?: ResponsivePopoverElement['accessibleNameRef'];
+  accessibleRole?: ResponsivePopoverElement['accessibleRole'];
   initialFocus?: ResponsivePopoverElement['initialFocus'];
   open?: ResponsivePopoverElement['open'];
   preventFocusRestore?: ResponsivePopoverElement['preventFocusRestore'];
@@ -7597,39 +7143,37 @@ exports[`Snapshot test Main Segmented Button Item should match the snapshot 1`] 
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
+import type SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 
 interface SegmentedButtonItemComponentEventsMap
   extends Omit<HTMLElementEventMap, 'click'> {
   click: CustomEvent<void>;
 }
 
-interface SegmentedButtonItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibilityAttributes'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'design'
-    | 'disabled'
-    | 'icon'
-    | 'iconEnd'
-    | 'submits'
-    | 'tooltip'
-    | 'pressed'
-    | 'click'
+export declare interface SegmentedButtonItemElement
+  extends Partial<
+    Omit<
+      SegmentedButtonItem,
+      | 'click'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'design'
+      | 'disabled'
+      | 'icon'
+      | 'iconEnd'
+      | 'submits'
+      | 'tooltip'
+      | 'pressed'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  accessibilityAttributes: Record<string, any>;
   accessibleName: string;
   accessibleNameRef: string;
   design:
@@ -7645,11 +7189,10 @@ interface SegmentedButtonItemComponentElement
   submits: boolean;
   tooltip: string;
   pressed: boolean;
-
   addEventListener<K extends keyof SegmentedButtonItemComponentEventsMap>(
     type: K,
     listener: (
-      this: SegmentedButtonItemComponentElement,
+      this: SegmentedButtonItemElement,
       ev: SegmentedButtonItemComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -7662,7 +7205,7 @@ interface SegmentedButtonItemComponentElement
   removeEventListener<K extends keyof SegmentedButtonItemComponentEventsMap>(
     type: K,
     listener: (
-      this: SegmentedButtonItemComponentElement,
+      this: SegmentedButtonItemElement,
       ev: SegmentedButtonItemComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -7672,47 +7215,9 @@ interface SegmentedButtonItemComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -7750,11 +7255,10 @@ interface SegmentedButtonItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-segmented-button-item',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5SegmentedButtonItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -7770,31 +7274,35 @@ interface SegmentedButtonItemComponentElement
     'pressed',
   ],
   outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class SegmentedButtonItemComponent {
-  accessibleName?: SegmentedButtonItemComponentElement['accessibleName'];
-  accessibleNameRef?: SegmentedButtonItemComponentElement['accessibleNameRef'];
-  design?: SegmentedButtonItemComponentElement['design'];
-  disabled?: SegmentedButtonItemComponentElement['disabled'];
-  icon?: SegmentedButtonItemComponentElement['icon'];
-  iconEnd?: SegmentedButtonItemComponentElement['iconEnd'];
-  submits?: SegmentedButtonItemComponentElement['submits'];
-  tooltip?: SegmentedButtonItemComponentElement['tooltip'];
-  pressed?: SegmentedButtonItemComponentElement['pressed'];
+  accessibleName?: SegmentedButtonItemElement['accessibleName'];
+  accessibleNameRef?: SegmentedButtonItemElement['accessibleNameRef'];
+  design?: SegmentedButtonItemElement['design'];
+  disabled?: SegmentedButtonItemElement['disabled'];
+  icon?: SegmentedButtonItemElement['icon'];
+  iconEnd?: SegmentedButtonItemElement['iconEnd'];
+  submits?: SegmentedButtonItemElement['submits'];
+  tooltip?: SegmentedButtonItemElement['tooltip'];
+  pressed?: SegmentedButtonItemElement['pressed'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SegmentedButtonItemComponentElement>,
+    private elementRef: ElementRef<SegmentedButtonItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SegmentedButtonItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface SegmentedButtonItemComponent
-  extends Partial<SegmentedButtonItemComponentElement> {}
+  extends Partial<SegmentedButtonItemElement> {
+  click: EventEmitter<SegmentedButtonItemComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -7804,38 +7312,29 @@ exports[`Snapshot test Main Segmented Button should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/SegmentedButton.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { SegmentedButtonItemComponent } from '@ui5/webcomponents-ngx/main/segmented-button-item';
+import '@ui5/webcomponents/dist/SegmentedButton.js';
+import type SegmentedButton from '@ui5/webcomponents/dist/SegmentedButton.js';
 
 interface SegmentedButtonComponentEventsMap
   extends Omit<HTMLElementEventMap, 'selectionChange'> {
   selectionChange: CustomEvent<{ selectedItem: HTMLElement }>;
 }
 
-interface SegmentedButtonComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'selectedItem'
-    | 'selectionChange'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface SegmentedButtonElement
+  extends Partial<Omit<SegmentedButton, 'selectionChange' | 'accessibleName'>> {
   accessibleName: string;
-  selectedItem: SegmentedButtonItemComponent['element'];
 
   addEventListener<K extends keyof SegmentedButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: SegmentedButtonComponentElement,
+      this: SegmentedButtonElement,
       ev: SegmentedButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -7848,7 +7347,7 @@ interface SegmentedButtonComponentElement
   removeEventListener<K extends keyof SegmentedButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: SegmentedButtonComponentElement,
+      this: SegmentedButtonElement,
       ev: SegmentedButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -7858,47 +7357,9 @@ interface SegmentedButtonComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'accessibleName', 'selectedItem'])
 @ProxyOutputs(['selectionChange'])
 @ProxyMethods([
@@ -7923,11 +7384,10 @@ interface SegmentedButtonComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-segmented-button',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5SegmentedButton',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -7935,23 +7395,29 @@ interface SegmentedButtonComponentElement
     'selectedItem: selected-item',
   ],
   outputs: ['selectionChange: ui5SelectionChange'],
+  providers: [],
 })
 export class SegmentedButtonComponent {
-  accessibleName?: SegmentedButtonComponentElement['accessibleName'];
+  accessibleName?: SegmentedButtonElement['accessibleName'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SegmentedButtonComponentElement>,
+    private elementRef: ElementRef<SegmentedButtonElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SegmentedButtonElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface SegmentedButtonComponent
-  extends Partial<SegmentedButtonComponentElement> {}
+  extends Partial<SegmentedButtonElement> {
+  selectionChange: EventEmitter<
+    SegmentedButtonComponentEventsMap['selectionChange']
+  >;
+}
 "
 `;
 
@@ -7961,52 +7427,48 @@ exports[`Snapshot test Main Select should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Select.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { OptionComponent } from '@ui5/webcomponents-ngx/main/option';
+import '@ui5/webcomponents/dist/Select.js';
+import type Select from '@ui5/webcomponents/dist/Select.js';
 
-interface SelectComponentEventsMap extends Omit<HTMLElementEventMap, 'change'> {
+interface SelectComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'change' | 'close' | 'open'> {
   change: CustomEvent<{ selectedOption: HTMLElement }>;
+  close: CustomEvent<void>;
+  open: CustomEvent<void>;
 }
 
-interface SelectComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'disabled'
-    | 'name'
-    | 'required'
-    | 'selectedOption'
-    | 'valueState'
-    | 'change'
-    | 'valueStateMessage'
+export declare interface SelectElement
+  extends Partial<
+    Omit<
+      Select,
+      | 'change'
+      | 'close'
+      | 'open'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'name'
+      | 'required'
+      | 'valueState'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
   name: string;
   required: boolean;
-  selectedOption: OptionComponent['element'];
+
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
-
-  valueStateMessage: Array<HTMLElement>;
-
   addEventListener<K extends keyof SelectComponentEventsMap>(
     type: K,
-    listener: (
-      this: SelectComponentElement,
-      ev: SelectComponentEventsMap[K]
-    ) => any,
+    listener: (this: SelectElement, ev: SelectComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -8016,10 +7478,7 @@ interface SelectComponentElement
   ): void;
   removeEventListener<K extends keyof SelectComponentEventsMap>(
     type: K,
-    listener: (
-      this: SelectComponentElement,
-      ev: SelectComponentEventsMap[K]
-    ) => any,
+    listener: (this: SelectElement, ev: SelectComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -8027,47 +7486,9 @@ interface SelectComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -8079,7 +7500,7 @@ interface SelectComponentElement
   'selectedOption',
   'valueState',
 ])
-@ProxyOutputs(['change'])
+@ProxyOutputs(['change', 'close', 'open'])
 @ProxyMethods([
   '_render',
   'attachInvalidate',
@@ -8102,11 +7523,10 @@ interface SelectComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-select',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Select',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -8118,33 +7538,34 @@ interface SelectComponentElement
     'selectedOption: selected-option',
     'valueState: value-state',
   ],
-  outputs: ['change: ui5Change'],
+  outputs: ['change: ui5Change', 'close: ui5Close', 'open: ui5Open'],
+  providers: [],
 })
 export class SelectComponent {
-  accessibleName?: SelectComponentElement['accessibleName'];
-  accessibleNameRef?: SelectComponentElement['accessibleNameRef'];
-  disabled?: SelectComponentElement['disabled'];
-  name?: SelectComponentElement['name'];
-  required?: SelectComponentElement['required'];
-  valueState?: SelectComponentElement['valueState'];
+  accessibleName?: SelectElement['accessibleName'];
+  accessibleNameRef?: SelectElement['accessibleNameRef'];
+  disabled?: SelectElement['disabled'];
+  name?: SelectElement['name'];
+  required?: SelectElement['required'];
+  valueState?: SelectElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SelectComponentElement>,
+    private elementRef: ElementRef<SelectElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SelectElement {
     return this.elementRef.nativeElement;
   }
-
-  get valueStateMessage(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.valueStateMessage;
-  }
 }
-export declare interface SelectComponent
-  extends Partial<SelectComponentElement> {}
+
+export declare interface SelectComponent extends Partial<SelectElement> {
+  change: EventEmitter<SelectComponentEventsMap['change']>;
+  close: EventEmitter<SelectComponentEventsMap['close']>;
+  open: EventEmitter<SelectComponentEventsMap['open']>;
+}
 "
 `;
 
@@ -9325,40 +8746,35 @@ exports[`Snapshot test Main Tab Container should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/TabContainer.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+import '@ui5/webcomponents/dist/TabContainer.js';
+import type TabContainer from '@ui5/webcomponents/dist/TabContainer.js';
 
 interface TabContainerComponentEventsMap
   extends Omit<HTMLElementEventMap, 'tabSelect'> {
   tabSelect: CustomEvent<{ tab: HTMLElement; tabIndex: number }>;
 }
 
-interface TabContainerComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'allItems'
-    | 'collapsed'
-    | 'contentBackgroundDesign'
-    | 'fixed'
-    | 'headerBackgroundDesign'
-    | 'showOverflow'
-    | 'tabLayout'
-    | 'tabsOverflowMode'
-    | 'tabSelect'
-    | 'overflowButton'
-    | 'startOverflowButton'
+export declare interface TabContainerElement
+  extends Partial<
+    Omit<
+      TabContainer,
+      | 'tabSelect'
+      | 'collapsed'
+      | 'contentBackgroundDesign'
+      | 'fixed'
+      | 'headerBackgroundDesign'
+      | 'showOverflow'
+      | 'tabLayout'
+      | 'tabsOverflowMode'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  allItems: any;
   collapsed: boolean;
   contentBackgroundDesign: 'Solid' | 'Translucent' | 'Transparent';
   fixed: boolean;
@@ -9366,14 +8782,10 @@ interface TabContainerComponentElement
   showOverflow: boolean;
   tabLayout: 'Inline' | 'Standard';
   tabsOverflowMode: 'End' | 'StartAndEnd';
-
-  overflowButton: ButtonComponent['element'];
-  startOverflowButton: ButtonComponent['element'];
-
   addEventListener<K extends keyof TabContainerComponentEventsMap>(
     type: K,
     listener: (
-      this: TabContainerComponentElement,
+      this: TabContainerElement,
       ev: TabContainerComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -9386,7 +8798,7 @@ interface TabContainerComponentElement
   removeEventListener<K extends keyof TabContainerComponentEventsMap>(
     type: K,
     listener: (
-      this: TabContainerComponentElement,
+      this: TabContainerElement,
       ev: TabContainerComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -9396,47 +8808,9 @@ interface TabContainerComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -9472,11 +8846,10 @@ interface TabContainerComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tabcontainer',
-  exportAs: 'ui5Tabcontainer',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5TabContainer',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -9490,36 +8863,33 @@ interface TabContainerComponentElement
     'tabsOverflowMode: tabs-overflow-mode',
   ],
   outputs: ['tabSelect: ui5TabSelect'],
+  providers: [],
 })
 export class TabContainerComponent {
-  collapsed?: TabContainerComponentElement['collapsed'];
-  contentBackgroundDesign?: TabContainerComponentElement['contentBackgroundDesign'];
-  fixed?: TabContainerComponentElement['fixed'];
-  headerBackgroundDesign?: TabContainerComponentElement['headerBackgroundDesign'];
-  showOverflow?: TabContainerComponentElement['showOverflow'];
-  tabLayout?: TabContainerComponentElement['tabLayout'];
-  tabsOverflowMode?: TabContainerComponentElement['tabsOverflowMode'];
+  collapsed?: TabContainerElement['collapsed'];
+  contentBackgroundDesign?: TabContainerElement['contentBackgroundDesign'];
+  fixed?: TabContainerElement['fixed'];
+  headerBackgroundDesign?: TabContainerElement['headerBackgroundDesign'];
+  showOverflow?: TabContainerElement['showOverflow'];
+  tabLayout?: TabContainerElement['tabLayout'];
+  tabsOverflowMode?: TabContainerElement['tabsOverflowMode'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TabContainerComponentElement>,
+    private elementRef: ElementRef<TabContainerElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TabContainerElement {
     return this.elementRef.nativeElement;
   }
-
-  get overflowButton(): ButtonComponent['element'] {
-    return this.elementRef.nativeElement.overflowButton;
-  }
-  get startOverflowButton(): ButtonComponent['element'] {
-    return this.elementRef.nativeElement.startOverflowButton;
-  }
 }
+
 export declare interface TabContainerComponent
-  extends Partial<TabContainerComponentElement> {}
+  extends Partial<TabContainerElement> {
+  tabSelect: EventEmitter<TabContainerComponentEventsMap['tabSelect']>;
+}
 "
 `;
 
@@ -9530,60 +8900,17 @@ exports[`Snapshot test Main Tab Separator should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/TabSeparator.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TabSeparator.js';
+import type TabSeparator from '@ui5/webcomponents/dist/TabSeparator.js';
 
-interface TabSeparatorComponentElement
-  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element'> {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface TabSeparatorElement extends Partial<TabSeparator> {}
 
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  getTabInStripDomRef(): any;
-}
-
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -9609,29 +8936,30 @@ interface TabSeparatorComponentElement
   'getTabInStripDomRef',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tab-separator',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5TabSeparator',
   standalone: true,
-  providers: [],
   inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
   outputs: [],
+  providers: [],
 })
 export class TabSeparatorComponent {
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TabSeparatorComponentElement>,
+    private elementRef: ElementRef<TabSeparatorElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TabSeparatorElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface TabSeparatorComponent
-  extends Partial<TabSeparatorComponentElement> {}
+  extends Partial<TabSeparatorElement> {}
 "
 `;
 
@@ -9642,80 +8970,30 @@ exports[`Snapshot test Main Tab should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Tab.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { TabSeparatorComponent } from '@ui5/webcomponents-ngx/main/tab-separator';
+import '@ui5/webcomponents/dist/Tab.js';
+import type Tab from '@ui5/webcomponents/dist/Tab.js';
 
-interface TabComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'additionalText'
-    | 'design'
-    | 'disabled'
-    | 'icon'
-    | 'selected'
-    | 'text'
-    | 'subTabs'
+export declare interface TabElement
+  extends Partial<
+    Omit<
+      Tab,
+      'additionalText' | 'design' | 'disabled' | 'icon' | 'selected' | 'text'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   additionalText: string;
   design: 'Critical' | 'Default' | 'Negative' | 'Neutral' | 'Positive';
   disabled: boolean;
   icon: string;
   selected: boolean;
   text: string;
-
-  subTabs: Array<TabSeparatorComponent['element'] | TabComponent['element']>;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  getTabInStripDomRef(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -9750,11 +9028,10 @@ interface TabComponentElement
   'getTabInStripDomRef',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tab',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Tab',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -9766,33 +9043,29 @@ interface TabComponentElement
     'text',
   ],
   outputs: [],
+  providers: [],
 })
 export class TabComponent {
-  additionalText?: TabComponentElement['additionalText'];
-  design?: TabComponentElement['design'];
-  disabled?: TabComponentElement['disabled'];
-  icon?: TabComponentElement['icon'];
-  selected?: TabComponentElement['selected'];
-  text?: TabComponentElement['text'];
+  additionalText?: TabElement['additionalText'];
+  design?: TabElement['design'];
+  disabled?: TabElement['disabled'];
+  icon?: TabElement['icon'];
+  selected?: TabElement['selected'];
+  text?: TabElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TabComponentElement>,
+    private elementRef: ElementRef<TabElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TabElement {
     return this.elementRef.nativeElement;
   }
-
-  get subTabs(): Array<
-    TabSeparatorComponent['element'] | TabComponent['element']
-  > {
-    return this.elementRef.nativeElement.subTabs;
-  }
 }
-export declare interface TabComponent extends Partial<TabComponentElement> {}
+
+export declare interface TabComponent extends Partial<TabElement> {}
 "
 `;
 
@@ -10293,13 +9566,15 @@ exports[`Snapshot test Main Text Area should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/TextArea.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TextArea.js';
+import type TextArea from '@ui5/webcomponents/dist/TextArea.js';
 
 interface TextAreaComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change' | 'input'> {
@@ -10307,54 +9582,41 @@ interface TextAreaComponentEventsMap
   input: CustomEvent<void>;
 }
 
-interface TextAreaComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'disabled'
-    | 'growing'
-    | 'growingMaxLines'
-    | 'maxlength'
-    | 'name'
-    | 'placeholder'
-    | 'readonly'
-    | 'required'
-    | 'rows'
-    | 'showExceededText'
-    | 'value'
-    | 'valueState'
-    | 'change'
-    | 'input'
-    | 'valueStateMessage'
+export declare interface TextAreaElement
+  extends Partial<
+    Omit<
+      TextArea,
+      | 'change'
+      | 'input'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'growing'
+      | 'name'
+      | 'placeholder'
+      | 'readonly'
+      | 'required'
+      | 'showExceededText'
+      | 'value'
+      | 'valueState'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
   growing: boolean;
-  growingMaxLines: any;
-  maxlength: any;
+
   name: string;
   placeholder: string;
   readonly: boolean;
   required: boolean;
-  rows: any;
+
   showExceededText: boolean;
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
-
-  valueStateMessage: Array<HTMLElement>;
-
   addEventListener<K extends keyof TextAreaComponentEventsMap>(
     type: K,
-    listener: (
-      this: TextAreaComponentElement,
-      ev: TextAreaComponentEventsMap[K]
-    ) => any,
+    listener: (this: TextAreaElement, ev: TextAreaComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -10364,10 +9626,7 @@ interface TextAreaComponentElement
   ): void;
   removeEventListener<K extends keyof TextAreaComponentEventsMap>(
     type: K,
-    listener: (
-      this: TextAreaComponentElement,
-      ev: TextAreaComponentEventsMap[K]
-    ) => any,
+    listener: (this: TextAreaElement, ev: TextAreaComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -10375,47 +9634,9 @@ interface TextAreaComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -10457,11 +9678,10 @@ interface TextAreaComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-textarea',
-  exportAs: 'ui5Textarea',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5TextArea',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -10481,37 +9701,37 @@ interface TextAreaComponentElement
     'valueState: value-state',
   ],
   outputs: ['change: ui5Change', 'input: ui5Input'],
+  providers: [],
 })
 export class TextAreaComponent {
-  accessibleName?: TextAreaComponentElement['accessibleName'];
-  accessibleNameRef?: TextAreaComponentElement['accessibleNameRef'];
-  disabled?: TextAreaComponentElement['disabled'];
-  growing?: TextAreaComponentElement['growing'];
-  name?: TextAreaComponentElement['name'];
-  placeholder?: TextAreaComponentElement['placeholder'];
-  readonly?: TextAreaComponentElement['readonly'];
-  required?: TextAreaComponentElement['required'];
-  showExceededText?: TextAreaComponentElement['showExceededText'];
-  value?: TextAreaComponentElement['value'];
-  valueState?: TextAreaComponentElement['valueState'];
+  accessibleName?: TextAreaElement['accessibleName'];
+  accessibleNameRef?: TextAreaElement['accessibleNameRef'];
+  disabled?: TextAreaElement['disabled'];
+  growing?: TextAreaElement['growing'];
+  name?: TextAreaElement['name'];
+  placeholder?: TextAreaElement['placeholder'];
+  readonly?: TextAreaElement['readonly'];
+  required?: TextAreaElement['required'];
+  showExceededText?: TextAreaElement['showExceededText'];
+  value?: TextAreaElement['value'];
+  valueState?: TextAreaElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TextAreaComponentElement>,
+    private elementRef: ElementRef<TextAreaElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TextAreaElement {
     return this.elementRef.nativeElement;
   }
-
-  get valueStateMessage(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.valueStateMessage;
-  }
 }
-export declare interface TextAreaComponent
-  extends Partial<TextAreaComponentElement> {}
+
+export declare interface TextAreaComponent extends Partial<TextAreaElement> {
+  change: EventEmitter<TextAreaComponentEventsMap['change']>;
+  input: EventEmitter<TextAreaComponentEventsMap['input']>;
+}
 "
 `;
 
@@ -10801,21 +10021,16 @@ exports[`Snapshot test Main Toast should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Toast.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/Toast.js';
+import type Toast from '@ui5/webcomponents/dist/Toast.js';
 
-interface ToastComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'duration' | 'placement'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
-  duration: any;
+export declare interface ToastElement
+  extends Partial<Omit<Toast, 'placement'>> {
   placement:
     | 'BottomCenter'
     | 'BottomEnd'
@@ -10826,49 +10041,9 @@ interface ToastComponentElement
     | 'TopCenter'
     | 'TopEnd'
     | 'TopStart';
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  show(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'duration', 'placement'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -10894,11 +10069,10 @@ interface ToastComponentElement
   'show',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-toast',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Toast',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -10906,23 +10080,24 @@ interface ToastComponentElement
     'placement',
   ],
   outputs: [],
+  providers: [],
 })
 export class ToastComponent {
-  placement?: ToastComponentElement['placement'];
+  placement?: ToastElement['placement'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ToastComponentElement>,
+    private elementRef: ElementRef<ToastElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ToastElement {
     return this.elementRef.nativeElement;
   }
 }
-export declare interface ToastComponent
-  extends Partial<ToastComponentElement> {}
+
+export declare interface ToastComponent extends Partial<ToastElement> {}
 "
 `;
 
@@ -10932,39 +10107,37 @@ exports[`Snapshot test Main Toggle Button should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/ToggleButton.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToggleButton.js';
+import type ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
 
 interface ToggleButtonComponentEventsMap
   extends Omit<HTMLElementEventMap, 'click'> {
   click: CustomEvent<void>;
 }
 
-interface ToggleButtonComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibilityAttributes'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'design'
-    | 'disabled'
-    | 'icon'
-    | 'iconEnd'
-    | 'submits'
-    | 'tooltip'
-    | 'pressed'
-    | 'click'
+export declare interface ToggleButtonElement
+  extends Partial<
+    Omit<
+      ToggleButton,
+      | 'click'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'design'
+      | 'disabled'
+      | 'icon'
+      | 'iconEnd'
+      | 'submits'
+      | 'tooltip'
+      | 'pressed'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  accessibilityAttributes: Record<string, any>;
   accessibleName: string;
   accessibleNameRef: string;
   design:
@@ -10980,11 +10153,10 @@ interface ToggleButtonComponentElement
   submits: boolean;
   tooltip: string;
   pressed: boolean;
-
   addEventListener<K extends keyof ToggleButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: ToggleButtonComponentElement,
+      this: ToggleButtonElement,
       ev: ToggleButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -10997,7 +10169,7 @@ interface ToggleButtonComponentElement
   removeEventListener<K extends keyof ToggleButtonComponentEventsMap>(
     type: K,
     listener: (
-      this: ToggleButtonComponentElement,
+      this: ToggleButtonElement,
       ev: ToggleButtonComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -11007,47 +10179,9 @@ interface ToggleButtonComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -11085,11 +10219,10 @@ interface ToggleButtonComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-toggle-button',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5ToggleButton',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -11105,31 +10238,35 @@ interface ToggleButtonComponentElement
     'pressed',
   ],
   outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class ToggleButtonComponent {
-  accessibleName?: ToggleButtonComponentElement['accessibleName'];
-  accessibleNameRef?: ToggleButtonComponentElement['accessibleNameRef'];
-  design?: ToggleButtonComponentElement['design'];
-  disabled?: ToggleButtonComponentElement['disabled'];
-  icon?: ToggleButtonComponentElement['icon'];
-  iconEnd?: ToggleButtonComponentElement['iconEnd'];
-  submits?: ToggleButtonComponentElement['submits'];
-  tooltip?: ToggleButtonComponentElement['tooltip'];
-  pressed?: ToggleButtonComponentElement['pressed'];
+  accessibleName?: ToggleButtonElement['accessibleName'];
+  accessibleNameRef?: ToggleButtonElement['accessibleNameRef'];
+  design?: ToggleButtonElement['design'];
+  disabled?: ToggleButtonElement['disabled'];
+  icon?: ToggleButtonElement['icon'];
+  iconEnd?: ToggleButtonElement['iconEnd'];
+  submits?: ToggleButtonElement['submits'];
+  tooltip?: ToggleButtonElement['tooltip'];
+  pressed?: ToggleButtonElement['pressed'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ToggleButtonComponentElement>,
+    private elementRef: ElementRef<ToggleButtonElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ToggleButtonElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface ToggleButtonComponent
-  extends Partial<ToggleButtonComponentElement> {}
+  extends Partial<ToggleButtonElement> {
+  click: EventEmitter<ToggleButtonComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -11139,44 +10276,28 @@ exports[`Snapshot test Main Token should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Token.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { IconComponent } from '@ui5/webcomponents-ngx/main/icon';
+import '@ui5/webcomponents/dist/Token.js';
+import type Token from '@ui5/webcomponents/dist/Token.js';
 
 interface TokenComponentEventsMap extends Omit<HTMLElementEventMap, 'select'> {
   select: CustomEvent<void>;
 }
 
-interface TokenComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'readonly'
-    | 'selected'
-    | 'text'
-    | 'select'
-    | 'closeIcon'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface TokenElement
+  extends Partial<Omit<Token, 'select' | 'readonly' | 'selected' | 'text'>> {
   readonly: boolean;
   selected: boolean;
   text: string;
-
-  closeIcon: IconComponent['element'];
-
   addEventListener<K extends keyof TokenComponentEventsMap>(
     type: K,
-    listener: (
-      this: TokenComponentElement,
-      ev: TokenComponentEventsMap[K]
-    ) => any,
+    listener: (this: TokenElement, ev: TokenComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -11186,10 +10307,7 @@ interface TokenComponentElement
   ): void;
   removeEventListener<K extends keyof TokenComponentEventsMap>(
     type: K,
-    listener: (
-      this: TokenComponentElement,
-      ev: TokenComponentEventsMap[K]
-    ) => any,
+    listener: (this: TokenElement, ev: TokenComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -11197,47 +10315,9 @@ interface TokenComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'readonly', 'selected', 'text'])
 @ProxyOutputs(['select'])
 @ProxyMethods([
@@ -11262,11 +10342,10 @@ interface TokenComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-token',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Token',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -11275,29 +10354,28 @@ interface TokenComponentElement
     'text',
   ],
   outputs: ['select: ui5Select'],
+  providers: [],
 })
 export class TokenComponent {
-  readonly?: TokenComponentElement['readonly'];
-  selected?: TokenComponentElement['selected'];
-  text?: TokenComponentElement['text'];
+  readonly?: TokenElement['readonly'];
+  selected?: TokenElement['selected'];
+  text?: TokenElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TokenComponentElement>,
+    private elementRef: ElementRef<TokenElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TokenElement {
     return this.elementRef.nativeElement;
   }
-
-  get closeIcon(): IconComponent['element'] {
-    return this.elementRef.nativeElement.closeIcon;
-  }
 }
-export declare interface TokenComponent
-  extends Partial<TokenComponentElement> {}
+
+export declare interface TokenComponent extends Partial<TokenElement> {
+  select: EventEmitter<TokenComponentEventsMap['select']>;
+}
 "
 `;
 
@@ -11307,41 +10385,38 @@ exports[`Snapshot test Main Tree Item Custom should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+import '@ui5/webcomponents/dist/TreeItemCustom.js';
+import type TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
 
 interface TreeItemCustomComponentEventsMap
   extends Omit<HTMLElementEventMap, 'detailClick'> {
   detailClick: CustomEvent<void>;
 }
 
-interface TreeItemCustomComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'selected'
-    | 'navigated'
-    | 'type'
-    | 'accessibleName'
-    | 'additionalTextState'
-    | 'expanded'
-    | 'hasChildren'
-    | 'icon'
-    | 'indeterminate'
-    | 'hideSelectionElement'
-    | 'detailClick'
-    | 'deleteButton'
-    | 'content'
+export declare interface TreeItemCustomElement
+  extends Partial<
+    Omit<
+      TreeItemCustom,
+      | 'detailClick'
+      | 'selected'
+      | 'navigated'
+      | 'type'
+      | 'accessibleName'
+      | 'additionalTextState'
+      | 'expanded'
+      | 'hasChildren'
+      | 'icon'
+      | 'indeterminate'
+      | 'hideSelectionElement'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   selected: boolean;
   navigated: boolean;
   type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
@@ -11352,14 +10427,10 @@ interface TreeItemCustomComponentElement
   icon: string;
   indeterminate: boolean;
   hideSelectionElement: boolean;
-
-  deleteButton: ButtonComponent['element'];
-  content: Array<HTMLElement>;
-
   addEventListener<K extends keyof TreeItemCustomComponentEventsMap>(
     type: K,
     listener: (
-      this: TreeItemCustomComponentElement,
+      this: TreeItemCustomElement,
       ev: TreeItemCustomComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -11372,7 +10443,7 @@ interface TreeItemCustomComponentElement
   removeEventListener<K extends keyof TreeItemCustomComponentEventsMap>(
     type: K,
     listener: (
-      this: TreeItemCustomComponentElement,
+      this: TreeItemCustomElement,
       ev: TreeItemCustomComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -11382,49 +10453,9 @@ interface TreeItemCustomComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  toggle(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -11463,11 +10494,10 @@ interface TreeItemCustomComponentElement
   'toggle',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tree-item-custom',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5TreeItemCustom',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -11483,39 +10513,36 @@ interface TreeItemCustomComponentElement
     'hideSelectionElement: hide-selection-element',
   ],
   outputs: ['detailClick: ui5DetailClick'],
+  providers: [],
 })
 export class TreeItemCustomComponent {
-  selected?: TreeItemCustomComponentElement['selected'];
-  navigated?: TreeItemCustomComponentElement['navigated'];
-  type?: TreeItemCustomComponentElement['type'];
-  accessibleName?: TreeItemCustomComponentElement['accessibleName'];
-  additionalTextState?: TreeItemCustomComponentElement['additionalTextState'];
-  expanded?: TreeItemCustomComponentElement['expanded'];
-  hasChildren?: TreeItemCustomComponentElement['hasChildren'];
-  icon?: TreeItemCustomComponentElement['icon'];
-  indeterminate?: TreeItemCustomComponentElement['indeterminate'];
-  hideSelectionElement?: TreeItemCustomComponentElement['hideSelectionElement'];
+  selected?: TreeItemCustomElement['selected'];
+  navigated?: TreeItemCustomElement['navigated'];
+  type?: TreeItemCustomElement['type'];
+  accessibleName?: TreeItemCustomElement['accessibleName'];
+  additionalTextState?: TreeItemCustomElement['additionalTextState'];
+  expanded?: TreeItemCustomElement['expanded'];
+  hasChildren?: TreeItemCustomElement['hasChildren'];
+  icon?: TreeItemCustomElement['icon'];
+  indeterminate?: TreeItemCustomElement['indeterminate'];
+  hideSelectionElement?: TreeItemCustomElement['hideSelectionElement'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TreeItemCustomComponentElement>,
+    private elementRef: ElementRef<TreeItemCustomElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TreeItemCustomElement {
     return this.elementRef.nativeElement;
   }
-
-  get deleteButton(): ButtonComponent['element'] {
-    return this.elementRef.nativeElement.deleteButton;
-  }
-  get content(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.content;
-  }
 }
+
 export declare interface TreeItemCustomComponent
-  extends Partial<TreeItemCustomComponentElement> {}
+  extends Partial<TreeItemCustomElement> {
+  detailClick: EventEmitter<TreeItemCustomComponentEventsMap['detailClick']>;
+}
 "
 `;
 
@@ -11525,41 +10552,39 @@ exports[`Snapshot test Main Tree Item should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/TreeItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+import '@ui5/webcomponents/dist/TreeItem.js';
+import type TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
 
 interface TreeItemComponentEventsMap
   extends Omit<HTMLElementEventMap, 'detailClick'> {
   detailClick: CustomEvent<void>;
 }
 
-interface TreeItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'selected'
-    | 'navigated'
-    | 'type'
-    | 'accessibleName'
-    | 'additionalTextState'
-    | 'expanded'
-    | 'hasChildren'
-    | 'icon'
-    | 'indeterminate'
-    | 'additionalText'
-    | 'text'
-    | 'detailClick'
-    | 'deleteButton'
+export declare interface TreeItemElement
+  extends Partial<
+    Omit<
+      TreeItem,
+      | 'detailClick'
+      | 'selected'
+      | 'navigated'
+      | 'type'
+      | 'accessibleName'
+      | 'additionalTextState'
+      | 'expanded'
+      | 'hasChildren'
+      | 'icon'
+      | 'indeterminate'
+      | 'additionalText'
+      | 'text'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   selected: boolean;
   navigated: boolean;
   type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
@@ -11571,15 +10596,9 @@ interface TreeItemComponentElement
   indeterminate: boolean;
   additionalText: string;
   text: string;
-
-  deleteButton: ButtonComponent['element'];
-
   addEventListener<K extends keyof TreeItemComponentEventsMap>(
     type: K,
-    listener: (
-      this: TreeItemComponentElement,
-      ev: TreeItemComponentEventsMap[K]
-    ) => any,
+    listener: (this: TreeItemElement, ev: TreeItemComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -11589,10 +10608,7 @@ interface TreeItemComponentElement
   ): void;
   removeEventListener<K extends keyof TreeItemComponentEventsMap>(
     type: K,
-    listener: (
-      this: TreeItemComponentElement,
-      ev: TreeItemComponentEventsMap[K]
-    ) => any,
+    listener: (this: TreeItemElement, ev: TreeItemComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -11600,49 +10616,9 @@ interface TreeItemComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  toggle(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -11682,11 +10658,10 @@ interface TreeItemComponentElement
   'toggle',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tree-item',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5TreeItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -11703,37 +10678,36 @@ interface TreeItemComponentElement
     'text',
   ],
   outputs: ['detailClick: ui5DetailClick'],
+  providers: [],
 })
 export class TreeItemComponent {
-  selected?: TreeItemComponentElement['selected'];
-  navigated?: TreeItemComponentElement['navigated'];
-  type?: TreeItemComponentElement['type'];
-  accessibleName?: TreeItemComponentElement['accessibleName'];
-  additionalTextState?: TreeItemComponentElement['additionalTextState'];
-  expanded?: TreeItemComponentElement['expanded'];
-  hasChildren?: TreeItemComponentElement['hasChildren'];
-  icon?: TreeItemComponentElement['icon'];
-  indeterminate?: TreeItemComponentElement['indeterminate'];
-  additionalText?: TreeItemComponentElement['additionalText'];
-  text?: TreeItemComponentElement['text'];
+  selected?: TreeItemElement['selected'];
+  navigated?: TreeItemElement['navigated'];
+  type?: TreeItemElement['type'];
+  accessibleName?: TreeItemElement['accessibleName'];
+  additionalTextState?: TreeItemElement['additionalTextState'];
+  expanded?: TreeItemElement['expanded'];
+  hasChildren?: TreeItemElement['hasChildren'];
+  icon?: TreeItemElement['icon'];
+  indeterminate?: TreeItemElement['indeterminate'];
+  additionalText?: TreeItemElement['additionalText'];
+  text?: TreeItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TreeItemComponentElement>,
+    private elementRef: ElementRef<TreeItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TreeItemElement {
     return this.elementRef.nativeElement;
   }
-
-  get deleteButton(): ButtonComponent['element'] {
-    return this.elementRef.nativeElement.deleteButton;
-  }
 }
-export declare interface TreeItemComponent
-  extends Partial<TreeItemComponentElement> {}
+
+export declare interface TreeItemComponent extends Partial<TreeItemElement> {
+  detailClick: EventEmitter<TreeItemComponentEventsMap['detailClick']>;
+}
 "
 `;
 
@@ -11743,13 +10717,15 @@ exports[`Snapshot test Main Tree should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents/dist/Tree.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/Tree.js';
+import type Tree from '@ui5/webcomponents/dist/Tree.js';
 
 interface TreeComponentEventsMap
   extends Omit<
@@ -11773,27 +10749,24 @@ interface TreeComponentEventsMap
   }>;
 }
 
-interface TreeComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibleName'
-    | 'accessibleNameRef'
-    | 'footerText'
-    | 'headerText'
-    | 'mode'
-    | 'noDataText'
-    | 'itemClick'
-    | 'itemDelete'
-    | 'itemMouseout'
-    | 'itemMouseover'
-    | 'itemToggle'
-    | 'selectionChange'
-    | 'header'
+export declare interface TreeElement
+  extends Partial<
+    Omit<
+      Tree,
+      | 'itemClick'
+      | 'itemDelete'
+      | 'itemMouseout'
+      | 'itemMouseover'
+      | 'itemToggle'
+      | 'selectionChange'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'footerText'
+      | 'headerText'
+      | 'mode'
+      | 'noDataText'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   accessibleName: string;
   accessibleNameRef: string;
   footerText: string;
@@ -11807,15 +10780,9 @@ interface TreeComponentElement
     | 'SingleSelectBegin'
     | 'SingleSelectEnd';
   noDataText: string;
-
-  header: Array<HTMLElement>;
-
   addEventListener<K extends keyof TreeComponentEventsMap>(
     type: K,
-    listener: (
-      this: TreeComponentElement,
-      ev: TreeComponentEventsMap[K]
-    ) => any,
+    listener: (this: TreeElement, ev: TreeComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -11825,10 +10792,7 @@ interface TreeComponentElement
   ): void;
   removeEventListener<K extends keyof TreeComponentEventsMap>(
     type: K,
-    listener: (
-      this: TreeComponentElement,
-      ev: TreeComponentEventsMap[K]
-    ) => any,
+    listener: (this: TreeElement, ev: TreeComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -11836,55 +10800,9 @@ interface TreeComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  _getListItemForTreeItem(item: any): any;
-
-  focusItemByIndex(index: any): any;
-
-  getItems(): Array<any>;
-
-  walk(callback: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -11929,11 +10847,10 @@ interface TreeComponentElement
   'walk',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-tree',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Tree',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -11952,31 +10869,36 @@ interface TreeComponentElement
     'itemToggle: ui5ItemToggle',
     'selectionChange: ui5SelectionChange',
   ],
+  providers: [],
 })
 export class TreeComponent {
-  accessibleName?: TreeComponentElement['accessibleName'];
-  accessibleNameRef?: TreeComponentElement['accessibleNameRef'];
-  footerText?: TreeComponentElement['footerText'];
-  headerText?: TreeComponentElement['headerText'];
-  mode?: TreeComponentElement['mode'];
-  noDataText?: TreeComponentElement['noDataText'];
+  accessibleName?: TreeElement['accessibleName'];
+  accessibleNameRef?: TreeElement['accessibleNameRef'];
+  footerText?: TreeElement['footerText'];
+  headerText?: TreeElement['headerText'];
+  mode?: TreeElement['mode'];
+  noDataText?: TreeElement['noDataText'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<TreeComponentElement>,
+    private elementRef: ElementRef<TreeElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): TreeElement {
     return this.elementRef.nativeElement;
   }
-
-  get header(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.header;
-  }
 }
-export declare interface TreeComponent extends Partial<TreeComponentElement> {}
+
+export declare interface TreeComponent extends Partial<TreeElement> {
+  itemClick: EventEmitter<TreeComponentEventsMap['itemClick']>;
+  itemDelete: EventEmitter<TreeComponentEventsMap['itemDelete']>;
+  itemMouseout: EventEmitter<TreeComponentEventsMap['itemMouseout']>;
+  itemMouseover: EventEmitter<TreeComponentEventsMap['itemMouseover']>;
+  itemToggle: EventEmitter<TreeComponentEventsMap['itemToggle']>;
+  selectionChange: EventEmitter<TreeComponentEventsMap['selectionChange']>;
+}
 "
 `;
 

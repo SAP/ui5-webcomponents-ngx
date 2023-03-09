@@ -81,13 +81,15 @@ exports[`Snapshot test Fiori Barcode Scanner Dialog should match the snapshot 1`
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
+import type BarcodeScannerDialog from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 
 interface BarcodeScannerDialogComponentEventsMap
   extends Omit<HTMLElementEventMap, 'scanError' | 'scanSuccess'> {
@@ -95,18 +97,12 @@ interface BarcodeScannerDialogComponentEventsMap
   scanSuccess: CustomEvent<{ text: string; rawBytes: Record<string, any> }>;
 }
 
-interface BarcodeScannerDialogComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'scanError' | 'scanSuccess'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
-
+export declare interface BarcodeScannerDialogElement
+  extends Partial<Omit<BarcodeScannerDialog, 'scanError' | 'scanSuccess'>> {
   addEventListener<K extends keyof BarcodeScannerDialogComponentEventsMap>(
     type: K,
     listener: (
-      this: BarcodeScannerDialogComponentElement,
+      this: BarcodeScannerDialogElement,
       ev: BarcodeScannerDialogComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -119,7 +115,7 @@ interface BarcodeScannerDialogComponentElement
   removeEventListener<K extends keyof BarcodeScannerDialogComponentEventsMap>(
     type: K,
     listener: (
-      this: BarcodeScannerDialogComponentElement,
+      this: BarcodeScannerDialogElement,
       ev: BarcodeScannerDialogComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -129,51 +125,9 @@ interface BarcodeScannerDialogComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  close(): any;
-
-  show(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs(['scanError', 'scanSuccess'])
 @ProxyMethods([
@@ -200,29 +154,35 @@ interface BarcodeScannerDialogComponentElement
   'show',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-barcode-scanner-dialog',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5BarcodeScannerDialog',
   standalone: true,
-  providers: [],
   inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
   outputs: ['scanError: ui5ScanError', 'scanSuccess: ui5ScanSuccess'],
+  providers: [],
 })
 export class BarcodeScannerDialogComponent {
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<BarcodeScannerDialogComponentElement>,
+    private elementRef: ElementRef<BarcodeScannerDialogElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): BarcodeScannerDialogElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface BarcodeScannerDialogComponent
-  extends Partial<BarcodeScannerDialogComponentElement> {}
+  extends Partial<BarcodeScannerDialogElement> {
+  scanError: EventEmitter<BarcodeScannerDialogComponentEventsMap['scanError']>;
+  scanSuccess: EventEmitter<
+    BarcodeScannerDialogComponentEventsMap['scanSuccess']
+  >;
+}
 "
 `;
 
@@ -551,13 +511,15 @@ exports[`Snapshot test Fiori Flexible Column Layout should match the snapshot 1`
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import type FlexibleColumnLayout from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 
 interface FlexibleColumnLayoutComponentEventsMap
   extends Omit<HTMLElementEventMap, 'layoutChange'> {
@@ -581,30 +543,18 @@ interface FlexibleColumnLayoutComponentEventsMap
   }>;
 }
 
-interface FlexibleColumnLayoutComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibilityRoles'
-    | 'accessibilityTexts'
-    | 'columnLayout'
-    | 'endColumnVisible'
-    | 'hideArrows'
-    | 'layout'
-    | 'midColumnVisible'
-    | 'startColumnVisible'
-    | 'visibleColumns'
-    | 'layoutChange'
-    | 'endColumn'
-    | 'midColumn'
-    | 'startColumn'
+export declare interface FlexibleColumnLayoutElement
+  extends Partial<
+    Omit<
+      FlexibleColumnLayout,
+      | 'layoutChange'
+      | 'endColumnVisible'
+      | 'hideArrows'
+      | 'layout'
+      | 'midColumnVisible'
+      | 'startColumnVisible'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  accessibilityRoles: Record<string, any>;
-  accessibilityTexts: Record<string, any>;
-  columnLayout: Array<any>;
   endColumnVisible: boolean;
   hideArrows: boolean;
   layout:
@@ -619,16 +569,11 @@ interface FlexibleColumnLayoutComponentElement
     | 'TwoColumnsStartExpanded';
   midColumnVisible: boolean;
   startColumnVisible: boolean;
-  visibleColumns: any;
-
-  endColumn: HTMLElement;
-  midColumn: HTMLElement;
-  startColumn: HTMLElement;
 
   addEventListener<K extends keyof FlexibleColumnLayoutComponentEventsMap>(
     type: K,
     listener: (
-      this: FlexibleColumnLayoutComponentElement,
+      this: FlexibleColumnLayoutElement,
       ev: FlexibleColumnLayoutComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -641,7 +586,7 @@ interface FlexibleColumnLayoutComponentElement
   removeEventListener<K extends keyof FlexibleColumnLayoutComponentEventsMap>(
     type: K,
     listener: (
-      this: FlexibleColumnLayoutComponentElement,
+      this: FlexibleColumnLayoutElement,
       ev: FlexibleColumnLayoutComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -651,47 +596,9 @@ interface FlexibleColumnLayoutComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -728,11 +635,10 @@ interface FlexibleColumnLayoutComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-flexible-column-layout',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5FlexibleColumnLayout',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -747,37 +653,33 @@ interface FlexibleColumnLayoutComponentElement
     'visibleColumns: visible-columns',
   ],
   outputs: ['layoutChange: ui5LayoutChange'],
+  providers: [],
 })
 export class FlexibleColumnLayoutComponent {
-  endColumnVisible?: FlexibleColumnLayoutComponentElement['endColumnVisible'];
-  hideArrows?: FlexibleColumnLayoutComponentElement['hideArrows'];
-  layout?: FlexibleColumnLayoutComponentElement['layout'];
-  midColumnVisible?: FlexibleColumnLayoutComponentElement['midColumnVisible'];
-  startColumnVisible?: FlexibleColumnLayoutComponentElement['startColumnVisible'];
+  endColumnVisible?: FlexibleColumnLayoutElement['endColumnVisible'];
+  hideArrows?: FlexibleColumnLayoutElement['hideArrows'];
+  layout?: FlexibleColumnLayoutElement['layout'];
+  midColumnVisible?: FlexibleColumnLayoutElement['midColumnVisible'];
+  startColumnVisible?: FlexibleColumnLayoutElement['startColumnVisible'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<FlexibleColumnLayoutComponentElement>,
+    private elementRef: ElementRef<FlexibleColumnLayoutElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): FlexibleColumnLayoutElement {
     return this.elementRef.nativeElement;
   }
-
-  get endColumn(): HTMLElement {
-    return this.elementRef.nativeElement.endColumn;
-  }
-  get midColumn(): HTMLElement {
-    return this.elementRef.nativeElement.midColumn;
-  }
-  get startColumn(): HTMLElement {
-    return this.elementRef.nativeElement.startColumn;
-  }
 }
+
 export declare interface FlexibleColumnLayoutComponent
-  extends Partial<FlexibleColumnLayoutComponentElement> {}
+  extends Partial<FlexibleColumnLayoutElement> {
+  layoutChange: EventEmitter<
+    FlexibleColumnLayoutComponentEventsMap['layoutChange']
+  >;
+}
 "
 `;
 
@@ -894,71 +796,22 @@ exports[`Snapshot test Fiori Media Gallery Item should match the snapshot 1`] = 
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
+import type MediaGalleryItem from '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 
-interface MediaGalleryItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'disabled'
-    | 'layout'
-    | 'selected'
-    | 'thumbnail'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface MediaGalleryItemElement
+  extends Partial<Omit<MediaGalleryItem, 'disabled' | 'layout' | 'selected'>> {
   disabled: boolean;
   layout: 'Square' | 'Wide';
   selected: boolean;
-
-  thumbnail: HTMLElement;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'disabled', 'layout', 'selected'])
 @ProxyOutputs([])
 @ProxyMethods([
@@ -983,11 +836,10 @@ interface MediaGalleryItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-media-gallery-item',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5MediaGalleryItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -996,29 +848,27 @@ interface MediaGalleryItemComponentElement
     'selected',
   ],
   outputs: [],
+  providers: [],
 })
 export class MediaGalleryItemComponent {
-  disabled?: MediaGalleryItemComponentElement['disabled'];
-  layout?: MediaGalleryItemComponentElement['layout'];
-  selected?: MediaGalleryItemComponentElement['selected'];
+  disabled?: MediaGalleryItemElement['disabled'];
+  layout?: MediaGalleryItemElement['layout'];
+  selected?: MediaGalleryItemElement['selected'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MediaGalleryItemComponentElement>,
+    private elementRef: ElementRef<MediaGalleryItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MediaGalleryItemElement {
     return this.elementRef.nativeElement;
   }
-
-  get thumbnail(): HTMLElement {
-    return this.elementRef.nativeElement.thumbnail;
-  }
 }
+
 export declare interface MediaGalleryItemComponent
-  extends Partial<MediaGalleryItemComponentElement> {}
+  extends Partial<MediaGalleryItemElement> {}
 "
 `;
 
@@ -1028,13 +878,15 @@ exports[`Snapshot test Fiori Media Gallery should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
+import type MediaGallery from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
 
 interface MediaGalleryComponentEventsMap
   extends Omit<
@@ -1046,32 +898,29 @@ interface MediaGalleryComponentEventsMap
   selectionChange: CustomEvent<{ item: HTMLElement }>;
 }
 
-interface MediaGalleryComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'interactiveDisplayArea'
-    | 'layout'
-    | 'menuHorizontalAlign'
-    | 'menuVerticalAlign'
-    | 'showAllThumbnails'
-    | 'displayAreaClick'
-    | 'overflowClick'
-    | 'selectionChange'
+export declare interface MediaGalleryElement
+  extends Partial<
+    Omit<
+      MediaGallery,
+      | 'displayAreaClick'
+      | 'overflowClick'
+      | 'selectionChange'
+      | 'interactiveDisplayArea'
+      | 'layout'
+      | 'menuHorizontalAlign'
+      | 'menuVerticalAlign'
+      | 'showAllThumbnails'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   interactiveDisplayArea: boolean;
   layout: 'Auto' | 'Horizontal' | 'Vertical';
   menuHorizontalAlign: 'Left' | 'Right';
   menuVerticalAlign: 'Bottom' | 'Top';
   showAllThumbnails: boolean;
-
   addEventListener<K extends keyof MediaGalleryComponentEventsMap>(
     type: K,
     listener: (
-      this: MediaGalleryComponentElement,
+      this: MediaGalleryElement,
       ev: MediaGalleryComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -1084,7 +933,7 @@ interface MediaGalleryComponentElement
   removeEventListener<K extends keyof MediaGalleryComponentEventsMap>(
     type: K,
     listener: (
-      this: MediaGalleryComponentElement,
+      this: MediaGalleryElement,
       ev: MediaGalleryComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -1094,47 +943,9 @@ interface MediaGalleryComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -1167,11 +978,10 @@ interface MediaGalleryComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-media-gallery',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5MediaGallery',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -1186,27 +996,37 @@ interface MediaGalleryComponentElement
     'overflowClick: ui5OverflowClick',
     'selectionChange: ui5SelectionChange',
   ],
+  providers: [],
 })
 export class MediaGalleryComponent {
-  interactiveDisplayArea?: MediaGalleryComponentElement['interactiveDisplayArea'];
-  layout?: MediaGalleryComponentElement['layout'];
-  menuHorizontalAlign?: MediaGalleryComponentElement['menuHorizontalAlign'];
-  menuVerticalAlign?: MediaGalleryComponentElement['menuVerticalAlign'];
-  showAllThumbnails?: MediaGalleryComponentElement['showAllThumbnails'];
+  interactiveDisplayArea?: MediaGalleryElement['interactiveDisplayArea'];
+  layout?: MediaGalleryElement['layout'];
+  menuHorizontalAlign?: MediaGalleryElement['menuHorizontalAlign'];
+  menuVerticalAlign?: MediaGalleryElement['menuVerticalAlign'];
+  showAllThumbnails?: MediaGalleryElement['showAllThumbnails'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<MediaGalleryComponentElement>,
+    private elementRef: ElementRef<MediaGalleryElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): MediaGalleryElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface MediaGalleryComponent
-  extends Partial<MediaGalleryComponentElement> {}
+  extends Partial<MediaGalleryElement> {
+  displayAreaClick: EventEmitter<
+    MediaGalleryComponentEventsMap['displayAreaClick']
+  >;
+  overflowClick: EventEmitter<MediaGalleryComponentEventsMap['overflowClick']>;
+  selectionChange: EventEmitter<
+    MediaGalleryComponentEventsMap['selectionChange']
+  >;
+}
 "
 `;
 
@@ -1221,21 +1041,25 @@ exports[`Snapshot test Fiori Notification Action should match the snapshot 1`] =
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
+import type NotificationAction from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 
-interface NotificationActionComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'design' | 'disabled' | 'icon' | 'text'
+interface NotificationActionComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<{ targetRef: HTMLElement }>;
+}
+
+export declare interface NotificationActionElement
+  extends Partial<
+    Omit<NotificationAction, 'click' | 'design' | 'disabled' | 'icon' | 'text'>
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   design:
     | 'Attention'
     | 'Default'
@@ -1246,47 +1070,35 @@ interface NotificationActionComponentElement
   disabled: boolean;
   icon: string;
   text: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
+  addEventListener<K extends keyof NotificationActionComponentEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationActionElement,
+      ev: NotificationActionComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof NotificationActionComponentEventsMap>(
+    type: K,
+    listener: (
+      this: NotificationActionElement,
+      ev: NotificationActionComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -1295,7 +1107,7 @@ interface NotificationActionComponentElement
   'icon',
   'text',
 ])
-@ProxyOutputs([])
+@ProxyOutputs(['click'])
 @ProxyMethods([
   '_render',
   'attachInvalidate',
@@ -1316,13 +1128,13 @@ interface NotificationActionComponentElement
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
+  'fireClickEvent',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-notification-action',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5NotificationAction',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -1331,27 +1143,31 @@ interface NotificationActionComponentElement
     'icon',
     'text',
   ],
-  outputs: [],
+  outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class NotificationActionComponent {
-  design?: NotificationActionComponentElement['design'];
-  disabled?: NotificationActionComponentElement['disabled'];
-  icon?: NotificationActionComponentElement['icon'];
-  text?: NotificationActionComponentElement['text'];
+  design?: NotificationActionElement['design'];
+  disabled?: NotificationActionElement['disabled'];
+  icon?: NotificationActionElement['icon'];
+  text?: NotificationActionElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<NotificationActionComponentElement>,
+    private elementRef: ElementRef<NotificationActionElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): NotificationActionElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface NotificationActionComponent
-  extends Partial<NotificationActionComponentElement> {}
+  extends Partial<NotificationActionElement> {
+  click: EventEmitter<NotificationActionComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -1361,14 +1177,15 @@ exports[`Snapshot test Fiori Notification List Group Item should match the snaps
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { NotificationActionComponent } from '@ui5/webcomponents-ngx/fiori/notification-action';
+import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import type NotificationListGroupItem from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 
 interface NotificationListGroupItemComponentEventsMap
   extends Omit<HTMLElementEventMap, 'close' | 'toggle'> {
@@ -1376,42 +1193,35 @@ interface NotificationListGroupItemComponentEventsMap
   toggle: CustomEvent<void>;
 }
 
-interface NotificationListGroupItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'selected'
-    | 'busy'
-    | 'busyDelay'
-    | 'priority'
-    | 'read'
-    | 'showClose'
-    | 'titleText'
-    | 'collapsed'
-    | 'showCounter'
-    | 'close'
-    | 'toggle'
-    | 'actions'
+export declare interface NotificationListGroupItemElement
+  extends Partial<
+    Omit<
+      NotificationListGroupItem,
+      | 'close'
+      | 'toggle'
+      | 'selected'
+      | 'busy'
+      | 'priority'
+      | 'read'
+      | 'showClose'
+      | 'titleText'
+      | 'collapsed'
+      | 'showCounter'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   selected: boolean;
   busy: boolean;
-  busyDelay: any;
+
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: boolean;
   showClose: boolean;
   titleText: string;
   collapsed: boolean;
   showCounter: boolean;
-
-  actions: Array<NotificationActionComponent['element']>;
-
   addEventListener<K extends keyof NotificationListGroupItemComponentEventsMap>(
     type: K,
     listener: (
-      this: NotificationListGroupItemComponentElement,
+      this: NotificationListGroupItemElement,
       ev: NotificationListGroupItemComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -1426,7 +1236,7 @@ interface NotificationListGroupItemComponentElement
   >(
     type: K,
     listener: (
-      this: NotificationListGroupItemComponentElement,
+      this: NotificationListGroupItemElement,
       ev: NotificationListGroupItemComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -1436,47 +1246,9 @@ interface NotificationListGroupItemComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -1513,11 +1285,10 @@ interface NotificationListGroupItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-li-notification-group',
-  exportAs: 'ui5LiNotificationGroup',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5NotificationListGroupItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -1532,34 +1303,35 @@ interface NotificationListGroupItemComponentElement
     'showCounter: show-counter',
   ],
   outputs: ['close: ui5Close', 'toggle: ui5Toggle'],
+  providers: [],
 })
 export class NotificationListGroupItemComponent {
-  selected?: NotificationListGroupItemComponentElement['selected'];
-  busy?: NotificationListGroupItemComponentElement['busy'];
-  priority?: NotificationListGroupItemComponentElement['priority'];
-  read?: NotificationListGroupItemComponentElement['read'];
-  showClose?: NotificationListGroupItemComponentElement['showClose'];
-  titleText?: NotificationListGroupItemComponentElement['titleText'];
-  collapsed?: NotificationListGroupItemComponentElement['collapsed'];
-  showCounter?: NotificationListGroupItemComponentElement['showCounter'];
+  selected?: NotificationListGroupItemElement['selected'];
+  busy?: NotificationListGroupItemElement['busy'];
+  priority?: NotificationListGroupItemElement['priority'];
+  read?: NotificationListGroupItemElement['read'];
+  showClose?: NotificationListGroupItemElement['showClose'];
+  titleText?: NotificationListGroupItemElement['titleText'];
+  collapsed?: NotificationListGroupItemElement['collapsed'];
+  showCounter?: NotificationListGroupItemElement['showCounter'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<NotificationListGroupItemComponentElement>,
+    private elementRef: ElementRef<NotificationListGroupItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): NotificationListGroupItemElement {
     return this.elementRef.nativeElement;
   }
-
-  get actions(): Array<NotificationActionComponent['element']> {
-    return this.elementRef.nativeElement.actions;
-  }
 }
+
 export declare interface NotificationListGroupItemComponent
-  extends Partial<NotificationListGroupItemComponentElement> {}
+  extends Partial<NotificationListGroupItemElement> {
+  close: EventEmitter<NotificationListGroupItemComponentEventsMap['close']>;
+  toggle: EventEmitter<NotificationListGroupItemComponentEventsMap['toggle']>;
+}
 "
 `;
 
@@ -1569,51 +1341,45 @@ exports[`Snapshot test Fiori Notification List Item Base should match the snapsh
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { NotificationActionComponent } from '@ui5/webcomponents-ngx/fiori/notification-action';
+import '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
+import type NotificationListItemBase from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
 
 interface NotificationListItemBaseComponentEventsMap
   extends Omit<HTMLElementEventMap, 'close'> {
   close: CustomEvent<{ item: HTMLElement }>;
 }
 
-interface NotificationListItemBaseComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'selected'
-    | 'busy'
-    | 'busyDelay'
-    | 'priority'
-    | 'read'
-    | 'showClose'
-    | 'titleText'
-    | 'close'
-    | 'actions'
+export declare interface NotificationListItemBaseElement
+  extends Partial<
+    Omit<
+      NotificationListItemBase,
+      | 'close'
+      | 'selected'
+      | 'busy'
+      | 'priority'
+      | 'read'
+      | 'showClose'
+      | 'titleText'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   selected: boolean;
   busy: boolean;
-  busyDelay: any;
+
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: boolean;
   showClose: boolean;
   titleText: string;
-
-  actions: Array<NotificationActionComponent['element']>;
-
   addEventListener<K extends keyof NotificationListItemBaseComponentEventsMap>(
     type: K,
     listener: (
-      this: NotificationListItemBaseComponentElement,
+      this: NotificationListItemBaseElement,
       ev: NotificationListItemBaseComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -1628,7 +1394,7 @@ interface NotificationListItemBaseComponentElement
   >(
     type: K,
     listener: (
-      this: NotificationListItemBaseComponentElement,
+      this: NotificationListItemBaseElement,
       ev: NotificationListItemBaseComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -1638,47 +1404,9 @@ interface NotificationListItemBaseComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -1713,11 +1441,10 @@ interface NotificationListItemBaseComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-li-notification-group',
-  exportAs: 'ui5LiNotificationGroup',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5NotificationListItemBase',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -1730,32 +1457,32 @@ interface NotificationListItemBaseComponentElement
     'titleText: title-text',
   ],
   outputs: ['close: ui5Close'],
+  providers: [],
 })
 export class NotificationListItemBaseComponent {
-  selected?: NotificationListItemBaseComponentElement['selected'];
-  busy?: NotificationListItemBaseComponentElement['busy'];
-  priority?: NotificationListItemBaseComponentElement['priority'];
-  read?: NotificationListItemBaseComponentElement['read'];
-  showClose?: NotificationListItemBaseComponentElement['showClose'];
-  titleText?: NotificationListItemBaseComponentElement['titleText'];
+  selected?: NotificationListItemBaseElement['selected'];
+  busy?: NotificationListItemBaseElement['busy'];
+  priority?: NotificationListItemBaseElement['priority'];
+  read?: NotificationListItemBaseElement['read'];
+  showClose?: NotificationListItemBaseElement['showClose'];
+  titleText?: NotificationListItemBaseElement['titleText'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<NotificationListItemBaseComponentElement>,
+    private elementRef: ElementRef<NotificationListItemBaseElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): NotificationListItemBaseElement {
     return this.elementRef.nativeElement;
   }
-
-  get actions(): Array<NotificationActionComponent['element']> {
-    return this.elementRef.nativeElement.actions;
-  }
 }
+
 export declare interface NotificationListItemBaseComponent
-  extends Partial<NotificationListItemBaseComponentElement> {}
+  extends Partial<NotificationListItemBaseElement> {
+  close: EventEmitter<NotificationListItemBaseComponentEventsMap['close']>;
+}
 "
 `;
 
@@ -1765,58 +1492,47 @@ exports[`Snapshot test Fiori Notification List Item should match the snapshot 1`
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { NotificationActionComponent } from '@ui5/webcomponents-ngx/fiori/notification-action';
-import { AvatarComponent } from '@ui5/webcomponents-ngx/main/avatar';
+import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
+import type NotificationListItem from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 
 interface NotificationListItemComponentEventsMap
   extends Omit<HTMLElementEventMap, 'close'> {
   close: CustomEvent<{ item: HTMLElement }>;
 }
 
-interface NotificationListItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'selected'
-    | 'busy'
-    | 'busyDelay'
-    | 'priority'
-    | 'read'
-    | 'showClose'
-    | 'titleText'
-    | 'wrappingType'
-    | 'close'
-    | 'actions'
-    | 'avatar'
-    | 'footnotes'
+export declare interface NotificationListItemElement
+  extends Partial<
+    Omit<
+      NotificationListItem,
+      | 'close'
+      | 'selected'
+      | 'busy'
+      | 'priority'
+      | 'read'
+      | 'showClose'
+      | 'titleText'
+      | 'wrappingType'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   selected: boolean;
   busy: boolean;
-  busyDelay: any;
+
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: boolean;
   showClose: boolean;
   titleText: string;
   wrappingType: 'None' | 'Normal';
-
-  actions: Array<NotificationActionComponent['element']>;
-  avatar: AvatarComponent['element'];
-  footnotes: Array<HTMLElement>;
-
   addEventListener<K extends keyof NotificationListItemComponentEventsMap>(
     type: K,
     listener: (
-      this: NotificationListItemComponentElement,
+      this: NotificationListItemElement,
       ev: NotificationListItemComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -1829,7 +1545,7 @@ interface NotificationListItemComponentElement
   removeEventListener<K extends keyof NotificationListItemComponentEventsMap>(
     type: K,
     listener: (
-      this: NotificationListItemComponentElement,
+      this: NotificationListItemElement,
       ev: NotificationListItemComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -1839,47 +1555,9 @@ interface NotificationListItemComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -1915,11 +1593,10 @@ interface NotificationListItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-li-notification',
-  exportAs: 'ui5LiNotification',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5NotificationListItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -1933,39 +1610,33 @@ interface NotificationListItemComponentElement
     'wrappingType: wrapping-type',
   ],
   outputs: ['close: ui5Close'],
+  providers: [],
 })
 export class NotificationListItemComponent {
-  selected?: NotificationListItemComponentElement['selected'];
-  busy?: NotificationListItemComponentElement['busy'];
-  priority?: NotificationListItemComponentElement['priority'];
-  read?: NotificationListItemComponentElement['read'];
-  showClose?: NotificationListItemComponentElement['showClose'];
-  titleText?: NotificationListItemComponentElement['titleText'];
-  wrappingType?: NotificationListItemComponentElement['wrappingType'];
+  selected?: NotificationListItemElement['selected'];
+  busy?: NotificationListItemElement['busy'];
+  priority?: NotificationListItemElement['priority'];
+  read?: NotificationListItemElement['read'];
+  showClose?: NotificationListItemElement['showClose'];
+  titleText?: NotificationListItemElement['titleText'];
+  wrappingType?: NotificationListItemElement['wrappingType'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<NotificationListItemComponentElement>,
+    private elementRef: ElementRef<NotificationListItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): NotificationListItemElement {
     return this.elementRef.nativeElement;
   }
-
-  get actions(): Array<NotificationActionComponent['element']> {
-    return this.elementRef.nativeElement.actions;
-  }
-  get avatar(): AvatarComponent['element'] {
-    return this.elementRef.nativeElement.avatar;
-  }
-  get footnotes(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.footnotes;
-  }
 }
+
 export declare interface NotificationListItemComponent
-  extends Partial<NotificationListItemComponentElement> {}
+  extends Partial<NotificationListItemElement> {
+  close: EventEmitter<NotificationListItemComponentEventsMap['close']>;
+}
 "
 `;
 
@@ -2277,34 +1948,30 @@ exports[`Snapshot test Fiori Shell Bar Item should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
+import type ShellBarItem from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 
 interface ShellBarItemComponentEventsMap
   extends Omit<HTMLElementEventMap, 'click'> {
   click: CustomEvent<{ targetRef: HTMLElement }>;
 }
 
-interface ShellBarItemComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'count' | 'icon' | 'text' | 'click'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface ShellBarItemElement
+  extends Partial<Omit<ShellBarItem, 'click' | 'count' | 'icon' | 'text'>> {
   count: string;
   icon: string;
   text: string;
-
   addEventListener<K extends keyof ShellBarItemComponentEventsMap>(
     type: K,
     listener: (
-      this: ShellBarItemComponentElement,
+      this: ShellBarItemElement,
       ev: ShellBarItemComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -2317,7 +1984,7 @@ interface ShellBarItemComponentElement
   removeEventListener<K extends keyof ShellBarItemComponentEventsMap>(
     type: K,
     listener: (
-      this: ShellBarItemComponentElement,
+      this: ShellBarItemElement,
       ev: ShellBarItemComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -2327,47 +1994,9 @@ interface ShellBarItemComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'count', 'icon', 'text'])
 @ProxyOutputs(['click'])
 @ProxyMethods([
@@ -2392,11 +2021,10 @@ interface ShellBarItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-shellbar-item',
-  exportAs: 'ui5ShellbarItem',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ShellBarItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2405,25 +2033,29 @@ interface ShellBarItemComponentElement
     'text',
   ],
   outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class ShellBarItemComponent {
-  count?: ShellBarItemComponentElement['count'];
-  icon?: ShellBarItemComponentElement['icon'];
-  text?: ShellBarItemComponentElement['text'];
+  count?: ShellBarItemElement['count'];
+  icon?: ShellBarItemElement['icon'];
+  text?: ShellBarItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ShellBarItemComponentElement>,
+    private elementRef: ElementRef<ShellBarItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ShellBarItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface ShellBarItemComponent
-  extends Partial<ShellBarItemComponentElement> {}
+  extends Partial<ShellBarItemElement> {
+  click: EventEmitter<ShellBarItemComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -2433,21 +2065,15 @@ exports[`Snapshot test Fiori Shell Bar should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { AvatarComponent } from '@ui5/webcomponents-ngx/main/avatar';
-import { NotificationListGroupItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-group-item';
-import { NotificationListItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-item';
-import { CustomListItemComponent } from '@ui5/webcomponents-ngx/main/custom-list-item';
-import { GroupHeaderListItemComponent } from '@ui5/webcomponents-ngx/main/group-header-list-item';
-import { StandardListItemComponent } from '@ui5/webcomponents-ngx/main/standard-list-item';
-import { InputComponent } from '@ui5/webcomponents-ngx/main/input';
-import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+import '@ui5/webcomponents-fiori/dist/ShellBar.js';
+import type ShellBar from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 
 interface ShellBarComponentEventsMap
   extends Omit<
@@ -2467,44 +2093,31 @@ interface ShellBarComponentEventsMap
   profileClick: CustomEvent<{ targetRef: HTMLElement }>;
 }
 
-interface ShellBarComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'accessibilityAttributes'
-    | 'accessibilityRoles'
-    | 'accessibilityTexts'
-    | 'copilotDomRef'
-    | 'logoDomRef'
-    | 'notificationsCount'
-    | 'notificationsDomRef'
-    | 'overflowDomRef'
-    | 'primaryTitle'
-    | 'productSwitchDomRef'
-    | 'profileDomRef'
-    | 'secondaryTitle'
-    | 'showCoPilot'
-    | 'showNotifications'
-    | 'showProductSwitch'
-    | 'showSearchField'
-    | 'coPilotClick'
-    | 'logoClick'
-    | 'menuItemClick'
-    | 'notificationsClick'
-    | 'productSwitchClick'
-    | 'profileClick'
-    | 'logo'
-    | 'menuItems'
-    | 'profile'
-    | 'searchField'
-    | 'startButton'
+export declare interface ShellBarElement
+  extends Partial<
+    Omit<
+      ShellBar,
+      | 'coPilotClick'
+      | 'logoClick'
+      | 'menuItemClick'
+      | 'notificationsClick'
+      | 'productSwitchClick'
+      | 'profileClick'
+      | 'copilotDomRef'
+      | 'logoDomRef'
+      | 'notificationsCount'
+      | 'notificationsDomRef'
+      | 'overflowDomRef'
+      | 'primaryTitle'
+      | 'productSwitchDomRef'
+      | 'profileDomRef'
+      | 'secondaryTitle'
+      | 'showCoPilot'
+      | 'showNotifications'
+      | 'showProductSwitch'
+      | 'showSearchField'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
-  accessibilityAttributes: Record<string, any>;
-  accessibilityRoles: Record<string, any>;
-  accessibilityTexts: Record<string, any>;
   copilotDomRef: HTMLElement;
   logoDomRef: HTMLElement;
   notificationsCount: string;
@@ -2518,25 +2131,9 @@ interface ShellBarComponentElement
   showNotifications: boolean;
   showProductSwitch: boolean;
   showSearchField: boolean;
-
-  logo: AvatarComponent['element'];
-  menuItems: Array<
-    | NotificationListGroupItemComponent['element']
-    | NotificationListItemComponent['element']
-    | CustomListItemComponent['element']
-    | GroupHeaderListItemComponent['element']
-    | StandardListItemComponent['element']
-  >;
-  profile: AvatarComponent['element'];
-  searchField: InputComponent['element'];
-  startButton: ButtonComponent['element'];
-
   addEventListener<K extends keyof ShellBarComponentEventsMap>(
     type: K,
-    listener: (
-      this: ShellBarComponentElement,
-      ev: ShellBarComponentEventsMap[K]
-    ) => any,
+    listener: (this: ShellBarElement, ev: ShellBarComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -2546,10 +2143,7 @@ interface ShellBarComponentElement
   ): void;
   removeEventListener<K extends keyof ShellBarComponentEventsMap>(
     type: K,
-    listener: (
-      this: ShellBarComponentElement,
-      ev: ShellBarComponentEventsMap[K]
-    ) => any,
+    listener: (this: ShellBarElement, ev: ShellBarComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -2557,49 +2151,9 @@ interface ShellBarComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
-
-  closeOverflow(): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -2651,11 +2205,10 @@ interface ShellBarComponentElement
   'closeOverflow',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-shellbar',
-  exportAs: 'ui5Shellbar',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ShellBar',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2684,57 +2237,47 @@ interface ShellBarComponentElement
     'productSwitchClick: ui5ProductSwitchClick',
     'profileClick: ui5ProfileClick',
   ],
+  providers: [],
 })
 export class ShellBarComponent {
-  copilotDomRef?: ShellBarComponentElement['copilotDomRef'];
-  logoDomRef?: ShellBarComponentElement['logoDomRef'];
-  notificationsCount?: ShellBarComponentElement['notificationsCount'];
-  notificationsDomRef?: ShellBarComponentElement['notificationsDomRef'];
-  overflowDomRef?: ShellBarComponentElement['overflowDomRef'];
-  primaryTitle?: ShellBarComponentElement['primaryTitle'];
-  productSwitchDomRef?: ShellBarComponentElement['productSwitchDomRef'];
-  profileDomRef?: ShellBarComponentElement['profileDomRef'];
-  secondaryTitle?: ShellBarComponentElement['secondaryTitle'];
-  showCoPilot?: ShellBarComponentElement['showCoPilot'];
-  showNotifications?: ShellBarComponentElement['showNotifications'];
-  showProductSwitch?: ShellBarComponentElement['showProductSwitch'];
-  showSearchField?: ShellBarComponentElement['showSearchField'];
+  copilotDomRef?: ShellBarElement['copilotDomRef'];
+  logoDomRef?: ShellBarElement['logoDomRef'];
+  notificationsCount?: ShellBarElement['notificationsCount'];
+  notificationsDomRef?: ShellBarElement['notificationsDomRef'];
+  overflowDomRef?: ShellBarElement['overflowDomRef'];
+  primaryTitle?: ShellBarElement['primaryTitle'];
+  productSwitchDomRef?: ShellBarElement['productSwitchDomRef'];
+  profileDomRef?: ShellBarElement['profileDomRef'];
+  secondaryTitle?: ShellBarElement['secondaryTitle'];
+  showCoPilot?: ShellBarElement['showCoPilot'];
+  showNotifications?: ShellBarElement['showNotifications'];
+  showProductSwitch?: ShellBarElement['showProductSwitch'];
+  showSearchField?: ShellBarElement['showSearchField'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<ShellBarComponentElement>,
+    private elementRef: ElementRef<ShellBarElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): ShellBarElement {
     return this.elementRef.nativeElement;
   }
-
-  get logo(): AvatarComponent['element'] {
-    return this.elementRef.nativeElement.logo;
-  }
-  get menuItems(): Array<
-    | NotificationListGroupItemComponent['element']
-    | NotificationListItemComponent['element']
-    | CustomListItemComponent['element']
-    | GroupHeaderListItemComponent['element']
-    | StandardListItemComponent['element']
-  > {
-    return this.elementRef.nativeElement.menuItems;
-  }
-  get profile(): AvatarComponent['element'] {
-    return this.elementRef.nativeElement.profile;
-  }
-  get searchField(): InputComponent['element'] {
-    return this.elementRef.nativeElement.searchField;
-  }
-  get startButton(): ButtonComponent['element'] {
-    return this.elementRef.nativeElement.startButton;
-  }
 }
-export declare interface ShellBarComponent
-  extends Partial<ShellBarComponentElement> {}
+
+export declare interface ShellBarComponent extends Partial<ShellBarElement> {
+  coPilotClick: EventEmitter<ShellBarComponentEventsMap['coPilotClick']>;
+  logoClick: EventEmitter<ShellBarComponentEventsMap['logoClick']>;
+  menuItemClick: EventEmitter<ShellBarComponentEventsMap['menuItemClick']>;
+  notificationsClick: EventEmitter<
+    ShellBarComponentEventsMap['notificationsClick']
+  >;
+  productSwitchClick: EventEmitter<
+    ShellBarComponentEventsMap['productSwitchClick']
+  >;
+  profileClick: EventEmitter<ShellBarComponentEventsMap['profileClick']>;
+}
 "
 `;
 
@@ -2744,73 +2287,67 @@ exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] 
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
+import type SideNavigationItem from '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 
-interface SideNavigationItemComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'expanded'
-    | 'icon'
-    | 'selected'
-    | 'text'
-    | 'wholeItemToggleable'
+interface SideNavigationItemComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<void>;
+}
+
+export declare interface SideNavigationItemElement
+  extends Partial<
+    Omit<
+      SideNavigationItem,
+      | 'click'
+      | 'expanded'
+      | 'icon'
+      | 'selected'
+      | 'text'
+      | 'wholeItemToggleable'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   expanded: boolean;
   icon: string;
   selected: boolean;
   text: string;
   wholeItemToggleable: boolean;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
+  addEventListener<K extends keyof SideNavigationItemComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationItemElement,
+      ev: SideNavigationItemComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof SideNavigationItemComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationItemElement,
+      ev: SideNavigationItemComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -2820,7 +2357,7 @@ interface SideNavigationItemComponentElement
   'text',
   'wholeItemToggleable',
 ])
-@ProxyOutputs([])
+@ProxyOutputs(['click'])
 @ProxyMethods([
   '_render',
   'attachInvalidate',
@@ -2843,11 +2380,10 @@ interface SideNavigationItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-side-navigation-item',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5SideNavigationItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2857,28 +2393,32 @@ interface SideNavigationItemComponentElement
     'text',
     'wholeItemToggleable: whole-item-toggleable',
   ],
-  outputs: [],
+  outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class SideNavigationItemComponent {
-  expanded?: SideNavigationItemComponentElement['expanded'];
-  icon?: SideNavigationItemComponentElement['icon'];
-  selected?: SideNavigationItemComponentElement['selected'];
-  text?: SideNavigationItemComponentElement['text'];
-  wholeItemToggleable?: SideNavigationItemComponentElement['wholeItemToggleable'];
+  expanded?: SideNavigationItemElement['expanded'];
+  icon?: SideNavigationItemElement['icon'];
+  selected?: SideNavigationItemElement['selected'];
+  text?: SideNavigationItemElement['text'];
+  wholeItemToggleable?: SideNavigationItemElement['wholeItemToggleable'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SideNavigationItemComponentElement>,
+    private elementRef: ElementRef<SideNavigationItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SideNavigationItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface SideNavigationItemComponent
-  extends Partial<SideNavigationItemComponentElement> {}
+  extends Partial<SideNavigationItemElement> {
+  click: EventEmitter<SideNavigationItemComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -2888,67 +2428,59 @@ exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
+import type SideNavigationSubItem from '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 
-interface SideNavigationSubItemComponentElement
-  extends Omit<
-    HTMLElement,
-    'effectiveDir' | 'isUi5Element' | 'icon' | 'selected' | 'text'
+interface SideNavigationSubItemComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<void>;
+}
+
+export declare interface SideNavigationSubItemElement
+  extends Partial<
+    Omit<SideNavigationSubItem, 'click' | 'icon' | 'selected' | 'text'>
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   icon: string;
   selected: boolean;
   text: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
+  addEventListener<K extends keyof SideNavigationSubItemComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationSubItemElement,
+      ev: SideNavigationSubItemComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof SideNavigationSubItemComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SideNavigationSubItemElement,
+      ev: SideNavigationSubItemComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'icon', 'selected', 'text'])
-@ProxyOutputs([])
+@ProxyOutputs(['click'])
 @ProxyMethods([
   '_render',
   'attachInvalidate',
@@ -2971,11 +2503,10 @@ interface SideNavigationSubItemComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-side-navigation-sub-item',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5SideNavigationSubItem',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -2983,26 +2514,30 @@ interface SideNavigationSubItemComponentElement
     'selected',
     'text',
   ],
-  outputs: [],
+  outputs: ['click: ui5Click'],
+  providers: [],
 })
 export class SideNavigationSubItemComponent {
-  icon?: SideNavigationSubItemComponentElement['icon'];
-  selected?: SideNavigationSubItemComponentElement['selected'];
-  text?: SideNavigationSubItemComponentElement['text'];
+  icon?: SideNavigationSubItemElement['icon'];
+  selected?: SideNavigationSubItemElement['selected'];
+  text?: SideNavigationSubItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SideNavigationSubItemComponentElement>,
+    private elementRef: ElementRef<SideNavigationSubItemElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SideNavigationSubItemElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface SideNavigationSubItemComponent
-  extends Partial<SideNavigationSubItemComponentElement> {}
+  extends Partial<SideNavigationSubItemElement> {
+  click: EventEmitter<SideNavigationSubItemComponentEventsMap['click']>;
+}
 "
 `;
 
@@ -3012,41 +2547,28 @@ exports[`Snapshot test Fiori Side Navigation should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { SideNavigationItemComponent } from '@ui5/webcomponents-ngx/fiori/side-navigation-item';
+import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
+import type SideNavigation from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 
 interface SideNavigationComponentEventsMap
   extends Omit<HTMLElementEventMap, 'selectionChange'> {
-  selectionChange: CustomEvent<{ item: HTMLElement }>;
+  selectionChange: CustomEvent<{ item: any }>;
 }
 
-interface SideNavigationComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'collapsed'
-    | 'selectionChange'
-    | 'fixedItems'
-    | 'header'
-  > {
-  effectiveDir: any;
-  isUi5Element: any;
+export declare interface SideNavigationElement
+  extends Partial<Omit<SideNavigation, 'selectionChange' | 'collapsed'>> {
   collapsed: boolean;
-
-  fixedItems: Array<SideNavigationItemComponent['element']>;
-  header: Array<HTMLElement>;
-
   addEventListener<K extends keyof SideNavigationComponentEventsMap>(
     type: K,
     listener: (
-      this: SideNavigationComponentElement,
+      this: SideNavigationElement,
       ev: SideNavigationComponentEventsMap[K]
     ) => any,
     options?: boolean | AddEventListenerOptions
@@ -3059,7 +2581,7 @@ interface SideNavigationComponentElement
   removeEventListener<K extends keyof SideNavigationComponentEventsMap>(
     type: K,
     listener: (
-      this: SideNavigationComponentElement,
+      this: SideNavigationElement,
       ev: SideNavigationComponentEventsMap[K]
     ) => any,
     options?: boolean | EventListenerOptions
@@ -3069,47 +2591,9 @@ interface SideNavigationComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'collapsed'])
 @ProxyOutputs(['selectionChange'])
 @ProxyMethods([
@@ -3134,41 +2618,39 @@ interface SideNavigationComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-side-navigation',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5SideNavigation',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'collapsed',
   ],
   outputs: ['selectionChange: ui5SelectionChange'],
+  providers: [],
 })
 export class SideNavigationComponent {
-  collapsed?: SideNavigationComponentElement['collapsed'];
+  collapsed?: SideNavigationElement['collapsed'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<SideNavigationComponentElement>,
+    private elementRef: ElementRef<SideNavigationElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): SideNavigationElement {
     return this.elementRef.nativeElement;
   }
-
-  get fixedItems(): Array<SideNavigationItemComponent['element']> {
-    return this.elementRef.nativeElement.fixedItems;
-  }
-  get header(): Array<HTMLElement> {
-    return this.elementRef.nativeElement.header;
-  }
 }
+
 export declare interface SideNavigationComponent
-  extends Partial<SideNavigationComponentElement> {}
+  extends Partial<SideNavigationElement> {
+  selectionChange: EventEmitter<
+    SideNavigationComponentEventsMap['selectionChange']
+  >;
+}
 "
 `;
 
@@ -4068,74 +3550,35 @@ exports[`Snapshot test Fiori Wizard Step should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/WizardStep.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents-fiori/dist/WizardStep.js';
+import type WizardStep from '@ui5/webcomponents-fiori/dist/WizardStep.js';
 
-interface WizardStepComponentElement
-  extends Omit<
-    HTMLElement,
-    | 'effectiveDir'
-    | 'isUi5Element'
-    | 'branching'
-    | 'disabled'
-    | 'icon'
-    | 'selected'
-    | 'subtitleText'
-    | 'titleText'
+export declare interface WizardStepElement
+  extends Partial<
+    Omit<
+      WizardStep,
+      | 'branching'
+      | 'disabled'
+      | 'icon'
+      | 'selected'
+      | 'subtitleText'
+      | 'titleText'
+    >
   > {
-  effectiveDir: any;
-  isUi5Element: any;
   branching: boolean;
   disabled: boolean;
   icon: string;
   selected: boolean;
   subtitleText: string;
   titleText: string;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
@@ -4169,11 +3612,10 @@ interface WizardStepComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-wizard-step',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5WizardStep',
   standalone: true,
-  providers: [],
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
@@ -4185,28 +3627,30 @@ interface WizardStepComponentElement
     'titleText: title-text',
   ],
   outputs: [],
+  providers: [],
 })
 export class WizardStepComponent {
-  branching?: WizardStepComponentElement['branching'];
-  disabled?: WizardStepComponentElement['disabled'];
-  icon?: WizardStepComponentElement['icon'];
-  selected?: WizardStepComponentElement['selected'];
-  subtitleText?: WizardStepComponentElement['subtitleText'];
-  titleText?: WizardStepComponentElement['titleText'];
+  branching?: WizardStepElement['branching'];
+  disabled?: WizardStepElement['disabled'];
+  icon?: WizardStepElement['icon'];
+  selected?: WizardStepElement['selected'];
+  subtitleText?: WizardStepElement['subtitleText'];
+  titleText?: WizardStepElement['titleText'];
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<WizardStepComponentElement>,
+    private elementRef: ElementRef<WizardStepElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): WizardStepElement {
     return this.elementRef.nativeElement;
   }
 }
+
 export declare interface WizardStepComponent
-  extends Partial<WizardStepComponentElement> {}
+  extends Partial<WizardStepElement> {}
 "
 `;
 
@@ -4216,34 +3660,31 @@ exports[`Snapshot test Fiori Wizard should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/Wizard.js';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { WizardStepComponent } from '@ui5/webcomponents-ngx/fiori/wizard-step';
+import '@ui5/webcomponents-fiori/dist/Wizard.js';
+import type Wizard from '@ui5/webcomponents-fiori/dist/Wizard.js';
 
 interface WizardComponentEventsMap
   extends Omit<HTMLElementEventMap, 'stepChange'> {
   stepChange: CustomEvent<{
-    step: HTMLElement;
-    previousStep: HTMLElement;
+    step: WizardStepComponent['element'];
+    previousStep: WizardStepComponent['element'];
     changeWithClick: boolean;
   }>;
 }
 
-interface WizardComponentElement
-  extends Omit<HTMLElement, 'effectiveDir' | 'isUi5Element' | 'stepChange'> {
-  effectiveDir: any;
-  isUi5Element: any;
-
+export declare interface WizardElement
+  extends Partial<Omit<Wizard, 'stepChange'>> {
   addEventListener<K extends keyof WizardComponentEventsMap>(
     type: K,
-    listener: (
-      this: WizardComponentElement,
-      ev: WizardComponentEventsMap[K]
-    ) => any,
+    listener: (this: WizardElement, ev: WizardComponentEventsMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   addEventListener(
@@ -4253,10 +3694,7 @@ interface WizardComponentElement
   ): void;
   removeEventListener<K extends keyof WizardComponentEventsMap>(
     type: K,
-    listener: (
-      this: WizardComponentElement,
-      ev: WizardComponentEventsMap[K]
-    ) => any,
+    listener: (this: WizardElement, ev: WizardComponentEventsMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeEventListener(
@@ -4264,47 +3702,9 @@ interface WizardComponentElement
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventListenerOptions
   ): void;
-
-  _render(): any;
-
-  attachInvalidate(callback: any): any;
-
-  define(): any;
-
-  detachInvalidate(callback: any): any;
-
-  fireEvent(name: any, data: any, cancelable: any, bubbles: any): boolean;
-
-  focus(): any;
-
-  getDomRef(): any;
-
-  getFocusDomRef(): any;
-
-  getFocusDomRefAsync(): any;
-
-  getMetadata(): any;
-
-  getSlottedNodes(): any;
-
-  getStaticAreaItemDomRef(): any;
-
-  getUniqueDependencies(): any;
-
-  onAfterRendering(): any;
-
-  onBeforeRendering(): any;
-
-  onDefine(): any;
-
-  onEnterDOM(): any;
-
-  onExitDOM(): any;
-
-  onInvalidation(changeInfo: any): any;
 }
 
-// JS source file
+// TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs(['stepChange'])
 @ProxyMethods([
@@ -4329,28 +3729,30 @@ interface WizardComponentElement
   'onInvalidation',
 ])
 @Component({
-  template: \`<ng-content></ng-content>\`,
   selector: 'ui5-wizard',
+  template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Wizard',
   standalone: true,
-  providers: [],
   inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
   outputs: ['stepChange: ui5StepChange'],
+  providers: [],
 })
 export class WizardComponent {
   constructor(
     private c: ChangeDetectorRef,
-    private elementRef: ElementRef<WizardComponentElement>,
+    private elementRef: ElementRef<WizardElement>,
     private zone: NgZone
   ) {
     c.detach();
   }
 
-  get element(): typeof this.elementRef.nativeElement {
+  get element(): WizardElement {
     return this.elementRef.nativeElement;
   }
 }
-export declare interface WizardComponent
-  extends Partial<WizardComponentElement> {}
+
+export declare interface WizardComponent extends Partial<WizardElement> {
+  stepChange: EventEmitter<WizardComponentEventsMap['stepChange']>;
+}
 "
 `;

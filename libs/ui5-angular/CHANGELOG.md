@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-rc.8](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.7...v0.0.1-rc.8) (2023-03-09)
+
+### Features
+
+- added i18n support ([#40](https://github.com/SAP/ui5-webcomponents-ngx/issues/40)) ([7a6c2b3](https://github.com/SAP/ui5-webcomponents-ngx/commit/7a6c2b337afab10b90c0c579b5202560a7d85760))
+
 ## [0.0.1-rc.7](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.6...v0.0.1-rc.7) (2023-03-02)
 
 **Note:** Version bump only for package @ui5/webcomponents-ngx

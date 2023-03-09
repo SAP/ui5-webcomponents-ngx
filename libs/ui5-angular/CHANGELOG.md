@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.8...v0.0.1-rc.9) (2023-03-09)
+
+### Features
+
+- added ui5 content density ([#42](https://github.com/SAP/ui5-webcomponents-ngx/issues/42)) ([02166e5](https://github.com/SAP/ui5-webcomponents-ngx/commit/02166e55271daf42f664bae7230ffa3639984dd2))
+
 ## [0.0.1-rc.8](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.7...v0.0.1-rc.8) (2023-03-09)
 
 ### Features

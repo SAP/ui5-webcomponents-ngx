@@ -1,31 +1,8 @@
-import {AfterViewChecked, ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {ButtonComponent} from "@ui5/webcomponents-ngx/main/button";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'ui-angular-root',
-  templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements AfterViewChecked {
-  title = 'ng-add-test';
-  form = new FormGroup({
-    name: new FormControl(''),
-    lastName: new FormControl(''),
-  });
-
-  @ViewChild(ButtonComponent)
-  button!: ButtonComponent;
-
-  ngAfterViewChecked() {
-    console.log('check');
-  }
-
-  onFormSubmit() {
-    console.log(this.form.value);
-  }
-
-  onChange($event: any) {
-    console.log($event);
-  }
+export class AppComponent {
 }

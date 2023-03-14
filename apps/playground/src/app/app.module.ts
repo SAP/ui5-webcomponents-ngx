@@ -15,6 +15,10 @@ import {RouterModule} from "@angular/router";
 import {MainComponent} from "./main.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
+const Russian = {
+  SOMETHING: {x: 'значение {0}'}
+}
+
 @NgModule({
   declarations: [AppComponent, MainComponent],
   imports: [
@@ -35,7 +39,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
             const http = inject(HttpClient);
             return {
               en: http.get('assets/i18n/messages_en', {responseType: 'text'}),
-              ru: http.get('assets/i18n/messages_ru', {responseType: 'text'})
+              ru: Russian
             }
           }
         }

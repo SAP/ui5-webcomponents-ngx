@@ -1,0 +1,51 @@
+import {Meta} from "@storybook/addon-docs";
+
+<Meta title="Difference from underlying library" />
+
+# Difference from underlying library
+
+All the functionality from the `@ui5/webcomponents` is also available in this library, but for enhanced adaptation, some parts have their own ways for dealing with commonly used features.
+
+All the differences are listed on this page:
+
+- [Event names](#outputevents-names)
+- [Boolean input values](#boolean-input-values)
+- [Component imports](#component-imports)
+
+### Output(events) names
+
+First of all, all the events which exist in `@ui5/webcomponents` are also available for the Angular components, just in some cases, their usage in Angular templates, might end up with errors in your console.
+So, `@ui5/webcomponents-ngx` has also the alias names for the events that exist for any given component. Name alteration has been done in easily recognizable and in intuitive way:
+
+Every event name will be transformed to the schema `ui5${pascalCase(originalEventName)}`, so for example, if in ui5 docs you see event name `selected-dates-change`, then for the wrapper component
+the event name will be `ui5SelectedDatesChange`. In most cases, you will not have to think about it, since all the properties and outputs are typed for Angular users and your IDE will give you autocompletion
+for all of them.
+
+
+### Boolean input values
+
+In `@ui5/webcomponents` it is acceptable that if you have a `boolean` type input, then you can just type it as an attribute, like this
+```html
+<ui5-some-component boolean-input></ui5-some-component>
+```
+But in case for wrapper components, at least for now, you can not use attributes, and you have to always specify the actual value for them, like this
+
+```angular2html
+<ui5-some-component [boolean-input]="true"></ui5-some-component>
+```
+
+### Component imports
+In `@ui5/webcomponents` in order to use the component, you should import it as needed, but in `@ui5/webcomponents-ngx` you can import components as a module, as well as standalone components.
+The standalone components are exported from their respective directories, so you can import them like this:
+
+```typescript
+import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+```
+These components can be used as standard standalone components, or if you want to import all the components that are in for example `main` package, you can do it like this:
+
+```typescript
+import { Ui5MainModule } from '@ui5/webcomponents-ngx/main';
+```
+And then you should use them in your `NgModule` just like any other Angular module.
+
+Besides `Ui5MainModule`, there are also `Ui5FioriModule` and `Ui5WebcomponentsModule`, which contains all available components.

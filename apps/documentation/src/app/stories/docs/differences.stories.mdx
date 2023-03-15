@@ -49,3 +49,23 @@ import { Ui5MainModule } from '@ui5/webcomponents-ngx/main';
 And then you should use them in your `NgModule` just like any other Angular module.
 
 Besides `Ui5MainModule`, there are also `Ui5FioriModule` and `Ui5WebcomponentsModule`, which contains all available components.
+
+### Content density
+
+In order to set the `compact` mode, you can use the `[ui5Compact]` directive from `@ui5/webcomponents-ngx/content-density`
+
+```ts
+import { Component } from '@angular/core';
+import { CompactDirective } from '@ui5/webcomponents-ngx/content-density';
+import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+
+@Component({
+  selector: 'some-component',
+  standalone: true,
+  imports: [CompactDirective, ButtonComponent],
+  template: `<ui5-button (click)="compact = !compact" [ui5Compact]="compact">Toggle compact</ui5-button>`,
+})
+export class SomeComponent {
+  compact = false;
+}
+```

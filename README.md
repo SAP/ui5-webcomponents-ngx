@@ -21,14 +21,16 @@ in the `main.ts` file of your application.
 
 * Angular 15 or higher. Other versions might work, but are not tested.
 
-
 ### Installation
 
 Via npm:
+
 ```bash
 npm install @ui5/webcomponents-ngx
 ```
+
 Via yarn:
+
 ```bash
 yarn add @ui5/webcomponents-ngx
 ```
@@ -63,27 +65,17 @@ documentation.
 Every form-capable component can be used with Angular's native form approaches. Meaning all the
 `formControlName` and `ngModel`s will work as expected.
 
-### Building by yourself
-
-Even though this library is published as already created wrapper library for Angular, you still can
-generate it yourself using the schematic `ng add @ui5/webcomponents-ngx:create-local`. This will generate locally
-compiled version of the library, which you can then use in your application. You can change naming for example, add postfix
-and prefix to the components, or even change the path to the assets, divide them into the modules as you want them to be
-and basically do whatever you want with it just the way you want it.
-
-For more detailed information about the structure and usage of the library or development of it, please refer to the [MAINTAINERS.md](MAINTAINERS.md) file.
-
 ## Support, Feedback, Contributing
 
-This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
+This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/CODE_OF_CONDUCT.md) at all times.
 
 ## Licensing
 
-Copyright 2022 SAP SE or an SAP affiliate company and ui5-webcomponents-ngx contributors. Please see our [LICENSE](LICENSES/Apache-2.0.txt) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx).
+Copyright 2022 SAP SE or an SAP affiliate company and ui5-webcomponents-ngx contributors. Please see our [LICENSE](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/LICENSES/Apache-2.0.txt) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx).
 
 
 

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.9...v0.1.0-rc.0) (2023-03-15)
+
+### Features
+
+- reuse of the ui5 typing information and perf improvements ([#44](https://github.com/SAP/ui5-webcomponents-ngx/issues/44)) ([2e9100d](https://github.com/SAP/ui5-webcomponents-ngx/commit/2e9100db6ed792121f8298f651ae83e084c1fced))
+
+### BREAKING CHANGES
+
+- renamed output names. new scheme is ui5${pascalCase(ui5OutputName)}
+
 ## [0.0.1-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.8...v0.0.1-rc.9) (2023-03-09)
 
 ### Features

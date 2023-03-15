@@ -22,7 +22,8 @@
     },
     "build": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "sync"
       ],
       "inputs": [
         "production",

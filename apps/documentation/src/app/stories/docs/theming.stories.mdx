@@ -1,4 +1,4 @@
-import {Description, Meta} from "@storybook/addon-docs";
+import {Meta} from "@storybook/addon-docs";
 
 <Meta title="Theming"></Meta>
 
@@ -7,6 +7,116 @@ import {Description, Meta} from "@storybook/addon-docs";
 The theme is a way to customize the look and feel of the components. It is a set of colors and typography styles that are used by the components.
 `@ui5/webcomponents-ngx` supports all the themes, that are available in `@ui5/webcomponents` library, just recommended way of activating them is a little different from the one in `@ui5/webcomponents` library.
 
-<Description>
-  hey
-</Description>
+## Supported Themes
+
+`@ui5/webcomponents-ngx` supports all the themes, that are available in `@ui5/webcomponents` library, you can check the list [here](https://sap.github.io/ui5-webcomponents/playground/advanced/configuration/#theme)
+
+## Usage
+
+For using theming you should have package `@ui5/theming-ngx` installed.
+
+> **note:** `@ui5/theming-ngx` is a peer dependency of `@ui5/webcomponents-ngx` and it is not installed automatically, but if you installed `@ui5/webcomponents-ngx` with the `ng add` schematic, it will be installed automatically.
+
+First, you need to import the theming module in your root module and use it like this:
+
+```typescript
+import { NgModule } from "@angular/core";
+import { Ui5ThemingModule } from "@ui5/theming-ngx";
+
+@NgModule({
+  imports: [
+    Ui5ThemingModule.forRoot({
+      defaultTheme: "sap_horizon"
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+After that, it will initialize the theme in application startup.
+
+### Theme Switching
+
+If you want to switch the theme dynamically, you can use the `Ui5ThemingService` service:
+
+```typescript
+import { Component } from "@angular/core";
+import { Ui5ThemingService } from "@ui5/theming-ngx";
+
+@Component({
+  selector: "app-root",
+  template: `<ui5-button (click)="switchTheme()">Switch</ui5-button>`,
+})
+export class AppComponent {
+  constructor(private ui5ThemingService: Ui5ThemingService) {}
+
+  switchTheme() {
+    this.ui5ThemingService.setTheme("sap_fiori_3");
+  }
+}
+```
+
+## Custom Themes
+
+If you want to use a custom theme, you need to write your own theme provider. Custom theme provider needs to implement the `Ui5ThemingProvider` interface:
+
+```typescript
+import { inject, Injectable, OnDestroy } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { Ui5ThemingService, Ui5ThemingProvider } from "@ui5/theming-ngx";
+
+@Injectable()
+export class CustomThemeProvider implements Ui5ThemingProvider, OnDestroy {
+  protected availableThemes = ['some_theme'];
+
+  protected _globalThemingService: Ui5ThemingService | null = inject(Ui5ThemingService, {optional: true});
+
+  /** @hidden */
+  constructor(
+  ) {
+      this._globalThemingService?.registerProvider(this);
+  }
+
+  /** @hidden */
+  ngOnDestroy(): void {
+    this._globalThemingService?.unregisterProvider(this);
+  }
+
+  supportsTheme(theme: string): boolean {
+    return this.getAvailableThemes().includes(theme);
+  }
+
+  getAvailableThemes(): string[] {
+    return this.availableThemes;
+  }
+
+  setTheme(theme: string): Observable<boolean> {
+    if (!this.supportsTheme(theme)) {
+      return of(false);
+    }
+    // implement theme injection logic here
+  }
+}
+
+```
+
+After that, you need to provide it in your root module and inject it somewhere in your application:
+
+```typescript
+import { NgModule } from "@angular/core";
+import { Ui5ThemingModule } from "@ui5/theming-ngx";
+
+@NgModule({
+  imports: [
+    Ui5ThemingModule.forRoot({
+      defaultTheme: "some_theme"
+    }),
+  ],
+  providers: [
+    CustomThemeProvider
+  ]
+})
+export class AppModule {
+  constructor(private customThemeProvider: CustomThemeProvider) {}
+}
+```

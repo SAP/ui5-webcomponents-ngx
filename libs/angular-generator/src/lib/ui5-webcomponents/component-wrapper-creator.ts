@@ -3,6 +3,9 @@ import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
 import {camelCase} from 'lodash';
 import {ComponentFile} from "./component-file";
 import {genericCva} from "./generic-cva";
+import {AngularGeneratedFile} from "../angular-generated-file";
+import {inputsJson, outputsJson} from "./metadata-tools";
+import {outputType} from "./output-type";
 
 function CvaBaseClassExtends(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
@@ -58,36 +61,26 @@ export function CvaConstructor(componentFile: ComponentFile): string {
   return '';
 }
 
-export function DirectiveWrapperCreator(
+export function ComponentWrapperCreator(
   componentFile: ComponentFile,
   elementTypeName: string,
   eventsMapName: string,
   options: AngularGeneratorOptions,
-  ComponentsMap: Map<ComponentData, ComponentFile>
+  ComponentsMap: Map<ComponentData, AngularGeneratedFile>
 ): string {
   const getInputType = (input: InputType) => {
     const t = typeof input.type === 'string' ? input.type : input.type.map((cmp: ComponentData) => {
       const generatedFile = ComponentsMap.get(cmp);
-      const exported = generatedFile!.wrapperExportSpecifier.exported;
+      const exported = generatedFile!.exports[0].specifiers[0].exported;
       return (typeof exported === 'string' ? exported : exported()) + '["element"]';
     }).join(' | ');
     return input.isArray ? `Array<${t}>` : t;
   }
-  const inputsStr = componentFile.componentData.inputs.map((input: InputType): string => {
-    return `
-  @Input()
-  set ${input.name}(val: ${elementTypeName}['${input.name}']) {
-  this.elementRef.nativeElement.${input.name} = val;
-  }
-  get ${input.name}(): ${elementTypeName}['${input.name}'] {
-  return this.elementRef.nativeElement.${input.name};
-  }`;
-  });
   const outputs = componentFile.componentData.outputs;
 
   const eventsMap = `
       interface ${eventsMapName} extends Omit<HTMLElementEventMap, ${outputs.map(output => `'${output.name}'`).join(' | ')}> {
-        ${outputs.map((output) => `${output.name}: CustomEvent<${output.type}>;`).join('\n')}
+        ${outputs.map((output) => `${output.name}: CustomEvent<${outputType(output, ComponentsMap)}>;`).join('\n')}
       }
     `;
 
@@ -105,7 +98,7 @@ export function DirectiveWrapperCreator(
   const analyzedSlots = componentFile.componentData.slots.map((slot) => {
     const supportedElements = slot.supportedElements.map((element) => {
       const componentGeneratedFile = ComponentsMap.get(element);
-      const exportedWrapperClassName = componentGeneratedFile!.wrapperExportSpecifier.exported;
+      const exportedWrapperClassName = componentGeneratedFile!.exports[0].specifiers[0].exported;
       if (!exportedWrapperClassName) {
         throw new Error(`Component ${element.baseName} is not exported`);
       }
@@ -136,16 +129,6 @@ export function DirectiveWrapperCreator(
     `;
   }).join('\n');
 
-  const methodsStr = componentFile.componentData.methods.map((method) => {
-    const parameters = method.parameters.map((parameter) => {
-      return `${parameter.name}: ${parameter.type}`;
-    }).join(', ');
-    return `
-    ${method.name}(${parameters}): ${method.returnValue} {
-      return this.elementRef.nativeElement.${method.name}(${method.parameters.map((parameter) => parameter.name).join(', ')});
-    }
-    `;
-  }).join('\n');
   const elementType = `
       ${outputs.length > 0 ? eventsMap : ''}
 
@@ -159,23 +142,27 @@ export function DirectiveWrapperCreator(
         ${methodsTypeStr}
       }
     `;
-  const outputsStr = outputs.map((output) => {
-    return `@Output() ${output.name}: Observable<${eventsMapName}['${output.name}']> = NEVER as any;`;
-  });
   return `
       ${elementType}
-      @Directive({
+      // JS source file
+      @ProxyInputs([${componentFile.componentData.inputs.map((input) => `'${input.name}'`)}])
+      @ProxyOutputs([${componentFile.componentData.outputs.map((output) => `'${output.name}'`)}])
+      @ProxyMethods([${componentFile.componentData.methods.map((method) => `'${method.name}'`)}])
+      @Component({
+        template: \`<ng-content></ng-content>\`,
         selector: '${componentFile.selector}',
         exportAs: '${camelCase(componentFile.selector)}',
         standalone: true,
         providers: [
             ${providers(componentFile)}
-        ]
+        ],
+        inputs: ${inputsJson(componentFile.componentData.inputs)},
+        outputs: ${outputsJson(outputs)},
       })
-      class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
-        ${inputsStr.join('\n')}
-        ${outputsStr.join('\n')}
-        constructor(private elementRef: ElementRef<${elementTypeName}>) {
+      export class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
+        ${componentFile.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${elementTypeName}['${name}'];`).join('\n')}
+        constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${elementTypeName}>, private zone: NgZone) {
+          c.detach();
           ${CvaConstructor(componentFile)}
         }
 
@@ -184,7 +171,7 @@ export function DirectiveWrapperCreator(
         }
 
         ${slotsStr}
-        ${methodsStr}
       }
+      export declare interface ${componentFile.wrapperExportSpecifier.local} extends Partial<${elementTypeName}> {}
     `;
 }

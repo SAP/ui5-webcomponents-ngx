@@ -10,6 +10,7 @@ export interface OutputType {
   name: string,
   publicName: string,
   type: string,
+  placeholderValues: Record<string, ComponentData[] | string>
 }
 
 export interface SlotType {

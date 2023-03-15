@@ -21,12 +21,7 @@
           "apps/playground/src/assets"
         ],
         "styles": [
-          "apps/playground/src/styles.scss",
-          "node_modules/@fundamental-styles/common-css/dist/sap-normalize.css",
-          "node_modules/@fundamental-styles/common-css/dist/sap-padding.css",
-          "node_modules/@fundamental-styles/common-css/dist/sap-typography.css",
-          "node_modules/@fundamental-styles/common-css/dist/sap-shadow.css",
-          "node_modules/@fundamental-styles/common-css/dist/sap-display.css"
+          "apps/playground/src/styles.scss"
         ],
         "scripts": []
       },
@@ -36,7 +31,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "4mb"
             },
             {
               "type": "anyComponentStyle",

@@ -27,12 +27,14 @@
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
         "configFiles": [
+          "apps/documentation/api-json.config.ts",
           "apps/documentation/stories-sync.conf.ts"
         ]
       },
       "outputs": [
         "apps/documentation/src/app/stories"
-      ]
+      ],
+      "dependsOn": ["compodoc-generate"]
     },
     "serve": {
       "executor": "@storybook/angular:start-storybook",
@@ -46,7 +48,8 @@
         "ci": {
           "quiet": true
         }
-      }
+      },
+      "dependsOn": ["sync"]
     },
     "build": {
       "executor": "@storybook/angular:build-storybook",

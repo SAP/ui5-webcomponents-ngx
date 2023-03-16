@@ -1,16 +1,58 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  NotificationListItemComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-li-notification</code> is a type of list item, meant to display notifications. <br>
+
+The component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>titleText</code>, descriptive <code>content</code> and <code>footnotes</code> to fully describe a notification. <br>
+
+The user can: <ul> <li>display a <code>Close</code> button</li> <li>can control whether the <code>titleText</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>ui5-notification-action</code> component</li> </ul>
+
+<h3>Usage</h3> The component can be used in a standard <code>ui5-list</code>.
+
+<h3>CSS Shadow Parts</h3>
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li-notification</code> exposes the following CSS Shadow Parts: <ul> <li>title-text - Used to style the titleText of the notification list item</li> </ul>
+
+<h3>ES6 Module Import</h3>
+
+<code>import { NotificationListItemComponent } from "@ui5/webcomponents-ngx/fiori/notification-list-item";</code> (optional)`;
 export default {
   title: 'UI5 Web Components / Fiori / NotificationListItem',
+  component: NotificationListItemComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const notificationListItemCustomActions: Story = (args) => ({
+export const ApplyChanges: Story<NotificationListItemComponent> = (
+  args: NotificationListItemComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-li-notification>
+            <slot slot="actions">${args.actions}</slot>
+<slot slot="avatar">${args.avatar}</slot>
+${args.content}
+<slot slot="footnotes">${args.footnotes}</slot>
+          </ui5-li-notification>
+        `,
+});
+
+export const notificationListItemCustomActions: Story<
+  NotificationListItemComponent
+> = (args: NotificationListItemComponent & any) => ({
   props: args,
   template: `
 		<ui5-list id="myList3" class="full-width" header-text="Notifications">

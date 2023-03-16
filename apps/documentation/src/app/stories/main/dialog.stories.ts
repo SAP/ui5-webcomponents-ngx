@@ -1,16 +1,59 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  DialogComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the <code>ui5-dialog</code> is fully customizable.
+
+<h3>Structure</h3> A <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-dialog</code> is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.
+
+<h3>Responsive Behavior</h3> The <code>stretch</code> property can be used to stretch the <code>ui5-dialog</code> on full screen.
+
+<h3>CSS Shadow Parts</h3>
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-dialog</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>
+
+<h3>ES6 Module Import</h3>
+
+<code>import { DialogComponent } from "@ui5/webcomponents-ngx/main/dialog";</code>
+
+<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>) inside <code>ui5-dialog</code>. Ideally you should create all popups on the same level inside your HTML page and just open them from one another, rather than nesting them.
+
+<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>) inside other components containing z-index. This might break z-index management.`;
 export default {
   title: 'UI5 Web Components / Main / Dialog',
+  component: DialogComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const draggableAndResizableDialog: Story = (args) => ({
+export const ApplyChanges: Story<DialogComponent> = (
+  args: DialogComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-dialog>
+            ${args.content}
+<slot slot="footer">${args.footer}</slot>
+<slot slot="header">${args.header}</slot>
+          </ui5-dialog>
+        `,
+});
+
+export const draggableAndResizableDialog: Story<DialogComponent> = (
+  args: DialogComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-button id="resizable-draggable-open">Open Draggable/Resizable dialog</ui5-button>
@@ -29,7 +72,9 @@ export const draggableAndResizableDialog: Story = (args) => ({
 	`,
 });
 
-export const dialogWithSapFioriStyledFooter: Story = (args) => ({
+export const dialogWithSapFioriStyledFooter: Story<DialogComponent> = (
+  args: DialogComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-button id="fiori-footer">Open dialog</ui5-button>
@@ -44,7 +89,9 @@ export const dialogWithSapFioriStyledFooter: Story = (args) => ({
 	`,
 });
 
-export const dialogsWithVariousStateProperties: Story = (args) => ({
+export const dialogsWithVariousStateProperties: Story<DialogComponent> = (
+  args: DialogComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-button id="error-state">Open error state dialog</ui5-button>

@@ -1,16 +1,75 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  WizardComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-wizard</code> helps users to complete a complex task by dividing it into sections and guiding them through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.
+
+<h3>Structure</h3> <h4>Navigation area</h4> The top most area of the <code>ui5-wizard</code> is occupied by the navigation area. It shows the sequence of steps, where the recommended number of steps is between 3 and 8 steps. <ul> <li> Steps can have different visual representations - numbers or icons.</li> <li> Steps might have labels for better readability - titleText and subTitleText.</li> <li> Steps are defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.</li> </ul>
+
+<b>Note:</b> If no selected step is defined, the first step will be auto selected. <br> <b>Note:</b> If multiple selected steps are defined, the last step will be selected.
+
+<h3>CSS Shadow Parts</h3>
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-wizard</code> exposes the following CSS Shadow Parts: <ul> <li>navigator - Used to style the progress navigator of the <code>ui5-wizard</code>.</li> <li>step-content - Used to style a <code>ui5-wizard-step</code> container.</li> </ul>
+
+<h3>Keyboard Handling</h3> The user can navigate using the following keyboard shortcuts: <br>
+
+<h4>Wizard Progress Navigation</h4> <ul> <li>[LEFT], [DOWN] - Focus moves backward to the WizardProgressNavAnchors.</li> <li>[UP], [RIGHT] - Focus moves forward to the WizardProgressNavAnchor.</li> <li>[SPACE] or [ENTER], [RETURN] - Selects an active step</li> <li>[HOME] or [PAGE UP] - Focus goes to the first step</li> <li>[END] or [PAGE DOWN] - Focus goes to the last step</li> </ul>
+
+<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code>
+
+<h4>Content</h4> The content occupies the main part of the page. It can hold any type of HTML elements. It's defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.
+
+<h3>Scrolling</h3> The component handles user scrolling by selecting the closest step, based on the current scroll position and scrolls to particular place, when the user clicks on the step within the navigation area. <br><br>
+
+<b>Important:</b> In order the component's scrolling behaviour to work, it has to be limited from the outside parent element in terms of height. The component or its parent has to be given percentage or absolute height. Otherwise, the component will be scrolled out with the entire page. <br><br> <b>For example:</b> <br><br> <code>&lt;ui5-dialog style="height: 80%"&gt;<br></code> <code>&#9;&lt;ui5-wizard&gt;&lt;/ui5-wizard&gt;<br></code> <code>&lt;/ui5-dialog&gt;</code>
+
+<h4>Moving to next step</h4> The <code>ui5-wizard-step</code> provides the necessary API and it's up to the user of the component to use it to move to the next step. You have to set its <code>selected</code> property (and remove the <code>disabled</code> one if set) to <code>true</code>. The <code>ui5-wizard</code> will automatically scroll to the content of the newly selected step. <br><br>
+
+The Fiori 3 guidelines recommends having a "nextStep" button in the content area. You can place a button, or any other type of element to trigger step change, inside the <code>ui5-wizard-step</code>, and show/hide it when certain fields are filled or user defined criteria is met.
+
+<h3>Usage</h3> <h4>When to use:</h4> When the user has to accomplish a long or unfamiliar task.
+
+<h4>When not to use:</h4> When the task has less than 3 steps.
+
+<h3>Responsive Behavior</h3> On small widths the step's titleText, subtitleText and separators in the navigation area shrink and from particular point the steps are grouped together and overlap. Tapping on them will show a popover to select the step to navigate to. On mobile device, the grouped steps are presented within a dialog.
+
+<h3>ES6 Module Import</h3> <code>import { WizardComponent } from "@ui5/webcomponents-ngx/fiori/wizard";</code> (includes <ui5-wizard-step/>)`;
 export default {
   title: 'UI5 Web Components / Fiori / Wizard',
+  component: WizardComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const wizard: Story = (args) => ({
+export const ApplyChanges: Story<WizardComponent> = (
+  args: WizardComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-wizard>
+            ${args.content}
+          </ui5-wizard>
+        `,
+});
+
+export const wizard: Story<WizardComponent> = (
+  args: WizardComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-wizard id="wiz">

@@ -1,16 +1,63 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  TabContainerComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-tabcontainer</code> represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
+
+<h3>Structure</h3>
+
+The <code>ui5-tabcontainer</code> can hold two types of entities: <ul> <li><code>ui5-tab</code> - contains all the information on an item (text and icon)</li> <li><code>ui5-tab-separator</code> - used to separate tabs with a line</li> </ul>
+
+<h3>Hierarchies</h3> Multiple sub tabs could be placed underneath one main tab. Nesting allows deeper hierarchies with indentations to indicate the level of each nested tab. When a tab has both sub tabs and own content its click area is split to allow the user to display the content or alternatively to expand / collapse the list of sub tabs.
+
+<h3>CSS Shadow Parts</h3>
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-tabcontainer</code> exposes the following CSS Shadow Parts: <ul> <li>content - Used to style the content of the component</li> </ul>
+
+<h3>Keyboard Handling</h3>
+
+<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
+
+<h3>ES6 Module Import</h3>
+
+<code>import { TabContainerComponent } from "@ui5/webcomponents-ngx/main/tab-container";</code> (for <code>ui5-tab-separator</code>)`;
 export default {
   title: 'UI5 Web Components / Main / TabContainer',
+  component: TabContainerComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const ui5TabcontainerWidthCalc10020625RemImportant: Story = (args) => ({
+export const ApplyChanges: Story<TabContainerComponent> = (
+  args: TabContainerComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-tabcontainer>
+            ${args.content}
+<slot slot="overflowButton">${args.overflowButton}</slot>
+<slot slot="startOverflowButton">${args.startOverflowButton}</slot>
+          </ui5-tabcontainer>
+        `,
+});
+
+export const ui5TabcontainerWidthCalc10020625RemImportant: Story<
+  TabContainerComponent
+> = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
 		<ui5-tabcontainer class="full-width">
@@ -34,7 +81,9 @@ export const ui5TabcontainerWidthCalc10020625RemImportant: Story = (args) => ({
 	`,
 });
 
-export const tabContainerWithTextOnlyTabs: Story = (args) => ({
+export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
+  args: TabContainerComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-tabcontainer class="full-width" collapsed="" fixed="">
@@ -47,7 +96,9 @@ export const tabContainerWithTextOnlyTabs: Story = (args) => ({
 	`,
 });
 
-export const textOnlyEndOverflow: Story = (args) => ({
+export const textOnlyEndOverflow: Story<TabContainerComponent> = (
+  args: TabContainerComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-tabcontainer collapsed="" fixed="">
@@ -101,7 +152,9 @@ export const textOnlyEndOverflow: Story = (args) => ({
 	`,
 });
 
-export const tabContainerWithTextAndAdditionalText: Story = (args) => ({
+export const tabContainerWithTextAndAdditionalText: Story<
+  TabContainerComponent
+> = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
 		<ui5-tabcontainer collapsed="" fixed="">
@@ -117,7 +170,9 @@ export const tabContainerWithTextAndAdditionalText: Story = (args) => ({
 	`,
 });
 
-export const tabContainerWithTabLayoutInline: Story = (args) => ({
+export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
+  args: TabContainerComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-tabcontainer tab-layout="Inline" collapsed="" fixed="">
@@ -140,7 +195,9 @@ export const tabContainerWithTabLayoutInline: Story = (args) => ({
 	`,
 });
 
-export const tabContainerWithNestedTabs: Story = (args) => ({
+export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
+  args: TabContainerComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-tabcontainer collapsed="">

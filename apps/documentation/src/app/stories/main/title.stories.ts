@@ -1,16 +1,44 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { Ui5WebcomponentsModule, TitleComponent } from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-title</code> component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { TitleComponent } from "@ui5/webcomponents-ngx/main/title";</code>`;
 export default {
   title: 'UI5 Web Components / Main / Title',
+  component: TitleComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const titleInAllAvailableLevels: Story = (args) => ({
+export const ApplyChanges: Story<TitleComponent> = (
+  args: TitleComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-title>
+            ${args.content}
+          </ui5-title>
+        `,
+});
+
+export const titleInAllAvailableLevels: Story<TitleComponent> = (
+  args: TitleComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-title level="H1">Title level 1</ui5-title>

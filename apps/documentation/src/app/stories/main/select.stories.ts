@@ -1,16 +1,46 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  SelectComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-select</code> component is used to create a drop-down list. The items inside the <code>ui5-select</code> define the available options by using the <code>ui5-option</code> component.
+
+<h3>Keyboard Handling</h3> The <code>ui5-select</code> provides advanced keyboard handling. <br> <ul> <li>[F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - Opens/closes the drop-down.</li> <li>[UP, DOWN] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.</li> <li>[SPACE, ENTER] - If the drop-down is opened - selects the focused option.</li> <li>[ESC] - Closes the drop-down without changing the selection.</li> <li>[HOME] - Navigates to first option</li> <li>[END] - Navigates to the last option</li> </ul> <br>
+
+<h3>ES6 Module Import</h3> <code>import { SelectComponent } from "@ui5/webcomponents-ngx/main/select";</code> (comes with <code>ui5-select</code>)`;
 export default {
   title: 'UI5 Web Components / Main / Select',
+  component: SelectComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const basicSelect: Story = (args) => ({
+export const ApplyChanges: Story<SelectComponent> = (
+  args: SelectComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-select>
+            ${args.content}
+<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
+          </ui5-select>
+        `,
+});
+
+export const basicSelect: Story<SelectComponent> = (
+  args: SelectComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-select class="select">
@@ -26,7 +56,9 @@ export const basicSelect: Story = (args) => ({
 	`,
 });
 
-export const selectWithValueStateAndValueStateMessage: Story = (args) => ({
+export const selectWithValueStateAndValueStateMessage: Story<
+  SelectComponent
+> = (args: SelectComponent & any) => ({
   props: args,
   template: `
 		<ui5-select value-state="Success" class="select">
@@ -58,7 +90,9 @@ export const selectWithValueStateAndValueStateMessage: Story = (args) => ({
 	`,
 });
 
-export const selectWithTwoColumnLayoutItems: Story = (args) => ({
+export const selectWithTwoColumnLayoutItems: Story<SelectComponent> = (
+  args: SelectComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-select class="select">

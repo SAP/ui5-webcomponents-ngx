@@ -1,16 +1,78 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  DynamicSideContentComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The DynamicSideContent (<code>ui5-dynamic-side-content</code>) is a layout component that allows additional content to be displayed in a way that flexibly adapts to different screen sizes. The side content appears in a container next to or directly below the main content (it doesn't overlay). When the side content is triggered, the main content becomes narrower (if appearing side-by-side). The side content contains a separate scrollbar when appearing next to the main content.
+
+<h3>Usage</h3>
+
+<i>When to use?</i>
+
+Use this component if you want to display relevant information that is not critical for users to complete a task. Users should have access to all the key functions and critical information in the app even if they do not see the side content. This is important because on smaller screen sizes it may be difficult to display the side content in a way that is easily accessible for the user.
+
+<i>When not to use?</i>
+
+Don't use it if you want to display navigation or critical information that prevents users from completing a task when they have no access to the side content.
+
+<h3>Responsive Behavior</h3>
+
+Screen width > 1440px
+
+<ul><li>Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px each).</li> <li>If the application defines a trigger, the side content can be hidden.</li></ul>
+
+Screen width <= 1440px and > 1024px
+
+<ul><li>Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of 320px each). If the side content width falls below 320 px, it automatically slides under the main content, unless the app development team specifies that it should disappear.</li></ul>
+
+Screen width <= 1024px and > 720px
+
+<ul><li>The side content ratio is fixed to 340px, and the main content takes the rest of the width. Only if the <code>sideContentFallDown</code> is set to <code>OnMinimumWidth</code> and screen width is <= 960px and > 720px the side content falls below the main content.</li></ul>
+
+Screen width <= 720px (for example on a mobile device)
+
+<ul><li>In this case, the side content automatically disappears from the screen (unless specified to stay under the content by setting of <code>sideContentVisibility</code> property to <code>AlwaysShow</code>) and can be triggered from a pre-set trigger (specified within the app). When the side content is triggered, it replaces the main content. We recommend that you always place the trigger for the side content in the same location, such as in the app footer.</li></ul>
+
+A special case allows switching the comparison mode between the main and side content. In this case, the screen is split into 50:50 percent for main vs. side content. The responsive behavior of the equal split is the same as in the standard view - the side content disappears on screen widths of less than 720 px and can only be viewed by triggering it.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { DynamicSideContentComponent } from "@ui5/webcomponents-ngx/fiori/dynamic-side-content";</code>`;
 export default {
   title: 'UI5 Web Components / Fiori / DynamicSideContent',
+  component: DynamicSideContentComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const dynamicSideContentWithDefaultProperties: Story = (args) => ({
+export const ApplyChanges: Story<DynamicSideContentComponent> = (
+  args: DynamicSideContentComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-dynamic-side-content>
+            ${args.content}
+<slot slot="sideContent">${args.sideContent}</slot>
+          </ui5-dynamic-side-content>
+        `,
+});
+
+export const dynamicSideContentWithDefaultProperties: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -30,7 +92,9 @@ export const dynamicSideContentWithDefaultProperties: Story = (args) => ({
 	`,
 });
 
-export const dynamicSideContentWithHideMainContentSet: Story = (args) => ({
+export const dynamicSideContentWithHideMainContentSet: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -50,7 +114,9 @@ export const dynamicSideContentWithHideMainContentSet: Story = (args) => ({
 	`,
 });
 
-export const dynamicSideContentWithHideSideContentSet: Story = (args) => ({
+export const dynamicSideContentWithHideSideContentSet: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -70,7 +136,9 @@ export const dynamicSideContentWithHideSideContentSet: Story = (args) => ({
 	`,
 });
 
-export const dynamicSideContentWithEqualSplitSet: Story = (args) => ({
+export const dynamicSideContentWithEqualSplitSet: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -90,9 +158,9 @@ export const dynamicSideContentWithEqualSplitSet: Story = (args) => ({
 	`,
 });
 
-export const dynamicSideContentWithSideContentPositionStart: Story = (
-  args
-) => ({
+export const dynamicSideContentWithSideContentPositionStart: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -112,9 +180,9 @@ export const dynamicSideContentWithSideContentPositionStart: Story = (
 	`,
 });
 
-export const dynamicSideContentWithSideContentFallDownBelowXl: Story = (
-  args
-) => ({
+export const dynamicSideContentWithSideContentFallDownBelowXl: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -134,9 +202,9 @@ export const dynamicSideContentWithSideContentFallDownBelowXl: Story = (
 	`,
 });
 
-export const dynamicSideContentWithSideContentVisibilityShowAboveM: Story = (
-  args
-) => ({
+export const dynamicSideContentWithSideContentVisibilityShowAboveM: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper100">
@@ -156,9 +224,9 @@ export const dynamicSideContentWithSideContentVisibilityShowAboveM: Story = (
 	`,
 });
 
-export const dynamicSideContentToggleContentsOnMobileDeviceSSize: Story = (
-  args
-) => ({
+export const dynamicSideContentToggleContentsOnMobileDeviceSSize: Story<
+  DynamicSideContentComponent
+> = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapperM">

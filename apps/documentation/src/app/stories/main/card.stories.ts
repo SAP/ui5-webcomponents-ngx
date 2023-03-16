@@ -1,16 +1,51 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { Ui5WebcomponentsModule, CardComponent } from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-card</code> is a component that represents information in the form of a tile with separate header and content areas. The content area of a <code>ui5-card</code> can be arbitrary HTML content. The header can be used through slot <code>header</code>. For which there is a <code>ui5-card-header</code> component to achieve the card look and fill.
+
+Note: We recommend the usage of <code>ui5-card-header</code> for the header slot, so advantage can be taken for keyboard handling, styling and accessibility.
+
+<h3>CSS Shadow Parts</h3>
+
+<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { CardComponent } from "@ui5/webcomponents-ngx/main/card";</code> (for <code>ui5-card-header</code>)`;
 export default {
   title: 'UI5 Web Components / Main / Card',
+  component: CardComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const cardWithList: Story = (args) => ({
+export const ApplyChanges: Story<CardComponent> = (
+  args: CardComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-card>
+            ${args.content}
+<slot slot="header">${args.header}</slot>
+          </ui5-card>
+        `,
+});
+
+export const cardWithList: Story<CardComponent> = (
+  args: CardComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-card class="medium">
@@ -44,7 +79,9 @@ export const cardWithList: Story = (args) => ({
 	`,
 });
 
-export const cardWithTable: Story = (args) => ({
+export const cardWithTable: Story<CardComponent> = (
+  args: CardComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-card>
@@ -117,7 +154,9 @@ export const cardWithTable: Story = (args) => ({
 	`,
 });
 
-export const cardWithTimeline: Story = (args) => ({
+export const cardWithTimeline: Story<CardComponent> = (
+  args: CardComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-card class="medium">
@@ -136,7 +175,7 @@ export const cardWithTimeline: Story = (args) => ({
 	`,
 });
 
-export const moreCards: Story = (args) => ({
+export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
   props: args,
   template: `
 		<ui5-card class="small">

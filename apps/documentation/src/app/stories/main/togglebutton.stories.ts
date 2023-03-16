@@ -1,16 +1,47 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  ToggleButtonComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-toggle-button</code> component is an enhanced <code>ui5-button</code> that can be toggled between pressed and normal states. Users can use the <code>ui5-toggle-button</code> as a switch to turn a setting on or off. It can also be used to represent an independent choice similar to a check box. <br><br> Clicking or tapping on a <code>ui5-toggle-button</code> changes its state to <code>pressed</code>. The button returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any <code>ui5-toggle-button</code>.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { ToggleButtonComponent } from "@ui5/webcomponents-ngx/main/toggle-button";</code>`;
 export default {
   title: 'UI5 Web Components / Main / ToggleButton',
+  component: ToggleButtonComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const toggleButtonStates: Story = (args) => ({
+export const ApplyChanges: Story<ToggleButtonComponent> = (
+  args: ToggleButtonComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-toggle-button>
+            ${args.content}
+          </ui5-toggle-button>
+        `,
+});
+
+export const toggleButtonStates: Story<ToggleButtonComponent> = (
+  args: ToggleButtonComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-toggle-button class="samples-margin">ToggleButton</ui5-toggle-button>
@@ -26,7 +57,9 @@ export const toggleButtonStates: Story = (args) => ({
 	`,
 });
 
-export const toggleButtonWithIcon: Story = (args) => ({
+export const toggleButtonWithIcon: Story<ToggleButtonComponent> = (
+  args: ToggleButtonComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-toggle-button class="samples-margin" icon="menu">Menu</ui5-toggle-button>
@@ -37,7 +70,9 @@ export const toggleButtonWithIcon: Story = (args) => ({
 	`,
 });
 
-export const toggleButtonWithIconOnly: Story = (args) => ({
+export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
+  args: ToggleButtonComponent & any
+) => ({
   props: args,
   template: `
 			<ui5-toggle-button class="samples-margin" icon="away"></ui5-toggle-button>
@@ -53,7 +88,9 @@ export const toggleButtonWithIconOnly: Story = (args) => ({
 	`,
 });
 
-export const toggleButton: Story = (args) => ({
+export const toggleButton: Story<ToggleButtonComponent> = (
+  args: ToggleButtonComponent & any
+) => ({
   props: args,
   template: `
 			<ui5-toggle-button class="samples-margin">Yes/No</ui5-toggle-button>

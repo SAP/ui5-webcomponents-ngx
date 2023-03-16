@@ -1,16 +1,48 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { Ui5WebcomponentsModule, PageComponent } from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-page</code> is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer. <h3>Structure</h3> <h4>Header</h4> The top most area of the page is occupied by the header. The standard header includes a navigation button and a title. <h4>Content</h4> The content occupies the main part of the page. Only the content area is scrollable by default. This can be prevented by setting <code>enableScrolling</code> to <code>false</code>. <h4>Footer</h4> The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the <code>floatingFooter</code> property.
+
+<b>Note:</b> <code>ui5-page</code> occipues the whole available space of its parent. In order to achieve the intended design you have to make sure that there is enough space for the <code>ui5-page</code> to be rendered. <b>Note:</b> In order for the <code>ui5-page</code> to be displayed, the parent element should have fixed height.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { PageComponent } from "@ui5/webcomponents-ngx/fiori/page";</code>`;
 export default {
   title: 'UI5 Web Components / Fiori / Page',
+  component: PageComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const pageWithFloatingFooter: Story = (args) => ({
+export const ApplyChanges: Story<PageComponent> = (
+  args: PageComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-page>
+            ${args.content}
+<slot slot="footer">${args.footer}</slot>
+<slot slot="header">${args.header}</slot>
+          </ui5-page>
+        `,
+});
+
+export const pageWithFloatingFooter: Story<PageComponent> = (
+  args: PageComponent & any
+) => ({
   props: args,
   template: `
         <ui5-page id="page" style="height: 700px; width: 500px" background-design="List" floating-footer="" show-footer="">

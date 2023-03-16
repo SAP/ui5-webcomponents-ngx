@@ -3,7 +3,9 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true
   },
-
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
   "exclude": ["../**/*.spec.ts"],
   "include": [
     "../src/**/*.stories.ts",

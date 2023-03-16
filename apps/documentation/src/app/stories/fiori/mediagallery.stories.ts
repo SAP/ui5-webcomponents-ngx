@@ -1,16 +1,51 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  MediaGalleryComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-media-gallery</code> component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the <code>ui5-media-gallery-item</code> component.
+
+The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size. <br> The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.
+
+<h3>Keyboard Handling</h3> The <code>ui5-media-gallery</code> provides advanced keyboard handling. <br> When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items: <br>
+
+<ul> <li>[UP/DOWN] - Navigates up and down the items</li> <li>[HOME] - Navigates to first item</li> <li>[END] - Navigates to the last item</li> <li>[SPACE/ENTER] - Select an item</li> </ul> <br>
+
+<h3>ES6 Module Import</h3> <code>import { MediaGalleryComponent } from "@ui5/webcomponents-ngx/fiori/media-gallery";</code>`;
 export default {
   title: 'UI5 Web Components / Fiori / MediaGallery',
+  component: MediaGalleryComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const usage: Story = (args) => ({
+export const ApplyChanges: Story<MediaGalleryComponent> = (
+  args: MediaGalleryComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-media-gallery>
+            ${args.content}
+          </ui5-media-gallery>
+        `,
+});
+
+export const usage: Story<MediaGalleryComponent> = (
+  args: MediaGalleryComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-media-gallery show-all-thumbnails="">
@@ -36,7 +71,9 @@ export const usage: Story = (args) => ({
 	`,
 });
 
-export const mediaGalleryWithVerticalLayout: Story = (args) => ({
+export const mediaGalleryWithVerticalLayout: Story<MediaGalleryComponent> = (
+  args: MediaGalleryComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-media-gallery show-all-thumbnails="" layout="Vertical">
@@ -62,7 +99,9 @@ export const mediaGalleryWithVerticalLayout: Story = (args) => ({
 	`,
 });
 
-export const mediaGalleryWithThumbnailsOnTheRight: Story = (args) => ({
+export const mediaGalleryWithThumbnailsOnTheRight: Story<
+  MediaGalleryComponent
+> = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery show-all-thumbnails="" layout="Horizontal" menu-horizontal-align="Right">
@@ -88,9 +127,9 @@ export const mediaGalleryWithThumbnailsOnTheRight: Story = (args) => ({
 	`,
 });
 
-export const mediaGalleryItemWithSeparateImageForItsThumbnail: Story = (
-  args
-) => ({
+export const mediaGalleryItemWithSeparateImageForItsThumbnail: Story<
+  MediaGalleryComponent
+> = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery>
@@ -102,7 +141,9 @@ export const mediaGalleryItemWithSeparateImageForItsThumbnail: Story = (
 	`,
 });
 
-export const mediaGalleryItemWithVideoContent: Story = (args) => ({
+export const mediaGalleryItemWithVideoContent: Story<MediaGalleryComponent> = (
+  args: MediaGalleryComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-media-gallery>
@@ -114,7 +155,9 @@ export const mediaGalleryItemWithVideoContent: Story = (args) => ({
 	`,
 });
 
-export const mediaGalleryWithDisabledContent: Story = (args) => ({
+export const mediaGalleryWithDisabledContent: Story<MediaGalleryComponent> = (
+  args: MediaGalleryComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-media-gallery>
@@ -128,7 +171,9 @@ export const mediaGalleryWithDisabledContent: Story = (args) => ({
 	`,
 });
 
-export const mediaGalleryWithInitiallySelectedItem: Story = (args) => ({
+export const mediaGalleryWithInitiallySelectedItem: Story<
+  MediaGalleryComponent
+> = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery>

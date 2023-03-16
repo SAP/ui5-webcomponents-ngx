@@ -1,16 +1,49 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  ColorPaletteComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-color-palette</code> provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
+
+<h3>Usage</h3>
+
+The <code>ui5-color-palette</code> is meant for users that need to select a color from a predefined set. To define the colors, use the <code>ui5-color-palette-item</code> component inside the default slot of the <code>ui5-color-palette</code>.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { ColorPaletteComponent } from "@ui5/webcomponents-ngx/main/color-palette";</code>`;
 export default {
   title: 'UI5 Web Components / Main / ColorPalette',
+  component: ColorPaletteComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const colorPalette: Story = (args) => ({
+export const ApplyChanges: Story<ColorPaletteComponent> = (
+  args: ColorPaletteComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-color-palette>
+            ${args.content}
+          </ui5-color-palette>
+        `,
+});
+
+export const colorPalette: Story<ColorPaletteComponent> = (
+  args: ColorPaletteComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-color-palette>

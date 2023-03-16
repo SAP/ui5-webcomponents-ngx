@@ -1,16 +1,47 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import {
+  Ui5WebcomponentsModule,
+  SegmentedButtonComponent,
+} from '@ui5/webcomponents-ngx';
 
+const description = `<h3 class="comment-api-title">Overview</h3>
+
+The <code>ui5-segmented-button</code> shows a group of items. When the user clicks or taps one of the items, it stays in a pressed state. It automatically resizes the items to fit proportionally within the component. When no width is set, the component uses the available width. <br><br> <b>Note:</b> There can be just one selected <code>item</code> at a time.
+
+<h3>ES6 Module Import</h3>
+
+<code>import { SegmentedButtonComponent } from "@ui5/webcomponents-ngx/main/segmented-button";</code>`;
 export default {
   title: 'UI5 Web Components / Main / SegmentedButton',
+  component: SegmentedButtonComponent,
   decorators: [
     moduleMetadata({
       imports: [Ui5WebcomponentsModule],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 } as Meta;
 
-export const basicSegmentedButton: Story = (args) => ({
+export const ApplyChanges: Story<SegmentedButtonComponent> = (
+  args: SegmentedButtonComponent & any
+) => ({
+  props: args,
+  template: `
+          <ui5-segmented-button>
+            ${args.content}
+          </ui5-segmented-button>
+        `,
+});
+
+export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
+  args: SegmentedButtonComponent & any
+) => ({
   props: args,
   template: `
         <ui5-segmented-button accessible-name="Geographic location">
@@ -21,7 +52,9 @@ export const basicSegmentedButton: Story = (args) => ({
 	`,
 });
 
-export const segmentedButtonWithIcons: Story = (args) => ({
+export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
+  args: SegmentedButtonComponent & any
+) => ({
   props: args,
   template: `
 		<ui5-segmented-button>
@@ -32,7 +65,9 @@ export const segmentedButtonWithIcons: Story = (args) => ({
 	`,
 });
 
-export const segmentedButtonWith5SegmentedButtonItems: Story = (args) => ({
+export const segmentedButtonWith5SegmentedButtonItems: Story<
+  SegmentedButtonComponent
+> = (args: SegmentedButtonComponent & any) => ({
   props: args,
   template: `
 		<ui5-segmented-button>

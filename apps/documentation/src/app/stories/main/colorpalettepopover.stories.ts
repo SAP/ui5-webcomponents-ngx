@@ -41,8 +41,8 @@ export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeature
 > = (args: ColorPalettePopoverComponent & any) => ({
   props: args,
   template: `
-		<ui5-button id="colorPaletteBtn">Open ColorPalettePopover</ui5-button>
-		<ui5-color-palette-popover id="colorPalettePopover" show-recent-colors="" show-more-colors="" show-default-color="" default-color="green">
+		<ui5-button #colorPaletteBtn="ui5Button" (ui5Click)="colorPalettePopover.showAt(colorPaletteBtn.element)">Open ColorPalettePopover</ui5-button>
+		<ui5-color-palette-popover #colorPalettePopover="ui5ColorPalettePopover" [show-recent-colors]="true" [show-default-color]="true" default-color="green">
 			<ui5-color-palette-item value="pink"></ui5-color-palette-item>
 			<ui5-color-palette-item value="darkblue"></ui5-color-palette-item>
 			<ui5-color-palette-item value="#444444"></ui5-color-palette-item>
@@ -64,8 +64,8 @@ export const colorPalettePopoverWithoutAnyAdditionalFeatures: Story<
 > = (args: ColorPalettePopoverComponent & any) => ({
   props: args,
   template: `
-		<ui5-button id="colorPaletteBtn1">Open ColorPalettePopover</ui5-button>
-		<ui5-color-palette-popover id="colorPalettePopover1">
+		<ui5-button  #colorPaletteBtn="ui5Button" (ui5Click)="colorPalettePopover.showAt(colorPaletteBtn.element)">Open ColorPalettePopover</ui5-button>
+		<ui5-color-palette-popover #colorPalettePopover="ui5ColorPalettePopover">
 			<ui5-color-palette-item value="pink"></ui5-color-palette-item>
 			<ui5-color-palette-item value="darkblue"></ui5-color-palette-item>
 			<ui5-color-palette-item value="#444444"></ui5-color-palette-item>

@@ -4,6 +4,11 @@ import {
   CalendarComponent,
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
+import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";
+
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 

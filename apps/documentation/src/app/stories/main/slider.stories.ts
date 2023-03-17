@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   SliderComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
 
@@ -33,23 +34,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<SliderComponent> = (
-  args: SliderComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-slider>
-            
-          </ui5-slider>
-        `,
-});
 
 export const basicSlider: Story<SliderComponent> = (
   args: SliderComponent & any

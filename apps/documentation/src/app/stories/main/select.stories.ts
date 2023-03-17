@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   SelectComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-select</code> component is used to create a drop-down list. The items inside the <code>ui5-select</code> define the available options by using the <code>ui5-option</code> component.
 
@@ -19,24 +20,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<SelectComponent> = (
-  args: SelectComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-select>
-            ${args.content}
-<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-select>
-        `,
-});
 
 export const basicSelect: Story<SelectComponent> = (
   args: SelectComponent & any

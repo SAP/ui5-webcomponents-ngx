@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   CheckBoxComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -29,23 +30,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<CheckBoxComponent> = (
-  args: CheckBoxComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-checkbox>
-            
-          </ui5-checkbox>
-        `,
-});
 
 export const basicCheckBox: Story<CheckBoxComponent> = (
   args: CheckBoxComponent & any

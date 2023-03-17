@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ToggleButtonComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -21,23 +22,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ToggleButtonComponent> = (
-  args: ToggleButtonComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-toggle-button>
-            ${args.content}
-          </ui5-toggle-button>
-        `,
-});
 
 export const toggleButtonStates: Story<ToggleButtonComponent> = (
   args: ToggleButtonComponent & any

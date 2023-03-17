@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   NotificationListItemComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-li-notification</code> is a type of list item, meant to display notifications. <br>
 
@@ -29,26 +30,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<NotificationListItemComponent> = (
-  args: NotificationListItemComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-li-notification>
-            <slot slot="actions">${args.actions}</slot>
-<slot slot="avatar">${args.avatar}</slot>
-${args.content}
-<slot slot="footnotes">${args.footnotes}</slot>
-          </ui5-li-notification>
-        `,
-});
 
 export const notificationListItemCustomActions: Story<
   NotificationListItemComponent

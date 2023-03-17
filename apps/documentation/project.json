@@ -5,14 +5,6 @@
   "sourceRoot": "apps/documentation/src",
   "prefix": "ui-angular",
   "targets": {
-    "compodoc-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "npx compodoc -p libs/ui5-angular/tsconfig.lib.json -e json -d apps/documentation --disableSourceCode --disableDomTree --disableTemplateTab --disableStyleTab --disableGraph --disableCoverage --disablePrivate --disableProtected --disableInternal --disableLifeCycleHooks --disableRoutesGraph --disableSearch --disableDependencies"
-        ]
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -27,14 +19,12 @@
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
         "configFiles": [
-          "apps/documentation/api-json.config.ts",
-          "apps/documentation/stories-sync.conf.ts"
+          "apps/documentation/api-json.config.ts"
         ]
       },
       "outputs": [
-        "apps/documentation/src/app/stories"
-      ],
-      "dependsOn": ["compodoc-generate"]
+        "apps/documentation/src/api-json.json"
+      ]
     },
     "serve": {
       "executor": "@storybook/angular:start-storybook",
@@ -57,9 +47,7 @@
       "options": {
         "outputDir": "dist/storybook/documentation",
         "configDir": "apps/documentation/.storybook",
-        "browserTarget": "documentation:build",
-        "compodoc": true,
-        "compodocArgs": ["-e", "json", "-d", "apps/documentation"]
+        "browserTarget": "documentation:build"
       },
       "configurations": {
         "ci": {

@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   RatingIndicatorComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
 
@@ -27,23 +28,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<RatingIndicatorComponent> = (
-  args: RatingIndicatorComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-rating-indicator>
-            
-          </ui5-rating-indicator>
-        `,
-});
 
 export const basicRatingIndicator: Story<RatingIndicatorComponent> = (
   args: RatingIndicatorComponent & any

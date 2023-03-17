@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   BreadcrumbsComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> Enables users to navigate between items by providing a list of links to previous steps in the user's navigation path. It helps the user to be aware of their location within the application and allows faster navigation. <br><br> The last three steps can be accessed as links directly, while the remaining links prior to them are available in a drop-down menu. <br><br> You can choose the type of separator to be used from a number of predefined options.
 
@@ -17,23 +18,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<BreadcrumbsComponent> = (
-  args: BreadcrumbsComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-breadcrumbs>
-            ${args.content}
-          </ui5-breadcrumbs>
-        `,
-});
 
 export const standardBreadcrumbs: Story<BreadcrumbsComponent> = (
   args: BreadcrumbsComponent & any

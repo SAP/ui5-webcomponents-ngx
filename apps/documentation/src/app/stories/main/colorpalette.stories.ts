@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ColorPaletteComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-color-palette</code> provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
 
@@ -23,23 +24,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ColorPaletteComponent> = (
-  args: ColorPaletteComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-color-palette>
-            ${args.content}
-          </ui5-color-palette>
-        `,
-});
 
 export const colorPalette: Story<ColorPaletteComponent> = (
   args: ColorPaletteComponent & any

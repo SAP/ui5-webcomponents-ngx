@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   DialogComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the <code>ui5-dialog</code> is fully customizable.
 
@@ -31,25 +32,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<DialogComponent> = (
-  args: DialogComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-dialog>
-            ${args.content}
-<slot slot="footer">${args.footer}</slot>
-<slot slot="header">${args.header}</slot>
-          </ui5-dialog>
-        `,
-});
 
 export const draggableAndResizableDialog: Story<DialogComponent> = (
   args: DialogComponent & any

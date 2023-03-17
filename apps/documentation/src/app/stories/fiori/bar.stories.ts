@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, BarComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
 
@@ -28,25 +29,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<BarComponent> = (
-  args: BarComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-bar>
-            ${args.content}
-<slot slot="endContent">${args.endContent}</slot>
-<slot slot="startContent">${args.startContent}</slot>
-          </ui5-bar>
-        `,
-});
 
 export const headerBar: Story<BarComponent> = (args: BarComponent & any) => ({
   props: args,

@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ProgressIndicatorComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
 
@@ -21,23 +22,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ProgressIndicatorComponent> = (
-  args: ProgressIndicatorComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-progress-indicator>
-            
-          </ui5-progress-indicator>
-        `,
-});
 
 export const basicProgressIndicator: Story<ProgressIndicatorComponent> = (
   args: ProgressIndicatorComponent & any

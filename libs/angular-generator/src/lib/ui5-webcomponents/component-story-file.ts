@@ -2,6 +2,7 @@ import {ComponentData, dependencyRelativePath, GeneratedFile} from "@ui5/webcomp
 import {StorybookFilesGeneratorOptions} from "./storybook-files-generator-options";
 import {format as prettierFormat} from "prettier";
 import {camelCase} from "lodash";
+import JSDom from 'jsdom';
 
 export class ComponentStoryFile extends GeneratedFile {
   private componentData: ComponentData;
@@ -18,23 +19,11 @@ export class ComponentStoryFile extends GeneratedFile {
   }
 
   override getCode(): string {
-    const stories: string[] = [
-      `export const ApplyChanges: Story<${this.componentClassName()}> = (args: ${this.componentClassName()} & any) => ({
-        props: args,
-        template: \`
-          <${this.componentData.selector}>
-            ${this.componentData.slots.map(({name}) => {
-              if (name === 'default') {
-                return `\${args.content}`
-              }
-              return `<slot slot="${name}">\${args.${name}}</slot>`
-      }).join('\n')}
-          </${this.componentData.selector}>
-        \`
-        });`
-    ];
+    const stories: string[] = [];
     this.sample.stories.forEach(story => {
-      if (!story.code || story.code.indexOf('<script>') !== -1) {
+      if (!story.code || story.code.toString().indexOf('<script>') > -1) {
+        const dom = JSDom;
+        const doc = new dom.JSDOM(story.code);
         return;
       }
       stories.push(`

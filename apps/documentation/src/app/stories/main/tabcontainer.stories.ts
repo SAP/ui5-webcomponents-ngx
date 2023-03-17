@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   TabContainerComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -35,25 +36,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<TabContainerComponent> = (
-  args: TabContainerComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-tabcontainer>
-            ${args.content}
-<slot slot="overflowButton">${args.overflowButton}</slot>
-<slot slot="startOverflowButton">${args.startOverflowButton}</slot>
-          </ui5-tabcontainer>
-        `,
-});
 
 export const ui5TabcontainerWidthCalc10020625RemImportant: Story<
   TabContainerComponent

@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   StepInputComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -29,23 +30,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<StepInputComponent> = (
-  args: StepInputComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-step-input>
-            <slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-step-input>
-        `,
-});
 
 export const basicStepInput: Story<StepInputComponent> = (
   args: StepInputComponent & any

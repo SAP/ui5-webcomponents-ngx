@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   FileUploaderComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -21,24 +22,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<FileUploaderComponent> = (
-  args: FileUploaderComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-file-uploader>
-            ${args.content}
-<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-file-uploader>
-        `,
-});
 
 export const uploadSingleFile: Story<FileUploaderComponent> = (
   args: FileUploaderComponent & any

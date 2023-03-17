@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, PageComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -20,25 +21,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<PageComponent> = (
-  args: PageComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-page>
-            ${args.content}
-<slot slot="footer">${args.footer}</slot>
-<slot slot="header">${args.header}</slot>
-          </ui5-page>
-        `,
-});
 
 export const pageWithFloatingFooter: Story<PageComponent> = (
   args: PageComponent & any

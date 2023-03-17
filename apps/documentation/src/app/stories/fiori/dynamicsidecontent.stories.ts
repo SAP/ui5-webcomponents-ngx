@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   DynamicSideContentComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -51,24 +52,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<DynamicSideContentComponent> = (
-  args: DynamicSideContentComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-dynamic-side-content>
-            ${args.content}
-<slot slot="sideContent">${args.sideContent}</slot>
-          </ui5-dynamic-side-content>
-        `,
-});
 
 export const dynamicSideContentWithDefaultProperties: Story<
   DynamicSideContentComponent

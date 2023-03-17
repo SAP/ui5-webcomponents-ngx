@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ButtonComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -29,23 +30,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ButtonComponent> = (
-  args: ButtonComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-button>
-            ${args.content}
-          </ui5-button>
-        `,
-});
 
 export const basicButton: Story<ButtonComponent> = (
   args: ButtonComponent & any

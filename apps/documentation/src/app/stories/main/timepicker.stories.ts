@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   TimePickerComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-time-picker</code> component provides an input field with assigned sliders which are opened on user action. The <code>ui5-time-picker</code> allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
 
@@ -27,23 +28,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<TimePickerComponent> = (
-  args: TimePickerComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-time-picker>
-            <slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-time-picker>
-        `,
-});
 
 export const basicTimePicker: Story<TimePickerComponent> = (
   args: TimePickerComponent & any

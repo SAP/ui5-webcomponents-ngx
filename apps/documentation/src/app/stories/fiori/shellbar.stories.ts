@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ShellBarComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -31,28 +32,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ShellBarComponent> = (
-  args: ShellBarComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-shellbar>
-            ${args.content}
-<slot slot="logo">${args.logo}</slot>
-<slot slot="menuItems">${args.menuItems}</slot>
-<slot slot="profile">${args.profile}</slot>
-<slot slot="searchField">${args.searchField}</slot>
-<slot slot="startButton">${args.startButton}</slot>
-          </ui5-shellbar>
-        `,
-});
 
 export const basicShellBar: Story<ShellBarComponent> = (
   args: ShellBarComponent & any

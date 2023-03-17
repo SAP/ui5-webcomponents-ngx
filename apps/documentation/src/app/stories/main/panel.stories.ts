@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, PanelComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -32,24 +33,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<PanelComponent> = (
-  args: PanelComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-panel>
-            ${args.content}
-<slot slot="header">${args.header}</slot>
-          </ui5-panel>
-        `,
-});
 
 export const basicPanel: Story<PanelComponent> = (
   args: PanelComponent & any

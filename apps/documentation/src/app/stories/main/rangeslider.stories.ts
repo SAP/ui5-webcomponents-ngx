@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   RangeSliderComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
 
@@ -31,23 +32,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<RangeSliderComponent> = (
-  args: RangeSliderComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-range-slider>
-            
-          </ui5-range-slider>
-        `,
-});
 
 export const basicRangeSlider: Story<RangeSliderComponent> = (
   args: RangeSliderComponent & any

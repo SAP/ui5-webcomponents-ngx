@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   CarouselComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>
 
@@ -41,23 +42,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<CarouselComponent> = (
-  args: CarouselComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-carousel>
-            ${args.content}
-          </ui5-carousel>
-        `,
-});
 
 export const carouselWithSingleItemPerPage: Story<CarouselComponent> = (
   args: CarouselComponent & any

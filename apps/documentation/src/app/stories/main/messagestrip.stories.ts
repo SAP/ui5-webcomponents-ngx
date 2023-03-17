@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   MessageStripComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -29,24 +30,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<MessageStripComponent> = (
-  args: MessageStripComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-message-strip>
-            ${args.content}
-<slot slot="icon">${args.icon}</slot>
-          </ui5-message-strip>
-        `,
-});
 
 export const messageStrip: Story<MessageStripComponent> = (
   args: MessageStripComponent & any

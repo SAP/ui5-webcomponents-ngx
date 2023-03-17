@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, LabelComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -18,23 +19,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-label>
-            ${args.content}
-          </ui5-label>
-        `,
-});
 
 export const basicLabel: Story<LabelComponent> = (
   args: LabelComponent & any

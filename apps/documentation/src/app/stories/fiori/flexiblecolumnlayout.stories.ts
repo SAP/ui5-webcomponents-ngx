@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   FlexibleColumnLayoutComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -35,22 +36,10 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<FlexibleColumnLayoutComponent> = (
-  args: FlexibleColumnLayoutComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-flexible-column-layout>
-            <slot slot="endColumn">${args.endColumn}</slot>
-<slot slot="midColumn">${args.midColumn}</slot>
-<slot slot="startColumn">${args.startColumn}</slot>
-          </ui5-flexible-column-layout>
-        `,
-});

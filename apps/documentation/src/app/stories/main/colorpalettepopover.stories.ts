@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ColorPalettePopoverComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> Represents a predefined range of colors for easier selection.
 
@@ -27,23 +28,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ColorPalettePopoverComponent> = (
-  args: ColorPalettePopoverComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-color-palette-popover>
-            ${args.content}
-          </ui5-color-palette-popover>
-        `,
-});
 
 export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeatures: Story<
   ColorPalettePopoverComponent

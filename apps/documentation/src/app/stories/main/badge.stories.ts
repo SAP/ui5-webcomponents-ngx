@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, BadgeComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -20,24 +21,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<BadgeComponent> = (
-  args: BadgeComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-badge>
-            ${args.content}
-<slot slot="icon">${args.icon}</slot>
-          </ui5-badge>
-        `,
-});
 
 export const basicBadge: Story<BadgeComponent> = (
   args: BadgeComponent & any

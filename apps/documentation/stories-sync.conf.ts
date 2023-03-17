@@ -48,6 +48,7 @@ export default {
     });
     Object.values(stories).forEach(story => {
       story.addImport(['Ui5WebcomponentsModule', story.componentClassName()], '@ui5/webcomponents-ngx');
+      story.addImport(['extractArgTypes'], "../../arg-type-tools");
       story.defaultExport = () => {
         let description = story.sample.componentData.description;
         const componentPath = story.sample.sampleFilePath.replace(/apps\/documentation\/storybook-samples\/(.*).sample.html$/, '$1').split('/');
@@ -65,6 +66,7 @@ export default {
          ],
          parameters: {
            docs: {
+            extractArgTypes,
             description: {
               component: description,
             }

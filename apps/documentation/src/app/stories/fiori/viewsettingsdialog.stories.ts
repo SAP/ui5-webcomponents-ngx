@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   ViewSettingsDialogComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
 
@@ -25,24 +26,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<ViewSettingsDialogComponent> = (
-  args: ViewSettingsDialogComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-view-settings-dialog>
-            <slot slot="filterItems">${args.filterItems}</slot>
-<slot slot="sortItems">${args.sortItems}</slot>
-          </ui5-view-settings-dialog>
-        `,
-});
 
 export const usage: Story<ViewSettingsDialogComponent> = (
   args: ViewSettingsDialogComponent & any

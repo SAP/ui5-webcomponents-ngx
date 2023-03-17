@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, InputComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -22,25 +23,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<InputComponent> = (
-  args: InputComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-input>
-            ${args.content}
-<slot slot="icon">${args.icon}</slot>
-<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-input>
-        `,
-});
 
 export const basicInput: Story<InputComponent> = (
   args: InputComponent & any

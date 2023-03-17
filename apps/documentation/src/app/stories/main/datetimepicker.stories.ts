@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   DateTimePickerComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.
 
@@ -41,23 +42,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<DateTimePickerComponent> = (
-  args: DateTimePickerComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-datetime-picker>
-            <slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-datetime-picker>
-        `,
-});
 
 export const dateTimePicker: Story<DateTimePickerComponent> = (
   args: DateTimePickerComponent & any

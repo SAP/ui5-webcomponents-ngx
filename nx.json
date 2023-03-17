@@ -8,7 +8,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["sync", "build", "lint", "test", "e2e"],
+        "cacheableOperations": ["compodoc-generate", "sync", "build", "lint", "test", "e2e"],
         "accessToken": "OTY3ZjY2NGUtMzU3Mi00NmJlLTkwYzctNmYyODBkOWI1NzA5fHJlYWQtd3JpdGU="
       }
     }

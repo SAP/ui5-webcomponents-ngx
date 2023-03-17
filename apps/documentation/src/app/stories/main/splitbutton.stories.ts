@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   SplitButtonComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -27,23 +28,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<SplitButtonComponent> = (
-  args: SplitButtonComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-split-button>
-            ${args.content}
-          </ui5-split-button>
-        `,
-});
 
 export const defaultSplitButton: Story<SplitButtonComponent> = (
   args: SplitButtonComponent & any

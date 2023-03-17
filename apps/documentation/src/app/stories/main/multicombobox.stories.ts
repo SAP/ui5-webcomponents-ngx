@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   MultiComboBoxComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -33,25 +34,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-multi-combobox>
-            ${args.content}
-<slot slot="icon">${args.icon}</slot>
-<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-multi-combobox>
-        `,
-});
 
 export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
   args: MultiComboBoxComponent & any

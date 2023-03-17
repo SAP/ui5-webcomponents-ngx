@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   TimelineComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -17,23 +18,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<TimelineComponent> = (
-  args: TimelineComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-timeline>
-            ${args.content}
-          </ui5-timeline>
-        `,
-});
 
 export const basicTimeline: Story<TimelineComponent> = (
   args: TimelineComponent & any

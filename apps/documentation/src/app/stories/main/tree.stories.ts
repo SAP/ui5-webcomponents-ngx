@@ -1,5 +1,6 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TreeComponent } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-tree</code> component provides a tree structure for displaying data in a hierarchy.
 
@@ -26,24 +27,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<TreeComponent> = (
-  args: TreeComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-tree>
-            ${args.content}
-<slot slot="header">${args.header}</slot>
-          </ui5-tree>
-        `,
-});
 
 export const basicTree: Story<TreeComponent> = (args: TreeComponent & any) => ({
   props: args,

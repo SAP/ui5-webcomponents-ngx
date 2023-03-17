@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   DateRangePickerComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3> The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
 
@@ -23,23 +24,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<DateRangePickerComponent> = (
-  args: DateRangePickerComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-daterange-picker>
-            <slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-          </ui5-daterange-picker>
-        `,
-});
 
 export const basicDateRangePicker: Story<DateRangePickerComponent> = (
   args: DateRangePickerComponent & any

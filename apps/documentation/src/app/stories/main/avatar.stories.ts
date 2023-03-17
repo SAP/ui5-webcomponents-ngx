@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   AvatarComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3 class="comment-api-title">Overview</h3>
 
@@ -27,24 +28,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<AvatarComponent> = (
-  args: AvatarComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-avatar>
-            <slot slot="badge">${args.badge}</slot>
-${args.content}
-          </ui5-avatar>
-        `,
-});
 
 export const basicAvatar: Story<AvatarComponent> = (
   args: AvatarComponent & any

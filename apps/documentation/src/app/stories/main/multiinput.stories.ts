@@ -3,6 +3,7 @@ import {
   Ui5WebcomponentsModule,
   MultiInputComponent,
 } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3>Overview</h3> A <code>ui5-multi-input</code> field allows the user to enter multiple values, which are displayed as <code>ui5-token</code>.
 
@@ -21,26 +22,13 @@ export default {
   ],
   parameters: {
     docs: {
+      extractArgTypes,
       description: {
         component: description,
       },
     },
   },
 } as Meta;
-
-export const ApplyChanges: Story<MultiInputComponent> = (
-  args: MultiInputComponent & any
-) => ({
-  props: args,
-  template: `
-          <ui5-multi-input>
-            ${args.content}
-<slot slot="icon">${args.icon}</slot>
-<slot slot="valueStateMessage">${args.valueStateMessage}</slot>
-<slot slot="tokens">${args.tokens}</slot>
-          </ui5-multi-input>
-        `,
-});
 
 export const basicMultiInput: Story<MultiInputComponent> = (
   args: MultiInputComponent & any

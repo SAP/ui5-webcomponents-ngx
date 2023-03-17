@@ -15,7 +15,7 @@ the [documentation site](https://sap.github.io/ui5-webcomponents-ngx/).
 
 ## Requirements and Setup
 
-* Angular 15 or higher. Other versions might work, but are not tested.
+* Angular 15 or higher. Other versions will not work, because of the standalone components API.
 
 ### Installation
 

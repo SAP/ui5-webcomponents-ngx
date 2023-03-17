@@ -4,6 +4,7 @@ import type { StorybookConfig, Options } from '@storybook/core-common';
 
 const config: StorybookConfig = {
   ...rootMain,
+  staticDirs: [{from: '../src/assets', to: 'assets'}],
   core: { ...rootMain.core, builder: 'webpack5' },
   stories: [
     ...rootMain.stories,

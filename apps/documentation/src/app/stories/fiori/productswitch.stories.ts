@@ -51,7 +51,7 @@ export const inShellbar: Story<ProductSwitchComponent> = () => ({
         id="shellbar"
         primary-title="Corporate Portal"
         secondary-title="home"
-        logo="../../../assets/images/sap-logo-svg.svg"
+        logo="/assets/images/sap-logo-svg.svg"
         [show-product-switch]="true"
         [show-co-pilot]="true">
 </ui5-shellbar>

@@ -173,7 +173,7 @@ export const inShellbar = () => ({
     <ui5-shellbar
   id="shellbar"
   primary-title="Corporate Portal"
-  logo="../../../assets/images/sap-logo-svg.svg"
+  logo="/assets/images/sap-logo-svg.svg"
   [show-notifications]="true"
   notifications-count="6"
   (ui5NotificationsClick)="popover.open ? $any(popover).close() : $any(popover).showAt($any($event).targetRef)"

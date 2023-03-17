@@ -5,4 +5,13 @@ export const parameters = {
   docs: {
     inlineStories: true,
   },
+  options: {
+    storySort: {
+      order: [
+        "Introduction",
+        "Maintainers",
+        "*"
+      ],
+    },
+  },
 };

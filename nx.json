@@ -2,7 +2,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "ui-angular",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -74,5 +74,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "playground"
+  "defaultProject": "documentation"
 }

@@ -45,13 +45,16 @@
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/documentation",
+        "outputDir": "dist/documentation",
         "configDir": "apps/documentation/.storybook",
-        "browserTarget": "documentation:build"
+        "browserTarget": "documentation:build",
+        "compodoc": false,
+        "docsMode": true
       },
       "configurations": {
         "ci": {
-          "quiet": true
+          "quiet": true,
+          "docsMode": true
         }
       }
     }

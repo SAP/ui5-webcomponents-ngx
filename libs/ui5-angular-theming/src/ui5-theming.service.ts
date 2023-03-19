@@ -17,9 +17,7 @@ import {
   Ui5ThemingConsumer,
 } from './ui5-theming.models';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
   private readonly _providers$ = new BehaviorSubject<Ui5ThemingProvider[]>([]);
   private _currentTheme$ = new BehaviorSubject<[string, string]>([

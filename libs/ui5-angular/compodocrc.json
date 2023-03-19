@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
+  "disableCoverage": true,
+  "disableGraph": true,
+  "disableInternal": true,
+  "disableSourceCode": true,
+  "disableTemplateTab": true,
+  "disableLifeCycleHooks": true,
+  "disablePrivate": true,
+  "disableProtected": true,
+  "disableDependencies": true
+}

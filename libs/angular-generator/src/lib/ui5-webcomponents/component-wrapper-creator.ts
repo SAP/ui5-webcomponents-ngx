@@ -95,7 +95,7 @@ export function ComponentWrapperCreator(
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     `;
 
-  const analyzedSlots = componentFile.componentData.slots.map((slot) => {
+  const analyzedSlots = componentFile.componentData.slots.filter(sl => sl.name !== 'default').map((slot) => {
     const supportedElements = slot.supportedElements.map((element) => {
       const componentGeneratedFile = ComponentsMap.get(element);
       const exportedWrapperClassName = componentGeneratedFile!.exports[0].specifiers[0].exported;

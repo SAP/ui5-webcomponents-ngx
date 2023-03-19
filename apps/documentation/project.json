@@ -1,0 +1,63 @@
+{
+  "name": "documentation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/documentation/src",
+  "prefix": "ui-angular",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/documentation/**/*.ts",
+          "apps/documentation/**/*.html"
+        ]
+      }
+    },
+    "sync": {
+      "executor": "@ui5/webcomponents-nx:sync",
+      "options": {
+        "configFiles": [
+          "apps/documentation/api-json.config.ts"
+        ]
+      },
+      "outputs": [
+        "apps/documentation/src/api-json.json"
+      ]
+    },
+    "serve": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/documentation/.storybook",
+        "browserTarget": "documentation:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      },
+      "dependsOn": ["sync"]
+    },
+    "build": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/documentation",
+        "configDir": "apps/documentation/.storybook",
+        "browserTarget": "documentation:build",
+        "compodoc": false,
+        "docsMode": true
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true,
+          "docsMode": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,36 @@
+import {Meta} from "@storybook/addon-docs";
+
+<Meta title="Icons"></Meta>
+
+# Icons
+
+`@ui5/webcomponents-ngx` comes with a set of icons that can be used in your application. There are 3 icon collections available:
+- `sap-icons` - includes the following [icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons)
+- `tnt-icons` - includes the following [icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT)
+- `business-suite-icons` - includes the following [icons](https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols)
+
+In order to load then into you application as a whole collections you should use the `Ui5WebcomponentsIconsModule` module:
+
+```typescript
+import { NgModule } from "@angular/core";
+import { Ui5WebcomponentsIconsModule } from "@ui5/webcomponents-ngx/icons";
+
+@NgModule({
+  imports: [
+    Ui5WebcomponentsIconsModule.forRoot([
+      "sap-icons",
+      "tnt-icons",
+      "business-suite-icons"
+    ])
+  ]
+})
+export class AppModule { }
+```
+
+If you want to load only a specific icon you can import specific icon into your main.ts(recommended, but not required, you can import it in anywhere you like, just main.ts makes most sense) file:
+
+```typescript
+import "@ui5/webcomponents-icons/dist/accelerated.js"; // sap-icons
+import "@ui5/webcomponents-icons-tnt/dist/actor.js"; // tnt-icons
+import "@ui5/webcomponents-icons-business-suite/dist/3d.js"; // business-suite-icons
+```

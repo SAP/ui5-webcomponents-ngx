@@ -1,4 +1,4 @@
-import { Inject, Injectable, isDevMode, OnDestroy } from '@angular/core';
+import {Inject, Injectable, isDevMode, OnDestroy, Optional} from '@angular/core';
 import {
   BehaviorSubject,
   combineLatest,
@@ -17,14 +17,12 @@ import {
   Ui5ThemingConsumer,
 } from './ui5-theming.models';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
   private readonly _providers$ = new BehaviorSubject<Ui5ThemingProvider[]>([]);
   private _currentTheme$ = new BehaviorSubject<[string, string]>([
-    this._config.defaultTheme,
-    this._config.defaultTheme,
+    this._config?.defaultTheme || 'sap_fiori_3',
+    this._config?.defaultTheme || 'sap_fiori_3',
   ]);
 
   private _themeChanged$ = new Subject<string>();
@@ -32,7 +30,7 @@ export class Ui5ThemingService implements Ui5ThemingConsumer, OnDestroy {
   private _destroyed$ = new Subject<void>();
 
   constructor(
-    @Inject(UI5_THEMING_CONFIGURATION) private readonly _config: ThemingConfig
+    @Optional() @Inject(UI5_THEMING_CONFIGURATION) private readonly _config: ThemingConfig
   ) {
     combineLatest([
       this._providers$,

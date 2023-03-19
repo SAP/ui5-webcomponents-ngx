@@ -2,13 +2,13 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "ui-angular",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["sync", "build", "lint", "test", "e2e"],
+        "cacheableOperations": ["compodoc-generate", "sync", "build", "lint", "test", "e2e"],
         "accessToken": "OTY3ZjY2NGUtMzU3Mi00NmJlLTkwYzctNmYyODBkOWI1NzA5fHJlYWQtd3JpdGU="
       }
     }
@@ -38,6 +38,9 @@
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "build-storybook": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**/*"]
     }
   },
   "namedInputs": {
@@ -47,7 +50,9 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/.eslintrc.json"
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
     ],
     "sharedGlobals": []
   },
@@ -69,5 +74,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "playground"
+  "defaultProject": "documentation"
 }

@@ -32,6 +32,7 @@ export function getComponents({
                                 symbols,
                                 components
                               }: { implementers: Record<string, SymbolObject[]>; symbols: Record<string, SymbolObject>, components: SymbolObject[] }): ComponentData[] {
+  const processing = new Set<string>();
   const cache: Record<ComponentData['baseName'], ComponentData> = {};
   const typesMap: Record<string, string | ((tag: string, entryName: string) => string)> = {
     integer: 'number',
@@ -82,6 +83,7 @@ export function getComponents({
   function getInputs(symbol: SymbolObject, component: ComponentData): ComponentData['inputs'] {
     return symbol.properties.filter(prop => prop.visibility === 'public').map((property) => {
       return {
+        description: property.description,
         publicName: kebabCase(property.name),
         name: camelCase(property.name),
         type: getPropertyType(property.type, symbol.tagname, camelCase(property.name), component),
@@ -103,6 +105,7 @@ export function getComponents({
       }, {});
       const eventType = !event.parameters?.length ? 'void' : `{ ${Object.keys(parameters).map((key) => `'${key}': ${typeof parameters[key] === 'string' ? parameters[key] : `{${key}}`}`).join(',')} }`;
       return {
+        description: event.description,
         name: eventNames.camel,
         publicName: eventNames.camel === eventNames.kebab ? eventNames.camel : eventNames.kebab,
         type: eventType,
@@ -115,7 +118,7 @@ export function getComponents({
   }
 
   function getSlots(symbol: SymbolObject, component: ComponentData): ComponentData['slots'] {
-    return symbol.slots.filter(slot => slot.visibility === 'public' && slot.name !== 'default').map((slot) => {
+    return symbol.slots.filter(slot => slot.visibility === 'public').map((slot) => {
       const interfaceName = slot.type.replace('[]', '');
       const canBeSelf = component.implements.includes(interfaceName);
       let slotComponents: SymbolObject[] = implementers[interfaceName] || [];
@@ -132,11 +135,13 @@ export function getComponents({
         type = `Array<${type}>`;
       }
       return {
+        description: slot.description,
         name: slot.name,
         type,
         supportedElements,
         isArray: slot.type.endsWith('[]'),
       }
+
     })
   }
 
@@ -150,6 +155,7 @@ export function getComponents({
       });
       const returnValue = method.returnValue ? getPropertyType(method.returnValue.type, symbol.tagname, method.name, componentData) as string : 'any';
       return {
+        description: method.description,
         name: method.name,
         parameters,
         returnValue,
@@ -162,6 +168,7 @@ export function getComponents({
     if (cache[symbol.basename]) return cache[symbol.basename];
     const dependencies: Array<ComponentData> = [];
     const component: ComponentData = {
+      description: symbol.description,
       baseName: symbol.basename,
       dependencies,
       implements: symbol.implements,
@@ -173,6 +180,10 @@ export function getComponents({
       formData: [],
       methods: []
     };
+    if (processing.has(symbol.basename)) {
+      return component;
+    }
+    processing.add(symbol.basename);
     component.inputs = getInputs(symbol, component);
     component.outputs = getOutputs(symbol, component);
     component.slots = getSlots(symbol, component);
@@ -187,6 +198,7 @@ export function getComponents({
     }
     component.dependencies = [...new Set(dependencies)]
     cache[component.baseName] = component;
+    processing.delete(symbol.basename);
     return component;
   }
 

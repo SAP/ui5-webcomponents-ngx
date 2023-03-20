@@ -16,7 +16,6 @@ export function ngAdd(options: Schema): Rule {
     const userConfig = await collectConfig();
     options = { ...options, ...userConfig };
 
-    console.log(options);
     // First, queue dependency installation task.
     const dependenciesTaskId = context.addTask(new RunSchematicTask('add-dependencies', options));
 
@@ -78,7 +77,7 @@ async function askThemingDependency(): Promise<boolean> {
 async function askDefaultTheme(): Promise<string> {
   return await askQuestion({
     type: 'list',
-    message: 'Please select desired Common CSS features',
+    message: 'Please select desired default theme',
     default: 'sap_horizon',
     choices: AvailableThemes,
   });

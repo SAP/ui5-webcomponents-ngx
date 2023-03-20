@@ -1,0 +1,11 @@
+# Global settings applied to the whole site.
+#
+# “publish” is the directory to publish (relative to root of your repo),
+# “command” is your build command,
+# “base” is directory to change to before starting build. if you set base:
+#    that is where we will look for package.json/.nvmrc/etc not repo root!
+
+[build]
+environment = { NODE_VERSION = "16.19.1", PYTHON_VERSION="3.8", YARN_FLAGS="--frozen-lockfile" }
+publish = "dist/documentation"
+command = "npx nx run documentation:build:ci"

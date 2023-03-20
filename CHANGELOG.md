@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.2...v0.1.0-rc.3) (2023-03-20)
+
+### Bug Fixes
+
+- added missing peer dependencies to the ui5-angular ([#47](https://github.com/SAP/ui5-webcomponents-ngx/issues/47)) ([d6af4a8](https://github.com/SAP/ui5-webcomponents-ngx/commit/d6af4a8b4f27e2954c2064ac253ca0293794d965))
+
 # [0.1.0-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.1...v0.1.0-rc.2) (2023-03-20)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.1...v0.1.0-rc.2) (2023-03-20)
+
+### Bug Fixes
+
+- added libs/ui5-angular/ui5-webcomponents.module.ts to cached files ([#46](https://github.com/SAP/ui5-webcomponents-ngx/issues/46)) ([b51adea](https://github.com/SAP/ui5-webcomponents-ngx/commit/b51adeaeae7841d3be7d783a99a42b527539a18e))
+
 # [0.1.0-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.0...v0.1.0-rc.1) (2023-03-19)
 
 ### Features

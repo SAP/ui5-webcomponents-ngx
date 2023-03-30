@@ -39,7 +39,7 @@ Import the module in your `app.module.ts` file:
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {Ui5AngularModule} from '@ui5/webcomponents-ngx'; // here it is
+import {Ui5WebcomponentsModule} from '@ui5/webcomponents-ngx'; // here it is
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import {Ui5AngularModule} from '@ui5/webcomponents-ngx'; // here it is
   ],
   imports: [
     BrowserModule,
-    Ui5AngularModule
+    Ui5WebcomponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

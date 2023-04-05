@@ -2,7 +2,8 @@ import {
   Rule,
   SchematicContext,
   Tree,
-  chain
+  chain,
+  schematic
 } from '@angular-devkit/schematics';
 import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { collectConfig } from '../get-config';
@@ -21,4 +22,11 @@ export function ngAdd(options: Schema): Rule {
 
     return chain([]);
   };
+}
+
+export function proceedWithSchematics(options: Schema): Rule {
+  return chain([
+      schematic('add-styles', options),
+      schematic('add-theming', options)
+  ]);
 }

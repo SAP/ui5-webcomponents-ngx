@@ -17,7 +17,7 @@ export function addStyles(options: Schema): Rule {
       throw new SchematicsException('Could not find build target options for defined project.');
     }
 
-    let styles = buildTargetOptions['styles'] as (string | { input: string })[];
+    let styles = (buildTargetOptions['styles'] || []) as (string | { input: string })[];
 
     styles = styles.filter(style => (typeof style === 'string' && !style.startsWith('node_modules/@fundamental-styles/common-css') ||
     typeof style !== 'string' && !style.input.startsWith('node_modules/@fundamental-styles/common-css')));

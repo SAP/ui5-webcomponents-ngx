@@ -1,9 +1,3 @@
-import {
-  Rule,
-  chain,
-  schematic
-} from '@angular-devkit/schematics';
-
 import { AvailableThemes, CommonCssParts } from "./config";
 import { Schema } from "./schema";
 import { askQuestion } from './utils/promt';
@@ -61,11 +55,4 @@ async function askDefaultTheme(): Promise<string> {
     default: 'sap_horizon',
     choices: AvailableThemes,
   });
-}
-
-export function proceedWithSchematics(options: Schema): Rule {
-    return chain([
-        schematic('add-styles', options),
-        schematic('add-theming', options)
-    ]);
 }

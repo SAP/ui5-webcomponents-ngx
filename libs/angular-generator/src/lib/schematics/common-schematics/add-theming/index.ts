@@ -31,6 +31,12 @@ export function addTheming(options: Schema): Rule {
         );
       }
 
+      if (!buildTargetOptions['main']) {
+        throw new SchematicsException(
+          'Could not find main entry file for defined project.'
+        );
+      }
+
       const rootModule = getAppModulePath(
         tree,
         buildTargetOptions['main'] as string

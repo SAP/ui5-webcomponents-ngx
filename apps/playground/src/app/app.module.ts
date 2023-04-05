@@ -14,7 +14,7 @@ import {Ui5I18nModule} from "@ui5/webcomponents-ngx/i18n";
 import {RouterModule} from "@angular/router";
 import {MainComponent} from "./main.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {ButtonGroupComponent} from "@ui5/webcomponents-ngx/native";
+import {RadioButtonGroupComponent} from "@ui5/webcomponents-ngx/native";
 
 const Russian = {
   SOMETHING: {x: 'значение {0}'}
@@ -25,7 +25,7 @@ const Russian = {
   imports: [
     BrowserModule,
     FormsModule,
-    ButtonGroupComponent,
+    RadioButtonGroupComponent,
     ReactiveFormsModule,
     Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}),
     Ui5WebcomponentsIconsModule.forRoot(['sap-icons', 'tnt-icons', "business-suite-icons"]),

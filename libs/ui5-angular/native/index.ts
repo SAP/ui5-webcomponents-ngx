@@ -1,1 +1,1 @@
-export * from './button-group.component';
+export * from './radio-button-group.component';

@@ -18,19 +18,19 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
 
 @Component({
-  selector: 'ui5-button-group',
+  selector: 'ui5-ngx-radio-button-group',
   template: `
     <ng-content></ng-content>`,
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ButtonGroupComponent),
+      useExisting: forwardRef(() => RadioButtonGroupComponent),
       multi: true,
     }
   ]
 })
-export class ButtonGroupComponent implements ControlValueAccessor, OnDestroy, AfterViewInit {
+export class RadioButtonGroupComponent implements ControlValueAccessor, OnDestroy, AfterViewInit {
   @ContentChildren(RadioButtonComponent) buttons!: QueryList<RadioButtonComponent>;
 
   private _destroy$ = new Subject<void>();

@@ -10,6 +10,7 @@
         "configFile": "libs/ui5-angular/wrapper.conf.ts",
         "distPath": "dist/libs/ui5-angular",
         "schematics": {
+          "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",
           "tsConfig": "tsconfig.schematics.json",
           "collection": "schematics"
         }

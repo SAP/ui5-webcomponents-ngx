@@ -18,7 +18,11 @@ export function addThemingModule(host: Tree, project: ProjectDefinition, context
   try {
     return addModuleToNonStandaloneApp(host, project, context, options);
   } catch (e) {
-    return addModuleToStandaloneApp(host, project, context, options);
+    if ((e as {message?: string}).message?.includes('Bootstrap call not found')) {
+      return addModuleToStandaloneApp(host, project, context, options);
+    } else {
+      throw e;
+    }
   }
 }
 

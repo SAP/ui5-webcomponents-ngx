@@ -89,16 +89,6 @@
           "apps/playground/**/*.html"
         ]
       }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/playground"
-      ],
-      "options": {
-        "jestConfig": "apps/playground/jest.config.ts",
-        "passWithNoTests": true
-      }
     }
   },
   "tags": []

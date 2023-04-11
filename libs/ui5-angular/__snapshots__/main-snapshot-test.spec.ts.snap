@@ -9775,8 +9775,8 @@ import type TimePicker from '@ui5/webcomponents/dist/TimePicker.js';
 
 interface TimePickerComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change' | 'input'> {
-  change: CustomEvent<void>;
-  input: CustomEvent<void>;
+  change: CustomEvent<{ value: string; valid: boolean }>;
+  input: CustomEvent<{ value: string; valid: boolean }>;
 }
 
 export declare interface TimePickerElement

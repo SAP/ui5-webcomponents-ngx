@@ -2989,7 +2989,6 @@ import { MediaGalleryItemComponent } from '@ui5/webcomponents-ngx/fiori/media-ga
 import { NotificationActionComponent } from '@ui5/webcomponents-ngx/fiori/notification-action';
 import { NotificationListGroupItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-group-item';
 import { NotificationListItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-item';
-import { NotificationListItemBaseComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-item-base';
 import { PageComponent } from '@ui5/webcomponents-ngx/fiori/page';
 import { ProductSwitchComponent } from '@ui5/webcomponents-ngx/fiori/product-switch';
 import { ProductSwitchItemComponent } from '@ui5/webcomponents-ngx/fiori/product-switch-item';
@@ -3020,7 +3019,6 @@ const imports = [
   NotificationActionComponent,
   NotificationListGroupItemComponent,
   NotificationListItemComponent,
-  NotificationListItemBaseComponent,
   PageComponent,
   ProductSwitchComponent,
   ProductSwitchItemComponent,

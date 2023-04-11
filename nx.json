@@ -15,7 +15,6 @@
   },
   "targetDefaults": {
     "sync": {
-      "dependsOn": ["^build"]
     },
     "prepare": {
       "dependsOn": ["build"]

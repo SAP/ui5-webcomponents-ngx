@@ -57,7 +57,7 @@ export function getComponents({
     }
     const mappedType = typesMap[type.toLowerCase()];
     if (!mappedType && symbols[type]) {
-      if (symbols[type].kind === 'class') {
+      if (symbols[type].kind === 'class' || symbols[type].kind === 'enum') {
         let types = symbols[type].properties.map(p => JSON.stringify(p.type));
         types = types.length ? types : ['any'];
         return types.join(' | ');
@@ -71,7 +71,7 @@ export function getComponents({
           return 'any';
         }
       } else {
-        console.log('wtf');
+        console.warn(`Could not map type "${type}" for ${tagname} ${identifier} in ${component.baseName} component`);
       }
     }
     if (typeof mappedType === 'function') {

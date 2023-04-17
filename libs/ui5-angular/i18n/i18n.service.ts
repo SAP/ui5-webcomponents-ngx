@@ -3,8 +3,20 @@ import I18nBundle, {getI18nBundle, registerI18nLoader} from "@ui5/webcomponents-
 import parseProperties from "@ui5/webcomponents-base/dist/PropertiesFileFormat.js";
 
 import {getLanguage, setLanguage} from "@ui5/webcomponents-base/dist/config/Language.js";
-import {BehaviorSubject, firstValueFrom, from, isObservable, map, Observable, of, switchMap} from "rxjs";
-import {I18N_ROOT_CONFIG, I18N_NAMESPACE, I18N_TRANSLATIONS} from "./i18n.tokens";
+import {
+  BehaviorSubject,
+  filter,
+  first,
+  firstValueFrom,
+  from,
+  isObservable,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap
+} from "rxjs";
+import {I18N_NAMESPACE, I18N_ROOT_CONFIG, I18N_TRANSLATIONS} from "./i18n.tokens";
 import {I18nConfig, Translations} from "./i18n.types";
 
 @Injectable()
@@ -12,6 +24,7 @@ export class I18nService {
   private parent: I18nService | null = inject(I18nService, {skipSelf: true, optional: true});
   private currentLanguage$ = new BehaviorSubject<string>(getLanguage() || this.config.language as string);
   private readonly i18nBundle$: Observable<I18nBundle>;
+  private loadedLanguages$ = new BehaviorSubject<string[]>([]);
 
   constructor(
     @Inject(I18N_ROOT_CONFIG) private config: I18nConfig,
@@ -22,6 +35,9 @@ export class I18nService {
       registerI18nLoader(this.namespace, lang, async (localeId: string) => {
         const val = this.bundles[localeId];
         const result = isObservable(val) ? await firstValueFrom(val) : await val;
+        this.loadedLanguages$.next([
+          ...new Set([...this.loadedLanguages$.value, localeId]).values()
+        ]);
         if (typeof result === 'string') {
           return parseProperties(result);
         }
@@ -50,7 +66,11 @@ export class I18nService {
       return this.parent.setLanguage(language);
     }
     setLanguage(language);
-    this.currentLanguage$.next(language);
+    this.loadedLanguages$.pipe(
+      filter(langs => langs.includes(language)),
+      first(),
+      tap(() => this.currentLanguage$.next(language))
+    ).subscribe();
   }
 
   getText(key: string, ...placeholders: any[]): Observable<string> {

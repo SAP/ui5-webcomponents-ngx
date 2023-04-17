@@ -35,9 +35,11 @@ export class I18nService {
       registerI18nLoader(this.namespace, lang, async (localeId: string) => {
         const val = this.bundles[localeId];
         const result = isObservable(val) ? await firstValueFrom(val) : await val;
-        this.loadedLanguages$.next([
-          ...new Set([...this.loadedLanguages$.value, localeId]).values()
-        ]);
+        setTimeout(() => {
+          this.loadedLanguages$.next([
+            ...new Set([...this.loadedLanguages$.value, localeId]).values()
+          ]);
+        });
         if (typeof result === 'string') {
           return parseProperties(result);
         }

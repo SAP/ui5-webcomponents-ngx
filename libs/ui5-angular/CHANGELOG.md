@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.4...v0.1.1-rc.5) (2023-04-17)
+
+### Bug Fixes
+
+- fixed i18n load language trigger ([#59](https://github.com/SAP/ui5-webcomponents-ngx/issues/59)) ([8608387](https://github.com/SAP/ui5-webcomponents-ngx/commit/8608387dcd64fe66b3c0911bdcd7b9c24383b264))
+
 ## [0.1.1-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.3...v0.1.1-rc.4) (2023-04-17)
 
 ### Bug Fixes

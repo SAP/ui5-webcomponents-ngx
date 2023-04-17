@@ -38,7 +38,6 @@ export class I18nService {
         this.loadedLanguages$.next([
           ...new Set([...this.loadedLanguages$.value, localeId]).values()
         ]);
-        this.currentLanguage$.next(getLanguage() as string);
         if (typeof result === 'string') {
           return parseProperties(result);
         }

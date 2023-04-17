@@ -16,7 +16,7 @@ import {MainComponent} from "./main.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 const Russian = {
-  SOMETHING: {x: 'значение {0}'}
+  SOMETHING: 'значение {0}'
 }
 
 @NgModule({

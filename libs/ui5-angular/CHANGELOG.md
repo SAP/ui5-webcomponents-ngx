@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.3...v0.1.1-rc.4) (2023-04-17)
+
+### Bug Fixes
+
+- fixed language change event ([#57](https://github.com/SAP/ui5-webcomponents-ngx/issues/57)) ([18694d1](https://github.com/SAP/ui5-webcomponents-ngx/commit/18694d13ac3149b0e3040fa916566971e4dd7d2f))
+
 ## [0.1.1-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.2...v0.1.1-rc.3) (2023-04-14)
 
 ### Bug Fixes

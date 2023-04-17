@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.3...v0.1.1-rc.4) (2023-04-17)
+
+**Note:** Version bump only for package @ui5/webcomponents-samples-parser
+
 ## [0.1.1-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.2...v0.1.1-rc.3) (2023-04-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-samples-parser

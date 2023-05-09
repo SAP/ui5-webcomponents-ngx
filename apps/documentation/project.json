@@ -44,11 +44,13 @@
         "outputDir": "dist/documentation",
         "configDir": "apps/documentation/.storybook",
         "browserTarget": "documentation:build",
-        "compodoc": false
+        "compodoc": false,
+        "docs": true
       },
       "configurations": {
         "ci": {
-          "quiet": true
+          "quiet": true,
+          "docs": true
         }
       }
     }

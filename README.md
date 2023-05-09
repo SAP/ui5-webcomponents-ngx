@@ -1,4 +1,6 @@
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-webcomponents-ngx)](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx)
+<a href="https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx" target="_blank">
+  <img src="https://api.reuse.software/badge/github.com/SAP/ui5-webcomponents-ngx" alt="REUSE status">
+</a>
 
 # UI5 Web Components for Angular
 

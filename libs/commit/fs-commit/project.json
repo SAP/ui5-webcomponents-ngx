@@ -5,28 +5,20 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/commit/fs-commit",
         "main": "libs/commit/fs-commit/src/index.ts",
         "tsConfig": "libs/commit/fs-commit/tsconfig.lib.json",
-        "assets": [
-          "libs/commit/fs-commit/*.md"
-        ]
+        "assets": ["libs/commit/fs-commit/*.md"]
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/commit/fs-commit/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/commit/fs-commit/**/*.ts"]
       }
     }
   },

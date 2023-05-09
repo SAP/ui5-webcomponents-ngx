@@ -1,8 +1,13 @@
-import {PrepareOptions} from "./prepareOptions";
-import {logger, ProjectConfiguration} from "@nrwl/devkit";
-import {SchematicsOptions} from "./schematicsOptions";
-import {exec} from "child_process";
-import {copySync, pathExistsSync, readFileSync, writeFileSync} from "fs-extra";
+import { PrepareOptions } from './prepareOptions';
+import { logger, ProjectConfiguration } from '@nx/devkit';
+import { SchematicsOptions } from './schematicsOptions';
+import { exec } from 'child_process';
+import {
+  copySync,
+  pathExistsSync,
+  readFileSync,
+  writeFileSync,
+} from 'fs-extra';
 
 const runTsc = async (tsConfigPath: string) => {
   return new Promise((resolve, reject) => {
@@ -32,9 +37,9 @@ export async function copySchematics(
   if (!projectName) {
     projectName = projectConfig.name;
   }
-  const {distPath} = targetOptions;
+  const { distPath } = targetOptions;
 
-  const {tsConfig, collection} =
+  const { tsConfig, collection } =
     targetOptions.schematics as SchematicsOptions;
   const rootFolder = projectConfig.root;
   const tsConfigPath = `${rootFolder}/${tsConfig}`;
@@ -46,10 +51,12 @@ export async function copySchematics(
 
   if (pathExistsSync(schematicsPath) && pathExistsSync(tsConfigPath)) {
     // Doing this, because tsc will overwrite the package.json with the one from the source folder
-    const existingPackageJson = readFileSync(`${distPath}/package.json`, {encoding: 'utf-8'});
+    const existingPackageJson = readFileSync(`${distPath}/package.json`, {
+      encoding: 'utf-8',
+    });
     await runTsc(tsConfigPath);
     copySync(schematicsPath, `${distPath}/schematics`, {
-      filter: (src) => !src.endsWith('.ts')
+      filter: (src) => !src.endsWith('.ts'),
     });
     writeFileSync(`${distPath}/package.json`, existingPackageJson);
     logger.info(`✅ Copied schematics for project ${projectName}`);

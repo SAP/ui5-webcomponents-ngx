@@ -5,17 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/wrapper",
         "main": "libs/wrapper/src/index.ts",
         "tsConfig": "libs/wrapper/tsconfig.lib.json",
-        "assets": [
-          "libs/wrapper/*.md"
-        ]
+        "assets": ["libs/wrapper/*.md"]
       }
     },
     "publish": {
@@ -23,19 +19,13 @@
       "options": {
         "command": "node tools/scripts/publish.mjs wrapper {args.ver} {args.tag}"
       },
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/wrapper/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/wrapper/**/*.ts"]
       }
     }
   },

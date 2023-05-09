@@ -1,11 +1,10 @@
-import {FileSystemInterface} from "@ui5/webcomponents-wrapper";
-import {Tree} from '@nrwl/devkit';
-import {sync as fastGlob} from "fast-glob";
-import { basename, extname, normalize } from "path";
+import { FileSystemInterface } from '@ui5/webcomponents-wrapper';
+import { Tree } from '@nx/devkit';
+import { sync as fastGlob } from 'fast-glob';
+import { basename, extname, normalize } from 'path';
 
 export class NxFsImplementation implements FileSystemInterface {
-  constructor(private tree: Tree) {
-  }
+  constructor(private tree: Tree) {}
 
   exists(path: string): boolean {
     return this.tree.exists(path);
@@ -44,6 +43,6 @@ export class NxFsImplementation implements FileSystemInterface {
   }
 
   queryFiles(pattern: string, excludedFilesPatterns: string[]): string[] {
-    return fastGlob(pattern, {ignore: excludedFilesPatterns});
+    return fastGlob(pattern, { ignore: excludedFilesPatterns });
   }
 }

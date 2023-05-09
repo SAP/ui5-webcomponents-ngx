@@ -1,5 +1,6 @@
 {
   "name": "fundamental-styles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/fundamental-styles",
   "prefix": "ui-angular",
@@ -32,7 +33,7 @@
       ]
     },
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["dist/libs/fundamental-styles"],
       "options": {
         "project": "libs/fundamental-styles/ng-package.json",
@@ -49,7 +50,7 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/fundamental-styles/**/*.ts",

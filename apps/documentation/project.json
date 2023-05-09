@@ -6,7 +6,7 @@
   "prefix": "ui-angular",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
@@ -18,13 +18,9 @@
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
       "options": {
-        "configFiles": [
-          "apps/documentation/api-json.config.ts"
-        ]
+        "configFiles": ["apps/documentation/api-json.config.ts"]
       },
-      "outputs": [
-        "apps/documentation/src/api-json.json"
-      ]
+      "outputs": ["apps/documentation/src/api-json.json"]
     },
     "serve": {
       "executor": "@storybook/angular:start-storybook",
@@ -48,13 +44,11 @@
         "outputDir": "dist/documentation",
         "configDir": "apps/documentation/.storybook",
         "browserTarget": "documentation:build",
-        "compodoc": false,
-        "docsMode": true
+        "compodoc": false
       },
       "configurations": {
         "ci": {
-          "quiet": true,
-          "docsMode": true
+          "quiet": true
         }
       }
     }

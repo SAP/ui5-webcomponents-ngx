@@ -9,10 +9,8 @@
       "executor": "@ui5/webcomponents-nx:prepare"
     },
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/ui5-angular-theming"
-      ],
+      "executor": "@nx/angular:package",
+      "outputs": ["dist/libs/ui5-angular-theming"],
       "options": {
         "project": "libs/ui5-angular-theming/ng-package.json",
         "updateBuildableProjectDepsInPackageJson": false
@@ -28,10 +26,8 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/ui5-angular-theming/**/*.ts",

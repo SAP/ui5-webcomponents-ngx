@@ -3,7 +3,7 @@ import {readdirSync, readFileSync} from "fs";
 import {startCase} from "lodash";
 
 describe('Snapshot test Fiori', () => {
-  const basePath = 'libs/ui5-angular/fiori';
+  const basePath = `${__dirname}/fiori`;
   const fioriFolders = readdirSync(basePath, {withFileTypes: true});
   fioriFolders.forEach((folder) => {
     const fileName = folder.isDirectory() ? join(basePath, folder.name,'index.ts') : join(basePath, folder.name);

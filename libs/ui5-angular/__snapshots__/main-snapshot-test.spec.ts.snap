@@ -3969,6 +3969,13 @@ export declare interface IconComponent extends Partial<IconElement> {}
 "
 `;
 
+exports[`Snapshot test Main Index Js Map should match the snapshot 1`] = `"{\\"version\\":3,\\"file\\":\\"index.js\\",\\"sourceRoot\\":\\"\\",\\"sources\\":[\\"index.ts\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,mBAAmB,CAAC\\"}"`;
+
+exports[`Snapshot test Main Index Js should match the snapshot 1`] = `
+"export { Ui5MainModule } from './ui5-main.module';
+//# sourceMappingURL=index.js.map"
+`;
+
 exports[`Snapshot test Main Index Ts should match the snapshot 1`] = `
 "export { Ui5MainModule } from './ui5-main.module';
 "
@@ -4699,6 +4706,7 @@ export declare interface MenuItemElement
       MenuItem,
       | 'accessibleName'
       | 'additionalText'
+      | 'busy'
       | 'disabled'
       | 'icon'
       | 'startsSection'
@@ -4707,6 +4715,8 @@ export declare interface MenuItemElement
   > {
   accessibleName: string;
   additionalText: string;
+  busy: boolean;
+
   disabled: boolean;
   icon: string;
   startsSection: boolean;
@@ -4719,6 +4729,8 @@ export declare interface MenuItemElement
   'isUi5Element',
   'accessibleName',
   'additionalText',
+  'busy',
+  'busyDelay',
   'disabled',
   'icon',
   'startsSection',
@@ -4756,6 +4768,8 @@ export declare interface MenuItemElement
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
     'additionalText: additional-text',
+    'busy',
+    'busyDelay: busy-delay',
     'disabled',
     'icon',
     'startsSection: starts-section',
@@ -4767,6 +4781,7 @@ export declare interface MenuItemElement
 export class MenuItemComponent {
   accessibleName?: MenuItemElement['accessibleName'];
   additionalText?: MenuItemElement['additionalText'];
+  busy?: MenuItemElement['busy'];
   disabled?: MenuItemElement['disabled'];
   icon?: MenuItemElement['icon'];
   startsSection?: MenuItemElement['startsSection'];
@@ -4825,10 +4840,13 @@ export declare interface MenuElement
       | 'beforeClose'
       | 'beforeOpen'
       | 'itemClick'
+      | 'busy'
       | 'headerText'
       | 'open'
     >
   > {
+  busy: boolean;
+
   headerText: string;
   open: boolean;
 
@@ -4855,7 +4873,15 @@ export declare interface MenuElement
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element', 'headerText', 'open', 'opener'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'busy',
+  'busyDelay',
+  'headerText',
+  'open',
+  'opener',
+])
 @ProxyOutputs([
   'afterClose',
   'afterOpen',
@@ -4894,6 +4920,8 @@ export declare interface MenuElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'busy',
+    'busyDelay: busy-delay',
     'headerText: header-text',
     'open',
     'opener',
@@ -4908,6 +4936,7 @@ export declare interface MenuElement
   providers: [],
 })
 export class MenuComponent {
+  busy?: MenuElement['busy'];
   headerText?: MenuElement['headerText'];
   open?: MenuElement['open'];
   constructor(
@@ -10900,6 +10929,188 @@ export declare interface TreeComponent extends Partial<TreeElement> {
   selectionChange: EventEmitter<TreeComponentEventsMap['selectionChange']>;
 }
 "
+`;
+
+exports[`Snapshot test Main Ui 5 Main Module Js Map should match the snapshot 1`] = `"{\\"version\\":3,\\"file\\":\\"ui5-main.module.js\\",\\"sourceRoot\\":\\"\\",\\"sources\\":[\\"ui5-main.module.ts\\"],\\"names\\":[],\\"mappings\\":\\"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\\"}"`;
+
+exports[`Snapshot test Main Ui 5 Main Module Js should match the snapshot 1`] = `
+"import { __decorate, __metadata } from \\"tslib\\";
+import { NgModule } from '@angular/core';
+import { Ui5WebcomponentsMainThemingService } from '@ui5/webcomponents-ngx/main/theming';
+import '@ui5/webcomponents/dist/Assets.js';
+import { AvatarComponent } from '@ui5/webcomponents-ngx/main/avatar';
+import { AvatarGroupComponent } from '@ui5/webcomponents-ngx/main/avatar-group';
+import { BadgeComponent } from '@ui5/webcomponents-ngx/main/badge';
+import { BreadcrumbsComponent } from '@ui5/webcomponents-ngx/main/breadcrumbs';
+import { BreadcrumbsItemComponent } from '@ui5/webcomponents-ngx/main/breadcrumbs-item';
+import { BusyIndicatorComponent } from '@ui5/webcomponents-ngx/main/busy-indicator';
+import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
+import { CalendarComponent } from '@ui5/webcomponents-ngx/main/calendar';
+import { CalendarDateComponent } from '@ui5/webcomponents-ngx/main/calendar-date';
+import { CardComponent } from '@ui5/webcomponents-ngx/main/card';
+import { CardHeaderComponent } from '@ui5/webcomponents-ngx/main/card-header';
+import { CarouselComponent } from '@ui5/webcomponents-ngx/main/carousel';
+import { CheckBoxComponent } from '@ui5/webcomponents-ngx/main/check-box';
+import { ColorPaletteComponent } from '@ui5/webcomponents-ngx/main/color-palette';
+import { ColorPaletteItemComponent } from '@ui5/webcomponents-ngx/main/color-palette-item';
+import { ColorPalettePopoverComponent } from '@ui5/webcomponents-ngx/main/color-palette-popover';
+import { ColorPickerComponent } from '@ui5/webcomponents-ngx/main/color-picker';
+import { ComboBoxComponent } from '@ui5/webcomponents-ngx/main/combo-box';
+import { ComboBoxGroupItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-group-item';
+import { ComboBoxItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-item';
+import { CustomListItemComponent } from '@ui5/webcomponents-ngx/main/custom-list-item';
+import { DatePickerComponent } from '@ui5/webcomponents-ngx/main/date-picker';
+import { DateRangePickerComponent } from '@ui5/webcomponents-ngx/main/date-range-picker';
+import { DateTimePickerComponent } from '@ui5/webcomponents-ngx/main/date-time-picker';
+import { DayPickerComponent } from '@ui5/webcomponents-ngx/main/day-picker';
+import { DialogComponent } from '@ui5/webcomponents-ngx/main/dialog';
+import { FileUploaderComponent } from '@ui5/webcomponents-ngx/main/file-uploader';
+import { GroupHeaderListItemComponent } from '@ui5/webcomponents-ngx/main/group-header-list-item';
+import { IconComponent } from '@ui5/webcomponents-ngx/main/icon';
+import { InputComponent } from '@ui5/webcomponents-ngx/main/input';
+import { LabelComponent } from '@ui5/webcomponents-ngx/main/label';
+import { LinkComponent } from '@ui5/webcomponents-ngx/main/link';
+import { ListComponent } from '@ui5/webcomponents-ngx/main/list';
+import { MenuComponent } from '@ui5/webcomponents-ngx/main/menu';
+import { MenuItemComponent } from '@ui5/webcomponents-ngx/main/menu-item';
+import { MessageStripComponent } from '@ui5/webcomponents-ngx/main/message-strip';
+import { MonthPickerComponent } from '@ui5/webcomponents-ngx/main/month-picker';
+import { MultiComboBoxComponent } from '@ui5/webcomponents-ngx/main/multi-combo-box';
+import { MultiComboBoxGroupItemComponent } from '@ui5/webcomponents-ngx/main/multi-combo-box-group-item';
+import { MultiComboBoxItemComponent } from '@ui5/webcomponents-ngx/main/multi-combo-box-item';
+import { MultiInputComponent } from '@ui5/webcomponents-ngx/main/multi-input';
+import { OptionComponent } from '@ui5/webcomponents-ngx/main/option';
+import { PanelComponent } from '@ui5/webcomponents-ngx/main/panel';
+import { PopoverComponent } from '@ui5/webcomponents-ngx/main/popover';
+import { ProgressIndicatorComponent } from '@ui5/webcomponents-ngx/main/progress-indicator';
+import { RadioButtonComponent } from '@ui5/webcomponents-ngx/main/radio-button';
+import { RangeSliderComponent } from '@ui5/webcomponents-ngx/main/range-slider';
+import { RatingIndicatorComponent } from '@ui5/webcomponents-ngx/main/rating-indicator';
+import { ResponsivePopoverComponent } from '@ui5/webcomponents-ngx/main/responsive-popover';
+import { SegmentedButtonComponent } from '@ui5/webcomponents-ngx/main/segmented-button';
+import { SegmentedButtonItemComponent } from '@ui5/webcomponents-ngx/main/segmented-button-item';
+import { SelectComponent } from '@ui5/webcomponents-ngx/main/select';
+import { SliderComponent } from '@ui5/webcomponents-ngx/main/slider';
+import { SliderBaseComponent } from '@ui5/webcomponents-ngx/main/slider-base';
+import { SplitButtonComponent } from '@ui5/webcomponents-ngx/main/split-button';
+import { StandardListItemComponent } from '@ui5/webcomponents-ngx/main/standard-list-item';
+import { StepInputComponent } from '@ui5/webcomponents-ngx/main/step-input';
+import { SuggestionGroupItemComponent } from '@ui5/webcomponents-ngx/main/suggestion-group-item';
+import { SuggestionItemComponent } from '@ui5/webcomponents-ngx/main/suggestion-item';
+import { SwitchComponent } from '@ui5/webcomponents-ngx/main/switch';
+import { TabComponent } from '@ui5/webcomponents-ngx/main/tab';
+import { TabContainerComponent } from '@ui5/webcomponents-ngx/main/tab-container';
+import { TableComponent } from '@ui5/webcomponents-ngx/main/table';
+import { TableCellComponent } from '@ui5/webcomponents-ngx/main/table-cell';
+import { TableColumnComponent } from '@ui5/webcomponents-ngx/main/table-column';
+import { TableGroupRowComponent } from '@ui5/webcomponents-ngx/main/table-group-row';
+import { TableRowComponent } from '@ui5/webcomponents-ngx/main/table-row';
+import { TabSeparatorComponent } from '@ui5/webcomponents-ngx/main/tab-separator';
+import { TextAreaComponent } from '@ui5/webcomponents-ngx/main/text-area';
+import { TimePickerComponent } from '@ui5/webcomponents-ngx/main/time-picker';
+import { TitleComponent } from '@ui5/webcomponents-ngx/main/title';
+import { ToastComponent } from '@ui5/webcomponents-ngx/main/toast';
+import { ToggleButtonComponent } from '@ui5/webcomponents-ngx/main/toggle-button';
+import { TokenComponent } from '@ui5/webcomponents-ngx/main/token';
+import { TreeComponent } from '@ui5/webcomponents-ngx/main/tree';
+import { TreeItemComponent } from '@ui5/webcomponents-ngx/main/tree-item';
+import { TreeItemCustomComponent } from '@ui5/webcomponents-ngx/main/tree-item-custom';
+import { WheelSliderComponent } from '@ui5/webcomponents-ngx/main/wheel-slider';
+import { YearPickerComponent } from '@ui5/webcomponents-ngx/main/year-picker';
+const imports = [
+    AvatarComponent,
+    AvatarGroupComponent,
+    BadgeComponent,
+    BreadcrumbsComponent,
+    BreadcrumbsItemComponent,
+    BusyIndicatorComponent,
+    ButtonComponent,
+    CalendarComponent,
+    CalendarDateComponent,
+    CardComponent,
+    CardHeaderComponent,
+    CarouselComponent,
+    CheckBoxComponent,
+    ColorPaletteComponent,
+    ColorPaletteItemComponent,
+    ColorPalettePopoverComponent,
+    ColorPickerComponent,
+    ComboBoxComponent,
+    ComboBoxGroupItemComponent,
+    ComboBoxItemComponent,
+    CustomListItemComponent,
+    DatePickerComponent,
+    DateRangePickerComponent,
+    DateTimePickerComponent,
+    DayPickerComponent,
+    DialogComponent,
+    FileUploaderComponent,
+    GroupHeaderListItemComponent,
+    IconComponent,
+    InputComponent,
+    LabelComponent,
+    LinkComponent,
+    ListComponent,
+    MenuComponent,
+    MenuItemComponent,
+    MessageStripComponent,
+    MonthPickerComponent,
+    MultiComboBoxComponent,
+    MultiComboBoxGroupItemComponent,
+    MultiComboBoxItemComponent,
+    MultiInputComponent,
+    OptionComponent,
+    PanelComponent,
+    PopoverComponent,
+    ProgressIndicatorComponent,
+    RadioButtonComponent,
+    RangeSliderComponent,
+    RatingIndicatorComponent,
+    ResponsivePopoverComponent,
+    SegmentedButtonComponent,
+    SegmentedButtonItemComponent,
+    SelectComponent,
+    SliderComponent,
+    SliderBaseComponent,
+    SplitButtonComponent,
+    StandardListItemComponent,
+    StepInputComponent,
+    SuggestionGroupItemComponent,
+    SuggestionItemComponent,
+    SwitchComponent,
+    TabComponent,
+    TabContainerComponent,
+    TableComponent,
+    TableCellComponent,
+    TableColumnComponent,
+    TableGroupRowComponent,
+    TableRowComponent,
+    TabSeparatorComponent,
+    TextAreaComponent,
+    TimePickerComponent,
+    TitleComponent,
+    ToastComponent,
+    ToggleButtonComponent,
+    TokenComponent,
+    TreeComponent,
+    TreeItemComponent,
+    TreeItemCustomComponent,
+    WheelSliderComponent,
+    YearPickerComponent,
+];
+const exports = [...imports];
+let Ui5MainModule = class Ui5MainModule {
+    constructor(ui5WebcomponentsMainThemingService) { }
+};
+Ui5MainModule = __decorate([
+    NgModule({
+        imports: [...imports],
+        exports: [...exports],
+    }),
+    __metadata(\\"design:paramtypes\\", [Ui5WebcomponentsMainThemingService])
+], Ui5MainModule);
+export { Ui5MainModule };
+//# sourceMappingURL=ui5-main.module.js.map"
 `;
 
 exports[`Snapshot test Main Ui 5 Main Module Ts should match the snapshot 1`] = `

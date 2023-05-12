@@ -38,8 +38,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["dist/libs/ui5-angular"],
       "options": {
-        "project": "libs/ui5-angular/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": false
+        "project": "libs/ui5-angular/ng-package.json"
       },
       "configurations": {
         "production": {

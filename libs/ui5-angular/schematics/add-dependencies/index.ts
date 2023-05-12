@@ -12,11 +12,6 @@ const themingNgxPackageName = '@ui5/theming-ngx';
 
 export function addDependencies(options: Schema): Rule {
   return (tree, context) => updateWorkspace(async () => {
-
-    if (!options.theming && options.commonCss.length === 0) {
-      return;
-    }
-
     if (options.commonCss.length && !getPackageVersionFromPackageJson(tree, commonCssPackageName)) {
       addPackageToPackageJson(tree, commonCssPackageName, 'latest');
     }

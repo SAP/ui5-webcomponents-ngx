@@ -1,7 +1,7 @@
 import { PrepareOptions } from './prepareOptions';
 import { logger, ProjectConfiguration } from '@nx/devkit';
 import { SchematicsOptions } from './schematicsOptions';
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import {
   copySync,
   pathExistsSync,
@@ -11,20 +11,12 @@ import {
 
 const runTsc = async (tsConfigPath: string) => {
   return new Promise((resolve, reject) => {
-    const process = exec(`tsc -p ${tsConfigPath}`);
-    process.stdout?.on('data', (data) => {
-      logger.info(data);
-    });
-    process.stderr?.on('data', (data) => {
-      logger.error(data);
-    });
-    process.on('close', (code) => {
-      if (code === 0) {
-        resolve(0);
-      } else {
-        reject(new Error(`tsc exited with code ${code}`));
-      }
-    });
+    try {
+      execSync(`npx tsc -p ${tsConfigPath}`, { stdio: 'inherit' });
+      resolve(0);
+    } catch (e) {
+      reject(e);
+    }
   });
 };
 

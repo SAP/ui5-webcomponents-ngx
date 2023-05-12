@@ -36,8 +36,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["dist/libs/fundamental-styles"],
       "options": {
-        "project": "libs/fundamental-styles/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": false
+        "project": "libs/fundamental-styles/ng-package.json"
       },
       "configurations": {
         "production": {

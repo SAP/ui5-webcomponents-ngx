@@ -1,6 +1,9 @@
-import {formatFiles, readProjectConfiguration, Tree} from "@nrwl/devkit";
-import {fsCommit, NxFsImplementation} from "@ui5/webcomponents-wrapper-fs-commit";
-import {wrapper, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
+import {
+  fsCommit,
+  NxFsImplementation,
+} from '@ui5/webcomponents-wrapper-fs-commit';
+import { wrapper, WrapperConfig } from '@ui5/webcomponents-wrapper';
 
 export default async function generateComponents(
   tree: Tree,
@@ -11,10 +14,9 @@ export default async function generateComponents(
   const basePath = projectConfiguration.sourceRoot;
   await wrapper({
     commit: fsCommit(fsAdapter, basePath),
-    ...options
+    ...options,
   });
   await formatFiles(tree);
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  return () => {
-  };
+  return () => {};
 }

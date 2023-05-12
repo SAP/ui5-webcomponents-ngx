@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Sync",
   "title": "",
   "type": "object",
@@ -15,5 +14,7 @@
       "x-prompt": "What name would you like to use?"
     }
   },
-  "required": ["project"]
+  "required": [
+    "project"
+  ]
 }

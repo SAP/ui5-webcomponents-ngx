@@ -1,14 +1,13 @@
 {
   "name": "playground",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/playground/src",
   "prefix": "ui-angular",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/playground",
         "index": "apps/playground/src/index.html",
@@ -20,9 +19,7 @@
           "apps/playground/src/favicon.ico",
           "apps/playground/src/assets"
         ],
-        "styles": [
-          "apps/playground/src/styles.scss"
-        ],
+        "styles": ["apps/playground/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -82,7 +79,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/playground/**/*.ts",

@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "@nx/enforce-module-boundaries": ["warning"]
+        "@nx/enforce-module-boundaries": [2]
       },
       "extends": [
         "plugin:@nx/angular",

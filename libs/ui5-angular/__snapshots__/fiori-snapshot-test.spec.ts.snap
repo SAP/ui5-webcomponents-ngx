@@ -784,6 +784,13 @@ export declare interface IllustratedMessageComponent
 "
 `;
 
+exports[`Snapshot test Fiori Index Js Map should match the snapshot 1`] = `"{\\"version\\":3,\\"file\\":\\"index.js\\",\\"sourceRoot\\":\\"\\",\\"sources\\":[\\"index.ts\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,oBAAoB,CAAC\\"}"`;
+
+exports[`Snapshot test Fiori Index Js should match the snapshot 1`] = `
+"export { Ui5FioriModule } from './ui5-fiori.module';
+//# sourceMappingURL=index.js.map"
+`;
+
 exports[`Snapshot test Fiori Index Ts should match the snapshot 1`] = `
 "export { Ui5FioriModule } from './ui5-fiori.module';
 "
@@ -2820,6 +2827,86 @@ export class TimelineComponent {
 
 export declare interface TimelineComponent extends Partial<TimelineElement> {}
 "
+`;
+
+exports[`Snapshot test Fiori Ui 5 Fiori Module Js Map should match the snapshot 1`] = `"{\\"version\\":3,\\"file\\":\\"ui5-fiori.module.js\\",\\"sourceRoot\\":\\"\\",\\"sources\\":[\\"ui5-fiori.module.ts\\"],\\"names\\":[],\\"mappings\\":\\"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\\"}"`;
+
+exports[`Snapshot test Fiori Ui 5 Fiori Module Js should match the snapshot 1`] = `
+"import { __decorate, __metadata } from \\"tslib\\";
+import { NgModule } from '@angular/core';
+import { Ui5WebcomponentsFioriThemingService } from '@ui5/webcomponents-ngx/fiori/theming';
+import '@ui5/webcomponents-fiori/dist/Assets.js';
+import { BarComponent } from '@ui5/webcomponents-ngx/fiori/bar';
+import { BarcodeScannerDialogComponent } from '@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog';
+import { DynamicSideContentComponent } from '@ui5/webcomponents-ngx/fiori/dynamic-side-content';
+import { FilterItemComponent } from '@ui5/webcomponents-ngx/fiori/filter-item';
+import { FilterItemOptionComponent } from '@ui5/webcomponents-ngx/fiori/filter-item-option';
+import { FlexibleColumnLayoutComponent } from '@ui5/webcomponents-ngx/fiori/flexible-column-layout';
+import { IllustratedMessageComponent } from '@ui5/webcomponents-ngx/fiori/illustrated-message';
+import { MediaGalleryComponent } from '@ui5/webcomponents-ngx/fiori/media-gallery';
+import { MediaGalleryItemComponent } from '@ui5/webcomponents-ngx/fiori/media-gallery-item';
+import { NotificationActionComponent } from '@ui5/webcomponents-ngx/fiori/notification-action';
+import { NotificationListGroupItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-group-item';
+import { NotificationListItemComponent } from '@ui5/webcomponents-ngx/fiori/notification-list-item';
+import { PageComponent } from '@ui5/webcomponents-ngx/fiori/page';
+import { ProductSwitchComponent } from '@ui5/webcomponents-ngx/fiori/product-switch';
+import { ProductSwitchItemComponent } from '@ui5/webcomponents-ngx/fiori/product-switch-item';
+import { ShellBarComponent } from '@ui5/webcomponents-ngx/fiori/shell-bar';
+import { ShellBarItemComponent } from '@ui5/webcomponents-ngx/fiori/shell-bar-item';
+import { SideNavigationComponent } from '@ui5/webcomponents-ngx/fiori/side-navigation';
+import { SideNavigationItemComponent } from '@ui5/webcomponents-ngx/fiori/side-navigation-item';
+import { SideNavigationSubItemComponent } from '@ui5/webcomponents-ngx/fiori/side-navigation-sub-item';
+import { SortItemComponent } from '@ui5/webcomponents-ngx/fiori/sort-item';
+import { TimelineComponent } from '@ui5/webcomponents-ngx/fiori/timeline';
+import { TimelineItemComponent } from '@ui5/webcomponents-ngx/fiori/timeline-item';
+import { UploadCollectionComponent } from '@ui5/webcomponents-ngx/fiori/upload-collection';
+import { UploadCollectionItemComponent } from '@ui5/webcomponents-ngx/fiori/upload-collection-item';
+import { ViewSettingsDialogComponent } from '@ui5/webcomponents-ngx/fiori/view-settings-dialog';
+import { WizardComponent } from '@ui5/webcomponents-ngx/fiori/wizard';
+import { WizardStepComponent } from '@ui5/webcomponents-ngx/fiori/wizard-step';
+const imports = [
+    BarComponent,
+    BarcodeScannerDialogComponent,
+    DynamicSideContentComponent,
+    FilterItemComponent,
+    FilterItemOptionComponent,
+    FlexibleColumnLayoutComponent,
+    IllustratedMessageComponent,
+    MediaGalleryComponent,
+    MediaGalleryItemComponent,
+    NotificationActionComponent,
+    NotificationListGroupItemComponent,
+    NotificationListItemComponent,
+    PageComponent,
+    ProductSwitchComponent,
+    ProductSwitchItemComponent,
+    ShellBarComponent,
+    ShellBarItemComponent,
+    SideNavigationComponent,
+    SideNavigationItemComponent,
+    SideNavigationSubItemComponent,
+    SortItemComponent,
+    TimelineComponent,
+    TimelineItemComponent,
+    UploadCollectionComponent,
+    UploadCollectionItemComponent,
+    ViewSettingsDialogComponent,
+    WizardComponent,
+    WizardStepComponent,
+];
+const exports = [...imports];
+let Ui5FioriModule = class Ui5FioriModule {
+    constructor(ui5WebcomponentsFioriThemingService) { }
+};
+Ui5FioriModule = __decorate([
+    NgModule({
+        imports: [...imports],
+        exports: [...exports],
+    }),
+    __metadata(\\"design:paramtypes\\", [Ui5WebcomponentsFioriThemingService])
+], Ui5FioriModule);
+export { Ui5FioriModule };
+//# sourceMappingURL=ui5-fiori.module.js.map"
 `;
 
 exports[`Snapshot test Fiori Ui 5 Fiori Module Ts should match the snapshot 1`] = `

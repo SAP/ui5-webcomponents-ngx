@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-api-json-parser",
-  "version": "0.1.2-rc.0",
+  "version": "0.1.2-rc.1",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "type": "commonjs"

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.2-rc.0...v0.1.2-rc.1) (2023-05-15)
+
+### Bug Fixes
+
+- missing dependencies ([#66](https://github.com/SAP/ui5-webcomponents-ngx/issues/66)) ([97b70af](https://github.com/SAP/ui5-webcomponents-ngx/commit/97b70af7f4a91fabe97142762129ba7d09711ca6)), closes [#67](https://github.com/SAP/ui5-webcomponents-ngx/issues/67)
+
 ## [0.1.2-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1...v0.1.2-rc.0) (2023-05-12)
 
 **Note:** Version bump only for package @fundamental-styles/theming-ngx

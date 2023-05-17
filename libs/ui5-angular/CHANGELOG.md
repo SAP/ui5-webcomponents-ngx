@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.0-rc.0...v0.2.0-rc.1) (2023-05-17)
+
+### Features
+
+- update migrations setup ([#70](https://github.com/SAP/ui5-webcomponents-ngx/issues/70)) ([8889faa](https://github.com/SAP/ui5-webcomponents-ngx/commit/8889faa8ff779813da91cdc8252c6829ccea074f))
+
 # [0.2.0-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.2-rc.1...v0.2.0-rc.0) (2023-05-15)
 
 ### Bug Fixes

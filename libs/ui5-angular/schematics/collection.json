@@ -29,6 +29,11 @@
       "factory": "./add-theming/index#addTheming",
       "schema": "./add-theming/schema.json",
       "private": true
+    },
+    "add-i18n": {
+      "description": "Adds i18n capabilities to the angular application.",
+      "factory": "./add-i18n/index#addI18n",
+      "schema": "./add-i18n/schema.json"
     }
   }
 }

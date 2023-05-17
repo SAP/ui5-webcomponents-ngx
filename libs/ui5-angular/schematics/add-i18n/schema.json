@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "I18nAdd",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "useI18n": {
+      "type": "boolean",
+      "description": "Whether to use internationalization.",
+      "default": true
+    },
+    "defaultLanguage": {
+      "type": "string",
+      "description": "The default language to use.",
+      "default": "en"
+    }
+  },
+  "required": []
+}

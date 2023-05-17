@@ -7,12 +7,14 @@ import {
 } from '@angular-devkit/schematics';
 import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { collectConfig } from '../get-config';
-import { Schema } from '../schema';
+import { getI18nConfig } from '../get-i18n-config'
+import { NgAddSchema } from './schema';
 
-export function ngAdd(options: Schema): Rule {
+export function ngAdd(options: NgAddSchema): Rule {
   return async (_: Tree, context: SchematicContext) => {
     const userConfig = await collectConfig();
-    options = { ...options, ...userConfig };
+    const i18nConfig = await getI18nConfig();
+    options = {...options, ...userConfig, ...i18nConfig};
 
     // First, queue dependency installation task.
     const dependenciesTaskId = context.addTask(new RunSchematicTask('add-dependencies', options));
@@ -24,9 +26,10 @@ export function ngAdd(options: Schema): Rule {
   };
 }
 
-export function proceedWithSchematics(options: Schema): Rule {
+export function proceedWithSchematics(options: NgAddSchema): Rule {
   return chain([
-      schematic('add-styles', options),
-      schematic('add-theming', options)
+    schematic('add-styles', options),
+    schematic('add-theming', options),
+    schematic('add-i18n', options),
   ]);
 }

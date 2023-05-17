@@ -4,7 +4,8 @@ import {distinctUntilChanged, Subject, Subscription, takeUntil} from "rxjs";
 
 @Pipe({
   name: 'ui5I18n',
-  pure: false
+  pure: false,
+  standalone: true
 })
 export class I18nPipe implements PipeTransform, OnDestroy {
   private _lastTranslationValue = '';

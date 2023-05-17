@@ -1,8 +1,9 @@
-import {updateWorkspace} from '@schematics/angular/utility/workspace';
-import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {Rule, SchematicsException} from '@angular-devkit/schematics';
-import {Schema} from '../schema';
-import {addThemingModule} from './add-theming-module';
+import { updateWorkspace } from '@schematics/angular/utility/workspace';
+import { Change, InsertChange } from '@schematics/angular/utility/change';
+import { Rule } from '@angular-devkit/schematics';
+import { Schema } from '../schema';
+import { addThemingModule } from './add-theming-module';
+import { getProjectDefinition } from "../utils/get-project-definition";
 
 export function addTheming(options: Schema): Rule {
   return (tree, context) =>
@@ -11,21 +12,9 @@ export function addTheming(options: Schema): Rule {
         return;
       }
 
-      const currentWorkspace = workspace.projects.get(options.project);
+      const projectDefinition = getProjectDefinition(workspace, options.project);
 
-      if (!currentWorkspace) {
-        throw new SchematicsException('Project with such name not found.');
-      }
-
-      const buildTargetOptions = currentWorkspace.targets.get('build')?.options;
-
-      if (!buildTargetOptions) {
-        throw new SchematicsException(
-          'Could not find build target options for defined project.'
-        );
-      }
-
-      const update: { changes: Change[], file: string } = addThemingModule(tree, currentWorkspace, context, options);
+      const update: { changes: Change[], file: string } = addThemingModule(tree, projectDefinition, context, options);
       const exportRecorder = tree.beginUpdate(update.file);
 
       for (const change of update.changes) {

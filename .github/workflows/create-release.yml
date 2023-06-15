@@ -10,6 +10,9 @@ env:
   IS_HOTFIX: ${{ github.ref == 'refs/heads/tmp_hotfix_branch' }}
   IS_PRERELEASE: ${{ github.event_name == 'push' && github.ref != 'refs/heads/tmp_hotfix_branch' }}
   IS_MANUAL: ${{ contains(github.event.head_commit.message, 'chore(release)') }}
+  NX_BRANCH: ${{ github.event.number || github.ref_name }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
 
 jobs:
   create-release:

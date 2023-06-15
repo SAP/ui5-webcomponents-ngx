@@ -3276,14 +3276,14 @@ interface ViewSettingsDialogComponentEventsMap
     sortBy: string;
     sortByItem: HTMLElement;
     sortDescending: boolean;
-    filterItems: Array<any>;
+    filters: Array<any>;
   }>;
   confirm: CustomEvent<{
     sortOrder: string;
     sortBy: string;
     sortByItem: HTMLElement;
     sortDescending: boolean;
-    filterItems: Array<any>;
+    filters: Array<any>;
   }>;
 }
 
@@ -3528,7 +3528,8 @@ interface WizardComponentEventsMap
 }
 
 export declare interface WizardElement
-  extends Partial<Omit<Wizard, 'stepChange'>> {
+  extends Partial<Omit<Wizard, 'stepChange' | 'contentLayout'>> {
+  contentLayout: 'MultipleSteps' | 'SingleStep';
   addEventListener<K extends keyof WizardComponentEventsMap>(
     type: K,
     listener: (this: WizardElement, ev: WizardComponentEventsMap[K]) => any,
@@ -3552,7 +3553,7 @@ export declare interface WizardElement
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element'])
+@ProxyInputs(['effectiveDir', 'isUi5Element', 'contentLayout'])
 @ProxyOutputs(['stepChange'])
 @ProxyMethods([
   '_render',
@@ -3580,11 +3581,16 @@ export declare interface WizardElement
   template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5Wizard',
   standalone: true,
-  inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'contentLayout: content-layout',
+  ],
   outputs: ['stepChange: ui5StepChange'],
   providers: [],
 })
 export class WizardComponent {
+  contentLayout?: WizardElement['contentLayout'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<WizardElement>,

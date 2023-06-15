@@ -1296,17 +1296,23 @@ export declare interface CarouselElement
       Carousel,
       | 'navigate'
       | 'arrowsPlacement'
+      | 'backgroundDesign'
       | 'cyclic'
       | 'hideNavigationArrows'
       | 'hidePageIndicator'
+      | 'pageIndicatorBackgroundDesign'
+      | 'pageIndicatorBorderDesign'
       | 'pageIndicatorStyle'
     >
   > {
   arrowsPlacement: 'Content' | 'Navigation';
+  backgroundDesign: 'Solid' | 'Translucent' | 'Transparent';
   cyclic: boolean;
   hideNavigationArrows: boolean;
   hidePageIndicator: boolean;
 
+  pageIndicatorBackgroundDesign: 'Solid' | 'Translucent' | 'Transparent';
+  pageIndicatorBorderDesign: 'Transparent' | 'Solid';
   pageIndicatorStyle: 'Default' | 'Numeric';
   addEventListener<K extends keyof CarouselComponentEventsMap>(
     type: K,
@@ -1335,12 +1341,15 @@ export declare interface CarouselElement
   'effectiveDir',
   'isUi5Element',
   'arrowsPlacement',
+  'backgroundDesign',
   'cyclic',
   'hideNavigationArrows',
   'hidePageIndicator',
   'itemsPerPageL',
   'itemsPerPageM',
   'itemsPerPageS',
+  'pageIndicatorBackgroundDesign',
+  'pageIndicatorBorderDesign',
   'pageIndicatorStyle',
 ])
 @ProxyOutputs(['navigate'])
@@ -1375,12 +1384,15 @@ export declare interface CarouselElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'arrowsPlacement: arrows-placement',
+    'backgroundDesign: background-design',
     'cyclic',
     'hideNavigationArrows: hide-navigation-arrows',
     'hidePageIndicator: hide-page-indicator',
     'itemsPerPageL: items-per-page-l',
     'itemsPerPageM: items-per-page-m',
     'itemsPerPageS: items-per-page-s',
+    'pageIndicatorBackgroundDesign: page-indicator-background-design',
+    'pageIndicatorBorderDesign: page-indicator-border-design',
     'pageIndicatorStyle: page-indicator-style',
   ],
   outputs: ['navigate: ui5Navigate'],
@@ -1388,9 +1400,12 @@ export declare interface CarouselElement
 })
 export class CarouselComponent {
   arrowsPlacement?: CarouselElement['arrowsPlacement'];
+  backgroundDesign?: CarouselElement['backgroundDesign'];
   cyclic?: CarouselElement['cyclic'];
   hideNavigationArrows?: CarouselElement['hideNavigationArrows'];
   hidePageIndicator?: CarouselElement['hidePageIndicator'];
+  pageIndicatorBackgroundDesign?: CarouselElement['pageIndicatorBackgroundDesign'];
+  pageIndicatorBorderDesign?: CarouselElement['pageIndicatorBorderDesign'];
   pageIndicatorStyle?: CarouselElement['pageIndicatorStyle'];
   constructor(
     private c: ChangeDetectorRef,
@@ -2231,7 +2246,7 @@ export declare interface ComboBoxElement
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-  filter: string;
+  filter: 'Contains' | 'None' | 'StartsWith' | 'StartsWithPerTerm';
   loading: boolean;
   placeholder: string;
   readonly: boolean;
@@ -4820,8 +4835,8 @@ interface MenuComponentEventsMap
   afterClose: CustomEvent<void>;
   afterOpen: CustomEvent<void>;
   beforeClose: CustomEvent<{ escPressed: boolean }>;
-  beforeOpen: CustomEvent<void>;
-  itemClick: CustomEvent<{ item: Record<string, any>; text: string }>;
+  beforeOpen: CustomEvent<{ item: HTMLElement }>;
+  itemClick: CustomEvent<{ item: HTMLElement; text: string }>;
 }
 
 export declare interface MenuElement
@@ -5464,7 +5479,7 @@ export declare interface MultiComboBoxElement
   accessibleNameRef: string;
   allowCustomValues: boolean;
   disabled: boolean;
-  filter: string;
+  filter: 'Contains' | 'None' | 'StartsWith' | 'StartsWithPerTerm';
   noTypeahead: boolean;
   open: boolean;
   placeholder: string;
@@ -7346,12 +7361,18 @@ import type SegmentedButton from '@ui5/webcomponents/dist/SegmentedButton.js';
 
 interface SegmentedButtonComponentEventsMap
   extends Omit<HTMLElementEventMap, 'selectionChange'> {
-  selectionChange: CustomEvent<{ selectedItem: HTMLElement }>;
+  selectionChange: CustomEvent<{
+    selectedItem: HTMLElement;
+    selectedItems: HTMLElement;
+  }>;
 }
 
 export declare interface SegmentedButtonElement
-  extends Partial<Omit<SegmentedButton, 'selectionChange' | 'accessibleName'>> {
+  extends Partial<
+    Omit<SegmentedButton, 'selectionChange' | 'accessibleName' | 'mode'>
+  > {
   accessibleName: string;
+  mode: 'MultiSelect' | 'SingleSelect';
 
   addEventListener<K extends keyof SegmentedButtonComponentEventsMap>(
     type: K,
@@ -7382,7 +7403,14 @@ export declare interface SegmentedButtonElement
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element', 'accessibleName', 'selectedItem'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'accessibleName',
+  'mode',
+  'selectedItem',
+  'selectedItems',
+])
 @ProxyOutputs(['selectionChange'])
 @ProxyMethods([
   '_render',
@@ -7414,13 +7442,16 @@ export declare interface SegmentedButtonElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
+    'mode',
     'selectedItem: selected-item',
+    'selectedItems: selected-items',
   ],
   outputs: ['selectionChange: ui5SelectionChange'],
   providers: [],
 })
 export class SegmentedButtonComponent {
   accessibleName?: SegmentedButtonElement['accessibleName'];
+  mode?: SegmentedButtonElement['mode'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<SegmentedButtonElement>,

@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/wrapper",
         "main": "libs/wrapper/src/index.ts",
         "tsConfig": "libs/wrapper/tsconfig.lib.json",
-        "assets": ["libs/wrapper/*.md"]
+        "assets": ["libs/wrapper/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {

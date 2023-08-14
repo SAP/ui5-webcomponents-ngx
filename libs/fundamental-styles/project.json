@@ -26,17 +26,18 @@
         ]
       },
       "outputs": [
-        "libs/fundamental-styles/directives",
-        "libs/fundamental-styles/theming/theming.config.ts",
-        "libs/fundamental-styles/fundamental-styles-components.module.ts",
-        "libs/fundamental-styles/index.ts"
+        "{projectRoot}/directives",
+        "{projectRoot}/theming/theming.config.ts",
+        "{projectRoot}/fundamental-styles-components.module.ts",
+        "{projectRoot}/index.ts"
       ]
     },
     "build": {
       "executor": "@nx/angular:package",
-      "outputs": ["dist/libs/fundamental-styles"],
+      "outputs": ["{workspaceRoot}/dist/libs/fundamental-styles"],
       "options": {
-        "project": "libs/fundamental-styles/ng-package.json"
+        "project": "libs/fundamental-styles/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {

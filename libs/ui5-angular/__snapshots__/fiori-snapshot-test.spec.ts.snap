@@ -2943,18 +2943,21 @@ export declare interface UploadCollectionItemElement
       | 'disableDeleteButton'
       | 'fileName'
       | 'fileNameClickable'
+      | 'hideDeleteButton'
       | 'hideRetryButton'
       | 'hideTerminateButton'
       | 'uploadState'
     >
   > {
   selected: boolean;
+
   navigated: boolean;
   type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
   disableDeleteButton: boolean;
 
   fileName: string;
   fileNameClickable: boolean;
+  hideDeleteButton: boolean;
   hideRetryButton: boolean;
   hideTerminateButton: boolean;
 
@@ -2992,12 +2995,14 @@ export declare interface UploadCollectionItemElement
   'effectiveDir',
   'isUi5Element',
   'selected',
+  'accessibilityAttributes',
   'navigated',
   'type',
   'disableDeleteButton',
   'file',
   'fileName',
   'fileNameClickable',
+  'hideDeleteButton',
   'hideRetryButton',
   'hideTerminateButton',
   'progress',
@@ -3034,12 +3039,14 @@ export declare interface UploadCollectionItemElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'selected',
+    'accessibilityAttributes: accessibility-attributes',
     'navigated',
     'type',
     'disableDeleteButton: disable-delete-button',
     'file',
     'fileName: file-name',
     'fileNameClickable: file-name-clickable',
+    'hideDeleteButton: hide-delete-button',
     'hideRetryButton: hide-retry-button',
     'hideTerminateButton: hide-terminate-button',
     'progress',
@@ -3061,6 +3068,7 @@ export class UploadCollectionItemComponent {
   disableDeleteButton?: UploadCollectionItemElement['disableDeleteButton'];
   fileName?: UploadCollectionItemElement['fileName'];
   fileNameClickable?: UploadCollectionItemElement['fileNameClickable'];
+  hideDeleteButton?: UploadCollectionItemElement['hideDeleteButton'];
   hideRetryButton?: UploadCollectionItemElement['hideRetryButton'];
   hideTerminateButton?: UploadCollectionItemElement['hideTerminateButton'];
   uploadState?: UploadCollectionItemElement['uploadState'];

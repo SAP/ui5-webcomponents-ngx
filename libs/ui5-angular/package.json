@@ -16,9 +16,9 @@
     "directory": "libs/ui5-angular"
   },
   "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0",
-    "@angular/forms": "^16.0.0",
+    "@angular/common": "^16.1.0",
+    "@angular/core": "^16.1.0",
+    "@angular/forms": "^16.1.0",
     "@ui5/webcomponents": "^1.13.2",
     "@ui5/webcomponents-base": "^1.13.2",
     "@ui5/webcomponents-fiori": "^1.13.2",

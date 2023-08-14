@@ -119,5 +119,6 @@
     "ts-node": "10.9.1",
     "typescript": "^5.0.4",
     "webpack": "^5.64.0"
-  }
+  },
+  "packageManager": "yarn@3.6.1"
 }

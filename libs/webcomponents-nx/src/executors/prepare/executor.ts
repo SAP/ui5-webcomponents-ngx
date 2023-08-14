@@ -1,5 +1,4 @@
-import { ExecutorContext } from 'nx/src/config/misc-interfaces';
-import { ProjectConfiguration } from '@nx/devkit';
+import { ExecutorContext, ProjectConfiguration } from '@nx/devkit';
 import { execSync } from 'child_process';
 import { PrepareOptions } from './prepareOptions';
 import { copySchematics } from './copySchematics';

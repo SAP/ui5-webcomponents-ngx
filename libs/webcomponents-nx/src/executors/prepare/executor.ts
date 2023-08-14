@@ -1,9 +1,5 @@
 import { ExecutorContext } from 'nx/src/config/misc-interfaces';
-import {
-  detectPackageManager,
-  getPackageManagerCommand,
-  ProjectConfiguration,
-} from '@nx/devkit';
+import { ProjectConfiguration } from '@nx/devkit';
 import { execSync } from 'child_process';
 import { PrepareOptions } from './prepareOptions';
 import { copySchematics } from './copySchematics';
@@ -19,8 +15,7 @@ export default async function (
   }
   const [outputPath] =
     context.workspace.projects[context.projectName].targets.build.outputs;
-  const packageManager = detectPackageManager('./');
-  execSync(getPackageManagerCommand(packageManager).run('pack', ''), {
+  execSync('npm pack', {
     cwd: outputPath,
     stdio: 'inherit',
   });

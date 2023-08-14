@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/api-json-parser",
         "main": "libs/api-json-parser/src/index.ts",
         "tsConfig": "libs/api-json-parser/tsconfig.lib.json",
-        "assets": ["libs/api-json-parser/*.md"]
+        "assets": ["libs/api-json-parser/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

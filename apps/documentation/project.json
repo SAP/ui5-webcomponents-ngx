@@ -20,7 +20,7 @@
       "options": {
         "configFiles": ["apps/documentation/api-json.config.ts"]
       },
-      "outputs": ["apps/documentation/src/api-json.json"]
+      "outputs": ["{projectRoot}/src/api-json.json"]
     },
     "serve": {
       "executor": "@storybook/angular:start-storybook",

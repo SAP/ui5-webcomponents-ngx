@@ -10,9 +10,10 @@
     },
     "build": {
       "executor": "@nx/angular:package",
-      "outputs": ["dist/libs/ui5-angular-theming"],
+      "outputs": ["{workspaceRoot}/dist/libs/ui5-angular-theming"],
       "options": {
-        "project": "libs/ui5-angular-theming/ng-package.json"
+        "project": "libs/ui5-angular-theming/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {

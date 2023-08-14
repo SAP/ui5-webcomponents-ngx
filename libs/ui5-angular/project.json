@@ -26,19 +26,20 @@
         ]
       },
       "outputs": [
-        "libs/ui5-angular/fiori",
-        "libs/ui5-angular/main",
-        "libs/ui5-angular/generic-cva",
-        "libs/ui5-angular/index.ts",
-        "libs/ui5-angular/theming/supported-themes.ts",
-        "libs/ui5-angular/ui5-webcomponents.module.ts"
+        "{projectRoot}/fiori",
+        "{projectRoot}/main",
+        "{projectRoot}/generic-cva",
+        "{projectRoot}/index.ts",
+        "{projectRoot}/theming/supported-themes.ts",
+        "{projectRoot}/ui5-webcomponents.module.ts"
       ]
     },
     "build": {
       "executor": "@nx/angular:package",
-      "outputs": ["dist/libs/ui5-angular"],
+      "outputs": ["{workspaceRoot}/dist/libs/ui5-angular"],
       "options": {
-        "project": "libs/ui5-angular/ng-package.json"
+        "project": "libs/ui5-angular/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {

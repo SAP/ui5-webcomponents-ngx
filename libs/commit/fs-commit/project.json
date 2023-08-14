@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/commit/fs-commit",
         "main": "libs/commit/fs-commit/src/index.ts",
         "tsConfig": "libs/commit/fs-commit/tsconfig.lib.json",
-        "assets": ["libs/commit/fs-commit/*.md"]
+        "assets": ["libs/commit/fs-commit/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

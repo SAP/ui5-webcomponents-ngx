@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/angular-generator",
         "main": "libs/angular-generator/src/index.ts",
         "tsConfig": "libs/angular-generator/tsconfig.lib.json",
-        "assets": ["libs/angular-generator/*.md"]
+        "assets": ["libs/angular-generator/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

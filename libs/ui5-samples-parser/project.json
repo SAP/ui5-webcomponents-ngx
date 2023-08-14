@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/ui5-samples-parser",
         "main": "libs/ui5-samples-parser/src/index.ts",
         "tsConfig": "libs/ui5-samples-parser/tsconfig.lib.json",
-        "assets": ["libs/ui5-samples-parser/*.md"]
+        "assets": ["libs/ui5-samples-parser/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

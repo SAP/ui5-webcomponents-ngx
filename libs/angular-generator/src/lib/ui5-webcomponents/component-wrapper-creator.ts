@@ -7,6 +7,12 @@ import {AngularGeneratedFile} from "../angular-generated-file";
 import {inputsJson, outputsJson} from "./metadata-tools";
 import {outputType} from "./output-type";
 
+/**
+ * Returns the base class extends string for the component file.
+ *
+ * @param componentFile
+ * @constructor
+ */
 function CvaBaseClassExtends(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
     return '';
@@ -14,6 +20,10 @@ function CvaBaseClassExtends(componentFile: ComponentFile): string {
   return `extends ${genericCva.exports[0].specifiers[0].exported}`;
 }
 
+/**
+ * Returns the providers string for the component file.
+ * @param componentFile
+ */
 function providers(componentFile: ComponentFile) {
   if (componentFile.componentData.formData.length === 0) {
     return '';
@@ -21,6 +31,13 @@ function providers(componentFile: ComponentFile) {
   return `{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${componentFile.wrapperExportSpecifier.local}), multi: true }`
 }
 
+/**
+ * Returns the constructor string for the component file.
+ * If it contains a formData, it means that it also extends the GenericCva class
+ * and needs a super call with proper parameters.
+ * @param componentFile
+ * @constructor
+ */
 export function CvaConstructor(componentFile: ComponentFile): string {
   if (componentFile.componentData.formData.length > 0) {
     let getValue, setValue;
@@ -61,6 +78,23 @@ export function CvaConstructor(componentFile: ComponentFile): string {
   return '';
 }
 
+/**
+ * Returns the component wrapper string.
+ * The component wrapper is an Angular component that wraps the UI5 Web Component
+ * and if needed also extends the GenericCva class.
+ *
+ * Output code also contains the interfaces which are used by the component wrapper.
+ * things like the element type, the events map and the inputs type.
+ *
+ * Types are generated based on the component's inputs, outputs and slots.
+ *
+ * @param componentFile
+ * @param elementTypeName
+ * @param eventsMapName
+ * @param options
+ * @param ComponentsMap
+ * @constructor
+ */
 export function ComponentWrapperCreator(
   componentFile: ComponentFile,
   elementTypeName: string,

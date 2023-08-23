@@ -10,6 +10,11 @@ import {inputsJson, outputsJson} from "./metadata-tools";
 import {outputType} from "./output-type";
 import {outputTypesImportData} from "./output-types-import-data";
 
+/**
+ * Class is used when the source component is a typescript file.
+ * This class is responsible for creating the Angular component file
+ * from TS web component file.
+ */
 export class TsComponentFile extends AngularGeneratedFile {
   private componentClassName = `${this.componentData.baseName}Component`;
 

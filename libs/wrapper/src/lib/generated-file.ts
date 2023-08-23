@@ -9,12 +9,35 @@ import {
 
 type CanBeArray<T> = T | T[];
 
-export abstract class GeneratedFile<ExportsType = void> {
+
+/**
+ * Base class for generated files
+ */
+export abstract class GeneratedFile<ExportsType = unknown> {
+  /**
+   * Returns the code of the generated file,
+   * including imports and exports.
+   * This method should not cache the result,
+   * otherwise the imports and exports will not be updated
+   * when the file is moved, or any of the dependencies are moved
+   */
   abstract getCode(): string;
+
+  /**
+   * Returns the relative path from the requester to this file
+   */
   abstract relativePathFrom: (requester: any) => string;
+
+  /**
+   * Is used to get the relative paths from one instance of a generated file to another
+   */
   get relativePathCaller(): any {
     return this.parsedPath;
   }
+
+  /**
+   * Parsed path of the generated file
+   */
   get parsedPath(): ParsedPath {
     return this._parsedPath;
   }
@@ -23,6 +46,9 @@ export abstract class GeneratedFile<ExportsType = void> {
     return this._path;
   }
 
+  /**
+   * Returns the exports of the generated file
+   */
   get exports(): ExportData<ExportsType>[] {
     return Array.from(this._exports.entries()).map(([path, specifiers]) => ({
       path,
@@ -30,6 +56,9 @@ export abstract class GeneratedFile<ExportsType = void> {
     }));
   }
 
+  /**
+   * Returns the imports of the generated file
+   */
   get imports(): ImportData[] {
     return Array.from(this._imports.entries()).map(([path, specifiers]) => ({
       path,
@@ -43,6 +72,9 @@ export abstract class GeneratedFile<ExportsType = void> {
   protected _path!: string;
   protected _parsedPath!: ParsedPath;
 
+  /**
+   * Moves the generated file to a new path and updates the imports and exports
+   */
   move(newPath: string) {
     this._exports[newPath] = this._exports[this._path];
     delete this._exports[this._path];
@@ -50,6 +82,13 @@ export abstract class GeneratedFile<ExportsType = void> {
     this._parsedPath = parse(newPath);
   }
 
+  /**
+   * Adds an export to the generated file
+   *
+   * @param exportData The export data to add to the generated file
+   * @param path The path to export from. If not provided, the path of the generated file will be used.
+   *      This is a function because the path of the generated file may change, but the path of the export should not
+   */
   addExport(
     exportData: CanBeArray<
       ExportData<ExportsType> | ExportSpecifier<ExportsType> | string
@@ -70,6 +109,9 @@ export abstract class GeneratedFile<ExportsType = void> {
     );
   }
 
+  /**
+   * Adds an import to the generated file
+   */
   addImport(
     importData: CanBeArray<
       ImportData | ImportSpecifier | string | (() => string)
@@ -89,6 +131,10 @@ export abstract class GeneratedFile<ExportsType = void> {
     );
   }
 
+  /**
+   * Returns only the `imports` section of the generated file
+   * e.g `import { Component } from '@angular/core';`
+   */
   getImportsCode(): string {
     return Array.from(this._imports.entries())
       .map(([path, specifiers]) => {
@@ -150,6 +196,10 @@ export abstract class GeneratedFile<ExportsType = void> {
       .join('\n');
   }
 
+  /**
+   * Returns only the `exports` section of the generated file
+   * e.g `export { Component };`
+   */
   getExportsCode(): string {
     return Array.from(this._exports.entries())
       .map(([path, specifiers]) => {
@@ -220,6 +270,9 @@ export abstract class GeneratedFile<ExportsType = void> {
       .join('\n');
   }
 
+  /**
+   * Helper method to get the string value of a getter
+   */
   private getStr(getter: string | (() => string)): string {
     return typeof getter === 'string' ? getter : getter();
   }

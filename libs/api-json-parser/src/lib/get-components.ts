@@ -27,6 +27,14 @@ const objectTypeMapper = (elementTagName: string, identifier: string) => {
   return 'Record<string, any>';
 }
 
+/**
+ * Returns the list of the component data,
+ * which contains typescript types for the inputs, outputs, slots and methods,
+ * it also contains the references to it's dependencies
+ * @param implementers
+ * @param symbols
+ * @param components
+ */
 export function getComponents({
                                 implementers,
                                 symbols,

@@ -2,6 +2,12 @@ import {ExportSpecifierType} from "@ui5/webcomponents-wrapper";
 import {format} from "prettier";
 import {AngularGeneratedFile} from "../angular-generated-file";
 
+/**
+ * The generic control value accessor class generator.
+ * This class is used to create a generic control value accessor class.
+ * Output class will be responsible for handling the value changes of the host element
+ * and notifying the Angular form control about the changes.
+ */
 export class GenericCva extends AngularGeneratedFile {
   constructor() {
     super();

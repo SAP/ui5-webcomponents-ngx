@@ -1,9 +1,7 @@
-import {GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
-import {NodeFsImplementation} from "@ui5/webcomponents-wrapper-fs-commit";
+import { FileSystemInterface, GeneratedFile } from "@ui5/webcomponents-wrapper";
+import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
 
-export function getFundamentalStylesThemes(): string[] {
-  const fs = new NodeFsImplementation();
-
+export function getFundamentalStylesThemes(fs: FileSystemInterface): string[] {
   return fs.queryFiles(
     'node_modules/fundamental-styles/dist/js/theming/*.mjs',
     []
@@ -38,7 +36,7 @@ class SupportedThemesFile extends GeneratedFile {
   relativePathFrom = (): string => "";
 }
 
-export default {
-  getComponents: getFundamentalStylesThemes,
+export default ((fs: FileSystemInterface) => ({
+  getComponents: () => getFundamentalStylesThemes(fs),
   generator: (themes) => ({[supportedThemesFileLocation]: new SupportedThemesFile(themes)})
-} as Partial<WrapperConfig<string>>;
+})) as Ui5NxWrapperConfig<string>;

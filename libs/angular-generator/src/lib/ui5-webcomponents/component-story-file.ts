@@ -1,15 +1,17 @@
-import {ComponentData, dependencyRelativePath, GeneratedFile} from "@ui5/webcomponents-wrapper";
-import {StorybookFilesGeneratorOptions} from "./storybook-files-generator-options";
-import {format as prettierFormat} from "prettier";
-import {camelCase} from "lodash";
-import JSDom from 'jsdom';
+import { ComponentData, dependencyRelativePath, GeneratedFile } from "@ui5/webcomponents-wrapper";
+import { StorybookFilesGeneratorOptions } from "./storybook-files-generator-options";
+import { format as prettierFormat } from "prettier";
+import { camelCase } from "lodash";
+import { PathLike } from "fs";
 
+/**
+ * Component story file creator
+ * This is for creating stories, based on a component sample HTML file
+ */
 export class ComponentStoryFile extends GeneratedFile {
-  private componentData: ComponentData;
-  constructor(readonly sample: { sampleFilePath: string, componentData: ComponentData, stories: { name: string, code: string }[] }, options: StorybookFilesGeneratorOptions) {
+  constructor(readonly sample: { sampleFilePath: PathLike, componentData: ComponentData, stories: { name: string, code: string }[] }, options: StorybookFilesGeneratorOptions) {
     super();
-    this.componentData = sample.componentData;
-    this.move(options.storyFileNameFactory(sample.sampleFilePath));
+    this.move(options.storyFileNameFactory(sample.sampleFilePath.toString()));
     this.initializeImports();
   }
   defaultExport!: () => string;
@@ -22,8 +24,6 @@ export class ComponentStoryFile extends GeneratedFile {
     const stories: string[] = [];
     this.sample.stories.forEach(story => {
       if (!story.code || story.code.toString().indexOf('<script>') > -1) {
-        const dom = JSDom;
-        const doc = new dom.JSDOM(story.code);
         return;
       }
       stories.push(`

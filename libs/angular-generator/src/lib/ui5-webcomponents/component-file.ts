@@ -8,11 +8,20 @@ import {format as prettierFormat} from "prettier";
 import {utilsFile} from "./utils";
 import {outputTypesImportData} from "./output-types-import-data";
 
+/**
+ * The Angular Component file creator.
+ */
 export class ComponentFile extends AngularGeneratedFile {
+  /** The export specifier of the component wrapper */
   wrapperExportSpecifier!: ExportSpecifier<AngularExportSpecifierType>;
+  /** The name of the element type */
   getComponentCode = () => ComponentWrapperCreator(this, this.elementTypeName, this.eventsNameMapName, this.options, this.componentsMap);
+  /** The name of the element's interface */
   elementTypeName!: string;
+  /** The name of the events map */
   eventsNameMapName!: string;
+
+  /** The selector of the component */
   get selector(): string {
     if (this.options.selectorFactory) {
       return this.options.selectorFactory(this.componentData);
@@ -33,6 +42,10 @@ export class ComponentFile extends AngularGeneratedFile {
     this.eventsNameMapName = `${this.wrapperExportSpecifier.local}EventsMap`
   }
 
+  /**
+   * Initializes the imports and exports of the component file.
+   * @private
+   */
   private initializeImportsAndExports(): void {
     this.wrapperExportSpecifier = {
       local: this.componentData.baseName + 'Component',
@@ -75,6 +88,10 @@ export class ComponentFile extends AngularGeneratedFile {
       })
     });
   }
+
+  /**
+   * Returns the code of the component file.
+   */
   override getCode(): string {
     const fragments = [this.getImportsCode(), this.getComponentCode()];
     return prettierFormat(fragments.join('\n'), {parser: 'typescript'});

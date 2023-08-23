@@ -46,12 +46,7 @@ export default async function (
   }
   const changes = host.listChanges();
   printChanges(changes);
-
   flushChanges(workspaceRoot, changes);
-  if (tasks.length > 0) {
-    for (const task of tasks) {
-      await task();
-    }
-  }
+
   return {success: true};
 }

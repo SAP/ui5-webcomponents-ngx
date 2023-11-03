@@ -2251,6 +2251,7 @@ export declare interface ComboBoxElement
       | 'disabled'
       | 'filter'
       | 'loading'
+      | 'noTypeahead'
       | 'placeholder'
       | 'readonly'
       | 'required'
@@ -2263,6 +2264,7 @@ export declare interface ComboBoxElement
   disabled: boolean;
   filter: 'Contains' | 'None' | 'StartsWith' | 'StartsWithPerTerm';
   loading: boolean;
+  noTypeahead: boolean;
   placeholder: string;
   readonly: boolean;
   required: boolean;
@@ -2299,6 +2301,7 @@ export declare interface ComboBoxElement
   'disabled',
   'filter',
   'loading',
+  'noTypeahead',
   'placeholder',
   'readonly',
   'required',
@@ -2340,6 +2343,7 @@ export declare interface ComboBoxElement
     'disabled',
     'filter',
     'loading',
+    'noTypeahead: no-typeahead',
     'placeholder',
     'readonly',
     'required',
@@ -2365,6 +2369,7 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
   disabled?: ComboBoxElement['disabled'];
   filter?: ComboBoxElement['filter'];
   loading?: ComboBoxElement['loading'];
+  noTypeahead?: ComboBoxElement['noTypeahead'];
   placeholder?: ComboBoxElement['placeholder'];
   readonly?: ComboBoxElement['readonly'];
   required?: ComboBoxElement['required'];
@@ -6895,6 +6900,7 @@ export declare interface RatingIndicatorElement
       | 'disabled'
       | 'readonly'
       | 'required'
+      | 'tooltip'
     >
   > {
   accessibleName: string;
@@ -6903,6 +6909,7 @@ export declare interface RatingIndicatorElement
 
   readonly: boolean;
   required: boolean;
+  tooltip: string;
 
   addEventListener<K extends keyof RatingIndicatorComponentEventsMap>(
     type: K,
@@ -6942,6 +6949,7 @@ export declare interface RatingIndicatorElement
   'max',
   'readonly',
   'required',
+  'tooltip',
   'value',
 ])
 @ProxyOutputs(['change'])
@@ -6980,6 +6988,7 @@ export declare interface RatingIndicatorElement
     'max',
     'readonly',
     'required',
+    'tooltip',
     'value',
   ],
   outputs: ['change: ui5Change'],
@@ -6991,6 +7000,7 @@ export class RatingIndicatorComponent {
   disabled?: RatingIndicatorElement['disabled'];
   readonly?: RatingIndicatorElement['readonly'];
   required?: RatingIndicatorElement['required'];
+  tooltip?: RatingIndicatorElement['tooltip'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<RatingIndicatorElement>,

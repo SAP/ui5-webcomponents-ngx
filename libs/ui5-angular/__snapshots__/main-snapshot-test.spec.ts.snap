@@ -166,6 +166,7 @@ export declare interface AvatarElement
       | 'accessibleName'
       | 'colorScheme'
       | 'disabled'
+      | 'fallbackIcon'
       | 'icon'
       | 'initials'
       | 'interactive'
@@ -187,6 +188,7 @@ export declare interface AvatarElement
     | 'Accent9'
     | 'Placeholder';
   disabled: boolean;
+  fallbackIcon: string;
   icon: string;
   initials: string;
   interactive: boolean;
@@ -201,6 +203,7 @@ export declare interface AvatarElement
   'accessibleName',
   'colorScheme',
   'disabled',
+  'fallbackIcon',
   'icon',
   'initials',
   'interactive',
@@ -240,6 +243,7 @@ export declare interface AvatarElement
     'accessibleName: accessible-name',
     'colorScheme: color-scheme',
     'disabled',
+    'fallbackIcon: fallback-icon',
     'icon',
     'initials',
     'interactive',
@@ -253,6 +257,7 @@ export class AvatarComponent {
   accessibleName?: AvatarElement['accessibleName'];
   colorScheme?: AvatarElement['colorScheme'];
   disabled?: AvatarElement['disabled'];
+  fallbackIcon?: AvatarElement['fallbackIcon'];
   icon?: AvatarElement['icon'];
   initials?: AvatarElement['initials'];
   interactive?: AvatarElement['interactive'];
@@ -2246,6 +2251,7 @@ export declare interface ComboBoxElement
       | 'disabled'
       | 'filter'
       | 'loading'
+      | 'noTypeahead'
       | 'placeholder'
       | 'readonly'
       | 'required'
@@ -2258,6 +2264,7 @@ export declare interface ComboBoxElement
   disabled: boolean;
   filter: 'Contains' | 'None' | 'StartsWith' | 'StartsWithPerTerm';
   loading: boolean;
+  noTypeahead: boolean;
   placeholder: string;
   readonly: boolean;
   required: boolean;
@@ -2294,6 +2301,7 @@ export declare interface ComboBoxElement
   'disabled',
   'filter',
   'loading',
+  'noTypeahead',
   'placeholder',
   'readonly',
   'required',
@@ -2335,6 +2343,7 @@ export declare interface ComboBoxElement
     'disabled',
     'filter',
     'loading',
+    'noTypeahead: no-typeahead',
     'placeholder',
     'readonly',
     'required',
@@ -2360,6 +2369,7 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
   disabled?: ComboBoxElement['disabled'];
   filter?: ComboBoxElement['filter'];
   loading?: ComboBoxElement['loading'];
+  noTypeahead?: ComboBoxElement['noTypeahead'];
   placeholder?: ComboBoxElement['placeholder'];
   readonly?: ComboBoxElement['readonly'];
   required?: ComboBoxElement['required'];
@@ -6890,6 +6900,7 @@ export declare interface RatingIndicatorElement
       | 'disabled'
       | 'readonly'
       | 'required'
+      | 'tooltip'
     >
   > {
   accessibleName: string;
@@ -6898,6 +6909,7 @@ export declare interface RatingIndicatorElement
 
   readonly: boolean;
   required: boolean;
+  tooltip: string;
 
   addEventListener<K extends keyof RatingIndicatorComponentEventsMap>(
     type: K,
@@ -6937,6 +6949,7 @@ export declare interface RatingIndicatorElement
   'max',
   'readonly',
   'required',
+  'tooltip',
   'value',
 ])
 @ProxyOutputs(['change'])
@@ -6975,6 +6988,7 @@ export declare interface RatingIndicatorElement
     'max',
     'readonly',
     'required',
+    'tooltip',
     'value',
   ],
   outputs: ['change: ui5Change'],
@@ -6986,6 +7000,7 @@ export class RatingIndicatorComponent {
   disabled?: RatingIndicatorElement['disabled'];
   readonly?: RatingIndicatorElement['readonly'];
   required?: RatingIndicatorElement['required'];
+  tooltip?: RatingIndicatorElement['tooltip'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<RatingIndicatorElement>,
@@ -7521,6 +7536,172 @@ export declare interface SegmentedButtonComponent
 "
 `;
 
+exports[`Snapshot test Main Select Menu Option should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/SelectMenuOption.js';
+import type SelectMenuOption from '@ui5/webcomponents/dist/SelectMenuOption.js';
+
+export declare interface SelectMenuOptionElement
+  extends Partial<
+    Omit<SelectMenuOption, 'displayText' | 'navigated' | 'type' | 'value'>
+  > {
+  displayText: string;
+  navigated: boolean;
+  type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
+  value: string;
+}
+
+// TS source file
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'accessibilityAttributes',
+  'displayText',
+  'navigated',
+  'type',
+  'value',
+])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-select-menu-option',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5SelectMenuOption',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'accessibilityAttributes: accessibility-attributes',
+    'displayText: display-text',
+    'navigated',
+    'type',
+    'value',
+  ],
+  outputs: [],
+  providers: [],
+})
+export class SelectMenuOptionComponent {
+  displayText?: SelectMenuOptionElement['displayText'];
+  navigated?: SelectMenuOptionElement['navigated'];
+  type?: SelectMenuOptionElement['type'];
+  value?: SelectMenuOptionElement['value'];
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<SelectMenuOptionElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): SelectMenuOptionElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface SelectMenuOptionComponent
+  extends Partial<SelectMenuOptionElement> {}
+"
+`;
+
+exports[`Snapshot test Main Select Menu should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/SelectMenu.js';
+import type SelectMenu from '@ui5/webcomponents/dist/SelectMenu.js';
+
+export declare interface SelectMenuElement extends Partial<SelectMenu> {}
+
+// TS source file
+@ProxyInputs(['effectiveDir', 'isUi5Element'])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-select-menu',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5SelectMenu',
+  standalone: true,
+  inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
+  outputs: [],
+  providers: [],
+})
+export class SelectMenuComponent {
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<SelectMenuElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): SelectMenuElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface SelectMenuComponent
+  extends Partial<SelectMenuElement> {}
+"
+`;
+
 exports[`Snapshot test Main Select should match the snapshot 1`] = `
 "import {
   Component,
@@ -7538,9 +7719,13 @@ import '@ui5/webcomponents/dist/Select.js';
 import type Select from '@ui5/webcomponents/dist/Select.js';
 
 interface SelectComponentEventsMap
-  extends Omit<HTMLElementEventMap, 'change' | 'close' | 'open'> {
+  extends Omit<
+    HTMLElementEventMap,
+    'change' | 'close' | 'liveChange' | 'open'
+  > {
   change: CustomEvent<{ selectedOption: HTMLElement }>;
   close: CustomEvent<void>;
+  liveChange: CustomEvent<{ selectedOption: HTMLElement }>;
   open: CustomEvent<void>;
 }
 
@@ -7550,6 +7735,7 @@ export declare interface SelectElement
       Select,
       | 'change'
       | 'close'
+      | 'liveChange'
       | 'open'
       | 'accessibleName'
       | 'accessibleNameRef'
@@ -7562,6 +7748,7 @@ export declare interface SelectElement
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
+
   name: string;
   required: boolean;
 
@@ -7595,12 +7782,13 @@ export declare interface SelectElement
   'accessibleName',
   'accessibleNameRef',
   'disabled',
+  'menu',
   'name',
   'required',
   'selectedOption',
   'valueState',
 ])
-@ProxyOutputs(['change', 'close', 'open'])
+@ProxyOutputs(['change', 'close', 'liveChange', 'open'])
 @ProxyMethods([
   '_render',
   'attachInvalidate',
@@ -7633,12 +7821,18 @@ export declare interface SelectElement
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
     'disabled',
+    'menu',
     'name',
     'required',
     'selectedOption: selected-option',
     'valueState: value-state',
   ],
-  outputs: ['change: ui5Change', 'close: ui5Close', 'open: ui5Open'],
+  outputs: [
+    'change: ui5Change',
+    'close: ui5Close',
+    'liveChange: ui5LiveChange',
+    'open: ui5Open',
+  ],
   providers: [],
 })
 export class SelectComponent {
@@ -7664,6 +7858,7 @@ export class SelectComponent {
 export declare interface SelectComponent extends Partial<SelectElement> {
   change: EventEmitter<SelectComponentEventsMap['change']>;
   close: EventEmitter<SelectComponentEventsMap['close']>;
+  liveChange: EventEmitter<SelectComponentEventsMap['liveChange']>;
   open: EventEmitter<SelectComponentEventsMap['open']>;
 }
 "
@@ -10348,6 +10543,620 @@ export declare interface TokenComponent extends Partial<TokenElement> {
 "
 `;
 
+exports[`Snapshot test Main Toolbar Button should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+  EventEmitter,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToolbarButton.js';
+import type ToolbarButton from '@ui5/webcomponents/dist/ToolbarButton.js';
+
+interface ToolbarButtonComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'click'> {
+  click: CustomEvent<void>;
+}
+
+export declare interface ToolbarButtonElement
+  extends Partial<
+    Omit<
+      ToolbarButton,
+      | 'click'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'icon'
+      | 'iconEnd'
+      | 'text'
+      | 'tooltip'
+    >
+  > {
+  accessibleName: string;
+  accessibleNameRef: string;
+
+  disabled: boolean;
+  icon: string;
+  iconEnd: boolean;
+  text: string;
+  tooltip: string;
+
+  addEventListener<K extends keyof ToolbarButtonComponentEventsMap>(
+    type: K,
+    listener: (
+      this: ToolbarButtonElement,
+      ev: ToolbarButtonComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ToolbarButtonComponentEventsMap>(
+    type: K,
+    listener: (
+      this: ToolbarButtonElement,
+      ev: ToolbarButtonComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+}
+
+// TS source file
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'accessibilityAttributes',
+  'accessibleName',
+  'accessibleNameRef',
+  'design',
+  'disabled',
+  'icon',
+  'iconEnd',
+  'text',
+  'tooltip',
+  'width',
+])
+@ProxyOutputs(['click'])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar-button',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ToolbarButton',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'accessibilityAttributes: accessibility-attributes',
+    'accessibleName: accessible-name',
+    'accessibleNameRef: accessible-name-ref',
+    'design',
+    'disabled',
+    'icon',
+    'iconEnd: icon-end',
+    'text',
+    'tooltip',
+    'width',
+  ],
+  outputs: ['click: ui5Click'],
+  providers: [],
+})
+export class ToolbarButtonComponent {
+  accessibleName?: ToolbarButtonElement['accessibleName'];
+  accessibleNameRef?: ToolbarButtonElement['accessibleNameRef'];
+  disabled?: ToolbarButtonElement['disabled'];
+  icon?: ToolbarButtonElement['icon'];
+  iconEnd?: ToolbarButtonElement['iconEnd'];
+  text?: ToolbarButtonElement['text'];
+  tooltip?: ToolbarButtonElement['tooltip'];
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarButtonElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarButtonElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarButtonComponent
+  extends Partial<ToolbarButtonElement> {
+  click: EventEmitter<ToolbarButtonComponentEventsMap['click']>;
+}
+"
+`;
+
+exports[`Snapshot test Main Toolbar Select Option should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToolbarSelectOption.js';
+import type ToolbarSelectOption from '@ui5/webcomponents/dist/ToolbarSelectOption.js';
+
+export declare interface ToolbarSelectOptionElement
+  extends Partial<Omit<ToolbarSelectOption, 'selected'>> {
+  selected: boolean;
+}
+
+// TS source file
+@ProxyInputs(['effectiveDir', 'isUi5Element', 'selected'])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar-select-option',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ToolbarSelectOption',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'selected',
+  ],
+  outputs: [],
+  providers: [],
+})
+export class ToolbarSelectOptionComponent {
+  selected?: ToolbarSelectOptionElement['selected'];
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarSelectOptionElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarSelectOptionElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarSelectOptionComponent
+  extends Partial<ToolbarSelectOptionElement> {}
+"
+`;
+
+exports[`Snapshot test Main Toolbar Select should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+  EventEmitter,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToolbarSelect.js';
+import type ToolbarSelect from '@ui5/webcomponents/dist/ToolbarSelect.js';
+
+interface ToolbarSelectComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'change' | 'close' | 'open'> {
+  change: CustomEvent<{ selectedOption: HTMLElement }>;
+  close: CustomEvent<void>;
+  open: CustomEvent<void>;
+}
+
+export declare interface ToolbarSelectElement
+  extends Partial<
+    Omit<
+      ToolbarSelect,
+      | 'change'
+      | 'close'
+      | 'open'
+      | 'accessibleName'
+      | 'accessibleNameRef'
+      | 'disabled'
+      | 'valueState'
+    >
+  > {
+  accessibleName: string;
+  accessibleNameRef: string;
+  disabled: boolean;
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
+
+  addEventListener<K extends keyof ToolbarSelectComponentEventsMap>(
+    type: K,
+    listener: (
+      this: ToolbarSelectElement,
+      ev: ToolbarSelectComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof ToolbarSelectComponentEventsMap>(
+    type: K,
+    listener: (
+      this: ToolbarSelectElement,
+      ev: ToolbarSelectComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
+}
+
+// TS source file
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'accessibleName',
+  'accessibleNameRef',
+  'disabled',
+  'valueState',
+  'width',
+])
+@ProxyOutputs(['change', 'close', 'open'])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar-select',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ToolbarSelect',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'accessibleName: accessible-name',
+    'accessibleNameRef: accessible-name-ref',
+    'disabled',
+    'valueState: value-state',
+    'width',
+  ],
+  outputs: ['change: ui5Change', 'close: ui5Close', 'open: ui5Open'],
+  providers: [],
+})
+export class ToolbarSelectComponent {
+  accessibleName?: ToolbarSelectElement['accessibleName'];
+  accessibleNameRef?: ToolbarSelectElement['accessibleNameRef'];
+  disabled?: ToolbarSelectElement['disabled'];
+  valueState?: ToolbarSelectElement['valueState'];
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarSelectElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarSelectElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarSelectComponent
+  extends Partial<ToolbarSelectElement> {
+  change: EventEmitter<ToolbarSelectComponentEventsMap['change']>;
+  close: EventEmitter<ToolbarSelectComponentEventsMap['close']>;
+  open: EventEmitter<ToolbarSelectComponentEventsMap['open']>;
+}
+"
+`;
+
+exports[`Snapshot test Main Toolbar Separator should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToolbarSeparator.js';
+import type ToolbarSeparator from '@ui5/webcomponents/dist/ToolbarSeparator.js';
+
+export declare interface ToolbarSeparatorElement
+  extends Partial<ToolbarSeparator> {}
+
+// TS source file
+@ProxyInputs(['effectiveDir', 'isUi5Element'])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar-separator',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ToolbarSeparator',
+  standalone: true,
+  inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
+  outputs: [],
+  providers: [],
+})
+export class ToolbarSeparatorComponent {
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarSeparatorElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarSeparatorElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarSeparatorComponent
+  extends Partial<ToolbarSeparatorElement> {}
+"
+`;
+
+exports[`Snapshot test Main Toolbar Spacer should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ToolbarSpacer.js';
+import type ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
+
+export declare interface ToolbarSpacerElement extends Partial<ToolbarSpacer> {}
+
+// TS source file
+@ProxyInputs(['effectiveDir', 'isUi5Element', 'width'])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar-spacer',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5ToolbarSpacer',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'width',
+  ],
+  outputs: [],
+  providers: [],
+})
+export class ToolbarSpacerComponent {
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarSpacerElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarSpacerElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarSpacerComponent
+  extends Partial<ToolbarSpacerElement> {}
+"
+`;
+
+exports[`Snapshot test Main Toolbar should match the snapshot 1`] = `
+"import {
+  Component,
+  ElementRef,
+  NgZone,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ProxyInputs,
+  ProxyMethods,
+  ProxyOutputs,
+} from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/Toolbar.js';
+import type Toolbar from '@ui5/webcomponents/dist/Toolbar.js';
+
+export declare interface ToolbarElement
+  extends Partial<
+    Omit<Toolbar, 'accessibleName' | 'accessibleNameRef' | 'alignContent'>
+  > {
+  accessibleName: string;
+  accessibleNameRef: string;
+  alignContent: 'End' | 'Start';
+}
+
+// TS source file
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'accessibleName',
+  'accessibleNameRef',
+  'alignContent',
+])
+@ProxyOutputs([])
+@ProxyMethods([
+  '_render',
+  'attachInvalidate',
+  'define',
+  'detachInvalidate',
+  'fireEvent',
+  'focus',
+  'getDomRef',
+  'getFocusDomRef',
+  'getFocusDomRefAsync',
+  'getMetadata',
+  'getSlottedNodes',
+  'getStaticAreaItemDomRef',
+  'getUniqueDependencies',
+  'onAfterRendering',
+  'onBeforeRendering',
+  'onDefine',
+  'onEnterDOM',
+  'onExitDOM',
+  'onInvalidation',
+])
+@Component({
+  selector: 'ui5-toolbar',
+  template: \`<ng-content></ng-content>\`,
+  exportAs: 'ui5Toolbar',
+  standalone: true,
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'accessibleName: accessible-name',
+    'accessibleNameRef: accessible-name-ref',
+    'alignContent: align-content',
+  ],
+  outputs: [],
+  providers: [],
+})
+export class ToolbarComponent {
+  accessibleName?: ToolbarElement['accessibleName'];
+  accessibleNameRef?: ToolbarElement['accessibleNameRef'];
+  alignContent?: ToolbarElement['alignContent'];
+  constructor(
+    private c: ChangeDetectorRef,
+    private elementRef: ElementRef<ToolbarElement>,
+    private zone: NgZone
+  ) {
+    c.detach();
+  }
+
+  get element(): ToolbarElement {
+    return this.elementRef.nativeElement;
+  }
+}
+
+export declare interface ToolbarComponent extends Partial<ToolbarElement> {}
+"
+`;
+
 exports[`Snapshot test Main Tree Item Custom should match the snapshot 1`] = `
 "import {
   Component,
@@ -10933,6 +11742,8 @@ import { ResponsivePopoverComponent } from '@ui5/webcomponents-ngx/main/responsi
 import { SegmentedButtonComponent } from '@ui5/webcomponents-ngx/main/segmented-button';
 import { SegmentedButtonItemComponent } from '@ui5/webcomponents-ngx/main/segmented-button-item';
 import { SelectComponent } from '@ui5/webcomponents-ngx/main/select';
+import { SelectMenuComponent } from '@ui5/webcomponents-ngx/main/select-menu';
+import { SelectMenuOptionComponent } from '@ui5/webcomponents-ngx/main/select-menu-option';
 import { SliderComponent } from '@ui5/webcomponents-ngx/main/slider';
 import { SplitButtonComponent } from '@ui5/webcomponents-ngx/main/split-button';
 import { StandardListItemComponent } from '@ui5/webcomponents-ngx/main/standard-list-item';
@@ -10954,6 +11765,12 @@ import { TitleComponent } from '@ui5/webcomponents-ngx/main/title';
 import { ToastComponent } from '@ui5/webcomponents-ngx/main/toast';
 import { ToggleButtonComponent } from '@ui5/webcomponents-ngx/main/toggle-button';
 import { TokenComponent } from '@ui5/webcomponents-ngx/main/token';
+import { ToolbarComponent } from '@ui5/webcomponents-ngx/main/toolbar';
+import { ToolbarButtonComponent } from '@ui5/webcomponents-ngx/main/toolbar-button';
+import { ToolbarSelectComponent } from '@ui5/webcomponents-ngx/main/toolbar-select';
+import { ToolbarSelectOptionComponent } from '@ui5/webcomponents-ngx/main/toolbar-select-option';
+import { ToolbarSeparatorComponent } from '@ui5/webcomponents-ngx/main/toolbar-separator';
+import { ToolbarSpacerComponent } from '@ui5/webcomponents-ngx/main/toolbar-spacer';
 import { TreeComponent } from '@ui5/webcomponents-ngx/main/tree';
 import { TreeItemComponent } from '@ui5/webcomponents-ngx/main/tree-item';
 import { TreeItemCustomComponent } from '@ui5/webcomponents-ngx/main/tree-item-custom';
@@ -11013,6 +11830,8 @@ const imports = [
   SegmentedButtonComponent,
   SegmentedButtonItemComponent,
   SelectComponent,
+  SelectMenuComponent,
+  SelectMenuOptionComponent,
   SliderComponent,
   SplitButtonComponent,
   StandardListItemComponent,
@@ -11034,6 +11853,12 @@ const imports = [
   ToastComponent,
   ToggleButtonComponent,
   TokenComponent,
+  ToolbarComponent,
+  ToolbarButtonComponent,
+  ToolbarSelectComponent,
+  ToolbarSelectOptionComponent,
+  ToolbarSeparatorComponent,
+  ToolbarSpacerComponent,
   TreeComponent,
   TreeItemComponent,
   TreeItemCustomComponent,

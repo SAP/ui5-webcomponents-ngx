@@ -5,4 +5,4 @@ export * from './lib/ui5-webcomponents/storybook-files-generator';
 export * from './lib/angular-generated-file';
 export * from './lib/angular-module-file';
 export * from './lib/ng-package-file';
-export {StorybookFilesGeneratorOptions} from "./lib/ui5-webcomponents/storybook-files-generator-options";
+export * from "./lib/ui5-webcomponents/storybook-files-generator-options";

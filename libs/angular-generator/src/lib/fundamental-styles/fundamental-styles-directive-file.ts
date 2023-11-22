@@ -5,9 +5,24 @@ import {parse, join, dirname, basename} from "path";
 import {pascalCase} from "./helpers";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 
+/**
+ * The fundamental-styles directive code
+ */
 export class FundamentalStylesDirectiveFile extends AngularGeneratedFile {
+  /**
+   * The path to the styles js file
+   * @protected
+   */
   protected sourceFilePath: string;
+  /**
+   * Selector of the directive
+   * @protected
+   */
   protected selector: string;
+  /**
+   * The class name of the directive
+   * @protected
+   */
   protected className: string;
 
   constructor(fdComponentJsPath: string, options: AngularGeneratorOptions) {

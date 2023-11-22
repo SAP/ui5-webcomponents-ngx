@@ -2,6 +2,9 @@ import {AngularGeneratedFile} from "./angular-generated-file";
 import {GeneratedFile} from "@ui5/webcomponents-wrapper";
 import {AngularGeneratorOptions} from "./angular-generator-options";
 
+/**
+ * The index file that exports all the generated files.
+ */
 export class IndexFile extends AngularGeneratedFile {
   constructor(files: GeneratedFile<any>[], options: AngularGeneratorOptions, location = 'index.ts') {
     super();

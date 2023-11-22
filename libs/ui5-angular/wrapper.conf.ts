@@ -1,13 +1,9 @@
-import {ComponentData, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import { ComponentData } from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
-import {
-  AngularExportSpecifierType,
-  AngularGeneratedFile, AngularModuleFile,
-  NgPackageFile,
-  ui5componentsWrapper
-} from "@ui5/webcomponents-ngx-generator";
-import {camelCase, kebabCase} from "lodash";
-import {join} from "path";
+import { AngularExportSpecifierType, AngularGeneratedFile, AngularModuleFile, NgPackageFile, ui5componentsWrapper } from "@ui5/webcomponents-ngx-generator";
+import { camelCase, kebabCase } from "lodash";
+import { join } from "path";
+import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
 
@@ -47,7 +43,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
 
 const packageNames = ['fiori', 'main'];
 
-export default {
+const ui5WrapperConfig: Ui5NxWrapperConfig<ComponentData> = {
   getComponents: () => apiJsonParser({
     apiJsonPaths: [
       '@ui5/webcomponents-base/dist/api.json',
@@ -101,4 +97,6 @@ export default {
     delete files['ng-package.json']; // There is a bug and I have no idea how to fix it
     return files;
   }
-} as Partial<WrapperConfig<ComponentData>>;
+};
+
+export default ui5WrapperConfig;

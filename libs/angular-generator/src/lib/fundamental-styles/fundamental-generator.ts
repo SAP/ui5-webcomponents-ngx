@@ -5,6 +5,12 @@ import {NgPackageFile} from "../ng-package-file";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {AngularModuleFile} from "../angular-module-file";
 
+/**
+ * Generates the fundamental styles angular directives library
+ *
+ * @param styles paths to the fundamental-styles js files. Every path is a path to a single component's js file, which contains the component's CSS styles
+ * @param options options for the output files
+ */
 export function fundamentalGenerator(styles: string[], options: AngularGeneratorOptions) {
   const generatedFiles = styles.reduce((files: AngularGeneratedFile[], style) => {
     const componentFile = new FundamentalStylesDirectiveFile(style, options);

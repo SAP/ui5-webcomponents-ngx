@@ -69,6 +69,8 @@ Every form-capable component can be used with Angular's native form approaches. 
 
 ## Support, Feedback, Contributing
 
+For an overview on how this library works, see the [Maintainers](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/MAINTAINERS.md) documentation.
+
 This project is open to feature requests/suggestions, bug reports etc.
 via [GitHub issues](https://github.com/SAP/ui5-webcomponents-ngx/issues). Contribution and feedback are encouraged and
 always welcome. For more information about how to contribute, the project structure, as well as additional contribution

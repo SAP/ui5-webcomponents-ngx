@@ -1,7 +1,4 @@
-# api-json-parser
+# API.json Parser
 
-This library was generated with [Nx](https://nx.dev).
+This is a simple parser for an ui5 webcomponents api.json files.
 
-## Building
-
-Run `nx build api-json-parser` to build the library.

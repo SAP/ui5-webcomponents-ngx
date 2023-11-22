@@ -24,9 +24,9 @@ but they can be omitted and the wrappers can be generated without using them.
 Wrapper is a library that contains core logic for wrapping the web components. It is a simple generic function
 which holds the logic and order of executing the methods for wrapping the web components.
 Steps are:
-- Parse
-- Generate
-- Commit
+- Parse (`getComponents()`)
+- Generate (`generator()`)
+- Commit (`commit()`)
 
 All three can be customized to the individual needs of the project, only few key concepts are required to be
 understood in order to customize the wrapper. In order to create your own parser you should bear in mind that
@@ -53,6 +53,20 @@ It expects that it will receive the paths to the API JSONs, which should be in t
 If there are multiple API JSONs, which depend on each other(e.g `@ui5/webcomponents` depends on `@ui5/webcomponents-base` for some types),
 it will combine then and return the single `ComponentData` object per component. Additionally resulted `ComponentData` may have reference
 to other `ComponentData` objects.
+
+### Publishing a new version
+
+Typically, we will want to rewrap the components and republish them whenever `@ui5/webcomponents` has a new release.
+
+First, create a new branch.
+
+Update this library's `package.json` to utilize the new version of `@ui5/webcomponents` that we would like to wrap. Then install the updated dependencies with `yarn install`.
+
+After updating those dependencies, we want to run the `sync` script: `npx nx run ui5-angular:sync`. This runs the wrapper: parsing, generating and then committing.
+
+Then run the tests with `npx nx run ui5-angular:test`. The test should fail as the snapshot comparisons should have changed due to the updated versioning. After viewing the changes, if you'd like to accept the differences and update the snapshot tests, run `npx nx run ui5-angular:test -u`.
+
+Now, open a pull request against the `main` branch. When this branch is merged, we'll have a new release. More details on that below.
 
 ### Versioning
 

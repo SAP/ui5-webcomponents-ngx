@@ -8,9 +8,15 @@ import {isModule} from "./utils/is-module";
 import {isProvider} from "./utils/is-provider";
 import {format as prettierFormat} from "prettier";
 
+/**
+ * The Angular NgModule file.
+ */
 export class AngularModuleFile extends AngularGeneratedFile {
+  /** The files that are included in this module */
   protected includedFiles: AngularGeneratedFile[];
+  /** The class name of the module */
   protected className: string;
+  /** The providers that are included in this module */
   protected providers = new Map<string, Partial<{init?: boolean; providersArray: boolean}>>();
 
   constructor(protected potentialFilesToInclude: AngularGeneratedFile[], protected moduleDescription: ModuleDescription) {
@@ -89,6 +95,13 @@ export class AngularModuleFile extends AngularGeneratedFile {
     `, {parser: 'typescript'});
   }
 
+  /**
+   * Adds a provider to the module.
+   * @param file The file that contains the provider
+   * @param specifier The specifier of the provider, e.g. `MyProvider`
+   * @param shouldInitialize Whether the provider should be initialized in the constructor of the module.
+   * @param providerInMetadata Whether the provider should be added to the `providers` array in the module metadata.
+   */
   addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false, providerInMetadata = false): void {
     this.addImport(specifier, file.relativePathFrom);
     this.providers.set(specifier, {init: shouldInitialize, providersArray: providerInMetadata});

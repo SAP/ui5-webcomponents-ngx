@@ -6,6 +6,13 @@ import {combinedEvents} from "./combined-events";
 import {combinedSlots} from "./combined-slots";
 import {combinedMethods} from "./combined-methods";
 
+/**
+ * Api.json is a very compact format. It does not contain all the information we need about every symbol,
+ * internally it just refers to other symbols by domain name if they are not in the same class.
+ * This function resolves all the references and returns a list of symbols with all the information we need.
+ *
+ * @param configuration
+ */
 export async function getImplementersAndSymbols(configuration: ParserConfiguration) {
   // code below does not work. It does not give full picture
   // const {default: getAllEntities} = await import('@ui5/tooling-webc/lib/generate/utils/getAllEntities.js');

@@ -25,6 +25,11 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
   } catch (e) {
     componentFile = new ComponentFile(componentData, options, cache);
   }
+  if (componentData.imports.length > 0) {
+    componentData.imports.forEach(i => {
+      componentFile.addImport(i);
+    });
+  }
   cache.set(componentData, componentFile);
   return componentFile;
 }

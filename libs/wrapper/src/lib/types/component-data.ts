@@ -1,3 +1,5 @@
+import { ImportData } from "../import-data";
+
 export interface InputType {
   description: string;
   publicName: string,
@@ -29,10 +31,7 @@ export interface ParameterType {
 }
 
 export interface MethodType {
-  description: string;
   name: string;
-  parameters: Array<ParameterType>;
-  returnValue: string;
 }
 
 export interface ComponentData {
@@ -46,6 +45,7 @@ export interface ComponentData {
   outputs: OutputType[],
   slots: SlotType[],
   methods: MethodType[],
+  imports: ImportData[],
   formData: {
     property: InputType,
     events: Array<OutputType>,

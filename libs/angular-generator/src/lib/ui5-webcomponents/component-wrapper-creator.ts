@@ -154,15 +154,6 @@ export function ComponentWrapperCreator(
     return 'HTMLElement';
   })();
 
-  const methodsTypeStr = componentFile.componentData.methods.map((method) => {
-    const parameters = method.parameters.map((parameter) => {
-      return `${parameter.name}: ${parameter.type}`;
-    }).join(', ');
-    return `
-    ${method.name}(${parameters}): ${method.returnValue};
-    `;
-  }).join('\n');
-
   const elementType = `
       ${outputs.length > 0 ? eventsMap : ''}
 
@@ -172,8 +163,6 @@ export function ComponentWrapperCreator(
         ${analyzedSlots.map(([name, type]) => `${name}: ${type};`).join('\n')}
 
         ${outputs.length > 0 ? outputsTypeStr : ''}
-
-        ${methodsTypeStr}
       }
     `;
   return `

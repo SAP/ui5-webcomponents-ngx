@@ -37,12 +37,13 @@ export interface Event {
 }
 
 export interface Method {
-  name: string,
+  visibility: string;
+  name: string;
   returnValue?: {
     type: string
-  },
-  parameters: Parameter[],
-  description: string
+  };
+  parameters: Parameter[];
+  description: string;
 }
 
 

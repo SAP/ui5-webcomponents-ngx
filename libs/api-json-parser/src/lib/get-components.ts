@@ -65,21 +65,41 @@ export function getComponents({
     }
     const mappedType = typesMap[type.toLowerCase()];
     if (!mappedType && symbols[type]) {
-      if (symbols[type].kind === 'class' || symbols[type].kind === 'enum') {
-        let types = symbols[type].properties.map(p => JSON.stringify(p.type));
-        types = types.length ? types : ['any'];
-        return types.join(' | ');
-      }
-      if (symbols[type].kind === 'interface') {
-        const interfaceImplementers = implementers[type].map(getComponentData).filter(Boolean) as ComponentData[];
-        if (interfaceImplementers.length > 0) {
-          component.dependencies.push(...interfaceImplementers);
-          return interfaceImplementers;
-        } else {
-          return 'any';
+      const symbol = symbols[type];
+
+      if (symbol.kind) {
+        if (symbol.kind === 'interface') {
+          const interfaceImplementers = implementers[type].map(getComponentData).filter(Boolean) as ComponentData[];
+          if (interfaceImplementers.length > 0) {
+            interfaceImplementers.forEach(impl => {
+              component.imports.push({
+                specifiers: [
+                  {
+                    local: impl.baseName,
+                    imported: 'default'
+                  }
+                ],
+                path: impl.path,
+              })
+            })
+            return interfaceImplementers.map(({baseName}) => baseName).join(' | ');
+          } else {
+            return 'any';
+          }
         }
-      } else {
-        console.warn(`Could not map type "${type}" for ${tagname} ${identifier} in ${component.baseName} component`);
+        if (symbol.kind === 'enum') {
+          return symbol.properties.map(p => `'${p.name}'`).join(' | ');
+        }
+        component.imports.push({
+          specifiers: [
+            {
+              local: symbol.basename,
+              imported: 'default'
+            }
+          ],
+          path: symbol.resource.replace(/.js$/, ''),
+        });
+        return symbol.basename;
       }
     }
     if (typeof mappedType === 'function') {
@@ -154,19 +174,9 @@ export function getComponents({
   }
 
   function getMethods(symbol: SymbolObject, componentData: ComponentData): ComponentData['methods'] {
-    return symbol.methods.map((method) => {
-      const parameters: ParameterType[] = (method.parameters || []).map(parameter => {
-        return {
-          name: parameter.name,
-          type: parameter.type.split('|').map(t => getPropertyType(t.trim(), symbol.tagname, method.name, componentData) as string).join(' | '),
-        }
-      });
-      const returnValue = method.returnValue ? getPropertyType(method.returnValue.type, symbol.tagname, method.name, componentData) as string : 'any';
+    return symbol.methods.filter(({visibility}) => visibility === 'public').map((method) => {
       return {
-        description: method.description,
-        name: method.name,
-        parameters,
-        returnValue,
+        name: method.name
       }
     });
   }
@@ -179,6 +189,7 @@ export function getComponents({
       description: symbol.description,
       baseName: symbol.basename,
       dependencies,
+      imports: [],
       implements: symbol.implements,
       selector: symbol.tagname,
       path: symbol.resource,

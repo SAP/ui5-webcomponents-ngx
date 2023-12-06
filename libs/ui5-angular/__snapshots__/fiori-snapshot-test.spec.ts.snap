@@ -23,9 +23,10 @@ export declare interface BarElement extends Partial<Omit<Bar, 'design'>> {
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'design'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -38,7 +39,6 @@ export declare interface BarElement extends Partial<Omit<Bar, 'design'>> {
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -131,9 +131,10 @@ export declare interface BarcodeScannerDialogElement
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs(['scanError', 'scanSuccess'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -146,7 +147,6 @@ export declare interface BarcodeScannerDialogElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -277,9 +277,10 @@ export declare interface DynamicSideContentElement
 ])
 @ProxyOutputs(['layoutChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -292,7 +293,6 @@ export declare interface DynamicSideContentElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -370,9 +370,10 @@ export declare interface FilterItemOptionElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'selected', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -385,7 +386,6 @@ export declare interface FilterItemOptionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -450,9 +450,10 @@ export declare interface FilterItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'additionalText', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -465,7 +466,6 @@ export declare interface FilterItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -519,6 +519,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type FlexibleColumnLayout from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 
 interface FlexibleColumnLayoutComponentEventsMap
@@ -553,6 +554,7 @@ export declare interface FlexibleColumnLayoutElement
       | 'layout'
       | 'midColumnVisible'
       | 'startColumnVisible'
+      | 'visibleColumns'
     >
   > {
   endColumnVisible: boolean;
@@ -569,7 +571,7 @@ export declare interface FlexibleColumnLayoutElement
     | 'TwoColumnsStartExpanded';
   midColumnVisible: boolean;
   startColumnVisible: boolean;
-
+  visibleColumns: Integer;
   addEventListener<K extends keyof FlexibleColumnLayoutComponentEventsMap>(
     type: K,
     listener: (
@@ -614,9 +616,10 @@ export declare interface FlexibleColumnLayoutElement
 ])
 @ProxyOutputs(['layoutChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -629,7 +632,6 @@ export declare interface FlexibleColumnLayoutElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -661,6 +663,7 @@ export class FlexibleColumnLayoutComponent {
   layout?: FlexibleColumnLayoutElement['layout'];
   midColumnVisible?: FlexibleColumnLayoutElement['midColumnVisible'];
   startColumnVisible?: FlexibleColumnLayoutElement['startColumnVisible'];
+  visibleColumns?: FlexibleColumnLayoutElement['visibleColumns'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<FlexibleColumnLayoutElement>,
@@ -702,13 +705,14 @@ export declare interface IllustratedMessageElement
   extends Partial<
     Omit<
       IllustratedMessage,
-      'accessibleNameRef' | 'size' | 'subtitleText' | 'titleText'
+      'accessibleNameRef' | 'size' | 'subtitleText' | 'titleLevel' | 'titleText'
     >
   > {
   accessibleNameRef: string;
 
   size: 'Auto' | 'Base' | 'Dialog' | 'Scene' | 'Spot';
   subtitleText: string;
+  titleLevel: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   titleText: string;
 }
 
@@ -720,13 +724,15 @@ export declare interface IllustratedMessageElement
   'name',
   'size',
   'subtitleText',
+  'titleLevel',
   'titleText',
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -739,7 +745,6 @@ export declare interface IllustratedMessageElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -756,6 +761,7 @@ export declare interface IllustratedMessageElement
     'name',
     'size',
     'subtitleText: subtitle-text',
+    'titleLevel: title-level',
     'titleText: title-text',
   ],
   outputs: [],
@@ -765,6 +771,7 @@ export class IllustratedMessageComponent {
   accessibleNameRef?: IllustratedMessageElement['accessibleNameRef'];
   size?: IllustratedMessageElement['size'];
   subtitleText?: IllustratedMessageElement['subtitleText'];
+  titleLevel?: IllustratedMessageElement['titleLevel'];
   titleText?: IllustratedMessageElement['titleText'];
   constructor(
     private c: ChangeDetectorRef,
@@ -815,9 +822,10 @@ export declare interface MediaGalleryItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'disabled', 'layout', 'selected'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -830,7 +838,6 @@ export declare interface MediaGalleryItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -957,9 +964,10 @@ export declare interface MediaGalleryElement
 ])
 @ProxyOutputs(['displayAreaClick', 'overflowClick', 'selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -972,7 +980,6 @@ export declare interface MediaGalleryElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1109,9 +1116,10 @@ export declare interface NotificationActionElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1124,11 +1132,9 @@ export declare interface NotificationActionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  'fireClickEvent',
 ])
 @Component({
   selector: 'ui5-notification-action',
@@ -1185,6 +1191,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type NotificationListGroupItem from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 
 interface NotificationListGroupItemComponentEventsMap
@@ -1201,6 +1208,7 @@ export declare interface NotificationListGroupItemElement
       | 'toggle'
       | 'selected'
       | 'busy'
+      | 'busyDelay'
       | 'priority'
       | 'read'
       | 'showClose'
@@ -1211,7 +1219,7 @@ export declare interface NotificationListGroupItemElement
   > {
   selected: boolean;
   busy: boolean;
-
+  busyDelay: Integer;
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: boolean;
   showClose: boolean;
@@ -1264,9 +1272,10 @@ export declare interface NotificationListGroupItemElement
 ])
 @ProxyOutputs(['close', 'toggle'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1279,7 +1288,6 @@ export declare interface NotificationListGroupItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1308,6 +1316,7 @@ export declare interface NotificationListGroupItemElement
 export class NotificationListGroupItemComponent {
   selected?: NotificationListGroupItemElement['selected'];
   busy?: NotificationListGroupItemElement['busy'];
+  busyDelay?: NotificationListGroupItemElement['busyDelay'];
   priority?: NotificationListGroupItemElement['priority'];
   read?: NotificationListGroupItemElement['read'];
   showClose?: NotificationListGroupItemElement['showClose'];
@@ -1349,6 +1358,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type NotificationListItem from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 
 interface NotificationListItemComponentEventsMap
@@ -1363,6 +1373,7 @@ export declare interface NotificationListItemElement
       | 'close'
       | 'selected'
       | 'busy'
+      | 'busyDelay'
       | 'priority'
       | 'read'
       | 'showClose'
@@ -1372,7 +1383,7 @@ export declare interface NotificationListItemElement
   > {
   selected: boolean;
   busy: boolean;
-
+  busyDelay: Integer;
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: boolean;
   showClose: boolean;
@@ -1421,9 +1432,10 @@ export declare interface NotificationListItemElement
 ])
 @ProxyOutputs(['close'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1436,7 +1448,6 @@ export declare interface NotificationListItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1464,6 +1475,7 @@ export declare interface NotificationListItemElement
 export class NotificationListItemComponent {
   selected?: NotificationListItemElement['selected'];
   busy?: NotificationListItemElement['busy'];
+  busyDelay?: NotificationListItemElement['busyDelay'];
   priority?: NotificationListItemElement['priority'];
   read?: NotificationListItemElement['read'];
   showClose?: NotificationListItemElement['showClose'];
@@ -1528,9 +1540,10 @@ export declare interface PageElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1543,7 +1556,6 @@ export declare interface PageElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1659,9 +1671,10 @@ export declare interface ProductSwitchItemElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1674,7 +1687,6 @@ export declare interface ProductSwitchItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1743,9 +1755,10 @@ export declare interface ProductSwitchElement extends Partial<ProductSwitch> {}
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1758,7 +1771,6 @@ export declare interface ProductSwitchElement extends Partial<ProductSwitch> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1849,9 +1861,10 @@ export declare interface ShellBarItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'count', 'icon', 'text'])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1864,7 +1877,6 @@ export declare interface ShellBarItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2032,9 +2044,10 @@ export declare interface ShellBarElement
   'profileClick',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2047,7 +2060,6 @@ export declare interface ShellBarElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2156,17 +2168,21 @@ export declare interface SideNavigationItemElement
     Omit<
       SideNavigationItem,
       | 'click'
-      | 'expanded'
+      | 'href'
       | 'icon'
       | 'selected'
+      | 'target'
       | 'text'
+      | 'expanded'
       | 'wholeItemToggleable'
     >
   > {
-  expanded: boolean;
+  href: string;
   icon: string;
   selected: boolean;
+  target: string;
   text: string;
+  expanded: boolean;
   wholeItemToggleable: boolean;
   addEventListener<K extends keyof SideNavigationItemComponentEventsMap>(
     type: K,
@@ -2200,17 +2216,20 @@ export declare interface SideNavigationItemElement
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
-  'expanded',
+  'href',
   'icon',
   'selected',
+  'target',
   'text',
+  'expanded',
   'wholeItemToggleable',
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2223,7 +2242,6 @@ export declare interface SideNavigationItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2236,20 +2254,24 @@ export declare interface SideNavigationItemElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
-    'expanded',
+    'href',
     'icon',
     'selected',
+    'target',
     'text',
+    'expanded',
     'wholeItemToggleable: whole-item-toggleable',
   ],
   outputs: ['click: ui5Click'],
   providers: [],
 })
 export class SideNavigationItemComponent {
-  expanded?: SideNavigationItemElement['expanded'];
+  href?: SideNavigationItemElement['href'];
   icon?: SideNavigationItemElement['icon'];
   selected?: SideNavigationItemElement['selected'];
+  target?: SideNavigationItemElement['target'];
   text?: SideNavigationItemElement['text'];
+  expanded?: SideNavigationItemElement['expanded'];
   wholeItemToggleable?: SideNavigationItemElement['wholeItemToggleable'];
   constructor(
     private c: ChangeDetectorRef,
@@ -2294,10 +2316,15 @@ interface SideNavigationSubItemComponentEventsMap
 
 export declare interface SideNavigationSubItemElement
   extends Partial<
-    Omit<SideNavigationSubItem, 'click' | 'icon' | 'selected' | 'text'>
+    Omit<
+      SideNavigationSubItem,
+      'click' | 'href' | 'icon' | 'selected' | 'target' | 'text'
+    >
   > {
+  href: string;
   icon: string;
   selected: boolean;
+  target: string;
   text: string;
   addEventListener<K extends keyof SideNavigationSubItemComponentEventsMap>(
     type: K,
@@ -2328,12 +2355,21 @@ export declare interface SideNavigationSubItemElement
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element', 'icon', 'selected', 'text'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'href',
+  'icon',
+  'selected',
+  'target',
+  'text',
+])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2346,7 +2382,6 @@ export declare interface SideNavigationSubItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2359,16 +2394,20 @@ export declare interface SideNavigationSubItemElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'href',
     'icon',
     'selected',
+    'target',
     'text',
   ],
   outputs: ['click: ui5Click'],
   providers: [],
 })
 export class SideNavigationSubItemComponent {
+  href?: SideNavigationSubItemElement['href'];
   icon?: SideNavigationSubItemElement['icon'];
   selected?: SideNavigationSubItemElement['selected'];
+  target?: SideNavigationSubItemElement['target'];
   text?: SideNavigationSubItemElement['text'];
   constructor(
     private c: ChangeDetectorRef,
@@ -2404,11 +2443,12 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
+import SideNavigationItemBase from '@ui5/webcomponents-fiori/dist/SideNavigationItemBase';
 import type SideNavigation from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 
 interface SideNavigationComponentEventsMap
   extends Omit<HTMLElementEventMap, 'selectionChange'> {
-  selectionChange: CustomEvent<{ item: any }>;
+  selectionChange: CustomEvent<{ item: SideNavigationItemBase }>;
 }
 
 export declare interface SideNavigationElement
@@ -2446,9 +2486,10 @@ export declare interface SideNavigationElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'collapsed'])
 @ProxyOutputs(['selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2461,7 +2502,6 @@ export declare interface SideNavigationElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2528,9 +2568,10 @@ export declare interface SortItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'selected', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2543,7 +2584,6 @@ export declare interface SortItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2679,9 +2719,10 @@ export declare interface TimelineItemElement
 ])
 @ProxyOutputs(['nameClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2694,11 +2735,9 @@ export declare interface TimelineItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  'focusLink',
 ])
 @Component({
   selector: 'ui5-timeline-item',
@@ -2768,9 +2807,10 @@ export declare interface TimelineElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'accessibleName', 'layout'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2783,7 +2823,6 @@ export declare interface TimelineElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2914,6 +2953,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type UploadCollectionItem from '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 
 interface UploadCollectionItemComponentEventsMap
@@ -2946,6 +2986,7 @@ export declare interface UploadCollectionItemElement
       | 'hideDeleteButton'
       | 'hideRetryButton'
       | 'hideTerminateButton'
+      | 'progress'
       | 'uploadState'
     >
   > {
@@ -2960,7 +3001,7 @@ export declare interface UploadCollectionItemElement
   hideDeleteButton: boolean;
   hideRetryButton: boolean;
   hideTerminateButton: boolean;
-
+  progress: Integer;
   uploadState: 'Complete' | 'Error' | 'Ready' | 'Uploading';
   addEventListener<K extends keyof UploadCollectionItemComponentEventsMap>(
     type: K,
@@ -3010,9 +3051,10 @@ export declare interface UploadCollectionItemElement
 ])
 @ProxyOutputs(['detailClick', 'fileNameClick', 'rename', 'retry', 'terminate'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3025,7 +3067,6 @@ export declare interface UploadCollectionItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3071,6 +3112,7 @@ export class UploadCollectionItemComponent {
   hideDeleteButton?: UploadCollectionItemElement['hideDeleteButton'];
   hideRetryButton?: UploadCollectionItemElement['hideRetryButton'];
   hideTerminateButton?: UploadCollectionItemElement['hideTerminateButton'];
+  progress?: UploadCollectionItemElement['progress'];
   uploadState?: UploadCollectionItemElement['uploadState'];
   constructor(
     private c: ChangeDetectorRef,
@@ -3189,9 +3231,10 @@ export declare interface UploadCollectionElement
 ])
 @ProxyOutputs(['drop', 'itemDelete', 'selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3204,7 +3247,6 @@ export declare interface UploadCollectionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3335,9 +3377,10 @@ export declare interface ViewSettingsDialogElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'sortDescending'])
 @ProxyOutputs(['beforeOpen', 'cancel', 'confirm'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3350,7 +3393,6 @@ export declare interface ViewSettingsDialogElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3446,9 +3488,10 @@ export declare interface WizardStepElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3461,7 +3504,6 @@ export declare interface WizardStepElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3522,15 +3564,15 @@ import {
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { WizardStepComponent } from '@ui5/webcomponents-ngx/fiori/wizard-step';
 import '@ui5/webcomponents-fiori/dist/Wizard.js';
+import WizardStep from '@ui5/webcomponents-fiori/dist/WizardStep.js';
 import type Wizard from '@ui5/webcomponents-fiori/dist/Wizard.js';
 
 interface WizardComponentEventsMap
   extends Omit<HTMLElementEventMap, 'stepChange'> {
   stepChange: CustomEvent<{
-    step: WizardStepComponent['element'];
-    previousStep: WizardStepComponent['element'];
+    step: WizardStep;
+    previousStep: WizardStep;
     changeWithClick: boolean;
   }>;
 }
@@ -3564,9 +3606,10 @@ export declare interface WizardElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'contentLayout'])
 @ProxyOutputs(['stepChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3579,7 +3622,6 @@ export declare interface WizardElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',

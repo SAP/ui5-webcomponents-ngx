@@ -7,7 +7,7 @@ import { ComponentData } from "@ui5/webcomponents-wrapper";
  * Parses the api.json files and returns the list of the component data
  * @param configuration
  */
-export default async function (configuration: ParserConfiguration): Promise<ComponentData[]> {
+async function parser(configuration: ParserConfiguration): Promise<ComponentData[]> {
   const {implementers, symbols} = await getImplementersAndSymbols(configuration);
   return getComponents({
     implementers,
@@ -20,3 +20,4 @@ export default async function (configuration: ParserConfiguration): Promise<Comp
     }, [])
   });
 }
+export default parser;

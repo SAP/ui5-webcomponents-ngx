@@ -84,9 +84,10 @@ export declare interface AvatarGroupElement
 ])
 @ProxyOutputs(['click', 'overflow'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -99,7 +100,6 @@ export declare interface AvatarGroupElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -212,9 +212,10 @@ export declare interface AvatarElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -227,7 +228,6 @@ export declare interface AvatarElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -304,9 +304,10 @@ export declare interface BadgeElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'colorScheme'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -319,7 +320,6 @@ export declare interface BadgeElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -388,9 +388,10 @@ export declare interface BreadcrumbsItemElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -403,7 +404,6 @@ export declare interface BreadcrumbsItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -516,9 +516,10 @@ export declare interface BreadcrumbsElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'design', 'separatorStyle'])
 @ProxyOutputs(['itemClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -531,7 +532,6 @@ export declare interface BreadcrumbsElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -586,12 +586,13 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/BusyIndicator.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator.js';
 
 export declare interface BusyIndicatorElement
-  extends Partial<Omit<BusyIndicator, 'active' | 'size' | 'text'>> {
+  extends Partial<Omit<BusyIndicator, 'active' | 'delay' | 'size' | 'text'>> {
   active: boolean;
-
+  delay: Integer;
   size: 'Large' | 'Medium' | 'Small';
   text: string;
 }
@@ -607,9 +608,10 @@ export declare interface BusyIndicatorElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -622,7 +624,6 @@ export declare interface BusyIndicatorElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -645,6 +646,7 @@ export declare interface BusyIndicatorElement
 })
 export class BusyIndicatorComponent {
   active?: BusyIndicatorElement['active'];
+  delay?: BusyIndicatorElement['delay'];
   size?: BusyIndicatorElement['size'];
   text?: BusyIndicatorElement['text'];
   constructor(
@@ -761,9 +763,10 @@ export declare interface ButtonElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -776,7 +779,6 @@ export declare interface ButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -857,9 +859,10 @@ export declare interface CalendarDateElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'value'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -872,7 +875,6 @@ export declare interface CalendarDateElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -998,9 +1000,10 @@ export declare interface CalendarElement
 ])
 @ProxyOutputs(['selectedDatesChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1013,12 +1016,9 @@ export declare interface CalendarElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  '_safelyModifyTimestampBy',
-  '_safelySetTimestamp',
 ])
 @Component({
   selector: 'ui5-calendar',
@@ -1139,9 +1139,10 @@ export declare interface CardHeaderElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1154,7 +1155,6 @@ export declare interface CardHeaderElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1230,9 +1230,10 @@ export declare interface CardElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1245,7 +1246,6 @@ export declare interface CardElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1298,6 +1298,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Carousel.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type Carousel from '@ui5/webcomponents/dist/Carousel.js';
 
 interface CarouselComponentEventsMap
@@ -1315,6 +1316,9 @@ export declare interface CarouselElement
       | 'cyclic'
       | 'hideNavigationArrows'
       | 'hidePageIndicator'
+      | 'itemsPerPageL'
+      | 'itemsPerPageM'
+      | 'itemsPerPageS'
       | 'pageIndicatorBackgroundDesign'
       | 'pageIndicatorBorderDesign'
       | 'pageIndicatorStyle'
@@ -1325,9 +1329,11 @@ export declare interface CarouselElement
   cyclic: boolean;
   hideNavigationArrows: boolean;
   hidePageIndicator: boolean;
-
+  itemsPerPageL: Integer;
+  itemsPerPageM: Integer;
+  itemsPerPageS: Integer;
   pageIndicatorBackgroundDesign: 'Solid' | 'Translucent' | 'Transparent';
-  pageIndicatorBorderDesign: 'Transparent' | 'Solid';
+  pageIndicatorBorderDesign: 'None' | 'Solid';
   pageIndicatorStyle: 'Default' | 'Numeric';
   addEventListener<K extends keyof CarouselComponentEventsMap>(
     type: K,
@@ -1369,9 +1375,10 @@ export declare interface CarouselElement
 ])
 @ProxyOutputs(['navigate'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1384,7 +1391,6 @@ export declare interface CarouselElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1419,6 +1425,9 @@ export class CarouselComponent {
   cyclic?: CarouselElement['cyclic'];
   hideNavigationArrows?: CarouselElement['hideNavigationArrows'];
   hidePageIndicator?: CarouselElement['hidePageIndicator'];
+  itemsPerPageL?: CarouselElement['itemsPerPageL'];
+  itemsPerPageM?: CarouselElement['itemsPerPageM'];
+  itemsPerPageS?: CarouselElement['itemsPerPageS'];
   pageIndicatorBackgroundDesign?: CarouselElement['pageIndicatorBackgroundDesign'];
   pageIndicatorBorderDesign?: CarouselElement['pageIndicatorBorderDesign'];
   pageIndicatorStyle?: CarouselElement['pageIndicatorStyle'];
@@ -1535,9 +1544,10 @@ export declare interface CheckBoxElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1550,7 +1560,6 @@ export declare interface CheckBoxElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1642,18 +1651,22 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
+import CSSColor from '@ui5/webcomponents-base/dist/types/CSSColor';
 import type ColorPaletteItem from '@ui5/webcomponents/dist/ColorPaletteItem.js';
 
 export declare interface ColorPaletteItemElement
-  extends Partial<ColorPaletteItem> {}
+  extends Partial<Omit<ColorPaletteItem, 'value'>> {
+  value: CSSColor;
+}
 
 // TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'value'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1666,7 +1679,6 @@ export declare interface ColorPaletteItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1685,6 +1697,7 @@ export declare interface ColorPaletteItemElement
   providers: [],
 })
 export class ColorPaletteItemComponent {
+  value?: ColorPaletteItemElement['value'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPaletteItemElement>,
@@ -1717,6 +1730,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
+import CSSColor from '@ui5/webcomponents-base/dist/types/CSSColor';
 import type ColorPalettePopover from '@ui5/webcomponents/dist/ColorPalettePopover.js';
 
 interface ColorPalettePopoverComponentEventsMap
@@ -1728,9 +1742,14 @@ export declare interface ColorPalettePopoverElement
   extends Partial<
     Omit<
       ColorPalettePopover,
-      'itemClick' | 'showDefaultColor' | 'showMoreColors' | 'showRecentColors'
+      | 'itemClick'
+      | 'defaultColor'
+      | 'showDefaultColor'
+      | 'showMoreColors'
+      | 'showRecentColors'
     >
   > {
+  defaultColor: CSSColor;
   showDefaultColor: boolean;
   showMoreColors: boolean;
   showRecentColors: boolean;
@@ -1773,9 +1792,10 @@ export declare interface ColorPalettePopoverElement
 ])
 @ProxyOutputs(['itemClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1788,7 +1808,6 @@ export declare interface ColorPalettePopoverElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1812,6 +1831,7 @@ export declare interface ColorPalettePopoverElement
   providers: [],
 })
 export class ColorPalettePopoverComponent {
+  defaultColor?: ColorPalettePopoverElement['defaultColor'];
   showDefaultColor?: ColorPalettePopoverElement['showDefaultColor'];
   showMoreColors?: ColorPalettePopoverElement['showMoreColors'];
   showRecentColors?: ColorPalettePopoverElement['showRecentColors'];
@@ -1890,9 +1910,10 @@ export declare interface ColorPaletteElement
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs(['itemClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -1905,7 +1926,6 @@ export declare interface ColorPaletteElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -1954,6 +1974,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPicker.js';
+import CSSColor from '@ui5/webcomponents-base/dist/types/CSSColor';
 import type ColorPicker from '@ui5/webcomponents/dist/ColorPicker.js';
 
 interface ColorPickerComponentEventsMap
@@ -1962,7 +1983,8 @@ interface ColorPickerComponentEventsMap
 }
 
 export declare interface ColorPickerElement
-  extends Partial<Omit<ColorPicker, 'change'>> {
+  extends Partial<Omit<ColorPicker, 'change' | 'color'>> {
+  color: CSSColor;
   addEventListener<K extends keyof ColorPickerComponentEventsMap>(
     type: K,
     listener: (
@@ -1995,9 +2017,10 @@ export declare interface ColorPickerElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'color'])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2010,7 +2033,6 @@ export declare interface ColorPickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2029,6 +2051,7 @@ export declare interface ColorPickerElement
   providers: [],
 })
 export class ColorPickerComponent {
+  color?: ColorPickerElement['color'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPickerElement>,
@@ -2073,9 +2096,10 @@ export declare interface ComboBoxGroupItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2088,7 +2112,6 @@ export declare interface ComboBoxGroupItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2151,9 +2174,10 @@ export declare interface ComboBoxItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'additionalText', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2166,7 +2190,6 @@ export declare interface ComboBoxItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2220,23 +2243,19 @@ import {
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
-import { ComboBoxGroupItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-group-item';
-import { ComboBoxItemComponent } from '@ui5/webcomponents-ngx/main/combo-box-item';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/ComboBox.js';
+import ComboBoxGroupItem from '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
+import ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem.js';
 import type ComboBox from '@ui5/webcomponents/dist/ComboBox.js';
 
 interface ComboBoxComponentEventsMap
   extends Omit<HTMLElementEventMap, 'change' | 'input' | 'selectionChange'> {
   change: CustomEvent<void>;
   input: CustomEvent<void>;
-  selectionChange: CustomEvent<{
-    item:
-      | ComboBoxGroupItemComponent['element']
-      | ComboBoxItemComponent['element'];
-  }>;
+  selectionChange: CustomEvent<{ item: ComboBoxGroupItem | ComboBoxItem }>;
 }
 
 export declare interface ComboBoxElement
@@ -2310,9 +2329,10 @@ export declare interface ComboBoxElement
 ])
 @ProxyOutputs(['change', 'input', 'selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2325,7 +2345,6 @@ export declare interface ComboBoxElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2484,9 +2503,10 @@ export declare interface CustomListItemElement
 ])
 @ProxyOutputs(['detailClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2499,7 +2519,6 @@ export declare interface CustomListItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2672,9 +2691,10 @@ export declare interface DatePickerElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2687,7 +2707,6 @@ export declare interface DatePickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -2918,9 +2937,10 @@ export declare interface DateRangePickerElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -2933,7 +2953,6 @@ export declare interface DateRangePickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3161,9 +3180,10 @@ export declare interface DateTimePickerElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3176,7 +3196,6 @@ export declare interface DateTimePickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3371,9 +3390,10 @@ export declare interface DayPickerElement
 ])
 @ProxyOutputs(['change', 'navigate'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3386,12 +3406,9 @@ export declare interface DayPickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  '_safelyModifyTimestampBy',
-  '_safelySetTimestamp',
 ])
 @Component({
   selector: 'ui5-daypicker',
@@ -3540,9 +3557,10 @@ export declare interface DialogElement
 ])
 @ProxyOutputs(['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3555,7 +3573,6 @@ export declare interface DialogElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3719,9 +3736,10 @@ export declare interface FileUploaderElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3734,7 +3752,6 @@ export declare interface FileUploaderElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3834,9 +3851,10 @@ export declare interface GroupHeaderListItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'selected', 'accessibleName'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3849,7 +3867,6 @@ export declare interface GroupHeaderListItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -3945,9 +3962,10 @@ export declare interface IconElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -3960,7 +3978,6 @@ export declare interface IconElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4030,6 +4047,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Input.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type Input from '@ui5/webcomponents/dist/Input.js';
 
 interface InputComponentEventsMap
@@ -4057,6 +4075,7 @@ export declare interface InputElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
+      | 'maxlength'
       | 'name'
       | 'noTypeahead'
       | 'placeholder'
@@ -4072,7 +4091,7 @@ export declare interface InputElement
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-
+  maxlength: Integer;
   name: string;
   noTypeahead: boolean;
   placeholder: string;
@@ -4133,9 +4152,10 @@ export declare interface InputElement
   'suggestionItemSelect',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4148,7 +4168,6 @@ export declare interface InputElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4196,6 +4215,7 @@ export class InputComponent extends GenericControlValueAccessor {
   accessibleName?: InputElement['accessibleName'];
   accessibleNameRef?: InputElement['accessibleNameRef'];
   disabled?: InputElement['disabled'];
+  maxlength?: InputElement['maxlength'];
   name?: InputElement['name'];
   noTypeahead?: InputElement['noTypeahead'];
   placeholder?: InputElement['placeholder'];
@@ -4283,9 +4303,10 @@ export declare interface LabelElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4298,7 +4319,6 @@ export declare interface LabelElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4432,9 +4452,10 @@ export declare interface LinkElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4447,7 +4468,6 @@ export declare interface LinkElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4516,6 +4536,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/List.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type List from '@ui5/webcomponents/dist/List.js';
 
 interface ListComponentEventsMap
@@ -4553,6 +4574,7 @@ export declare interface ListElement
       | 'accessibleNameRef'
       | 'accessibleRole'
       | 'busy'
+      | 'busyDelay'
       | 'footerText'
       | 'growing'
       | 'headerText'
@@ -4566,7 +4588,7 @@ export declare interface ListElement
   accessibleNameRef: string;
   accessibleRole: string;
   busy: boolean;
-
+  busyDelay: Integer;
   footerText: string;
   growing: 'Button' | 'None' | 'Scroll';
   headerText: string;
@@ -4629,9 +4651,10 @@ export declare interface ListElement
   'selectionChange',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4644,7 +4667,6 @@ export declare interface ListElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4685,6 +4707,7 @@ export class ListComponent {
   accessibleNameRef?: ListElement['accessibleNameRef'];
   accessibleRole?: ListElement['accessibleRole'];
   busy?: ListElement['busy'];
+  busyDelay?: ListElement['busyDelay'];
   footerText?: ListElement['footerText'];
   growing?: ListElement['growing'];
   headerText?: ListElement['headerText'];
@@ -4729,6 +4752,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/MenuItem.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
 
 export declare interface MenuItemElement
@@ -4738,6 +4762,7 @@ export declare interface MenuItemElement
       | 'accessibleName'
       | 'additionalText'
       | 'busy'
+      | 'busyDelay'
       | 'disabled'
       | 'icon'
       | 'startsSection'
@@ -4747,7 +4772,7 @@ export declare interface MenuItemElement
   accessibleName: string;
   additionalText: string;
   busy: boolean;
-
+  busyDelay: Integer;
   disabled: boolean;
   icon: string;
   startsSection: boolean;
@@ -4769,9 +4794,10 @@ export declare interface MenuItemElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4784,7 +4810,6 @@ export declare interface MenuItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4813,6 +4838,7 @@ export class MenuItemComponent {
   accessibleName?: MenuItemElement['accessibleName'];
   additionalText?: MenuItemElement['additionalText'];
   busy?: MenuItemElement['busy'];
+  busyDelay?: MenuItemElement['busyDelay'];
   disabled?: MenuItemElement['disabled'];
   icon?: MenuItemElement['icon'];
   startsSection?: MenuItemElement['startsSection'];
@@ -4848,6 +4874,8 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Menu.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import type Menu from '@ui5/webcomponents/dist/Menu.js';
 
 interface MenuComponentEventsMap
@@ -4872,15 +4900,17 @@ export declare interface MenuElement
       | 'beforeOpen'
       | 'itemClick'
       | 'busy'
+      | 'busyDelay'
       | 'headerText'
       | 'open'
+      | 'opener'
     >
   > {
   busy: boolean;
-
+  busyDelay: Integer;
   headerText: string;
   open: boolean;
-
+  opener: DOMReference;
   addEventListener<K extends keyof MenuComponentEventsMap>(
     type: K,
     listener: (this: MenuElement, ev: MenuComponentEventsMap[K]) => any,
@@ -4921,9 +4951,10 @@ export declare interface MenuElement
   'itemClick',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -4936,7 +4967,6 @@ export declare interface MenuElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -4968,8 +4998,10 @@ export declare interface MenuElement
 })
 export class MenuComponent {
   busy?: MenuElement['busy'];
+  busyDelay?: MenuElement['busyDelay'];
   headerText?: MenuElement['headerText'];
   open?: MenuElement['open'];
+  opener?: MenuElement['opener'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<MenuElement>,
@@ -5059,9 +5091,10 @@ export declare interface MessageStripElement
 ])
 @ProxyOutputs(['close'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5074,7 +5107,6 @@ export declare interface MessageStripElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -5210,9 +5242,10 @@ export declare interface MonthPickerElement
 ])
 @ProxyOutputs(['change', 'navigate'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5225,12 +5258,9 @@ export declare interface MonthPickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  '_safelyModifyTimestampBy',
-  '_safelySetTimestamp',
 ])
 @Component({
   selector: 'ui5-monthpicker',
@@ -5301,9 +5331,10 @@ export declare interface MultiComboBoxGroupItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5316,7 +5347,6 @@ export declare interface MultiComboBoxGroupItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -5388,9 +5418,10 @@ export declare interface MultiComboBoxItemElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5403,7 +5434,6 @@ export declare interface MultiComboBoxItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -5557,9 +5587,10 @@ export declare interface MultiComboBoxElement
 ])
 @ProxyOutputs(['change', 'input', 'openChange', 'selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5572,7 +5603,6 @@ export declare interface MultiComboBoxElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -5683,6 +5713,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/MultiInput.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type MultiInput from '@ui5/webcomponents/dist/MultiInput.js';
 
 interface MultiInputComponentEventsMap
@@ -5719,6 +5750,7 @@ export declare interface MultiInputElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
+      | 'maxlength'
       | 'name'
       | 'noTypeahead'
       | 'placeholder'
@@ -5735,7 +5767,7 @@ export declare interface MultiInputElement
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-
+  maxlength: Integer;
   name: string;
   noTypeahead: boolean;
   placeholder: string;
@@ -5806,9 +5838,10 @@ export declare interface MultiInputElement
   'valueHelpTrigger',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5821,7 +5854,6 @@ export declare interface MultiInputElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -5872,6 +5904,7 @@ export class MultiInputComponent extends GenericControlValueAccessor {
   accessibleName?: MultiInputElement['accessibleName'];
   accessibleNameRef?: MultiInputElement['accessibleNameRef'];
   disabled?: MultiInputElement['disabled'];
+  maxlength?: MultiInputElement['maxlength'];
   name?: MultiInputElement['name'];
   noTypeahead?: MultiInputElement['noTypeahead'];
   placeholder?: MultiInputElement['placeholder'];
@@ -5972,9 +6005,10 @@ export declare interface OptionElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -5987,7 +6021,6 @@ export declare interface OptionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6112,9 +6145,10 @@ export declare interface PanelElement
 ])
 @ProxyOutputs(['toggle'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6127,7 +6161,6 @@ export declare interface PanelElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6194,6 +6227,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Popover.js';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import type Popover from '@ui5/webcomponents/dist/Popover.js';
 
 interface PopoverComponentEventsMap
@@ -6227,6 +6261,7 @@ export declare interface PopoverElement
       | 'hideBackdrop'
       | 'horizontalAlign'
       | 'modal'
+      | 'opener'
       | 'placementType'
       | 'verticalAlign'
     >
@@ -6243,7 +6278,7 @@ export declare interface PopoverElement
   hideBackdrop: boolean;
   horizontalAlign: 'Center' | 'Left' | 'Right' | 'Stretch';
   modal: boolean;
-
+  opener: DOMReference;
   placementType: 'Bottom' | 'Left' | 'Right' | 'Top';
   verticalAlign: 'Bottom' | 'Center' | 'Stretch' | 'Top';
   addEventListener<K extends keyof PopoverComponentEventsMap>(
@@ -6290,9 +6325,10 @@ export declare interface PopoverElement
 ])
 @ProxyOutputs(['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6305,7 +6341,6 @@ export declare interface PopoverElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6359,6 +6394,7 @@ export class PopoverComponent {
   hideBackdrop?: PopoverElement['hideBackdrop'];
   horizontalAlign?: PopoverElement['horizontalAlign'];
   modal?: PopoverElement['modal'];
+  opener?: PopoverElement['opener'];
   placementType?: PopoverElement['placementType'];
   verticalAlign?: PopoverElement['verticalAlign'];
   constructor(
@@ -6396,6 +6432,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ProgressIndicator.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type ProgressIndicator from '@ui5/webcomponents/dist/ProgressIndicator.js';
 
 export declare interface ProgressIndicatorElement
@@ -6406,6 +6443,7 @@ export declare interface ProgressIndicatorElement
       | 'disabled'
       | 'displayValue'
       | 'hideValue'
+      | 'value'
       | 'valueState'
     >
   > {
@@ -6413,7 +6451,7 @@ export declare interface ProgressIndicatorElement
   disabled: boolean;
   displayValue: string;
   hideValue: boolean;
-
+  value: Integer;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 }
 
@@ -6430,9 +6468,10 @@ export declare interface ProgressIndicatorElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6445,7 +6484,6 @@ export declare interface ProgressIndicatorElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6473,6 +6511,7 @@ export class ProgressIndicatorComponent {
   disabled?: ProgressIndicatorElement['disabled'];
   displayValue?: ProgressIndicatorElement['displayValue'];
   hideValue?: ProgressIndicatorElement['hideValue'];
+  value?: ProgressIndicatorElement['value'];
   valueState?: ProgressIndicatorElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
@@ -6592,9 +6631,10 @@ export declare interface RadioButtonElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6607,7 +6647,6 @@ export declare interface RadioButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6705,6 +6744,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/RangeSlider.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import Float from '@ui5/webcomponents-base/dist/types/Float';
 import type RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
 
 interface RangeSliderComponentEventsMap
@@ -6721,16 +6762,26 @@ export declare interface RangeSliderElement
       | 'input'
       | 'accessibleName'
       | 'disabled'
+      | 'labelInterval'
+      | 'max'
+      | 'min'
       | 'showTickmarks'
       | 'showTooltip'
+      | 'step'
+      | 'endValue'
+      | 'startValue'
     >
   > {
   accessibleName: string;
   disabled: boolean;
-
+  labelInterval: Integer;
+  max: Float;
+  min: Float;
   showTickmarks: boolean;
   showTooltip: boolean;
-
+  step: Integer;
+  endValue: Float;
+  startValue: Float;
   addEventListener<K extends keyof RangeSliderComponentEventsMap>(
     type: K,
     listener: (
@@ -6776,9 +6827,10 @@ export declare interface RangeSliderElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6791,7 +6843,6 @@ export declare interface RangeSliderElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6827,8 +6878,14 @@ export declare interface RangeSliderElement
 export class RangeSliderComponent extends GenericControlValueAccessor {
   accessibleName?: RangeSliderElement['accessibleName'];
   disabled?: RangeSliderElement['disabled'];
+  labelInterval?: RangeSliderElement['labelInterval'];
+  max?: RangeSliderElement['max'];
+  min?: RangeSliderElement['min'];
   showTickmarks?: RangeSliderElement['showTickmarks'];
   showTooltip?: RangeSliderElement['showTooltip'];
+  step?: RangeSliderElement['step'];
+  endValue?: RangeSliderElement['endValue'];
+  startValue?: RangeSliderElement['startValue'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<RangeSliderElement>,
@@ -6883,6 +6940,8 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/RatingIndicator.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import Float from '@ui5/webcomponents-base/dist/types/Float';
 import type RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
 
 interface RatingIndicatorComponentEventsMap
@@ -6898,19 +6957,21 @@ export declare interface RatingIndicatorElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
+      | 'max'
       | 'readonly'
       | 'required'
       | 'tooltip'
+      | 'value'
     >
   > {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-
+  max: Integer;
   readonly: boolean;
   required: boolean;
   tooltip: string;
-
+  value: Float;
   addEventListener<K extends keyof RatingIndicatorComponentEventsMap>(
     type: K,
     listener: (
@@ -6954,9 +7015,10 @@ export declare interface RatingIndicatorElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -6969,7 +7031,6 @@ export declare interface RatingIndicatorElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -6998,9 +7059,11 @@ export class RatingIndicatorComponent {
   accessibleName?: RatingIndicatorElement['accessibleName'];
   accessibleNameRef?: RatingIndicatorElement['accessibleNameRef'];
   disabled?: RatingIndicatorElement['disabled'];
+  max?: RatingIndicatorElement['max'];
   readonly?: RatingIndicatorElement['readonly'];
   required?: RatingIndicatorElement['required'];
   tooltip?: RatingIndicatorElement['tooltip'];
+  value?: RatingIndicatorElement['value'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<RatingIndicatorElement>,
@@ -7035,6 +7098,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import type ResponsivePopover from '@ui5/webcomponents/dist/ResponsivePopover.js';
 
 interface ResponsivePopoverComponentEventsMap
@@ -7068,6 +7132,7 @@ export declare interface ResponsivePopoverElement
       | 'hideBackdrop'
       | 'horizontalAlign'
       | 'modal'
+      | 'opener'
       | 'placementType'
       | 'verticalAlign'
     >
@@ -7084,7 +7149,7 @@ export declare interface ResponsivePopoverElement
   hideBackdrop: boolean;
   horizontalAlign: 'Center' | 'Left' | 'Right' | 'Stretch';
   modal: boolean;
-
+  opener: DOMReference;
   placementType: 'Bottom' | 'Left' | 'Right' | 'Top';
   verticalAlign: 'Bottom' | 'Center' | 'Stretch' | 'Top';
   addEventListener<K extends keyof ResponsivePopoverComponentEventsMap>(
@@ -7137,9 +7202,10 @@ export declare interface ResponsivePopoverElement
 ])
 @ProxyOutputs(['afterClose', 'afterOpen', 'beforeClose', 'beforeOpen'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7152,7 +7218,6 @@ export declare interface ResponsivePopoverElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7206,6 +7271,7 @@ export class ResponsivePopoverComponent {
   hideBackdrop?: ResponsivePopoverElement['hideBackdrop'];
   horizontalAlign?: ResponsivePopoverElement['horizontalAlign'];
   modal?: ResponsivePopoverElement['modal'];
+  opener?: ResponsivePopoverElement['opener'];
   placementType?: ResponsivePopoverElement['placementType'];
   verticalAlign?: ResponsivePopoverElement['verticalAlign'];
   constructor(
@@ -7331,9 +7397,10 @@ export declare interface SegmentedButtonItemElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7346,7 +7413,6 @@ export declare interface SegmentedButtonItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7419,6 +7485,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/SegmentedButton.js';
+import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import type SegmentedButton from '@ui5/webcomponents/dist/SegmentedButton.js';
 
 interface SegmentedButtonComponentEventsMap
@@ -7431,11 +7498,19 @@ interface SegmentedButtonComponentEventsMap
 
 export declare interface SegmentedButtonElement
   extends Partial<
-    Omit<SegmentedButton, 'selectionChange' | 'accessibleName' | 'mode'>
+    Omit<
+      SegmentedButton,
+      | 'selectionChange'
+      | 'accessibleName'
+      | 'mode'
+      | 'selectedItem'
+      | 'selectedItems'
+    >
   > {
   accessibleName: string;
   mode: 'MultiSelect' | 'SingleSelect';
-
+  selectedItem: SegmentedButtonItem;
+  selectedItems: SegmentedButtonItem;
   addEventListener<K extends keyof SegmentedButtonComponentEventsMap>(
     type: K,
     listener: (
@@ -7475,9 +7550,10 @@ export declare interface SegmentedButtonElement
 ])
 @ProxyOutputs(['selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7490,7 +7566,6 @@ export declare interface SegmentedButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7514,6 +7589,8 @@ export declare interface SegmentedButtonElement
 export class SegmentedButtonComponent {
   accessibleName?: SegmentedButtonElement['accessibleName'];
   mode?: SegmentedButtonElement['mode'];
+  selectedItem?: SegmentedButtonElement['selectedItem'];
+  selectedItems?: SegmentedButtonElement['selectedItems'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<SegmentedButtonElement>,
@@ -7542,6 +7619,7 @@ exports[`Snapshot test Main Select Menu Option should match the snapshot 1`] = `
   ElementRef,
   NgZone,
   ChangeDetectorRef,
+  EventEmitter,
 } from '@angular/core';
 import {
   ProxyInputs,
@@ -7551,31 +7629,80 @@ import {
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
 import type SelectMenuOption from '@ui5/webcomponents/dist/SelectMenuOption.js';
 
+interface SelectMenuOptionComponentEventsMap
+  extends Omit<HTMLElementEventMap, 'detailClick'> {
+  detailClick: CustomEvent<void>;
+}
+
 export declare interface SelectMenuOptionElement
   extends Partial<
-    Omit<SelectMenuOption, 'displayText' | 'navigated' | 'type' | 'value'>
+    Omit<
+      SelectMenuOption,
+      | 'detailClick'
+      | 'disabled'
+      | 'selected'
+      | 'navigated'
+      | 'type'
+      | 'accessibleName'
+      | 'displayText'
+      | 'value'
+    >
   > {
-  displayText: string;
+  disabled: boolean;
+  selected: boolean;
+
   navigated: boolean;
   type: 'Active' | 'Detail' | 'Inactive' | 'Navigation';
+  accessibleName: string;
+  displayText: string;
   value: string;
+  addEventListener<K extends keyof SelectMenuOptionComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SelectMenuOptionElement,
+      ev: SelectMenuOptionComponentEventsMap[K]
+    ) => any,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions
+  ): void;
+  removeEventListener<K extends keyof SelectMenuOptionComponentEventsMap>(
+    type: K,
+    listener: (
+      this: SelectMenuOptionElement,
+      ev: SelectMenuOptionComponentEventsMap[K]
+    ) => any,
+    options?: boolean | EventListenerOptions
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions
+  ): void;
 }
 
 // TS source file
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
+  'disabled',
+  'selected',
   'accessibilityAttributes',
-  'displayText',
   'navigated',
   'type',
+  'accessibleName',
+  'displayText',
   'value',
 ])
-@ProxyOutputs([])
+@ProxyOutputs(['detailClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7588,7 +7715,6 @@ export declare interface SelectMenuOptionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7601,19 +7727,25 @@ export declare interface SelectMenuOptionElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'disabled',
+    'selected',
     'accessibilityAttributes: accessibility-attributes',
-    'displayText: display-text',
     'navigated',
     'type',
+    'accessibleName: accessible-name',
+    'displayText: display-text',
     'value',
   ],
-  outputs: [],
+  outputs: ['detailClick: ui5DetailClick'],
   providers: [],
 })
 export class SelectMenuOptionComponent {
-  displayText?: SelectMenuOptionElement['displayText'];
+  disabled?: SelectMenuOptionElement['disabled'];
+  selected?: SelectMenuOptionElement['selected'];
   navigated?: SelectMenuOptionElement['navigated'];
   type?: SelectMenuOptionElement['type'];
+  accessibleName?: SelectMenuOptionElement['accessibleName'];
+  displayText?: SelectMenuOptionElement['displayText'];
   value?: SelectMenuOptionElement['value'];
   constructor(
     private c: ChangeDetectorRef,
@@ -7629,7 +7761,9 @@ export class SelectMenuOptionComponent {
 }
 
 export declare interface SelectMenuOptionComponent
-  extends Partial<SelectMenuOptionElement> {}
+  extends Partial<SelectMenuOptionElement> {
+  detailClick: EventEmitter<SelectMenuOptionComponentEventsMap['detailClick']>;
+}
 "
 `;
 
@@ -7654,9 +7788,10 @@ export declare interface SelectMenuElement extends Partial<SelectMenu> {}
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7669,7 +7804,6 @@ export declare interface SelectMenuElement extends Partial<SelectMenu> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7709,13 +7843,19 @@ exports[`Snapshot test Main Select should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
   EventEmitter,
+  forwardRef,
 } from '@angular/core';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
+import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Select.js';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
+import Option from '@ui5/webcomponents/dist/Option.js';
 import type Select from '@ui5/webcomponents/dist/Select.js';
 
 interface SelectComponentEventsMap
@@ -7740,18 +7880,22 @@ export declare interface SelectElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
+      | 'menu'
       | 'name'
       | 'required'
+      | 'selectedOption'
+      | 'value'
       | 'valueState'
     >
   > {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-
+  menu: DOMReference;
   name: string;
   required: boolean;
-
+  selectedOption: Option;
+  value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   addEventListener<K extends keyof SelectComponentEventsMap>(
     type: K,
@@ -7786,13 +7930,15 @@ export declare interface SelectElement
   'name',
   'required',
   'selectedOption',
+  'value',
   'valueState',
 ])
 @ProxyOutputs(['change', 'close', 'liveChange', 'open'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7805,7 +7951,6 @@ export declare interface SelectElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7825,6 +7970,7 @@ export declare interface SelectElement
     'name',
     'required',
     'selectedOption: selected-option',
+    'value',
     'valueState: value-state',
   ],
   outputs: [
@@ -7833,14 +7979,23 @@ export declare interface SelectElement
     'liveChange: ui5LiveChange',
     'open: ui5Open',
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true,
+    },
+  ],
 })
-export class SelectComponent {
+export class SelectComponent extends GenericControlValueAccessor {
   accessibleName?: SelectElement['accessibleName'];
   accessibleNameRef?: SelectElement['accessibleNameRef'];
   disabled?: SelectElement['disabled'];
+  menu?: SelectElement['menu'];
   name?: SelectElement['name'];
   required?: SelectElement['required'];
+  selectedOption?: SelectElement['selectedOption'];
+  value?: SelectElement['value'];
   valueState?: SelectElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
@@ -7848,6 +8003,20 @@ export class SelectComponent {
     private zone: NgZone
   ) {
     c.detach();
+    super({
+      get value() {
+        return elementRef.nativeElement.value;
+      },
+      set value(val) {
+        elementRef.nativeElement.value = val;
+      },
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change')
+      ),
+      setDisabledState: (isDisabled: boolean): void => {
+        elementRef.nativeElement.disabled = isDisabled;
+      },
+    });
   }
 
   get element(): SelectElement {
@@ -7882,6 +8051,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Slider.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
+import Float from '@ui5/webcomponents-base/dist/types/Float';
 import type Slider from '@ui5/webcomponents/dist/Slider.js';
 
 interface SliderComponentEventsMap
@@ -7898,16 +8069,24 @@ export declare interface SliderElement
       | 'input'
       | 'accessibleName'
       | 'disabled'
+      | 'labelInterval'
+      | 'max'
+      | 'min'
       | 'showTickmarks'
       | 'showTooltip'
+      | 'step'
+      | 'value'
     >
   > {
   accessibleName: string;
   disabled: boolean;
-
+  labelInterval: Integer;
+  max: Float;
+  min: Float;
   showTickmarks: boolean;
   showTooltip: boolean;
-
+  step: Integer;
+  value: Float;
   addEventListener<K extends keyof SliderComponentEventsMap>(
     type: K,
     listener: (this: SliderElement, ev: SliderComponentEventsMap[K]) => any,
@@ -7946,9 +8125,10 @@ export declare interface SliderElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -7961,7 +8141,6 @@ export declare interface SliderElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -7996,8 +8175,13 @@ export declare interface SliderElement
 export class SliderComponent extends GenericControlValueAccessor {
   accessibleName?: SliderElement['accessibleName'];
   disabled?: SliderElement['disabled'];
+  labelInterval?: SliderElement['labelInterval'];
+  max?: SliderElement['max'];
+  min?: SliderElement['min'];
   showTickmarks?: SliderElement['showTickmarks'];
   showTooltip?: SliderElement['showTooltip'];
+  step?: SliderElement['step'];
+  value?: SliderElement['value'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<SliderElement>,
@@ -8119,9 +8303,10 @@ export declare interface SplitButtonElement
 ])
 @ProxyOutputs(['arrowClick', 'click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8134,7 +8319,6 @@ export declare interface SplitButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8278,9 +8462,10 @@ export declare interface StandardListItemElement
 ])
 @ProxyOutputs(['detailClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8293,7 +8478,6 @@ export declare interface StandardListItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8359,13 +8543,19 @@ exports[`Snapshot test Main Step Input should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
   EventEmitter,
+  forwardRef,
 } from '@angular/core';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
+import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/StepInput.js';
+import Float from '@ui5/webcomponents-base/dist/types/Float';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type StepInput from '@ui5/webcomponents/dist/StepInput.js';
 
 interface StepInputComponentEventsMap
@@ -8381,22 +8571,30 @@ export declare interface StepInputElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
+      | 'max'
+      | 'min'
       | 'name'
       | 'placeholder'
       | 'readonly'
       | 'required'
+      | 'step'
+      | 'value'
+      | 'valuePrecision'
       | 'valueState'
     >
   > {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
-
+  max: Float;
+  min: Float;
   name: string;
   placeholder: string;
   readonly: boolean;
   required: boolean;
-
+  step: Float;
+  value: Float;
+  valuePrecision: Integer;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   addEventListener<K extends keyof StepInputComponentEventsMap>(
     type: K,
@@ -8446,9 +8644,10 @@ export declare interface StepInputElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8461,7 +8660,6 @@ export declare interface StepInputElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8489,16 +8687,27 @@ export declare interface StepInputElement
     'valueState: value-state',
   ],
   outputs: ['change: ui5Change'],
-  providers: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => StepInputComponent),
+      multi: true,
+    },
+  ],
 })
-export class StepInputComponent {
+export class StepInputComponent extends GenericControlValueAccessor {
   accessibleName?: StepInputElement['accessibleName'];
   accessibleNameRef?: StepInputElement['accessibleNameRef'];
   disabled?: StepInputElement['disabled'];
+  max?: StepInputElement['max'];
+  min?: StepInputElement['min'];
   name?: StepInputElement['name'];
   placeholder?: StepInputElement['placeholder'];
   readonly?: StepInputElement['readonly'];
   required?: StepInputElement['required'];
+  step?: StepInputElement['step'];
+  value?: StepInputElement['value'];
+  valuePrecision?: StepInputElement['valuePrecision'];
   valueState?: StepInputElement['valueState'];
   constructor(
     private c: ChangeDetectorRef,
@@ -8506,6 +8715,20 @@ export class StepInputComponent {
     private zone: NgZone
   ) {
     c.detach();
+    super({
+      get value() {
+        return elementRef.nativeElement.value;
+      },
+      set value(val) {
+        elementRef.nativeElement.value = val;
+      },
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change')
+      ),
+      setDisabledState: (isDisabled: boolean): void => {
+        elementRef.nativeElement.disabled = isDisabled;
+      },
+    });
   }
 
   get element(): StepInputElement {
@@ -8543,9 +8766,10 @@ export declare interface SuggestionGroupItemElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'text'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8558,7 +8782,6 @@ export declare interface SuggestionGroupItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8650,9 +8873,10 @@ export declare interface SuggestionItemElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8665,7 +8889,6 @@ export declare interface SuggestionItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8807,9 +9030,10 @@ export declare interface SwitchElement
 ])
 @ProxyOutputs(['change'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8822,7 +9046,6 @@ export declare interface SwitchElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -8984,9 +9207,10 @@ export declare interface TabContainerElement
 ])
 @ProxyOutputs(['tabSelect'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -8999,7 +9223,6 @@ export declare interface TabContainerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9073,9 +9296,10 @@ export declare interface TabSeparatorElement extends Partial<TabSeparator> {}
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9088,7 +9312,6 @@ export declare interface TabSeparatorElement extends Partial<TabSeparator> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9165,9 +9388,10 @@ export declare interface TabElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9180,7 +9404,6 @@ export declare interface TabElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9249,9 +9472,10 @@ export declare interface TableCellElement extends Partial<TableCell> {}
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9264,7 +9488,6 @@ export declare interface TableCellElement extends Partial<TableCell> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9309,11 +9532,13 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableColumn.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type TableColumn from '@ui5/webcomponents/dist/TableColumn.js';
 
 export declare interface TableColumnElement
-  extends Partial<Omit<TableColumn, 'demandPopin' | 'popinText'>> {
+  extends Partial<Omit<TableColumn, 'demandPopin' | 'minWidth' | 'popinText'>> {
   demandPopin: boolean;
+  minWidth: Integer;
 
   popinText: string;
 }
@@ -9329,9 +9554,10 @@ export declare interface TableColumnElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9344,7 +9570,6 @@ export declare interface TableColumnElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9367,6 +9592,7 @@ export declare interface TableColumnElement
 })
 export class TableColumnComponent {
   demandPopin?: TableColumnElement['demandPopin'];
+  minWidth?: TableColumnElement['minWidth'];
   popinText?: TableColumnElement['popinText'];
   constructor(
     private c: ChangeDetectorRef,
@@ -9407,9 +9633,10 @@ export declare interface TableGroupRowElement extends Partial<TableGroupRow> {}
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9422,7 +9649,6 @@ export declare interface TableGroupRowElement extends Partial<TableGroupRow> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9481,9 +9707,10 @@ export declare interface TableRowElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'navigated', 'selected', 'type'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9496,7 +9723,6 @@ export declare interface TableRowElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9551,6 +9777,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Table.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type Table from '@ui5/webcomponents/dist/Table.js';
 
 interface TableComponentEventsMap
@@ -9578,6 +9805,7 @@ export declare interface TableElement
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'busy'
+      | 'busyDelay'
       | 'growing'
       | 'growingButtonSubtext'
       | 'growingButtonText'
@@ -9590,7 +9818,7 @@ export declare interface TableElement
   accessibleName: string;
   accessibleNameRef: string;
   busy: boolean;
-
+  busyDelay: Integer;
   growing: 'Button' | 'None' | 'Scroll';
   growingButtonSubtext: string;
   growingButtonText: string;
@@ -9638,9 +9866,10 @@ export declare interface TableElement
 ])
 @ProxyOutputs(['loadMore', 'popinChange', 'rowClick', 'selectionChange'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9653,7 +9882,6 @@ export declare interface TableElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9690,6 +9918,7 @@ export class TableComponent {
   accessibleName?: TableElement['accessibleName'];
   accessibleNameRef?: TableElement['accessibleNameRef'];
   busy?: TableElement['busy'];
+  busyDelay?: TableElement['busyDelay'];
   growing?: TableElement['growing'];
   growingButtonSubtext?: TableElement['growingButtonSubtext'];
   growingButtonText?: TableElement['growingButtonText'];
@@ -9726,13 +9955,18 @@ exports[`Snapshot test Main Text Area should match the snapshot 1`] = `
   NgZone,
   ChangeDetectorRef,
   EventEmitter,
+  forwardRef,
 } from '@angular/core';
 import {
   ProxyInputs,
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { merge, fromEvent } from 'rxjs';
+import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/TextArea.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type TextArea from '@ui5/webcomponents/dist/TextArea.js';
 
 interface TextAreaComponentEventsMap
@@ -9751,10 +9985,13 @@ export declare interface TextAreaElement
       | 'accessibleNameRef'
       | 'disabled'
       | 'growing'
+      | 'growingMaxLines'
+      | 'maxlength'
       | 'name'
       | 'placeholder'
       | 'readonly'
       | 'required'
+      | 'rows'
       | 'showExceededText'
       | 'value'
       | 'valueState'
@@ -9764,12 +10001,13 @@ export declare interface TextAreaElement
   accessibleNameRef: string;
   disabled: boolean;
   growing: boolean;
-
+  growingMaxLines: Integer;
+  maxlength: Integer;
   name: string;
   placeholder: string;
   readonly: boolean;
   required: boolean;
-
+  rows: Integer;
   showExceededText: boolean;
   value: string;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
@@ -9816,9 +10054,10 @@ export declare interface TextAreaElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -9831,7 +10070,6 @@ export declare interface TextAreaElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -9860,17 +10098,26 @@ export declare interface TextAreaElement
     'valueState: value-state',
   ],
   outputs: ['change: ui5Change', 'input: ui5Input'],
-  providers: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TextAreaComponent),
+      multi: true,
+    },
+  ],
 })
-export class TextAreaComponent {
+export class TextAreaComponent extends GenericControlValueAccessor {
   accessibleName?: TextAreaElement['accessibleName'];
   accessibleNameRef?: TextAreaElement['accessibleNameRef'];
   disabled?: TextAreaElement['disabled'];
   growing?: TextAreaElement['growing'];
+  growingMaxLines?: TextAreaElement['growingMaxLines'];
+  maxlength?: TextAreaElement['maxlength'];
   name?: TextAreaElement['name'];
   placeholder?: TextAreaElement['placeholder'];
   readonly?: TextAreaElement['readonly'];
   required?: TextAreaElement['required'];
+  rows?: TextAreaElement['rows'];
   showExceededText?: TextAreaElement['showExceededText'];
   value?: TextAreaElement['value'];
   valueState?: TextAreaElement['valueState'];
@@ -9880,6 +10127,21 @@ export class TextAreaComponent {
     private zone: NgZone
   ) {
     c.detach();
+    super({
+      get value() {
+        return elementRef.nativeElement.value;
+      },
+      set value(val) {
+        elementRef.nativeElement.value = val;
+      },
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change'),
+        fromEvent(elementRef.nativeElement, 'input')
+      ),
+      setDisabledState: (isDisabled: boolean): void => {
+        elementRef.nativeElement.disabled = isDisabled;
+      },
+    });
   }
 
   get element(): TextAreaElement {
@@ -10001,9 +10263,10 @@ export declare interface TimePickerElement
 ])
 @ProxyOutputs(['change', 'input'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10016,7 +10279,6 @@ export declare interface TimePickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10119,9 +10381,10 @@ export declare interface TitleElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'level', 'wrappingType'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10134,7 +10397,6 @@ export declare interface TitleElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10186,10 +10448,12 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Toast.js';
+import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type Toast from '@ui5/webcomponents/dist/Toast.js';
 
 export declare interface ToastElement
-  extends Partial<Omit<Toast, 'placement'>> {
+  extends Partial<Omit<Toast, 'duration' | 'placement'>> {
+  duration: Integer;
   placement:
     | 'BottomCenter'
     | 'BottomEnd'
@@ -10206,9 +10470,10 @@ export declare interface ToastElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'duration', 'placement'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10221,7 +10486,6 @@ export declare interface ToastElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10242,6 +10506,7 @@ export declare interface ToastElement
   providers: [],
 })
 export class ToastComponent {
+  duration?: ToastElement['duration'];
   placement?: ToastElement['placement'];
   constructor(
     private c: ChangeDetectorRef,
@@ -10360,9 +10625,10 @@ export declare interface ToggleButtonElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10375,7 +10641,6 @@ export declare interface ToggleButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10485,9 +10750,10 @@ export declare interface TokenElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'readonly', 'selected', 'text'])
 @ProxyOutputs(['select'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10500,7 +10766,6 @@ export declare interface TokenElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10557,6 +10822,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ToolbarButton.js';
+import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
 import type ToolbarButton from '@ui5/webcomponents/dist/ToolbarButton.js';
 
 interface ToolbarButtonComponentEventsMap
@@ -10576,6 +10842,7 @@ export declare interface ToolbarButtonElement
       | 'iconEnd'
       | 'text'
       | 'tooltip'
+      | 'width'
     >
   > {
   accessibleName: string;
@@ -10586,7 +10853,7 @@ export declare interface ToolbarButtonElement
   iconEnd: boolean;
   text: string;
   tooltip: string;
-
+  width: CSSSize;
   addEventListener<K extends keyof ToolbarButtonComponentEventsMap>(
     type: K,
     listener: (
@@ -10632,9 +10899,10 @@ export declare interface ToolbarButtonElement
 ])
 @ProxyOutputs(['click'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10647,7 +10915,6 @@ export declare interface ToolbarButtonElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10682,6 +10949,7 @@ export class ToolbarButtonComponent {
   iconEnd?: ToolbarButtonElement['iconEnd'];
   text?: ToolbarButtonElement['text'];
   tooltip?: ToolbarButtonElement['tooltip'];
+  width?: ToolbarButtonElement['width'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarButtonElement>,
@@ -10726,9 +10994,10 @@ export declare interface ToolbarSelectOptionElement
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'selected'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10741,7 +11010,6 @@ export declare interface ToolbarSelectOptionElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10793,6 +11061,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ToolbarSelect.js';
+import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
 import type ToolbarSelect from '@ui5/webcomponents/dist/ToolbarSelect.js';
 
 interface ToolbarSelectComponentEventsMap
@@ -10813,13 +11082,14 @@ export declare interface ToolbarSelectElement
       | 'accessibleNameRef'
       | 'disabled'
       | 'valueState'
+      | 'width'
     >
   > {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
-
+  width: CSSSize;
   addEventListener<K extends keyof ToolbarSelectComponentEventsMap>(
     type: K,
     listener: (
@@ -10860,9 +11130,10 @@ export declare interface ToolbarSelectElement
 ])
 @ProxyOutputs(['change', 'close', 'open'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10875,7 +11146,6 @@ export declare interface ToolbarSelectElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -10902,6 +11172,7 @@ export class ToolbarSelectComponent {
   accessibleNameRef?: ToolbarSelectElement['accessibleNameRef'];
   disabled?: ToolbarSelectElement['disabled'];
   valueState?: ToolbarSelectElement['valueState'];
+  width?: ToolbarSelectElement['width'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSelectElement>,
@@ -10946,9 +11217,10 @@ export declare interface ToolbarSeparatorElement
 @ProxyInputs(['effectiveDir', 'isUi5Element'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -10961,7 +11233,6 @@ export declare interface ToolbarSeparatorElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -11007,17 +11278,22 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
+import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
 import type ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
 
-export declare interface ToolbarSpacerElement extends Partial<ToolbarSpacer> {}
+export declare interface ToolbarSpacerElement
+  extends Partial<Omit<ToolbarSpacer, 'width'>> {
+  width: CSSSize;
+}
 
 // TS source file
 @ProxyInputs(['effectiveDir', 'isUi5Element', 'width'])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11030,7 +11306,6 @@ export declare interface ToolbarSpacerElement extends Partial<ToolbarSpacer> {}
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -11049,6 +11324,7 @@ export declare interface ToolbarSpacerElement extends Partial<ToolbarSpacer> {}
   providers: [],
 })
 export class ToolbarSpacerComponent {
+  width?: ToolbarSpacerElement['width'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSpacerElement>,
@@ -11101,9 +11377,10 @@ export declare interface ToolbarElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11116,7 +11393,6 @@ export declare interface ToolbarElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -11252,9 +11528,10 @@ export declare interface TreeItemCustomElement
 ])
 @ProxyOutputs(['detailClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11267,7 +11544,6 @@ export declare interface TreeItemCustomElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -11419,9 +11695,10 @@ export declare interface TreeItemElement
 ])
 @ProxyOutputs(['detailClick'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11434,7 +11711,6 @@ export declare interface TreeItemElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -11606,9 +11882,10 @@ export declare interface TreeElement
   'selectionChange',
 ])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11621,13 +11898,9 @@ export declare interface TreeElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  '_getListItemForTreeItem',
-  'focusItemByIndex',
-  'getItems',
   'walk',
 ])
 @Component({
@@ -11918,9 +12191,10 @@ export declare interface WheelSliderElement
 ])
 @ProxyOutputs([])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -11933,7 +12207,6 @@ export declare interface WheelSliderElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
@@ -12071,9 +12344,10 @@ export declare interface YearPickerElement
 ])
 @ProxyOutputs(['change', 'navigate'])
 @ProxyMethods([
-  '_render',
+  'attachComponentStateFinalized',
   'attachInvalidate',
   'define',
+  'detachComponentStateFinalized',
   'detachInvalidate',
   'fireEvent',
   'focus',
@@ -12086,12 +12360,9 @@ export declare interface YearPickerElement
   'getUniqueDependencies',
   'onAfterRendering',
   'onBeforeRendering',
-  'onDefine',
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  '_safelyModifyTimestampBy',
-  '_safelySetTimestamp',
 ])
 @Component({
   selector: 'ui5-yearpicker',

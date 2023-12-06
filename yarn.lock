@@ -5120,10 +5120,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sap-theming/theming-base-content@npm:11.6.8":
-  version: 11.6.8
-  resolution: "@sap-theming/theming-base-content@npm:11.6.8"
-  checksum: 33a95d05c6c48e53fb52f590055fe693d8901706df16afa38c7fa68f2fb6287241376122e70a02b6c4037d26c608142007250ed070eabbd3c7e0da6f15b7f3df
+"@sap-theming/theming-base-content@npm:11.9.0":
+  version: 11.9.0
+  resolution: "@sap-theming/theming-base-content@npm:11.9.0"
+  checksum: 03845c9077563f8bd05b35fe2a905dc7a860abecd38dea9d08027c7d444eb6b2b44593d4d17f590a56af87444c19db3c07f279c17a3b3d3164240f9502f230b1
   languageName: node
   linkType: hard
 
@@ -7323,84 +7323,84 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-base@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-base@npm:1.19.0"
+"@ui5/webcomponents-base@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-base@npm:1.20.0"
   dependencies:
     lit-html: ^2.0.1
-  checksum: 11dcf0594c6bc3223ed4dd4f1437441ed389b8a2fb67ad646643ed456d9ffa93431bf3c42671062b2166071f0b625c4fdf19fd01a9d1f757c78a9c9787cdf1bf
+  checksum: 39749d97690f03fade9b210f53c46fd7cf1a40196e2f73dafad68493c1419855a3729d4577443ebac0833e5e1d94f6109cd2071037d2421bfd4111f900b47964
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-fiori@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-fiori@npm:1.19.0"
+"@ui5/webcomponents-fiori@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-fiori@npm:1.20.0"
   dependencies:
-    "@ui5/webcomponents": 1.19.0
-    "@ui5/webcomponents-base": 1.19.0
-    "@ui5/webcomponents-icons": 1.19.0
-    "@ui5/webcomponents-theming": 1.19.0
+    "@ui5/webcomponents": 1.20.0
+    "@ui5/webcomponents-base": 1.20.0
+    "@ui5/webcomponents-icons": 1.20.0
+    "@ui5/webcomponents-theming": 1.20.0
     "@zxing/library": ^0.17.1
-  checksum: df4e96219e3f0745c72f03c383d208901d41ad6a0e4cc333b26c38f826ac1e6445249cfea874b4ed1d63482337475a73b0445f8e561603d655c0dde9688381c6
+  checksum: 7b03e5220173a5331a7614dc183bf9623ca804a84cb56ab0703f8edab177580d3ac4e7ba2db2ee38ce4876775e2a3fec4c0c5787dcdd500e71e8aa793285ea72
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons-business-suite@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-icons-business-suite@npm:1.19.0"
+"@ui5/webcomponents-icons-business-suite@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-icons-business-suite@npm:1.20.0"
   dependencies:
-    "@ui5/webcomponents-base": 1.19.0
-  checksum: f06a7fb696d6710bdbc2347f046743f7a7443dc11e5d465dffab2b503b985231cdcbb4982ad4b0945b67a9bf745a363c36fee58c81f0cce1353862f7c47a9084
+    "@ui5/webcomponents-base": 1.20.0
+  checksum: db4ae7eb7dff5f811184576f6dce73dfc0f080ff6ee8d6bb562d7788ef2bce935343c0e76bdbc6c0e102dc7f593277958c9a6becc3fc6b3f32e4cc4085591a4b
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons-tnt@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-icons-tnt@npm:1.19.0"
+"@ui5/webcomponents-icons-tnt@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-icons-tnt@npm:1.20.0"
   dependencies:
-    "@ui5/webcomponents-base": 1.19.0
-  checksum: 08b9202c9ed034b9173e40edb4c7959e40b35e6b58c869a917803e5a215f60646560a20c25794a8003fb324ca4dd0e54c1218cc9f4251e402d26551917f817b0
+    "@ui5/webcomponents-base": 1.20.0
+  checksum: c8490bcab7e5113c1aa1ef22a1594b9b1c580eca6a62c11ecb0319d07bd27a7a670bb8de8a7a306286e2d34988363a7fd622d16467098f66f94c4efa9adaa4fb
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-icons@npm:1.19.0"
+"@ui5/webcomponents-icons@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-icons@npm:1.20.0"
   dependencies:
-    "@ui5/webcomponents-base": 1.19.0
-  checksum: 690e9a29d454a23fbddd66168ccc53890101a7fd4dd6d57da555fc8302988aef7abc6a7f16cc3f8dfbcb809e11b475e4e591eb5daf1232cbc13221ed3ebf7e62
+    "@ui5/webcomponents-base": 1.20.0
+  checksum: 0acf2df603da4e9c9c7c954dfc8a1f8e28f7858186be44ec263b64843d42c3b1b112d01c2517d371bfa65e729f9158b40003b96ded0910e36db8ea28861d1fba
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-localization@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-localization@npm:1.19.0"
+"@ui5/webcomponents-localization@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-localization@npm:1.20.0"
   dependencies:
     "@types/openui5": ^1.113.0
-    "@ui5/webcomponents-base": 1.19.0
-  checksum: be7cff35ef764c9db771b843f168c665d26837f71bbda6b16cef0456785427e8bb81c77b3cace0f152ba6e75c82b67f38abf6d565bb46e360269d39490d2d9da
+    "@ui5/webcomponents-base": 1.20.0
+  checksum: c1a044e662126c3fee91c4ec608af499254f52fb9b0ccac33d16f5982a04a1100740390a202d7637ca3c5f33dda2c2ce051547c6bfdf4c2beb8c02a54a02458c
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-theming@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents-theming@npm:1.19.0"
+"@ui5/webcomponents-theming@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents-theming@npm:1.20.0"
   dependencies:
-    "@sap-theming/theming-base-content": 11.6.8
-    "@ui5/webcomponents-base": 1.19.0
-  checksum: e78480906fc217519724d00953357ee1ed822e34ca28b22d3a3b075823370e6ab8b81383c312a630d3c94f58024f7b59523e85544af37106b64a6673a2921e43
+    "@sap-theming/theming-base-content": 11.9.0
+    "@ui5/webcomponents-base": 1.20.0
+  checksum: 7c63e5eaa17686070f36af2ef0a2e3f34291a65098289adb90a07014b4f2606020c5e14392d22e51b81eae6a5132d99a69244d92729d3acd768478bfd71d277a
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents@npm:1.19.0":
-  version: 1.19.0
-  resolution: "@ui5/webcomponents@npm:1.19.0"
+"@ui5/webcomponents@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@ui5/webcomponents@npm:1.20.0"
   dependencies:
-    "@ui5/webcomponents-base": 1.19.0
-    "@ui5/webcomponents-icons": 1.19.0
-    "@ui5/webcomponents-localization": 1.19.0
-    "@ui5/webcomponents-theming": 1.19.0
-  checksum: 2065fe39266a060280191dd5e0f0585b7acd20796537b6dbad6e33d4920b265f6c3512718c8d33ef31598ce1b01c12b955d054ebdd1e88a53f3b246b0cc03d13
+    "@ui5/webcomponents-base": 1.20.0
+    "@ui5/webcomponents-icons": 1.20.0
+    "@ui5/webcomponents-localization": 1.20.0
+    "@ui5/webcomponents-theming": 1.20.0
+  checksum: 272a66cdd2ba7edc4142c87cd7291f8f23971be535911debdf9efe9096d321914af59c807b6d264d4b0dbf86075079a21e986bb78b6020a5a33be861735fd782
   languageName: node
   linkType: hard
 
@@ -23211,13 +23211,13 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.62.0
     "@typescript-eslint/parser": 5.62.0
     "@ui5/tooling-webc": 0.1.4
-    "@ui5/webcomponents": 1.19.0
-    "@ui5/webcomponents-base": 1.19.0
-    "@ui5/webcomponents-fiori": 1.19.0
-    "@ui5/webcomponents-icons": 1.19.0
-    "@ui5/webcomponents-icons-business-suite": 1.19.0
-    "@ui5/webcomponents-icons-tnt": 1.19.0
-    "@ui5/webcomponents-theming": 1.19.0
+    "@ui5/webcomponents": 1.20.0
+    "@ui5/webcomponents-base": 1.20.0
+    "@ui5/webcomponents-fiori": 1.20.0
+    "@ui5/webcomponents-icons": 1.20.0
+    "@ui5/webcomponents-icons-business-suite": 1.20.0
+    "@ui5/webcomponents-icons-tnt": 1.20.0
+    "@ui5/webcomponents-theming": 1.20.0
     ajv-formats: ^2.1.1
     conventional-changelog: ^3.1.25
     conventional-changelog-angular: ^5.0.13

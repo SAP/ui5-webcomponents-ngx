@@ -71,6 +71,7 @@ export class GenericControlValueAccessor<ValueType = any>
     return this._onChangeSet$.pipe(
       filter(Boolean),
       tap(() => this.onChange(val)),
+      tap(() => this.onTouched()),
       map(() => val)
     );
   };

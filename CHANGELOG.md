@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3-rc.7](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.6...v0.2.3-rc.7) (2023-12-18)
+
+### Bug Fixes
+
+- add a fix for touched not being updated for reactive forms ([#106](https://github.com/SAP/ui5-webcomponents-ngx/issues/106)) ([447b90b](https://github.com/SAP/ui5-webcomponents-ngx/commit/447b90b1be570c90d5086a6e8600a3714b78bebc))
+
 ## [0.2.3-rc.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.5...v0.2.3-rc.6) (2023-12-13)
 
 **Note:** Version bump only for package ui5-webcomponents-ngx

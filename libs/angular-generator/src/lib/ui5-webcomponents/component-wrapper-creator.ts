@@ -6,6 +6,7 @@ import {genericCva} from "./generic-cva";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {inputsJson, outputsJson} from "./metadata-tools";
 import {outputType} from "./output-type";
+import { ui5LifecyclesServiceFile } from "./utils-generated-files/ui5-lifecycles-service-file";
 
 /**
  * Returns the base class extends string for the component file.
@@ -24,11 +25,25 @@ function CvaBaseClassExtends(componentFile: ComponentFile): string {
  * Returns the providers string for the component file.
  * @param componentFile
  */
-function providers(componentFile: ComponentFile) {
+function providers(componentFile: ComponentFile): string[] {
   if (componentFile.componentData.formData.length === 0) {
-    return '';
+    return [];
   }
-  return `{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${componentFile.wrapperExportSpecifier.local}), multi: true }`
+  return [`{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${componentFile.wrapperExportSpecifier.local}), multi: true }`, ui5LifecyclesServiceFile.exportClassName]
+}
+
+function constructorDeps(componentFile: ComponentFile): [string, string][] {
+  const deps: [string, string][] = [
+    ['private c', 'ChangeDetectorRef'],
+    ['private elementRef', `ElementRef<${componentFile.elementTypeName}>`],
+    ['private zone', 'NgZone']
+  ];
+
+  if (componentFile.componentData.formData.length > 0) {
+    deps.push(['private ui5LifecyclesService', 'Ui5LifecyclesService'])
+  }
+
+  return deps;
 }
 
 /**
@@ -65,7 +80,9 @@ export function CvaConstructor(componentFile: ComponentFile): string {
                 return ${getValue}
               },
               set value(val) {
-                ${setValue}
+                ui5LifecyclesService.onDomEnter(() => {
+                  ${setValue}
+                }, 'cvaSetValue');
               },
               valueUpdatedNotifier$: merge(
                 ${outputEvents.map((event) => `fromEvent(elementRef.nativeElement, '${event.name}')`).join(',\n')}
@@ -89,36 +106,38 @@ export function CvaConstructor(componentFile: ComponentFile): string {
  * Types are generated based on the component's inputs, outputs and slots.
  *
  * @param componentFile
- * @param elementTypeName
- * @param eventsMapName
- * @param options
- * @param ComponentsMap
  * @constructor
  */
 export function ComponentWrapperCreator(
-  componentFile: ComponentFile,
-  elementTypeName: string,
-  eventsMapName: string,
-  options: AngularGeneratorOptions,
-  ComponentsMap: Map<ComponentData, AngularGeneratedFile>
+  componentFile: ComponentFile
 ): string {
+  const {
+    elementTypeName,
+    eventsNameMapName: eventsMapName,
+    componentsMap,
+    componentData: {
+      inputs,
+      outputs,
+      slots,
+      methods
+    }
+  } = componentFile;
   const getInputType = (input: InputType) => {
     const t = typeof input.type === 'string' ? input.type : input.type.map((cmp: ComponentData) => {
-      const generatedFile = ComponentsMap.get(cmp);
+      const generatedFile = componentsMap.get(cmp);
       const exported = generatedFile!.exports[0].specifiers[0].exported;
       return (typeof exported === 'string' ? exported : exported()) + '["element"]';
     }).join(' | ');
     return input.isArray ? `Array<${t}>` : t;
   }
-  const outputs = componentFile.componentData.outputs;
 
   const eventsMap = `
       interface ${eventsMapName} extends Omit<HTMLElementEventMap, ${outputs.map(output => `'${output.name}'`).join(' | ')}> {
-        ${outputs.map((output) => `${output.name}: CustomEvent<${outputType(output, ComponentsMap)}>;`).join('\n')}
+        ${outputs.map((output) => `${output.name}: CustomEvent<${outputType(output, componentsMap)}>;`).join('\n')}
       }
     `;
 
-  const inputsTypeStr = componentFile.componentData.inputs.map((input) => {
+  const inputsTypeStr = inputs.map((input) => {
     return `${input.name}: ${getInputType(input)};`;
   }).join('\n');
 
@@ -129,9 +148,9 @@ export function ComponentWrapperCreator(
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     `;
 
-  const analyzedSlots = componentFile.componentData.slots.filter(sl => sl.name !== 'default').map((slot) => {
+  const analyzedSlots = slots.filter(sl => sl.name !== 'default').map((slot) => {
     const supportedElements = slot.supportedElements.map((element) => {
-      const componentGeneratedFile = ComponentsMap.get(element);
+      const componentGeneratedFile = componentsMap.get(element);
       const exportedWrapperClassName = componentGeneratedFile!.exports[0].specifiers[0].exported;
       if (!exportedWrapperClassName) {
         throw new Error(`Component ${element.baseName} is not exported`);
@@ -147,7 +166,7 @@ export function ComponentWrapperCreator(
       }`;
   }).join('\n');
   const htmlElementType = (() => {
-    const componentInputsOutputsAndSlots = [...componentFile.componentData.inputs, ...componentFile.componentData.outputs, ...componentFile.componentData.slots];
+    const componentInputsOutputsAndSlots = [...inputs, ...outputs, ...slots];
     if (componentInputsOutputsAndSlots.length > 0) {
       return `Omit<HTMLElement, ${componentInputsOutputsAndSlots.map(output => `'${output.name}'`).join(' | ')}>`
     }
@@ -168,23 +187,25 @@ export function ComponentWrapperCreator(
   return `
       ${elementType}
       // JS source file
-      @ProxyInputs([${componentFile.componentData.inputs.map((input) => `'${input.name}'`)}])
-      @ProxyOutputs([${componentFile.componentData.outputs.map((output) => `'${output.name}'`)}])
-      @ProxyMethods([${componentFile.componentData.methods.map((method) => `'${method.name}'`)}])
+      @ProxyInputs([${inputs.map((input) => `'${input.name}'`)}])
+      @ProxyOutputs([${outputs.map((output) => `'${output.name}'`)}])
+      @ProxyMethods([${methods.map((method) => `'${method.name}'`)}])
       @Component({
         template: \`<ng-content></ng-content>\`,
         selector: '${componentFile.selector}',
         exportAs: '${camelCase(componentFile.selector)}',
         standalone: true,
         providers: [
-            ${providers(componentFile)}
+            ${providers(componentFile).join(',\n')}
         ],
-        inputs: ${inputsJson(componentFile.componentData.inputs)},
+        inputs: ${inputsJson(inputs)},
         outputs: ${outputsJson(outputs)},
       })
       export class ${componentFile.wrapperExportSpecifier.local} ${CvaBaseClassExtends(componentFile)} {
-        ${componentFile.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${elementTypeName}['${name}'];`).join('\n')}
-        constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${elementTypeName}>, private zone: NgZone) {
+        ${inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${elementTypeName}['${name}'];`).join('\n')}
+        constructor(
+          ${constructorDeps(componentFile).map(([name, type]) => `${name}: ${type}`).join(',\n')}
+        ) {
           c.detach();
           ${CvaConstructor(componentFile)}
         }

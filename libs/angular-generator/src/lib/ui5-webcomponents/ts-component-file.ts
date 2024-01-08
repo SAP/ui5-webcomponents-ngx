@@ -5,10 +5,11 @@ import {format as prettierFormat} from "prettier";
 import {camelCase} from "lodash";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
-import {utilsFile} from "./utils";
+import { proxyUtilsFile } from "./utils-generated-files/proxy-utils-file";
 import {inputsJson, outputsJson} from "./metadata-tools";
 import {outputType} from "./output-type";
 import {outputTypesImportData} from "./output-types-import-data";
+import { ui5LifecyclesServiceFile } from "./utils-generated-files/ui5-lifecycles-service-file";
 
 /**
  * Class is used when the source component is a typescript file.
@@ -43,7 +44,7 @@ export class TsComponentFile extends AngularGeneratedFile {
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
     this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef'], '@angular/core');
-    this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], utilsFile.relativePathFrom);
+    this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], proxyUtilsFile.relativePathFrom);
     if (this.componentData.outputs.length) {
       this.addImport(['EventEmitter'], '@angular/core');
       this.addImport(outputTypesImportData(this.componentData, this.componentsMap));
@@ -53,6 +54,7 @@ export class TsComponentFile extends AngularGeneratedFile {
       this.addImport(['forwardRef'], '@angular/core');
       this.addImport(['merge', 'fromEvent'], 'rxjs');
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
+      this.addImport(ui5LifecyclesServiceFile.exportClassName, ui5LifecyclesServiceFile.relativePathFrom);
     }
     this.addImport({specifiers: [], path: this.componentData.path})
 
@@ -129,7 +131,9 @@ export class TsComponentFile extends AngularGeneratedFile {
                 return ${getValue}
               },
               set value(val) {
-                ${setValue}
+                ui5LifecyclesService.onDomEnter(() => {
+                  ${setValue}
+                }, 'cvaSetValue');
               },
               valueUpdatedNotifier$: merge(
                 ${outputEvents.map((event) => `fromEvent(elementRef.nativeElement, '${event.name}')`).join(',\n')}
@@ -154,16 +158,14 @@ export class TsComponentFile extends AngularGeneratedFile {
         inputs: ${inputsJson(this.componentData.inputs)},
         outputs: ${outputsJson(this.componentData.outputs)},
         providers: [
-            ${this.componentData.formData.length > 0 ? `{
-              provide: NG_VALUE_ACCESSOR,
-              useExisting: forwardRef(() => ${this.componentClassName}),
-              multi: true
-            }` : ''}
+            ${this.providers()}
         ]
       })
       export class ${this.componentClassName} ${baseClass()}{
         ${this.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${this.componentData.baseName}Element['${name}'];`).join('\n')}
-        constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone) {
+        constructor(
+          ${this.constructorDeps()}
+        ) {
           c.detach();
           ${cvaConstructor()}
         }
@@ -186,5 +188,33 @@ export class TsComponentFile extends AngularGeneratedFile {
         ${this.componentData.outputs.map((output) => `${output.name}: EventEmitter<${this.componentClassName}EventsMap['${output.name}']>;`).join('\n')}
       }`
     ].join('\n'), {parser: 'typescript'});
+  }
+
+  private constructorDeps(): string {
+    /**
+     * private c: ChangeDetectorRef, private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone
+     */
+    const deps: string[] = [
+      'c: ChangeDetectorRef',
+      `private elementRef: ElementRef<${this.componentData.baseName}Element>`,
+      `
+       /** Used in proxy decorators */
+       private zone: NgZone
+      `
+    ];
+    if (this.componentData.formData.length > 0) {
+      deps.push(`ui5LifecyclesService: ${ui5LifecyclesServiceFile.exportClassName}`);
+    }
+    return deps.join(',\n');
+  }
+
+  private providers(): string {
+    if (this.componentData.formData.length > 0) {
+      return [
+        `{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${this.componentClassName}), multi: true }`,
+        ui5LifecyclesServiceFile.exportClassName
+      ].join(',\n');
+    }
+    return '';
   }
 }

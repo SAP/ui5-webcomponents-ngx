@@ -31,7 +31,8 @@
         "{projectRoot}/generic-cva",
         "{projectRoot}/index.ts",
         "{projectRoot}/theming/supported-themes.ts",
-        "{projectRoot}/ui5-webcomponents.module.ts"
+        "{projectRoot}/ui5-webcomponents.module.ts",
+        "{projectRoot}/utils"
       ]
     },
     "build": {

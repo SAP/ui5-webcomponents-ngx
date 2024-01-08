@@ -59,8 +59,10 @@ export declare interface BarElement extends Partial<Omit<Bar, 'design'>> {
 export class BarComponent {
   design?: BarElement['design'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BarElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -164,8 +166,10 @@ export declare interface BarcodeScannerDialogElement
 })
 export class BarcodeScannerDialogComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BarcodeScannerDialogElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -324,8 +328,10 @@ export class DynamicSideContentComponent {
   sideContentPosition?: DynamicSideContentElement['sideContentPosition'];
   sideContentVisibility?: DynamicSideContentElement['sideContentVisibility'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DynamicSideContentElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -408,8 +414,10 @@ export class FilterItemOptionComponent {
   selected?: FilterItemOptionElement['selected'];
   text?: FilterItemOptionElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<FilterItemOptionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -488,8 +496,10 @@ export class FilterItemComponent {
   additionalText?: FilterItemElement['additionalText'];
   text?: FilterItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<FilterItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -665,8 +675,10 @@ export class FlexibleColumnLayoutComponent {
   startColumnVisible?: FlexibleColumnLayoutElement['startColumnVisible'];
   visibleColumns?: FlexibleColumnLayoutElement['visibleColumns'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<FlexibleColumnLayoutElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -774,8 +786,10 @@ export class IllustratedMessageComponent {
   titleLevel?: IllustratedMessageElement['titleLevel'];
   titleText?: IllustratedMessageElement['titleText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<IllustratedMessageElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -862,8 +876,10 @@ export class MediaGalleryItemComponent {
   layout?: MediaGalleryItemElement['layout'];
   selected?: MediaGalleryItemElement['selected'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MediaGalleryItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1012,8 +1028,10 @@ export class MediaGalleryComponent {
   menuVerticalAlign?: MediaGalleryElement['menuVerticalAlign'];
   showAllThumbnails?: MediaGalleryElement['showAllThumbnails'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MediaGalleryElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1158,8 +1176,10 @@ export class NotificationActionComponent {
   icon?: NotificationActionElement['icon'];
   text?: NotificationActionElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<NotificationActionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1324,8 +1344,10 @@ export class NotificationListGroupItemComponent {
   collapsed?: NotificationListGroupItemElement['collapsed'];
   showCounter?: NotificationListGroupItemElement['showCounter'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<NotificationListGroupItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1482,8 +1504,10 @@ export class NotificationListItemComponent {
   titleText?: NotificationListItemElement['titleText'];
   wrappingType?: NotificationListItemElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<NotificationListItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1582,8 +1606,10 @@ export class PageComponent {
   floatingFooter?: PageElement['floatingFooter'];
   hideFooter?: PageElement['hideFooter'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<PageElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1715,8 +1741,10 @@ export class ProductSwitchItemComponent {
   targetSrc?: ProductSwitchItemElement['targetSrc'];
   titleText?: ProductSwitchItemElement['titleText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ProductSwitchItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1786,8 +1814,10 @@ export declare interface ProductSwitchElement extends Partial<ProductSwitch> {}
 })
 export class ProductSwitchComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ProductSwitchElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1901,8 +1931,10 @@ export class ShellBarItemComponent {
   icon?: ShellBarItemElement['icon'];
   text?: ShellBarItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ShellBarItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2115,8 +2147,10 @@ export class ShellBarComponent {
   showProductSwitch?: ShellBarElement['showProductSwitch'];
   showSearchField?: ShellBarElement['showSearchField'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ShellBarElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2274,8 +2308,10 @@ export class SideNavigationItemComponent {
   expanded?: SideNavigationItemElement['expanded'];
   wholeItemToggleable?: SideNavigationItemElement['wholeItemToggleable'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SideNavigationItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2410,8 +2446,10 @@ export class SideNavigationSubItemComponent {
   target?: SideNavigationSubItemElement['target'];
   text?: SideNavigationSubItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SideNavigationSubItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2522,8 +2560,10 @@ export declare interface SideNavigationElement
 export class SideNavigationComponent {
   collapsed?: SideNavigationElement['collapsed'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SideNavigationElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2606,8 +2646,10 @@ export class SortItemComponent {
   selected?: SortItemElement['selected'];
   text?: SortItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SortItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2763,8 +2805,10 @@ export class TimelineItemComponent {
   subtitleText?: TimelineItemElement['subtitleText'];
   titleText?: TimelineItemElement['titleText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TimelineItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2845,8 +2889,10 @@ export class TimelineComponent {
   accessibleName?: TimelineElement['accessibleName'];
   layout?: TimelineElement['layout'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TimelineElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3115,8 +3161,10 @@ export class UploadCollectionItemComponent {
   progress?: UploadCollectionItemElement['progress'];
   uploadState?: UploadCollectionItemElement['uploadState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<UploadCollectionItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3279,8 +3327,10 @@ export class UploadCollectionComponent {
   noDataDescription?: UploadCollectionElement['noDataDescription'];
   noDataText?: UploadCollectionElement['noDataText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<UploadCollectionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3419,8 +3469,10 @@ export declare interface ViewSettingsDialogElement
 export class ViewSettingsDialogComponent {
   sortDescending?: ViewSettingsDialogElement['sortDescending'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ViewSettingsDialogElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3534,8 +3586,10 @@ export class WizardStepComponent {
   subtitleText?: WizardStepElement['subtitleText'];
   titleText?: WizardStepElement['titleText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<WizardStepElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3642,8 +3696,10 @@ export declare interface WizardElement
 export class WizardComponent {
   contentLayout?: WizardElement['contentLayout'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<WizardElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();

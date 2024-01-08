@@ -124,8 +124,10 @@ export class AvatarGroupComponent {
   hiddenItems?: AvatarGroupElement['hiddenItems'];
   type?: AvatarGroupElement['type'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<AvatarGroupElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -264,8 +266,10 @@ export class AvatarComponent {
   shape?: AvatarElement['shape'];
   size?: AvatarElement['size'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<AvatarElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -340,8 +344,10 @@ export declare interface BadgeElement
 export class BadgeComponent {
   colorScheme?: BadgeElement['colorScheme'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BadgeElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -428,8 +434,10 @@ export class BreadcrumbsItemComponent {
   href?: BreadcrumbsItemElement['href'];
   target?: BreadcrumbsItemElement['target'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BreadcrumbsItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -554,8 +562,10 @@ export class BreadcrumbsComponent {
   design?: BreadcrumbsElement['design'];
   separatorStyle?: BreadcrumbsElement['separatorStyle'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BreadcrumbsElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -650,8 +660,10 @@ export class BusyIndicatorComponent {
   size?: BusyIndicatorElement['size'];
   text?: BusyIndicatorElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<BusyIndicatorElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -817,8 +829,10 @@ export class ButtonComponent {
   tooltip?: ButtonElement['tooltip'];
   type?: ButtonElement['type'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ButtonElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -895,8 +909,10 @@ export declare interface CalendarDateElement
 export class CalendarDateComponent {
   value?: CalendarDateElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CalendarDateElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1048,8 +1064,10 @@ export class CalendarComponent {
   hideWeekNumbers?: CalendarElement['hideWeekNumbers'];
   selectionMode?: CalendarElement['selectionMode'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CalendarElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1181,8 +1199,10 @@ export class CardHeaderComponent {
   subtitleText?: CardHeaderElement['subtitleText'];
   titleText?: CardHeaderElement['titleText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CardHeaderElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1268,8 +1288,10 @@ export class CardComponent {
   accessibleName?: CardElement['accessibleName'];
   accessibleNameRef?: CardElement['accessibleNameRef'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CardElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1432,8 +1454,10 @@ export class CarouselComponent {
   pageIndicatorBorderDesign?: CarouselElement['pageIndicatorBorderDesign'];
   pageIndicatorStyle?: CarouselElement['pageIndicatorStyle'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CarouselElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1467,6 +1491,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/CheckBox.js';
 import type CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
 
@@ -1591,6 +1616,7 @@ export declare interface CheckBoxElement
       useExisting: forwardRef(() => CheckBoxComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class CheckBoxComponent extends GenericControlValueAccessor {
@@ -1606,9 +1632,12 @@ export class CheckBoxComponent extends GenericControlValueAccessor {
   valueState?: CheckBoxElement['valueState'];
   wrappingType?: CheckBoxElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CheckBoxElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -1616,7 +1645,9 @@ export class CheckBoxComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.checked;
       },
       set value(val) {
-        elementRef.nativeElement.checked = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.checked = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -1699,8 +1730,10 @@ export declare interface ColorPaletteItemElement
 export class ColorPaletteItemComponent {
   value?: ColorPaletteItemElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPaletteItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1731,10 +1764,12 @@ import {
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import CSSColor from '@ui5/webcomponents-base/dist/types/CSSColor';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import type ColorPalettePopover from '@ui5/webcomponents/dist/ColorPalettePopover.js';
 
 interface ColorPalettePopoverComponentEventsMap
-  extends Omit<HTMLElementEventMap, 'itemClick'> {
+  extends Omit<HTMLElementEventMap, 'close' | 'itemClick'> {
+  close: CustomEvent<void>;
   itemClick: CustomEvent<{ color: string }>;
 }
 
@@ -1742,14 +1777,19 @@ export declare interface ColorPalettePopoverElement
   extends Partial<
     Omit<
       ColorPalettePopover,
+      | 'close'
       | 'itemClick'
       | 'defaultColor'
+      | 'open'
+      | 'opener'
       | 'showDefaultColor'
       | 'showMoreColors'
       | 'showRecentColors'
     >
   > {
   defaultColor: CSSColor;
+  open: boolean;
+  opener: DOMReference;
   showDefaultColor: boolean;
   showMoreColors: boolean;
   showRecentColors: boolean;
@@ -1786,11 +1826,13 @@ export declare interface ColorPalettePopoverElement
   'effectiveDir',
   'isUi5Element',
   'defaultColor',
+  'open',
+  'opener',
   'showDefaultColor',
   'showMoreColors',
   'showRecentColors',
 ])
-@ProxyOutputs(['itemClick'])
+@ProxyOutputs(['close', 'itemClick'])
 @ProxyMethods([
   'attachComponentStateFinalized',
   'attachInvalidate',
@@ -1823,21 +1865,27 @@ export declare interface ColorPalettePopoverElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'defaultColor: default-color',
+    'open',
+    'opener',
     'showDefaultColor: show-default-color',
     'showMoreColors: show-more-colors',
     'showRecentColors: show-recent-colors',
   ],
-  outputs: ['itemClick: ui5ItemClick'],
+  outputs: ['close: ui5Close', 'itemClick: ui5ItemClick'],
   providers: [],
 })
 export class ColorPalettePopoverComponent {
   defaultColor?: ColorPalettePopoverElement['defaultColor'];
+  open?: ColorPalettePopoverElement['open'];
+  opener?: ColorPalettePopoverElement['opener'];
   showDefaultColor?: ColorPalettePopoverElement['showDefaultColor'];
   showMoreColors?: ColorPalettePopoverElement['showMoreColors'];
   showRecentColors?: ColorPalettePopoverElement['showRecentColors'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPalettePopoverElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -1850,6 +1898,7 @@ export class ColorPalettePopoverComponent {
 
 export declare interface ColorPalettePopoverComponent
   extends Partial<ColorPalettePopoverElement> {
+  close: EventEmitter<ColorPalettePopoverComponentEventsMap['close']>;
   itemClick: EventEmitter<ColorPalettePopoverComponentEventsMap['itemClick']>;
 }
 "
@@ -1941,8 +1990,10 @@ export declare interface ColorPaletteElement
 })
 export class ColorPaletteComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPaletteElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2053,8 +2104,10 @@ export declare interface ColorPickerElement
 export class ColorPickerComponent {
   color?: ColorPickerElement['color'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ColorPickerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2132,8 +2185,10 @@ export declare interface ComboBoxGroupItemElement
 export class ComboBoxGroupItemComponent {
   text?: ComboBoxGroupItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ComboBoxGroupItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2212,8 +2267,10 @@ export class ComboBoxItemComponent {
   additionalText?: ComboBoxItemElement['additionalText'];
   text?: ComboBoxItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ComboBoxItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2246,6 +2303,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ComboBox.js';
 import ComboBoxGroupItem from '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
 import ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem.js';
@@ -2380,6 +2438,7 @@ export declare interface ComboBoxElement
       useExisting: forwardRef(() => ComboBoxComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class ComboBoxComponent extends GenericControlValueAccessor {
@@ -2395,9 +2454,12 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
   value?: ComboBoxElement['value'];
   valueState?: ComboBoxElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ComboBoxElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -2405,7 +2467,9 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -2546,8 +2610,10 @@ export class CustomListItemComponent {
   type?: CustomListItemElement['type'];
   accessibleName?: CustomListItemElement['accessibleName'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<CustomListItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -2582,6 +2648,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/DatePicker.js';
 import type DatePicker from '@ui5/webcomponents/dist/DatePicker.js';
 
@@ -2749,6 +2816,7 @@ export declare interface DatePickerElement
       useExisting: forwardRef(() => DatePickerComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class DatePickerComponent extends GenericControlValueAccessor {
@@ -2768,9 +2836,12 @@ export class DatePickerComponent extends GenericControlValueAccessor {
   value?: DatePickerElement['value'];
   valueState?: DatePickerElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DatePickerElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -2778,7 +2849,9 @@ export class DatePickerComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -2820,6 +2893,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 import type DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
 
@@ -2999,6 +3073,7 @@ export declare interface DateRangePickerElement
       useExisting: forwardRef(() => DateRangePickerComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class DateRangePickerComponent extends GenericControlValueAccessor {
@@ -3019,9 +3094,12 @@ export class DateRangePickerComponent extends GenericControlValueAccessor {
   valueState?: DateRangePickerElement['valueState'];
   delimiter?: DateRangePickerElement['delimiter'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DateRangePickerElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -3029,7 +3107,9 @@ export class DateRangePickerComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -3071,6 +3151,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 import type DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
 
@@ -3238,6 +3319,7 @@ export declare interface DateTimePickerElement
       useExisting: forwardRef(() => DateTimePickerComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class DateTimePickerComponent extends GenericControlValueAccessor {
@@ -3257,9 +3339,12 @@ export class DateTimePickerComponent extends GenericControlValueAccessor {
   value?: DateTimePickerElement['value'];
   valueState?: DateTimePickerElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DateTimePickerElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -3267,7 +3352,9 @@ export class DateTimePickerComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -3439,8 +3526,10 @@ export class DayPickerComponent {
   hideWeekNumbers?: DayPickerElement['hideWeekNumbers'];
   selectionMode?: DayPickerElement['selectionMode'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DayPickerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3622,8 +3711,10 @@ export class DialogComponent {
   state?: DialogElement['state'];
   stretch?: DialogElement['stretch'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<DialogElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -3660,6 +3751,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/FileUploader.js';
 import type FileUploader from '@ui5/webcomponents/dist/FileUploader.js';
 
@@ -3781,6 +3873,7 @@ export declare interface FileUploaderElement
       useExisting: forwardRef(() => FileUploaderComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class FileUploaderComponent extends GenericControlValueAccessor {
@@ -3793,9 +3886,12 @@ export class FileUploaderComponent extends GenericControlValueAccessor {
   value?: FileUploaderElement['value'];
   valueState?: FileUploaderElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<FileUploaderElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -3803,7 +3899,9 @@ export class FileUploaderComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -3889,8 +3987,10 @@ export class GroupHeaderListItemComponent {
   selected?: GroupHeaderListItemElement['selected'];
   accessibleName?: GroupHeaderListItemElement['accessibleName'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<GroupHeaderListItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -4008,8 +4108,10 @@ export class IconComponent {
   name?: IconElement['name'];
   showTooltip?: IconElement['showTooltip'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<IconElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -4046,6 +4148,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Input.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type Input from '@ui5/webcomponents/dist/Input.js';
@@ -4209,6 +4312,7 @@ export declare interface InputElement
       useExisting: forwardRef(() => InputComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class InputComponent extends GenericControlValueAccessor {
@@ -4227,9 +4331,12 @@ export class InputComponent extends GenericControlValueAccessor {
   value?: InputElement['value'];
   valueState?: InputElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<InputElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -4237,7 +4344,9 @@ export class InputComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -4345,8 +4454,10 @@ export class LabelComponent {
   showColon?: LabelElement['showColon'];
   wrappingType?: LabelElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<LabelElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -4504,8 +4615,10 @@ export class LinkComponent {
   target?: LinkElement['target'];
   wrappingType?: LinkElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<LinkElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -4716,8 +4829,10 @@ export class ListComponent {
   noDataText?: ListElement['noDataText'];
   separators?: ListElement['separators'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ListElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -4844,8 +4959,10 @@ export class MenuItemComponent {
   startsSection?: MenuItemElement['startsSection'];
   text?: MenuItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MenuItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5003,8 +5120,10 @@ export class MenuComponent {
   open?: MenuElement['open'];
   opener?: MenuElement['opener'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MenuElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5131,8 +5250,10 @@ export class MessageStripComponent {
   hideCloseButton?: MessageStripElement['hideCloseButton'];
   hideIcon?: MessageStripElement['hideIcon'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MessageStripElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5287,8 +5408,10 @@ export class MonthPickerComponent {
   primaryCalendarType?: MonthPickerElement['primaryCalendarType'];
   secondaryCalendarType?: MonthPickerElement['secondaryCalendarType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MonthPickerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5367,8 +5490,10 @@ export declare interface MultiComboBoxGroupItemElement
 export class MultiComboBoxGroupItemComponent {
   text?: MultiComboBoxGroupItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MultiComboBoxGroupItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5458,8 +5583,10 @@ export class MultiComboBoxItemComponent {
   text?: MultiComboBoxItemElement['text'];
   selected?: MultiComboBoxItemElement['selected'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MultiComboBoxItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -5492,6 +5619,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/MultiComboBox.js';
 import type MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox.js';
 
@@ -5640,6 +5768,7 @@ export declare interface MultiComboBoxElement
       useExisting: forwardRef(() => MultiComboBoxComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class MultiComboBoxComponent extends GenericControlValueAccessor {
@@ -5656,9 +5785,12 @@ export class MultiComboBoxComponent extends GenericControlValueAccessor {
   value?: MultiComboBoxElement['value'];
   valueState?: MultiComboBoxElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MultiComboBoxElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -5666,7 +5798,9 @@ export class MultiComboBoxComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -5712,6 +5846,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/MultiInput.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type MultiInput from '@ui5/webcomponents/dist/MultiInput.js';
@@ -5898,6 +6033,7 @@ export declare interface MultiInputElement
       useExisting: forwardRef(() => MultiInputComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class MultiInputComponent extends GenericControlValueAccessor {
@@ -5917,9 +6053,12 @@ export class MultiInputComponent extends GenericControlValueAccessor {
   valueState?: MultiInputElement['valueState'];
   showValueHelpIcon?: MultiInputElement['showValueHelpIcon'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<MultiInputElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -5927,7 +6066,9 @@ export class MultiInputComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -6049,8 +6190,10 @@ export class OptionComponent {
   selected?: OptionElement['selected'];
   value?: OptionElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<OptionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -6195,8 +6338,10 @@ export class PanelComponent {
   noAnimation?: PanelElement['noAnimation'];
   stickyHeader?: PanelElement['stickyHeader'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<PanelElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -6398,8 +6543,10 @@ export class PopoverComponent {
   placementType?: PopoverElement['placementType'];
   verticalAlign?: PopoverElement['verticalAlign'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<PopoverElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -6514,8 +6661,10 @@ export class ProgressIndicatorComponent {
   value?: ProgressIndicatorElement['value'];
   valueState?: ProgressIndicatorElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ProgressIndicatorElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -6548,6 +6697,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/RadioButton.js';
 import type RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
 
@@ -6678,6 +6828,7 @@ export declare interface RadioButtonElement
       useExisting: forwardRef(() => RadioButtonComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class RadioButtonComponent extends GenericControlValueAccessor {
@@ -6693,9 +6844,12 @@ export class RadioButtonComponent extends GenericControlValueAccessor {
   valueState?: RadioButtonElement['valueState'];
   wrappingType?: RadioButtonElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<RadioButtonElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -6703,7 +6857,9 @@ export class RadioButtonComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.checked;
       },
       set value(val) {
-        elementRef.nativeElement.checked = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.checked = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -6743,6 +6899,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/RangeSlider.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import Float from '@ui5/webcomponents-base/dist/types/Float';
@@ -6873,6 +7030,7 @@ export declare interface RangeSliderElement
       useExisting: forwardRef(() => RangeSliderComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class RangeSliderComponent extends GenericControlValueAccessor {
@@ -6887,9 +7045,12 @@ export class RangeSliderComponent extends GenericControlValueAccessor {
   endValue?: RangeSliderElement['endValue'];
   startValue?: RangeSliderElement['startValue'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<RangeSliderElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -6900,8 +7061,10 @@ export class RangeSliderComponent extends GenericControlValueAccessor {
         };
       },
       set value(val) {
-        elementRef.nativeElement.endValue = val?.endValue;
-        elementRef.nativeElement.startValue = val?.startValue;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.endValue = val?.endValue;
+          elementRef.nativeElement.startValue = val?.startValue;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -7065,8 +7228,10 @@ export class RatingIndicatorComponent {
   tooltip?: RatingIndicatorElement['tooltip'];
   value?: RatingIndicatorElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<RatingIndicatorElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7275,8 +7440,10 @@ export class ResponsivePopoverComponent {
   placementType?: ResponsivePopoverElement['placementType'];
   verticalAlign?: ResponsivePopoverElement['verticalAlign'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ResponsivePopoverElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7452,8 +7619,10 @@ export class SegmentedButtonItemComponent {
   type?: SegmentedButtonItemElement['type'];
   pressed?: SegmentedButtonItemElement['pressed'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SegmentedButtonItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7592,8 +7761,10 @@ export class SegmentedButtonComponent {
   selectedItem?: SegmentedButtonElement['selectedItem'];
   selectedItems?: SegmentedButtonElement['selectedItems'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SegmentedButtonElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7748,8 +7919,10 @@ export class SelectMenuOptionComponent {
   displayText?: SelectMenuOptionElement['displayText'];
   value?: SelectMenuOptionElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SelectMenuOptionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7819,8 +7992,10 @@ export declare interface SelectMenuElement extends Partial<SelectMenu> {}
 })
 export class SelectMenuComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SelectMenuElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -7853,6 +8028,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Select.js';
 import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import Option from '@ui5/webcomponents/dist/Option.js';
@@ -7882,6 +8058,7 @@ export declare interface SelectElement
       | 'disabled'
       | 'menu'
       | 'name'
+      | 'readonly'
       | 'required'
       | 'selectedOption'
       | 'value'
@@ -7893,6 +8070,7 @@ export declare interface SelectElement
   disabled: boolean;
   menu: DOMReference;
   name: string;
+  readonly: boolean;
   required: boolean;
   selectedOption: Option;
   value: string;
@@ -7928,6 +8106,7 @@ export declare interface SelectElement
   'disabled',
   'menu',
   'name',
+  'readonly',
   'required',
   'selectedOption',
   'value',
@@ -7968,6 +8147,7 @@ export declare interface SelectElement
     'disabled',
     'menu',
     'name',
+    'readonly',
     'required',
     'selectedOption: selected-option',
     'value',
@@ -7985,6 +8165,7 @@ export declare interface SelectElement
       useExisting: forwardRef(() => SelectComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class SelectComponent extends GenericControlValueAccessor {
@@ -7993,14 +8174,18 @@ export class SelectComponent extends GenericControlValueAccessor {
   disabled?: SelectElement['disabled'];
   menu?: SelectElement['menu'];
   name?: SelectElement['name'];
+  readonly?: SelectElement['readonly'];
   required?: SelectElement['required'];
   selectedOption?: SelectElement['selectedOption'];
   value?: SelectElement['value'];
   valueState?: SelectElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SelectElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -8008,7 +8193,9 @@ export class SelectComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -8050,6 +8237,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Slider.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import Float from '@ui5/webcomponents-base/dist/types/Float';
@@ -8170,6 +8358,7 @@ export declare interface SliderElement
       useExisting: forwardRef(() => SliderComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class SliderComponent extends GenericControlValueAccessor {
@@ -8183,9 +8372,12 @@ export class SliderComponent extends GenericControlValueAccessor {
   step?: SliderElement['step'];
   value?: SliderElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SliderElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -8193,7 +8385,9 @@ export class SliderComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -8246,6 +8440,7 @@ export declare interface SplitButtonElement
       | 'arrowClick'
       | 'click'
       | 'accessibleName'
+      | 'activeArrowButton'
       | 'activeIcon'
       | 'design'
       | 'disabled'
@@ -8253,6 +8448,7 @@ export declare interface SplitButtonElement
     >
   > {
   accessibleName: string;
+  activeArrowButton: boolean;
   activeIcon: string;
   design:
     | 'Attention'
@@ -8296,6 +8492,7 @@ export declare interface SplitButtonElement
   'effectiveDir',
   'isUi5Element',
   'accessibleName',
+  'activeArrowButton',
   'activeIcon',
   'design',
   'disabled',
@@ -8332,6 +8529,7 @@ export declare interface SplitButtonElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
+    'activeArrowButton: active-arrow-button',
     'activeIcon: active-icon',
     'design',
     'disabled',
@@ -8342,13 +8540,16 @@ export declare interface SplitButtonElement
 })
 export class SplitButtonComponent {
   accessibleName?: SplitButtonElement['accessibleName'];
+  activeArrowButton?: SplitButtonElement['activeArrowButton'];
   activeIcon?: SplitButtonElement['activeIcon'];
   design?: SplitButtonElement['design'];
   disabled?: SplitButtonElement['disabled'];
   icon?: SplitButtonElement['icon'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SplitButtonElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -8517,8 +8718,10 @@ export class StandardListItemComponent {
   iconEnd?: StandardListItemElement['iconEnd'];
   image?: StandardListItemElement['image'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<StandardListItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -8553,6 +8756,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/StepInput.js';
 import Float from '@ui5/webcomponents-base/dist/types/Float';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -8693,6 +8897,7 @@ export declare interface StepInputElement
       useExisting: forwardRef(() => StepInputComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class StepInputComponent extends GenericControlValueAccessor {
@@ -8710,9 +8915,12 @@ export class StepInputComponent extends GenericControlValueAccessor {
   valuePrecision?: StepInputElement['valuePrecision'];
   valueState?: StepInputElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<StepInputElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -8720,7 +8928,9 @@ export class StepInputComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -8802,8 +9012,10 @@ export declare interface SuggestionGroupItemElement
 export class SuggestionGroupItemComponent {
   text?: SuggestionGroupItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SuggestionGroupItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -8923,8 +9135,10 @@ export class SuggestionItemComponent {
   text?: SuggestionItemElement['text'];
   type?: SuggestionItemElement['type'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SuggestionItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -8957,6 +9171,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Switch.js';
 import type Switch from '@ui5/webcomponents/dist/Switch.js';
 
@@ -9076,6 +9291,7 @@ export declare interface SwitchElement
       useExisting: forwardRef(() => SwitchComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class SwitchComponent extends GenericControlValueAccessor {
@@ -9090,9 +9306,12 @@ export class SwitchComponent extends GenericControlValueAccessor {
   textOn?: SwitchElement['textOn'];
   tooltip?: SwitchElement['tooltip'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<SwitchElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -9100,7 +9319,9 @@ export class SwitchComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.checked;
       },
       set value(val) {
-        elementRef.nativeElement.checked = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.checked = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')
@@ -9256,8 +9477,10 @@ export class TabContainerComponent {
   tabLayout?: TabContainerElement['tabLayout'];
   tabsOverflowMode?: TabContainerElement['tabsOverflowMode'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TabContainerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9328,8 +9551,10 @@ export declare interface TabSeparatorElement extends Partial<TabSeparator> {}
 })
 export class TabSeparatorComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TabSeparatorElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9435,8 +9660,10 @@ export class TabComponent {
   selected?: TabElement['selected'];
   text?: TabElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TabElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9503,8 +9730,10 @@ export declare interface TableCellElement extends Partial<TableCell> {}
 })
 export class TableCellComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TableCellElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9595,8 +9824,10 @@ export class TableColumnComponent {
   minWidth?: TableColumnElement['minWidth'];
   popinText?: TableColumnElement['popinText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TableColumnElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9664,8 +9895,10 @@ export declare interface TableGroupRowElement extends Partial<TableGroupRow> {}
 })
 export class TableGroupRowComponent {
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TableGroupRowElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9747,8 +9980,10 @@ export class TableRowComponent {
   selected?: TableRowElement['selected'];
   type?: TableRowElement['type'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TableRowElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9927,8 +10162,10 @@ export class TableComponent {
   noDataText?: TableElement['noDataText'];
   stickyColumnHeader?: TableElement['stickyColumnHeader'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TableElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -9965,6 +10202,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TextArea.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
 import type TextArea from '@ui5/webcomponents/dist/TextArea.js';
@@ -10104,6 +10342,7 @@ export declare interface TextAreaElement
       useExisting: forwardRef(() => TextAreaComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class TextAreaComponent extends GenericControlValueAccessor {
@@ -10122,9 +10361,12 @@ export class TextAreaComponent extends GenericControlValueAccessor {
   value?: TextAreaElement['value'];
   valueState?: TextAreaElement['valueState'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TextAreaElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -10132,7 +10374,9 @@ export class TextAreaComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -10191,6 +10435,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { merge, fromEvent } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
+import { Ui5LifecyclesService } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TimePicker.js';
 import type TimePicker from '@ui5/webcomponents/dist/TimePicker.js';
 
@@ -10311,6 +10556,7 @@ export declare interface TimePickerElement
       useExisting: forwardRef(() => TimePickerComponent),
       multi: true,
     },
+    Ui5LifecyclesService,
   ],
 })
 export class TimePickerComponent extends GenericControlValueAccessor {
@@ -10321,9 +10567,12 @@ export class TimePickerComponent extends GenericControlValueAccessor {
   formatPattern?: TimePickerElement['formatPattern'];
   placeholder?: TimePickerElement['placeholder'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TimePickerElement>,
-    private zone: NgZone
+
+    /** Used in proxy decorators */
+    private zone: NgZone,
+    ui5LifecyclesService: Ui5LifecyclesService
   ) {
     c.detach();
     super({
@@ -10331,7 +10580,9 @@ export class TimePickerComponent extends GenericControlValueAccessor {
         return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.value = val;
+        ui5LifecyclesService.onDomEnter(() => {
+          elementRef.nativeElement.value = val;
+        }, 'cvaSetValue');
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),
@@ -10419,8 +10670,10 @@ export class TitleComponent {
   level?: TitleElement['level'];
   wrappingType?: TitleElement['wrappingType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TitleElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -10509,8 +10762,10 @@ export class ToastComponent {
   duration?: ToastElement['duration'];
   placement?: ToastElement['placement'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToastElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -10680,8 +10935,10 @@ export class ToggleButtonComponent {
   type?: ToggleButtonElement['type'];
   pressed?: ToggleButtonElement['pressed'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToggleButtonElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -10790,8 +11047,10 @@ export class TokenComponent {
   selected?: TokenElement['selected'];
   text?: TokenElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TokenElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -10835,6 +11094,8 @@ export declare interface ToolbarButtonElement
     Omit<
       ToolbarButton,
       | 'click'
+      | 'overflowPriority'
+      | 'preventOverflowClosing'
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
@@ -10845,6 +11106,9 @@ export declare interface ToolbarButtonElement
       | 'width'
     >
   > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
+
   accessibleName: string;
   accessibleNameRef: string;
 
@@ -10886,6 +11150,8 @@ export declare interface ToolbarButtonElement
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
   'accessibilityAttributes',
   'accessibleName',
   'accessibleNameRef',
@@ -10927,6 +11193,8 @@ export declare interface ToolbarButtonElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'accessibilityAttributes: accessibility-attributes',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
@@ -10942,6 +11210,8 @@ export declare interface ToolbarButtonElement
   providers: [],
 })
 export class ToolbarButtonComponent {
+  overflowPriority?: ToolbarButtonElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarButtonElement['preventOverflowClosing'];
   accessibleName?: ToolbarButtonElement['accessibleName'];
   accessibleNameRef?: ToolbarButtonElement['accessibleNameRef'];
   disabled?: ToolbarButtonElement['disabled'];
@@ -10951,8 +11221,10 @@ export class ToolbarButtonComponent {
   tooltip?: ToolbarButtonElement['tooltip'];
   width?: ToolbarButtonElement['width'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarButtonElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11030,8 +11302,10 @@ export declare interface ToolbarSelectOptionElement
 export class ToolbarSelectOptionComponent {
   selected?: ToolbarSelectOptionElement['selected'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSelectOptionElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11078,6 +11352,8 @@ export declare interface ToolbarSelectElement
       | 'change'
       | 'close'
       | 'open'
+      | 'overflowPriority'
+      | 'preventOverflowClosing'
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
@@ -11085,6 +11361,8 @@ export declare interface ToolbarSelectElement
       | 'width'
     >
   > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
@@ -11122,6 +11400,8 @@ export declare interface ToolbarSelectElement
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
   'accessibleName',
   'accessibleNameRef',
   'disabled',
@@ -11158,6 +11438,8 @@ export declare interface ToolbarSelectElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
     'disabled',
@@ -11168,14 +11450,18 @@ export declare interface ToolbarSelectElement
   providers: [],
 })
 export class ToolbarSelectComponent {
+  overflowPriority?: ToolbarSelectElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSelectElement['preventOverflowClosing'];
   accessibleName?: ToolbarSelectElement['accessibleName'];
   accessibleNameRef?: ToolbarSelectElement['accessibleNameRef'];
   disabled?: ToolbarSelectElement['disabled'];
   valueState?: ToolbarSelectElement['valueState'];
   width?: ToolbarSelectElement['width'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSelectElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11211,10 +11497,20 @@ import '@ui5/webcomponents/dist/ToolbarSeparator.js';
 import type ToolbarSeparator from '@ui5/webcomponents/dist/ToolbarSeparator.js';
 
 export declare interface ToolbarSeparatorElement
-  extends Partial<ToolbarSeparator> {}
+  extends Partial<
+    Omit<ToolbarSeparator, 'overflowPriority' | 'preventOverflowClosing'>
+  > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
+}
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
+])
 @ProxyOutputs([])
 @ProxyMethods([
   'attachComponentStateFinalized',
@@ -11242,14 +11538,23 @@ export declare interface ToolbarSeparatorElement
   template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5ToolbarSeparator',
   standalone: true,
-  inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
+  ],
   outputs: [],
   providers: [],
 })
 export class ToolbarSeparatorComponent {
+  overflowPriority?: ToolbarSeparatorElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSeparatorElement['preventOverflowClosing'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSeparatorElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11282,12 +11587,22 @@ import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
 import type ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
 
 export declare interface ToolbarSpacerElement
-  extends Partial<Omit<ToolbarSpacer, 'width'>> {
+  extends Partial<
+    Omit<ToolbarSpacer, 'overflowPriority' | 'preventOverflowClosing' | 'width'>
+  > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
   width: CSSSize;
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element', 'width'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
+  'width',
+])
 @ProxyOutputs([])
 @ProxyMethods([
   'attachComponentStateFinalized',
@@ -11318,16 +11633,22 @@ export declare interface ToolbarSpacerElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'width',
   ],
   outputs: [],
   providers: [],
 })
 export class ToolbarSpacerComponent {
+  overflowPriority?: ToolbarSpacerElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSpacerElement['preventOverflowClosing'];
   width?: ToolbarSpacerElement['width'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSpacerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11417,8 +11738,10 @@ export class ToolbarComponent {
   accessibleNameRef?: ToolbarElement['accessibleNameRef'];
   alignContent?: ToolbarElement['alignContent'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11584,8 +11907,10 @@ export class TreeItemCustomComponent {
   indeterminate?: TreeItemCustomElement['indeterminate'];
   hideSelectionElement?: TreeItemCustomElement['hideSelectionElement'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TreeItemCustomElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11753,8 +12078,10 @@ export class TreeItemComponent {
   additionalText?: TreeItemElement['additionalText'];
   text?: TreeItemElement['text'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TreeItemElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -11936,8 +12263,10 @@ export class TreeComponent {
   mode?: TreeElement['mode'];
   noDataText?: TreeElement['noDataText'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<TreeElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -12235,8 +12564,10 @@ export class WheelSliderComponent {
   label?: WheelSliderElement['label'];
   value?: WheelSliderElement['value'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<WheelSliderElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();
@@ -12389,8 +12720,10 @@ export class YearPickerComponent {
   primaryCalendarType?: YearPickerElement['primaryCalendarType'];
   secondaryCalendarType?: YearPickerElement['secondaryCalendarType'];
   constructor(
-    private c: ChangeDetectorRef,
+    c: ChangeDetectorRef,
     private elementRef: ElementRef<YearPickerElement>,
+
+    /** Used in proxy decorators */
     private zone: NgZone
   ) {
     c.detach();

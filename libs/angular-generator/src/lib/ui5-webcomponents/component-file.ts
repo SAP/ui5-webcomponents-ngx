@@ -5,8 +5,9 @@ import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";
 import {ComponentWrapperCreator} from "./component-wrapper-creator";
 import {format as prettierFormat} from "prettier";
-import {utilsFile} from "./utils";
+import {proxyUtilsFile} from "./utils-generated-files/proxy-utils-file";
 import {outputTypesImportData} from "./output-types-import-data";
+import { ui5LifecyclesServiceFile } from "./utils-generated-files/ui5-lifecycles-service-file";
 
 /**
  * The Angular Component file creator.
@@ -15,7 +16,7 @@ export class ComponentFile extends AngularGeneratedFile {
   /** The export specifier of the component wrapper */
   wrapperExportSpecifier!: ExportSpecifier<AngularExportSpecifierType>;
   /** The name of the element type */
-  getComponentCode = () => ComponentWrapperCreator(this, this.elementTypeName, this.eventsNameMapName, this.options, this.componentsMap);
+  getComponentCode = () => ComponentWrapperCreator(this);
   /** The name of the element's interface */
   elementTypeName!: string;
   /** The name of the events map */
@@ -32,7 +33,7 @@ export class ComponentFile extends AngularGeneratedFile {
     return this.componentData.selector;
   }
 
-  constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions, private componentsMap: Map<ComponentData, AngularGeneratedFile>) {
+  constructor(readonly componentData: ComponentData, private options: AngularGeneratorOptions, readonly componentsMap: Map<ComponentData, AngularGeneratedFile>) {
     super();
     this.componentsMap.set(componentData, this);
     this.move(options.exportFileNameFactory(componentData.path));
@@ -55,12 +56,13 @@ export class ComponentFile extends AngularGeneratedFile {
     this.addExport(this.wrapperExportSpecifier);
     this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef'], '@angular/core');
     this.addImport({specifiers: [], path: this.componentData.path});
-    this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], utilsFile.relativePathFrom);
+    this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], proxyUtilsFile.relativePathFrom);
     if (this.componentData.formData.length > 0) {
       this.addImport('forwardRef', '@angular/core');
       this.addImport(['Observable', 'fromEvent', 'merge'], 'rxjs');
       this.addImport('NG_VALUE_ACCESSOR', '@angular/forms');
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
+      this.addImport(ui5LifecyclesServiceFile.exportClassName, ui5LifecyclesServiceFile.relativePathFrom);
     }
     if (this.componentData.outputs.length > 0) {
       this.addImport(outputTypesImportData(this.componentData, this.componentsMap));

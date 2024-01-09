@@ -58,7 +58,7 @@ export const ui5componentsWrapper = (components: ComponentData[], options: Angul
   (() => {
     files[utilsFile.path] = utilsFile;
     const ngPackageFile = new NgPackageFile(utilsFile, utilsFile.parsedPath.dir);
-    files[ngPackageFile.path] = utilsFile;
+    files[ngPackageFile.path] = ngPackageFile;
     utilsFile.apfPath = options.apfPathFactory(utilsFile.path);
   })();
 

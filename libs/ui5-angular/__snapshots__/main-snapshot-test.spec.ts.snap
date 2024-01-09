@@ -1465,7 +1465,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/CheckBox.js';
 import type CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
@@ -1625,6 +1625,9 @@ export class CheckBoxComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): CheckBoxElement {
@@ -2244,7 +2247,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/ComboBox.js';
 import ComboBoxGroupItem from '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
@@ -2415,6 +2418,9 @@ export class ComboBoxComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): ComboBoxElement {
@@ -2580,7 +2586,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/DatePicker.js';
 import type DatePicker from '@ui5/webcomponents/dist/DatePicker.js';
@@ -2788,6 +2794,9 @@ export class DatePickerComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): DatePickerElement {
@@ -2818,7 +2827,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 import type DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
@@ -3039,6 +3048,9 @@ export class DateRangePickerComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): DateRangePickerElement {
@@ -3069,7 +3081,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 import type DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
@@ -3277,6 +3289,9 @@ export class DateTimePickerComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): DateTimePickerElement {
@@ -3658,7 +3673,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/FileUploader.js';
 import type FileUploader from '@ui5/webcomponents/dist/FileUploader.js';
@@ -3812,6 +3827,9 @@ export class FileUploaderComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): FileUploaderElement {
@@ -4044,7 +4062,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Input.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -4247,6 +4265,9 @@ export class InputComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): InputElement {
@@ -5490,7 +5511,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/MultiComboBox.js';
 import type MultiComboBox from '@ui5/webcomponents/dist/MultiComboBox.js';
@@ -5676,6 +5697,9 @@ export class MultiComboBoxComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): MultiComboBoxElement {
@@ -5710,7 +5734,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/MultiInput.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -5937,6 +5961,9 @@ export class MultiInputComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): MultiInputElement {
@@ -6546,7 +6573,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/RadioButton.js';
 import type RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
@@ -6712,6 +6739,9 @@ export class RadioButtonComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): RadioButtonElement {
@@ -6741,7 +6771,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/RangeSlider.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -6911,6 +6941,9 @@ export class RangeSliderComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): RangeSliderElement {
@@ -7851,7 +7884,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Select.js';
 import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
@@ -8017,6 +8050,9 @@ export class SelectComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): SelectElement {
@@ -8048,7 +8084,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Slider.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -8203,6 +8239,9 @@ export class SliderComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): SliderElement {
@@ -8551,7 +8590,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/StepInput.js';
 import Float from '@ui5/webcomponents-base/dist/types/Float';
@@ -8729,6 +8768,9 @@ export class StepInputComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): StepInputElement {
@@ -8955,7 +8997,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/Switch.js';
 import type Switch from '@ui5/webcomponents/dist/Switch.js';
@@ -9109,6 +9151,9 @@ export class SwitchComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): SwitchElement {
@@ -9963,7 +10008,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/TextArea.js';
 import Integer from '@ui5/webcomponents-base/dist/types/Integer';
@@ -10142,6 +10187,9 @@ export class TextAreaComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): TextAreaElement {
@@ -10189,7 +10237,7 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { merge, fromEvent } from 'rxjs';
+import { merge, fromEvent, first } from 'rxjs';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import '@ui5/webcomponents/dist/TimePicker.js';
 import type TimePicker from '@ui5/webcomponents/dist/TimePicker.js';
@@ -10341,6 +10389,9 @@ export class TimePickerComponent extends GenericControlValueAccessor {
         elementRef.nativeElement.disabled = isDisabled;
       },
     });
+    fromEvent(elementRef.nativeElement, 'focusout')
+      .pipe(first())
+      .subscribe(() => this.onTouched());
   }
 
   get element(): TimePickerElement {

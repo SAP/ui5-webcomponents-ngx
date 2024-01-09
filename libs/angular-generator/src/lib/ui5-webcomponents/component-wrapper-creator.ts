@@ -73,7 +73,11 @@ export function CvaConstructor(componentFile: ComponentFile): string {
               setDisabledState: (isDisabled: boolean): void => {
                 elementRef.nativeElement.disabled = isDisabled;
               }
-            })`;
+            })
+            fromEvent(elementRef.nativeElement, 'focusout').pipe(
+              first()
+            ).subscribe(() => this.onTouched());
+            `;
   }
   return '';
 }

@@ -29,6 +29,7 @@
         "{projectRoot}/fiori",
         "{projectRoot}/main",
         "{projectRoot}/generic-cva",
+        "{projectRoot}/utils",
         "{projectRoot}/index.ts",
         "{projectRoot}/theming/supported-themes.ts",
         "{projectRoot}/ui5-webcomponents.module.ts"

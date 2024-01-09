@@ -58,7 +58,7 @@ export class ComponentFile extends AngularGeneratedFile {
     this.addImport(['ProxyInputs', 'ProxyMethods', 'ProxyOutputs'], utilsFile.relativePathFrom);
     if (this.componentData.formData.length > 0) {
       this.addImport('forwardRef', '@angular/core');
-      this.addImport(['Observable', 'fromEvent', 'merge'], 'rxjs');
+      this.addImport(['Observable', 'fromEvent', 'merge', 'first'], 'rxjs');
       this.addImport('NG_VALUE_ACCESSOR', '@angular/forms');
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
     }

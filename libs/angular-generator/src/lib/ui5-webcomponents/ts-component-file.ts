@@ -51,7 +51,7 @@ export class TsComponentFile extends AngularGeneratedFile {
     if (this.componentData.formData.length > 0) {
       this.addImport(['NG_VALUE_ACCESSOR'], '@angular/forms');
       this.addImport(['forwardRef'], '@angular/core');
-      this.addImport(['merge', 'fromEvent'], 'rxjs');
+      this.addImport(['merge', 'fromEvent', 'first'], 'rxjs');
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
     }
     this.addImport({specifiers: [], path: this.componentData.path})
@@ -137,7 +137,11 @@ export class TsComponentFile extends AngularGeneratedFile {
               setDisabledState: (isDisabled: boolean): void => {
                 elementRef.nativeElement.disabled = isDisabled;
               }
-            })`;
+            })
+            fromEvent(elementRef.nativeElement, 'focusout').pipe(
+              first()
+            ).subscribe(() => this.onTouched());
+            `;
       }
       return '';
     }

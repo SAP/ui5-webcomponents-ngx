@@ -6,7 +6,13 @@ export class Ui5LifecyclesServiceFile extends AngularGeneratedFile {
     super();
     this.move('utils/ui5-lifecycles.service.ts');
     this.addExport('Ui5LifecyclesService');
-    this.addImport(['Injectable', 'signal', 'effect', 'ElementRef', 'inject', 'Injector', 'EffectRef'], '@angular/core');
+    /**
+     * import { ElementRef, inject, Injectable, } from '@angular/core';
+     * import UI5Element from '@ui5/webcomponents-base/dist/UI5Element';
+     * import { BehaviorSubject, filter, first, Subscription } from "rxjs";
+     */
+    this.addImport(['Injectable', 'ElementRef', 'inject'], '@angular/core');
+    this.addImport(['BehaviorSubject', 'filter', 'first', 'Subscription'], 'rxjs');
     this.addImport([{ imported: 'default', local: 'UI5Element' }], '@ui5/webcomponents-base/dist/UI5Element');
   }
 
@@ -18,37 +24,36 @@ export class Ui5LifecyclesServiceFile extends AngularGeneratedFile {
           @Injectable()
           class Ui5LifecyclesService {
             private element = inject<ElementRef<UI5Element>>(ElementRef).nativeElement;
-            private injector = inject<Injector>(Injector);
-            private enterSignal = signal(this.element._fullyConnected);
-            private effects: Record<string, EffectRef> = {};
+            private enter$ = new BehaviorSubject<boolean>(this.element._fullyConnected);
+            private subscriptions: Record<string, Subscription> = {};
             constructor() {
               const originalOnEnterDOM = this.element.onEnterDOM?.bind(this.element);
               this.element.onEnterDOM = () => {
                 if (originalOnEnterDOM) {
                   originalOnEnterDOM();
                 }
-                this.enterSignal.set(true);
+                this.enter$.next(true);
               };
             }
 
             onDomEnter(callback: () => void, uniqueIdentifier?: string): void {
-              if (uniqueIdentifier && this.effects[uniqueIdentifier]) {
-                this.effects[uniqueIdentifier].destroy();
+              if (uniqueIdentifier && this.subscriptions[uniqueIdentifier]) {
+                this.subscriptions[uniqueIdentifier].unsubscribe();
+                delete this.subscriptions[uniqueIdentifier];
               }
-              const effectRef = effect(
-                () => {
-                  if (this.enterSignal()) {
-                    callback();
-                    effectRef.destroy();
-                    if (uniqueIdentifier) {
-                      delete this.effects[uniqueIdentifier];
-                    }
+              const subscription = this.enter$
+                .pipe(
+                  filter((value) => value),
+                  first()
+                )
+                .subscribe(() => {
+                  callback();
+                  if (uniqueIdentifier) {
+                    delete this.subscriptions[uniqueIdentifier];
                   }
-                },
-                { injector: this.injector }
-              );
+                });
               if (uniqueIdentifier) {
-                this.effects[uniqueIdentifier] = effectRef;
+                this.subscriptions[uniqueIdentifier] = subscription;
               }
             }
           }

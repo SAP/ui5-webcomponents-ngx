@@ -24,7 +24,6 @@ export class GenericCva extends AngularGeneratedFile {
 import { ControlValueAccessor } from '@angular/forms';
 import {
   BehaviorSubject,
-  distinctUntilChanged,
   filter,
   map,
   Observable,
@@ -33,7 +32,6 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import fastDeepEqual from 'fast-deep-equal';
 
 interface ValueProviderInterface<ValueType = any> {
   value: ValueType;
@@ -47,15 +45,12 @@ export class GenericControlValueAccessor<ValueType = any>
 {
   onChange!: (val: ValueType) => void;
   onTouched!: () => void;
-  private _value?: ValueType;
   private _destroy$ = new Subject<void>();
   private _onChangeSet$ = new BehaviorSubject(false);
   constructor(protected host: ValueProviderInterface<ValueType>) {
     this.host.valueUpdatedNotifier$
       .pipe(
         map(() => this.host.value),
-        distinctUntilChanged(fastDeepEqual),
-        tap((v) => (this._value = v)),
         switchMap(this.onChange$),
         takeUntil(this._destroy$)
       )
@@ -86,7 +81,6 @@ export class GenericControlValueAccessor<ValueType = any>
   }
 
   writeValue(val: ValueType): void {
-    this._value = val;
     this.host.value = val;
   }
 

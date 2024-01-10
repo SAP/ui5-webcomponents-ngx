@@ -11,7 +11,7 @@ import {outputTypesImportData} from "./output-types-import-data";
 /**
  * The Angular Component file creator.
  */
-export class ComponentFile extends AngularGeneratedFile {
+export class JsComponentFile extends AngularGeneratedFile {
   /** The export specifier of the component wrapper */
   wrapperExportSpecifier!: ExportSpecifier<AngularExportSpecifierType>;
   /** The name of the element type */

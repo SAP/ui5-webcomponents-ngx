@@ -1,7 +1,7 @@
 import {AngularGeneratorOptions} from "../angular-generator-options";
 import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
 import {camelCase} from 'lodash';
-import {ComponentFile} from "./component-file";
+import {JsComponentFile} from "./js-component-file";
 import {genericCva} from "./generic-cva";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {inputsJson, outputsJson} from "./metadata-tools";
@@ -13,7 +13,7 @@ import {outputType} from "./output-type";
  * @param componentFile
  * @constructor
  */
-function CvaBaseClassExtends(componentFile: ComponentFile): string {
+function CvaBaseClassExtends(componentFile: JsComponentFile): string {
   if (componentFile.componentData.formData.length === 0) {
     return '';
   }
@@ -24,7 +24,7 @@ function CvaBaseClassExtends(componentFile: ComponentFile): string {
  * Returns the providers string for the component file.
  * @param componentFile
  */
-function providers(componentFile: ComponentFile) {
+function providers(componentFile: JsComponentFile) {
   if (componentFile.componentData.formData.length === 0) {
     return '';
   }
@@ -38,7 +38,7 @@ function providers(componentFile: ComponentFile) {
  * @param componentFile
  * @constructor
  */
-export function CvaConstructor(componentFile: ComponentFile): string {
+export function CvaConstructor(componentFile: JsComponentFile): string {
   if (componentFile.componentData.formData.length > 0) {
     let getValue, setValue;
     const outputEvents = [...(new Set(componentFile.componentData.formData.reduce((acc: OutputType[], form) => {
@@ -100,7 +100,7 @@ export function CvaConstructor(componentFile: ComponentFile): string {
  * @constructor
  */
 export function ComponentWrapperCreator(
-  componentFile: ComponentFile,
+  componentFile: JsComponentFile,
   elementTypeName: string,
   eventsMapName: string,
   options: AngularGeneratorOptions,

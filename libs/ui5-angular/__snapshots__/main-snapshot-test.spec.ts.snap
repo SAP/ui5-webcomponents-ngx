@@ -6727,10 +6727,11 @@ export class RadioButtonComponent extends GenericControlValueAccessor {
     c.detach();
     super({
       get value() {
-        return elementRef.nativeElement.checked;
+        return elementRef.nativeElement.value;
       },
       set value(val) {
-        elementRef.nativeElement.checked = val;
+        elementRef.nativeElement.checked =
+          elementRef.nativeElement.value === val;
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change')

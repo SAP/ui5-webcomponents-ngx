@@ -95,41 +95,43 @@ export class TsComponentFile extends AngularGeneratedFile {
       }`
   }
 
-  private getComponentCode(): string {
-    const baseClass = () => {
-      if (this.componentData.formData.length === 0) {
-        return '';
-      }
-      return `extends ${genericCva.exports[0].specifiers[0].exported}`;
-    }
-    const cvaConstructor = (): string => {
-      if (this.componentData.formData.length > 0) {
-        let getValue, setValue;
-        const outputEvents = [...(new Set(this.componentData.formData.reduce((acc: OutputType[], form) => {
-          return acc.concat(form.events);
-        }, []))).values()];
-        if (this.componentData.formData.length > 1) {
-          getValue = `{
-          ${this.componentData.formData.map(({property}) => `${property.name}: elementRef.nativeElement.${property.name}`).join(',\n')}
-        }`;
-          setValue = `
-          ${this.componentData.formData.map(({property}) => `elementRef.nativeElement.${property.name} = val?.${property.name}`).join(';\n')}
-        `;
-        } else {
-          try {
-            getValue = `elementRef.nativeElement.${this.componentData.formData[0].property.name}`;
-            setValue = `elementRef.nativeElement.${this.componentData.formData[0].property.name} = val;`;
-          } catch (e) {
-            console.log(e);
-          }
-        }
+  getCvaGetSetCode(): { getterContent: string, setterContent: string } {
+    let getterContent: string;
+    let setterContent: string;
 
-        return `super({
+    if (this.componentData.formData.length > 1) {
+      getterContent = `{
+          ${this.componentData.formData.map(({ property }) => `${property.name}: elementRef.nativeElement.${property.name}`).join(',\n')}
+        }`;
+      setterContent = `
+          ${this.componentData.formData.map(({ property }) => `elementRef.nativeElement.${property.name} = val?.${property.name}`).join(';\n')}
+        `;
+    } else {
+      try {
+        getterContent = `elementRef.nativeElement.${this.componentData.formData[0].property.name}`;
+        setterContent = `elementRef.nativeElement.${this.componentData.formData[0].property.name} = val;`;
+      } catch (e) {
+        console.log(e);
+        getterContent = '';
+        setterContent = '';
+      }
+    }
+    return { getterContent: `return ${getterContent}`, setterContent: setterContent };
+  }
+
+  getConstructorBody(): string {
+    if (this.componentData.formData.length > 0) {
+      const { getterContent, setterContent } = this.getCvaGetSetCode();
+      const outputEvents = [...(new Set(this.componentData.formData.reduce((acc: OutputType[], form) => {
+        return acc.concat(form.events);
+      }, []))).values()];
+
+      return `super({
               get value() {
-                return ${getValue}
+                ${getterContent}
               },
               set value(val) {
-                ${setValue}
+                ${setterContent}
               },
               valueUpdatedNotifier$: merge(
                 ${outputEvents.map((event) => `fromEvent(elementRef.nativeElement, '${event.name}')`).join(',\n')}
@@ -142,9 +144,18 @@ export class TsComponentFile extends AngularGeneratedFile {
               first()
             ).subscribe(() => this.onTouched());
             `;
-      }
-      return '';
     }
+    return '';
+  }
+
+  private getComponentCode(): string {
+    const baseClass = () => {
+      if (this.componentData.formData.length === 0) {
+        return '';
+      }
+      return `extends ${genericCva.exports[0].specifiers[0].exported}`;
+    }
+
     return `
       // TS source file
       @ProxyInputs(${JSON.stringify(this.componentData.inputs.map(i => i.name))})
@@ -169,7 +180,7 @@ export class TsComponentFile extends AngularGeneratedFile {
         ${this.componentData.inputs.filter(({type}) => typeof type === 'string' && type.indexOf('any') === -1).map(({name}) => `${name}?: ${this.componentData.baseName}Element['${name}'];`).join('\n')}
         constructor(private c: ChangeDetectorRef, private elementRef: ElementRef<${this.componentData.baseName}Element>, private zone: NgZone) {
           c.detach();
-          ${cvaConstructor()}
+          ${this.getConstructorBody()}
         }
 
         get element(): ${this.componentData.baseName}Element {

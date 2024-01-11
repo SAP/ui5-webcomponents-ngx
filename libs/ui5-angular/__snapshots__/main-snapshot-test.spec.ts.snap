@@ -1734,10 +1734,12 @@ import {
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import CSSColor from '@ui5/webcomponents-base/dist/types/CSSColor';
+import DOMReference from '@ui5/webcomponents-base/dist/types/DOMReference';
 import type ColorPalettePopover from '@ui5/webcomponents/dist/ColorPalettePopover.js';
 
 interface ColorPalettePopoverComponentEventsMap
-  extends Omit<HTMLElementEventMap, 'itemClick'> {
+  extends Omit<HTMLElementEventMap, 'close' | 'itemClick'> {
+  close: CustomEvent<void>;
   itemClick: CustomEvent<{ color: string }>;
 }
 
@@ -1745,14 +1747,19 @@ export declare interface ColorPalettePopoverElement
   extends Partial<
     Omit<
       ColorPalettePopover,
+      | 'close'
       | 'itemClick'
       | 'defaultColor'
+      | 'open'
+      | 'opener'
       | 'showDefaultColor'
       | 'showMoreColors'
       | 'showRecentColors'
     >
   > {
   defaultColor: CSSColor;
+  open: boolean;
+  opener: DOMReference;
   showDefaultColor: boolean;
   showMoreColors: boolean;
   showRecentColors: boolean;
@@ -1789,11 +1796,13 @@ export declare interface ColorPalettePopoverElement
   'effectiveDir',
   'isUi5Element',
   'defaultColor',
+  'open',
+  'opener',
   'showDefaultColor',
   'showMoreColors',
   'showRecentColors',
 ])
-@ProxyOutputs(['itemClick'])
+@ProxyOutputs(['close', 'itemClick'])
 @ProxyMethods([
   'attachComponentStateFinalized',
   'attachInvalidate',
@@ -1826,15 +1835,19 @@ export declare interface ColorPalettePopoverElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'defaultColor: default-color',
+    'open',
+    'opener',
     'showDefaultColor: show-default-color',
     'showMoreColors: show-more-colors',
     'showRecentColors: show-recent-colors',
   ],
-  outputs: ['itemClick: ui5ItemClick'],
+  outputs: ['close: ui5Close', 'itemClick: ui5ItemClick'],
   providers: [],
 })
 export class ColorPalettePopoverComponent {
   defaultColor?: ColorPalettePopoverElement['defaultColor'];
+  open?: ColorPalettePopoverElement['open'];
+  opener?: ColorPalettePopoverElement['opener'];
   showDefaultColor?: ColorPalettePopoverElement['showDefaultColor'];
   showMoreColors?: ColorPalettePopoverElement['showMoreColors'];
   showRecentColors?: ColorPalettePopoverElement['showRecentColors'];
@@ -1853,6 +1866,7 @@ export class ColorPalettePopoverComponent {
 
 export declare interface ColorPalettePopoverComponent
   extends Partial<ColorPalettePopoverElement> {
+  close: EventEmitter<ColorPalettePopoverComponentEventsMap['close']>;
   itemClick: EventEmitter<ColorPalettePopoverComponentEventsMap['itemClick']>;
 }
 "
@@ -7916,6 +7930,7 @@ export declare interface SelectElement
       | 'disabled'
       | 'menu'
       | 'name'
+      | 'readonly'
       | 'required'
       | 'selectedOption'
       | 'value'
@@ -7927,6 +7942,7 @@ export declare interface SelectElement
   disabled: boolean;
   menu: DOMReference;
   name: string;
+  readonly: boolean;
   required: boolean;
   selectedOption: Option;
   value: string;
@@ -7962,6 +7978,7 @@ export declare interface SelectElement
   'disabled',
   'menu',
   'name',
+  'readonly',
   'required',
   'selectedOption',
   'value',
@@ -8002,6 +8019,7 @@ export declare interface SelectElement
     'disabled',
     'menu',
     'name',
+    'readonly',
     'required',
     'selectedOption: selected-option',
     'value',
@@ -8027,6 +8045,7 @@ export class SelectComponent extends GenericControlValueAccessor {
   disabled?: SelectElement['disabled'];
   menu?: SelectElement['menu'];
   name?: SelectElement['name'];
+  readonly?: SelectElement['readonly'];
   required?: SelectElement['required'];
   selectedOption?: SelectElement['selectedOption'];
   value?: SelectElement['value'];
@@ -8286,6 +8305,7 @@ export declare interface SplitButtonElement
       | 'arrowClick'
       | 'click'
       | 'accessibleName'
+      | 'activeArrowButton'
       | 'activeIcon'
       | 'design'
       | 'disabled'
@@ -8293,6 +8313,7 @@ export declare interface SplitButtonElement
     >
   > {
   accessibleName: string;
+  activeArrowButton: boolean;
   activeIcon: string;
   design:
     | 'Attention'
@@ -8336,6 +8357,7 @@ export declare interface SplitButtonElement
   'effectiveDir',
   'isUi5Element',
   'accessibleName',
+  'activeArrowButton',
   'activeIcon',
   'design',
   'disabled',
@@ -8372,6 +8394,7 @@ export declare interface SplitButtonElement
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
     'accessibleName: accessible-name',
+    'activeArrowButton: active-arrow-button',
     'activeIcon: active-icon',
     'design',
     'disabled',
@@ -8382,6 +8405,7 @@ export declare interface SplitButtonElement
 })
 export class SplitButtonComponent {
   accessibleName?: SplitButtonElement['accessibleName'];
+  activeArrowButton?: SplitButtonElement['activeArrowButton'];
   activeIcon?: SplitButtonElement['activeIcon'];
   design?: SplitButtonElement['design'];
   disabled?: SplitButtonElement['disabled'];
@@ -10887,6 +10911,8 @@ export declare interface ToolbarButtonElement
     Omit<
       ToolbarButton,
       | 'click'
+      | 'overflowPriority'
+      | 'preventOverflowClosing'
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
@@ -10897,6 +10923,9 @@ export declare interface ToolbarButtonElement
       | 'width'
     >
   > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
+
   accessibleName: string;
   accessibleNameRef: string;
 
@@ -10938,6 +10967,8 @@ export declare interface ToolbarButtonElement
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
   'accessibilityAttributes',
   'accessibleName',
   'accessibleNameRef',
@@ -10979,6 +11010,8 @@ export declare interface ToolbarButtonElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'accessibilityAttributes: accessibility-attributes',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
@@ -10994,6 +11027,8 @@ export declare interface ToolbarButtonElement
   providers: [],
 })
 export class ToolbarButtonComponent {
+  overflowPriority?: ToolbarButtonElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarButtonElement['preventOverflowClosing'];
   accessibleName?: ToolbarButtonElement['accessibleName'];
   accessibleNameRef?: ToolbarButtonElement['accessibleNameRef'];
   disabled?: ToolbarButtonElement['disabled'];
@@ -11130,6 +11165,8 @@ export declare interface ToolbarSelectElement
       | 'change'
       | 'close'
       | 'open'
+      | 'overflowPriority'
+      | 'preventOverflowClosing'
       | 'accessibleName'
       | 'accessibleNameRef'
       | 'disabled'
@@ -11137,6 +11174,8 @@ export declare interface ToolbarSelectElement
       | 'width'
     >
   > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
   accessibleName: string;
   accessibleNameRef: string;
   disabled: boolean;
@@ -11174,6 +11213,8 @@ export declare interface ToolbarSelectElement
 @ProxyInputs([
   'effectiveDir',
   'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
   'accessibleName',
   'accessibleNameRef',
   'disabled',
@@ -11210,6 +11251,8 @@ export declare interface ToolbarSelectElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'accessibleName: accessible-name',
     'accessibleNameRef: accessible-name-ref',
     'disabled',
@@ -11220,6 +11263,8 @@ export declare interface ToolbarSelectElement
   providers: [],
 })
 export class ToolbarSelectComponent {
+  overflowPriority?: ToolbarSelectElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSelectElement['preventOverflowClosing'];
   accessibleName?: ToolbarSelectElement['accessibleName'];
   accessibleNameRef?: ToolbarSelectElement['accessibleNameRef'];
   disabled?: ToolbarSelectElement['disabled'];
@@ -11263,10 +11308,20 @@ import '@ui5/webcomponents/dist/ToolbarSeparator.js';
 import type ToolbarSeparator from '@ui5/webcomponents/dist/ToolbarSeparator.js';
 
 export declare interface ToolbarSeparatorElement
-  extends Partial<ToolbarSeparator> {}
+  extends Partial<
+    Omit<ToolbarSeparator, 'overflowPriority' | 'preventOverflowClosing'>
+  > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
+}
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
+])
 @ProxyOutputs([])
 @ProxyMethods([
   'attachComponentStateFinalized',
@@ -11294,11 +11349,18 @@ export declare interface ToolbarSeparatorElement
   template: \`<ng-content></ng-content>\`,
   exportAs: 'ui5ToolbarSeparator',
   standalone: true,
-  inputs: ['effectiveDir: effective-dir', 'isUi5Element: is-ui-5-element'],
+  inputs: [
+    'effectiveDir: effective-dir',
+    'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
+  ],
   outputs: [],
   providers: [],
 })
 export class ToolbarSeparatorComponent {
+  overflowPriority?: ToolbarSeparatorElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSeparatorElement['preventOverflowClosing'];
   constructor(
     private c: ChangeDetectorRef,
     private elementRef: ElementRef<ToolbarSeparatorElement>,
@@ -11334,12 +11396,22 @@ import CSSSize from '@ui5/webcomponents-base/dist/types/CSSSize';
 import type ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
 
 export declare interface ToolbarSpacerElement
-  extends Partial<Omit<ToolbarSpacer, 'width'>> {
+  extends Partial<
+    Omit<ToolbarSpacer, 'overflowPriority' | 'preventOverflowClosing' | 'width'>
+  > {
+  overflowPriority: 'AlwaysOverflow' | 'Default' | 'NeverOverflow';
+  preventOverflowClosing: boolean;
   width: CSSSize;
 }
 
 // TS source file
-@ProxyInputs(['effectiveDir', 'isUi5Element', 'width'])
+@ProxyInputs([
+  'effectiveDir',
+  'isUi5Element',
+  'overflowPriority',
+  'preventOverflowClosing',
+  'width',
+])
 @ProxyOutputs([])
 @ProxyMethods([
   'attachComponentStateFinalized',
@@ -11370,12 +11442,16 @@ export declare interface ToolbarSpacerElement
   inputs: [
     'effectiveDir: effective-dir',
     'isUi5Element: is-ui-5-element',
+    'overflowPriority: overflow-priority',
+    'preventOverflowClosing: prevent-overflow-closing',
     'width',
   ],
   outputs: [],
   providers: [],
 })
 export class ToolbarSpacerComponent {
+  overflowPriority?: ToolbarSpacerElement['overflowPriority'];
+  preventOverflowClosing?: ToolbarSpacerElement['preventOverflowClosing'];
   width?: ToolbarSpacerElement['width'];
   constructor(
     private c: ChangeDetectorRef,

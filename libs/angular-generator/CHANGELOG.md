@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.8...v0.2.3-rc.9) (2024-01-11)
+
+### Bug Fixes
+
+- fixed ui5 radio button and select cva support ([#112](https://github.com/SAP/ui5-webcomponents-ngx/issues/112)) ([13ef79d](https://github.com/SAP/ui5-webcomponents-ngx/commit/13ef79df7c6505de28dde6a18adad126f4a7e34e))
+
 ## [0.2.3-rc.8](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.7...v0.2.3-rc.8) (2024-01-10)
 
 ### Bug Fixes

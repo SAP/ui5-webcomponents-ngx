@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-nx",
-  "version": "0.2.3-rc.8",
+  "version": "0.2.3-rc.9",
   "main": "src/index.js",
   "executors": "./executors.json"
 }

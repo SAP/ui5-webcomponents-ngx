@@ -7,7 +7,7 @@ import {IndexFile} from "../index-file";
 import {join} from "path";
 import {AngularModuleFile} from "../angular-module-file";
 import {TsComponentFile} from "./ts-component-file";
-import {ComponentFile} from "./component-file";
+import {JsComponentFile} from "./js-component-file";
 import { utilsFile } from "./utils";
 
 function getComponentFile(componentData: ComponentData, options: AngularGeneratorOptions, cache: Map<ComponentData, AngularGeneratedFile>): AngularGeneratedFile {
@@ -23,7 +23,7 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
     require.resolve(componentData.path.replace(/\.js$/, '.d.ts'));
     componentFile = new TsComponentFile(componentData, options, cache);
   } catch (e) {
-    componentFile = new ComponentFile(componentData, options, cache);
+    componentFile = new JsComponentFile(componentData, options, cache);
   }
   if (componentData.imports.length > 0) {
     componentData.imports.forEach(i => {

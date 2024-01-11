@@ -1,6 +1,13 @@
 import { ComponentData } from "@ui5/webcomponents-wrapper";
 import apiJsonParser from "@ui5/webcomponents-api-json-parser";
-import { AngularExportSpecifierType, AngularGeneratedFile, AngularModuleFile, NgPackageFile, ui5componentsWrapper } from "@ui5/webcomponents-ngx-generator";
+import {
+  AngularExportSpecifierType,
+  AngularGeneratedFile,
+  AngularModuleFile,
+  NgPackageFile,
+  TsComponentFile,
+  ui5componentsWrapper
+} from "@ui5/webcomponents-ngx-generator";
 import { camelCase, kebabCase } from "lodash";
 import { join } from "path";
 import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
@@ -94,6 +101,10 @@ const ui5WrapperConfig: Ui5NxWrapperConfig<ComponentData> = {
       (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addProvider(files[`${packageName}/theming/index.ts`], `Ui5Webcomponents${pascalCase(packageName)}ThemingService`, true, false);
       (files[`${packageName}/ui5-${packageName}.module.ts`] as unknown as AngularModuleFile).addImport({specifiers: [], path: `@ui5/webcomponents${packageName === 'main' ? '' : '-fiori'}/dist/Assets.js`})
     });
+    (files['main/radio-button/index.ts'] as TsComponentFile).getCvaGetSetCode = () => ({
+      getterContent: `return elementRef.nativeElement.value`,
+      setterContent: `elementRef.nativeElement.checked = elementRef.nativeElement.value === val;`
+    })
     delete files['ng-package.json']; // There is a bug and I have no idea how to fix it
     return files;
   }

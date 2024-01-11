@@ -1,6 +1,6 @@
 import { ComponentData, FileSystemInterface } from "@ui5/webcomponents-wrapper";
 import { ParsedSample, ui5SamplesParser } from "@ui5/webcomponents-samples-parser";
-import apiJsonParser from '@ui5/webcomponents-api-json-parser';
+import { apiJsonParser } from '@ui5/webcomponents-schema-parser';
 import { storybookFilesGenerator } from "@ui5/webcomponents-ngx-generator";
 import { snakeCase } from "lodash";
 import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";

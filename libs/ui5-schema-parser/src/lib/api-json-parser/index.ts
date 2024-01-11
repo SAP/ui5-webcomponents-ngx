@@ -1,13 +1,13 @@
-import {ParserConfiguration} from "./lib/parser-configuration";
-import {getImplementersAndSymbols} from "./lib/getImplementersAndSymbols";
-import {getComponents} from "./lib/get-components";
+import {ParserConfiguration} from "./parser-configuration";
+import {getImplementersAndSymbols} from "./getImplementersAndSymbols";
+import {getComponents} from "./get-components";
 import { ComponentData } from "@ui5/webcomponents-wrapper";
 
 /**
  * Parses the api.json files and returns the list of the component data
  * @param configuration
  */
-async function parser(configuration: ParserConfiguration): Promise<ComponentData[]> {
+export async function apiJsonParser(configuration: ParserConfiguration): Promise<ComponentData[]> {
   const {implementers, symbols} = await getImplementersAndSymbols(configuration);
   return getComponents({
     implementers,
@@ -20,4 +20,3 @@ async function parser(configuration: ParserConfiguration): Promise<ComponentData
     }, [])
   });
 }
-export default parser;

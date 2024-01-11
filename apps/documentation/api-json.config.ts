@@ -1,5 +1,5 @@
 import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
-import apiJsonParser from '@ui5/webcomponents-api-json-parser';
+import { apiJsonParser } from '@ui5/webcomponents-schema-parser';
 import {stringify} from 'flatted';
 
 export default {

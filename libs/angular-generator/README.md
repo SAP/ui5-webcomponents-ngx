@@ -9,7 +9,7 @@ Lets say you have a list of the [ComponentData](/libs/wrapper/src/lib/types/comp
 
 ```typescript
 import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
-import apiJsonParser from "@ui5/webcomponents-api-json-parser";
+import apiJsonParser from "@ui5/webcomponents-schema-parser";
 import {
   AngularExportSpecifierType,
   AngularGeneratedFile, AngularModuleFile,

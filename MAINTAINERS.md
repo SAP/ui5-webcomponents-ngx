@@ -7,7 +7,7 @@ The project is divided into 2 main parts:
 - Publishable library - `ui5-angular`, aka `@ui5/webcomponents-ngx`
 - Libraries for creating the publishable library.
   - `wrapper` - Contains core logic for wrapping the web components.
-  - `api-json-parser` - Contains logic for parsing the web components API JSONs into `ComponentData` structure
+  - `ui5-schema-parser` - Contains logic for parsing the web components API JSONs into `ComponentData` structure
   - `angular-generator` - Contains logic for generating the Angular components and directives from `ComponentData` interface.
   - `fs-commit` - Contains logic for committing the generated files to the filesystem(or any other persistence layer).
 
@@ -46,7 +46,7 @@ the default behavior.
 As every step is just pure function, you can easily write your own implementation of any step on top of the existing
 one and use it in your wrapper configuration.
 
-### API JSON parser - @ui5/webcomponents-api-json-parser
+### API JSON parser - @ui5/webcomponents-schema-parser
 
 API JSON parser is a library that contains logic for parsing the web components API JSONs into `ComponentData` structure.
 It expects that it will receive the paths to the API JSONs, which should be in the format of the `@ui5/webcomponents` export.

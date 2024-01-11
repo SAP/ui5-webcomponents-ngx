@@ -1,4 +1,4 @@
-import {ParserConfiguration} from "./parser-configuration";
+import {ParserConfiguration} from "../parser-configuration";
 import {SymbolObject} from "./symbol-types";
 import {readFileSync} from "fs";
 import {combinedProperties} from "./combined-properties";
@@ -18,7 +18,7 @@ export async function getImplementersAndSymbols(configuration: ParserConfigurati
   // const {default: getAllEntities} = await import('@ui5/tooling-webc/lib/generate/utils/getAllEntities.js');
   // const de = getAllEntities((configuration.apiJsonPaths as string[]).map(f => readFileSync(require.resolve(f), "utf-8")));
   const implementers: Record<string, SymbolObject[]> = {};
-  const resolvedJsons = configuration.apiJsonPaths.map(pathToJson => {
+  const resolvedJsons = configuration.sources.map(pathToJson => {
     let apiJsonPath: string;
     let srcBasePath: string;
 

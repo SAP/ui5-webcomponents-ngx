@@ -7,7 +7,7 @@ import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
 
 const getUi5Samples = (fsAdapter: FileSystemInterface) => async (): Promise<(ParsedSample & { componentData: ComponentData })[]> => {
   const apiJson = await apiJsonParser({
-    apiJsonPaths: [
+    sources: [
       '@ui5/webcomponents-base/dist/api.json',
       '@ui5/webcomponents-fiori/dist/api.json',
       '@ui5/webcomponents/dist/api.json',

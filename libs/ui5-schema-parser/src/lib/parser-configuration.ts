@@ -7,5 +7,5 @@ export interface ParserConfiguration {
   /**
    * The list of paths to the api.json files
    */
-  apiJsonPaths: ApiJsonPath[];
+  sources: ApiJsonPath[];
 }

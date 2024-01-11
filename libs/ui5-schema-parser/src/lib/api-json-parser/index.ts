@@ -1,4 +1,4 @@
-import {ParserConfiguration} from "./parser-configuration";
+import {ParserConfiguration} from "../parser-configuration";
 import {getImplementersAndSymbols} from "./getImplementersAndSymbols";
 import {getComponents} from "./get-components";
 import { ComponentData } from "@ui5/webcomponents-wrapper";

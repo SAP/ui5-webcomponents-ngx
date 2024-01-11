@@ -4,7 +4,7 @@ import {stringify} from 'flatted';
 
 export default {
   getComponents: () => apiJsonParser({
-    apiJsonPaths: [
+    sources: [
       '@ui5/webcomponents-base/dist/api.json',
       '@ui5/webcomponents-fiori/dist/api.json',
       '@ui5/webcomponents/dist/api.json',

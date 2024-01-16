@@ -1,4 +1,4 @@
-import {ComponentData} from "@ui5/webcomponents-wrapper";
+import {ComponentData} from "@ui5/webcomponents-transformer";
 import {AngularGeneratorOptions} from "../angular-generator-options";
 import {AngularGeneratedFile} from "../angular-generated-file";
 import {NgPackageFile} from "../ng-package-file";
@@ -34,47 +34,45 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
   return componentFile;
 }
 
-export const ui5componentsWrapper = (components: ComponentData[], options: AngularGeneratorOptions): Record<string, AngularGeneratedFile> => {
+export const ui5componentsWrapper = (components: ComponentData[], options: AngularGeneratorOptions): AngularGeneratedFile[] => {
   const cache = new Map<ComponentData, AngularGeneratedFile>;
-  const files: Record<string, AngularGeneratedFile> = {};
+  const files: AngularGeneratedFile[] = [];
   let needsCva = false;
   for (const componentData of components) {
     if (!needsCva && componentData.formData.length > 0) {
       needsCva = true;
     }
     const componentFile = getComponentFile(componentData, options, cache);
-    files[componentFile.path] = componentFile;
-    const ngPackageFile = new NgPackageFile(componentFile, componentFile.parsedPath.dir);
-    files[ngPackageFile.path] = ngPackageFile;
+    files.push(componentFile);
+    files.push(new NgPackageFile(componentFile, componentFile.parsedPath.dir));
   }
 
   if (needsCva) {
-    files[genericCva.path] = genericCva;
+    files.push(genericCva);
     const ngPackageFile = new NgPackageFile(genericCva, genericCva.parsedPath.dir);
-    files[ngPackageFile.path] = ngPackageFile;
     genericCva.apfPath = options.apfPathFactory(genericCva.path);
+    files.push(ngPackageFile);
   }
 
   (() => {
-    files[utilsFile.path] = utilsFile;
-    const ngPackageFile = new NgPackageFile(utilsFile, utilsFile.parsedPath.dir);
-    files[ngPackageFile.path] = ngPackageFile;
+    files.push(utilsFile);
     utilsFile.apfPath = options.apfPathFactory(utilsFile.path);
+    files.push(new NgPackageFile(utilsFile, utilsFile.parsedPath.dir))
   })();
 
   options.modules.forEach(moduleDescription => {
     const moduleFile = new AngularModuleFile(Object.values(files), moduleDescription);
     moduleFile.apfPath = options.apfPathFactory(moduleDescription.fileName);
-    files[moduleFile.path] = moduleFile;
+    files.push(moduleFile);
     const moduleIndexFile = new IndexFile([moduleFile], options, join(moduleFile.parsedPath.dir, 'index.ts'));
-    files[moduleIndexFile.path] = moduleIndexFile;
+    files.push(moduleIndexFile);
     const isPrimary = moduleFile.apfPath === options.apfPathFactory('index.ts');
     if (!isPrimary) {
       const moduleNgPackageFile = new NgPackageFile(moduleIndexFile, moduleIndexFile.parsedPath.dir);
-      files[moduleNgPackageFile.path] = moduleNgPackageFile;
+      files.push(moduleNgPackageFile);
     }
   });
   const indexFile = new IndexFile(Object.values(files), options);
-  files[indexFile.path] = indexFile;
+  files.push(indexFile);
   return files;
 }

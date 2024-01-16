@@ -1,7 +1,7 @@
 import { PathLike } from "fs";
-import { NodeFsImplementation } from "@ui5/webcomponents-wrapper-fs-commit";
+import { NodeFsImplementation } from "@ui5/webcomponents-transformer-fs-commit";
 import { JSDOM } from "jsdom";
-import { FileSystemInterface } from "@ui5/webcomponents-wrapper";
+import { FileSystemInterface } from "@ui5/webcomponents-transformer";
 
 /**
  * UI5 Samples parser configuration

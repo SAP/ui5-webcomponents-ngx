@@ -1,4 +1,4 @@
-import {ComponentData, ImportData} from "@ui5/webcomponents-wrapper";
+import {ComponentData, ImportData} from "@ui5/webcomponents-transformer";
 import {AngularGeneratedFile} from "../angular-generated-file";
 
 export function outputTypesImportData(componentData: ComponentData, componentsMap: Map<ComponentData, AngularGeneratedFile>): ImportData[] {

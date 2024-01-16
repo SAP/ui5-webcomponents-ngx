@@ -1,4 +1,4 @@
-import {InputType, OutputType} from "@ui5/webcomponents-wrapper";
+import {InputType, OutputType} from "@ui5/webcomponents-transformer";
 import {camelCase} from "lodash";
 
 /**

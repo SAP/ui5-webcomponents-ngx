@@ -1,19 +1,20 @@
-import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import {ComponentData, GeneratedFile, TransformerConfig} from "@ui5/webcomponents-transformer";
 import { apiJsonParser } from '@ui5/webcomponents-schema-parser';
 import {stringify} from 'flatted';
 
 export default {
-  getComponents: () => apiJsonParser({
+  gatherer: () => apiJsonParser({
     sources: [
       '@ui5/webcomponents-base/dist/api.json',
       '@ui5/webcomponents-fiori/dist/api.json',
       '@ui5/webcomponents/dist/api.json',
     ]
   }),
-  generator: (c: ComponentData[]) => ({
-    'api.json': {
+  transformers: [
+    (c: ComponentData[]) => ([{
       path: 'api-json.json',
       getCode: () => stringify(c)
     } as GeneratedFile
-  })
-} as Partial<WrapperConfig<ComponentData>>;
+    ])
+  ]
+} as Partial<TransformerConfig<ComponentData>>;

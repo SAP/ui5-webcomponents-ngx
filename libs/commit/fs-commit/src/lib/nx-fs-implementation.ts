@@ -1,4 +1,4 @@
-import { FileSystemInterface } from '@ui5/webcomponents-wrapper';
+import { FileSystemInterface } from '@ui5/webcomponents-transformer';
 import { Tree } from '@nx/devkit';
 import { sync as fastGlob } from 'fast-glob';
 import { basename, extname, normalize } from 'path';

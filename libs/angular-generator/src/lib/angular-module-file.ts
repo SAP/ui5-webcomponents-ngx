@@ -102,8 +102,9 @@ export class AngularModuleFile extends AngularGeneratedFile {
    * @param shouldInitialize Whether the provider should be initialized in the constructor of the module.
    * @param providerInMetadata Whether the provider should be added to the `providers` array in the module metadata.
    */
-  addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false, providerInMetadata = false): void {
+  addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false, providerInMetadata = false): AngularModuleFile {
     this.addImport(specifier, file.relativePathFrom);
     this.providers.set(specifier, {init: shouldInitialize, providersArray: providerInMetadata});
+    return this;
   }
 }

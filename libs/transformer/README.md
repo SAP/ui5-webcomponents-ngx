@@ -1,4 +1,4 @@
-# @ui5/webcomponents-wrapper
+# @ui5/webcomponents-transformer
 
 This package provides a base functionality for generating an output depending on a given input. 
 This is a general purpose library, which can be used for generating different outputs, such as:
@@ -8,7 +8,7 @@ This is a general purpose library, which can be used for generating different ou
 - etc.
 
 Idea is that it has an ability to receive plugins, which can be used to extend the functionality of the library.
-`@ui5/webcomponents-wrapper` has one function, called `wrapper`, which receives a configuration object, and returns
+`@ui5/webcomponents-transformer` has one function, called `wrapper`, which receives a configuration object, and returns
 a promise, which resolves with the output of the wrapper.
 ```ts
 export interface WrapperConfig<T> {

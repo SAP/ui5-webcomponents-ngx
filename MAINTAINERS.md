@@ -20,7 +20,7 @@ but they can be omitted and the wrappers can be generated without using them.
 
 ## General overview of functionality
 
-### Wrapper - @ui5/webcomponents-wrapper
+### Wrapper - @ui5/webcomponents-transformer
 Wrapper is a library that contains core logic for wrapping the web components. It is a simple generic function
 which holds the logic and order of executing the methods for wrapping the web components.
 Steps are:

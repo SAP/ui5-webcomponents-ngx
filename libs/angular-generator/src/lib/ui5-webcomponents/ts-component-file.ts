@@ -1,5 +1,5 @@
 import {AngularGeneratedFile} from "../angular-generated-file";
-import {ComponentData, ExportSpecifierType, OutputType} from "@ui5/webcomponents-wrapper";
+import {ComponentData, ExportSpecifierType, OutputType} from "@ui5/webcomponents-transformer";
 import {AngularGeneratorOptions} from "../angular-generator-options";
 import {format as prettierFormat} from "prettier";
 import {camelCase} from "lodash";

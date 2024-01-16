@@ -1,7 +1,7 @@
 import {ParserConfiguration} from "../parser-configuration";
 import {getImplementersAndSymbols} from "./getImplementersAndSymbols";
 import {getComponents} from "./get-components";
-import { ComponentData } from "@ui5/webcomponents-wrapper";
+import { ComponentData } from "@ui5/webcomponents-transformer";
 
 /**
  * Parses the api.json files and returns the list of the component data

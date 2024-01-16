@@ -94,10 +94,11 @@ export abstract class GeneratedFile<ExportsType = unknown> {
       ExportData<ExportsType> | ExportSpecifier<ExportsType> | string
     >,
     path: ExportData['path'] = this.relativePathFrom
-  ): void {
+  ): GeneratedFile<ExportsType> {
     if (Array.isArray(exportData)) {
-      exportData.forEach((exportData) => this.addExport(exportData, path));
-      return;
+      return exportData.reduce((acc: GeneratedFile<ExportsType>, exportData) => {
+        return acc.addExport(exportData, path);
+      }, this);
     }
     const normalizedExportData = this._normalizeExportData(exportData, path);
     const existingExportsFromPath =
@@ -107,6 +108,7 @@ export abstract class GeneratedFile<ExportsType = unknown> {
       normalizedExportData.path,
       existingExportsFromPath.concat(normalizedExportData.specifiers)
     );
+    return this;
   }
 
   /**
@@ -117,10 +119,11 @@ export abstract class GeneratedFile<ExportsType = unknown> {
       ImportData | ImportSpecifier | string | (() => string)
     >,
     path?: ImportData['path']
-  ): void {
+  ): GeneratedFile<ExportsType> {
     if (Array.isArray(importData)) {
-      importData.forEach((importData) => this.addImport(importData, path));
-      return;
+      return importData.reduce((acc: GeneratedFile<ExportsType>, importData) => {
+        return acc.addImport(importData, path);
+      }, this);
     }
     const normalizedImportData = this._normalizeImportData(importData, path);
     const existingImportsFromPath =
@@ -129,6 +132,7 @@ export abstract class GeneratedFile<ExportsType = unknown> {
       normalizedImportData.path,
       existingImportsFromPath.concat(normalizedImportData.specifiers)
     );
+    return this;
   }
 
   /**

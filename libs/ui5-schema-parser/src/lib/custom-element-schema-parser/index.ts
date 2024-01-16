@@ -1,4 +1,4 @@
-import { ComponentData } from "@ui5/webcomponents-wrapper";
+import { ComponentData } from "@ui5/webcomponents-transformer";
 import { ParserConfiguration } from "../parser-configuration";
 
 /**

@@ -27,9 +27,6 @@
         "libs/library-one/library-two/src/index.ts"
       ],
       "@ui5/theming-ngx": ["libs/ui5-angular-theming/src/index.ts"],
-      "@ui5/webcomponents-schema-parser": [
-        "libs/ui5-schema-parser/src/index.ts"
-      ],
       "@ui5/webcomponents-ngx": ["libs/ui5-angular/index.ts"],
       "@ui5/webcomponents-ngx-generator": [
         "libs/angular-generator/src/index.ts"
@@ -39,8 +36,11 @@
       "@ui5/webcomponents-samples-parser": [
         "libs/ui5-samples-parser/src/index.ts"
       ],
-      "@ui5/webcomponents-wrapper": ["libs/wrapper/src/index.ts"],
-      "@ui5/webcomponents-wrapper-fs-commit": [
+      "@ui5/webcomponents-schema-parser": [
+        "libs/ui5-schema-parser/src/index.ts"
+      ],
+      "@ui5/webcomponents-transformer": ["libs/transformer/src/index.ts"],
+      "@ui5/webcomponents-transformer-fs-commit": [
         "libs/commit/fs-commit/src/index.ts"
       ]
     },

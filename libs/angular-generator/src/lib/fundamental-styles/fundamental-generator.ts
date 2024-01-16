@@ -25,11 +25,8 @@ export function fundamentalGenerator(styles: string[], options: AngularGenerator
   })
   const indexFile = new IndexFile(generatedFiles.filter(c => c.path.endsWith('.ts')), options);
 
-  return {
-    ...generatedFiles.reduce((f, g) => {
-      f[g.path] = g;
-      return f;
-    }, {}),
-    [indexFile.path]: indexFile
-  };
+  return [
+    ...generatedFiles,
+    indexFile
+  ];
 }

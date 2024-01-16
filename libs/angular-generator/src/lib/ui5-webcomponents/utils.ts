@@ -1,4 +1,4 @@
-import {ExportSpecifierType} from "@ui5/webcomponents-wrapper";
+import {ExportSpecifierType} from "@ui5/webcomponents-transformer";
 import {format} from "prettier";
 import {AngularGeneratedFile} from "../angular-generated-file";
 

@@ -1,5 +1,5 @@
 import {AngularGeneratedFile} from "./angular-generated-file";
-import {GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {GeneratedFile} from "@ui5/webcomponents-transformer";
 import {AngularGeneratorOptions} from "./angular-generator-options";
 
 /**

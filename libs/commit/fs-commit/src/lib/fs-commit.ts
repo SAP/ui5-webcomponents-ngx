@@ -1,4 +1,4 @@
-import {FileSystemInterface, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {FileSystemInterface, GeneratedFile} from "@ui5/webcomponents-transformer";
 import {join} from "path";
 
 export function fsCommit(fsImplementation: FileSystemInterface, cwd: string): (files: GeneratedFile[]) => void {

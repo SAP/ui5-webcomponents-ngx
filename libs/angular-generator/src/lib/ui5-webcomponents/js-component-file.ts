@@ -1,5 +1,5 @@
 import {AngularGeneratedFile} from "../angular-generated-file";
-import {ComponentData, ExportSpecifier, ExportSpecifierType} from "@ui5/webcomponents-wrapper";
+import {ComponentData, ExportSpecifier, ExportSpecifierType} from "@ui5/webcomponents-transformer";
 import {AngularGeneratorOptions} from "../angular-generator-options";
 import {AngularExportSpecifierType} from "../angular-export-specifier-type";
 import {genericCva} from "./generic-cva";

@@ -1,5 +1,5 @@
 import {AngularGeneratorOptions} from "../angular-generator-options";
-import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-wrapper";
+import {ComponentData, InputType, OutputType} from "@ui5/webcomponents-transformer";
 import {camelCase} from 'lodash';
 import {JsComponentFile} from "./js-component-file";
 import {genericCva} from "./generic-cva";

@@ -8,7 +8,7 @@ list of the [ComponentData](/libs/wrapper/src/lib/types/component-data.ts) items
 Lets say you have a list of the [ComponentData](/libs/wrapper/src/lib/types/component-data.ts) items:
 
 ```typescript
-import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-wrapper";
+import {ComponentData, GeneratedFile, WrapperConfig} from "@ui5/webcomponents-transformer";
 import apiJsonParser from "@ui5/webcomponents-schema-parser";
 import {
   AngularExportSpecifierType,

@@ -55,7 +55,6 @@ export class TsComponentFile extends AngularGeneratedFile {
       this.addImport(genericCva.exports[0].specifiers[0].exported, genericCva.relativePathFrom);
     }
     this.addImport({specifiers: [], path: this.componentData.path})
-
   }
 
   private getEventsMapInterface(): string {
@@ -64,7 +63,7 @@ export class TsComponentFile extends AngularGeneratedFile {
     }
     return `
       interface ${this.componentClassName}EventsMap extends Omit<HTMLElementEventMap, ${this.componentData.outputs.map(output => `'${output.name}'`).join(' | ')}> {
-        ${this.componentData.outputs.map((output) => `${output.name}: CustomEvent<${outputType(output, this.componentsMap)}>;`).join('\n')}
+        ${this.componentData.outputs.map((output) => `'${output.name}': CustomEvent<${outputType(output, this.componentsMap)}>;`).join('\n')}
       }
     `;
   }
@@ -77,7 +76,7 @@ export class TsComponentFile extends AngularGeneratedFile {
         return '';
       }
       excludedProperties.push({name});
-      return `${name}: ${type};`;
+      return `'${name}': ${type};`;
     }).join('\n');
     const baseInterface = this.componentData.outputs.length > 0 || excludedProperties.length > 0 ? `Omit<${this.componentData.baseName}, ${[...this.componentData.outputs, ...excludedProperties].map(o => JSON.stringify(o.name)).join(' | ')}>` : this.componentData.baseName;
 
@@ -193,12 +192,11 @@ export class TsComponentFile extends AngularGeneratedFile {
   override getCode(): string {
     return prettierFormat([
       this.getImportsCode(),
-      `import type ${this.componentData.baseName} from '${this.componentData.path}';`,
       this.getEventsMapInterface(),
       this.getElementInterface(),
       this.getComponentCode(),
       `export declare interface ${this.componentClassName} extends Partial<${this.componentData.baseName}Element> {
-        ${this.componentData.outputs.map((output) => `${output.name}: EventEmitter<${this.componentClassName}EventsMap['${output.name}']>;`).join('\n')}
+        ${this.componentData.outputs.map((output) => `'${output.name}': EventEmitter<${this.componentClassName}EventsMap['${output.name}']>;`).join('\n')}
       }`
     ].join('\n'), {parser: 'typescript'});
   }

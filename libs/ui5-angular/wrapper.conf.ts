@@ -1,5 +1,5 @@
 import { ComponentData } from "@ui5/webcomponents-transformer";
-import { apiJsonParser } from "@ui5/webcomponents-schema-parser";
+import { customElementSchemaParser } from "@ui5/webcomponents-schema-parser";
 import {
   AngularExportSpecifierType,
   AngularGeneratedFile,
@@ -85,11 +85,11 @@ const componentGenerator = (components: ComponentData[]) =>
   })
 
 const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
-  gatherer: () => apiJsonParser({
+  gatherer: () => customElementSchemaParser({
     sources: [
-      '@ui5/webcomponents-base/dist/api.json',
-      '@ui5/webcomponents-fiori/dist/api.json',
-      '@ui5/webcomponents/dist/api.json'
+      '@ui5/webcomponents-base/dist/custom-elements-internal.json',
+      '@ui5/webcomponents-fiori/dist/custom-elements-internal.json',
+      '@ui5/webcomponents/dist/custom-elements-internal.json'
     ]
   }),
   transformers: [

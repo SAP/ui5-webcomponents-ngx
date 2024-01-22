@@ -6,6 +6,7 @@ import {
   isImportData,
   isImportSpecifier,
 } from './import-data';
+import { CanBePromise } from "./types/transformer-config";
 
 type CanBeArray<T> = T | T[];
 
@@ -21,7 +22,7 @@ export abstract class GeneratedFile<ExportsType = unknown> {
    * otherwise the imports and exports will not be updated
    * when the file is moved, or any of the dependencies are moved
    */
-  abstract getCode(): string;
+  abstract getCode(): CanBePromise<string>;
 
   /**
    * Returns the relative path from the requester to this file

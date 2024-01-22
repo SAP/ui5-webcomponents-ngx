@@ -1,6 +1,6 @@
 import {GeneratedFile} from "../generated-file";
 
-type CanBePromise<T> = T | Promise<T>;
+export type CanBePromise<T> = T | Promise<T>;
 
 export interface TransformerConfig<T> {
   gatherer: () => CanBePromise<T[]>;

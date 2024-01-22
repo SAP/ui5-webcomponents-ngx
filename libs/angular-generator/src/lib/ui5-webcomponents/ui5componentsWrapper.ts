@@ -6,11 +6,12 @@ import {genericCva} from "./generic-cva";
 import {IndexFile} from "../index-file";
 import {join} from "path";
 import {AngularModuleFile} from "../angular-module-file";
-import {TsComponentFile} from "./ts-component-file";
-import {JsComponentFile} from "./js-component-file";
 import { utilsFile } from "./utils";
+import { ComponentFile } from "./component-file";
+import { normalizeOptions } from "./normalize-options";
 
-function getComponentFile(componentData: ComponentData, options: AngularGeneratorOptions, cache: Map<ComponentData, AngularGeneratedFile>): AngularGeneratedFile {
+function getComponentFile(componentData: ComponentData, _options: AngularGeneratorOptions, cache: Map<ComponentData, AngularGeneratedFile>): AngularGeneratedFile {
+  const options = normalizeOptions(_options);
   const cached = cache.get(componentData);
   if (cached) {
     return cached;
@@ -18,13 +19,7 @@ function getComponentFile(componentData: ComponentData, options: AngularGenerato
   if (componentData.dependencies.length > 0) {
     componentData.dependencies.forEach(d => getComponentFile(d, options, cache));
   }
-  let componentFile: AngularGeneratedFile;
-  try {
-    require.resolve(componentData.path.replace(/\.js$/, '.d.ts'));
-    componentFile = new TsComponentFile(componentData, options, cache);
-  } catch (e) {
-    componentFile = new JsComponentFile(componentData, options, cache);
-  }
+  const componentFile: AngularGeneratedFile = new ComponentFile(componentData, options, cache);
   if (componentData.imports.length > 0) {
     componentData.imports.forEach(i => {
       componentFile.addImport(i);

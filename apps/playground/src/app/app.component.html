@@ -3,7 +3,7 @@
 <section>
   <button (click)="updateRadioFormModel()">radioControl.setValue("Option 1")</button>FormControl value: {{ radioControl.value }}, touched: {{ radioControl.touched }}<br>
 
-  <ui5-radio-button name="GroupA" text="Option 1" value="Option 1" [formControl]="radioControl"></ui5-radio-button>
+  <ui5-radio-button name="GroupA" text="Option 1" valueState="None" [value]="'Option 1'" [formControl]="radioControl"></ui5-radio-button>
   <ui5-radio-button name="GroupA" text="Option 2" value="Option 2" [formControl]="radioControl" [checked]="true"></ui5-radio-button>
   <ui5-radio-button name="GroupA" text="Option 3" value="Option 3" [formControl]="radioControl"></ui5-radio-button>
 </section>

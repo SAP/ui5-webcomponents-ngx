@@ -5,12 +5,13 @@ import {
   AngularGeneratedFile,
   AngularModuleFile,
   NgPackageFile,
-  TsComponentFile,
+  ComponentFile,
   ui5componentsWrapper
 } from "@ui5/webcomponents-ngx-generator";
 import { camelCase, kebabCase } from "lodash";
 import { join } from "path";
 import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
+import { format } from "prettier";
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
 
@@ -45,8 +46,16 @@ class ThemingServiceFile extends AngularGeneratedFile {
     `
   }
 
-  override getCode(): string {
-    return [this.getImportsCode(), this.getServiceCode(), this.getExportsCode()].join('\n');
+  override getCode(): Promise<string> {
+    return format([
+      this.getImportsCode(),
+      this.getServiceCode(),
+      this.getExportsCode()
+    ].join('\n'), {
+      parser: 'typescript',
+      singleQuote: true,
+      plugins: ['prettier-plugin-organize-imports']
+    });
   }
 }
 
@@ -108,10 +117,11 @@ const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
       for (const packageName of packageNames) {
         const themingServiceFile = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main');
         const moduleFile = filesMap[`${packageName}/ui5-${packageName}.module.ts`] as AngularModuleFile;
+        const themingNgPackage = new NgPackageFile(themingServiceFile, `${packageName}/theming`);
         indexFile.addExport('*', `@ui5/webcomponents-ngx/${packageName}/theming`);
 
-        filesMap[Symbol().toString()] = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main');
-        filesMap[Symbol().toString()] = new NgPackageFile(themingServiceFile, `${packageName}/theming`);
+        filesMap[themingServiceFile.path] = themingServiceFile;
+        filesMap[themingNgPackage.path] = themingNgPackage;
         moduleFile
           .addProvider(themingServiceFile, themingServiceFile.className, true, false)
           .addImport({
@@ -121,10 +131,8 @@ const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
       }
 
       // There is a need for a custom getter and setter for the RadioButton
-      (filesMap['main/radio-button/index.ts'] as TsComponentFile).getCvaGetSetCode = () => ({
-        getterContent: `return elementRef.nativeElement.value`,
-        setterContent: `elementRef.nativeElement.checked = elementRef.nativeElement.value === val;`
-      })
+      (filesMap['main/radio-button/index.ts'] as ComponentFile).cvaGetterCode = `get cvaValue() { return this.element.value; }`;
+      (filesMap['main/radio-button/index.ts'] as ComponentFile).cvaSetterCode = `set cvaValue(val: string) { this.element.checked = this.element.value === val; }`;
 
       // There is a bug in the generator that causes the incorrect ng-package.json to be generated for the main package
       delete filesMap['ng-package.json'];

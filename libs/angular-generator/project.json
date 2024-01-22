@@ -11,16 +11,12 @@
         "outputPath": "dist/libs/angular-generator",
         "main": "libs/angular-generator/src/index.ts",
         "tsConfig": "libs/angular-generator/tsconfig.lib.json",
-        "assets": ["libs/angular-generator/*.md"],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/angular-generator/*.md"]
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/angular-generator/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": []

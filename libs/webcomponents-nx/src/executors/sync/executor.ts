@@ -50,7 +50,6 @@ export default async function (
       fsAdapter
     });
   }
-  await formatFiles(host);
   const changes = host.listChanges();
   printChanges(changes);
   flushChanges(workspaceRoot, changes);

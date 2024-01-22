@@ -1,4 +1,4 @@
-import { ComponentData, ImportData, InputType, OutputType } from "@ui5/webcomponents-transformer";
+import { ComponentData, ImportData, InputType, MethodType, OutputType } from "@ui5/webcomponents-transformer";
 import { ParserConfiguration } from "../parser-configuration";
 import { readFileSync } from "fs";
 import {
@@ -11,13 +11,73 @@ import {
   JavaScriptModule,
   Package,
   Reference,
-  Slot
+  Slot, Type
 } from '@ui5/webcomponents-tools/lib/cem/types-internal';
 import * as process from "process";
 import { camelCase } from "lodash";
 
 type JavascriptModuleDeclaration = Required<JavaScriptModule>['declarations'][number]
 type JavascriptModuleExport = Required<JavaScriptModule>['exports'][number];
+
+const objectTypeMapper = (elementTagName: string, identifier: string) => {
+  if (elementTagName === 'ui5-button') {
+    if (identifier === 'accessibilityAttributes') {
+      return `
+        {
+          expanded?: boolean;
+          hasPopup?: 'Dialog' | 'Grid' | 'Listbox' | 'Menu' | 'Tree';
+          controls?: string | HTMLElement | Array<HTMLElement | string>;
+        }
+      `;
+    }
+  }
+  if (elementTagName === 'ui5-link') {
+    if (identifier === 'accessibilityAttributes') {
+      return `
+        {
+          expanded?: boolean;
+          hasPopup?: 'Dialog' | 'Grid' | 'Listbox' | 'Menu' | 'Tree';
+        }
+      `;
+    }
+  }
+  return 'Record<string, any>';
+}
+const typesMap: Record<string, string> = {
+  integer: 'number',
+  float: 'number',
+  double: 'number',
+  boolean: 'boolean',
+  string: 'string',
+  csscolor: 'string',
+  array: 'Array<any>',
+  htmlelement: 'HTMLElement',
+  element: 'Element',
+  node: 'Node',
+  '*': 'any',
+  'undefined': 'any',
+}
+
+function getPropertyType(type: Type | undefined, resolvedJsons: Record<string, JavaScriptModule[]>): string {
+  if (!type) {
+    return 'any';
+  }
+  if (!type?.text) {
+    console.log(type);
+  }
+  const mappedType = typesMap[type.text.toLowerCase()];
+  if (mappedType) {
+    return mappedType;
+  }
+  let typeText = type.text;
+  const refsInfos = (type.references || []).map(r => getDeclarationDetails(resolvedJsons, r));
+  for (const refInfo of refsInfos) {
+    if (refInfo?.declaration.kind === 'enum') {
+      typeText = typeText.replace(refInfo.declaration.name, (refInfo.declaration.members || [])?.map(m => m.kind === 'field' && JSON.stringify(m.default)).filter(Boolean).join(' | '));
+    }
+  }
+  return typeText;
+}
 
 const resolveFile = (ref: Reference): string => {
   /**
@@ -69,18 +129,19 @@ const refToImportData = (resolvedJsons: Record<string, JavaScriptModule[]>, ref:
         path: resolveFile(ref)
       };
     }
-    if (['AccessibilityTexts', 'AccessiblilityTexts', 'AccessibilityRoles', 'AccessibilityAttributes'].includes(ref.name)) {
-      return {
-        specifiers: [
-          {
-            local: ref.name,
-            imported: ref.name
-          }
-        ],
-        path: resolveFile(ref)
-      };
-    }
-    throw new Error(`Cannot find export for ${ref.package}/${ref.module}#${ref.name}`);
+    return { // Just assuming it's exported like that
+      specifiers: [
+        {
+          local: ref.name,
+          imported: ref.name
+        }
+      ],
+      path: resolveFile(ref)
+    };
+    // if (['AccessibilityTexts', 'AccessiblilityTexts', 'AccessibilityRoles', 'AccessibilityAttributes'].includes(ref.name)) {
+    //
+    // }
+    // throw new Error(`Cannot find export for ${ref.package}/${ref.module}#${ref.name}`);
   })();
   if (val.path === '') {
     console.log(val);
@@ -180,7 +241,7 @@ function populateInputs(symbol: CustomElementDeclaration, component: ComponentDa
         description: member.description || '',
         defaultValue: member.default || '',
         isArray: member.type!.text.endsWith('[]'),
-        type: member.type!.text
+        type: getPropertyType(member.type, resolvedJsons),
       };
       for (const ref of member.type?.references || []) {
         component.imports.push(refToImportData(resolvedJsons, ref));
@@ -190,19 +251,51 @@ function populateInputs(symbol: CustomElementDeclaration, component: ComponentDa
   }
 }
 
+function populateMethods(symbol: CustomElementDeclaration, component: ComponentData) {
+  for (const member of symbol.members || []) {
+    if (member.kind === 'method' && !member.static && member.privacy === 'public') {
+      const method: MethodType = {
+        name: member.name,
+        description: member.description || '',
+      };
+      component.methods.push(method);
+    }
+  }
+}
+
 function populateOutputs(symbol: CustomElementDeclaration, component: ComponentData, resolvedJsons: Record<string, JavaScriptModule[]>) {
   for (const ev of symbol.events || []) {
+    let type = getPropertyType(ev.type, resolvedJsons).replace(/CustomEvent<(.*)>/, '$1');
+    if (type === 'CustomEvent') {
+      type = 'void';
+    }
     const output: OutputType = {
       name: ev.name,
       description: ev.description || '',
       publicName: camelCase(ev.name),
-      type: ev._ui5parameters?.length ? `{ ${ev._ui5parameters.map(p => `'${p.name}': ${p.type?.text}`).join(', ')} }` : 'void',
+      type,
       placeholderValues: {}
     }
     for (const ref of ev.type?.references || []) {
       component.imports.push(refToImportData(resolvedJsons, ref));
     }
     component.outputs.push(output);
+  }
+}
+
+function populateFormData(symbol: CustomElementDeclaration, component: ComponentData) {
+  for (const member of symbol.members || []) {
+    if (member.kind === 'field' && !member.static && member.privacy === 'public' && !member.readonly && member._ui5formProperty) {
+      const input = component.inputs.find(i => i.name === member.name);
+      const outputs = member._ui5formEvents?.split(',').map(e => component.outputs?.find(o => o.name === e.trim())).filter(Boolean) as OutputType[];
+      if (!input || !outputs) {
+        throw new Error(`Cannot find input or output for ${member.name}`);
+      }
+      component.formData.push({
+        property: input,
+        events: outputs
+      })
+    }
   }
 }
 
@@ -235,11 +328,13 @@ function populateComponentDatas(jsModule: JavaScriptModule, resolvedJsons: Recor
       methods: [],
       outputs: [],
       path: jsModule.path,
-      selector: "",
+      selector: fullCustomElDecl.tagName,
       slots: []
     } as ComponentData;
     populateInputs(fullCustomElDecl, component, resolvedJsons);
     populateOutputs(fullCustomElDecl, component, resolvedJsons);
+    populateMethods(fullCustomElDecl, component);
+    populateFormData(fullCustomElDecl, component);
     componentDatas[declPath] = component;
   }
 }

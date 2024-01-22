@@ -1,4 +1,4 @@
-import {ComponentData, InputType} from "@ui5/webcomponents-transformer";
+import { ComponentData, InputType, OutputType } from "@ui5/webcomponents-transformer";
 import {AngularGeneratedFile} from "./angular-generated-file";
 
 export interface ModuleDescription {
@@ -33,13 +33,8 @@ export interface AngularGeneratorOptions {
    * @param componentData
    */
   selectorFactory?: (componentData: ComponentData) => string;
-
   /**
-   * @Input() properties rename factory, this gives ability to rename properties in the generated code.
-   * Returned input should have different reference than the original input.
+   * The factory for the output names
    */
-  inputModifier?: (input: InputType, componentData: ComponentData) => ({
-    valueMapper?: [any, any][]; // [from, to][]
-    input: InputType;
-  });
+  componentOutputNameFactory?: (componentData: ComponentData, output: OutputType) => string;
 }

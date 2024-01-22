@@ -32,6 +32,7 @@ export interface ParameterType {
 
 export interface MethodType {
   name: string;
+  description: string;
 }
 
 export interface ComponentData {

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.9...v0.2.3) (2024-02-06)
+
+**Note:** Version bump only for package @fundamental-styles/theming-ngx
+
 ## [0.2.3-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.8...v0.2.3-rc.9) (2024-01-11)
 
 **Note:** Version bump only for package @fundamental-styles/theming-ngx

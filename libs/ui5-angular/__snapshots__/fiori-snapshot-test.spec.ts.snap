@@ -2971,6 +2971,7 @@ import {
   ShellBarNotificationsClickEventDetail,
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
+  ShellBarSearchButtonEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import {
   ProxyInputs,
@@ -2996,6 +2997,7 @@ import {
   'logo-click: ui5LogoClick',
   'co-pilot-click: ui5CoPilotClick',
   'menu-item-click: ui5MenuItemClick',
+  'search-button-click: ui5SearchButtonClick',
 ])
 @ProxyMethods([
   'onBeforeRendering',
@@ -3039,6 +3041,7 @@ import {
     'ui5LogoClick',
     'ui5CoPilotClick',
     'ui5MenuItemClick',
+    'ui5SearchButtonClick',
   ],
 })
 class ShellBarComponent {
@@ -3155,6 +3158,11 @@ It supports the following fields:
 <b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.
     */
   ui5MenuItemClick!: EventEmitter<ShellBarMenuItemClickEventDetail>;
+  /**
+     Fired, when the search button is activated.
+<b>Note:</b> You can prevent expanding/collapsing of the search field by calling <code>event.preventDefault()</code>.
+    */
+  ui5SearchButtonClick!: EventEmitter<ShellBarSearchButtonEventDetail>;
 
   private elementRef: ElementRef<ShellBar> = inject(ElementRef);
   private zone = inject(NgZone);

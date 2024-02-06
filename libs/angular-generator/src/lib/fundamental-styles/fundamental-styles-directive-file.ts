@@ -40,7 +40,7 @@ export class FundamentalStylesDirectiveFile extends AngularGeneratedFile {
     })
   }
 
-  override getCode(): string {
+  override getCode(): Promise<string> {
     return format([this.getImportsCode(), `
 
     let counter = 0;

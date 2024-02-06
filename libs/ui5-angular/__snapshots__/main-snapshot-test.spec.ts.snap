@@ -1130,7 +1130,10 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Button.js';
-import Button from '@ui5/webcomponents/dist/Button.js';
+import {
+  AccessibilityAttributes,
+  default as Button,
+} from '@ui5/webcomponents/dist/Button.js';
 @ProxyInputs([
   'design',
   'disabled',
@@ -1257,7 +1260,7 @@ It supports the following fields:
 			<ul>
 			<li><code>Dialog</code></li>
 			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
+			<li><code>Listbox</code></li>
 			<li><code>Menu</code></li>
 			<li><code>Tree</code></li>
 			</ul>
@@ -1265,11 +1268,7 @@ It supports the following fields:
 		<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>
 </ul>
     */
-  accessibilityAttributes!: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes!: AccessibilityAttributes;
 
   /**
      Defines whether the button has special form-related functionality.
@@ -2368,6 +2367,7 @@ import CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
   'accessibleName',
   'disabled',
   'readonly',
+  'displayOnly',
   'required',
   'indeterminate',
   'checked',
@@ -2404,6 +2404,7 @@ import CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
     'accessibleName',
     'disabled',
     'readonly',
+    'displayOnly',
     'required',
     'indeterminate',
     'checked',
@@ -2441,6 +2442,16 @@ class CheckBoxComponent {
 but still provides visual feedback upon user interaction.
     */
   readonly!: boolean;
+
+  /**
+     Determines whether the <code>ui5-checkbox</code> is in display only state.
+
+When set to <code>true</code>, the <code>ui5-checkbox</code> is not interactive, not editable, not focusable
+and not in the tab chain. This setting is used for forms in review mode.
+
+<Note:> When the property <code>disabled</code> is set to <code>true</code> this property has no effect.
+    */
+  displayOnly!: boolean;
 
   /**
      Defines whether the component is required.
@@ -3602,6 +3613,7 @@ import {
   'required',
   'loading',
   'filter',
+  'showClearIcon',
   'accessibleName',
   'accessibleNameRef',
 ])
@@ -3642,6 +3654,7 @@ import {
     'required',
     'loading',
     'filter',
+    'showClearIcon',
     'accessibleName',
     'accessibleNameRef',
   ],
@@ -3705,6 +3718,11 @@ but still provides visual feedback upon user interaction.
   filter!: 'StartsWithPerTerm' | 'StartsWith' | 'Contains' | 'None';
 
   /**
+     Defines whether the clear icon of the combobox will be shown.
+    */
+  showClearIcon!: boolean;
+
+  /**
      Defines the accessible ARIA name of the component.
     */
   accessibleName!: string;
@@ -3719,7 +3737,7 @@ but still provides visual feedback upon user interaction.
     */
   ui5Change!: EventEmitter<void>;
   /**
-     Fired when typing in input.
+     Fired when typing in input or clear icon is pressed.
 <br><br>
 <b>Note:</b> filterValue property is updated, input is changed.
     */
@@ -4067,6 +4085,7 @@ import {
   default as DatePicker,
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
+  DatePickerValueStateChangeEventDetail,
 } from '@ui5/webcomponents/dist/DatePicker.js';
 @ProxyInputs([
   'primaryCalendarType',
@@ -4085,7 +4104,11 @@ import {
   'accessibleName',
   'accessibleNameRef',
 ])
-@ProxyOutputs(['change: ui5Change', 'input: ui5Input'])
+@ProxyOutputs([
+  'change: ui5Change',
+  'input: ui5Input',
+  'value-state-change: ui5ValueStateChange',
+])
 @ProxyMethods([
   'onBeforeRendering',
   'onAfterRendering',
@@ -4131,7 +4154,7 @@ import {
     'accessibleName',
     'accessibleNameRef',
   ],
-  outputs: ['ui5Change', 'ui5Input'],
+  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange(cvaValue)',
@@ -4258,6 +4281,12 @@ the week numbers are not displayed regardless of what is set.
      Fired when the value of the component is changed at each key stroke.
     */
   ui5Input!: EventEmitter<DatePickerInputEventDetail>;
+  /**
+     Fired before the value state of the component is updated internally.
+The event is preventable, meaning that if it's default action is
+prevented, the component will not update the value state.
+    */
+  ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
 
   private elementRef: ElementRef<DatePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4419,6 +4448,7 @@ import {
 import {
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
+  DatePickerValueStateChangeEventDetail,
 } from '@ui5/webcomponents/dist/DatePicker.js';
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
@@ -4440,7 +4470,11 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   'accessibleNameRef',
   'delimiter',
 ])
-@ProxyOutputs(['change: ui5Change', 'input: ui5Input'])
+@ProxyOutputs([
+  'change: ui5Change',
+  'input: ui5Input',
+  'value-state-change: ui5ValueStateChange',
+])
 @ProxyMethods([
   'onBeforeRendering',
   'onAfterRendering',
@@ -4487,7 +4521,7 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'accessibleNameRef',
     'delimiter',
   ],
-  outputs: ['ui5Change', 'ui5Input'],
+  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange(cvaValue)',
@@ -4620,6 +4654,12 @@ If not supplied, the default time interval delimiter for the current locale will
      Fired when the value of the component is changed at each key stroke.
     */
   ui5Input!: EventEmitter<DatePickerInputEventDetail>;
+  /**
+     Fired before the value state of the component is updated internally.
+The event is preventable, meaning that if it's default action is
+prevented, the component will not update the value state.
+    */
+  ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
 
   private elementRef: ElementRef<DateRangePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4781,6 +4821,7 @@ import {
 import {
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
+  DatePickerValueStateChangeEventDetail,
 } from '@ui5/webcomponents/dist/DatePicker.js';
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
@@ -4801,7 +4842,11 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   'accessibleName',
   'accessibleNameRef',
 ])
-@ProxyOutputs(['change: ui5Change', 'input: ui5Input'])
+@ProxyOutputs([
+  'change: ui5Change',
+  'input: ui5Input',
+  'value-state-change: ui5ValueStateChange',
+])
 @ProxyMethods([
   'onBeforeRendering',
   'onAfterRendering',
@@ -4847,7 +4892,7 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'accessibleName',
     'accessibleNameRef',
   ],
-  outputs: ['ui5Change', 'ui5Input'],
+  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange(cvaValue)',
@@ -4974,6 +5019,12 @@ the week numbers are not displayed regardless of what is set.
      Fired when the value of the component is changed at each key stroke.
     */
   ui5Input!: EventEmitter<DatePickerInputEventDetail>;
+  /**
+     Fired before the value state of the component is updated internally.
+The event is preventable, meaning that if it's default action is
+prevented, the component will not update the value state.
+    */
+  ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
 
   private elementRef: ElementRef<DateTimePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -6537,6 +6588,7 @@ import {
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Link.js';
 import {
+  AccessibilityAttributes,
   default as Link,
   LinkClickEventDetail,
 } from '@ui5/webcomponents/dist/Link.js';
@@ -6666,17 +6718,14 @@ It supports the following fields:
 			<ul>
 			<li><code>Dialog</code></li>
 			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
+			<li><code>Listbox</code></li>
 			<li><code>Menu</code></li>
 			<li><code>Tree</code></li>
 			</ul>
 		</li>
 </ul>
     */
-  accessibilityAttributes!: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-  };
+  accessibilityAttributes!: AccessibilityAttributes;
 
   /**
      Fired when the component is triggered either with a mouse/tap
@@ -8011,8 +8060,10 @@ import {
   'readonly',
   'required',
   'filter',
+  'showClearIcon',
   'accessibleName',
   'accessibleNameRef',
+  'showSelectAll',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -8052,8 +8103,10 @@ import {
     'readonly',
     'required',
     'filter',
+    'showClearIcon',
     'accessibleName',
     'accessibleNameRef',
+    'showSelectAll',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5OpenChange', 'ui5SelectionChange'],
   hostDirectives: [GenericControlValueAccessor],
@@ -8095,8 +8148,6 @@ component has no value.
 
   /**
      Defines the value state of the component.
-<br><br>
-Available options are:
     */
   valueState!: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
@@ -8115,9 +8166,13 @@ but still provides visual feedback upon user interaction.
 
   /**
      Defines the filter type of the component.
-Available options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code>, <code>Contains</code> and <code>None</code>.
     */
   filter!: 'StartsWithPerTerm' | 'StartsWith' | 'Contains' | 'None';
+
+  /**
+     Defines whether the clear icon of the multi-combobox will be shown.
+    */
+  showClearIcon!: boolean;
 
   /**
      Defines the accessible ARIA name of the component.
@@ -8130,11 +8185,16 @@ Available options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code>, 
   accessibleNameRef!: string;
 
   /**
+     Determines if the select all checkbox is visible on top of suggestions.
+    */
+  showSelectAll!: boolean;
+
+  /**
      Fired when the input operation has finished by pressing Enter or on focusout.
     */
   ui5Change!: EventEmitter<void>;
   /**
-     Fired when the value of the component changes at each keystroke.
+     Fired when the value of the component changes at each keystroke or clear icon is pressed.
     */
   ui5Input!: EventEmitter<void>;
   /**
@@ -8142,8 +8202,7 @@ Available options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code>, 
     */
   ui5OpenChange!: EventEmitter<void>;
   /**
-     Fired when selection is changed by user interaction
-in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+     Fired when selection is changed by user interaction.
     */
   ui5SelectionChange!: EventEmitter<MultiComboBoxSelectionChangeEventDetail>;
 
@@ -8880,8 +8939,6 @@ to <code>Region</code> or <code>Complementary</code>.
   /**
      Defines the \\"aria-level\\" of component heading,
 set by the <code>headerText</code>.
-<br><br>
-Available options are: <code>\\"H6\\"</code> to <code>\\"H1\\"</code>.
     */
   headerLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
 
@@ -10568,6 +10625,7 @@ import {
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 @ProxyInputs([
@@ -10694,7 +10752,7 @@ It supports the following fields:
 			<ul>
 			<li><code>Dialog</code></li>
 			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
+			<li><code>Listbox</code></li>
 			<li><code>Menu</code></li>
 			<li><code>Tree</code></li>
 			</ul>
@@ -10702,11 +10760,7 @@ It supports the following fields:
 		<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>
 </ul>
     */
-  accessibilityAttributes!: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes!: AccessibilityAttributes;
 
   /**
      Defines whether the button has special form-related functionality.
@@ -12851,8 +12905,6 @@ SAP-icons font provides numerous built-in icons. To find all the available icons
 
   /**
      Defines the state of the <code>additionalText</code>.
-<br><br>
-Available options are: <code>\\"None\\"</code> (by default), <code>\\"Success\\"</code>, <code>\\"Information\\"</code>, <code>\\"Warning\\"</code> and <code>\\"Error\\"</code>.
     */
   additionalTextState!:
     | 'None'
@@ -14275,15 +14327,9 @@ import TableRow from '@ui5/webcomponents/dist/TableRow.js';
 class TableRowComponent {
   /**
      Defines the visual indication and behavior of the component.
-<br><br>
-Available options are:
-<ul>
-<li><code>Active</code></li>
-<li><code>Inactive</code></li>
-</ul>
-<br><br>
+
 <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press,
-while with type <code>Inactive</code> - will not.
+while with type <code>Inactive</code>-will not.
     */
   type!: 'Inactive' | 'Active';
 
@@ -15630,6 +15676,7 @@ import {
   ProxyMethods,
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
+import { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
 @ProxyInputs([
@@ -15760,7 +15807,7 @@ It supports the following fields:
 			<ul>
 			<li><code>Dialog</code></li>
 			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
+			<li><code>Listbox</code></li>
 			<li><code>Menu</code></li>
 			<li><code>Tree</code></li>
 			</ul>
@@ -15768,11 +15815,7 @@ It supports the following fields:
 		<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>
 </ul>
     */
-  accessibilityAttributes!: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes!: AccessibilityAttributes;
 
   /**
      Defines whether the button has special form-related functionality.
@@ -16081,7 +16124,10 @@ import {
   ProxyOutputs,
 } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ToolbarButton.js';
-import ToolbarButton from '@ui5/webcomponents/dist/ToolbarButton.js';
+import {
+  AccessibilityAttributes,
+  default as ToolbarButton,
+} from '@ui5/webcomponents/dist/ToolbarButton.js';
 @ProxyInputs([
   'overflowPriority',
   'preventOverflowClosing',
@@ -16230,7 +16276,7 @@ It supports the following fields:
 			<ul>
 			<li><code>Dialog</code></li>
 			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
+			<li><code>Listbox</code></li>
 			<li><code>Menu</code></li>
 			<li><code>Tree</code></li>
 			</ul>
@@ -16238,11 +16284,7 @@ It supports the following fields:
 		<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>
 </ul>
     */
-  accessibilityAttributes!: {
-    expanded: 'true' | 'false';
-    hasPopup: 'Dialog' | 'Grid' | 'ListBox' | 'Menu' | 'Tree';
-    controls: string;
-  };
+  accessibilityAttributes!: AccessibilityAttributes;
 
   /**
      Button text

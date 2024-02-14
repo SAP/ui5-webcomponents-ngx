@@ -1,5 +1,5 @@
-import { FileSystemInterface, GeneratedFile } from "@ui5/webcomponents-wrapper";
-import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
+import { FileSystemInterface, GeneratedFile } from "@ui5/webcomponents-transformer";
+import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
 
 const supportedThemesFileLocation = 'theming/supported-themes.ts';
 
@@ -16,9 +16,9 @@ class SupportedThemesFile extends GeneratedFile {
   relativePathFrom = (): string => "";
 }
 
-const themingConfig: Ui5NxWrapperConfig<string> = (fs: FileSystemInterface) => ({
-  getComponents: () => fs.queryFiles('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/**/*', []),
-  generator: (themes) => ({[supportedThemesFileLocation]: new SupportedThemesFile(themes)})
+const themingConfig: Ui5NxTransformerConfig<string> = (fs: FileSystemInterface) => ({
+  gatherer: () => fs.queryFiles('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/**/*', []),
+  transformers: [(themes: string[]) => ([new SupportedThemesFile(themes)])]
 });
 
 export default themingConfig;

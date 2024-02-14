@@ -11,16 +11,12 @@
         "outputPath": "dist/libs/ui5-samples-parser",
         "main": "libs/ui5-samples-parser/src/index.ts",
         "tsConfig": "libs/ui5-samples-parser/tsconfig.lib.json",
-        "assets": ["libs/ui5-samples-parser/*.md"],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/ui5-samples-parser/*.md"]
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/ui5-samples-parser/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": []

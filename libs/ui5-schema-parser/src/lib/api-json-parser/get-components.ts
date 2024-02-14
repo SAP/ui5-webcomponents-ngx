@@ -1,6 +1,6 @@
 import {SymbolObject} from "./symbol-types";
 import {camelCase, kebabCase} from 'lodash';
-import {ComponentData, ParameterType} from "@ui5/webcomponents-wrapper";
+import {ComponentData} from "@ui5/webcomponents-transformer";
 
 const objectTypeMapper = (elementTagName: string, identifier: string) => {
   if (elementTagName === 'ui5-button') {

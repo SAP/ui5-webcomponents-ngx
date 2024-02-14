@@ -11,8 +11,7 @@
         "outputPath": "dist/libs/wrapper",
         "main": "libs/wrapper/src/index.ts",
         "tsConfig": "libs/wrapper/tsconfig.lib.json",
-        "assets": ["libs/wrapper/*.md"],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/wrapper/*.md"]
       }
     },
     "publish": {
@@ -23,10 +22,10 @@
       "dependsOn": ["build"]
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/wrapper/**/*.ts"]
+        "lintFilePatterns": ["libs/transformer", "libs/wrapper/**/*.ts"]
       }
     }
   },

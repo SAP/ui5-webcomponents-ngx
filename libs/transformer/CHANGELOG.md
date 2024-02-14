@@ -9,27 +9,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.3-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.8...v0.2.3-rc.9) (2024-01-11)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.8](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.7...v0.2.3-rc.8) (2024-01-10)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.7](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.6...v0.2.3-rc.7) (2023-12-18)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.5...v0.2.3-rc.6) (2023-12-13)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.4...v0.2.3-rc.5) (2023-12-12)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.3...v0.2.3-rc.4) (2023-12-12)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.2...v0.2.3-rc.3) (2023-12-06)
 
@@ -39,19 +39,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.3-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.1...v0.2.3-rc.2) (2023-11-22)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.0...v0.2.3-rc.1) (2023-11-07)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.3-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.2...v0.2.3-rc.0) (2023-11-05)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.2-rc.3...v0.2.2) (2023-08-14)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.2-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.2-rc.2...v0.2.2-rc.3) (2023-08-14)
 
@@ -61,87 +61,87 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.2-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.2-rc.1...v0.2.2-rc.2) (2023-08-14)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.2-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.2-rc.0...v0.2.2-rc.1) (2023-08-13)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.2-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.1...v0.2.2-rc.0) (2023-06-30)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.1-rc.0...v0.2.1) (2023-06-15)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.2.1-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.0...v0.2.1-rc.0) (2023-06-15)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.2.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.0-rc.2...v0.2.0) (2023-05-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.2.0-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.0-rc.1...v0.2.0-rc.2) (2023-05-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.2.0-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.0-rc.0...v0.2.0-rc.1) (2023-05-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.2.0-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.2-rc.1...v0.2.0-rc.0) (2023-05-15)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.2-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.2-rc.0...v0.1.2-rc.1) (2023-05-15)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.2-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1...v0.1.2-rc.0) (2023-05-12)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.5...v0.1.1) (2023-04-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.4...v0.1.1-rc.5) (2023-04-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.3...v0.1.1-rc.4) (2023-04-17)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.2...v0.1.1-rc.3) (2023-04-14)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.1...v0.1.1-rc.2) (2023-04-06)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.1-rc.0...v0.1.1-rc.1) (2023-04-05)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.1.1-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0...v0.1.1-rc.0) (2023-03-30)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.1.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.3...v0.1.0) (2023-03-23)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.1.0-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.2...v0.1.0-rc.3) (2023-03-20)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.1.0-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.1...v0.1.0-rc.2) (2023-03-20)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 # [0.1.0-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.1.0-rc.0...v0.1.0-rc.1) (2023-03-19)
 
@@ -161,19 +161,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.1-rc.9](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.8...v0.0.1-rc.9) (2023-03-09)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.8](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.7...v0.0.1-rc.8) (2023-03-09)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.7](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.6...v0.0.1-rc.7) (2023-03-02)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.5...v0.0.1-rc.6) (2023-02-13)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.4...v0.0.1-rc.5) (2023-02-13)
 
@@ -183,15 +183,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.1-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.3...v0.0.1-rc.4) (2023-02-10)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.2...v0.0.1-rc.3) (2023-02-08)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## [0.0.1-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.0.1-rc.1...v0.0.1-rc.2) (2023-02-08)
 
-**Note:** Version bump only for package @ui5/webcomponents-wrapper
+**Note:** Version bump only for package @ui5/webcomponents-transformer
 
 ## 0.0.1-rc.1 (2023-02-08)
 

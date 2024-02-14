@@ -1,7 +1,7 @@
-import { FileSystemInterface } from '@ui5/webcomponents-wrapper';
+import { FileSystemInterface } from '@ui5/webcomponents-transformer';
 import { fundamentalGenerator } from '@ui5/webcomponents-ngx-generator';
 import { join } from 'path';
-import { Ui5NxWrapperConfig } from "@ui5/webcomponents-nx";
+import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
 
 export function getFundamentalStyles(fs: FileSystemInterface): string[] {
   return fs.queryFiles(
@@ -10,25 +10,27 @@ export function getFundamentalStyles(fs: FileSystemInterface): string[] {
   ).map(f => f.replace(/^node_modules\/(.*)/, '$1'));
 }
 
+const stylesComponentsGenerator = (styles: string[]) => fundamentalGenerator(styles, {
+  modules: [
+    {
+      fileName: 'fundamental-styles-components.module.ts',
+      included: () => true
+    }
+  ],
+  exportFileNameFactory: (sourceFilePath) => {
+    return sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/g, 'directives/$1/index.ts');
+  },
+  apfPathFactory: (sourceFilePath) => {
+    if (sourceFilePath.endsWith('.ts')) {
+      const pathSegments = sourceFilePath.split('/').slice(0, -1);
+      return join('@fundamental-styles/theming-ngx', ...pathSegments);
+    }
+    return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'directives/$1'));
+  }
+});
+
 export default ((fs) => ({
-  getComponents: () => getFundamentalStyles(fs),
-  generator: (styles) =>
-    fundamentalGenerator(styles, {
-      modules: [
-        {
-          fileName: 'fundamental-styles-components.module.ts',
-          included: () => true
-        }
-      ],
-      exportFileNameFactory: (sourceFilePath) => {
-        return sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/g, 'directives/$1/index.ts');
-      },
-      apfPathFactory: (sourceFilePath) => {
-        if (sourceFilePath.endsWith('.ts')) {
-          const pathSegments = sourceFilePath.split('/').slice(0, -1);
-          return join('@fundamental-styles/theming-ngx', ...pathSegments);
-        }
-        return join('@fundamental-styles/theming-ngx', sourceFilePath.replace(/^fundamental-styles\/dist\/js\/(.*)\.mjs$/, 'directives/$1'));
-      }
-    }),
-})) as Ui5NxWrapperConfig<string>;
+    gatherer: () => getFundamentalStyles(fs),
+    transformers: [stylesComponentsGenerator]
+  })
+) as Ui5NxTransformerConfig<string>;

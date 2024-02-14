@@ -1,7 +1,7 @@
 import { PrepareOptions } from './prepareOptions';
 import { logger, ProjectConfiguration } from '@nx/devkit';
 import { SchematicsOptions } from './schematicsOptions';
-import { exec, execSync } from 'child_process';
+import { execSync } from 'child_process';
 import {
   copySync,
   pathExistsSync,

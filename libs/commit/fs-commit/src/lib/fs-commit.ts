@@ -1,8 +1,8 @@
-import {FileSystemInterface, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {FileSystemInterface, GeneratedFile} from "@ui5/webcomponents-transformer";
 import {join} from "path";
 
 export function fsCommit(fsImplementation: FileSystemInterface, cwd: string): (files: GeneratedFile[]) => void {
-  return (files: GeneratedFile[]): void => {
+  return async (files: GeneratedFile[]): Promise<void> => {
     // const receivedFiles = files.map((file) => file.path);
     // const receivedFilesSet = new Set(receivedFiles);
     //
@@ -11,9 +11,10 @@ export function fsCommit(fsImplementation: FileSystemInterface, cwd: string): (f
     // const filesToDelete = existingFiles.filter((file) => !receivedFilesSet.has(file));
     // filesToDelete.forEach((file) => fsImplementation.delete(file));
 
-    files.forEach((file) => {
+    for (const file of files) {
       const path = join(cwd, file.path);
-      fsImplementation.write(path, file.getCode());
-    });
+      const code = await file.getCode();
+      fsImplementation.write(path, code);
+    }
   }
 }

@@ -1,5 +1,5 @@
-export * from './lib/wrapper';
-export * from './lib/types/wrapper-config';
+export * from './lib/transformer';
+export * from './lib/types/transformer-config';
 export * from './lib/types/component-data';
 export * from './lib/generated-component-file';
 export * from './lib/generated-file';

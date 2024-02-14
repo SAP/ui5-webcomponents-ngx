@@ -1,4 +1,4 @@
-import {dependencyRelativePath, GeneratedFile} from "@ui5/webcomponents-wrapper";
+import {dependencyRelativePath, GeneratedFile} from "@ui5/webcomponents-transformer";
 import {AngularExportSpecifierType} from "./angular-export-specifier-type";
 import {ParsedPath} from "path";
 

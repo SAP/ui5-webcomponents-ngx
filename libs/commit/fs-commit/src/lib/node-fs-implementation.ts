@@ -1,4 +1,4 @@
-import {FileSystemInterface} from "@ui5/webcomponents-wrapper";
+import {FileSystemInterface} from "@ui5/webcomponents-transformer";
 import {existsSync, readFileSync, writeFileSync, unlinkSync, mkdirSync, renameSync, readdirSync} from "fs";
 import {basename, dirname, extname, normalize} from "path";
 import {sync as fastGlob} from "fast-glob";

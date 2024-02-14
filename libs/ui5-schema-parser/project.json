@@ -1,17 +1,17 @@
 {
-  "name": "angular-generator",
+  "name": "ui5-schema-parser",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/angular-generator/src",
+  "sourceRoot": "libs/ui5-schema-parser/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/angular-generator",
-        "main": "libs/angular-generator/src/index.ts",
-        "tsConfig": "libs/angular-generator/tsconfig.lib.json",
-        "assets": ["libs/angular-generator/*.md"]
+        "outputPath": "dist/libs/ui5-schema-parser",
+        "main": "libs/ui5-schema-parser/src/index.ts",
+        "tsConfig": "libs/ui5-schema-parser/tsconfig.lib.json",
+        "assets": ["libs/ui5-schema-parser/*.md"]
       }
     },
     "lint": {

@@ -1,53 +1,37 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "ui-angular",
   "affected": {
     "defaultBase": "main"
   },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": [
-          "compodoc-generate",
-          "sync",
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
-        "accessToken": "YTZhYjUzMjAtNmFiOC00YmU4LTllYWMtNWM3ODQzZGJlZTVifHJlYWQtb25seQ=="
-      }
-    }
-  },
   "targetDefaults": {
     "sync": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": true
     },
     "prepare": {
       "dependsOn": ["build"]
     },
     "build": {
       "dependsOn": ["^build", "sync"],
-      "inputs": ["production", "^production"]
-    },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
-    },
-    "e2e": {
-      "inputs": ["default", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "cache": true
     },
-    "build-storybook": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/.storybook/**/*",
-        "{projectRoot}/.storybook/**/*",
-        "{projectRoot}/tsconfig.storybook.json"
-      ]
+    "@nx/jest:jest": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "namedInputs": {
@@ -83,5 +67,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "documentation"
+  "defaultProject": "documentation",
+  "nxCloudAccessToken": "YTZhYjUzMjAtNmFiOC00YmU4LTllYWMtNWM3ODQzZGJlZTVifHJlYWQtb25seQ=="
 }

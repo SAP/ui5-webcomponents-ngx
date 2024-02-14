@@ -36,8 +36,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/fundamental-styles"],
       "options": {
-        "project": "libs/fundamental-styles/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/fundamental-styles/ng-package.json"
       },
       "configurations": {
         "production": {
@@ -50,13 +49,7 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/fundamental-styles/**/*.ts",
-          "libs/fundamental-styles/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": []

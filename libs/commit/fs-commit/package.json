@@ -1,5 +1,5 @@
 {
-  "name": "@ui5/webcomponents-wrapper-fs-commit",
+  "name": "@ui5/webcomponents-transformer-fs-commit",
   "version": "0.2.3",
   "license": "Apache-2.0",
   "type": "commonjs"

@@ -1,4 +1,4 @@
-import {ExportSpecifierType} from "@ui5/webcomponents-wrapper";
+import {ExportSpecifierType} from "@ui5/webcomponents-transformer";
 import {format} from "prettier";
 import {AngularGeneratedFile} from "../angular-generated-file";
 
@@ -19,11 +19,6 @@ export class UtilsFile extends AngularGeneratedFile {
         types: [ExportSpecifierType.Function]
       },
       {
-        local: 'ProxyMethods',
-        exported: 'ProxyMethods',
-        types: [ExportSpecifierType.Function]
-      },
-      {
         local: 'ProxyOutputs',
         exported: 'ProxyOutputs',
         types: [ExportSpecifierType.Function]
@@ -31,7 +26,7 @@ export class UtilsFile extends AngularGeneratedFile {
     ]);
   }
 
-  override getCode(): string {
+  override getCode(): Promise<string> {
     return format([
       this.getImportsCode(),
       `
@@ -50,26 +45,18 @@ export class UtilsFile extends AngularGeneratedFile {
         }
       }
 
-      function ProxyMethods(methodNames: string[]) {
-        return (cls: any) => {
-          methodNames.forEach(methodName => {
-            cls.prototype[methodName] = function (...args: any[]) {
-              return this.zone.runOutsideAngular(() =>
-                // eslint-disable-next-line prefer-spread
-                this.element[methodName].apply(this.element, args)
-              );
-            };
-          });
-        }
-      }
-
       function ProxyOutputs(outputNames: string[]) {
         return (cls: any) => {
           outputNames.forEach((outputName) => {
-            Object.defineProperty(cls.prototype, outputName, {
+            // eslint-disable-next-line prefer-const
+            let [eventName, publicName] = outputName.split(':').map((s) => s.trim());
+            publicName = publicName || eventName;
+            Object.defineProperty(cls.prototype, publicName, {
               get(): any {
-                return fromEvent<CustomEvent<any>>(this.element, outputName).pipe(map(e => e.detail));
-              }
+                return fromEvent<CustomEvent<any>>(this.element, eventName).pipe(
+                  map((e) => e.detail),
+                );
+              },
             });
           });
         };

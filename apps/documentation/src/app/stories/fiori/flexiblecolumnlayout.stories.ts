@@ -43,3 +43,19 @@ export default {
     },
   },
 } as Meta;
+
+export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
+  template: `
+  <ui5-flexible-column-layout id="fcl" style="height: 600px;">
+      <div class="col" slot="startColumn">
+
+      </div>
+      <div class="col" slot="midColumn">
+
+      </div>
+      <div class="col" slot="endColumn">
+
+      </div>
+    </ui5-flexible-column-layout>
+  `,
+});

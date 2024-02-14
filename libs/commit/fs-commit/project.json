@@ -11,16 +11,12 @@
         "outputPath": "dist/libs/commit/fs-commit",
         "main": "libs/commit/fs-commit/src/index.ts",
         "tsConfig": "libs/commit/fs-commit/tsconfig.lib.json",
-        "assets": ["libs/commit/fs-commit/*.md"],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/commit/fs-commit/*.md"]
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/commit/fs-commit/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": []

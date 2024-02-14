@@ -10,26 +10,8 @@ exports[`Snapshot test Fiori Bar should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/Bar.js';
 import Bar from '@ui5/webcomponents-fiori/dist/Bar.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['design'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-bar',
@@ -53,91 +35,6 @@ class BarComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: Bar['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: Bar['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: Bar['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: Bar['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: Bar['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: Bar['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: Bar['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: Bar['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: Bar['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: Bar['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: Bar['focus'];
-
-  /**
-     
-    */
-  fireEvent!: Bar['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: Bar['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: Bar['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: Bar['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: Bar['getStaticAreaItemDomRef'];
 }
 export { BarComponent };
 "
@@ -158,29 +55,9 @@ import {
   BarcodeScannerDialogScanErrorEventDetail,
   BarcodeScannerDialogScanSuccessEventDetail,
 } from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import { ProxyMethods, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 
 @ProxyOutputs(['scan-success: ui5ScanSuccess', 'scan-error: ui5ScanError'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-  'show',
-  'close',
-])
 @Component({
   standalone: true,
   selector: 'ui5-barcode-scanner-dialog',
@@ -208,101 +85,6 @@ class BarcodeScannerDialogComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: BarcodeScannerDialog['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: BarcodeScannerDialog['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: BarcodeScannerDialog['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: BarcodeScannerDialog['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: BarcodeScannerDialog['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: BarcodeScannerDialog['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: BarcodeScannerDialog['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: BarcodeScannerDialog['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: BarcodeScannerDialog['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: BarcodeScannerDialog['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: BarcodeScannerDialog['focus'];
-
-  /**
-     
-    */
-  fireEvent!: BarcodeScannerDialog['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: BarcodeScannerDialog['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: BarcodeScannerDialog['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: BarcodeScannerDialog['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: BarcodeScannerDialog['getStaticAreaItemDomRef'];
-
-  /**
-     Shows a dialog with the camera videostream. Starts a scan session.
-    */
-  show!: BarcodeScannerDialog['show'];
-
-  /**
-     Closes the dialog and the scan session.
-    */
-  close!: BarcodeScannerDialog['close'];
 }
 export { BarcodeScannerDialogComponent };
 "
@@ -322,11 +104,7 @@ import {
   default as DynamicSideContent,
   DynamicSideContentLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'hideMainContent',
   'hideSideContent',
@@ -336,25 +114,6 @@ import {
   'equalSplit',
 ])
 @ProxyOutputs(['layout-change: ui5LayoutChange'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-  'toggleContents',
-])
 @Component({
   standalone: true,
   selector: 'ui5-dynamic-side-content',
@@ -454,96 +213,6 @@ using the toggle method.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: DynamicSideContent['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: DynamicSideContent['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: DynamicSideContent['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: DynamicSideContent['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: DynamicSideContent['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: DynamicSideContent['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: DynamicSideContent['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: DynamicSideContent['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: DynamicSideContent['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: DynamicSideContent['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: DynamicSideContent['focus'];
-
-  /**
-     
-    */
-  fireEvent!: DynamicSideContent['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: DynamicSideContent['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: DynamicSideContent['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: DynamicSideContent['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: DynamicSideContent['getStaticAreaItemDomRef'];
-
-  /**
-     Toggles visibility of main and side contents on S screen size (mobile device).
-    */
-  toggleContents!: DynamicSideContent['toggleContents'];
 }
 export { DynamicSideContentComponent };
 "
@@ -559,26 +228,8 @@ exports[`Snapshot test Fiori Filter Item Option should match the snapshot 1`] = 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
 import FilterItemOption from '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['text', 'selected'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-filter-item-option',
@@ -607,91 +258,6 @@ class FilterItemOptionComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: FilterItemOption['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: FilterItemOption['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: FilterItemOption['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: FilterItemOption['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: FilterItemOption['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: FilterItemOption['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: FilterItemOption['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: FilterItemOption['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: FilterItemOption['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: FilterItemOption['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: FilterItemOption['focus'];
-
-  /**
-     
-    */
-  fireEvent!: FilterItemOption['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: FilterItemOption['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: FilterItemOption['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: FilterItemOption['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: FilterItemOption['getStaticAreaItemDomRef'];
 }
 export { FilterItemOptionComponent };
 "
@@ -707,26 +273,8 @@ exports[`Snapshot test Fiori Filter Item should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/FilterItem.js';
 import FilterItem from '@ui5/webcomponents-fiori/dist/FilterItem.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['text', 'additionalText'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-filter-item',
@@ -755,91 +303,6 @@ class FilterItemComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: FilterItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: FilterItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: FilterItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: FilterItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: FilterItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: FilterItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: FilterItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: FilterItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: FilterItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: FilterItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: FilterItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: FilterItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: FilterItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: FilterItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: FilterItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: FilterItem['getStaticAreaItemDomRef'];
 }
 export { FilterItemComponent };
 "
@@ -861,11 +324,7 @@ import {
   FlexibleColumnLayoutAccessibilityTexts,
   FlexibleColumnLayoutLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'layout',
   'hideArrows',
@@ -873,24 +332,6 @@ import {
   'accessibilityRoles',
 ])
 @ProxyOutputs(['layout-change: ui5LayoutChange'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-flexible-column-layout',
@@ -970,91 +411,6 @@ or by changing the component size due to resizing.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: FlexibleColumnLayout['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: FlexibleColumnLayout['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: FlexibleColumnLayout['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: FlexibleColumnLayout['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: FlexibleColumnLayout['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: FlexibleColumnLayout['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: FlexibleColumnLayout['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: FlexibleColumnLayout['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: FlexibleColumnLayout['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: FlexibleColumnLayout['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: FlexibleColumnLayout['focus'];
-
-  /**
-     
-    */
-  fireEvent!: FlexibleColumnLayout['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: FlexibleColumnLayout['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: FlexibleColumnLayout['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: FlexibleColumnLayout['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: FlexibleColumnLayout['getStaticAreaItemDomRef'];
 }
 export { FlexibleColumnLayoutComponent };
 "
@@ -1070,7 +426,7 @@ exports[`Snapshot test Fiori Illustrated Message should match the snapshot 1`] =
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
 import IllustratedMessage from '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'name',
   'size',
@@ -1078,24 +434,6 @@ import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
   'titleText',
   'accessibleNameRef',
   'titleLevel',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -1187,91 +525,6 @@ elements of the component are displayed differently on the different breakpoints
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: IllustratedMessage['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: IllustratedMessage['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: IllustratedMessage['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: IllustratedMessage['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: IllustratedMessage['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: IllustratedMessage['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: IllustratedMessage['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: IllustratedMessage['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: IllustratedMessage['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: IllustratedMessage['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: IllustratedMessage['focus'];
-
-  /**
-     
-    */
-  fireEvent!: IllustratedMessage['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: IllustratedMessage['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: IllustratedMessage['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: IllustratedMessage['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: IllustratedMessage['getStaticAreaItemDomRef'];
 }
 export { IllustratedMessageComponent };
 "
@@ -1289,26 +542,8 @@ exports[`Snapshot test Fiori Media Gallery Item should match the snapshot 1`] = 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
 import MediaGalleryItem from '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['selected', 'disabled', 'layout'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-media-gallery-item',
@@ -1348,91 +583,6 @@ Available options are:
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: MediaGalleryItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: MediaGalleryItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: MediaGalleryItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: MediaGalleryItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: MediaGalleryItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: MediaGalleryItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: MediaGalleryItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: MediaGalleryItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: MediaGalleryItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: MediaGalleryItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: MediaGalleryItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: MediaGalleryItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: MediaGalleryItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: MediaGalleryItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: MediaGalleryItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: MediaGalleryItem['getStaticAreaItemDomRef'];
 }
 export { MediaGalleryItemComponent };
 "
@@ -1452,11 +602,7 @@ import {
   default as MediaGallery,
   MediaGallerySelectionChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'showAllThumbnails',
   'interactiveDisplayArea',
@@ -1468,24 +614,6 @@ import {
   'selection-change: ui5SelectionChange',
   'overflow-click: ui5OverflowClick',
   'display-area-click: ui5DisplayAreaClick',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -1560,91 +688,6 @@ the enlarged content of the currently selected item.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: MediaGallery['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: MediaGallery['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: MediaGallery['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: MediaGallery['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: MediaGallery['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: MediaGallery['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: MediaGallery['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: MediaGallery['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: MediaGallery['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: MediaGallery['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: MediaGallery['focus'];
-
-  /**
-     
-    */
-  fireEvent!: MediaGallery['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: MediaGallery['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: MediaGallery['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: MediaGallery['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: MediaGallery['getStaticAreaItemDomRef'];
 }
 export { MediaGalleryComponent };
 "
@@ -1666,31 +709,9 @@ import {
   default as NotificationAction,
   NotificationActionClickEventDetail,
 } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['text', 'disabled', 'design', 'icon'])
 @ProxyOutputs(['click: ui5Click'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-notification-action',
@@ -1747,91 +768,6 @@ SAP-icons font provides numerous built-in icons. To find all the available icons
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: NotificationAction['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: NotificationAction['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: NotificationAction['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: NotificationAction['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: NotificationAction['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: NotificationAction['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: NotificationAction['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: NotificationAction['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: NotificationAction['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: NotificationAction['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: NotificationAction['focus'];
-
-  /**
-     
-    */
-  fireEvent!: NotificationAction['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: NotificationAction['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: NotificationAction['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: NotificationAction['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: NotificationAction['getStaticAreaItemDomRef'];
 }
 export { NotificationActionComponent };
 "
@@ -1849,11 +785,7 @@ exports[`Snapshot test Fiori Notification List Group Item should match the snaps
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import NotificationListGroupItem from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'selected',
   'titleText',
@@ -1866,24 +798,6 @@ import {
   'showCounter',
 ])
 @ProxyOutputs(['close: ui5Close', 'toggle: ui5Toggle'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-li-notification-group',
@@ -1971,91 +885,6 @@ if set to true - it has a normal font.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: NotificationListGroupItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: NotificationListGroupItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: NotificationListGroupItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: NotificationListGroupItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: NotificationListGroupItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: NotificationListGroupItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: NotificationListGroupItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: NotificationListGroupItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: NotificationListGroupItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: NotificationListGroupItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: NotificationListGroupItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: NotificationListGroupItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: NotificationListGroupItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: NotificationListGroupItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: NotificationListGroupItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: NotificationListGroupItem['getStaticAreaItemDomRef'];
 }
 export { NotificationListGroupItemComponent };
 "
@@ -2073,11 +902,7 @@ exports[`Snapshot test Fiori Notification List Item should match the snapshot 1`
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import NotificationListItem from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'selected',
   'titleText',
@@ -2089,24 +914,6 @@ import {
   'wrappingType',
 ])
 @ProxyOutputs(['close: ui5Close'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-li-notification',
@@ -2188,91 +995,6 @@ and a <code>ShowMore/Less</code> button would be displayed.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: NotificationListItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: NotificationListItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: NotificationListItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: NotificationListItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: NotificationListItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: NotificationListItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: NotificationListItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: NotificationListItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: NotificationListItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: NotificationListItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: NotificationListItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: NotificationListItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: NotificationListItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: NotificationListItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: NotificationListItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: NotificationListItem['getStaticAreaItemDomRef'];
 }
 export { NotificationListItemComponent };
 "
@@ -2288,30 +1010,12 @@ exports[`Snapshot test Fiori Page should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/Page.js';
 import Page from '@ui5/webcomponents-fiori/dist/Page.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'backgroundDesign',
   'disableScrolling',
   'floatingFooter',
   'hideFooter',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -2362,91 +1066,6 @@ If set to true, there will be no vertical scrolling at all.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: Page['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: Page['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: Page['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: Page['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: Page['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: Page['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: Page['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: Page['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: Page['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: Page['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: Page['focus'];
-
-  /**
-     
-    */
-  fireEvent!: Page['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: Page['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: Page['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: Page['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: Page['getStaticAreaItemDomRef'];
 }
 export { PageComponent };
 "
@@ -2463,31 +1082,9 @@ exports[`Snapshot test Fiori Product Switch Item should match the snapshot 1`] =
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
 import ProductSwitchItem from '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['titleText', 'subtitleText', 'icon', 'target', 'targetSrc'])
 @ProxyOutputs(['click: ui5Click'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-product-switch-item',
@@ -2553,91 +1150,6 @@ click/tap or by using the Enter or Space key.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: ProductSwitchItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: ProductSwitchItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: ProductSwitchItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: ProductSwitchItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: ProductSwitchItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: ProductSwitchItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: ProductSwitchItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: ProductSwitchItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: ProductSwitchItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: ProductSwitchItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: ProductSwitchItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: ProductSwitchItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: ProductSwitchItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: ProductSwitchItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: ProductSwitchItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: ProductSwitchItem['getStaticAreaItemDomRef'];
 }
 export { ProductSwitchItemComponent };
 "
@@ -2653,26 +1165,7 @@ exports[`Snapshot test Fiori Product Switch should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
 import ProductSwitch from '@ui5/webcomponents-fiori/dist/ProductSwitch.js';
-import { ProxyMethods } from '@ui5/webcomponents-ngx/utils';
 
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-product-switch',
@@ -2690,91 +1183,6 @@ class ProductSwitchComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: ProductSwitch['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: ProductSwitch['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: ProductSwitch['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: ProductSwitch['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: ProductSwitch['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: ProductSwitch['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: ProductSwitch['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: ProductSwitch['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: ProductSwitch['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: ProductSwitch['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: ProductSwitch['focus'];
-
-  /**
-     
-    */
-  fireEvent!: ProductSwitch['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: ProductSwitch['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: ProductSwitch['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: ProductSwitch['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: ProductSwitch['getStaticAreaItemDomRef'];
 }
 export { ProductSwitchComponent };
 "
@@ -2794,31 +1202,9 @@ import {
   default as ShellBarItem,
   ShellBarItemClickEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['icon', 'text', 'count'])
 @ProxyOutputs(['click: ui5Click'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-shellbar-item',
@@ -2860,91 +1246,6 @@ class ShellBarItemComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: ShellBarItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: ShellBarItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: ShellBarItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: ShellBarItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: ShellBarItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: ShellBarItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: ShellBarItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: ShellBarItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: ShellBarItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: ShellBarItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: ShellBarItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: ShellBarItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: ShellBarItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: ShellBarItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: ShellBarItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: ShellBarItem['getStaticAreaItemDomRef'];
 }
 export { ShellBarItemComponent };
 "
@@ -2973,11 +1274,7 @@ import {
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'primaryTitle',
   'secondaryTitle',
@@ -2998,25 +1295,6 @@ import {
   'co-pilot-click: ui5CoPilotClick',
   'menu-item-click: ui5MenuItemClick',
   'search-button-click: ui5SearchButtonClick',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-  'closeOverflow',
 ])
 @Component({
   standalone: true,
@@ -3175,97 +1453,6 @@ It supports the following fields:
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: ShellBar['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: ShellBar['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: ShellBar['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: ShellBar['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: ShellBar['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: ShellBar['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: ShellBar['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: ShellBar['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: ShellBar['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: ShellBar['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: ShellBar['focus'];
-
-  /**
-     
-    */
-  fireEvent!: ShellBar['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: ShellBar['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: ShellBar['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: ShellBar['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: ShellBar['getStaticAreaItemDomRef'];
-
-  /**
-     Closes the overflow area.
-Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event
-    */
-  closeOverflow!: ShellBar['closeOverflow'];
 }
 export { ShellBarComponent };
 "
@@ -3282,11 +1469,7 @@ exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import SideNavigationItem from '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'text',
   'icon',
@@ -3298,24 +1481,6 @@ import {
   'wholeItemToggleable',
 ])
 @ProxyOutputs(['click: ui5Click'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation-item',
@@ -3414,91 +1579,6 @@ click/tap or by using the Enter or Space key.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: SideNavigationItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: SideNavigationItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: SideNavigationItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: SideNavigationItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: SideNavigationItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: SideNavigationItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: SideNavigationItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: SideNavigationItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: SideNavigationItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: SideNavigationItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: SideNavigationItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: SideNavigationItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: SideNavigationItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: SideNavigationItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: SideNavigationItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: SideNavigationItem['getStaticAreaItemDomRef'];
 }
 export { SideNavigationItemComponent };
 "
@@ -3515,31 +1595,9 @@ exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import SideNavigationSubItem from '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['text', 'icon', 'selected', 'href', 'target', 'disabled'])
 @ProxyOutputs(['click: ui5Click'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation-sub-item',
@@ -3617,91 +1675,6 @@ click/tap or by using the Enter or Space key.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: SideNavigationSubItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: SideNavigationSubItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: SideNavigationSubItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: SideNavigationSubItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: SideNavigationSubItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: SideNavigationSubItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: SideNavigationSubItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: SideNavigationSubItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: SideNavigationSubItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: SideNavigationSubItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: SideNavigationSubItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: SideNavigationSubItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: SideNavigationSubItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: SideNavigationSubItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: SideNavigationSubItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: SideNavigationSubItem['getStaticAreaItemDomRef'];
 }
 export { SideNavigationSubItemComponent };
 "
@@ -3721,31 +1694,9 @@ import {
   default as SideNavigation,
   SideNavigationSelectionChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['collapsed'])
 @ProxyOutputs(['selection-change: ui5SelectionChange'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation',
@@ -3775,91 +1726,6 @@ class SideNavigationComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: SideNavigation['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: SideNavigation['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: SideNavigation['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: SideNavigation['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: SideNavigation['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: SideNavigation['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: SideNavigation['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: SideNavigation['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: SideNavigation['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: SideNavigation['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: SideNavigation['focus'];
-
-  /**
-     
-    */
-  fireEvent!: SideNavigation['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: SideNavigation['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: SideNavigation['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: SideNavigation['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: SideNavigation['getStaticAreaItemDomRef'];
 }
 export { SideNavigationComponent };
 "
@@ -3875,26 +1741,8 @@ exports[`Snapshot test Fiori Sort Item should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SortItem.js';
 import SortItem from '@ui5/webcomponents-fiori/dist/SortItem.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['text', 'selected'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-sort-item',
@@ -3923,91 +1771,6 @@ class SortItemComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: SortItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: SortItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: SortItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: SortItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: SortItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: SortItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: SortItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: SortItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: SortItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: SortItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: SortItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: SortItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: SortItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: SortItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: SortItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: SortItem['getStaticAreaItemDomRef'];
 }
 export { SortItemComponent };
 "
@@ -4045,31 +1808,9 @@ exports[`Snapshot test Fiori Timeline Item should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 import TimelineItem from '@ui5/webcomponents-fiori/dist/TimelineItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['icon', 'name', 'nameClickable', 'titleText', 'subtitleText'])
 @ProxyOutputs(['name-click: ui5NameClick'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-timeline-item',
@@ -4127,91 +1868,6 @@ attribute is not set.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: TimelineItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: TimelineItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: TimelineItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: TimelineItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: TimelineItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: TimelineItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: TimelineItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: TimelineItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: TimelineItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: TimelineItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: TimelineItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: TimelineItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: TimelineItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: TimelineItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: TimelineItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: TimelineItem['getStaticAreaItemDomRef'];
 }
 export { TimelineItemComponent };
 "
@@ -4227,26 +1883,8 @@ exports[`Snapshot test Fiori Timeline should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
 import Timeline from '@ui5/webcomponents-fiori/dist/Timeline.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['layout', 'accessibleName'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-timeline',
@@ -4283,91 +1921,6 @@ Available options are:
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: Timeline['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: Timeline['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: Timeline['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: Timeline['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: Timeline['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: Timeline['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: Timeline['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: Timeline['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: Timeline['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: Timeline['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: Timeline['focus'];
-
-  /**
-     
-    */
-  fireEvent!: Timeline['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: Timeline['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: Timeline['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: Timeline['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: Timeline['getStaticAreaItemDomRef'];
 }
 export { TimelineComponent };
 "
@@ -4462,11 +2015,7 @@ exports[`Snapshot test Fiori Upload Collection Item should match the snapshot 1`
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import UploadCollectionItem from '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 @ProxyInputs([
   'selected',
@@ -4489,24 +2038,6 @@ import { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
   'rename: ui5Rename',
   'terminate: ui5Terminate',
   'retry: ui5Retry',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -4665,91 +2196,6 @@ when the <code>ui5-upload-collection-item</code> <code>type</code> property is s
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: UploadCollectionItem['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: UploadCollectionItem['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: UploadCollectionItem['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: UploadCollectionItem['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: UploadCollectionItem['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: UploadCollectionItem['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: UploadCollectionItem['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: UploadCollectionItem['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: UploadCollectionItem['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: UploadCollectionItem['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: UploadCollectionItem['focus'];
-
-  /**
-     
-    */
-  fireEvent!: UploadCollectionItem['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: UploadCollectionItem['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: UploadCollectionItem['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: UploadCollectionItem['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: UploadCollectionItem['getStaticAreaItemDomRef'];
 }
 export { UploadCollectionItemComponent };
 "
@@ -4770,11 +2216,7 @@ import {
   UploadCollectionItemDeleteEventDetail,
   UploadCollectionSelectionChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'mode',
   'noDataDescription',
@@ -4786,24 +2228,6 @@ import {
   'drop: ui5Drop',
   'item-delete: ui5ItemDelete',
   'selection-change: ui5SelectionChange',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -4885,91 +2309,6 @@ in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: UploadCollection['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: UploadCollection['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: UploadCollection['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: UploadCollection['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: UploadCollection['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: UploadCollection['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: UploadCollection['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: UploadCollection['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: UploadCollection['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: UploadCollection['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: UploadCollection['focus'];
-
-  /**
-     
-    */
-  fireEvent!: UploadCollection['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: UploadCollection['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: UploadCollection['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: UploadCollection['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: UploadCollection['getStaticAreaItemDomRef'];
 }
 export { UploadCollectionComponent };
 "
@@ -4990,36 +2329,12 @@ import {
   ViewSettingsDialogCancelEventDetail,
   ViewSettingsDialogConfirmEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['sortDescending'])
 @ProxyOutputs([
   'confirm: ui5Confirm',
   'cancel: ui5Cancel',
   'before-open: ui5BeforeOpen',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-  'show',
-  'setConfirmedSettings',
 ])
 @Component({
   standalone: true,
@@ -5058,116 +2373,6 @@ class ViewSettingsDialogComponent {
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: ViewSettingsDialog['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: ViewSettingsDialog['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: ViewSettingsDialog['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: ViewSettingsDialog['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: ViewSettingsDialog['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: ViewSettingsDialog['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: ViewSettingsDialog['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: ViewSettingsDialog['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: ViewSettingsDialog['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: ViewSettingsDialog['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: ViewSettingsDialog['focus'];
-
-  /**
-     
-    */
-  fireEvent!: ViewSettingsDialog['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: ViewSettingsDialog['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: ViewSettingsDialog['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: ViewSettingsDialog['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: ViewSettingsDialog['getStaticAreaItemDomRef'];
-
-  /**
-     Shows the dialog.
-    */
-  show!: ViewSettingsDialog['show'];
-
-  /**
-     Sets a JavaScript object, as settings to the <code>ui5-view-settings-dialog</code>.
-This method can be used after the dialog is initially open, as the dialog needs
-to set its initial settings.<br>
-The <code>ui5-view-settings-dialog</code> throws an event called \\"before-open\\",
-which can be used as a trigger point.<br>
-The object should have the following format:<br>
-<pre>
-{
-sortOrder: \\"Ascending\\",
-sortBy: \\"Name\\",
-filters: [
-	{\\"Filter 1\\": [\\"Some filter 1\\", \\"Some filter 2\\"]},
-	{\\"Filter 2\\": [\\"Some filter 4\\"]},
-]
-}
-</pre>
-    */
-  setConfirmedSettings!: ViewSettingsDialog['setConfirmedSettings'];
 }
 export { ViewSettingsDialogComponent };
 "
@@ -5183,7 +2388,7 @@ exports[`Snapshot test Fiori Wizard Step should match the snapshot 1`] = `
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/WizardStep.js';
 import WizardStep from '@ui5/webcomponents-fiori/dist/WizardStep.js';
-import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'titleText',
   'subtitleText',
@@ -5191,24 +2396,6 @@ import { ProxyInputs, ProxyMethods } from '@ui5/webcomponents-ngx/utils';
   'disabled',
   'selected',
   'branching',
-])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
 ])
 @Component({
   standalone: true,
@@ -5292,91 +2479,6 @@ and later add new steps when it becomes clear how the wizard flow should continu
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: WizardStep['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: WizardStep['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: WizardStep['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: WizardStep['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: WizardStep['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: WizardStep['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: WizardStep['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: WizardStep['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: WizardStep['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: WizardStep['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: WizardStep['focus'];
-
-  /**
-     
-    */
-  fireEvent!: WizardStep['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: WizardStep['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: WizardStep['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: WizardStep['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: WizardStep['getStaticAreaItemDomRef'];
 }
 export { WizardStepComponent };
 "
@@ -5396,31 +2498,9 @@ import {
   default as Wizard,
   WizardStepChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/Wizard.js';
-import {
-  ProxyInputs,
-  ProxyMethods,
-  ProxyOutputs,
-} from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['contentLayout'])
 @ProxyOutputs(['step-change: ui5StepChange'])
-@ProxyMethods([
-  'onBeforeRendering',
-  'onAfterRendering',
-  'onEnterDOM',
-  'onExitDOM',
-  'attachInvalidate',
-  'detachInvalidate',
-  'onInvalidation',
-  'getDomRef',
-  'getFocusDomRef',
-  'getFocusDomRefAsync',
-  'focus',
-  'fireEvent',
-  'getSlottedNodes',
-  'attachComponentStateFinalized',
-  'detachComponentStateFinalized',
-  'getStaticAreaItemDomRef',
-])
 @Component({
   standalone: true,
   selector: 'ui5-wizard',
@@ -5451,91 +2531,6 @@ or by clicking on the steps within the component header.
   constructor() {
     this.cdr.detach();
   }
-
-  /**
-     Called every time before the component renders.
-    */
-  onBeforeRendering!: Wizard['onBeforeRendering'];
-
-  /**
-     Called every time after the component renders.
-    */
-  onAfterRendering!: Wizard['onAfterRendering'];
-
-  /**
-     Called on connectedCallback - added to the DOM.
-    */
-  onEnterDOM!: Wizard['onEnterDOM'];
-
-  /**
-     Called on disconnectedCallback - removed from the DOM.
-    */
-  onExitDOM!: Wizard['onExitDOM'];
-
-  /**
-     Attach a callback that will be executed whenever the component is invalidated
-    */
-  attachInvalidate!: Wizard['attachInvalidate'];
-
-  /**
-     Detach the callback that is executed whenever the component is invalidated
-    */
-  detachInvalidate!: Wizard['detachInvalidate'];
-
-  /**
-     A callback that is executed each time an already rendered component is invalidated (scheduled for re-rendering)
-    */
-  onInvalidation!: Wizard['onInvalidation'];
-
-  /**
-     Returns the DOM Element inside the Shadow Root that corresponds to the opening tag in the UI5 Web Component's template
-*Note:* For logical (abstract) elements (items, options, etc...), returns the part of the parent's DOM that represents this option
-Use this method instead of \\"this.shadowRoot\\" to read the Shadow DOM, if ever necessary
-    */
-  getDomRef!: Wizard['getDomRef'];
-
-  /**
-     Returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRef!: Wizard['getFocusDomRef'];
-
-  /**
-     Waits for dom ref and then returns the DOM Element marked with \\"data-sap-focus-ref\\" inside the template.
-This is the element that will receive the focus by default.
-    */
-  getFocusDomRefAsync!: Wizard['getFocusDomRefAsync'];
-
-  /**
-     Set the focus to the element, returned by \\"getFocusDomRef()\\" (marked by \\"data-sap-focus-ref\\")
-    */
-  focus!: Wizard['focus'];
-
-  /**
-     
-    */
-  fireEvent!: Wizard['fireEvent'];
-
-  /**
-     Returns the actual children, associated with a slot.
-Useful when there are transitive slots in nested component scenarios and you don't want to get a list of the slots, but rather of their content.
-    */
-  getSlottedNodes!: Wizard['getSlottedNodes'];
-
-  /**
-     Attach a callback that will be executed whenever the component's state is finalized
-    */
-  attachComponentStateFinalized!: Wizard['attachComponentStateFinalized'];
-
-  /**
-     Detach the callback that is executed whenever the component's state is finalized
-    */
-  detachComponentStateFinalized!: Wizard['detachComponentStateFinalized'];
-
-  /**
-     
-    */
-  getStaticAreaItemDomRef!: Wizard['getStaticAreaItemDomRef'];
 }
 export { WizardComponent };
 "

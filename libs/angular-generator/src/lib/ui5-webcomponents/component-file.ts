@@ -49,9 +49,6 @@ export class ComponentFile extends AngularGeneratedFile {
     if (this.componentData.inputs.length) {
       this.addImport(['ProxyInputs'], utilsFile.relativePathFrom);
     }
-    if (this.componentData.methods.length) {
-      this.addImport(['ProxyMethods'], utilsFile.relativePathFrom);
-    }
     if (this.componentData.formData.length > 0) {
       this.addImport(() => genericCva.className, genericCva.relativePathFrom);
     }
@@ -109,14 +106,6 @@ export class ComponentFile extends AngularGeneratedFile {
      ${i.description}
     */
     ${i.name}${i.defaultValue ? '!' : '?'}: ${i.type}`).join(';\n');
-  }
-
-  get methodsCode(): string {
-    return this.componentData.methods.map(m => `
-    /**
-     ${m.description}
-    */
-    ${m.name}!: ${this.componentData.baseName}['${m.name}']`).join(';\n');
   }
 
   set cvaGetterCode(val: string) {
@@ -177,8 +166,6 @@ export class ComponentFile extends AngularGeneratedFile {
         this.cdr.detach();
         ${this.componentData.formData.length > 0 ? `this._cva.host = this;` : ''}
       }
-
-      ${this.methodsCode}
     }`;
   }
 
@@ -210,8 +197,7 @@ export class ComponentFile extends AngularGeneratedFile {
   private componentProxiesCode() {
     return [
       this.componentData.inputs.length ? `@ProxyInputs(${JSON.stringify(this.componentData.inputs.map(i => i.name))})` : '',
-      this.componentData.outputs.length ? `@ProxyOutputs(${JSON.stringify(this.componentData.outputs.map(i => `${i.name}: ${this.outputPublicName(i)}`))})` : '',
-      this.componentData.methods.length ? `@ProxyMethods(${JSON.stringify(this.componentData.methods.map(i => i.name))})` : '',
+      this.componentData.outputs.length ? `@ProxyOutputs(${JSON.stringify(this.componentData.outputs.map(i => `${i.name}: ${this.outputPublicName(i)}`))})` : ''
     ].join('\n');
   }
 }

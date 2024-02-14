@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3...v0.3.0-rc.0) (2024-02-14)
+
+### Features
+
+- new custom elements schema parser ([#113](https://github.com/SAP/ui5-webcomponents-ngx/issues/113)) ([c13548e](https://github.com/SAP/ui5-webcomponents-ngx/commit/c13548ec92db44a7e3e932b075c24ec470481c5b))
+
+### BREAKING CHANGES
+
+- - js files are no longer supported
+
+* ng17 is needed
+
+- fix: build
+
+- chore: updated to the latest ui5-wc release
+
+- chore: removed methods from the generated components' code
+
 ## [0.2.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.2.3-rc.9...v0.2.3) (2024-02-06)
 
 **Note:** Version bump only for package @ui5/webcomponents-nx

@@ -8,7 +8,6 @@
     "prepare": {
       "executor": "@ui5/webcomponents-nx:prepare",
       "options": {
-        "configFile": "libs/ui5-angular/wrapper.conf.ts",
         "distPath": "dist/libs/ui5-angular",
         "schematics": {
           "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",

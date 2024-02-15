@@ -1,4 +1,4 @@
-import { askQuestion } from './utils/promt';
+import { askQuestion } from "@ui5/webcomponents-ngx-schematics";
 
 export async function getI18nConfig() {
   const useI18n = await askQuestion({

@@ -10,7 +10,8 @@
   },
   "peerDependencies": {
     "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@angular/core": "^17.0.0",
+    "@ui5/webcomponents-ngx-schematics": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -7,16 +7,18 @@ import { SchematicContext } from "@angular-devkit/schematics/src/engine/interfac
 import { getAppModulePath } from "@schematics/angular/utility/ng-ast-utils";
 import { addImportToModule, insertImport } from "@schematics/angular/utility/ast-utils";
 import { findBootstrapApplicationCall } from "@schematics/angular/private/standalone";
-import { getProjectDefinition } from "../utils/get-project-definition";
-import { getProjectMainFile } from "../utils/project-main-file";
-import { getModuleDeclaration } from "../utils/getModuleDeclaration";
-import { getSourceFile } from "../utils/getSourceFile";
-import { findProvidersLiteral } from "../utils/find-providers-literal";
+import {
+  getProjectDefinition,
+  getProjectMainFile,
+  getModuleDeclaration,
+  getSourceFile,
+  findProvidersLiteral
+} from "@ui5/webcomponents-ngx-schematics";
 
 interface I18nOptions {
   useI18n: boolean,
   project: string,
-  defaultLanguage: string,
+  defaultLanguage?: string,
 }
 
 export function addI18n(options: I18nOptions): Rule {
@@ -96,7 +98,7 @@ function addModuleToNonStandaloneApp(tree: Tree, projectDefinition: ProjectDefin
     const appModuleContent = tree.readText(appModulePath).split(i18nModuleDecl).join(moduleConfig);
     tree.overwrite(appModulePath, appModuleContent);
     context.logger.info('Found previous Ui5I18nModule. Replaced with new one.');
-    return {changes: [], file: appModulePath};
+    return { changes: [], file: appModulePath };
   }
 
   const changes: Change[] = [
@@ -109,7 +111,7 @@ function addModuleToNonStandaloneApp(tree: Tree, projectDefinition: ProjectDefin
     insertImport(appModuleSource, appModulePath, 'Ui5I18nModule', '@ui5/webcomponents-ngx/i18n')
   ];
 
-  return {changes, file: appModulePath};
+  return { changes, file: appModulePath };
 }
 
 function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefinition, context: SchematicContext, options: I18nOptions): {
@@ -126,12 +128,12 @@ function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefiniti
   const recorder = tree.beginUpdate(mainFile.toString());
   const printer = ts.createPrinter();
   const newProviderCall = ts.factory.createCallExpression(ts.factory.createIdentifier('i18nRootProviders'), undefined, [ts.factory.createObjectLiteralExpression([
-    ts.factory.createPropertyAssignment('language', ts.factory.createStringLiteral(options.defaultLanguage)),
+    ts.factory.createPropertyAssignment('language', ts.factory.createStringLiteral(options.defaultLanguage || 'en')),
     ts.factory.createPropertyAssignment('fetchDefaultLanguage', ts.factory.createTrue()),
     ts.factory.createPropertyAssignment('bundle', ts.factory.createObjectLiteralExpression([
       ts.factory.createPropertyAssignment('name', ts.factory.createStringLiteral('app-root-i18n-bundle')),
       ts.factory.createPropertyAssignment('translations', ts.factory.createObjectLiteralExpression([
-        ts.factory.createPropertyAssignment(ts.factory.createStringLiteral(options.defaultLanguage), ts.factory.createObjectLiteralExpression([
+        ts.factory.createPropertyAssignment(ts.factory.createStringLiteral(options.defaultLanguage || 'en'), ts.factory.createObjectLiteralExpression([
           ts.factory.createPropertyAssignment(ts.factory.createStringLiteral('app-root-title'), ts.factory.createStringLiteral('Hello World!')),
         ])),
       ])),
@@ -168,7 +170,7 @@ function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefiniti
     recorder.insertLeft(importChange.pos, importChange.toAdd);
   }
   tree.commitUpdate(recorder);
-  return {changes: [], file: mainFile};
+  return { changes: [], file: mainFile };
 }
 
 function createProvidersAssignment(elements: ts.Expression[] = []): ts.PropertyAssignment {

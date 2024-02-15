@@ -36,7 +36,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/fundamental-styles"],
       "options": {
-        "project": "libs/fundamental-styles/ng-package.json"
+        "project": "libs/fundamental-styles/ng-package.json",
       },
       "configurations": {
         "production": {

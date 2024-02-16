@@ -1,7 +1,7 @@
 import { FileSystemInterface } from '@ui5/webcomponents-transformer';
 import { fundamentalGenerator } from '@ui5/webcomponents-ngx-generator';
 import { join } from 'path';
-import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
+import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
 
 export function getFundamentalStyles(fs: FileSystemInterface): string[] {
   return fs.queryFiles(
@@ -33,4 +33,4 @@ export default ((fs) => ({
     gatherer: () => getFundamentalStyles(fs),
     transformers: [stylesComponentsGenerator]
   })
-) as Ui5NxTransformerConfig<string>;
+) as Ui5NgxTransformerConfig<string>;

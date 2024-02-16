@@ -1,17 +1,6 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "ng-add": {
-      "description": "Adds @ui5/webcomponents-ngx to the project.",
-      "factory": "./ng-add/index#ngAdd",
-      "schema": "./ng-add/schema.json"
-    },
-    "proceed-with-schematics": {
-      "description": "Calls chain of schematics to update project configuration based on users preferences.",
-      "factory": "./ng-add/index#proceedWithSchematics",
-      "schema": "./ng-add/schema.json",
-      "private": true
-    },
     "add-dependencies": {
       "description": "Adds external libraries as a dependencies for styling and theming purposes.",
       "factory": "./add-dependencies/index#addDependencies",
@@ -30,10 +19,10 @@
       "schema": "./add-theming/schema.json",
       "private": true
     },
-    "add-i18n": {
-      "description": "Adds i18n capabilities to the angular application.",
-      "factory": "./add-i18n/index#addI18n",
-      "schema": "./add-i18n/schema.json"
+    "sync": {
+      "description": "Synchronizes the UI5 Web Components library with the project.",
+      "factory": "./sync/index#sync",
+      "schema": "./sync/schema.json"
     }
   }
 }

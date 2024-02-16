@@ -22,10 +22,6 @@
       "@fundamental-styles/theming-ngx/src/themes/*": [
         "libs/fundamental-styles/src/themes/*"
       ],
-      "@ui5/library-one": ["libs/library-one/src/index.ts"],
-      "@ui5/library-one/library-two": [
-        "libs/library-one/library-two/src/index.ts"
-      ],
       "@ui5/theming-ngx": ["libs/ui5-angular-theming/src/index.ts"],
       "@ui5/webcomponents-ngx": ["libs/ui5-angular/index.ts"],
       "@ui5/webcomponents-ngx-generator": [
@@ -33,17 +29,10 @@
       ],
       "@ui5/webcomponents-ngx-schematics": ["libs/schematics/src/index.ts"],
       "@ui5/webcomponents-ngx/*": ["libs/ui5-angular/*"],
-      "@ui5/webcomponents-nx": ["libs/webcomponents-nx/src/index.ts"],
-      "@ui5/webcomponents-samples-parser": [
-        "libs/ui5-samples-parser/src/index.ts"
-      ],
       "@ui5/webcomponents-schema-parser": [
         "libs/ui5-schema-parser/src/index.ts"
       ],
-      "@ui5/webcomponents-transformer": ["libs/transformer/src/index.ts"],
-      "@ui5/webcomponents-transformer-fs-commit": [
-        "libs/commit/fs-commit/src/index.ts"
-      ]
+      "@ui5/webcomponents-transformer": ["libs/transformer/src/index.ts"]
     },
     "resolveJsonModule": true
   },

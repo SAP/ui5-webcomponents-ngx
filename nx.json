@@ -12,7 +12,7 @@
       "dependsOn": ["build"]
     },
     "build": {
-      "dependsOn": ["^build", "sync"],
+      "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
       "cache": true
     },

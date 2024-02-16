@@ -46,4 +46,10 @@ export interface FileSystemInterface {
    * @param excludedFilesPatterns
    */
   queryFiles(pattern: string, excludedFilesPatterns: string[]): string[];
+
+  normalize(path: string): string;
+
+  basename(path: string, ext?: string): string;
+
+  extname(path: string): string;
 }

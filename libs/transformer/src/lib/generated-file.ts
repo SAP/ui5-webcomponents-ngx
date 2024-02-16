@@ -1,12 +1,6 @@
 import { parse, ParsedPath } from 'path';
-import { ExportData, ExportSpecifier, isExportData } from './export-data';
-import {
-  ImportData,
-  ImportSpecifier,
-  isImportData,
-  isImportSpecifier,
-} from './import-data';
-import { CanBePromise } from "./types/transformer-config";
+import { isExportData, isImportData, isImportSpecifier } from './utils';
+import { CanBePromise, ExportData, ExportSpecifier, ImportData, ImportSpecifier } from "./types";
 
 type CanBeArray<T> = T | T[];
 
@@ -27,11 +21,13 @@ export abstract class GeneratedFile<ExportsType = unknown> {
   /**
    * Returns the relative path from the requester to this file
    */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   abstract relativePathFrom: (requester: any) => string;
 
   /**
    * Is used to get the relative paths from one instance of a generated file to another
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get relativePathCaller(): any {
     return this.parsedPath;
   }

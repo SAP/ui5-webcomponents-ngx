@@ -10,9 +10,9 @@
       "outputs": ["{options.outputFile}"]
     },
     "sync": {
-      "executor": "@ui5/webcomponents-nx:sync",
+      "executor": "nx:run-commands",
       "options": {
-        "configFiles": ["apps/documentation/api-json.config.ts"]
+        "command": "nx g @ui5/webcomponents-ngx-schematics:sync apps/documentation/api-json.config.ts --basePath=apps/documentation/src"
       },
       "outputs": ["{projectRoot}/src/api-json.json"]
     },

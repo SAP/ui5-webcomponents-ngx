@@ -3,8 +3,10 @@ import { getI18nConfig } from '../get-i18n-config'
 import { NgAddSchema } from './schema';
 import { addDependencies, addStyles, addTheming, collectConfig } from "@ui5/webcomponents-ngx-schematics";
 import { addI18n } from '../add-i18n/index';
-import { peerDependencies } from '../../package.json';
 import { NodeDependencyType } from "@schematics/angular/utility/dependencies";
+import { projectPackageJson } from "../project-package-json";
+
+const peerDependencies = projectPackageJson.peerDependencies;
 
 export function ngAdd(options: NgAddSchema): Rule {
   return async () => {

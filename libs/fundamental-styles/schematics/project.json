@@ -1,0 +1,23 @@
+{
+  "name": "ui5-fundamental-styles-schematics",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/fundamental-styles/schematics",
+  "prefix": "lib",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "options": {
+        "outputPath": "{workspaceRoot}/dist/{projectRoot}",
+        "main": "{projectRoot}/index.ts",
+        "tsConfig": "{projectRoot}/tsconfig.json",
+        "assets": [
+          "{projectRoot}/*.json",
+          "{projectRoot}/*.md"
+        ]
+      },
+      "outputs": ["{options.outputPath}"]
+    }
+  }
+}

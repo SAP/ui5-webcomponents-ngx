@@ -10,7 +10,7 @@ import {
 } from "@ui5/webcomponents-ngx-generator";
 import { camelCase, kebabCase } from "lodash";
 import { join } from "path";
-import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
+import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
 import { format } from "prettier";
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
@@ -93,7 +93,7 @@ const componentGenerator = (components: ComponentData[]) =>
     }
   })
 
-const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
+const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
   gatherer: () => customElementSchemaParser({
     sources: [
       '@ui5/webcomponents-base/dist/custom-elements-internal.json',

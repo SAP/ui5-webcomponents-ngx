@@ -1,4 +1,4 @@
-import { TransformerConfig } from "./types/transformer-config";
+import { TransformerConfig } from "./types";
 import { GeneratedFile } from "./generated-file";
 
 export async function transformer<T>(config: TransformerConfig<T>): Promise<void> {

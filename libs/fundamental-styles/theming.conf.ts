@@ -1,5 +1,5 @@
 import { FileSystemInterface, GeneratedFile } from "@ui5/webcomponents-transformer";
-import { Ui5NxTransformerConfig } from "@ui5/webcomponents-nx";
+import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
 
 export function getFundamentalStylesThemes(fs: FileSystemInterface): string[] {
   return fs.queryFiles(
@@ -39,4 +39,4 @@ class SupportedThemesFile extends GeneratedFile {
 export default ((fs: FileSystemInterface) => ({
   gatherer: () => getFundamentalStylesThemes(fs),
   transformers: [(themes) => [new SupportedThemesFile(themes)]]
-})) as Ui5NxTransformerConfig<string>;
+})) as Ui5NgxTransformerConfig<string>;

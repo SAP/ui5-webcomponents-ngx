@@ -13,7 +13,8 @@
         "main": "{projectRoot}/index.ts",
         "tsConfig": "{projectRoot}/tsconfig.json",
         "assets": [
-          "{projectRoot}/*.json",
+          "{projectRoot}/collection.json",
+          "{projectRoot}/tsconfig.json",
           "{projectRoot}/*.md"
         ]
       },

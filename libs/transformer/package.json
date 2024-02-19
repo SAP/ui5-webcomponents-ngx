@@ -1,9 +1,14 @@
 {
   "name": "@ui5/webcomponents-transformer",
   "version": "0.3.0-rc.8",
-  "type": "commonjs",
-  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
+  "author": "SAP SE (https://www.sap.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
+    "directory": "libs/transformer"
+  },
+  "type": "commonjs",
   "peerDependencies": {
     "@ui5/webcomponents": "2.0.0-rc.5",
     "@ui5/webcomponents-base": "2.0.0-rc.5",
@@ -12,5 +17,9 @@
     "@ui5/webcomponents-icons": "2.0.0-rc.5",
     "@ui5/webcomponents-icons-business-suite": "2.0.0-rc.5",
     "@ui5/webcomponents-icons-tnt": "2.0.0-rc.5"
+  },
+  "dependencies": {
+    "@swc/helpers": "~0.5.2",
+    "fast-glob": "^3.3.2"
   }
 }

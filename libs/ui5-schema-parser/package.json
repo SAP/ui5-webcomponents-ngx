@@ -1,7 +1,15 @@
 {
   "name": "@ui5/webcomponents-schema-parser",
   "version": "0.3.0-rc.8",
-  "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
+  "author": "SAP SE (https://www.sap.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
+    "directory": "libs/angular-generator"
+  },
+  "dependencies": {
+    "@swc/helpers": "~0.5.2"
+  },
   "type": "commonjs"
 }

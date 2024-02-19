@@ -47,8 +47,8 @@ jobs:
         run: |
           npx lerna version ${{ steps.bumpVersion.outputs.newVersion }} --yes --force-publish --message="chore(release): publish %v [ci skip]" --no-push
 
-      - name: Prepare
-        run: npx nx run-many --target=prepare --all
+      - name: Build
+        run: npx nx run-many --target=build --all
 
       - name: Publish on npm ui5-angular
         uses: JS-DevTools/npm-publish@v1

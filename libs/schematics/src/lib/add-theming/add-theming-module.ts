@@ -1,8 +1,7 @@
 import {SchematicContext, SchematicsException, Tree} from "@angular-devkit/schematics";
-import {ProjectDefinition} from "@schematics/angular/utility";
 import {Ui5WebcomponentsNgxSchematicsSchema} from '../ui5WebcomponentsNgxSchematicsSchema';
 import {getAppModulePath} from "@schematics/angular/utility/ng-ast-utils";
-import {Change} from "@schematics/angular/utility/change";
+import { applyToUpdateRecorder, Change } from "@schematics/angular/utility/change";
 import {addImportToModule} from "@schematics/angular/utility/ast-utils";
 import {getModuleDeclaration} from "../utils/getModuleDeclaration";
 import {getProjectMainFile} from "../utils/project-main-file";
@@ -14,22 +13,22 @@ import * as ts from "typescript";
 import {findImportProvidersFromCall} from "../utils/find-import-providers-from-call";
 import { getSourceFile } from "../utils/getSourceFile";
 
-export function addThemingModule(host: Tree, project: ProjectDefinition, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): { changes: Change[]; file: string } {
+export async function addThemingModule(host: Tree, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): Promise<void> {
   try {
-    return addModuleToNonStandaloneApp(host, project, context, options);
+    await addModuleToNonStandaloneApp(host, context, options);
   } catch (e) {
     if ((e as {message?: string}).message?.includes('Bootstrap call not found')) {
-      return addModuleToStandaloneApp(host, project, context, options);
+      await addModuleToStandaloneApp(host, context, options);
     } else {
       throw e;
     }
   }
 }
 
-function addModuleToNonStandaloneApp(host: Tree, project: ProjectDefinition, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): { changes: Change[]; file: string } {
+async function addModuleToNonStandaloneApp(host: Tree, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): Promise<void> {
   const appModulePath = getAppModulePath(
     host,
-    getProjectMainFile(project)
+    await getProjectMainFile(host, options.project)
   );
 
   if (!appModulePath) {
@@ -51,7 +50,7 @@ function addModuleToNonStandaloneApp(host: Tree, project: ProjectDefinition, con
     const appModuleContent = host.readText(appModulePath).split(themingModuleDecl).join(`\nUi5ThemingModule.forRoot({defaultTheme: '${options.defaultTheme}'})`);
     host.overwrite(appModulePath, appModuleContent);
     context.logger.info('Found previous Ui5ThemingModule. Replaced with new one.');
-    return {changes: [], file: appModulePath};
+    return;
   }
 
   const changes: Change[] = [
@@ -62,12 +61,12 @@ function addModuleToNonStandaloneApp(host: Tree, project: ProjectDefinition, con
       '@ui5/theming-ngx'
     )
   ];
-
-  return {changes, file: appModulePath};
+  const recorder = host.beginUpdate(appModulePath);
+  applyToUpdateRecorder(recorder, changes);
 }
 
-function addModuleToStandaloneApp(host: Tree, project: ProjectDefinition, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): { changes: Change[]; file: string } {
-  const mainFile = getProjectMainFile(project);
+async function addModuleToStandaloneApp(host: Tree, context: SchematicContext, options: Ui5WebcomponentsNgxSchematicsSchema): Promise<void> {
+  const mainFile = await getProjectMainFile(host, options.project);
   const mainFileSource = getSourceFile(host, mainFile);
   const bootstrapCall = findBootstrapApplicationCall(mainFileSource);
   if (!bootstrapCall) {
@@ -82,7 +81,7 @@ function addModuleToStandaloneApp(host: Tree, project: ProjectDefinition, contex
       const newContent = oldContent.split(themingModuleImport.getFullText()).join(themingModuleWithDefaultTheme);
       host.overwrite(mainFile, newContent);
       context.logger.info('Found previous Ui5ThemingModule. Replaced with new one.');
-      return {changes: [], file: mainFile};
+      return;
     }
   }
   addModuleImportToStandaloneBootstrap(
@@ -94,8 +93,6 @@ function addModuleToStandaloneApp(host: Tree, project: ProjectDefinition, contex
   const oldContent = host.readText(mainFile);
   const newContent = oldContent.replace(themingModuleWithDefaultTheme, 'Ui5ThemingModule'); // This is fixing the incorrect import
   host.overwrite(mainFile, newContent);
-
-  return {changes: [], file: mainFile};
 }
 
 

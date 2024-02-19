@@ -23,5 +23,5 @@ jobs:
           run: npx nx run-many --target=sync --all
         - name: Test
           run: npx nx run-many --target=test --all
-        - name: Run prepare
-          run: npx nx run-many --target=prepare --all
+        - name: Run build
+          run: npx nx run-many --target=build --all

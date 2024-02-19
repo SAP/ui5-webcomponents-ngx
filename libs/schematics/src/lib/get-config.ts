@@ -1,6 +1,6 @@
 import { AvailableThemes, CommonCssParts } from "./config";
 import { Ui5WebcomponentsNgxSchematicsSchema } from "./ui5WebcomponentsNgxSchematicsSchema";
-import { askQuestion } from './utils/promt';
+import { askChoices, askConfirmation, askQuestion } from "@angular/cli/src/utilities/prompt";
 
 export async function collectConfig(): Promise<Partial<Ui5WebcomponentsNgxSchematicsSchema>> {
   const schema: Partial<Ui5WebcomponentsNgxSchematicsSchema> = {
@@ -24,35 +24,17 @@ export async function collectConfig(): Promise<Partial<Ui5WebcomponentsNgxSchema
 }
 
 async function askCommonCssDependency(): Promise<boolean> {
-  return await askQuestion({
-    type: 'confirm',
-    message: 'Would you like to add Common CSS into your application?',
-    default: false,
-  });
+  return await askConfirmation('Would you like to add Common CSS into your application?', false);
 }
 
 async function askCommonCssParts(): Promise<string[]> {
-  return await askQuestion({
-    type: 'checkbox',
-    message: 'Please select desired Common CSS features',
-    choices: CommonCssParts,
-  });
+  return (await askChoices('Please select desired Common CSS features', CommonCssParts, [])) || [];
 }
 
 async function askThemingDependency(): Promise<boolean> {
-  return await askQuestion({
-    type: 'confirm',
-    message:
-      'Would you like to add Theming capabilities into your application?',
-    default: true,
-  });
+  return await askConfirmation('Would you like to add Theming capabilities into your application?', true);
 }
 
 async function askDefaultTheme(): Promise<string> {
-  return await askQuestion({
-    type: 'list',
-    message: 'Please select desired Common CSS features',
-    default: 'sap_horizon',
-    choices: AvailableThemes,
-  });
+  return await askQuestion('Please select desired Common CSS features', AvailableThemes, 0, 'sap_horizon') || 'sap_horizon';
 }

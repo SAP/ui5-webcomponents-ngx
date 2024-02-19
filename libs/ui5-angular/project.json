@@ -5,22 +5,8 @@
   "sourceRoot": "libs/ui5-angular",
   "prefix": "ui-angular",
   "targets": {
-    "prepare": {
-      "executor": "@ui5/webcomponents-nx:prepare",
-      "options": {
-        "distPath": "dist/libs/ui5-angular",
-        "schematics": {
-          "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",
-          "tsConfig": "tsconfig.schematics.json",
-          "collection": "schematics"
-        }
-      }
-    },
     "sync": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/ui5-angular/wrapper.conf.ts,libs/ui5-angular/theming.conf.ts --basePath=libs/ui5-angular"
-      },
+      "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/ui5-angular/wrapper.conf.ts,libs/ui5-angular/theming.conf.ts --basePath=libs/ui5-angular",
       "outputs": [
         "{projectRoot}/fiori",
         "{projectRoot}/compat",
@@ -33,28 +19,38 @@
       ]
     },
     "build": {
-      "executor": "@nx/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/ui5-angular"],
+      "executor": "tools:build-partial",
+      "outputs": [
+        "{options.distPath}"
+      ],
       "options": {
-        "project": "libs/ui5-angular/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/ui5-angular/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/ui5-angular/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production",
-      "dependsOn": ["sync"]
+        "includedFiles": [
+          "{projectRoot}/config/**/*",
+          "{projectRoot}/content-density/**/*",
+          "{projectRoot}/fiori/i18n/**/*",
+          "{projectRoot}/icons/**/*",
+          "{projectRoot}/theming/**/*",
+          "{projectRoot}/*.json",
+          "{projectRoot}/README.md",
+          "{projectRoot}/*.conf.ts"
+        ],
+        "excludedFiles": [
+          "{projectRoot}/theming/supported-themes.ts",
+          "{projectRoot}/tsconfig.spec.json",
+          "{projectRoot}/compodocrc.json",
+          "{projectRoot}/project.json"
+        ],
+        "distPath": "{workspaceRoot}/dist/{projectRoot}"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/ui5-angular/jest.config.ts"
       }

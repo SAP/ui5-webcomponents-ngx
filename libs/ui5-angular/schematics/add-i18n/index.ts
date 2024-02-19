@@ -1,14 +1,11 @@
 import { Rule, SchematicsException, Tree } from "@angular-devkit/schematics";
 import * as ts from "typescript";
-import { updateWorkspace } from "@schematics/angular/utility/workspace";
-import { Change, InsertChange } from "@schematics/angular/utility/change";
-import { ProjectDefinition } from "@schematics/angular/utility";
+import { applyToUpdateRecorder, Change, InsertChange } from "@schematics/angular/utility/change";
 import { SchematicContext } from "@angular-devkit/schematics/src/engine/interface";
 import { getAppModulePath } from "@schematics/angular/utility/ng-ast-utils";
 import { addImportToModule, insertImport } from "@schematics/angular/utility/ast-utils";
 import { findBootstrapApplicationCall } from "@schematics/angular/private/standalone";
 import {
-  getProjectDefinition,
   getProjectMainFile,
   getModuleDeclaration,
   getSourceFile,
@@ -22,33 +19,20 @@ interface I18nOptions {
 }
 
 export function addI18n(options: I18nOptions): Rule {
-  return async (tree: Tree, context: SchematicContext) => updateWorkspace(async (workspace) => {
+  return async (tree: Tree, context: SchematicContext) => {
     if (!options.useI18n) {
       return;
     }
-    const projectDefinition = getProjectDefinition(workspace, options.project);
-    const update: { changes: Change[], file: string } = addI18nModule(tree, projectDefinition, context, options);
-    const exportRecorder = tree.beginUpdate(update.file);
-
-    for (const change of update.changes) {
-      if (change instanceof InsertChange) {
-        exportRecorder.insertLeft(change.pos, change.toAdd);
-      }
-    }
-
-    tree.commitUpdate(exportRecorder);
-  });
+    await addI18nModule(tree, context, options);
+  };
 }
 
-function addI18nModule(tree: Tree, projectDefinition: ProjectDefinition, context: SchematicContext, options: I18nOptions): {
-  changes: Change[];
-  file: string
-} {
+async function addI18nModule(tree: Tree, context: SchematicContext, options: I18nOptions): Promise<void> {
   try {
-    return addModuleToNonStandaloneApp(tree, projectDefinition, context, options);
+    await addModuleToNonStandaloneApp(tree, context, options);
   } catch (e) {
     if ((e as { message?: string }).message?.includes('Bootstrap call not found')) {
-      return addModuleToStandaloneApp(tree, projectDefinition, context, options);
+      await addModuleToStandaloneApp(tree, context, options);
     } else {
       throw e;
     }
@@ -71,13 +55,10 @@ function rootProviderConfig(options: I18nOptions) {
     }`
 }
 
-function addModuleToNonStandaloneApp(tree: Tree, projectDefinition: ProjectDefinition, context: SchematicContext, options: I18nOptions): {
-  changes: Change[];
-  file: string
-} {
+async function addModuleToNonStandaloneApp(tree: Tree, context: SchematicContext, options: I18nOptions): Promise<void> {
   const appModulePath = getAppModulePath(
     tree,
-    getProjectMainFile(projectDefinition)
+    await getProjectMainFile(tree, options.project)
   );
 
   if (!appModulePath) {
@@ -98,7 +79,7 @@ function addModuleToNonStandaloneApp(tree: Tree, projectDefinition: ProjectDefin
     const appModuleContent = tree.readText(appModulePath).split(i18nModuleDecl).join(moduleConfig);
     tree.overwrite(appModulePath, appModuleContent);
     context.logger.info('Found previous Ui5I18nModule. Replaced with new one.');
-    return { changes: [], file: appModulePath };
+    return;
   }
 
   const changes: Change[] = [
@@ -110,15 +91,12 @@ function addModuleToNonStandaloneApp(tree: Tree, projectDefinition: ProjectDefin
     ),
     insertImport(appModuleSource, appModulePath, 'Ui5I18nModule', '@ui5/webcomponents-ngx/i18n')
   ];
-
-  return { changes, file: appModulePath };
+  const recorder = tree.beginUpdate(appModulePath);
+  applyToUpdateRecorder(recorder, changes);
 }
 
-function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefinition, context: SchematicContext, options: I18nOptions): {
-  changes: Change[];
-  file: string
-} {
-  const mainFile = getProjectMainFile(projectDefinition);
+async function addModuleToStandaloneApp(tree: Tree, context: SchematicContext, options: I18nOptions): Promise<void> {
+  const mainFile = await getProjectMainFile(tree, options.project);
   const mainFileSource = getSourceFile(tree, mainFile);
   const bootstrapCall = findBootstrapApplicationCall(mainFileSource);
   if (!bootstrapCall) {
@@ -170,7 +148,6 @@ function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefiniti
     recorder.insertLeft(importChange.pos, importChange.toAdd);
   }
   tree.commitUpdate(recorder);
-  return { changes: [], file: mainFile };
 }
 
 function createProvidersAssignment(elements: ts.Expression[] = []): ts.PropertyAssignment {

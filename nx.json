@@ -8,9 +8,6 @@
       "dependsOn": ["^build"],
       "cache": true
     },
-    "prepare": {
-      "dependsOn": ["build"]
-    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],

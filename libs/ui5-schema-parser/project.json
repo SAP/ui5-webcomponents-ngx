@@ -5,18 +5,24 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/js:swc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/ui5-schema-parser",
         "main": "libs/ui5-schema-parser/src/index.ts",
         "tsConfig": "libs/ui5-schema-parser/tsconfig.lib.json",
-        "assets": ["libs/ui5-schema-parser/*.md"]
+        "assets": [
+          "libs/ui5-schema-parser/*.md"
+        ]
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     }
   },
   "tags": []

@@ -32,7 +32,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
     });
   }
 
-  override getCode(): string {
+  override getCode(): Promise<string> {
     const declarations = new Set<string>();
     const imports = new Set<string>();
     const providers = new Set([...this.providers.keys()].filter(className => !!this.providers.get(className)?.providersArray));

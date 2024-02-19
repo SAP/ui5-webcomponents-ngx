@@ -173,10 +173,11 @@ export function getComponents({
     })
   }
 
-  function getMethods(symbol: SymbolObject, componentData: ComponentData): ComponentData['methods'] {
+  function getMethods(symbol: SymbolObject): ComponentData['methods'] {
     return symbol.methods.filter(({visibility}) => visibility === 'public').map((method) => {
       return {
-        name: method.name
+        name: method.name,
+        description: method.description,
       }
     });
   }
@@ -206,7 +207,7 @@ export function getComponents({
     component.inputs = getInputs(symbol, component);
     component.outputs = getOutputs(symbol, component);
     component.slots = getSlots(symbol, component);
-    component.methods = getMethods(symbol, component);
+    component.methods = getMethods(symbol);
     if (symbol.formData) {
       component.formData = symbol.formData.map(data => {
         return {

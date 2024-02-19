@@ -10,5 +10,4 @@ export * from './has-module-import';
 export * from './is-ng-module-expression';
 export * from './package-config';
 export * from './project-main-file';
-export * from './promt';
 export * from './resolve-identifier-of-expression';

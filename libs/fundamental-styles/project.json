@@ -5,18 +5,6 @@
   "sourceRoot": "libs/fundamental-styles",
   "prefix": "ui-angular",
   "targets": {
-    "prepare": {
-      "executor": "@ui5/webcomponents-nx:prepare",
-      "options": {
-        "configFile": "libs/fundamental-styles/wrapper.conf.ts",
-        "distPath": "dist/libs/fundamental-styles",
-        "schematics": {
-          "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",
-          "tsConfig": "tsconfig.schematics.json",
-          "collection": "schematics"
-        }
-      }
-    },
     "sync": {
       "executor": "nx:run-commands",
       "options": {
@@ -30,20 +18,25 @@
       ]
     },
     "build": {
-      "executor": "@nx/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/fundamental-styles"],
+      "executor": "tools:build-partial",
+      "outputs": [
+        "{options.distPath}"
+      ],
       "options": {
-        "project": "libs/fundamental-styles/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/fundamental-styles/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/fundamental-styles/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
+        "includedFiles": [
+          "{projectRoot}/theming/**/*",
+          "{projectRoot}/*.json",
+          "{projectRoot}/README.md",
+          "{projectRoot}/*.conf.ts"
+        ],
+        "excludedFiles": [
+          "{projectRoot}/theming/supported-themes.ts",
+          "{projectRoot}/tsconfig.spec.json",
+          "{projectRoot}/compodocrc.json",
+          "{projectRoot}/project.json"
+        ],
+        "distPath": "{workspaceRoot}/dist/{projectRoot}"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"

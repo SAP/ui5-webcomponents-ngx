@@ -32,7 +32,8 @@
       "@ui5/webcomponents-schema-parser": [
         "libs/ui5-schema-parser/src/index.ts"
       ],
-      "@ui5/webcomponents-transformer": ["libs/transformer/src/index.ts"]
+      "@ui5/webcomponents-transformer": ["libs/transformer/src/index.ts"],
+      "tools": ["tools/src/index.ts"]
     },
     "resolveJsonModule": true
   },

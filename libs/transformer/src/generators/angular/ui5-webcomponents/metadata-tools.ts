@@ -1,5 +1,5 @@
-import {InputType, OutputType} from "@ui5/webcomponents-transformer";
-import {camelCase} from "lodash";
+import { InputType, OutputType } from "../../../lib/types";
+import { camelCase } from "lodash";
 
 /**
  * Creates an array of the strings,
@@ -26,5 +26,6 @@ export function inputs(inputs: InputType[]): string[] {
 export function outputs(outputs: OutputType[]): string[] {
   return outputs.map(i => `${i.name}: ${camelCase('ui5-' + i.publicName)}`)
 }
+
 export const inputsJson = (inputItems: InputType[]): string => JSON.stringify(inputs(inputItems));
 export const outputsJson = (outputItems: OutputType[]): string => JSON.stringify(outputs(outputItems));

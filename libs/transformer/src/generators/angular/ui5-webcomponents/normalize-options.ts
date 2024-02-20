@@ -1,5 +1,5 @@
 import { AngularGeneratorOptions } from "../angular-generator-options";
-import { ComponentData, OutputType } from "@ui5/webcomponents-transformer";
+import { ComponentData, OutputType } from "../../../lib/types";
 import { camelCase } from "lodash";
 
 const defaultOptions: Partial<AngularGeneratorOptions> = {

@@ -1,6 +1,6 @@
-import {ExportSpecifierType} from "@ui5/webcomponents-transformer";
-import {format} from "prettier";
-import {AngularGeneratedFile} from "../angular-generated-file";
+import { ExportSpecifierType } from "../../../lib/types";
+import { format } from "prettier";
+import { AngularGeneratedFile } from "../angular-generated-file";
 
 /**
  * The generic control value accessor class generator.
@@ -10,6 +10,7 @@ import {AngularGeneratedFile} from "../angular-generated-file";
  */
 export class GenericCva extends AngularGeneratedFile {
   className = 'GenericControlValueAccessor';
+
   constructor() {
     super();
     this.move('generic-cva/index.ts');

@@ -7,7 +7,7 @@ import {
   NgPackageFile,
   ComponentFile,
   ui5componentsWrapper
-} from "@ui5/webcomponents-ngx-generator";
+} from "@ui5/webcomponents-transformer";
 import { camelCase, kebabCase } from "lodash";
 import { join } from "path";
 import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";

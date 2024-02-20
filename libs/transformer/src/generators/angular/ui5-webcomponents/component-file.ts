@@ -1,11 +1,11 @@
 import { AngularGeneratedFile } from '../angular-generated-file';
-import { ComponentData, ExportSpecifierType, OutputType } from "@ui5/webcomponents-transformer";
 import { AngularGeneratorOptions } from "../angular-generator-options";
 import { AngularExportSpecifierType } from '../angular-export-specifier-type';
 import { utilsFile } from "./utils";
 import { outputTypesImportData } from "./output-types-import-data";
 import { genericCva } from "./generic-cva";
 import { format } from "prettier";
+import { ComponentData, ExportSpecifierType, OutputType } from "../../../lib/types";
 
 export class ComponentFile extends AngularGeneratedFile {
   private componentClassName = `${this.componentData.baseName}Component`;
@@ -52,7 +52,7 @@ export class ComponentFile extends AngularGeneratedFile {
     if (this.componentData.formData.length > 0) {
       this.addImport(() => genericCva.className, genericCva.relativePathFrom);
     }
-    this.addImport({specifiers: [], path: this.componentData.path})
+    this.addImport({ specifiers: [], path: this.componentData.path })
   }
 
   get componentMetadataCode() {

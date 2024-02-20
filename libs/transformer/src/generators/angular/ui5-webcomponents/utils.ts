@@ -1,6 +1,6 @@
-import {ExportSpecifierType} from "@ui5/webcomponents-transformer";
-import {format} from "prettier";
-import {AngularGeneratedFile} from "../angular-generated-file";
+import { ExportSpecifierType } from "../../../lib/types";
+import { format } from "prettier";
+import { AngularGeneratedFile } from "../angular-generated-file";
 
 /**
  * The utils file generator.
@@ -63,7 +63,7 @@ export class UtilsFile extends AngularGeneratedFile {
       }
       `,
       this.getExportsCode()
-    ].join('\n'), {parser: 'typescript'});
+    ].join('\n'), { parser: 'typescript' });
   }
 }
 

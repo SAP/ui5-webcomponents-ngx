@@ -1,12 +1,12 @@
-import {AngularGeneratedFile} from "./angular-generated-file";
-import {ModuleDescription} from "./angular-generator-options";
-import {camelCase, startCase} from "lodash";
-import {AngularExportSpecifierType} from "./angular-export-specifier-type";
-import {getExported} from "./utils/get-exported";
-import {isDeclaration} from "./utils/is-declaration";
-import {isModule} from "./utils/is-module";
-import {isProvider} from "./utils/is-provider";
-import {format as prettierFormat} from "prettier";
+import { AngularGeneratedFile } from "./angular-generated-file";
+import { ModuleDescription } from "./angular-generator-options";
+import { camelCase, startCase } from "lodash";
+import { AngularExportSpecifierType } from "./angular-export-specifier-type";
+import { getExported } from "./utils/get-exported";
+import { isDeclaration } from "./utils/is-declaration";
+import { isModule } from "./utils/is-module";
+import { isProvider } from "./utils/is-provider";
+import { format as prettierFormat } from "prettier";
 
 /**
  * The Angular NgModule file.
@@ -17,7 +17,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
   /** The class name of the module */
   protected className: string;
   /** The providers that are included in this module */
-  protected providers = new Map<string, Partial<{init?: boolean; providersArray: boolean}>>();
+  protected providers = new Map<string, Partial<{ init?: boolean; providersArray: boolean }>>();
 
   constructor(protected potentialFilesToInclude: AngularGeneratedFile[], protected moduleDescription: ModuleDescription) {
     super();
@@ -92,7 +92,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
     }
       }
       ${this.getExportsCode()}
-    `, {parser: 'typescript'});
+    `, { parser: 'typescript' });
   }
 
   /**
@@ -104,7 +104,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
    */
   addProvider(file: AngularGeneratedFile, specifier: string, shouldInitialize = false, providerInMetadata = false): AngularModuleFile {
     this.addImport(specifier, file.relativePathFrom);
-    this.providers.set(specifier, {init: shouldInitialize, providersArray: providerInMetadata});
+    this.providers.set(specifier, { init: shouldInitialize, providersArray: providerInMetadata });
     return this;
   }
 }

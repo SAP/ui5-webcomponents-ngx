@@ -24,9 +24,6 @@
       ],
       "@ui5/theming-ngx": ["libs/ui5-angular-theming/src/index.ts"],
       "@ui5/webcomponents-ngx": ["libs/ui5-angular/index.ts"],
-      "@ui5/webcomponents-ngx-generator": [
-        "libs/angular-generator/src/index.ts"
-      ],
       "@ui5/webcomponents-ngx-schematics": ["libs/schematics/src/index.ts"],
       "@ui5/webcomponents-ngx/*": ["libs/ui5-angular/*"],
       "@ui5/webcomponents-schema-parser": [

@@ -1,6 +1,7 @@
-import {dependencyRelativePath, GeneratedFile} from "@ui5/webcomponents-transformer";
-import {AngularExportSpecifierType} from "./angular-export-specifier-type";
-import {ParsedPath} from "path";
+import { GeneratedFile } from '../../lib/generated-file';
+import { AngularExportSpecifierType } from "./angular-export-specifier-type";
+import { ParsedPath } from "path";
+import { dependencyRelativePath } from "../../lib/utils";
 
 /**
  * The base class for all Angular generated files.

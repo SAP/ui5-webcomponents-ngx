@@ -1,9 +1,9 @@
-import {IndexFile} from '../index-file';
-import {AngularGeneratorOptions} from "../angular-generator-options";
-import {FundamentalStylesDirectiveFile} from "./fundamental-styles-directive-file";
-import {NgPackageFile} from "../ng-package-file";
-import {AngularGeneratedFile} from "../angular-generated-file";
-import {AngularModuleFile} from "../angular-module-file";
+import { IndexFile } from '../index-file';
+import { AngularGeneratorOptions } from "../angular-generator-options";
+import { FundamentalStylesDirectiveFile } from "./fundamental-styles-directive-file";
+import { NgPackageFile } from "../ng-package-file";
+import { AngularGeneratedFile } from "../angular-generated-file";
+import { AngularModuleFile } from "../angular-module-file";
 
 /**
  * Generates the fundamental styles angular directives library

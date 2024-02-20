@@ -1,9 +1,9 @@
-import {AngularGeneratedFile} from "../angular-generated-file";
-import {AngularGeneratorOptions} from "../angular-generator-options";
-import {format} from "prettier";
-import {parse, join, dirname, basename} from "path";
-import {pascalCase} from "./helpers";
-import {AngularExportSpecifierType} from "../angular-export-specifier-type";
+import { AngularGeneratedFile } from "../angular-generated-file";
+import { AngularGeneratorOptions } from "../angular-generator-options";
+import { format } from "prettier";
+import { basename, dirname, join, parse } from "path";
+import { pascalCase } from "./helpers";
+import { AngularExportSpecifierType } from "../angular-export-specifier-type";
 
 /**
  * The fundamental-styles directive code
@@ -78,6 +78,6 @@ export class FundamentalStylesDirectiveFile extends AngularGeneratedFile {
         }
       }
     }
-    `, this.getExportsCode()].join('\n'), {parser: 'typescript'});
+    `, this.getExportsCode()].join('\n'), { parser: 'typescript' });
   }
 }

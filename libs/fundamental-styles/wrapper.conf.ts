@@ -1,5 +1,5 @@
 import { FileSystemInterface } from '@ui5/webcomponents-transformer';
-import { fundamentalGenerator } from '@ui5/webcomponents-ngx-generator';
+import { fundamentalGenerator } from '@ui5/webcomponents-transformer';
 import { join } from 'path';
 import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
 

@@ -1,5 +1,5 @@
-import {AngularGeneratedFile} from "./angular-generated-file";
-import {GeneratedFile} from "@ui5/webcomponents-transformer";
+import { AngularGeneratedFile } from "./angular-generated-file";
+import { GeneratedFile } from '../../lib/generated-file';
 
 /**
  * The ng-package.json file generator.
@@ -13,6 +13,6 @@ export class NgPackageFile extends AngularGeneratedFile {
   }
 
   override getCode(): string {
-    return JSON.stringify({lib: {entryFile: this.entryFile.relativePathFrom(this.parsedPath)}});
+    return JSON.stringify({ lib: { entryFile: this.entryFile.relativePathFrom(this.parsedPath) } });
   }
 }

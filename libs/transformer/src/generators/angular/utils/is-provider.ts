@@ -1,4 +1,4 @@
-import {ExportSpecifier} from "@ui5/webcomponents-transformer";
+import { ExportSpecifier } from "../../../lib/types";
 import { AngularExportSpecifierType } from '../angular-export-specifier-type';
 
 /**

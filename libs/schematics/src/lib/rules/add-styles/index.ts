@@ -1,10 +1,10 @@
 import { Rule, SchematicsException } from '@angular-devkit/schematics';
-import { Ui5WebcomponentsNgxSchematicsSchema } from '../ui5WebcomponentsNgxSchematicsSchema';
+import { Ui5WebcomponentsNgxSchematicsSchema } from '../../ui5WebcomponentsNgxSchematicsSchema';
 import {
   getProjectBuildTarget,
   getProjectDefinition,
   updateProjectDefinition
-} from "../utils/workspace";
+} from "../../utils/workspace";
 
 export function addStyles(options: Ui5WebcomponentsNgxSchematicsSchema): Rule {
   return async (tree) => {

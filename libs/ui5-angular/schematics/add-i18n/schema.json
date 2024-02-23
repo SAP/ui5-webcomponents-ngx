@@ -10,16 +10,6 @@
       "$default": {
         "$source": "projectName"
       }
-    },
-    "useI18n": {
-      "type": "boolean",
-      "description": "Whether to use internationalization.",
-      "default": true
-    },
-    "defaultLanguage": {
-      "type": "string",
-      "description": "The default language to use.",
-      "default": "en"
     }
   },
   "required": []

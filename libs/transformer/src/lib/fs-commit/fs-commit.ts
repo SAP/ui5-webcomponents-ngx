@@ -2,7 +2,7 @@ import { join } from "path";
 import { GeneratedFile } from '../generated-file';
 import { FileSystemInterface } from "../types";
 
-export function fsCommit(fsImplementation: FileSystemInterface, cwd: string): (files: GeneratedFile[]) => void {
+export function fsCommit(fsImplementation: FileSystemInterface, cwd: string): (files: GeneratedFile[]) => Promise<void> {
   return async (files: GeneratedFile[]): Promise<void> => {
     // const receivedFiles = files.map((file) => file.path);
     // const receivedFilesSet = new Set(receivedFiles);

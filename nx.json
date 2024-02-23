@@ -4,10 +4,6 @@
     "defaultBase": "main"
   },
   "targetDefaults": {
-    "sync": {
-      "dependsOn": ["^build"],
-      "cache": true
-    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],

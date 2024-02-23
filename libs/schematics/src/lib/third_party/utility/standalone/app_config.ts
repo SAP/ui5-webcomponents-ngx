@@ -8,7 +8,7 @@
 
 import { Tree } from '@angular-devkit/schematics';
 import { dirname, join } from 'path';
-import * as ts from 'typescript';
+import ts from 'typescript';
 import { getSourceFile } from './util';
 
 /** App config that was resolved to its source node. */

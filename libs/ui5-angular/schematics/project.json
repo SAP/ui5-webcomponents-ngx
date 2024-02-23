@@ -7,18 +7,19 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:swc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "{workspaceRoot}/dist/{projectRoot}",
         "main": "{projectRoot}/index.ts",
         "tsConfig": "{projectRoot}/tsconfig.json",
         "assets": [
           "{projectRoot}/collection.json",
-          "{projectRoot}/tsconfig.json",
+          "{projectRoot}/*/*.json",
           "{projectRoot}/*.md"
         ]
       },
       "outputs": ["{options.outputPath}"]
     }
-  }
+  },
+  "implicitDependencies": ["ui5-angular"]
 }

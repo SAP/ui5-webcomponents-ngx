@@ -16,10 +16,9 @@
     "directory": "libs/ui5-angular"
   },
   "peerDependencies": {
-    "@angular/common": ">= 15.2.10",
-    "@angular/core": ">= 15.2.10",
-    "@angular/forms": ">= 15.2.10",
-    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@angular/common": ">= 15.2.10 < 19.0.0",
+    "@angular/core": ">= 15.2.10 < 19.0.0",
+    "@angular/forms": ">= 15.2.10 < 19.0.0",
     "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
     "@ui5/theming-ngx": "VERSION_PLACEHOLDER",
     "@ui5/webcomponents": ">= 2.0.0-rc.",
@@ -37,7 +36,8 @@
     "tslib": "^2.4.1",
     "lodash": "^4.0.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-organize-imports": "^3.0.0"
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

@@ -1,8 +1,9 @@
 import { BuildPartialExecutorSchema } from './schema';
 import { ExecutorContext } from "@nx/devkit";
 import { sync as fastGlobSync } from 'fast-glob';
-import { writeFileSync, mkdirSync, existsSync, rmSync, readFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { dirname } from "path";
+
 const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
 const lernaJson = JSON.parse(readFileSync('lerna.json', 'utf-8'));
 
@@ -29,10 +30,13 @@ export default async function runExecutor(options: BuildPartialExecutorSchema, e
     const newFileContent = Object.keys(replacementVersions)
       .sort((a, b) => b.length - a.length)
       .reduce((acc, key) => {
-      return acc.replace(new RegExp(key, 'g'), replacementVersions[key]);
-    }, fileContent);
+        return acc.replace(new RegExp(key, 'g'), replacementVersions[key]);
+      }, fileContent);
     writeFileSync(newDest, newFileContent);
   });
+  // if (options.pack) {
+  //   execSync(`npm pack`, { stdio: 'inherit', cwd: options.distPath });
+  // }
   return {
     success: true,
   };

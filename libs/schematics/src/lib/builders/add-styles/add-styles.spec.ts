@@ -8,7 +8,7 @@ import {
   createCleanWorkspace
 } from "../../testing-utils/create-clean-application";
 import { addStyles } from './index';
-import { CommonCssParts } from '../../config';
+import { CommonCssParts } from './common-css-parts';
 import { firstValueFrom } from "rxjs";
 
 const collectionPath = path.join(__dirname, '../collection.json');

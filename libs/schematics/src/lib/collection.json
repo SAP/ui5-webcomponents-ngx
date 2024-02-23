@@ -1,6 +1,21 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "add-dependencies": {
+      "description": "Adds dependencies to the workspace.",
+      "factory": "./builders/add-dependencies/index#addDependencies",
+      "schema": "./builders/add-dependencies/schema.json"
+    },
+    "add-styles": {
+      "description": "Adds common-css styles to the workspace.",
+      "factory": "./builders/add-styles/index#addStyles",
+      "schema": "./builders/add-styles/schema.json"
+    },
+    "add-theming": {
+      "description": "Adds theming to the workspace.",
+      "factory": "./builders/add-theming/index#addTheming",
+      "schema": "./builders/add-theming/schema.json"
+    },
     "sync": {
       "description": "Synchronizes the UI5 Web Components library with the project.",
       "factory": "./builders/sync/index#sync",

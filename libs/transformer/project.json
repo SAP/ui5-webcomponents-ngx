@@ -5,7 +5,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:swc",
+      "executor": "@nx/js:tsc",
       "outputs": [
         "{options.outputPath}"
       ],
@@ -14,7 +14,7 @@
         "main": "libs/transformer/src/index.ts",
         "tsConfig": "libs/transformer/tsconfig.lib.json",
         "assets": [
-          "libs/transformer/*.md"
+          "libs/transformer/README.md"
         ]
       }
     },

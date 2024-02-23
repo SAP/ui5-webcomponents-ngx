@@ -19,7 +19,6 @@
     "@ui5/webcomponents-icons-tnt": "2.0.0-rc.5"
   },
   "dependencies": {
-    "@swc/helpers": "~0.5.2",
     "fast-glob": "^3.3.2"
   }
 }

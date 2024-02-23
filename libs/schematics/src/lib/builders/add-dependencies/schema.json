@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "add-dependencies-schematic",
+  "title": "Adds dependencies",
+  "type": "object",
+  "properties": {
+    "dependencies": {
+      "type": "array",
+      "description": "The dependencies to add.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the dependency."
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the dependency."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the dependency.",
+            "enum": ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"],
+            "default": "dependencies"
+          }
+        },
+        "required": ["name", "version"]
+      }
+    }
+  }
+}

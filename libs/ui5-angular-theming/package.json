@@ -9,8 +9,8 @@
     "directory": "libs/ui5-angular-theming"
   },
   "peerDependencies": {
-    "@angular/common": ">= 15.2.10",
-    "@angular/core": ">= 15.2.10"
+    "@angular/common": ">= 15.0.0 < 18.0.0",
+    "@angular/core": ">= 15.0.0 < 18.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

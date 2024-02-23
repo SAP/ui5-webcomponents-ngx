@@ -18,7 +18,8 @@ class SupportedThemesFile extends GeneratedFile {
 
 const themingConfig: Ui5NgxTransformerConfig<string> = (fs: FileSystemInterface) => ({
   gatherer: () => fs.queryFiles('node_modules/@ui5/webcomponents-theming/dist/generated/assets/themes/**/*', []),
-  transformers: [(themes: string[]) => ([new SupportedThemesFile(themes)])]
+  transformers: [(themes: string[]) => ([new SupportedThemesFile(themes)])],
+  logOutputFileNames: '.ngx-theming-result.json'
 });
 
 export default themingConfig;

@@ -1,19 +1,17 @@
 import { Rule } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import {
-  addPackageJsonDependency,
-  getPackageJsonDependency,
-  NodeDependency
-} from "../../third_party/utility/dependencies";
+import { addPackageJsonDependency, NodeDependency } from "../../third_party/utility/dependencies";
 import { satisfies } from "semver";
-import { askConfirmation } from "@angular/cli/src/utilities/prompt";
+import { askConfirmation } from "../../utils/prompt";
+import { AddDependenciesSchematicOptions } from "./schema";
+import { firstValueFrom } from "rxjs";
+import { currentlyInstalledPackageVersion } from "./currently-installed-pkg-version";
 
-export function addDependencies(dependencies: NodeDependency[]): Rule {
+export function addDependencies(options: AddDependenciesSchematicOptions): Rule {
   return async (tree, context) => {
     const mismatchedDependencies: Record<string, [string, NodeDependency]> = {};
-    dependencies.forEach(dep => {
-      const currentDep = getPackageJsonDependency(tree, dep.name);
-      const currentVersion = currentDep?.version;
+    options.dependencies.forEach(dep => {
+      const currentVersion = currentlyInstalledPackageVersion(dep.name);
       if (!currentVersion) {
         mismatchedDependencies[dep.name] = ['None', dep];
         return;
@@ -38,6 +36,7 @@ export function addDependencies(dependencies: NodeDependency[]): Rule {
         });
       }
       context.addTask(new NodePackageInstallTask());
+      await firstValueFrom(context.engine.executePostTasks());
     }
   };
 }

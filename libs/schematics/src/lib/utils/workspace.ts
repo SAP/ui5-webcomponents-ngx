@@ -1,7 +1,7 @@
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import { TargetDefinition } from '@angular-devkit/core/src/workspace/definitions';
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { askQuestion } from '@angular/cli/src/utilities/prompt';
+import { askQuestion } from './prompt';
 import { WorkspaceDefinition, writeWorkspace } from '@schematics/angular/utility';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 

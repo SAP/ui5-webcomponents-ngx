@@ -1,34 +1,73 @@
-import { Rule, Tree } from "@angular-devkit/schematics";
+import { Rule } from "@angular-devkit/schematics";
 import { SyncSchema } from "./schema";
-import { FileSystemInterface, fsCommit, transformer, TransformerConfig } from "@ui5/webcomponents-transformer";
-import { NgxFsAdapter } from "./ngx-fs-adapter";
+import {
+  CanBePromise,
+  FileSystemInterface,
+  fsCommit,
+  GeneratedFile,
+  NodeFsImplementation,
+  transformer
+} from "@ui5/webcomponents-transformer";
+import { join } from "path";
+import { Ui5NgxTransformerConfig } from "./ngx-transformer-config";
 
-type NgxTransformerConfig<T> = Omit<TransformerConfig<T>, 'persist'>;
+class NgxGenerationResultJsonFile extends GeneratedFile {
+  override relativePathFrom = () => 'noop';
+  private readonly filePaths: string[] = [];
+  constructor(files: GeneratedFile[], outputFileName: string) {
+    super();
+    this.move(outputFileName);
+    this.filePaths = files.map(f => f.path);
+  }
 
-export type Ui5NgxTransformerConfig<T = unknown> =
-  NgxTransformerConfig<T>
-  | ((fs: FileSystemInterface) => NgxTransformerConfig<T>);
+  override getCode(): CanBePromise<string> {
+    return JSON.stringify(this.filePaths, null, 2);
+  }
+}
+
+const persistFn = (fsImplementation: FileSystemInterface, cwd: string, logFileName?: string) => {
+  const persist = fsCommit(fsImplementation, cwd);
+  return async (files: GeneratedFile[]): Promise<void> => {
+    if (logFileName) {
+      const logFilePath = join(cwd, logFileName);
+      const logFileContent = fsImplementation.exists(logFilePath) ? fsImplementation.read(logFilePath) : null;
+      if (logFileContent) {
+        const existingPaths = JSON.parse(logFileContent);
+        existingPaths.forEach((p: string) => {
+          const actualPath = join(cwd, p);
+          if (fsImplementation.exists(actualPath)) {
+            fsImplementation.delete(join(cwd, p))
+          }
+        });
+      }
+      return await persist([...files, new NgxGenerationResultJsonFile(files, logFileName)]);
+    }
+    return await persist(files);
+  };
+}
 
 const executeTransformation = async (options: {
   transformerConfig: Ui5NgxTransformerConfig;
   basePath: string,
   fsAdapter: FileSystemInterface
 }) => {
+  const config = (typeof options.transformerConfig === 'function' ? options.transformerConfig(options.fsAdapter) : options.transformerConfig);
   await transformer({
-    persist: fsCommit(options.fsAdapter, options.basePath),
-    ...(typeof options.transformerConfig === 'function' ? options.transformerConfig(options.fsAdapter) : options.transformerConfig)
+    persist: persistFn(options.fsAdapter, options.basePath, config.logOutputFileNames),
+    ...config
   });
 };
 
 export function sync(schema: SyncSchema): Rule {
-  return async (tree: Tree) => {
+  return async () => {
     const configFiles = schema.conf;
 
     for (const configFile of configFiles) {
+      const transformerConfig: Ui5NgxTransformerConfig = await import(configFile).then((module) => module.default);
       await executeTransformation({
-        transformerConfig: await import(configFile).then((module) => module.default),
+        transformerConfig,
         basePath: schema.basePath,
-        fsAdapter: new NgxFsAdapter(tree)
+        fsAdapter: new NodeFsImplementation()
       });
     }
   };

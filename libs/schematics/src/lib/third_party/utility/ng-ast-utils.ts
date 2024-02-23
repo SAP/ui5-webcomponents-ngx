@@ -9,8 +9,8 @@
 import { normalize } from '@angular-devkit/core';
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 import { dirname } from 'path';
-import { findBootstrapApplicationCall } from '../private/standalone';
-import * as ts from 'typescript';
+import { findBootstrapApplicationCall } from './standalone';
+import ts from 'typescript';
 import { findNode, getSourceNodes } from '../utility/ast-utils';
 
 export function findBootstrapModuleCall(host: Tree, mainPath: string): ts.CallExpression | null {
@@ -58,7 +58,8 @@ function findBootstrapModulePath(host: Tree, mainPath: string): string {
   const mainText = host.readText(mainPath);
   const source = ts.createSourceFile(mainPath, mainText, ts.ScriptTarget.Latest, true);
   const allNodes = getSourceNodes(source);
-  const bootstrapModuleRelativePath = allNodes
+  // bootstrapModuleRelativePath
+  return allNodes
     .filter(ts.isImportDeclaration)
     .filter((imp) => {
       return findNode(imp, ts.SyntaxKind.Identifier, bootstrapModule.getText());
@@ -68,26 +69,22 @@ function findBootstrapModulePath(host: Tree, mainPath: string): string {
 
       return modulePathStringLiteral.text;
     })[0];
-
-  return bootstrapModuleRelativePath;
 }
 
 export function getAppModulePath(host: Tree, mainPath: string): string {
   const moduleRelativePath = findBootstrapModulePath(host, mainPath);
   const mainDir = dirname(mainPath);
-  const modulePath = normalize(`/${mainDir}/${moduleRelativePath}.ts`);
-
-  return modulePath;
+  return normalize(`/${mainDir}/${moduleRelativePath}.ts`);
 }
 
 export function isStandaloneApp(host: Tree, mainPath: string): boolean {
-  const source = ts.createSourceFile(
-    mainPath,
-    host.readText(mainPath),
-    ts.ScriptTarget.Latest,
-    true,
-  );
-  const bootstrapCall = findBootstrapApplicationCall(source);
-
-  return bootstrapCall !== null;
+  try {
+    const bootstrapCall = findBootstrapApplicationCall(host, mainPath);
+    return bootstrapCall !== null;
+  } catch (e) {
+    if ((e as SchematicsException).message.includes('Could not find bootstrapApplication call')) {
+      return false;
+    }
+    throw e;
+  }
 }

@@ -8,9 +8,7 @@
     "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
     "directory": "libs/transformer"
   },
-  "type": "commonjs",
   "dependencies": {
-    "@swc/helpers": "~0.5.2",
     "fast-glob": "^3.3.2"
   }
 }

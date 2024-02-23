@@ -16,17 +16,17 @@
     "directory": "libs/ui5-angular"
   },
   "peerDependencies": {
-    "@angular/common": ">= 15.2.10",
-    "@angular/core": ">= 15.2.10",
-    "@angular/forms": ">= 15.2.10",
-    "@ui5/webcomponents": ">= 1.22.0",
-    "@ui5/webcomponents-base": ">= 1.22.0",
-    "@ui5/webcomponents-fiori": ">= 1.22.0",
-    "@ui5/webcomponents-icons": ">= 1.22.0",
-    "@ui5/webcomponents-icons-business-suite": ">= 1.22.0",
-    "@ui5/webcomponents-icons-tnt": ">= 1.22.0",
-    "@ui5/webcomponents-theming": ">= 1.22.0",
-    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@angular/common": ">= 15.0.0 < 18.0.0",
+    "@angular/core": ">= 15.0.0 < 18.0.0",
+    "@angular/forms": ">= 15.0.0 < 18.0.0",
+    "@ui5/webcomponents": "^1.22.0",
+    "@ui5/webcomponents-base": "^1.22.0",
+    "@ui5/webcomponents-fiori": "^1.22.0",
+    "@ui5/webcomponents-icons": "^1.22.0",
+    "@ui5/webcomponents-icons-business-suite": "^1.22.0",
+    "@ui5/webcomponents-icons-tnt": "^1.22.0",
+    "@ui5/webcomponents-theming": "^1.22.0",
+    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
     "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
     "@ui5/theming-ngx": "VERSION_PLACEHOLDER"
   },
@@ -34,7 +34,8 @@
     "tslib": "^2.4.1",
     "lodash": "^4.0.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-organize-imports": "^3.0.0"
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

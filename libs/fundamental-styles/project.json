@@ -9,13 +9,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/fundamental-styles/wrapper.conf.ts,libs/fundamental-styles/theming.conf.ts --basePath=libs/fundamental-styles"
-      },
-      "outputs": [
-        "{projectRoot}/directives",
-        "{projectRoot}/theming/theming.config.ts",
-        "{projectRoot}/fundamental-styles-components.module.ts",
-        "{projectRoot}/index.ts"
-      ]
+      }
     },
     "build": {
       "executor": "tools:build-partial",
@@ -27,7 +21,8 @@
           "{projectRoot}/theming/**/*",
           "{projectRoot}/*.json",
           "{projectRoot}/README.md",
-          "{projectRoot}/*.conf.ts"
+          "{projectRoot}/*.conf.ts",
+          "{projectRoot}/postinstall.js"
         ],
         "excludedFiles": [
           "{projectRoot}/theming/supported-themes.ts",
@@ -36,6 +31,11 @@
           "{projectRoot}/project.json"
         ],
         "distPath": "{workspaceRoot}/dist/{projectRoot}"
+      },
+      "configurations": {
+        "production": {
+          "pack": true
+        }
       }
     },
     "lint": {

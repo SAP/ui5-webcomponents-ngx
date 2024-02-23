@@ -38,5 +38,6 @@ class SupportedThemesFile extends GeneratedFile {
 
 export default ((fs: FileSystemInterface) => ({
   gatherer: () => getFundamentalStylesThemes(fs),
-  transformers: [(themes) => [new SupportedThemesFile(themes)]]
+  transformers: [(themes) => [new SupportedThemesFile(themes)]],
+  logOutputFileNames: '.supported-themes.json'
 })) as Ui5NgxTransformerConfig<string>;

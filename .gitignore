@@ -24,10 +24,15 @@ libs/ui5-angular/utils/
 libs/ui5-angular/theming/supported-themes.ts
 libs/ui5-angular/index.ts
 libs/ui5-angular/ui5-webcomponents.module.ts
+libs/ui5-angular/.ngx-generation-result.json
+libs/ui5-angular/.ngx-theming-result.json
+
 libs/fundamental-styles/directives/
 libs/fundamental-styles/index.ts
 libs/fundamental-styles/theming/theming.config.ts
 libs/fundamental-styles/fundamental-styles-components.module.ts
+libs/fundamental-styles/.fd-components.json
+libs/fundamental-styles/.supported-themes.json
 
 # IDE - VSCode
 .vscode/*

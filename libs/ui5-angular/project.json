@@ -6,16 +6,7 @@
   "prefix": "ui-angular",
   "targets": {
     "sync": {
-      "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/ui5-angular/wrapper.conf.ts,libs/ui5-angular/theming.conf.ts --basePath=libs/ui5-angular",
-      "outputs": [
-        "{projectRoot}/fiori",
-        "{projectRoot}/main",
-        "{projectRoot}/generic-cva",
-        "{projectRoot}/utils",
-        "{projectRoot}/index.ts",
-        "{projectRoot}/theming/supported-themes.ts",
-        "{projectRoot}/ui5-webcomponents.module.ts"
-      ]
+      "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/ui5-angular/wrapper.conf.ts,libs/ui5-angular/theming.conf.ts --basePath=libs/ui5-angular"
     },
     "build": {
       "executor": "tools:build-partial",
@@ -31,7 +22,8 @@
           "{projectRoot}/theming/**/*",
           "{projectRoot}/*.json",
           "{projectRoot}/README.md",
-          "{projectRoot}/*.conf.ts"
+          "{projectRoot}/*.conf.ts",
+          "{projectRoot}/postinstall.js"
         ],
         "excludedFiles": [
           "{projectRoot}/theming/supported-themes.ts",
@@ -40,6 +32,11 @@
           "{projectRoot}/project.json"
         ],
         "distPath": "{workspaceRoot}/dist/{projectRoot}"
+      },
+      "configurations": {
+        "production": {
+          "pack": true
+        }
       }
     },
     "lint": {

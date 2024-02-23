@@ -1,28 +1,29 @@
-import { chain, Rule } from '@angular-devkit/schematics';
-import { getI18nConfig } from '../get-i18n-config'
-import { NgAddSchema } from './schema';
-import { addDependencies, addStyles, addTheming, collectConfig } from "@ui5/webcomponents-ngx-schematics";
-import { addI18n } from '../add-i18n/index';
+import { chain, externalSchematic, Rule, schematic, Tree } from '@angular-devkit/schematics';
 import { NodeDependencyType } from "@schematics/angular/utility/dependencies";
 import { projectPackageJson } from "../project-package-json";
+import { NgAddSchemaOptions } from "./schema";
 
 const peerDependencies = projectPackageJson.peerDependencies;
 
-export function ngAdd(options: NgAddSchema): Rule {
+export function ngAdd(options: NgAddSchemaOptions): Rule {
   return async () => {
-    const userConfig = await collectConfig();
-    const i18nConfig = await getI18nConfig();
-    options = { ...options, ...userConfig, ...i18nConfig };
-
+    const dependencies = Object.keys(peerDependencies).map((packageName) => ({
+      name: packageName,
+      version: peerDependencies[packageName],
+      type: NodeDependencyType.Default
+    }));
     return chain([
-      addDependencies(Object.keys(peerDependencies).map((packageName) => ({
-        name: packageName,
-        version: peerDependencies[packageName],
-        type: NodeDependencyType.Default
-      }))),
-      addStyles(options),
-      addTheming(options),
-      addI18n(options)
+      externalSchematic('@ui5/webcomponents-ngx-schematics', 'add-dependencies', {
+        project: options.project,
+        dependencies
+      }),
+      externalSchematic('@ui5/webcomponents-ngx-schematics', 'add-styles', { project: options.project }),
+      externalSchematic('@ui5/webcomponents-ngx-schematics', 'add-theming', { project: options.project }),
+      schematic('add-i18n', { project: options.project }),
+      (tree: Tree) => {
+        const packageJson = tree.readJson('package.json') as any;
+        packageJson.scripts.postinstall = `${packageJson.scripts.postinstall ? `${packageJson.scripts.postinstall} && ` : ''}node @ui5/webcomponents-ngx/postinstall.js`;
+      }
     ]);
   };
 }

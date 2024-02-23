@@ -5,7 +5,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:swc",
+      "executor": "@nx/js:tsc",
       "outputs": [
         "{options.outputPath}"
       ],
@@ -14,7 +14,7 @@
         "main": "libs/ui5-schema-parser/src/index.ts",
         "tsConfig": "libs/ui5-schema-parser/tsconfig.lib.json",
         "assets": [
-          "libs/ui5-schema-parser/*.md"
+          "libs/ui5-schema-parser/README.md"
         ]
       }
     },

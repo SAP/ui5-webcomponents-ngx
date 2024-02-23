@@ -1,4 +1,4 @@
-import { ComponentData } from "@ui5/webcomponents-transformer";
+import { ComponentData, GeneratedFile } from "@ui5/webcomponents-transformer";
 import { customElementSchemaParser } from "@ui5/webcomponents-schema-parser";
 import {
   AngularExportSpecifierType,
@@ -103,7 +103,7 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
   }),
   transformers: [
     (components: ComponentData[]) => {
-      const filesMap = componentGenerator(components).reduce((acc, file) => {
+      const filesMap: Record<string, GeneratedFile> = componentGenerator(components).reduce((acc, file) => {
         acc[file.path] = file;
         return acc;
       }, {});
@@ -138,7 +138,8 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
       delete filesMap['ng-package.json'];
       return Object.values(filesMap);
     }
-  ]
+  ],
+  logOutputFileNames: '.ngx-generation-result.json'
 };
 
 export default ui5WrapperConfig;

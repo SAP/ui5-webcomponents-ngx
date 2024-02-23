@@ -31,6 +31,7 @@ const stylesComponentsGenerator = (styles: string[]) => fundamentalGenerator(sty
 
 export default ((fs) => ({
     gatherer: () => getFundamentalStyles(fs),
-    transformers: [stylesComponentsGenerator]
+    transformers: [stylesComponentsGenerator],
+    logOutputFileNames: '.fd-components.json'
   })
 ) as Ui5NgxTransformerConfig<string>;

@@ -9,7 +9,7 @@ export const currentlyInstalledPackageVersion = (packageName: string): string | 
       return version;
     }
   } catch (e) {
-    console.error(`Error while trying to get the version of ${packageName}`, e);
+    console.error(`Error while trying to get the version of ${packageName}`);
     return undefined;
   }
 }

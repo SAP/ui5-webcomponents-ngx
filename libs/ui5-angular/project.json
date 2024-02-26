@@ -6,7 +6,10 @@
   "prefix": "ui-angular",
   "targets": {
     "sync": {
-      "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/ui5-angular/wrapper.conf.ts,libs/ui5-angular/theming.conf.ts --basePath=libs/ui5-angular"
+      "command": "ts-node ./postinstall.js",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
     },
     "build": {
       "executor": "tools:build-partial",
@@ -20,9 +23,10 @@
           "{projectRoot}/fiori/i18n/**/*",
           "{projectRoot}/icons/**/*",
           "{projectRoot}/theming/**/*",
+          "{projectRoot}/i18n/**/*",
           "{projectRoot}/*.json",
           "{projectRoot}/README.md",
-          "{projectRoot}/*.conf.ts",
+          "{projectRoot}/*.conf.js",
           "{projectRoot}/postinstall.js"
         ],
         "excludedFiles": [

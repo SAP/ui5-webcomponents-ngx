@@ -15,6 +15,9 @@
     "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
     "directory": "libs/ui5-angular"
   },
+  "scripts": {
+    "postinstall": "node ./postinstall.js"
+  },
   "peerDependencies": {
     "@angular/common": ">= 15.0.0 < 18.0.0",
     "@angular/core": ">= 15.0.0 < 18.0.0",
@@ -26,8 +29,6 @@
     "@ui5/webcomponents-icons-business-suite": "^1.22.0",
     "@ui5/webcomponents-icons-tnt": "^1.22.0",
     "@ui5/webcomponents-theming": "^1.22.0",
-    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
-    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
     "@ui5/theming-ngx": "VERSION_PLACEHOLDER"
   },
   "dependencies": {
@@ -35,7 +36,9 @@
     "lodash": "^4.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.0.0",
-    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER"
+    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

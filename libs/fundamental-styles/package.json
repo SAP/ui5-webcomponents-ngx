@@ -13,11 +13,12 @@
     "@angular/core": ">= 15.0.0 < 18.0.0",
     "fundamental-styles": "FUNDAMENTAL_STYLES_VERSION_PLACEHOLDER",
     "@sap-theming/theming-base-content": "THEMING_BASE_CONTENT_VERSION_PLACEHOLDER",
-    "@sap-ui/common-css": "COMMON_CSS_VERSION_PLACEHOLDER",
-    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER"
+    "@sap-ui/common-css": "COMMON_CSS_VERSION_PLACEHOLDER"
   },
   "dependencies": {
     "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
     "tslib": "^2.3.0"
   },
   "schematics": "./schematics/collection.json"

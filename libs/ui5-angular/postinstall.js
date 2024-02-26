@@ -1,12 +1,8 @@
-const {executeSyncSchematic} = require('@ui5/webcomponents-ngx-schematics');
+const {fsTransformer} = require('@ui5/webcomponents-transformer');
+const wrapperConf = require('./wrapper.conf');
+const themingConf = require('./theming.conf');
 
-const currentDir = __dirname;
-const confFiles = [
-  `${currentDir}/wrapper.conf.ts`,
-  `${currentDir}/theming.conf.ts`
-]
-
-executeSyncSchematic(confFiles, currentDir)
+fsTransformer({basePath: __dirname, conf: [wrapperConf, themingConf]})
   .then(() => {
     console.log('Schematics executed successfully');
   })

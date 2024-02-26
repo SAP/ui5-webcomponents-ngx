@@ -15,11 +15,6 @@
       "description": "Adds theming to the workspace.",
       "factory": "./builders/add-theming/index#addTheming",
       "schema": "./builders/add-theming/schema.json"
-    },
-    "sync": {
-      "description": "Synchronizes the UI5 Web Components library with the project.",
-      "factory": "./builders/sync/index#sync",
-      "schema": "./builders/sync/schema.json"
     }
   }
 }

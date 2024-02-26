@@ -13,7 +13,9 @@
     "version:prerelease": "npx lerna version prerelease",
     "version:release": "npx lerna version --conventional-graduate",
     "prepare": "husky install",
-    "create:hotfix": "node scripts/release-hotfix.js"
+    "create:hotfix": "node scripts/release-hotfix.js",
+    "build:all": "nx run-many --target=build --all --skip-nx-cache --configuration=production --exclude=documentation,playground",
+    "publish:all": "npm run build:all && node linking-helper.js"
   },
   "private": true,
   "dependencies": {
@@ -72,6 +74,7 @@
     "@commitlint/cli": "17.3.0",
     "@commitlint/config-angular": "17.3.0",
     "@commitlint/config-conventional": "17.3.0",
+    "@jsdevtools/npm-publish": "^3.0.1",
     "@nx/cypress": "17.2.8",
     "@nx/devkit": "17.2.8",
     "@nx/eslint": "17.2.8",

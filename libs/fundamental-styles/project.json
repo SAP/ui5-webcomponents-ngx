@@ -8,7 +8,7 @@
     "sync": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nx g @ui5/webcomponents-ngx-schematics:sync libs/fundamental-styles/wrapper.conf.ts,libs/fundamental-styles/theming.conf.ts --basePath=libs/fundamental-styles"
+        "command": "ts-node {projectRoot}/postinstall.js"
       }
     },
     "build": {

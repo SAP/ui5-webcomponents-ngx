@@ -6,10 +6,7 @@
   "prefix": "ui-angular",
   "targets": {
     "sync": {
-      "command": "ts-node ./postinstall.js",
-      "options": {
-        "cwd": "{projectRoot}"
-      }
+      "command": "ts-node {projectRoot}/postinstall.js"
     },
     "build": {
       "executor": "tools:build-partial",

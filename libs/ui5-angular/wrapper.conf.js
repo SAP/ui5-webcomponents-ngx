@@ -19,7 +19,7 @@ const classNameForThemingService = (packageName) => `Ui5Webcomponents${pascalCas
 
 class ThemingServiceFile extends AngularGeneratedFile {
   className;
-  apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
+  apfPath;
 
   /**
    * @param baseDir {string}
@@ -28,6 +28,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
   constructor(baseDir, packageName) {
     super();
     this.baseDir = baseDir;
+    this.apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
     this.addImport('WebcomponentsThemingProvider', '@ui5/webcomponents-ngx/theming');
     this.addImport('Injectable', '@angular/core');
     this.move(`${baseDir}/index.ts`);

@@ -1,7 +1,7 @@
 const {fundamentalGenerator} = require('@ui5/webcomponents-transformer');
 const {join} = require('path');
 
-export function getFundamentalStyles(fs) {
+function getFundamentalStyles(fs) {
   return fs.queryFiles(
     'node_modules/fundamental-styles/dist/js/*.mjs',
     []

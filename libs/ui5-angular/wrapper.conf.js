@@ -1,28 +1,34 @@
-import { ComponentData, GeneratedFile } from "@ui5/webcomponents-transformer";
-import { customElementSchemaParser } from "@ui5/webcomponents-schema-parser";
-import {
+const {
   AngularExportSpecifierType,
   AngularGeneratedFile,
-  AngularModuleFile,
   NgPackageFile,
-  ComponentFile,
   ui5componentsWrapper
-} from "@ui5/webcomponents-transformer";
-import { camelCase, kebabCase } from "lodash";
-import { join } from "path";
-import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
-import { format } from "prettier";
+} = require("@ui5/webcomponents-transformer");
+const {customElementSchemaParser} = require("@ui5/webcomponents-schema-parser");
+const {camelCase, kebabCase} = require("lodash");
+const {join} = require("path");
+const {format} = require("prettier");
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
 
 const classNameForThemingService = (packageName: 'fiori' | 'main' | 'compat') => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
+/**
+ * @param packageName {'fiori' | 'main'}
+ * @returns {`Ui5Webcomponents${'Fiori' | 'Main'}ThemingService`}
+ */
+const classNameForThemingService = (packageName) => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
 
 class ThemingServiceFile extends AngularGeneratedFile {
-  className: string;
-  override apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
+  className;
+  apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
 
-  constructor(protected baseDir: string, protected packageName: 'fiori' | 'main' | 'compat') {
+  /**
+   * @param baseDir {string}
+   * @param packageName {'fiori' | 'main' | 'compat'}
+   */
+  constructor(baseDir, packageName) {
     super();
+    this.baseDir = baseDir;
     this.addImport('WebcomponentsThemingProvider', '@ui5/webcomponents-ngx/theming');
     this.addImport('Injectable', '@angular/core');
     this.move(`${baseDir}/index.ts`);
@@ -34,7 +40,10 @@ class ThemingServiceFile extends AngularGeneratedFile {
     })
   }
 
-  getServiceCode(): string {
+  /**
+   * @returns {string}
+   */
+  getServiceCode() {
     return `
       @Injectable({providedIn: 'root'})
       class ${this.className} extends WebcomponentsThemingProvider {
@@ -46,8 +55,11 @@ class ThemingServiceFile extends AngularGeneratedFile {
     `
   }
 
-  override getCode(): Promise<string> {
-    return format([
+  /**
+   * @returns {Promise<string>}
+   */
+  async getCode() {
+    return await format([
       this.getImportsCode(),
       this.getServiceCode(),
       this.getExportsCode()
@@ -61,7 +73,11 @@ class ThemingServiceFile extends AngularGeneratedFile {
 
 const packageNames = ['fiori', 'main', 'compat'];
 
-const componentGenerator = (components: ComponentData[]) =>
+/**
+ * @param components {import("@ui5/webcomponents-transformer").ComponentData[]}
+ * @returns {*}
+ */
+const componentGenerator = (components) =>
   ui5componentsWrapper(components, {
     modules: [
       ...packageNames.map(packageName => ({
@@ -93,7 +109,10 @@ const componentGenerator = (components: ComponentData[]) =>
     }
   })
 
-const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
+/**
+ * @type {import("@ui5/webcomponents-transformer").Ui5NgxTransformerConfig<import('@ui5/webcomponents-transformer').ComponentData>}
+ */
+const ui5WrapperConfig  = {
   gatherer: () => customElementSchemaParser({
     sources: [
       '@ui5/webcomponents-base/dist/custom-elements-internal.json',
@@ -103,12 +122,16 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
     ]
   }),
   transformers: [
-    (components: ComponentData[]) => {
-      const filesMap: Record<string, GeneratedFile> = componentGenerator(components).reduce((acc, file) => {
+    /**
+     * @param components {import("@ui5/webcomponents-transformer").ComponentData[]}
+     * @returns {import("@ui5/webcomponents-transformer").GeneratedFile[]}
+     */
+    (components) => {
+      const filesMap = componentGenerator(components).reduce((acc, file) => {
         acc[file.path] = file;
         return acc;
       }, {});
-      const indexFile = filesMap['index.ts'] as AngularGeneratedFile;
+      const indexFile = filesMap['index.ts'];
       if (!indexFile) {
         throw new Error('No index file found');
       }
@@ -116,8 +139,8 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
       indexFile.addExport('*', '@ui5/webcomponents-ngx/icons');
       indexFile.addExport('*', '@ui5/webcomponents-ngx/config');
       for (const packageName of packageNames) {
-        const themingServiceFile = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main' | 'compat');
-        const moduleFile = filesMap[`${packageName}/ui5-${packageName}.module.ts`] as AngularModuleFile;
+        const themingServiceFile = new ThemingServiceFile(`${packageName}/theming`, packageName);
+        const moduleFile = filesMap[`${packageName}/ui5-${packageName}.module.ts`];
         const themingNgPackage = new NgPackageFile(themingServiceFile, `${packageName}/theming`);
         indexFile.addExport('*', `@ui5/webcomponents-ngx/${packageName}/theming`);
 
@@ -132,8 +155,8 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
       }
 
       // There is a need for a custom getter and setter for the RadioButton
-      (filesMap['main/radio-button/index.ts'] as ComponentFile).cvaGetterCode = `get cvaValue() { return this.element.value; }`;
-      (filesMap['main/radio-button/index.ts'] as ComponentFile).cvaSetterCode = `set cvaValue(val: string) { this.element.checked = this.element.value === val; }`;
+      (filesMap['main/radio-button/index.ts']).cvaGetterCode = `get cvaValue() { return this.element.value; }`;
+      (filesMap['main/radio-button/index.ts']).cvaSetterCode = `set cvaValue(val: string) { this.element.checked = this.element.value === val; }`;
 
       // There is a bug in the generator that causes the incorrect ng-package.json to be generated for the main package
       delete filesMap['ng-package.json'];
@@ -143,4 +166,4 @@ const ui5WrapperConfig: Ui5NgxTransformerConfig<ComponentData> = {
   logOutputFileNames: '.ngx-generation-result.json'
 };
 
-export default ui5WrapperConfig;
+module.exports = ui5WrapperConfig;

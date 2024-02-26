@@ -1,15 +1,9 @@
-import { Rule } from "@angular-devkit/schematics";
-import { SyncSchema } from "./schema";
-import {
-  CanBePromise,
-  FileSystemInterface,
-  fsCommit,
-  GeneratedFile,
-  NodeFsImplementation,
-  transformer
-} from "@ui5/webcomponents-transformer";
 import { join } from "path";
-import { Ui5NgxTransformerConfig } from "./ngx-transformer-config";
+import { CanBePromise, FileSystemInterface } from "./types";
+import { GeneratedFile } from "./generated-file";
+import { fsCommit, NodeFsImplementation } from "./fs-commit";
+import { transformer } from "./transformer";
+import { Ui5FsTransformerConfig } from "./types/fs-transformer-config";
 
 class NgxGenerationResultJsonFile extends GeneratedFile {
   override relativePathFrom = () => 'noop';
@@ -47,7 +41,7 @@ const persistFn = (fsImplementation: FileSystemInterface, cwd: string, logFileNa
 }
 
 const executeTransformation = async (options: {
-  transformerConfig: Ui5NgxTransformerConfig;
+  transformerConfig: Ui5FsTransformerConfig;
   basePath: string,
   fsAdapter: FileSystemInterface
 }) => {
@@ -58,17 +52,17 @@ const executeTransformation = async (options: {
   });
 };
 
-export function sync(schema: SyncSchema): Rule {
-  return async () => {
-    const configFiles = schema.conf;
+export interface FsTransformerOptions {
+  conf: Ui5FsTransformerConfig[];
+  basePath: string;
+}
 
-    for (const configFile of configFiles) {
-      const transformerConfig: Ui5NgxTransformerConfig = await import(configFile).then((module) => module.default);
-      await executeTransformation({
-        transformerConfig,
-        basePath: schema.basePath,
-        fsAdapter: new NodeFsImplementation()
-      });
-    }
-  };
+export async function fsTransformer(schema: FsTransformerOptions): Promise<void> {
+  for (const config of schema.conf) {
+    await executeTransformation({
+      transformerConfig: config,
+      basePath: schema.basePath,
+      fsAdapter: new NodeFsImplementation()
+    });
+  }
 }

@@ -1,7 +1,6 @@
-import { FileSystemInterface, GeneratedFile } from "@ui5/webcomponents-transformer";
-import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
+const { GeneratedFile } = require("@ui5/webcomponents-transformer");
 
-export function getFundamentalStylesThemes(fs: FileSystemInterface): string[] {
+function getFundamentalStylesThemes(fs) {
   return fs.queryFiles(
     'node_modules/fundamental-styles/dist/js/theming/*.mjs',
     []
@@ -11,12 +10,13 @@ export function getFundamentalStylesThemes(fs: FileSystemInterface): string[] {
 const supportedThemesFileLocation = 'theming/theming.config.ts';
 
 class SupportedThemesFile extends GeneratedFile {
-  constructor(protected supportedThemes: string[]) {
+  constructor(supportedThemes) {
     super();
+    this.supportedThemes = supportedThemes;
     this.move(supportedThemesFileLocation);
   }
 
-  override getCode(): string {
+  getCode() {
     return `
         import {isDevMode} from '@angular/core';
         const themes = {${this.supportedThemes.map(themeName => `['${themeName}']: import('fundamental-styles/dist/js/theming/${themeName}').then(({default: {cssSource}}) => cssSource)`).join(',\n')}};
@@ -33,11 +33,11 @@ class SupportedThemesFile extends GeneratedFile {
     `;
   }
 
-  relativePathFrom = (): string => "";
+  relativePathFrom = () => "";
 }
 
-export default ((fs: FileSystemInterface) => ({
+module.exports = (fs) => ({
   gatherer: () => getFundamentalStylesThemes(fs),
   transformers: [(themes) => [new SupportedThemesFile(themes)]],
   logOutputFileNames: '.supported-themes.json'
-})) as Ui5NgxTransformerConfig<string>;
+});

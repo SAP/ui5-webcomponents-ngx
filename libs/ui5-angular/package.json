@@ -15,12 +15,13 @@
     "url": "https://github.com/SAP/ui5-webcomponents-ngx.git",
     "directory": "libs/ui5-angular"
   },
+  "scripts": {
+    "postinstall": "node ./postinstall.js"
+  },
   "peerDependencies": {
     "@angular/common": ">= 15.2.10 < 19.0.0",
     "@angular/core": ">= 15.2.10 < 19.0.0",
     "@angular/forms": ">= 15.2.10 < 19.0.0",
-    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
-    "@ui5/theming-ngx": "VERSION_PLACEHOLDER",
     "@ui5/webcomponents": ">= 2.0.0-rc.",
     "@ui5/webcomponents-base": ">= 2.0.0-rc.",
     "@ui5/webcomponents-compat": ">= 2.0.0-rc.",
@@ -29,15 +30,16 @@
     "@ui5/webcomponents-icons-business-suite": ">= 2.0.0-rc.",
     "@ui5/webcomponents-icons-tnt": ">= 2.0.0-rc.",
     "@ui5/webcomponents-theming": ">= 2.0.0-rc.",
-    "fast-deep-equal": "^3.1.3",
-    "rxjs": "^6.5.3 || ^7.4.0"
+    "@ui5/theming-ngx": "VERSION_PLACEHOLDER"
   },
   "dependencies": {
     "tslib": "^2.4.1",
     "lodash": "^4.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.0.0",
-    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER"
+    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

@@ -1,16 +1,14 @@
-import { FileSystemInterface } from '@ui5/webcomponents-transformer';
-import { fundamentalGenerator } from '@ui5/webcomponents-transformer';
-import { join } from 'path';
-import { Ui5NgxTransformerConfig } from "@ui5/webcomponents-ngx-schematics";
+const {fundamentalGenerator} = require('@ui5/webcomponents-transformer');
+const {join} = require('path');
 
-export function getFundamentalStyles(fs: FileSystemInterface): string[] {
+export function getFundamentalStyles(fs) {
   return fs.queryFiles(
     'node_modules/fundamental-styles/dist/js/*.mjs',
     []
   ).map(f => f.replace(/^node_modules\/(.*)/, '$1'));
 }
 
-const stylesComponentsGenerator = (styles: string[]) => fundamentalGenerator(styles, {
+const stylesComponentsGenerator = (styles) => fundamentalGenerator(styles, {
   modules: [
     {
       fileName: 'fundamental-styles-components.module.ts',
@@ -29,9 +27,8 @@ const stylesComponentsGenerator = (styles: string[]) => fundamentalGenerator(sty
   }
 });
 
-export default ((fs) => ({
-    gatherer: () => getFundamentalStyles(fs),
-    transformers: [stylesComponentsGenerator],
-    logOutputFileNames: '.fd-components.json'
-  })
-) as Ui5NgxTransformerConfig<string>;
+module.exports = (fs) => ({
+  gatherer: () => getFundamentalStyles(fs),
+  transformers: [stylesComponentsGenerator],
+  logOutputFileNames: '.fd-components.json'
+});

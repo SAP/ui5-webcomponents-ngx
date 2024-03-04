@@ -1,6 +1,6 @@
-import {ComponentData, GeneratedFile, TransformerConfig} from "@ui5/webcomponents-transformer";
+import { ComponentData, GeneratedFile } from "@ui5/webcomponents-transformer";
 import { customElementSchemaParser } from '@ui5/webcomponents-schema-parser';
-import {stringify} from 'flatted';
+import { stringify } from 'flatted';
 
 export default {
   gatherer: () => customElementSchemaParser({
@@ -17,5 +17,6 @@ export default {
       getCode: () => stringify(c)
     } as GeneratedFile
     ])
-  ]
-} as Partial<TransformerConfig<ComponentData>>;
+  ],
+  logOutputFileNames: '.api-json-log.json'
+};

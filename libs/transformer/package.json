@@ -19,6 +19,8 @@
     "@ui5/webcomponents-icons-tnt": "2.0.0-rc.5"
   },
   "dependencies": {
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "prettier": "^3.0.0",
+    "prettier-plugin-organize-imports": "^3.0.0"
   }
 }

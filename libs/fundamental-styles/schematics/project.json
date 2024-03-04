@@ -14,7 +14,7 @@
         "tsConfig": "{projectRoot}/tsconfig.json",
         "assets": [
           "{projectRoot}/collection.json",
-          "{projectRoot}/tsconfig.json",
+          "{projectRoot}/*/*.json",
           "{projectRoot}/*.md"
         ]
       },

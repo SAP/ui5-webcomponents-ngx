@@ -6,10 +6,7 @@
   "prefix": "ui-angular",
   "targets": {
     "sync": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ts-node {projectRoot}/postinstall.js"
-      }
+      "command": "ts-node {projectRoot}/sync.js"
     },
     "build": {
       "executor": "tools:build-partial",
@@ -17,25 +14,26 @@
         "{options.distPath}"
       ],
       "options": {
+        "sourcesPath": "sources",
         "includedFiles": [
-          "{projectRoot}/theming/**/*",
-          "{projectRoot}/*.json",
-          "{projectRoot}/README.md",
-          "{projectRoot}/*.conf.ts",
-          "{projectRoot}/postinstall.js"
+          {
+            "glob": "theming/**/*",
+            "input": "{projectRoot}",
+            "output": "sources"
+          },
+          {
+            "glob": "package.json",
+            "input": "{projectRoot}",
+            "output": "sources"
+          },
+          "{projectRoot}/package.json",
+          "{projectRoot}/README.md"
         ],
-        "excludedFiles": [
-          "{projectRoot}/theming/supported-themes.ts",
-          "{projectRoot}/tsconfig.spec.json",
-          "{projectRoot}/compodocrc.json",
-          "{projectRoot}/project.json"
-        ],
-        "distPath": "{workspaceRoot}/dist/{projectRoot}"
-      },
-      "configurations": {
-        "production": {
-          "pack": true
-        }
+        "distPath": "{workspaceRoot}/dist/{projectRoot}",
+        "configurations": [
+          "{projectRoot}/wrapper.conf.js",
+          "{projectRoot}/theming.conf.js"
+        ]
       }
     },
     "lint": {

@@ -1,6 +1,9 @@
+import type { AssetGlob } from "./assets";
+
 export interface BuildPartialExecutorSchema {
-  includedFiles: string[];
+  sourcesPath: string;
+  includedFiles: Array<AssetGlob | string>;
   excludedFiles?: string[];
   distPath: string;
-  pack?: boolean;
+  configurations: string[];
 }

@@ -44,12 +44,12 @@ export class GenericCva extends AngularGeneratedFile {
     return `
     class ${this.className}<ValueType = any> implements ControlValueAccessor {
       onChange!: (val: ValueType) => void;
-      onTouched!: () => void;
+      onTouched!: () => void = () => {};
 
       host!: CvaComponent<ValueType>;
 
       setDisabledState = (isDisabled: boolean): void => {
-        this.host.element["disabled"] = isDisabled;
+        (this.host.element as any)["disabled"] = isDisabled;
       };
 
       registerOnChange(fn: (newVal: ValueType) => void): void {

@@ -9,6 +9,8 @@
     "directory": "libs/transformer"
   },
   "dependencies": {
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "prettier": "^3.0.0",
+    "prettier-plugin-organize-imports": "^3.0.0"
   }
 }

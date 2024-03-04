@@ -4,6 +4,76 @@
   "title": "BuildPartial executor",
   "description": "",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "sourcesPath": {
+      "type": "string",
+      "description": "The path to the directory, where raw sources will be located, relative to the distPath directory.",
+      "default": "sources"
+    },
+    "includedFiles": {
+      "type": "array",
+      "description": "List of static assets.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    },
+    "excludedFiles": {
+      "type": "array",
+      "description": "List of static assets to exclude.",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "distPath": {
+      "type": "string",
+      "description": "The path to the output directory.",
+      "default": "dist"
+    },
+    "configurations": {
+      "type": "array",
+      "description": "List of the paths to the configuration files.",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [],
+  "definitions": {
+    "assetPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "glob": {
+              "type": "string",
+              "description": "The pattern to match."
+            },
+            "input": {
+              "type": "string",
+              "description": "The input directory path in which to apply 'glob'. Defaults to the project root."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "output": {
+              "type": "string",
+              "description": "Absolute path within the output."
+            }
+          },
+          "additionalProperties": false,
+          "required": ["glob", "input", "output"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
 }

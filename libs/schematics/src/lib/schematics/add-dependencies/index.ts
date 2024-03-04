@@ -1,23 +1,45 @@
 import { Rule } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { addPackageJsonDependency, NodeDependency } from "../../third_party/utility/dependencies";
-import { satisfies } from "semver";
+import { major, satisfies } from "semver";
 import { askConfirmation } from "../../utils/prompt";
 import { AddDependenciesSchematicOptions } from "./schema";
-import { firstValueFrom } from "rxjs";
-import { currentlyInstalledPackageVersion } from "./currently-installed-pkg-version";
+import { readModulePackageJson } from "./module-pkg-json";
+
+const angularVersion = major(readModulePackageJson('@angular/core').packageJson.version);
 
 export function addDependencies(options: AddDependenciesSchematicOptions): Rule {
   return async (tree, context) => {
     const mismatchedDependencies: Record<string, [string, NodeDependency]> = {};
     options.dependencies.forEach(dep => {
-      const currentVersion = currentlyInstalledPackageVersion(dep.name);
-      if (!currentVersion) {
-        mismatchedDependencies[dep.name] = ['None', dep];
-        return;
-      }
-      if (!satisfies(currentVersion, dep.version)) {
-        mismatchedDependencies[dep.name] = [currentVersion, dep];
+      try {
+        const pkg = readModulePackageJson(dep.name);
+        const currentVersion = pkg.packageJson.version;
+        if (!currentVersion) {
+          mismatchedDependencies[dep.name] = ['None', dep];
+          return;
+        }
+        if (!satisfies(currentVersion, dep.version)) {
+          if (dep.name.startsWith('@angular') || dep.name === 'ng-packagr') {
+            mismatchedDependencies[dep.name] = [currentVersion, {
+              version: `^${angularVersion}.0.0`,
+              name: dep.name,
+              type: dep.type
+            }];
+          } else {
+            mismatchedDependencies[dep.name] = [currentVersion, dep];
+          }
+        }
+      } catch (e) {
+        if (dep.name.startsWith('@angular') || dep.name === 'ng-packagr') {
+          mismatchedDependencies[dep.name] = ['None', {
+            version: `^${angularVersion}.0.0`,
+            name: dep.name,
+            type: dep.type
+          }];
+        } else {
+          mismatchedDependencies[dep.name] = ['None', dep];
+        }
       }
     });
     if (Object.keys(mismatchedDependencies).length > 0) {
@@ -36,7 +58,6 @@ export function addDependencies(options: AddDependenciesSchematicOptions): Rule 
         });
       }
       context.addTask(new NodePackageInstallTask());
-      await firstValueFrom(context.engine.executePostTasks());
     }
   };
 }

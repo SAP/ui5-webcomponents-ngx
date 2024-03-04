@@ -10,10 +10,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "sync": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "nx g @ui5/webcomponents-ngx-schematics:sync apps/documentation/api-json.config.ts --basePath=apps/documentation/src"
-      },
+      "command": "ts-node {projectRoot}/sync.ts",
       "outputs": ["{projectRoot}/src/api-json.json"]
     },
     "serve": {
@@ -47,7 +44,8 @@
           "docs": true
         }
       }
-    }
+    },
+    "dependsOn": ["sync", "^sync", "^build"]
   },
   "tags": []
 }

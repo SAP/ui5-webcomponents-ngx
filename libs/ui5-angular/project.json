@@ -6,7 +6,7 @@
   "prefix": "ui-angular",
   "targets": {
     "sync": {
-      "command": "ts-node {projectRoot}/postinstall.js"
+      "command": "ts-node {projectRoot}/sync.js"
     },
     "build": {
       "executor": "tools:build-partial",
@@ -14,30 +14,36 @@
         "{options.distPath}"
       ],
       "options": {
+        "sourcesPath": "sources",
         "includedFiles": [
-          "{projectRoot}/config/**/*",
-          "{projectRoot}/content-density/**/*",
-          "{projectRoot}/fiori/i18n/**/*",
-          "{projectRoot}/icons/**/*",
-          "{projectRoot}/theming/**/*",
-          "{projectRoot}/i18n/**/*",
-          "{projectRoot}/*.json",
+          {
+            "glob": "*/**",
+            "input": "{projectRoot}",
+            "ignore": [
+              "__snapshots__",
+              "*.spec.ts",
+              "fiori/**",
+              "main/**",
+              "schematics/**",
+              "utils/**",
+              "generic-cva/**",
+              "theming/supported-themes.ts"
+            ],
+            "output": "sources"
+          },
+          {
+            "glob": "package.json",
+            "input": "{projectRoot}",
+            "output": "sources"
+          },
           "{projectRoot}/README.md",
-          "{projectRoot}/*.conf.js",
-          "{projectRoot}/postinstall.js"
+          "{projectRoot}/package.json"
         ],
-        "excludedFiles": [
-          "{projectRoot}/theming/supported-themes.ts",
-          "{projectRoot}/tsconfig.spec.json",
-          "{projectRoot}/compodocrc.json",
-          "{projectRoot}/project.json"
-        ],
-        "distPath": "{workspaceRoot}/dist/{projectRoot}"
-      },
-      "configurations": {
-        "production": {
-          "pack": true
-        }
+        "distPath": "{workspaceRoot}/dist/{projectRoot}",
+        "configurations": [
+          "{projectRoot}/theming.conf.js",
+          "{projectRoot}/wrapper.conf.js"
+        ]
       }
     },
     "lint": {

@@ -3,5 +3,11 @@
   "dest": "../../dist/libs/ui5-angular",
   "lib": {
     "entryFile": "./index.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "@ui5/*",
+    "lodash",
+    "prettier*",
+    "tslib"
+  ]
 }

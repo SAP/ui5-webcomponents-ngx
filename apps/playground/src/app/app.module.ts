@@ -6,7 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Ui5ThemingModule} from '@ui5/theming-ngx';
 import {FundamentalStylesComponentsModule} from "@fundamental-styles/theming-ngx";
 import {Ui5FundamentalThemingModule} from "@fundamental-styles/theming-ngx/theming";
-import {Ui5WebcomponentsThemingModule} from "@ui5/webcomponents-ngx/theming";
+import {Ui5WebcomponentsThemingModule} from "libs/ui5-angular-theming/src/theming";
 import {Ui5WebcomponentsIconsModule} from "@ui5/webcomponents-ngx/icons";
 import {Ui5WebcomponentsModule} from '@ui5/webcomponents-ngx';
 import {Ui5WebcomponentsConfigModule} from '@ui5/webcomponents-ngx/config';

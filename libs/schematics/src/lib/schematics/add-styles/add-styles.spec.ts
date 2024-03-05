@@ -11,7 +11,7 @@ import { addStyles } from './index';
 import { CommonCssParts } from './common-css-parts';
 import { firstValueFrom } from "rxjs";
 
-const collectionPath = path.join(__dirname, '../collection.json');
+const collectionPath = path.join(__dirname, '../../collection.json');
 
 const allCommonCss = CommonCssParts.map(part => part.value);
 const firstThreeCommonCss = allCommonCss.slice(0, 3);

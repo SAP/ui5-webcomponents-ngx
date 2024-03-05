@@ -7,7 +7,7 @@ export default {
     '^.+\\.(t|j)sx?$': '@swc/jest'
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(@swc)/)"
+    "node_modules/(?!(inquirer)/)"
   ],
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/libs/schematics',

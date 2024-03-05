@@ -19,32 +19,6 @@ function _isTruthy(value: undefined | string): boolean {
   return value !== undefined && value !== '0' && value.toUpperCase() !== 'FALSE';
 }
 
-/**
- * Lazily compiled dynamic import loader function.
- */
-let load: (<T>(modulePath: string | URL) => Promise<T>) | undefined;
-
-/**
- * This uses a dynamic import to load a module which may be ESM.
- * CommonJS code can load ESM code via a dynamic import. Unfortunately, TypeScript
- * will currently, unconditionally downlevel dynamic import into a require call.
- * require calls cannot load ESM code and will result in a runtime error. To workaround
- * this, a Function constructor is used to prevent TypeScript from changing the dynamic import.
- * Once TypeScript provides support for keeping the dynamic import this workaround can
- * be dropped.
- *
- * @param modulePath The path of the module to load.
- * @returns A Promise that resolves to the dynamically imported module.
- */
-export function loadEsmModule<T>(modulePath: string | URL): Promise<T> {
-  load ??= new Function('modulePath', `return import(modulePath);`) as Exclude<
-    typeof load,
-    undefined
-  >;
-
-  return load(modulePath);
-}
-
 export function isTTY(): boolean {
   // If we force TTY, we always return true.
   const force = process.env['NG_FORCE_TTY'];
@@ -72,8 +46,7 @@ export async function askConfirmation(
     default: defaultResponse,
   };
 
-  // @ts-expect-error
-  const { default: inquirer } = await loadEsmModule<typeof import('inquirer')>('inquirer');
+  const { default: inquirer } = await import('inquirer');
   const answers = await inquirer.prompt([question]);
 
   return answers['confirmation'];
@@ -96,8 +69,7 @@ export async function askChoices(
     choices,
   };
 
-  // @ts-expect-error
-  const { default: inquirer } = await loadEsmModule<typeof import('inquirer')>('inquirer');
+  const { default: inquirer } = await import('inquirer');
   const answers = await inquirer.prompt([question]);
 
   return answers['answer'];
@@ -123,8 +95,7 @@ export async function askQuestion(
     default: defaultResponseIndex,
   };
 
-  // @ts-expect-error
-  const { default: inquirer } = await loadEsmModule<typeof import('inquirer')>('inquirer');
+  const { default: inquirer } = await import('inquirer');
   const answers = await inquirer.prompt([question]);
 
   return answers['answer'];

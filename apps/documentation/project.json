@@ -43,9 +43,9 @@
           "quiet": true,
           "docs": true
         }
-      }
-    },
-    "dependsOn": ["sync", "^sync", "^build"]
+      },
+      "dependsOn": ["sync"]
+    }
   },
   "tags": []
 }

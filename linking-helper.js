@@ -4,7 +4,7 @@ const {execSync} = require("child_process");
 const {readFileSync, writeFileSync} = require("fs");
 const {dirname} = require("path");
 // const {readFileSync} = require("fs");
-
+const {version: projectVersion} = require('./lerna.json');
 const sources = sync('dist/libs/*/package.json');
 
 execSync('rm -rf ' + sources.map(pkgJsonPath => {
@@ -19,7 +19,7 @@ sources.forEach(pkgJsonPath => {
   const files = sync(`${dir}/**/*`, {dot: true, onlyFiles: true});
   files.forEach(file => {
     const content = readFileSync(file, 'utf-8');
-    const newContent = content.replace(/0\.3\.0-rc\.0/g, '0.3.0');
+    const newContent = content.replace(new RegExp(projectVersion, 'g'), '0.3.0');
     if (content !== newContent) {
       console.log(`Updating ${file}`);
       writeFileSync(file, newContent, 'utf-8');

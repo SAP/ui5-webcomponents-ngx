@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-ngx-schematics",
-  "version": "0.3.0-rc.0",
+  "version": "0.3.0-rc.1",
   "license": "Apache-2.0",
   "author": "SAP SE (https://www.sap.com)",
   "repository": {
@@ -13,12 +13,12 @@
     "@angular-devkit/core": ">= 15.0.0 < 18.0.0",
     "@angular-devkit/schematics": ">= 15.0.0 < 18.0.0",
     "@angular/common": ">= 15.0.0 < 18.0.0",
-    "@angular/core": ">= 15.0.0 < 18.0.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0",
+    "@angular/core": ">= 15.0.0 < 18.0.0",
     "fast-glob": "^3.3.2",
     "inquirer": "^9.2.11"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
   },
   "sideEffects": false,
   "devDependencies": {},

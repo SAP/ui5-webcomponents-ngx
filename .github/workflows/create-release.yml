@@ -50,21 +50,11 @@ jobs:
       - name: Build
         run: npx nx run-many --target=build --all
 
-      - name: Publish on npm ui5-angular
-        uses: JS-DevTools/npm-publish@v1
+      - name: Publish Packages
+        uses: ./.github/actions/publish
         with:
-          package: dist/libs/ui5-angular/package.json
           token: ${{ secrets.NPM_TOKEN }}
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
-          access: public
-
-      - name: Publish on npm ui5-angular-theming
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          package: dist/libs/ui5-angular-theming/package.json
-          token: ${{ secrets.NPM_TOKEN }}
-          tag: ${{ steps.bumpVersion.outputs.releaseTag }}
-          access: public
 
       - name: Push changes
         if: env.IS_MANUAL == 'false'

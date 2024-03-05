@@ -1,0 +1,14 @@
+name: Publish packages
+description: Publishes all the packages from libs to the npm
+
+inputs:
+  token:
+    description: 'NPM token'
+    required: true
+  tag:
+    description: 'Tag to publish'
+    required: true
+
+runs:
+    using: node20
+    main: ./index.js

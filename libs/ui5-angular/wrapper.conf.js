@@ -29,6 +29,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
     super();
     this.baseDir = baseDir;
     this.apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
+    this.packageName = packageName;
     this.addImport('WebcomponentsThemingProvider', '@ui5/webcomponents-ngx/theming');
     this.addImport('Injectable', '@angular/core');
     this.move(`${baseDir}/index.ts`);

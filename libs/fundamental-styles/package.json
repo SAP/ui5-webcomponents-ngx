@@ -17,10 +17,10 @@
     "@ui5/theming-ngx": "VERSION_PLACEHOLDER"
   },
   "dependencies": {
+    "tslib": "^2.3.0",
     "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
     "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
-    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER",
-    "tslib": "^2.3.0"
+    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json"
 }

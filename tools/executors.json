@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "build-partial": {
+      "implementation": "./src/executors/build-partial/executor",
+      "schema": "./src/executors/build-partial/schema.json",
+      "description": "Builds partially published library"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "@fundamental-styles/theming-ngx/schematics",
+  "private": true,
+  "sideEffects": false
+}

@@ -5,59 +5,55 @@
   "sourceRoot": "libs/ui5-angular",
   "prefix": "ui-angular",
   "targets": {
-    "prepare": {
-      "executor": "@ui5/webcomponents-nx:prepare",
-      "options": {
-        "configFile": "libs/ui5-angular/wrapper.conf.ts",
-        "distPath": "dist/libs/ui5-angular",
-        "schematics": {
-          "defaultSchematics": "libs/angular-generator/src/lib/schematics/common-schematics",
-          "tsConfig": "tsconfig.schematics.json",
-          "collection": "schematics"
-        }
-      }
-    },
     "sync": {
-      "executor": "@ui5/webcomponents-nx:sync",
-      "options": {
-        "configFiles": [
-          "libs/ui5-angular/wrapper.conf.ts",
-          "libs/ui5-angular/theming.conf.ts"
-        ]
-      },
-      "outputs": [
-        "{projectRoot}/fiori",
-        "{projectRoot}/main",
-        "{projectRoot}/generic-cva",
-        "{projectRoot}/utils",
-        "{projectRoot}/index.ts",
-        "{projectRoot}/theming/supported-themes.ts",
-        "{projectRoot}/ui5-webcomponents.module.ts"
-      ]
+      "command": "ts-node {projectRoot}/sync.js"
     },
     "build": {
-      "executor": "@nx/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/ui5-angular"],
+      "executor": "tools:build-partial",
+      "outputs": [
+        "{options.distPath}"
+      ],
       "options": {
-        "project": "libs/ui5-angular/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/ui5-angular/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/ui5-angular/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production",
-      "dependsOn": ["sync"]
+        "sourcesPath": "sources",
+        "includedFiles": [
+          {
+            "glob": "*/**",
+            "input": "{projectRoot}",
+            "ignore": [
+              "__snapshots__",
+              "*.spec.ts",
+              "fiori/**",
+              "main/**",
+              "schematics/**",
+              "utils/**",
+              "generic-cva/**",
+              "theming/supported-themes.ts"
+            ],
+            "output": "sources"
+          },
+          {
+            "glob": "package.json",
+            "input": "{projectRoot}",
+            "output": "sources"
+          },
+          "{projectRoot}/README.md",
+          "{projectRoot}/package.json"
+        ],
+        "distPath": "{workspaceRoot}/dist/{projectRoot}",
+        "configurations": [
+          "{projectRoot}/theming.conf.js",
+          "{projectRoot}/wrapper.conf.js"
+        ]
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/ui5-angular/jest.config.ts"
       }

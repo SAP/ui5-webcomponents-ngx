@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "add-dependencies": {
+      "description": "Adds dependencies to the workspace.",
+      "factory": "./schematics/add-dependencies/index#addDependencies",
+      "schema": "./schematics/add-dependencies/schema.json"
+    },
+    "add-styles": {
+      "description": "Adds common-css styles to the workspace.",
+      "factory": "./schematics/add-styles/index#addStyles",
+      "schema": "./schematics/add-styles/schema.json"
+    },
+    "add-theming": {
+      "description": "Adds theming to the workspace.",
+      "factory": "./schematics/add-theming/index#addTheming",
+      "schema": "./schematics/add-theming/schema.json"
+    }
+  }
+}

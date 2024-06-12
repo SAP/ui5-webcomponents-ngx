@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-radio-button</code> component enables users to select a single option from a set of options. When a <code>ui5-radio-button</code> is selected by the user, the <code>change</code> event is fired. When a <code>ui5-radio-button</code> that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the <code>name</code> property. <br> <b>Note:</b> If <code>ui5-radio-button</code> is not part of a group, it can be selected once, but can not be deselected back.
 
@@ -39,14 +39,14 @@ export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-radio-button text="Option A" checked="" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option A" [checked]="true" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option B" value-state="None" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option C" value-state="Warning" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option D" value-state="Error" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option C" value-state="Success" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option C" value-state="Critical" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option D" value-state="Negative" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option C" value-state="Positive" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option D" value-state="Information" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option E" disabled="" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option F" readonly="" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option E" [disabled]="true" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option F" [readonly]="true" name="GroupA"></ui5-radio-button>
 	`,
 });
 
@@ -55,19 +55,19 @@ export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
 > = (args: RadioButtonComponent & any) => ({
   props: args,
   template: `
-		<div aria-labelledby="radioGroupTitle1" role="radiogroup" id="radioGroup" class="radio-button-group">
+		<div aria-labelledby="radioGroupTitle1" role="radiogroup" id="radioGroup">
 			<ui5-title id="radioGroupTitle1">Group of states</ui5-title>
 			<ui5-label id="lblRadioGroup">Selected radio: None</ui5-label>
-			<ui5-radio-button text="None" value-state="None" checked="" name="GroupB"></ui5-radio-button>
-			<ui5-radio-button text="Warning" value-state="Warning" name="GroupB"></ui5-radio-button>
-			<ui5-radio-button text="Error" value-state="Error" name="GroupB"></ui5-radio-button>
-			<ui5-radio-button text="Success" value-state="Success" name="GroupB"></ui5-radio-button>
+			<ui5-radio-button text="None" value-state="None" [checked]="true" name="GroupB"></ui5-radio-button>
+			<ui5-radio-button text="Critical" value-state="Critical" name="GroupB"></ui5-radio-button>
+			<ui5-radio-button text="Negative" value-state="Negative" name="GroupB"></ui5-radio-button>
+			<ui5-radio-button text="Positive" value-state="Positive" name="GroupB"></ui5-radio-button>
 			<ui5-radio-button text="Information" value-state="Information" name="GroupB"></ui5-radio-button>
 		</div>
-		<div aria-labelledby="radioGroupTitle2" role="radiogroup" id="radioGroup2" class="radio-button-group">
+		<div aria-labelledby="radioGroupTitle2" role="radiogroup" id="radioGroup2">
 			<ui5-title id="radioGroupTitle2">Group of options</ui5-title>
 			<ui5-label id="lblRadioGroup2">Selected radio: Option A</ui5-label>
-			<ui5-radio-button text="Option A" checked="" name="GroupC"></ui5-radio-button>
+			<ui5-radio-button text="Option A" [checked]="true" name="GroupC"></ui5-radio-button>
 			<ui5-radio-button text="Option B" value-state="None" name="GroupC"></ui5-radio-button>
 			<ui5-radio-button text="Option C" value-state="None" name="GroupC"></ui5-radio-button>
 		</div>

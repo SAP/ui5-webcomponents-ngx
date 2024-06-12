@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-li-notification</code> is a type of list item, meant to display notifications. <br>
+const description = `### Overview The <code>ui5-li-notification</code> is a type of list item, meant to display notifications. <br>
 
 The component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>titleText</code>, descriptive <code>content</code> and <code>footnotes</code> to fully describe a notification. <br>
 
@@ -44,7 +44,7 @@ export const notificationListItemCustomActions: Story<
   props: args,
   template: `
 		<ui5-list id="myList3" class="full-width" header-text="Notifications">
-			<ui5-li-notification show-close="" priority="Low" title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
+			<ui5-li-notification [show-close]="true" priority="Low" title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/woman_avatar_1.png">
@@ -56,7 +56,7 @@ export const notificationListItemCustomActions: Story<
 				<ui5-notification-action icon="message-error" text="Reject" slot="actions"></ui5-notification-action>
 			</ui5-li-notification>
 
-			<ui5-li-notification show-close="" priority="Low" title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
+			<ui5-li-notification [show-close]="true" priority="Low" title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/man_avatar_1.png">
@@ -67,7 +67,7 @@ export const notificationListItemCustomActions: Story<
 				<ui5-notification-action icon="accept" text="Accept" slot="actions"></ui5-notification-action>
 			</ui5-li-notification>
 
-			<ui5-li-notification show-close="" priority="Low" title-text="New order (#2525) With a short title">
+			<ui5-li-notification [show-close]="true" priority="Low" title-text="New order (#2525) With a short title">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/man_avatar_2.png">

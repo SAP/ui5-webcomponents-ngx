@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, PanelComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-panel</code> component is a container which has a header and a content area and is used for grouping and displaying information. It can be collapsed to save space on the screen.
 
@@ -46,12 +46,12 @@ export const basicPanel: Story<PanelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-panel width="100%" accessible-role="Complementary" header-text="Both expandable and expanded" class="full-width">
-			<h1 class="content-color">I am a native heading!</h1>
+		<ui5-panel width="100%" accessible-role="Complementary" header-text="Both expandable and expanded">
+			<h1>I am a native heading!</h1>
 			<ui5-label wrapping-type="Normal">Short text.</ui5-label>
 			<br>
 			<ui5-label wrapping-type="Normal">Another text.</ui5-label>
-			<p class="content-color">
+			<p>
 				Aute ullamco officia fugiat culpa do tempor tempor aute excepteur magna. Quis velit adipisicing excepteur do eu duis elit. Sunt ea pariatur nulla est laborum proident sunt labore commodo Lorem laboris nisi Lorem.
 			</p>
 		</ui5-panel>
@@ -63,8 +63,8 @@ export const panelWithList: Story<PanelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-panel accessible-role="Complementary" header-text="Select your country" class="full-width">
-			<ui5-list id="myList1" mode="MultiSelect">
+		<ui5-panel accessible-role="Complementary" header-text="Select your country">
+			<ui5-list mode="MultiSelect">
 				<ui5-li key="country1">Argentina</ui5-li>
 				<ui5-li key="country2">Bulgaria</ui5-li>
 				<ui5-li key="country3">China</ui5-li>
@@ -83,8 +83,8 @@ export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-panel class="full-width" fixed="" accessible-role="Complementary" header-text="Country Of Birth">
-			<ui5-list id="myList2" mode="SingleSelectBegin">
+		<ui5-panel [fixed]="true" accessible-role="Complementary" header-text="Country Of Birth">
+			<ui5-list mode="SingleSelectBegin">
 				<ui5-li key="country1">Argentina</ui5-li>
 				<ui5-li key="country2">Bulgaria</ui5-li>
 				<ui5-li key="country3">China</ui5-li>
@@ -99,15 +99,14 @@ export const panelWithCustomHeader: Story<PanelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-panel accessible-role="Complementary" class="full-width">
+		<ui5-panel accessible-role="Complementary">
 
 			<!-- Panel header -->
 			<div slot="header" class="header">
-				<ui5-title>Countries</ui5-title>
+				<ui5-title level="H4">Countries</ui5-title>
 				<div>
-					<ui5-button>Edit</ui5-button>
 					<ui5-button design="Emphasized">Add</ui5-button>
-					<ui5-button design="Negative">Remove</ui5-button>
+					<ui5-button>Edit</ui5-button>
 				</div>
 			</div>
 
@@ -117,5 +116,14 @@ export const panelWithCustomHeader: Story<PanelComponent> = (
 				<ui5-li key="country3">China</ui5-li>
 			</ui5-list>
 		</ui5-panel>
+
+		<style>
+			.header {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				align-items: center;
+			}
+		</style>
 	`,
 });

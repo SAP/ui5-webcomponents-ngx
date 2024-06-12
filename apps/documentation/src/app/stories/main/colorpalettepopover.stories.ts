@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> Represents a predefined range of colors for easier selection.
+const description = `### Overview Represents a predefined range of colors for easier selection.
 
 Overview The ColorPalettePopover provides the users with a slot to predefine colors.
 

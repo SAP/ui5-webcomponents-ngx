@@ -1,0 +1,30 @@
+diff --git a/node_modules/@ui5/webcomponents/dist/ToolbarButton.d.ts b/node_modules/@ui5/webcomponents/dist/ToolbarButton.d.ts
+index 23fe7cf..e55805e 100644
+--- a/node_modules/@ui5/webcomponents/dist/ToolbarButton.d.ts
++++ b/node_modules/@ui5/webcomponents/dist/ToolbarButton.d.ts
+@@ -1,9 +1,11 @@
+-import type { ButtonAccessibilityAttributes as ToolbarAccessibilityAttributes } from "./Button.js";
++import type { ButtonAccessibilityAttributes } from "./Button.js";
+ import ButtonDesign from "./types/ButtonDesign.js";
+ import ToolbarItem from "./ToolbarItem.js";
+ import type { IEventOptions } from "./ToolbarItem.js";
+ import ToolbarButtonTemplate from "./generated/templates/ToolbarButtonTemplate.lit.js";
+ import ToolbarPopoverButtonTemplate from "./generated/templates/ToolbarPopoverButtonTemplate.lit.js";
++
++type ToolbarAccessibilityAttributes = ButtonAccessibilityAttributes; 
+ /**
+  * @class
+  *
+diff --git a/node_modules/@ui5/webcomponents/dist/custom-elements-internal.json b/node_modules/@ui5/webcomponents/dist/custom-elements-internal.json
+index ff24dda..a7d85b0 100644
+--- a/node_modules/@ui5/webcomponents/dist/custom-elements-internal.json
++++ b/node_modules/@ui5/webcomponents/dist/custom-elements-internal.json
+@@ -24848,7 +24848,7 @@
+                   {
+                     "name": "ToolbarAccessibilityAttributes",
+                     "package": "@ui5/webcomponents",
+-                    "module": "dist/Button.js"
++                    "module": "dist/ToolbarButton.js"
+                   }
+                 ]
+               },

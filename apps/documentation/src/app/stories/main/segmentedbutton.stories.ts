@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-segmented-button</code> shows a group of items. When the user clicks or taps one of the items, it stays in a pressed state. It automatically resizes the items to fit proportionally within the component. When no width is set, the component uses the available width. <br><br> <b>Note:</b> There can be just one selected <code>item</code> at a time.
 
@@ -37,7 +37,7 @@ export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
   template: `
         <ui5-segmented-button accessible-name="Geographic location">
             <ui5-segmented-button-item>Map</ui5-segmented-button-item>
-            <ui5-segmented-button-item pressed="">Satellite</ui5-segmented-button-item>
+            <ui5-segmented-button-item [selected]="true">Satellite</ui5-segmented-button-item>
             <ui5-segmented-button-item>Terrain</ui5-segmented-button-item>
         </ui5-segmented-button>
 	`,
@@ -49,7 +49,7 @@ export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
   props: args,
   template: `
 		<ui5-segmented-button>
-			<ui5-segmented-button-item icon="employee" pressed=""></ui5-segmented-button-item>
+			<ui5-segmented-button-item icon="employee" [selected]="true"></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="menu"></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="factory"></ui5-segmented-button-item>
 		</ui5-segmented-button>
@@ -63,7 +63,7 @@ export const segmentedButtonWith5SegmentedButtonItems: Story<
   template: `
 		<ui5-segmented-button>
 			<ui5-segmented-button-item>Item</ui5-segmented-button-item>
-			<ui5-segmented-button-item pressed="">Pressed SegmentedButtonItem With Bigger Text</ui5-segmented-button-item>
+			<ui5-segmented-button-item [selected]="true">Pressed SegmentedButtonItem With Bigger Text</ui5-segmented-button-item>
 			<ui5-segmented-button-item>Item</ui5-segmented-button-item>
 			<ui5-segmented-button-item>SegmentedButtonItem</ui5-segmented-button-item>
 			<ui5-segmented-button-item>Press me</ui5-segmented-button-item>

@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the <code>ui5-dialog</code> is fully customizable.
+const description = `### Overview The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the <code>ui5-dialog</code> is fully customizable.
 
 <h3>Structure</h3> A <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-dialog</code> is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.
 
@@ -47,7 +47,7 @@ export const draggableAndResizableDialog: Story<DialogComponent> = (
   template: `
 		<ui5-button id="resizable-draggable-open">Open Draggable/Resizable dialog</ui5-button>
 
-		<ui5-dialog id="resize-draggable-dialog" header-text="Draggable/Resizable dialog" resizable="" draggable="">
+		<ui5-dialog id="resize-draggable-dialog" header-text="Draggable/Resizable dialog" [resizable]="true" [draggable]="true">
 			<p>Resize this dialog by dragging it by its resize handle.</p>
 			<p>This feature available only on Desktop.</p>
 
@@ -88,7 +88,7 @@ export const dialogsWithVariousStateProperties: Story<DialogComponent> = (
 		<ui5-button id="success-state">Open success state dialog</ui5-button>
 		<ui5-button id="warning-state">Open warning state dialog</ui5-button>
 
-		<ui5-dialog id="error-state-dialog" header-text="Error" state="Error">
+		<ui5-dialog id="error-state-dialog" header-text="Negative" state="Negative">
 			<p>Error state dialog</p>
 			<div slot="footer" style="display: flex; justify-content: flex-end; width: 100%; padding: .25rem 1rem;">
 				<ui5-button id="error-close">Close</ui5-button>
@@ -102,14 +102,14 @@ export const dialogsWithVariousStateProperties: Story<DialogComponent> = (
 			</div>
 		</ui5-dialog>
 
-		<ui5-dialog id="success-state-dialog" header-text="Success" state="Success">
+		<ui5-dialog id="success-state-dialog" header-text="Positive" state="Positive">
 			<p>Success state dialog</p>
 			<div slot="footer" style="display: flex; justify-content: flex-end; width: 100%; padding: .25rem 1rem;">
 				<ui5-button id="success-close">Close</ui5-button>
 			</div>
 		</ui5-dialog>
 
-		<ui5-dialog id="warning-state-dialog" header-text="Warning" state="Warning">
+		<ui5-dialog id="warning-state-dialog" header-text="Critical" state="Critical">
 			<p>Warning state dialog</p>
 			<div slot="footer" style="display: flex; justify-content: flex-end; width: 100%; padding: .25rem 1rem;">
 				<ui5-button id="warning-close">Close</ui5-button>

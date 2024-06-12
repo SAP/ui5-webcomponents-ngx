@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
+const description = `### Overview The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
 
 The <code>ui5-view-settings-dialog</code> interrupts the current application processing as it is the only focused UI element and the main screen is dimmed/blocked. The <code>ui5-view-settings-dialog</code> is modal, which means that user action is required before returning to the parent window is possible.
 
@@ -41,7 +41,7 @@ export const usage: Story<ViewSettingsDialogComponent> = (
   template: `
 		<ui5-button id="btnOpenDialog1">Open ViewSettingsDialog</ui5-button>
 		<ui5-view-settings-dialog id="vsd1">
-				<ui5-sort-item slot="sortItems" text="Name" selected=""></ui5-sort-item>
+				<ui5-sort-item slot="sortItems" text="Name" [selected]="true"></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Position"></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Company"></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Department"></ui5-sort-item>

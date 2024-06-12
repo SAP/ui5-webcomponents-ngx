@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, ListComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-list</code> component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency. <br><br> The <code>ui5-list</code> is a container for the available list items: <ul> <li><code>ui5-li</code></li> <li><code>ui5-li-custom</code></li> <li><code>ui5-li-groupheader</code></li> </ul> <br><br> To benefit from the built-in selection mechanism, you can use the available selection modes, such as <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br><br> Additionally, the <code>ui5-list</code> provides header, footer, and customization for the list item separators.
 
@@ -42,7 +42,7 @@ export const basicList: Story<ListComponent> = (args: ListComponent & any) => ({
   template: `
 		<ui5-list id="myList" class="full-width">
 			<ui5-li icon="nutrition-activity" description="Tropical plant with an edible fruit" additional-text="In-stock" additional-text-state="Success">Pineapple</ui5-li>
-			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Warning">Orange</ui5-li>
+			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Critical">Orange</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The yellow lengthy fruit" additional-text="Re-stock" additional-text-state="Information">Blueberry</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The tropical stone fruit" additional-text="Re-stock" additional-text-state="Error">Mango</ui5-li>
 		</ui5-list>
@@ -56,11 +56,11 @@ export const listWithGrowingScroll: Story<ListComponent> = (
   template: `
 		<ui5-list id="infiniteScrollEx" style="height: 300px" growing="Scroll">
 			<ui5-li icon="nutrition-activity" description="Tropical plant with an edible fruit" additional-text="In-stock" additional-text-state="Success">Pineapple</ui5-li>
-			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Warning">Orange</ui5-li>
+			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Critical">Orange</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The yellow lengthy fruit" additional-text="Re-stock" additional-text-state="Error">Banana</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The tropical stone fruit" additional-text="Re-stock" additional-text-state="Error">Mango</ui5-li>
 			<ui5-li icon="nutrition-activity" description="An apple is a sweet, edible fruit produced by an apple tree " additional-text="In-stock" additional-text-state="Success">Apple</ui5-li>
-			<ui5-li icon="nutrition-activity" description="The peach (Prunus persica) is a deciduous tree native to the region of Northwest China" additional-text="Expires" additional-text-state="Warning">Peach</ui5-li>
+			<ui5-li icon="nutrition-activity" description="The peach (Prunus persica) is a deciduous tree native to the region of Northwest China" additional-text="Expires" additional-text-state="Critical">Peach</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The pomelo is the largest citrus fruit from the family Rutaceae and the principal ancestor of the grapefruit" additional-text="Re-stock" additional-text-state="Error">Pomelo</ui5-li>
 			<ui5-li icon="nutrition-activity" description="The pear (/ˈpɛər/) tree and shrub are a species of genus Pyrus, bearing the pomaceous fruit of the same name." additional-text="Re-stock" additional-text-state="Error">Pear</ui5-li>
 		</ui5-list>
@@ -74,7 +74,7 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
   template: `
 		<ui5-list id="myList1" class="samples-margin-bottom full-width" mode="MultiSelect" header-text="Multiple selection is possible">
 				<ui5-li>Pineapple</ui5-li>
-				<ui5-li selected="">Orange</ui5-li>
+				<ui5-li [selected]="true">Orange</ui5-li>
 				<ui5-li>Banana</ui5-li>
 				<ui5-li>Mango</ui5-li>
 		</ui5-list>
@@ -84,7 +84,7 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
 export const busyList: Story<ListComponent> = (args: ListComponent & any) => ({
   props: args,
   template: `
-		<ui5-list header-text="Fetching data ..." class="full-width" busy=""></ui5-list>
+		<ui5-list header-text="Fetching data ..." class="full-width" [loading]="true"></ui5-list>
 	`,
 });
 
@@ -95,19 +95,19 @@ export const listWithGroupHeaders: Story<ListComponent> = (
   template: `
 		<ui5-list header-text="Community" mode="MultiSelect">
 			<ui5-li-groupheader>Front End Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end="">Jennifer</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" icon-end="">Lora</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" icon-end="">Carlotta</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Jennifer</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" [iconEnd]="true">Lora</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" [iconEnd]="true">Carlotta</ui5-li>
 
 			<ui5-li-groupheader>Back End Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" icon-end="">Clark</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" icon-end="">Ellen</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" icon-end="">Adam</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Clark</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Ellen</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Adam</ui5-li>
 
 			<ui5-li-groupheader>FullStack Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" icon-end="">Susan</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" icon-end="">David</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end="">Natalie</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Susan</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">David</ui5-li>
+			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Natalie</ui5-li>
 		</ui5-list>
 	`,
 });

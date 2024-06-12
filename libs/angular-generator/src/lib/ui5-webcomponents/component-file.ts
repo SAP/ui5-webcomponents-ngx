@@ -81,7 +81,7 @@ export class ComponentFile extends AngularGeneratedFile {
       metadata.push([
         'host',
         JSON.stringify(this.componentData.formData.reduce((acc, { events }) => {
-          events.forEach(e => acc[`(${e.name})`] = `_cva?.onChange(cvaValue)`);
+          events.forEach(e => acc[`(${e.name})`] = `_cva?.onChange?.(cvaValue);`);
           return acc;
         }, {}))
       ]);

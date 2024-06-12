@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TableComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-import type { table } from "./TableRow.js";/code> component provides a set of sophisticated and convenient functions for responsive table design. It provides a comprehensive set of features for displaying and dealing with vast amounts of data. <br><br> To render the <code>Table</code> properly, the order of the <code>columns</code> should match with the order of the item <code>cells</code> in the <code>rows</code>. <br><br> Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
 
@@ -16,9 +16,9 @@ The <code>ui5-import type { table } from "./TableRow.js";/code> component provid
 
 <h3>ES6 Module Import</h3>
 
-<code>import { TableComponent } from "@ui5/webcomponents-ngx/main/table";</code> (for <code>ui5-table-cell</code>)`;
+<code>import { TableComponent } from "@ui5/webcomponents-ngx/compat/table";</code> (for <code>ui5-table-cell</code>)`;
 export default {
-  title: 'UI5 Web Components / Main / Table',
+  title: 'UI5 Web Components / Compat / Table',
   component: TableComponent,
   decorators: [
     moduleMetadata({
@@ -57,11 +57,11 @@ export const basicTable: Story<TableComponent> = (
 				<span style="line-height: 1.4rem">Supplier</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment">
 				<span style="line-height: 1.4rem">Dimensions</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="600" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment">
 				<span style="line-height: 1.4rem">Weight</span>
 			</ui5-table-column>
 
@@ -85,15 +85,15 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 				<span>Product</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin="">
+			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demand-popin]="true">
 				<span>Supplier</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment">
 				<span>Dimensions</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment">
 				<span>Weight</span>
 			</ui5-table-column>
 
@@ -115,15 +115,15 @@ export const tableInMultiSelectMode: Story<TableComponent> = (
 				<span>Product</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin="">
+			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demand-popin]="true">
 				<span>Supplier</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment">
 				<span>Dimensions</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment">
 				<span>Weight</span>
 			</ui5-table-column>
 
@@ -150,15 +150,15 @@ export const tableDisplayInline: Story<TableComponent> = (
 				<span>Product</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin="" popin-display="Inline">
+			<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demand-popin]="true" popin-display="Inline">
 				<span>Supplier</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment" popin-display="Inline">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment" popin-display="Inline">
 				<span>Dimensions</span>
 			</ui5-table-column>
 
-			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" demand-popin="" class="table-header-text-alignment" popin-display="Inline">
+			<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment" popin-display="Inline">
 				<span>Weight</span>
 			</ui5-table-column>
 
@@ -184,11 +184,11 @@ export const tableWithNoData: Story<TableComponent> = (
 					<span style="line-height: 1.4rem">Supplier</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin="">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" [demand-popin]="true">
 					<span style="line-height: 1.4rem">Dimensions</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin="">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Weight" [demand-popin]="true">
 					<span style="line-height: 1.4rem">Weight</span>
 				</ui5-table-column>
 
@@ -213,13 +213,13 @@ export const growingTableWithMoreButton: Story<TableComponent> = (
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 
-			<ui5-table-column id="column-3" slot="columns" min-width="600" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column id="column-3" slot="columns" min-width="600" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment">
 				<div class="column-content">
 					<ui5-label>Dimensions</ui5-label>
 				</div>
 			</ui5-table-column>
 
-			<ui5-table-column id="column-4" slot="columns" min-width="600" popin-text="Weight" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column id="column-4" slot="columns" min-width="600" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment">
 				<ui5-label>Weight</ui5-label>
 			</ui5-table-column>
 
@@ -244,13 +244,13 @@ export const growingTableOnScroll: Story<TableComponent> = (
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 
-			<ui5-table-column id="column-3" slot="columns" min-width="600" popin-text="Dimensions" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column id="column-3" slot="columns" min-width="600" popin-text="Dimensions" [demand-popin]="true" class="table-header-text-alignment">
 				<div class="column-content">
 					<ui5-label>Dimensions</ui5-label>
 				</div>
 			</ui5-table-column>
 
-			<ui5-table-column id="column-4" slot="columns" min-width="600" popin-text="Weight" demand-popin="" class="table-header-text-alignment">
+			<ui5-table-column id="column-4" slot="columns" min-width="600" popin-text="Weight" [demand-popin]="true" class="table-header-text-alignment">
 				<ui5-label>Weight</ui5-label>
 			</ui5-table-column>
 
@@ -275,7 +275,7 @@ export const tableWithGroupingSingleSelectClickOnItemToSetNavigated: Story<
 			<ui5-table-column id="column-1" slot="columns">
 				<ui5-label>City</ui5-label>
 			</ui5-table-column>
-			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" demand-popin="">
+			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" [demand-popin]="true">
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 			<ui5-table-column id="column-3" slot="columns" min-width="500">
@@ -320,7 +320,7 @@ export const tablesWithGroupingMultiSelect: Story<TableComponent> = (
 			<ui5-table-column id="column-1" slot="columns">
 				<ui5-label>City</ui5-label>
 			</ui5-table-column>
-			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" demand-popin="">
+			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" [demand-popin]="true">
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 			<ui5-table-column id="column-3" slot="columns" min-width="500">

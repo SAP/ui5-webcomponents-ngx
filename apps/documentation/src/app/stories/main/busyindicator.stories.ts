@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-busy-indicator</code> signals that some operation is going on and that the user must wait. It does not block the current UI screen so other operations could be triggered in parallel. It displays 3 dots and each dot expands and shrinks at a different rate, resulting in a cascading flow of animation.
 
@@ -41,9 +41,9 @@ export const busyIndicatorWithDifferentSize: Story<BusyIndicatorComponent> = (
 ) => ({
   props: args,
   template: `
-			<ui5-busy-indicator active="" size="Small"></ui5-busy-indicator>
-			<ui5-busy-indicator active="" size="Medium"></ui5-busy-indicator>
-			<ui5-busy-indicator active="" size="Large"></ui5-busy-indicator>
+			<ui5-busy-indicator [active]="true" size="S"></ui5-busy-indicator>
+			<ui5-busy-indicator [active]="true" size="M"></ui5-busy-indicator>
+			<ui5-busy-indicator [active]="true" size="L"></ui5-busy-indicator>
 		`,
 });
 
@@ -54,7 +54,7 @@ export const busyIndicatorWrappingOtherElements: Story<
   template: `
 		<ui5-button id="fetch-btn" style="width: 120px;">Fetch List Data</ui5-button>
 
-		<ui5-busy-indicator id="busy-container" size="Medium">
+		<ui5-busy-indicator id="busy-container" size="M">
 			<ui5-list id="fetch-list" no-data-text="No Data" header-text="Available Items"></ui5-list>
 		</ui5-busy-indicator>
 

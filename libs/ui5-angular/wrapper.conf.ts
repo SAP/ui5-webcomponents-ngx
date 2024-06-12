@@ -15,13 +15,13 @@ import { format } from "prettier";
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
 
-const classNameForThemingService = (packageName: 'fiori' | 'main') => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
+const classNameForThemingService = (packageName: 'fiori' | 'main' | 'compat') => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
 
 class ThemingServiceFile extends AngularGeneratedFile {
   className: string;
   override apfPath = `@ui5/webcomponents-ngx/${this.baseDir}`;
 
-  constructor(protected baseDir: string, protected packageName: 'fiori' | 'main') {
+  constructor(protected baseDir: string, protected packageName: 'fiori' | 'main' | 'compat') {
     super();
     this.addImport('WebcomponentsThemingProvider', '@ui5/webcomponents-ngx/theming');
     this.addImport('Injectable', '@angular/core');
@@ -40,7 +40,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
       class ${this.className} extends WebcomponentsThemingProvider {
         name = ${JSON.stringify(kebabCase(this.className))};
         constructor() {
-          super(() => import('@ui5/webcomponents${this.packageName === 'main' ? '' : '-fiori'}/dist/generated/json-imports/Themes.js'))
+          super(() => import('@ui5/webcomponents${this.packageName === 'main' ? '' : `-${this.packageName}`}/dist/generated/json-imports/Themes.js'))
         }
       }
     `
@@ -59,7 +59,7 @@ class ThemingServiceFile extends AngularGeneratedFile {
   }
 }
 
-const packageNames = ['fiori', 'main'];
+const packageNames = ['fiori', 'main', 'compat'];
 
 const componentGenerator = (components: ComponentData[]) =>
   ui5componentsWrapper(components, {
@@ -79,7 +79,7 @@ const componentGenerator = (components: ComponentData[]) =>
     ],
     exportFileNameFactory: (path) => {
       const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
-      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)\.js$/, '$2').split('/');
+      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori|-compat)?\/dist\/(.*)\.js$/, '$2').split('/');
       return join(module || 'main', finalPath.map(kebabCase).join('/'), 'index.ts')
     },
     apfPathFactory: (path) => {
@@ -88,7 +88,7 @@ const componentGenerator = (components: ComponentData[]) =>
         return join('@ui5', 'webcomponents-ngx', ...pathSegments);
       }
       const module = path.match(/^@ui5\/webcomponents-(.*)\/dist\/(.*)\.js$/)?.[1];
-      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
+      const finalPath = path.replace(/^@ui5\/webcomponents(-base|-fiori|-compat)?\/dist\/(.*)(index)?\.(js|ts)$/, '$2').split('/');
       return join('@ui5/webcomponents-ngx', module || 'main', finalPath.map(kebabCase).join('/'))
     }
   })
@@ -98,6 +98,7 @@ const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
     sources: [
       '@ui5/webcomponents-base/dist/custom-elements-internal.json',
       '@ui5/webcomponents-fiori/dist/custom-elements-internal.json',
+      '@ui5/webcomponents-compat/dist/custom-elements-internal.json',
       '@ui5/webcomponents/dist/custom-elements-internal.json'
     ]
   }),
@@ -115,7 +116,7 @@ const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
       indexFile.addExport('*', '@ui5/webcomponents-ngx/icons');
       indexFile.addExport('*', '@ui5/webcomponents-ngx/config');
       for (const packageName of packageNames) {
-        const themingServiceFile = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main');
+        const themingServiceFile = new ThemingServiceFile(`${packageName}/theming`, packageName as 'fiori' | 'main' | 'compat');
         const moduleFile = filesMap[`${packageName}/ui5-${packageName}.module.ts`] as AngularModuleFile;
         const themingNgPackage = new NgPackageFile(themingServiceFile, `${packageName}/theming`);
         indexFile.addExport('*', `@ui5/webcomponents-ngx/${packageName}/theming`);
@@ -126,7 +127,7 @@ const ui5WrapperConfig: Ui5NxTransformerConfig<ComponentData> = {
           .addProvider(themingServiceFile, themingServiceFile.className, true, false)
           .addImport({
             specifiers: [],
-            path: `@ui5/webcomponents${packageName === 'main' ? '' : '-fiori'}/dist/Assets.js`
+            path: `@ui5/webcomponents${packageName === 'main' ? '' : `-${packageName}`}/dist/Assets.js`
           });
       }
 

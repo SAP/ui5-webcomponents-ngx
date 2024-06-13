@@ -1280,7 +1280,7 @@ import CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
   ],
   outputs: ['ui5Change'],
   hostDirectives: [GenericControlValueAccessor],
-  host: { '(change)': '_cva?.onChange(cvaValue)' },
+  host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
 class CheckBoxComponent {
   /**
@@ -1795,8 +1795,8 @@ import {
   outputs: ['ui5Change', 'ui5Input', 'ui5SelectionChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class ComboBoxComponent {
@@ -2097,8 +2097,8 @@ import {
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class DatePickerComponent {
@@ -2318,8 +2318,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class DateRangePickerComponent {
@@ -2543,8 +2543,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class DateTimePickerComponent {
@@ -2911,7 +2911,7 @@ import {
   ],
   outputs: ['ui5Change'],
   hostDirectives: [GenericControlValueAccessor],
-  host: { '(change)': '_cva?.onChange(cvaValue)' },
+  host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
 class FileUploaderComponent {
   /**
@@ -3324,8 +3324,8 @@ import {
   ],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class InputComponent {
@@ -4462,8 +4462,8 @@ import {
   outputs: ['ui5Change', 'ui5Input', 'ui5OpenChange', 'ui5SelectionChange'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class MultiComboBoxComponent {
@@ -4669,8 +4669,8 @@ import {
   ],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class MultiInputComponent {
@@ -5379,7 +5379,7 @@ import RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
   ],
   outputs: ['ui5Change'],
   hostDirectives: [GenericControlValueAccessor],
-  host: { '(change)': '_cva?.onChange(cvaValue)' },
+  host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
 class RadioButtonComponent {
   /**
@@ -5535,8 +5535,8 @@ import RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
   outputs: ['ui5Change', 'ui5Input'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class RangeSliderComponent {
@@ -6123,7 +6123,7 @@ import {
   ],
   outputs: ['ui5Change', 'ui5LiveChange', 'ui5Open', 'ui5Close'],
   hostDirectives: [GenericControlValueAccessor],
-  host: { '(change)': '_cva?.onChange(cvaValue)' },
+  host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
 class SelectComponent {
   /**
@@ -6269,8 +6269,8 @@ import Slider from '@ui5/webcomponents/dist/Slider.js';
   outputs: ['ui5Change', 'ui5Input'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class SliderComponent {
@@ -7047,7 +7047,7 @@ import Switch from '@ui5/webcomponents/dist/Switch.js';
   ],
   outputs: ['ui5Change'],
   hostDirectives: [GenericControlValueAccessor],
-  host: { '(change)': '_cva?.onChange(cvaValue)' },
+  host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
 class SwitchComponent {
   /**
@@ -7542,8 +7542,8 @@ import TextArea from '@ui5/webcomponents/dist/TextArea.js';
   outputs: ['ui5Change', 'ui5Input', 'ui5Select', 'ui5Scroll'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class TextAreaComponent {
@@ -7792,8 +7792,8 @@ import {
   outputs: ['ui5Change', 'ui5Input', 'ui5Open', 'ui5Close'],
   hostDirectives: [GenericControlValueAccessor],
   host: {
-    '(change)': '_cva?.onChange(cvaValue)',
-    '(input)': '_cva?.onChange(cvaValue)',
+    '(change)': '_cva?.onChange?.(cvaValue);',
+    '(input)': '_cva?.onChange?.(cvaValue);',
   },
 })
 class TimePickerComponent {

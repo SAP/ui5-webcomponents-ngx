@@ -4,7 +4,7 @@ import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
 
-The <code>ui5-list</code> component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency. <br><br> The <code>ui5-list</code> is a container for the available list items: <ul> <li><code>ui5-li</code></li> <li><code>ui5-li-custom</code></li> <li><code>ui5-li-groupheader</code></li> </ul> <br><br> To benefit from the built-in selection mechanism, you can use the available selection modes, such as <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br><br> Additionally, the <code>ui5-list</code> provides header, footer, and customization for the list item separators.
+The <code>ui5-list</code> component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency. <br><br> The <code>ui5-list</code> is a container for the available list items: <ul> <li><code>ui5-li</code></li> <li><code>ui5-li-custom</code></li> <li><code>ui5-li-group</code></li> </ul> <br><br> To benefit from the built-in selection mechanism, you can use the available selection modes, such as <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br><br> Additionally, the <code>ui5-list</code> provides header, footer, and customization for the list item separators.
 
 <br><br> <h3>Keyboard Handling</h3>
 
@@ -18,7 +18,7 @@ The user can use the following keyboard shortcuts to perform actions (such as se
 
 <h3>ES6 Module Import</h3>
 
-<code>import { ListComponent } from "@ui5/webcomponents-ngx/main/list";</code> (for <code>ui5-li-groupheader</code>)`;
+<code>import { ListComponent } from "@ui5/webcomponents-ngx/main/list";</code> (for <code>ui5-li-group</code>)`;
 export default {
   title: 'UI5 Web Components / Main / List',
   component: ListComponent,
@@ -94,20 +94,23 @@ export const listWithGroupHeaders: Story<ListComponent> = (
   props: args,
   template: `
 		<ui5-list header-text="Community" mode="MultiSelect">
-			<ui5-li-groupheader>Front End Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Jennifer</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" [iconEnd]="true">Lora</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" [iconEnd]="true">Carlotta</ui5-li>
+			<ui5-li-group header-text="Front End Developers">
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Jennifer</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" [iconEnd]="true">Lora</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" [iconEnd]="true">Carlotta</ui5-li>
+			</ui5-li-group>
 
-			<ui5-li-groupheader>Back End Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Clark</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Ellen</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Adam</ui5-li>
+			<ui5-li-group header-text="Back End Developers">
+				<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Clark</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Ellen</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Adam</ui5-li>
+			</ui5-li-group>
 
-			<ui5-li-groupheader>FullStack Developers</ui5-li-groupheader>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Susan</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">David</ui5-li>
-			<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Natalie</ui5-li>
+			<ui5-li-group header-text="Full-stack Developers">
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Susan</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">David</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Natalie</ui5-li>
+			</ui5-li-group>
 		</ui5-list>
 	`,
 });

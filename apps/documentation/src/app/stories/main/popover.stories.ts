@@ -42,17 +42,20 @@ export default {
 
 export const BasicPopover: Story = () => ({
   template: `
-    <ui5-button #openPopoverButton="ui5Button" (ui5Click)="popover.showAt(openPopoverButton.element)" design="Emphasized">Open Popover</ui5-button>
-    <ui5-popover #popover="ui5Popover" header-text="Newsletter subscription">
-        <div>
-            <div>
-                <ui5-label for="emailInput" required>Email:</ui5-label>
-                <ui5-input id="emailInput" style="min-width: 150px;"placeholder="Enter Email"></ui5-input>
-            </div>
-        </div>
-        <div slot="footer">
-            <ui5-button id="closePopoverButton" design="Emphasized">Subscribe</ui5-button>
-        </div>
+    <ui5-button
+      id="btn"
+      design="Emphasized"
+      (click)="popover.open=true" 
+    >
+      Open Popover
+    </ui5-button>
+
+    <ui5-popover #popover="ui5Popover"
+      opener="btn" 
+      header-text="Newsletter subscription"
+      >
+        <ui5-label for="emailInput" required>Email:</ui5-label>
+        <ui5-input id="emailInput" style="min-width: 150px;"placeholder="Enter Email"></ui5-input>
     </ui5-popover>
   `
 });

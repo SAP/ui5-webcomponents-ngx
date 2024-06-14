@@ -6,7 +6,7 @@ import { utilsFile } from "./utils";
 import { outputTypesImportData } from "./output-types-import-data";
 import { genericCva } from "./generic-cva";
 import { format } from "prettier";
-
+import { camelCase } from 'lodash';
 export class ComponentFile extends AngularGeneratedFile {
   private componentClassName = `${this.componentData.baseName}Component`;
   private _cvaGetterCode?: string;
@@ -73,6 +73,7 @@ export class ComponentFile extends AngularGeneratedFile {
         JSON.stringify(this.componentData.outputs.map(i => this.outputPublicName(i)))
       ]);
     }
+    metadata.push(['exportAs', JSON.stringify(camelCase(this.selector))])
     if (this.componentData.formData.length > 0) {
       metadata.push([
         'hostDirectives',

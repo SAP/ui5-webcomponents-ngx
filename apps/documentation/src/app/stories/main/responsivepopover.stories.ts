@@ -31,18 +31,18 @@ export default {
 } as Meta;
 
 export const BasicResponsivePopover: Story = () => ({
-  template: `<ui5-button #openBtn="ui5Button" (ui5Click)="popover.showAt(openBtn.element)" design="Emphasized">Open ResponsivePopover</ui5-button>
+  template: `
+  <ui5-button id="btn"  (click)="popover.open=true"  design="Emphasized">Open ResponsivePopover</ui5-button>
 
-<ui5-responsive-popover #popover="ui5ResponsivePopover" header-text="Newsletter subscription">
-    <div style="width: auto;padding: 2rem;display: flex;flex-direction: column;justify-content: center;">
-        <ui5-label for="emailInput" required>Email:</ui5-label>
-        <ui5-input id="emailInput" class="samples-margin-top" style="min-width: 150px;"
-                   placeholder="Enter Email"></ui5-input>
-        <ui5-label>Note: If you open the page in mobile, dialog would be displayed.</ui5-label>
-    </div>
-    <div slot="footer" class="popover-footer">
-        <ui5-button id="closePopoverButton" design="Emphasized">Subscribe</ui5-button>
-    </div>
-</ui5-responsive-popover>
+  <ui5-responsive-popover opener="btn" #popover="ui5ResponsivePopover" header-text="Newsletter subscription">
+      <div style="width: auto;padding: 2rem;display: flex;flex-direction: column;justify-content: center;">
+          <ui5-label for="emailInput" required>Email:</ui5-label>
+          <ui5-input id="emailInput" class="samples-margin-top" style="min-width: 150px;"
+                    placeholder="Enter Email">
+          </ui5-input>
+      </div>
+
+      <ui5-label>Note:</ui5-label><ui5-text>If you open the page in mobile, dialog would be displayed.</ui5-text>
+  </ui5-responsive-popover>
   `
 });

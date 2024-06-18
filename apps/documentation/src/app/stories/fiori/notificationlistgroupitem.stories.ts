@@ -5,17 +5,22 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview The <code>ui5-li-notification-group</code> is a special type of list item, that unlike others can group items within self, usually <code>ui5-li-notification</code> items. <br>
+const description = `
+### Overview 
+
+The <code>ui5-li-notification-group</code> is a special type of list item, that unlike others can group items within self, usually <code>ui5-li-notification</code> items. <br>
 
 The component consists of: <ul> <li><code>Toggle</code> button to expand and collapse the group</li> <li><code>Priority</code> icon to display the priority of the group</li> <li><code>TitleText</code> to entitle the group</li> <li>Custom actions - with the use of <code>ui5-menu</code></li> <li>Items of the group</li> </ul>
 
-<h3>Usage</h3> The component can be used in a standard <code>ui5-list</code>.
+### Usage 
 
-<h3>CSS Shadow Parts</h3>
+The component can be used in a standard <code>ui5-list</code>.
+
+### CSS Shadow Parts
 
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li-notification-group</code> exposes the following CSS Shadow Parts: <ul> <li>title-text - Used to style the titleText of the notification list group item</li> </ul>
 
-<h3>ES6 Module Import</h3>
+### ES6 Module Import
 
 <code>import { NotificationListGroupItemComponent } from "@ui5/webcomponents-ngx/fiori/notification-list-group-item";</code> (optional)`;
 export default {

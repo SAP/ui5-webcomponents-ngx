@@ -5,15 +5,22 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
+const description = `
+### Overview 
+
+The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
 
 The <code>ui5-view-settings-dialog</code> interrupts the current application processing as it is the only focused UI element and the main screen is dimmed/blocked. The <code>ui5-view-settings-dialog</code> is modal, which means that user action is required before returning to the parent window is possible.
 
-<h3>Structure</h3> A <code>ui5-view-settings-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-view-settings-dialog</code> is usually displayed at the center of the screen.
+### Structure
 
-<h3>Responsive Behavior</h3> <code>ui5-view-settings-dialog</code> stretches on full screen on phones.
+A <code>ui5-view-settings-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-view-settings-dialog</code> is usually displayed at the center of the screen.
 
-<h3>ES6 Module Import</h3>
+### Responsive Behavior 
+
+<code>ui5-view-settings-dialog</code> stretches on full screen on phones.
+
+### ES6 Module Import
 
 <code>import { ViewSettingsDialogComponent } from "@ui5/webcomponents-ngx/fiori/view-settings-dialog";</code>`;
 export default {

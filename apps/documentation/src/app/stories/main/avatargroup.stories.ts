@@ -42,23 +42,44 @@ export default {
   },
 } as Meta;
 
-export const avatarGroupSizes: Story<AvatarGroupComponent> = (
+export const avatarGroupTypeIndividual: Story<AvatarGroupComponent> = (
   args: AvatarGroupComponent & any
 ) => ({
   props: args,
   template: `
 		<ui5-avatar-group type="Individual">
-			<ui5-avatar size="S">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_1.png" alt="Man Avatar 1">
 			</ui5-avatar>
-			<ui5-avatar size="S" initials="JD"></ui5-avatar>
-			<ui5-avatar size="S">
+			<ui5-avatar initials="JD"></ui5-avatar>
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/woman_avatar_5.png" alt="Woman Avatar 5">
 			</ui5-avatar>
-			<ui5-avatar size="S">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
 			</ui5-avatar>
 		</ui5-avatar-group>
 	
+	`,
+});
+
+
+export const avatarGroupTypeGroup: Story<AvatarGroupComponent> = (
+  args: AvatarGroupComponent & any
+) => ({
+  props: args,
+  template: `
+		<ui5-avatar-group type="Group">
+			<ui5-avatar>
+				<img src="../../../assets/images/avatars/man_avatar_1.png" alt="Man Avatar 1">
+			</ui5-avatar>
+			<ui5-avatar initials="JD"></ui5-avatar>
+			<ui5-avatar>
+				<img src="../../../assets/images/avatars/woman_avatar_5.png" alt="Woman Avatar 5">
+			</ui5-avatar>
+			<ui5-avatar>
+				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
+			</ui5-avatar>
+		</ui5-avatar-group>
 	`,
 });

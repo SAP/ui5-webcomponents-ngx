@@ -55,15 +55,31 @@ export const illustratedMessage: Story<IllustratedMessageComponent> = (
 	`,
 });
 
-export const illustratedMessageWithCustomTitleAndLinkInSubtitle: Story<
-  IllustratedMessageComponent
-> = (args: IllustratedMessageComponent & any) => ({
+
+export const illustratedMessageWithCustomTitleAndSubtitle: Story<IllustratedMessageComponent> = (
+  args: IllustratedMessageComponent & any
+) => ({
   props: args,
   template: `
-		<ui5-illustrated-message name="UnableToUpload">
-			<ui5-title slot="title" level="H1">Something went wrong</ui5-title>
-			<div slot="subtitle">Please try again or contact us at <ui5-link>example@example.com</ui5-link></div>
-			<ui5-button icon="refresh">Try again</ui5-button>
+	<ui5-illustrated-message name="tnt/Success">
+			<ui5-title slot="title" level="H1">Great job!</ui5-title>
+			<div slot="subtitle">Form more information: <ui5-link href="example.com">example.com</ui5-link></div>
 		</ui5-illustrated-message>
+	`,
+});
+
+
+export const illustratedMessageInDialog: Story<IllustratedMessageComponent> = (
+  args: IllustratedMessageComponent & any
+) => ({
+  props: args,
+  template: `
+	<ui5-button (click)="dialog.open=true">Open Dialog</ui5-button>
+    <ui5-dialog #dialog="ui5Dialog" header-text="Error">
+        <ui5-illustrated-message name="UnableToLoad"></ui5-illustrated-message>
+        <ui5-bar design="Footer" slot="footer">
+            <ui5-button (click)="dialog.open=false" design="Emphasized" slot="endContent">Close</ui5-button>
+        </ui5-bar>
+    </ui5-dialog>
 	`,
 });

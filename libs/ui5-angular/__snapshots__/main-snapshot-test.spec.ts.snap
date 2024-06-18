@@ -24,6 +24,7 @@ import {
   template: '<ng-content></ng-content>',
   inputs: ['type', 'accessibilityAttributes'],
   outputs: ['ui5Click', 'ui5Overflow'],
+  exportAs: 'ui5AvatarGroup',
 })
 class AvatarGroupComponent {
   /**
@@ -109,6 +110,7 @@ import {
     'accessibleName',
     'accessibilityAttributes',
   ],
+  exportAs: 'ui5Avatar',
 })
 class AvatarComponent {
   /**
@@ -243,6 +245,7 @@ import Bar from '@ui5/webcomponents/dist/Bar.js';
   selector: 'ui5-bar',
   template: '<ng-content></ng-content>',
   inputs: ['design'],
+  exportAs: 'ui5Bar',
 })
 class BarComponent {
   /**
@@ -283,6 +286,7 @@ import BreadcrumbsItem from '@ui5/webcomponents/dist/BreadcrumbsItem.js';
   selector: 'ui5-breadcrumbs-item',
   template: '<ng-content></ng-content>',
   inputs: ['href', 'target', 'accessibleName'],
+  exportAs: 'ui5BreadcrumbsItem',
 })
 class BreadcrumbsItemComponent {
   /**
@@ -351,6 +355,7 @@ import {
   template: '<ng-content></ng-content>',
   inputs: ['design', 'separators'],
   outputs: ['ui5ItemClick'],
+  exportAs: 'ui5Breadcrumbs',
 })
 class BreadcrumbsComponent {
   /**
@@ -413,6 +418,7 @@ import BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator.js';
   selector: 'ui5-busy-indicator',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'size', 'active', 'delay', 'textPlacement'],
+  exportAs: 'ui5BusyIndicator',
 })
 class BusyIndicatorComponent {
   /**
@@ -503,6 +509,7 @@ import {
     'accessibleRole',
   ],
   outputs: ['ui5Click'],
+  exportAs: 'ui5Button',
 })
 class ButtonComponent {
   /**
@@ -641,6 +648,7 @@ import CalendarDateRange from '@ui5/webcomponents/dist/CalendarDateRange.js';
   selector: 'ui5-date-range',
   template: '<ng-content></ng-content>',
   inputs: ['startValue', 'endValue'],
+  exportAs: 'ui5DateRange',
 })
 class CalendarDateRangeComponent {
   /**
@@ -688,6 +696,7 @@ import CalendarDate from '@ui5/webcomponents/dist/CalendarDate.js';
   selector: 'ui5-date',
   template: '<ng-content></ng-content>',
   inputs: ['value'],
+  exportAs: 'ui5Date',
 })
 class CalendarDateComponent {
   /**
@@ -729,6 +738,7 @@ import CalendarLegendItem from '@ui5/webcomponents/dist/CalendarLegendItem.js';
   selector: 'ui5-calendar-legend-item',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'type'],
+  exportAs: 'ui5CalendarLegendItem',
 })
 class CalendarLegendItemComponent {
   /**
@@ -807,6 +817,7 @@ import CalendarLegend from '@ui5/webcomponents/dist/CalendarLegend.js';
     'hideNonWorkingDay',
     'hideWorkingDay',
   ],
+  exportAs: 'ui5CalendarLegend',
 })
 class CalendarLegendComponent {
   /**
@@ -884,6 +895,7 @@ import {
     'hideWeekNumbers',
   ],
   outputs: ['ui5SelectionChange'],
+  exportAs: 'ui5Calendar',
 })
 class CalendarComponent {
   /**
@@ -991,6 +1003,7 @@ import CardHeader from '@ui5/webcomponents/dist/CardHeader.js';
   template: '<ng-content></ng-content>',
   inputs: ['titleText', 'subtitleText', 'additionalText', 'interactive'],
   outputs: ['ui5Click'],
+  exportAs: 'ui5CardHeader',
 })
 class CardHeaderComponent {
   /**
@@ -1054,6 +1067,7 @@ import Card from '@ui5/webcomponents/dist/Card.js';
   selector: 'ui5-card',
   template: '<ng-content></ng-content>',
   inputs: ['accessibleName', 'accessibleNameRef'],
+  exportAs: 'ui5Card',
 })
 class CardComponent {
   /**
@@ -1131,6 +1145,7 @@ import {
     'arrowsPlacement',
   ],
   outputs: ['ui5Navigate'],
+  exportAs: 'ui5Carousel',
 })
 class CarouselComponent {
   /**
@@ -1279,6 +1294,7 @@ import CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
     'name',
   ],
   outputs: ['ui5Change'],
+  exportAs: 'ui5Checkbox',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
@@ -1417,6 +1433,7 @@ import ColorPaletteItem from '@ui5/webcomponents/dist/ColorPaletteItem.js';
   selector: 'ui5-color-palette-item',
   template: '<ng-content></ng-content>',
   inputs: ['value', 'selected'],
+  exportAs: 'ui5ColorPaletteItem',
 })
 class ColorPaletteItemComponent {
   /**
@@ -1487,6 +1504,7 @@ import {
     'opener',
   ],
   outputs: ['ui5ItemClick', 'ui5Close'],
+  exportAs: 'ui5ColorPalettePopover',
 })
 class ColorPalettePopoverComponent {
   /**
@@ -1572,6 +1590,7 @@ import {
   selector: 'ui5-color-palette',
   template: '<ng-content></ng-content>',
   outputs: ['ui5ItemClick'],
+  exportAs: 'ui5ColorPalette',
 })
 class ColorPaletteComponent {
   /**
@@ -1615,6 +1634,7 @@ import ColorPicker from '@ui5/webcomponents/dist/ColorPicker.js';
   template: '<ng-content></ng-content>',
   inputs: ['value', 'name'],
   outputs: ['ui5Change'],
+  exportAs: 'ui5ColorPicker',
 })
 class ColorPickerComponent {
   /**
@@ -1669,6 +1689,7 @@ import ComboBoxItemGroup from '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
   selector: 'ui5-cb-item-group',
   template: '<ng-content></ng-content>',
   inputs: ['text'],
+  exportAs: 'ui5CbItemGroup',
 })
 class ComboBoxItemGroupComponent {
   /**
@@ -1709,6 +1730,7 @@ import ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem.js';
   selector: 'ui5-cb-item',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'additionalText'],
+  exportAs: 'ui5CbItem',
 })
 class ComboBoxItemComponent {
   /**
@@ -1793,6 +1815,7 @@ import {
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5SelectionChange'],
+  exportAs: 'ui5Combobox',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -1953,6 +1976,7 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
     'accessibleName',
   ],
   outputs: ['ui5DetailClick'],
+  exportAs: 'ui5LiCustom',
 })
 class CustomListItemComponent {
   /**
@@ -2095,6 +2119,7 @@ import {
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  exportAs: 'ui5DatePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -2316,6 +2341,7 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'delimiter',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  exportAs: 'ui5DaterangePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -2541,6 +2567,7 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  exportAs: 'ui5DatetimePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -2748,6 +2775,7 @@ import { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
     'state',
   ],
   outputs: ['ui5BeforeOpen', 'ui5Open', 'ui5BeforeClose', 'ui5Close'],
+  exportAs: 'ui5Dialog',
 })
 class DialogComponent {
   /**
@@ -2910,6 +2938,7 @@ import {
     'valueState',
   ],
   outputs: ['ui5Change'],
+  exportAs: 'ui5FileUploader',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
@@ -3010,6 +3039,7 @@ import FormGroup from '@ui5/webcomponents/dist/FormGroup.js';
   selector: 'ui5-form-group',
   template: '<ng-content></ng-content>',
   inputs: ['headerText', 'columnSpan'],
+  exportAs: 'ui5FormGroup',
 })
 class FormGroupComponent {
   /**
@@ -3056,6 +3086,7 @@ import FormItem from '@ui5/webcomponents/dist/FormItem.js';
   selector: 'ui5-form-item',
   template: '<ng-content></ng-content>',
   inputs: ['columnSpan'],
+  exportAs: 'ui5FormItem',
 })
 class FormItemComponent {
   /**
@@ -3101,6 +3132,7 @@ import Form from '@ui5/webcomponents/dist/Form.js';
   selector: 'ui5-form',
   template: '<ng-content></ng-content>',
   inputs: ['layout', 'labelSpan', 'headerText', 'itemSpacing'],
+  exportAs: 'ui5Form',
 })
 class FormComponent {
   /**
@@ -3175,6 +3207,7 @@ import Icon from '@ui5/webcomponents/dist/Icon.js';
   selector: 'ui5-icon',
   template: '<ng-content></ng-content>',
   inputs: ['design', 'name', 'accessibleName', 'showTooltip', 'mode'],
+  exportAs: 'ui5Icon',
 })
 class IconComponent {
   /**
@@ -3322,6 +3355,7 @@ import {
     'ui5Open',
     'ui5Close',
   ],
+  exportAs: 'ui5Input',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -3494,6 +3528,7 @@ import Label from '@ui5/webcomponents/dist/Label.js';
   selector: 'ui5-label',
   template: '<ng-content></ng-content>',
   inputs: ['for', 'showColon', 'required', 'wrappingType'],
+  exportAs: 'ui5Label',
 })
 class LabelComponent {
   /**
@@ -3588,6 +3623,7 @@ import {
     'accessibilityAttributes',
   ],
   outputs: ['ui5Click'],
+  exportAs: 'ui5Link',
 })
 class LinkComponent {
   /**
@@ -3706,6 +3742,7 @@ import ListItemGroup from '@ui5/webcomponents/dist/ListItemGroup.js';
   selector: 'ui5-li-group',
   template: '<ng-content></ng-content>',
   inputs: ['headerText', 'headerAccessibleName'],
+  exportAs: 'ui5LiGroup',
 })
 class ListItemGroupComponent {
   /**
@@ -3808,6 +3845,7 @@ import {
     'ui5MoveOver',
     'ui5Move',
   ],
+  exportAs: 'ui5List',
 })
 class ListComponent {
   /**
@@ -4008,6 +4046,7 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
     'accessibleName',
   ],
   outputs: ['ui5DetailClick'],
+  exportAs: 'ui5MenuItem',
 })
 class MenuItemComponent {
   /**
@@ -4166,6 +4205,7 @@ import {
     'ui5BeforeClose',
     'ui5Close',
   ],
+  exportAs: 'ui5Menu',
 })
 class MenuComponent {
   /**
@@ -4256,6 +4296,7 @@ import MessageStrip from '@ui5/webcomponents/dist/MessageStrip.js';
   template: '<ng-content></ng-content>',
   inputs: ['design', 'colorScheme', 'hideIcon', 'hideCloseButton'],
   outputs: ['ui5Close'],
+  exportAs: 'ui5MessageStrip',
 })
 class MessageStripComponent {
   /**
@@ -4328,6 +4369,7 @@ import MultiComboBoxGroupItem from '@ui5/webcomponents/dist/MultiComboBoxGroupIt
   selector: 'ui5-mcb-group-item',
   template: '<ng-content></ng-content>',
   inputs: ['text'],
+  exportAs: 'ui5McbGroupItem',
 })
 class MultiComboBoxGroupItemComponent {
   /**
@@ -4368,6 +4410,7 @@ import MultiComboBoxItem from '@ui5/webcomponents/dist/MultiComboBoxItem.js';
   selector: 'ui5-mcb-item',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'additionalText', 'selected'],
+  exportAs: 'ui5McbItem',
 })
 class MultiComboBoxItemComponent {
   /**
@@ -4460,6 +4503,7 @@ import {
     'showSelectAll',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5OpenChange', 'ui5SelectionChange'],
+  exportAs: 'ui5MultiCombobox',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -4667,6 +4711,7 @@ import {
     'ui5ValueHelpTrigger',
     'ui5TokenDelete',
   ],
+  exportAs: 'ui5MultiInput',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -4858,6 +4903,7 @@ import OptionCustom from '@ui5/webcomponents/dist/OptionCustom.js';
   selector: 'ui5-option-custom',
   template: '<ng-content></ng-content>',
   inputs: ['selected', 'displayText', 'value', 'tooltip'],
+  exportAs: 'ui5OptionCustom',
 })
 class OptionCustomComponent {
   /**
@@ -4915,6 +4961,7 @@ import Option from '@ui5/webcomponents/dist/Option.js';
   selector: 'ui5-option',
   template: '<ng-content></ng-content>',
   inputs: ['selected', 'value', 'icon', 'additionalText', 'tooltip'],
+  exportAs: 'ui5Option',
 })
 class OptionComponent {
   /**
@@ -5001,6 +5048,7 @@ import Panel from '@ui5/webcomponents/dist/Panel.js';
     'stickyHeader',
   ],
   outputs: ['ui5Toggle'],
+  exportAs: 'ui5Panel',
 })
 class PanelComponent {
   /**
@@ -5132,6 +5180,7 @@ import { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
     'opener',
   ],
   outputs: ['ui5BeforeOpen', 'ui5Open', 'ui5BeforeClose', 'ui5Close'],
+  exportAs: 'ui5Popover',
 })
 class PopoverComponent {
   /**
@@ -5282,6 +5331,7 @@ import ProgressIndicator from '@ui5/webcomponents/dist/ProgressIndicator.js';
     'displayValue',
     'valueState',
   ],
+  exportAs: 'ui5ProgressIndicator',
 })
 class ProgressIndicatorComponent {
   /**
@@ -5378,6 +5428,7 @@ import RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
     'accessibleNameRef',
   ],
   outputs: ['ui5Change'],
+  exportAs: 'ui5RadioButton',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
@@ -5533,6 +5584,7 @@ import RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
     'endValue',
   ],
   outputs: ['ui5Change', 'ui5Input'],
+  exportAs: 'ui5RangeSlider',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -5678,6 +5730,7 @@ import RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
     'tooltip',
   ],
   outputs: ['ui5Change'],
+  exportAs: 'ui5RatingIndicator',
 })
 class RatingIndicatorComponent {
   /**
@@ -5810,6 +5863,7 @@ import ResponsivePopover from '@ui5/webcomponents/dist/ResponsivePopover.js';
     'opener',
   ],
   outputs: ['ui5BeforeOpen', 'ui5Open', 'ui5BeforeClose', 'ui5Close'],
+  exportAs: 'ui5ResponsivePopover',
 })
 class ResponsivePopoverComponent {
   /**
@@ -5962,6 +6016,7 @@ import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js'
     'accessibleNameRef',
     'icon',
   ],
+  exportAs: 'ui5SegmentedButtonItem',
 })
 class SegmentedButtonItemComponent {
   /**
@@ -6041,6 +6096,7 @@ import {
   template: '<ng-content></ng-content>',
   inputs: ['accessibleName', 'selectionMode'],
   outputs: ['ui5SelectionChange'],
+  exportAs: 'ui5SegmentedButton',
 })
 class SegmentedButtonComponent {
   /**
@@ -6122,6 +6178,7 @@ import {
     'value',
   ],
   outputs: ['ui5Change', 'ui5LiveChange', 'ui5Open', 'ui5Close'],
+  exportAs: 'ui5Select',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
@@ -6267,6 +6324,7 @@ import Slider from '@ui5/webcomponents/dist/Slider.js';
     'value',
   ],
   outputs: ['ui5Change', 'ui5Input'],
+  exportAs: 'ui5Slider',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -6386,6 +6444,7 @@ import SpecialCalendarDate from '@ui5/webcomponents/dist/SpecialCalendarDate.js'
   selector: 'ui5-special-date',
   template: '<ng-content></ng-content>',
   inputs: ['value', 'type'],
+  exportAs: 'ui5SpecialDate',
 })
 class SpecialCalendarDateComponent {
   /**
@@ -6464,6 +6523,7 @@ import SplitButton from '@ui5/webcomponents/dist/SplitButton.js';
   template: '<ng-content></ng-content>',
   inputs: ['icon', 'activeArrowButton', 'design', 'disabled', 'accessibleName'],
   outputs: ['ui5Click', 'ui5ArrowClick'],
+  exportAs: 'ui5SplitButton',
 })
 class SplitButtonComponent {
   /**
@@ -6580,6 +6640,7 @@ import StandardListItem from '@ui5/webcomponents/dist/StandardListItem.js';
     'accessibleName',
   ],
   outputs: ['ui5DetailClick'],
+  exportAs: 'ui5Li',
 })
 class StandardListItemComponent {
   /**
@@ -6753,6 +6814,7 @@ import {
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5ValueStateChange'],
+  exportAs: 'ui5StepInput',
 })
 class StepInputComponent {
   /**
@@ -6870,6 +6932,7 @@ import SuggestionGroupItem from '@ui5/webcomponents/dist/SuggestionGroupItem.js'
   selector: 'ui5-suggestion-group-item',
   template: '<ng-content></ng-content>',
   inputs: ['text'],
+  exportAs: 'ui5SuggestionGroupItem',
 })
 class SuggestionGroupItemComponent {
   /**
@@ -6928,6 +6991,7 @@ import SuggestionItem from '@ui5/webcomponents/dist/SuggestionItem.js';
     'additionalText',
     'additionalTextState',
   ],
+  exportAs: 'ui5SuggestionItem',
 })
 class SuggestionItemComponent {
   /**
@@ -7046,6 +7110,7 @@ import Switch from '@ui5/webcomponents/dist/Switch.js';
     'name',
   ],
   outputs: ['ui5Change'],
+  exportAs: 'ui5Switch',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
 })
@@ -7193,6 +7258,7 @@ import {
     'contentBackgroundDesign',
   ],
   outputs: ['ui5TabSelect', 'ui5MoveOver', 'ui5Move'],
+  exportAs: 'ui5Tabcontainer',
 })
 class TabContainerComponent {
   /**
@@ -7277,6 +7343,7 @@ import TabSeparator from '@ui5/webcomponents/dist/TabSeparator.js';
   standalone: true,
   selector: 'ui5-tab-separator',
   template: '<ng-content></ng-content>',
+  exportAs: 'ui5TabSeparator',
 })
 class TabSeparatorComponent {
   private elementRef: ElementRef<TabSeparator> = inject(ElementRef);
@@ -7319,6 +7386,7 @@ import Tab from '@ui5/webcomponents/dist/Tab.js';
   selector: 'ui5-tab',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'disabled', 'additionalText', 'icon', 'design', 'selected'],
+  exportAs: 'ui5Tab',
 })
 class TabComponent {
   /**
@@ -7413,6 +7481,7 @@ import Tag from '@ui5/webcomponents/dist/Tag.js';
     'size',
   ],
   outputs: ['ui5Click'],
+  exportAs: 'ui5Tag',
 })
 class TagComponent {
   /**
@@ -7540,6 +7609,7 @@ import TextArea from '@ui5/webcomponents/dist/TextArea.js';
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5Select', 'ui5Scroll'],
+  exportAs: 'ui5Textarea',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -7701,6 +7771,7 @@ import Text from '@ui5/webcomponents/dist/Text.js';
   selector: 'ui5-text',
   template: '<ng-content></ng-content>',
   inputs: ['maxLines'],
+  exportAs: 'ui5Text',
 })
 class TextComponent {
   /**
@@ -7790,6 +7861,7 @@ import {
     'open',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5Open', 'ui5Close'],
+  exportAs: 'ui5TimePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
     '(change)': '_cva?.onChange?.(cvaValue);',
@@ -7909,6 +7981,7 @@ import Title from '@ui5/webcomponents/dist/Title.js';
   selector: 'ui5-title',
   template: '<ng-content></ng-content>',
   inputs: ['wrappingType', 'level'],
+  exportAs: 'ui5Title',
 })
 class TitleComponent {
   /**
@@ -7960,6 +8033,7 @@ import Toast from '@ui5/webcomponents/dist/Toast.js';
   template: '<ng-content></ng-content>',
   inputs: ['duration', 'placement', 'open'],
   outputs: ['ui5Close'],
+  exportAs: 'ui5Toast',
 })
 class ToastComponent {
   /**
@@ -8058,6 +8132,7 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
     'pressed',
   ],
   outputs: ['ui5Click'],
+  exportAs: 'ui5ToggleButton',
 })
 class ToggleButtonComponent {
   /**
@@ -8201,6 +8276,7 @@ import Token from '@ui5/webcomponents/dist/Token.js';
   selector: 'ui5-token',
   template: '<ng-content></ng-content>',
   inputs: ['text', 'selected'],
+  exportAs: 'ui5Token',
 })
 class TokenComponent {
   /**
@@ -8256,6 +8332,7 @@ import {
   template: '<ng-content></ng-content>',
   inputs: ['readonly', 'disabled', 'accessibleName', 'accessibleNameRef'],
   outputs: ['ui5TokenDelete', 'ui5SelectionChange'],
+  exportAs: 'ui5Tokenizer',
 })
 class TokenizerComponent {
   /**
@@ -8357,6 +8434,7 @@ import {
     'width',
   ],
   outputs: ['ui5Click'],
+  exportAs: 'ui5ToolbarButton',
 })
 class ToolbarButtonComponent {
   /**
@@ -8497,6 +8575,7 @@ import ToolbarSelectOption from '@ui5/webcomponents/dist/ToolbarSelectOption.js'
   selector: 'ui5-toolbar-select-option',
   template: '<ng-content></ng-content>',
   inputs: ['selected'],
+  exportAs: 'ui5ToolbarSelectOption',
 })
 class ToolbarSelectOptionComponent {
   /**
@@ -8559,6 +8638,7 @@ import {
     'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Open', 'ui5Close'],
+  exportAs: 'ui5ToolbarSelect',
 })
 class ToolbarSelectComponent {
   /**
@@ -8648,6 +8728,7 @@ import ToolbarSeparator from '@ui5/webcomponents/dist/ToolbarSeparator.js';
   selector: 'ui5-toolbar-separator',
   template: '<ng-content></ng-content>',
   inputs: ['overflowPriority', 'preventOverflowClosing'],
+  exportAs: 'ui5ToolbarSeparator',
 })
 class ToolbarSeparatorComponent {
   /**
@@ -8695,6 +8776,7 @@ import ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
   selector: 'ui5-toolbar-spacer',
   template: '<ng-content></ng-content>',
   inputs: ['overflowPriority', 'preventOverflowClosing', 'width'],
+  exportAs: 'ui5ToolbarSpacer',
 })
 class ToolbarSpacerComponent {
   /**
@@ -8749,6 +8831,7 @@ import Toolbar from '@ui5/webcomponents/dist/Toolbar.js';
   selector: 'ui5-toolbar',
   template: '<ng-content></ng-content>',
   inputs: ['alignContent', 'accessibleName', 'accessibleNameRef'],
+  exportAs: 'ui5Toolbar',
 })
 class ToolbarComponent {
   /**
@@ -8833,6 +8916,7 @@ import TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
     'hideSelectionElement',
   ],
   outputs: ['ui5DetailClick'],
+  exportAs: 'ui5TreeItemCustom',
 })
 class TreeItemCustomComponent {
   /**
@@ -9013,6 +9097,7 @@ import TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
     'additionalText',
   ],
   outputs: ['ui5DetailClick'],
+  exportAs: 'ui5TreeItem',
 })
 class TreeItemComponent {
   /**
@@ -9201,6 +9286,7 @@ import {
     'ui5ItemDelete',
     'ui5SelectionChange',
   ],
+  exportAs: 'ui5Tree',
 })
 class TreeComponent {
   /**

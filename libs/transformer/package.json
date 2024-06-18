@@ -1,14 +1,14 @@
 {
   "name": "@ui5/webcomponents-transformer",
-  "version": "0.3.0-rc.2",
+  "version": "0.3.0-rc.3",
   "type": "commonjs",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "peerDependencies": {
     "@ui5/webcomponents": "2.0.0-rc.5",
     "@ui5/webcomponents-base": "2.0.0-rc.5",
-    "@ui5/webcomponents-fiori": "2.0.0-rc.5",
     "@ui5/webcomponents-compat": "2.0.0-rc.5",
+    "@ui5/webcomponents-fiori": "2.0.0-rc.5",
     "@ui5/webcomponents-icons": "2.0.0-rc.5",
     "@ui5/webcomponents-icons-business-suite": "2.0.0-rc.5",
     "@ui5/webcomponents-icons-tnt": "2.0.0-rc.5"

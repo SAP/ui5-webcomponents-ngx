@@ -34,7 +34,7 @@ export class GenericCva extends AngularGeneratedFile {
         },
       ],
       host: {
-        "(focusout)": "onTouched()",
+        "(focusout)": "onTouched?.()",
       },
     `
   }
@@ -77,19 +77,18 @@ export class GenericCva extends AngularGeneratedFile {
 
   override getCode(): Promise<string> {
     return format([
-        this.getImportsCode(),
-        `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`,
-        this.cvaComponentInterfaceCode(),
-        `@Directive({${this.controlValueAccessorDirectiveMetadataCode()}})`,
-        this.controlValueAccessorDirectiveClassCode(),
-        this.getExportsCode()
-      ].join('\n'),
-      {
-        parser: 'typescript',
-        singleQuote: true,
-        plugins: ['prettier-plugin-organize-imports']
-      }
-    );
+      this.getImportsCode(),
+      this.cvaComponentInterfaceCode(),
+      `@Directive({${this.controlValueAccessorDirectiveMetadataCode()}})`,
+      this.controlValueAccessorDirectiveClassCode(),
+      this.getExportsCode()
+    ].join('\n'),
+    {
+      parser: 'typescript',
+      singleQuote: true,
+      plugins: ['prettier-plugin-organize-imports']
+    }
+  );
   }
 }
 

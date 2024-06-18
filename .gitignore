@@ -18,6 +18,7 @@ node_modules
 *.sublime-workspace
 
 libs/ui5-angular/fiori/
+libs/ui5-angular/compat/
 libs/ui5-angular/main/
 libs/ui5-angular/generic-cva/
 libs/ui5-angular/utils/

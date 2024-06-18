@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The <code>ui5-color-picker</code> allows users to choose any color and provides different input options for selecting colors.
+const description = `### Overview The <code>ui5-color-picker</code> allows users to choose any color and provides different input options for selecting colors.
 
 <h3>Usage</h3>
 

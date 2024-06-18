@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TitleComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-title</code> component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
 

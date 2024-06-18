@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 An image-like component that has different display options for representing images and icons in different shapes and sizes, depending on the use case.
 
@@ -140,28 +140,39 @@ export const avatarWithVisualAffordance: Story<AvatarComponent> = (
   template: `
 		<ui5-avatar shape="Circle">
 			<img src="../../../assets/images/avatars/woman_avatar_3.png" alt="Woman 3">
-			<ui5-badge slot="badge">
+			<ui5-tag slot="badge">
 				<ui5-icon slot="icon" name="filter"></ui5-icon>
-			</ui5-badge>
+			</ui5-tag>
 		</ui5-avatar>
 		<ui5-avatar initials="AB" size="L" shape="Circle">
-			<ui5-badge slot="badge">
+			<ui5-tag slot="badge">
 				<ui5-icon slot="icon" name="document"></ui5-icon>
-			</ui5-badge>
+			</ui5-tag>
 		</ui5-avatar>
 		<ui5-avatar shape="Square">
 			<img src="../../../assets/images/avatars/woman_avatar_4.png" alt="Woman 4">
-			<ui5-badge slot="badge">
+			<ui5-tag slot="badge">
 				<ui5-icon slot="icon" name="accept"></ui5-icon>
-			</ui5-badge>
+			</ui5-tag>
 		</ui5-avatar>
 		<ui5-avatar initials="CD" size="L" shape="Square">
-			<ui5-badge slot="badge">
+			<ui5-tag slot="badge">
 				<ui5-icon slot="icon" name="employee"></ui5-icon>
-			</ui5-badge>
+			</ui5-tag>
 		</ui5-avatar>
 		<ui5-avatar initials="AB" color-scheme="Accent1">
 			<span slot="badge" class="custom-badge">1</span>
 		</ui5-avatar>
+
+		<style>
+			.custom-badge {
+				color: var(--sapAccentColor2);
+				background: var(--sapAccentBackgroundColor3);
+				font-family: var(--sapFontFamily);
+				font-size: var(--sapFontSize);
+				text-align: center;
+				line-height: 1.125rem;
+			}
+		</style>
 	`,
 });

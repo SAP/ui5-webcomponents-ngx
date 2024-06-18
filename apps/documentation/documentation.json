@@ -524,9 +524,9 @@
             "extends": "Partial"
         },
         {
-            "name": "BadgeElement",
-            "id": "interface-BadgeElement-287bb8512b20a55c6636bad1e95344bde94926543db70b41226226aac8fe84c5937f03705061ba3a8c26eaa17cd9c4b779f7925ae979c2059e5a289896845384",
-            "file": "libs/ui5-angular/main/badge/index.ts",
+            "name": "TagElement",
+            "id": "interface-TagElement-287bb8512b20a55c6636bad1e95344bde94926543db70b41226226aac8fe84c5937f03705061ba3a8c26eaa17cd9c4b779f7925ae979c2059e5a289896845384",
+            "file": "libs/ui5-angular/main/tag/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -895,7 +895,7 @@
         {
             "name": "BarElement",
             "id": "interface-BarElement-604ca66e05fb2f1f0c25872322d4f6aacf45036e8bc351b54cfb8f8177682f274e9dc310d90037a4989ce724c43a2b3bec000c3f7f088d8a244b10ea6ca73874",
-            "file": "libs/ui5-angular/fiori/bar/index.ts",
+            "file": "libs/ui5-angular/main/bar/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -3101,7 +3101,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 52
@@ -4607,7 +4607,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 61
@@ -5518,7 +5518,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 74
@@ -6009,7 +6009,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 75
@@ -6491,7 +6491,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 74
@@ -7356,7 +7356,7 @@
                     "name": "state",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 57
@@ -8167,7 +8167,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 48
@@ -9286,7 +9286,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 71
@@ -11486,7 +11486,7 @@
                     "name": "design",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Information\" | \"Negative\" | \"Positive\" | \"Warning\"",
+                    "type": "\"Information\" | \"Negative\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 25
@@ -12369,7 +12369,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 64
@@ -12942,7 +12942,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 81
@@ -16306,7 +16306,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 26
@@ -16433,7 +16433,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 52
@@ -18906,7 +18906,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 44
@@ -22421,7 +22421,7 @@
                     "name": "additionalTextState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 43
@@ -22894,7 +22894,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 45
@@ -23250,7 +23250,7 @@
                     "name": "additionalTextState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 30
@@ -24197,7 +24197,7 @@
         {
             "name": "TableCellElement",
             "id": "interface-TableCellElement-1640a89475f43e5cfdfdec1bdde7b4e5610a03612c026befdb89ef73bec7dde2e2edb24d178dba5182cec2125950a4f9498474932d61c8720f4c5ab0063fcf86",
-            "file": "libs/ui5-angular/main/table-cell/index.ts",
+            "file": "libs/ui5-angular/compat/table-cell/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24209,7 +24209,7 @@
         {
             "name": "TableColumnElement",
             "id": "interface-TableColumnElement-88ad9ad56990cc30ecc4b44a16e262963664643264650898d19cb958f668db5cb6c4a83234cd181a0f73b2f6cbca9ee6c2160658410308970fc8ad4b6665c3d5",
-            "file": "libs/ui5-angular/main/table-column/index.ts",
+            "file": "libs/ui5-angular/compat/table-column/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24241,7 +24241,7 @@
         {
             "name": "TableComponentEventsMap",
             "id": "interface-TableComponentEventsMap-de3f86e4481534181d0a8d149257d8422510d8af27b2775db6422436408efc095ef3e7ab3f67d91daf589f6aa0d5125ab64390869a47443cd04ee6c744bea069",
-            "file": "libs/ui5-angular/main/table/index.ts",
+            "file": "libs/ui5-angular/compat/table/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24291,7 +24291,7 @@
         {
             "name": "TableElement",
             "id": "interface-TableElement-de3f86e4481534181d0a8d149257d8422510d8af27b2775db6422436408efc095ef3e7ab3f67d91daf589f6aa0d5125ab64390869a47443cd04ee6c744bea069",
-            "file": "libs/ui5-angular/main/table/index.ts",
+            "file": "libs/ui5-angular/compat/table/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24696,7 +24696,7 @@
         {
             "name": "TableGroupRowElement",
             "id": "interface-TableGroupRowElement-38630c2d4371cb326bd2f4bcf56e82d2e6ec709686d2b2113c8739c8aa823f44e115c0396f33c70ba96bd3be580c3d62364733deec8839ca6765eb380e45c70d",
-            "file": "libs/ui5-angular/main/table-group-row/index.ts",
+            "file": "libs/ui5-angular/compat/table-group-row/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24708,7 +24708,7 @@
         {
             "name": "TableRowElement",
             "id": "interface-TableRowElement-1e154779deff31f99283844b671b7fefea9050f7a3d7e84cc6c189b865850608e1bd0f18cbed4ac98e901dde3811489fbf76ec94505b7db6082cf96e5af49780",
-            "file": "libs/ui5-angular/main/table-row/index.ts",
+            "file": "libs/ui5-angular/compat/table-row/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -24892,7 +24892,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 53
@@ -25708,7 +25708,7 @@
                     "name": "valueState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 43
@@ -27363,7 +27363,7 @@
                     "name": "additionalTextState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 42
@@ -27777,7 +27777,7 @@
                     "name": "additionalTextState",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"Error\" | \"Information\" | \"None\" | \"Success\" | \"Warning\"",
+                    "type": "\"Negative\" | \"Information\" | \"None\" | \"Positive\" | \"Critical\"",
                     "optional": false,
                     "description": "",
                     "line": 43
@@ -33162,9 +33162,7 @@
                 "cyclic",
                 "hideNavigationArrows: hide-navigation-arrows",
                 "hidePageIndicator: hide-page-indicator",
-                "itemsPerPageL: items-per-page-l",
-                "itemsPerPageM: items-per-page-m",
-                "itemsPerPageS: items-per-page-s",
+                "itemsPerPage: items-per-page",
                 "pageIndicatorStyle: page-indicator-style"
             ],
             "outputs": [
@@ -38663,8 +38661,8 @@
                 "accessibleName: accessible-name",
                 "accessibleNameRef: accessible-name-ref",
                 "accessibleRole: accessible-role",
-                "busy",
-                "busyDelay: busy-delay",
+                "laoding",
+                "loadingDelay: laoding-delay",
                 "footerText: footer-text",
                 "growing",
                 "headerText: header-text",
@@ -40952,8 +40950,8 @@
                 "effectiveDir: effective-dir",
                 "isUi5Element: is-ui-5-element",
                 "selected",
-                "busy",
-                "busyDelay: busy-delay",
+                "loading",
+                "loadingDelay: laoding-delay",
                 "priority",
                 "read",
                 "showClose: show-close",
@@ -41138,8 +41136,8 @@
                 "effectiveDir: effective-dir",
                 "isUi5Element: is-ui-5-element",
                 "selected",
-                "busy",
-                "busyDelay: busy-delay",
+                "loading",
+                "loadingDelay: laoding-delay",
                 "priority",
                 "read",
                 "showClose: show-close",
@@ -41303,8 +41301,8 @@
                 "effectiveDir: effective-dir",
                 "isUi5Element: is-ui-5-element",
                 "selected",
-                "busy",
-                "busyDelay: busy-delay",
+                "loading",
+                "loadingDelay: laoding-delay",
                 "priority",
                 "read",
                 "showClose: show-close",
@@ -44165,7 +44163,6 @@
                 "productSwitchDomRef: product-switch-dom-ref",
                 "profileDomRef: profile-dom-ref",
                 "secondaryTitle: secondary-title",
-                "showCoPilot: show-co-pilot",
                 "showNotifications: show-notifications",
                 "showProductSwitch: show-product-switch",
                 "showSearchField: show-search-field"
@@ -47044,7 +47041,7 @@
         {
             "name": "TableCellComponent",
             "id": "component-TableCellComponent-1640a89475f43e5cfdfdec1bdde7b4e5610a03612c026befdb89ef73bec7dde2e2edb24d178dba5182cec2125950a4f9498474932d61c8720f4c5ab0063fcf86",
-            "file": "libs/ui5-angular/main/table-cell/index.ts",
+            "file": "libs/ui5-angular/compat/table-cell/index.ts",
             "encapsulation": [],
             "entryComponents": [],
             "exportAs": "ui5TableCell",
@@ -47145,7 +47142,7 @@
         {
             "name": "TableColumnComponent",
             "id": "component-TableColumnComponent-88ad9ad56990cc30ecc4b44a16e262963664643264650898d19cb958f668db5cb6c4a83234cd181a0f73b2f6cbca9ee6c2160658410308970fc8ad4b6665c3d5",
-            "file": "libs/ui5-angular/main/table-column/index.ts",
+            "file": "libs/ui5-angular/compat/table-column/index.ts",
             "encapsulation": [],
             "entryComponents": [],
             "exportAs": "ui5TableColumn",
@@ -47269,7 +47266,7 @@
         {
             "name": "TableComponent",
             "id": "component-TableComponent-de3f86e4481534181d0a8d149257d8422510d8af27b2775db6422436408efc095ef3e7ab3f67d91daf589f6aa0d5125ab64390869a47443cd04ee6c744bea069",
-            "file": "libs/ui5-angular/main/table/index.ts",
+            "file": "libs/ui5-angular/compat/table/index.ts",
             "encapsulation": [],
             "entryComponents": [],
             "exportAs": "ui5Table",
@@ -47477,7 +47474,7 @@
         {
             "name": "TableGroupRowComponent",
             "id": "component-TableGroupRowComponent-38630c2d4371cb326bd2f4bcf56e82d2e6ec709686d2b2113c8739c8aa823f44e115c0396f33c70ba96bd3be580c3d62364733deec8839ca6765eb380e45c70d",
-            "file": "libs/ui5-angular/main/table-group-row/index.ts",
+            "file": "libs/ui5-angular/compat/table-group-row/index.ts",
             "encapsulation": [],
             "entryComponents": [],
             "exportAs": "ui5TableGroupRow",
@@ -47578,7 +47575,7 @@
         {
             "name": "TableRowComponent",
             "id": "component-TableRowComponent-1e154779deff31f99283844b671b7fefea9050f7a3d7e84cc6c189b865850608e1bd0f18cbed4ac98e901dde3811489fbf76ec94505b7db6082cf96e5af49780",
-            "file": "libs/ui5-angular/main/table-row/index.ts",
+            "file": "libs/ui5-angular/compat/table-row/index.ts",
             "encapsulation": [],
             "entryComponents": [],
             "exportAs": "ui5TableRow",
@@ -51454,11 +51451,21 @@
                 "name": "imports",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ui5-angular/compat/ui5-compat.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n  TableComponent,\n  TableRowComponent,\n  TableCellComponent,\n  TableColumnComponent],\n]"
+            },
+            {
+                "name": "imports",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ui5-angular/main/ui5-main.module.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  BadgeComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  CustomListItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionGroupItemComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
+                "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  TagComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  CustomListItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionGroupItemComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
             },
             {
                 "name": "packageNames",
@@ -51468,7 +51475,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "['fiori', 'main']"
+                "defaultValue": "['fiori', 'main', 'compat']"
             },
             {
                 "name": "pascalCase",
@@ -52282,7 +52289,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "['fiori', 'main']"
+                    "defaultValue": "['fiori', 'main', 'compat']"
                 },
                 {
                     "name": "pascalCase",

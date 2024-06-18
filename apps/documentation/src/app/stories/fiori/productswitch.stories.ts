@@ -2,10 +2,11 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ProductSwitchComponent,
+  ShellBarComponent,
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-product-switch</code> is an SAP Fiori specific web component that is used in <code>ui5-shellbar</code> and allows the user to easily switch between products. <br><br>
 
@@ -30,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const basicSample: Story<ProductSwitchComponent> = (
+export const basicProductSwitch: Story<ProductSwitchComponent> = (
   args: ProductSwitchComponent & any
 ) => ({
   props: args,
@@ -44,19 +45,22 @@ export const basicSample: Story<ProductSwitchComponent> = (
 	`,
 });
 
-export const inShellbar: Story<ProductSwitchComponent> = () => ({
-  template: `<ui5-shellbar
-        #shellbar="ui5ShellBar"
-        (ui5ProductSwitchClick)="popover.opened ? popover.close() : popover.showAt($event.targetRef)"
-        id="shellbar"
+export const productSwitchInShellbar: Story<ProductSwitchComponent> = (
+    args: ProductSwitchComponent & ShellBarComponent & any
+  ) => ({
+    props: args,
+    template: `
+<ui5-shellbar
         primary-title="Corporate Portal"
         secondary-title="home"
         logo="/assets/images/sap-logo-svg.svg"
-        [show-product-switch]="true"
-        [show-co-pilot]="true">
+        [showProductSwitch]="true"
+        (productSwitchClick)="popover.open=true;popover.opener = $event.detail.targetRef"
+>
 </ui5-shellbar>
+
 <ui5-popover #popover="ui5Popover" placement-type="Bottom">
-    <ui5-product-switch>
+    <ui5-product-switch  (click)="popover.open=false">
         <ui5-product-switch-item title-text="Home" subtitle-text="Central Home" icon="home"></ui5-product-switch-item>
         <ui5-product-switch-item title-text="Analytics Cloud" subtitle-text="Analytics Cloud"
                                  icon="business-objects-experience"></ui5-product-switch-item>

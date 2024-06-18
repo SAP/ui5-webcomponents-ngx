@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-step-input</code> consists of an input field and buttons with icons to increase/decrease the value with the predefined step. <br><br> The user can change the value of the component by pressing the increase/decrease buttons, by typing a number directly, by using the keyboard up/down and page up/down, or by using the mouse scroll wheel. Decimal values are supported.
 
@@ -43,10 +43,10 @@ export const basicStepInput: Story<StepInputComponent> = (
 ) => ({
   props: args,
   template: `
-		<div class="shorter">
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="5"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" readonly="" value="5"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" disabled="" value="5"></ui5-step-input>
+		<div>
+			<ui5-step-input [value]="5"></ui5-step-input>
+			<ui5-step-input [readonly]="true" [value]="5"></ui5-step-input>
+			<ui5-step-input [disabled]="true" [value]="5"></ui5-step-input>
 		</div>
 	`,
 });
@@ -56,10 +56,10 @@ export const stepInputWithAlignment: Story<StepInputComponent> = (
 ) => ({
   props: args,
   template: `
-		<div class="shorter">
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="5"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="5" style="text-align: center"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="5" style="text-align: right"></ui5-step-input>
+		<div>
+			<ui5-step-input [value]="5"></ui5-step-input>
+			<ui5-step-input [value]="5" style="text-align: center"></ui5-step-input>
+			<ui5-step-input [value]="5"></ui5-step-input>
 		</div>
 	`,
 });
@@ -69,10 +69,10 @@ export const stepInputWithMinMaxStepAndValuePrecision: Story<
 > = (args: StepInputComponent & any) => ({
   props: args,
   template: `
-		<div class="shorter">
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="5" min="0" max="10" step="1"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="0" min="-100" max="100" step="10"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value="10" min="0" max="20" step="0.5" value-precision="1"></ui5-step-input>
+		<div>
+			<ui5-step-input [value]="5" [min]="0" [max]="10" [step]="1"></ui5-step-input>
+			<ui5-step-input [value]="0" [min]="-100" [max]="100" [step]="10"></ui5-step-input>
+			<ui5-step-input [value]="10" [min]="0" [max]="20" [step]="0.5" [valuePrecision]="1"></ui5-step-input>
 		</div>
 	`,
 });
@@ -82,11 +82,11 @@ export const stepInputWithValueState: Story<StepInputComponent> = (
 ) => ({
   props: args,
   template: `
-		<div class="shorter">
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value-state="Success"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value-state="Warning"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value-state="Error"></ui5-step-input>
-			<ui5-step-input class="samples-margin samples-responsive-margin-bottom" value-state="Information"></ui5-step-input>
+		<div>
+			<ui5-step-input value-state="Positive"></ui5-step-input>
+			<ui5-step-input value-state="Critical"></ui5-step-input>
+			<ui5-step-input value-state="Negative"></ui5-step-input>
+			<ui5-step-input value-state="Information"></ui5-step-input>
 		</div>
 	`,
 });
@@ -96,11 +96,7 @@ export const stepInputWithLabel: Story<StepInputComponent> = (
 ) => ({
   props: args,
   template: `
-		<div class="flex-column samples-margin">
-			<div class="shorter">
-				<ui5-label class="samples-big-margin-right" for="myStepInput" required="" show-colon="">Number</ui5-label>
-				<ui5-step-input id="myStepInput" placeholder="Enter your Number" required=""></ui5-step-input>
-			</div>
-		</div>
+		<ui5-label for="myStepInput" [required]="true" [showColon]="true">Number</ui5-label>
+		<ui5-step-input id="myStepInput" placeholder="Enter your Number" [required]="true"></ui5-step-input>
 	`,
 });

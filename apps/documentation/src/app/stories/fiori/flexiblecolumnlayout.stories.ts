@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>FlexibleColumnLayout</code> implements the list-detail-detail paradigm by displaying up to three pages in separate columns. There are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.
 
@@ -46,16 +46,59 @@ export default {
 
 export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
   template: `
-  <ui5-flexible-column-layout id="fcl" style="height: 600px;">
-      <div class="col" slot="startColumn">
 
-      </div>
-      <div class="col" slot="midColumn">
+  <div style="width: 1200px;">
 
-      </div>
+  <ui5-flexible-column-layout id="fcl" style="height: 600px;" layout="ThreeColumnsMidExpanded">
+      <div slot="startColumn">
+        <div>
+          <ui5-title>Start Column</ui5-title>
+        </div>
+        <ui5-list>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+        </ui5-list>
+    </div>
+  
+      <div slot="midColumn">
+        <div>
+          <ui5-title>Mid Column</ui5-title>
+        </div>
+        <ui5-list>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+        </ui5-list>
+    </div>
+  
       <div class="col" slot="endColumn">
-
+        <div>
+            <ui5-title>End Column</ui5-title>
+        </div>
+        <ui5-list>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+          <ui5-li>Hello worild!</ui5-li>
+        </ui5-list>
       </div>
     </ui5-flexible-column-layout>
+
+    </div>
   `,
 });

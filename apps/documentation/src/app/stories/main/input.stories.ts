@@ -2,9 +2,9 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, InputComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
-The <code>ui5-input</code> component allows the user to enter and edit text or numeric values in one line. <br> Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input. <br><br> The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code>disabled</code> property). To visualize semantic states, such as "error" or "warning", the <code>valueState</code> property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change. <br><br> <b>Note:</b> If you are using the <code>ui5-input</code> as a single npm module, don't forget to import the <code>InputSuggestions</code> module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
+The <code>ui5-input</code> component allows the user to enter and edit text or numeric values in one line. <br> Additionally, you can provide <code>suggestionItems</code>, that are displayed in a popover right under the input. <br><br> The text field can be editable or read-only (<code>readonly</code> property), and it can be enabled or disabled (<code>disabled</code> property). To visualize semantic states, such as "Negative" or "Critical", the <code>valueState</code> property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change. <br><br> <b>Note:</b> If you are using the <code>ui5-input</code> as a single npm module, don't forget to import the <code>InputSuggestions</code> module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
 
 <h3>Keyboard Handling</h3> The <code>ui5-input</code> provides the following keyboard shortcuts: <br>
 
@@ -36,9 +36,9 @@ export const basicInput: Story<InputComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" show-clear-icon="" value="Input"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" readonly="" value="readonly Input"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" disabled="" value="Disabled Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" [showClearIcon]="true" value="Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" [readonly]="true" value="readonly Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" [disabled]="true" value="Disabled Input"></ui5-input>
 	`,
 });
 
@@ -47,9 +47,9 @@ export const inputWithValueState: Story<InputComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Success" value-state="Success"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Warning" value-state="Warning"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Error" value-state="Error"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Positive" value-state="Positive"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Critical" value-state="Critical"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Negative" value-state="Negative"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Information" value-state="Information"></ui5-input>
 	`,
 });
@@ -73,12 +73,12 @@ export const inputWithLabel: Story<InputComponent> = (
   props: args,
   template: `
 		<div class="flex-column samples-margin">
-			<ui5-label class="samples-big-margin-right" for="myInput" required="" show-colon="">Name</ui5-label>
-			<ui5-input id="myInput" placeholder="Enter your Name" required=""></ui5-input>
+			<ui5-label class="samples-big-margin-right" for="myInput" [required]="true" [showColon]="true">Name</ui5-label>
+			<ui5-input id="myInput" placeholder="Enter your Name" [required]="true"></ui5-input>
 		</div>
 		<div class="flex-column">
-			<ui5-label class="samples-big-margin-right" for="myPassword" required="" show-colon="">Secret Code</ui5-label>
-			<ui5-input id="myPassword" type="Password" value-state="Error" placeholder="Enter your Secret Code" required=""></ui5-input>
+			<ui5-label class="samples-big-margin-right" for="myPassword" [required]="true" [showColon]="true">Secret Code</ui5-label>
+			<ui5-input id="myPassword" type="Password" value-state="Negative" placeholder="Enter your Secret Code" [required]="true"></ui5-input>
 		</div>
 	`,
 });

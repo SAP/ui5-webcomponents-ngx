@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
+const description = `### Overview Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
 
 <h3>Structure</h3> The most important properties of the Range Slider are: <ul> <li>min - The minimum value of the slider range.</li> <li>max - The maximum value of the slider range.</li> <li>value - The current value of the slider.</li> <li>step - Determines the increments in which the slider will move.</li> <li>showTooltip - Determines if a tooltip should be displayed above the handle.</li> <li>showTickmarks - Displays a visual divider between the step values.</li> <li>labelInterval - Labels some or all of the tickmarks with their values.</li> </ul> <h4>Notes:</h4> <ul> <li>The right and left handle can be moved individually and their positions could therefore switch.</li> <li>The entire range can be moved along the interval.</li> </ul> <h3>Usage</h3> The most common use case is to select and move sub-ranges on a continuous numerical scale.
 
@@ -45,7 +45,7 @@ export const basicRangeSlider: Story<RangeSliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-range-slider end-value="20"></ui5-range-slider>
+		<ui5-range-slider [startValue]="10" [endValue]="50"></ui5-range-slider>
 	`,
 });
 
@@ -54,7 +54,7 @@ export const rangeSliderWithCustomMinMaxStartValueAndEndValueProperties: Story<
 > = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
-		<ui5-range-slider min="100" max="200" start-value="120" end-value="150"></ui5-range-slider>
+		<ui5-range-slider [min]="100" [max]="200" [startValue]="120" [endValue]="150"></ui5-range-slider>
 	`,
 });
 
@@ -63,7 +63,7 @@ export const rangeSliderWithTooltips: Story<RangeSliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-range-slider start-value="3" end-value="13" show-tooltip=""></ui5-range-slider>
+		<ui5-range-slider [startValue]="3" [endValue]="13" [showTooltip]="true"></ui5-range-slider>
 	`,
 });
 
@@ -72,7 +72,7 @@ export const rangeSliderWithTickmarksAndCustomStep: Story<
 > = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
-		<ui5-range-slider step="2" start-value="12" end-value="24" show-tickmarks=""></ui5-range-slider>
+		<ui5-range-slider step="2" [startValue]="12" [endValue]="24" [showTickmarks]="true"></ui5-range-slider>
 	`,
 });
 
@@ -81,6 +81,6 @@ export const rangeSliderWithTooltipsTickmarksAndLabels: Story<
 > = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
-		<ui5-range-slider min="0" max="112" step="2" start-value="4" end-value="12" show-tooltip="" label-interval="2" show-tickmarks=""></ui5-range-slider>
+		<ui5-range-slider [min]="0" [max]="112" [step]="2" [startValue]="4" [endValue]="12" [showTooltip]="true" [labelInterval]="2" [showTickmarks]="true"></ui5-range-slider>
 	`,
 });

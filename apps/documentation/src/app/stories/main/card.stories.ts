@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, CardComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-card</code> is a component that represents information in the form of a tile with separate header and content areas. The content area of a <code>ui5-card</code> can be arbitrary HTML content. The header can be used through slot <code>header</code>. For which there is a <code>ui5-card-header</code> component to achieve the card look and fill.
 
@@ -54,7 +54,7 @@ export const cardWithList: Story<CardComponent> = (
 			</div>
 		</ui5-card>
 		<ui5-card class="medium">
-			<ui5-card-header slot="header" title-text="This header is interactive" interactive="" subtitle-text="Click, press Enter or Space" status="3 of 6">
+			<ui5-card-header slot="header" title-text="This header is interactive" [interactive]="true" subtitle-text="Click, press Enter or Space" status="3 of 6">
 				<ui5-icon name="group" slot="avatar"></ui5-icon>
 			</ui5-card-header>
 
@@ -91,7 +91,7 @@ export const cardWithTable: Story<CardComponent> = (
 					<ui5-label>Net Amount</ui5-label>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="450" popin-text="Status" demand-popin="">
+				<ui5-table-column slot="columns" min-width="450" popin-text="Status" [demandPopin]="true">
 					<ui5-label>Status</ui5-label>
 				</ui5-table-column>
 
@@ -153,7 +153,7 @@ export const cardWithTimeline: Story<CardComponent> = (
 			<ui5-card-header slot="header" title-text="Upcoming Activities" subtitle-text="For Today">
 			</ui5-card-header>
 			<ui5-timeline>
-				<ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone" name="John Smith" name-clickable=""></ui5-timeline-item>
+				<ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone" name="John Smith" [nameClickable]="true"></ui5-timeline-item>
 				<ui5-timeline-item title-text="Weekly Sync - CP Design" timestamp="1517349600000" icon="calendar">
 					MR SOF02 2.43
 				</ui5-timeline-item>
@@ -174,18 +174,18 @@ export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
 			</ui5-card-header>
 
 			<ui5-list separators="Inner">
-				<ui5-li icon="competitor" icon-end="">Personal Development</ui5-li>
-				<ui5-li icon="wallet" icon-end="">Finance</ui5-li>
-				<ui5-li icon="collaborate" icon-end="">Communications Skills</ui5-li>
+				<ui5-li icon="competitor" [iconEnd]="true">Personal Development</ui5-li>
+				<ui5-li icon="wallet" [iconEnd]="true">Finance</ui5-li>
+				<ui5-li icon="collaborate" [iconEnd]="true">Communications Skills</ui5-li>
 			</ui5-list>
 		</ui5-card>
 
 		<ui5-card class="small">
 			<ui5-card-header slot="header" title-text="Project Cloud Transformation" subtitle-text="Revenue per Product | EUR" status="3 of 3"></ui5-card-header>
 			<ui5-list separators="None">
-				<ui5-li description="ID234522566-D44" additional-text="27.25K EUR" additional-text-state="Success">Avantel</ui5-li>
-				<ui5-li description="ID7125852785-A51" additional-text="22.89K EUR" additional-text-state="Warning">Telecomunicaciones Star</ui5-li>
-				<ui5-li description="ID123555587-I05" additional-text="7.85K EUR" additional-text-state="Error">Talpa</ui5-li>
+				<ui5-li description="ID234522566-D44" additional-text="27.25K EUR" additional-text-state="Positive">Avantel</ui5-li>
+				<ui5-li description="ID7125852785-A51" additional-text="22.89K EUR" additional-text-state="Critical">Telecomunicaciones Star</ui5-li>
+				<ui5-li description="ID123555587-I05" additional-text="7.85K EUR" additional-text-state="Negative">Talpa</ui5-li>
 			</ui5-list>
 		</ui5-card>
 

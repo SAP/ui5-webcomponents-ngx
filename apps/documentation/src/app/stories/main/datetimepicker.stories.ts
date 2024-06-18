@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.
+const description = `### Overview The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.
 
 <h3>Usage</h3>
 
@@ -64,12 +64,12 @@ export const dateTimePickerInStates: Story<DateTimePickerComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-datetime-picker value-state="Error"></ui5-datetime-picker>
-		<ui5-datetime-picker value-state="Warning"></ui5-datetime-picker>
+		<ui5-datetime-picker value-state="Negative"></ui5-datetime-picker>
+		<ui5-datetime-picker value-state="Critical"></ui5-datetime-picker>
 		<ui5-datetime-picker value-state="Information"></ui5-datetime-picker>
-		<ui5-datetime-picker value-state="Success"></ui5-datetime-picker>
+		<ui5-datetime-picker value-state="Positive"></ui5-datetime-picker>
 		<br><br>
-		<ui5-datetime-picker readonly="" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
-		<ui5-datetime-picker disabled="" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
+		<ui5-datetime-picker [readonly]="true" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
+		<ui5-datetime-picker [disabled]="true" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
 	`,
 });

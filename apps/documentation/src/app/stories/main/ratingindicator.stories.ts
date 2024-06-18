@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
+const description = `### Overview The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
 
 <h3>Usage</h3> The recommended number of icons is between 5 and 7.
 
@@ -62,9 +62,9 @@ export const disabledRatingIndicator: Story<RatingIndicatorComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-rating-indicator value="4" disabled=""></ui5-rating-indicator>
-		<ui5-rating-indicator max="10" value="5" disabled=""></ui5-rating-indicator>
-		<ui5-rating-indicator max="3" value="3" disabled=""></ui5-rating-indicator>
+		<ui5-rating-indicator value="4" [disabled]="true"></ui5-rating-indicator>
+		<ui5-rating-indicator max="10" value="5" [disabled]="true"></ui5-rating-indicator>
+		<ui5-rating-indicator max="3" value="3" [disabled]="true"></ui5-rating-indicator>
 	`,
 });
 
@@ -73,7 +73,7 @@ export const readonlyRatingIndicator: Story<RatingIndicatorComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-rating-indicator value="4" readonly=""></ui5-rating-indicator>
-		<ui5-rating-indicator max="7" value="5" readonly=""></ui5-rating-indicator>
+		<ui5-rating-indicator value="4" [readonly]="true"></ui5-rating-indicator>
+		<ui5-rating-indicator max="7" value="5" [readonly]="true"></ui5-rating-indicator>
 	`,
 });

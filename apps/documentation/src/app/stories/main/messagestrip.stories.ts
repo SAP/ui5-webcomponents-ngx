@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-message-strip</code> component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
 
@@ -43,10 +43,10 @@ export const messageStrip: Story<MessageStripComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-message-strip class="samples-margin-bottom" design="Information">Information MessageStrip</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Positive">Positive MessageStrip</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Negative">Negative MessageStrip</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Warning">Warning MessageStrip</ui5-message-strip>
+		<ui5-message-strip design="Information">Information MessageStrip</ui5-message-strip>
+		<ui5-message-strip design="Positive">Positive MessageStrip</ui5-message-strip>
+		<ui5-message-strip design="Negative">Negative MessageStrip</ui5-message-strip>
+		<ui5-message-strip design="Critical">Warning MessageStrip</ui5-message-strip>
 	`,
 });
 
@@ -55,10 +55,10 @@ export const messageStripWithNoCloseButton: Story<MessageStripComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-message-strip class="samples-margin-bottom" design="Information" hide-close-button="">Information MessageStrip With No Close Button</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Positive" hide-close-button="">Positive MessageStrip With No Close Button</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Negative" hide-close-button="">Negative MessageStrip With No Close Button</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Warning" hide-close-button="">Warning MessageStrip With No Close Button</ui5-message-strip>
+		<ui5-message-strip design="Information" [hideCloseButton]="true">Information MessageStrip With No Close Button</ui5-message-strip>
+		<ui5-message-strip design="Positive" [hideCloseButton]="true">Positive MessageStrip With No Close Button</ui5-message-strip>
+		<ui5-message-strip design="Negative" [hideCloseButton]="true">Negative MessageStrip With No Close Button</ui5-message-strip>
+		<ui5-message-strip design="Critical" [hideCloseButton]="true">Warning MessageStrip With No Close Button</ui5-message-strip>
 	`,
 });
 
@@ -67,10 +67,10 @@ export const messageStripWithNoIcon: Story<MessageStripComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-message-strip class="samples-margin-bottom" design="Information" hide-icon="">Information MessageStrip With No Icon</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Positive" hide-icon="">Positive MessageStrip With No Icon</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Negative" hide-icon="">Negative MessageStrip With No Icon</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom" design="Warning" hide-icon="">Warning MessageStrip With No Icon</ui5-message-strip>
+		<ui5-message-strip design="Information" [hideIcon]="true">Information MessageStrip With No Icon</ui5-message-strip>
+		<ui5-message-strip design="Positive" [hideIcon]="true">Positive MessageStrip With No Icon</ui5-message-strip>
+		<ui5-message-strip design="Negative" [hideIcon]="true">Negative MessageStrip With No Icon</ui5-message-strip>
+		<ui5-message-strip design="Critical" [hideIcon]="true">Warning MessageStrip With No Icon</ui5-message-strip>
 	`,
 });
 
@@ -79,11 +79,11 @@ export const customMessageStrip: Story<MessageStripComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Information" hide-icon="" hide-close-button="">You have new message.</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Positive" hide-close-button="">Successfull login!</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Negative" hide-icon="">Access denied!</ui5-message-strip>
-		<ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Warning">Update is required.</ui5-message-strip>
-        <ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Warning"><ui5-icon name="palette" slot="icon"></ui5-icon>Custom icon</ui5-message-strip>
-        <ui5-message-strip class="samples-margin-bottom samples-vertical-align" style="width: 200px;" design="Positive"><img src="../../../assets/images/loading.gif" width="16" height="16" slot="icon">Custom animated gif</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Information" [hideIcon]="true" [hideCloseButton]="true">You have new message.</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Positive" [hideCloseButton]="true">Successfull login!</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Negative" [hideIcon]="true">Access denied!</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Critical">Update is required.</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Critical"><ui5-icon name="palette" slot="icon"></ui5-icon>Custom icon</ui5-message-strip>
+    <ui5-message-strip style="width: 200px;" design="Positive"><img src="../../../assets/images/loading.gif" width="16" height="16" slot="icon">Custom animated gif</ui5-message-strip>
 	`,
 });

@@ -172,8 +172,7 @@ export const basicSample = () => ({
 
 export const inShellbar = () => ({
   template: `
-    <ui5-shellbar
-  id="shellbar"
+<ui5-shellbar
   primary-title="Corporate Portal"
   logo="/assets/images/sap-logo-svg.svg"
   [showNotifications]="true"

@@ -38,26 +38,34 @@ export default {
   },
 } as Meta;
 
-export const SideNavigationInApplication = () => ({
+export const basicSideNavigation = () => ({
   template: `
-<ui5-shellbar primary-title="UI5 Web Components" secondary-title="The Best Run SAP" [show-co-pilot]="true">
-    <ui5-button icon="menu" slot="startButton" (ui5Click)="sideNavigation.collapsed = !sideNavigation.collapsed"></ui5-button>
-</ui5-shellbar>
 
-<ui5-side-navigation class="ui5-side-nav" #sideNavigation="ui5SideNavigation">
-    <ui5-side-navigation-item text="Home" icon="home"></ui5-side-navigation-item>
-    <ui5-side-navigation-item text="People" [expanded]="true" icon="group">
-        <ui5-side-navigation-sub-item text="From My Team"></ui5-side-navigation-sub-item>
-        <ui5-side-navigation-sub-item text="From Other Teams"></ui5-side-navigation-sub-item>
-    </ui5-side-navigation-item>
-    <ui5-side-navigation-item text="Locations" icon="locate-me" [selected]="true"></ui5-side-navigation-item>
-    <ui5-side-navigation-item text="Events" icon="calendar">
-        <ui5-side-navigation-sub-item text="Local"></ui5-side-navigation-sub-item>
-        <ui5-side-navigation-sub-item text="Others"></ui5-side-navigation-sub-item>
-    </ui5-side-navigation-item>
+  <ui5-side-navigation>
+      <ui5-side-navigation-item text="Home" icon="home"></ui5-side-navigation-item>
 
-    <ui5-side-navigation-item slot="fixedItems" text="Useful Links" icon="chain-link"></ui5-side-navigation-item>
-    <ui5-side-navigation-item slot="fixedItems" text="History" icon="history"></ui5-side-navigation-item>
-</ui5-side-navigation>
+      <ui5-side-navigation-group text="Group 1" [expanded]="true">
+          <ui5-side-navigation-item text="External Link" icon="chain-link" href="https://sap.com" target="_blank"></ui5-side-navigation-item>
+          <ui5-side-navigation-item text="People" expanded icon="group">
+            <ui5-side-navigation-sub-item text="From My Team"></ui5-side-navigation-sub-item>
+            <ui5-side-navigation-sub-item text="From Other Teams"></ui5-side-navigation-sub-item>
+          </ui5-side-navigation-item>
+      </ui5-side-navigation-group>
+
+      <ui5-side-navigation-group text="Group 2" [expanded]="true">
+          <ui5-side-navigation-item text="Locations" icon="locate-me" selected></ui5-side-navigation-item>
+          <ui5-side-navigation-item text="Locations" disabled icon="locate-me"></ui5-side-navigation-item>
+          <ui5-side-navigation-item text="Events" icon="calendar">
+            <ui5-side-navigation-sub-item text="Local"></ui5-side-navigation-sub-item>
+            <ui5-side-navigation-sub-item text="External Link" href="https://sap.com" target="_blank"></ui5-side-navigation-sub-item>
+            <ui5-side-navigation-sub-item text="Others"></ui5-side-navigation-sub-item>
+          </ui5-side-navigation-item>
+      </ui5-side-navigation-group>
+
+      <ui5-side-navigation-item slot="fixedItems" text="Useful Links" icon="chain-link">
+          <ui5-side-navigation-sub-item text="External Link" href="https://sap.com" target="_blank"></ui5-side-navigation-sub-item>
+      </ui5-side-navigation-item>
+      <ui5-side-navigation-item slot="fixedItems" text="History" icon="history"></ui5-side-navigation-item>
+  </ui5-side-navigation>
   `
 });

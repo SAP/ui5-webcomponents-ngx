@@ -9,7 +9,7 @@ const description = `### Overview The <code>ui5-li-notification</code> is a type
 
 The component has a rich set of various properties that allows the user to set <code>avatar</code>, <code>titleText</code>, descriptive <code>content</code> and <code>footnotes</code> to fully describe a notification. <br>
 
-The user can: <ul> <li>display a <code>Close</code> button</li> <li>can control whether the <code>titleText</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>ui5-notification-action</code> component</li> </ul>
+The user can: <ul> <li>display a <code>Close</code> button</li> <li>can control whether the <code>titleText</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>menu</code> slot</li> </ul>
 
 <h3>Usage</h3> The component can be used in a standard <code>ui5-list</code>.
 
@@ -52,8 +52,10 @@ export const notificationListItemCustomActions: Story<
 				<span slot="footnotes">Monique Legrand</span>
 				<span slot="footnotes">2 Days</span>
 
-				<ui5-notification-action icon="accept" text="Accept" slot="actions"></ui5-notification-action>
-				<ui5-notification-action icon="message-error" text="Reject" slot="actions"></ui5-notification-action>
+				<ui5-menu slot="menu">
+					<ui5-menu-item icon="accept" text="Accept"></ui5-menu-item>
+					<ui5-menu-item icon="message-error" text="Reject"></ui5-menu-item>
+				</ui5-menu>
 			</ui5-li-notification>
 
 			<ui5-li-notification [showClose]="true" priority="Low" title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
@@ -64,7 +66,9 @@ export const notificationListItemCustomActions: Story<
 				<span slot="footnotes">Alain Chevalier</span>
 				<span slot="footnotes">2 Days</span>
 
-				<ui5-notification-action icon="accept" text="Accept" slot="actions"></ui5-notification-action>
+				<ui5-menu slot="menu">
+					<ui5-menu-item icon="accept" text="Accept"></ui5-menu-item>
+				</ui5-menu>
 			</ui5-li-notification>
 
 			<ui5-li-notification [showClose]="true" priority="Low" title-text="New order (#2525) With a short title">
@@ -75,8 +79,10 @@ export const notificationListItemCustomActions: Story<
 				<span slot="footnotes">John Doe</span>
 				<span slot="footnotes">2 Days</span>
 
-				<ui5-notification-action icon="accept" text="Accept All Requested Information" slot="actions"></ui5-notification-action>
-			<ui5-notification-action icon="decline" text="Reject All Requested Information" slot="actions"></ui5-notification-action>
+				<ui5-menu slot="menu">
+					<ui5-menu-item icon="accept" text="Accept All Requested Information"></ui5-menu-item>
+					<ui5-menu-item icon="message-error" text="Reject All Requested Information"></ui5-menu-item>
+				</ui5-menu>
 			</ui5-li-notification>
 		</ui5-list>
 	`,

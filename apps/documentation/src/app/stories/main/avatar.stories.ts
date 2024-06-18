@@ -163,5 +163,16 @@ export const avatarWithVisualAffordance: Story<AvatarComponent> = (
 		<ui5-avatar initials="AB" color-scheme="Accent1">
 			<span slot="badge" class="custom-badge">1</span>
 		</ui5-avatar>
+
+		<style>
+			.custom-badge {
+				color: var(--sapAccentColor2);
+				background: var(--sapAccentBackgroundColor3);
+				font-family: var(--sapFontFamily);
+				font-size: var(--sapFontSize);
+				text-align: center;
+				line-height: 1.125rem;
+			}
+		</style>
 	`,
 });

@@ -61,10 +61,6 @@ export const toastPlacements: Story<ToastComponent> = (
 ) => ({
   props: args,
   template: `
-		<!--MiddleStart-->
-		<ui5-button (click)="toast4.open=true">MiddleStart</ui5-button>
-		<ui5-toast #toast4="ui5Toast" placement="MiddleStart">MiddleStart</ui5-toast>
-
 		<!--MiddleCenter-->
 		<ui5-button (click)="toast5.open=true">MiddleCenter</ui5-button>
 		<ui5-toast #toast5="ui5Toast" placement="MiddleCenter">MiddleCenter</ui5-toast>

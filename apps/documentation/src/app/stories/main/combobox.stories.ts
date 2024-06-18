@@ -145,17 +145,22 @@ export const comboBoxWithGroupingOfItems: Story<ComboBoxComponent> = (
   props: args,
   template: `
 		<ui5-combobox placeholder="ComboBox with grouping of suggestions">
-			<ui5-cb-group-item text="A"></ui5-cb-group-item>
-			<ui5-cb-item text="Argentina"></ui5-cb-item>
-			<ui5-cb-item text="Australia"></ui5-cb-item>
-			<ui5-cb-item text="Austria"></ui5-cb-item>	
-			<ui5-cb-group-item text="B"></ui5-cb-group-item>
-			<ui5-cb-item text="Bahrain"></ui5-cb-item>
-			<ui5-cb-item text="Belgium"></ui5-cb-item>
-			<ui5-cb-item text="Brazil"></ui5-cb-item>
-			<ui5-cb-group-item text="C"></ui5-cb-group-item>
-			<ui5-cb-item text="Canada"></ui5-cb-item>
-			<ui5-cb-item text="Chile"></ui5-cb-item>
+			<ui5-cb-item-group text="A">
+				<ui5-cb-item text="Argentina"></ui5-cb-item>
+				<ui5-cb-item text="Australia"></ui5-cb-item>
+				<ui5-cb-item text="Austria"></ui5-cb-item>	
+			</ui5-cb-item-group>
+			
+			<ui5-cb-item-group text="B">
+				<ui5-cb-item text="Bahrain"></ui5-cb-item>
+				<ui5-cb-item text="Belgium"></ui5-cb-item>
+				<ui5-cb-item text="Brazil"></ui5-cb-item>
+			</ui5-cb-item-group>
+			
+			<ui5-cb-item-group text="C">
+				<ui5-cb-item text="Canada"></ui5-cb-item>
+				<ui5-cb-item text="Chile"></ui5-cb-item>
+			</ui5-cb-item-group>
 		</ui5-combobox>
 	`,
 });

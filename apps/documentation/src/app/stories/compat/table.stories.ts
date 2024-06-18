@@ -281,7 +281,7 @@ export const tableWithGroupingAndSingleSelect: Story<
 	`,
 });
 
-export const tablesWithGroupingAndMultiSelect: Story<TableComponent> = (
+export const tableWithGroupingAndMultiSelect: Story<TableComponent> = (
   args: TableComponent & any
 ) => ({
   props: args,

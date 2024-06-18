@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-shellbar</code> is meant to serve as an application header and includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on. <br><br>
 
@@ -60,7 +60,7 @@ export const shellBarWithSearchAndNotifications: Story<ShellBarComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" show-notifications="" notifications-count="22">
+		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" [showNotifications]="true" notifications-count="22">
 			<ui5-avatar slot="profile">
 				<img src="/assets/images/avatars/woman_avatar_5.png">
 			</ui5-avatar>
@@ -75,7 +75,7 @@ export const shellBarWithProductSwitchAndCoPilot: Story<ShellBarComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" show-co-pilot="" show-product-switch="" show-notifications="" notifications-count="22">
+		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" [showProductSwitch]="true" [showNotifications]="true" notifications-count="22">
 			<img slot="logo" src="/assets/images/sap-logo-svg.svg">
 
 			<ui5-avatar slot="profile">

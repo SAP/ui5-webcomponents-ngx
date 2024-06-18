@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-popover</code> component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.
 
@@ -42,19 +42,20 @@ export default {
 
 export const BasicPopover: Story = () => ({
   template: `
-<ui5-button #openPopoverButton="ui5Button" (ui5Click)="popover.showAt(openPopoverButton.element)" design="Emphasized">Open Popover</ui5-button>
-<ui5-popover #popover="ui5Popover" header-text="Newsletter subscription">
-    <div class="popover-content">
-        <div class="flex-column">
-            <ui5-label for="emailInput" required>Email:</ui5-label>
-            <ui5-input id="emailInput" class="samples-margin-top" style="min-width: 150px;"
-                       placeholder="Enter Email"></ui5-input>
-        </div>
-    </div>
-    <div slot="footer" class="popover-footer">
-        <div style="flex: 1;"></div>
-        <ui5-button id="closePopoverButton" design="Emphasized">Subscribe</ui5-button>
-    </div>
-</ui5-popover>
+    <ui5-button
+      id="btn"
+      design="Emphasized"
+      (click)="popover.open=true" 
+    >
+      Open Popover
+    </ui5-button>
+
+    <ui5-popover #popover="ui5Popover"
+      opener="btn" 
+      header-text="Newsletter subscription"
+      >
+        <ui5-label for="emailInput" required>Email:</ui5-label>
+        <ui5-input id="emailInput" style="min-width: 150px;"placeholder="Enter Email"></ui5-input>
+    </ui5-popover>
   `
 });

@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-textarea</code> component is used to enter multiple lines of text. <br><br> When empty, it can hold a placeholder similar to a <code>ui5-input</code>. You can define the rows of the <code>ui5-textarea</code> and also determine specific behavior when handling long texts.
 
@@ -48,7 +48,7 @@ export const textAreaWithMaximumLength: Story<TextAreaComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-textarea class="textarea-width" placeholder="Type no more than 10 symbols" maxlength="10" show-exceeded-text=""></ui5-textarea>
+		<ui5-textarea class="textarea-width" placeholder="Type no more than 10 symbols" [maxlength]="10" [showExceededText]="true"></ui5-textarea>
 	`,
 });
 

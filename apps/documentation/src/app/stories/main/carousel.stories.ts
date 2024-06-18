@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>
+const description = `### Overview The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>
 
 <h3>Usage</h3>
 
@@ -68,12 +68,12 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-carousel items-per-page-s="1" items-per-page-m="2" items-per-page-l="2">
+		<ui5-carousel items-per-page="S1 M2 L2">
 			<ui5-card class="medium">
 				<ui5-card-header slot="header" title-text="Activities" subtitle-text="For Today"></ui5-card-header>
 
 				<ui5-timeline>
-					<ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone" name="John Smith" name-clickable=""></ui5-timeline-item>
+					<ui5-timeline-item id="test-item" title-text="called" timestamp="1487583000000" icon="phone" name="John Smith" [nameClickable]="true"></ui5-timeline-item>
 					<ui5-timeline-item title-text="Weekly Sync - CP Design" timestamp="1517349600000" icon="calendar">
 						MR SOF02 2.43
 					</ui5-timeline-item>
@@ -89,9 +89,9 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 				</ui5-card-header>
 
 				<ui5-list separators="Inner" class="content-padding">
-					<ui5-li icon="competitor" icon-end="">Personal Development</ui5-li>
-					<ui5-li icon="wallet" icon-end="">Finance</ui5-li>
-					<ui5-li icon="collaborate" icon-end="">Communications Skills</ui5-li>
+					<ui5-li icon="competitor" [iconEnd]="true">Personal Development</ui5-li>
+					<ui5-li icon="wallet" [iconEnd]="true">Finance</ui5-li>
+					<ui5-li icon="collaborate" [iconEnd]="true">Communications Skills</ui5-li>
 				</ui5-list>
 			</ui5-card>
 
@@ -110,7 +110,7 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 			</ui5-card>
 
 			<ui5-card class="medium">
-				<ui5-card-header slot="header" title-text="Team Bears" subtitle-text="Direct Reports" interactive="" status="2 of 2">
+				<ui5-card-header slot="header" title-text="Team Bears" subtitle-text="Direct Reports" [interactive]="true" status="2 of 2">
 						<ui5-icon name="group" slot="avatar"></ui5-icon>
 				</ui5-card-header>
 
@@ -131,7 +131,7 @@ export const carouselWithArrowPlacementAndCyclic: Story<CarouselComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-carousel arrows-placement="Navigation" cyclic="">
+		<ui5-carousel arrows-placement="Navigation" [cyclic]="true">
 			<img src="../../../assets/images/sample1.jpg" alt="Landscape 1">
 			<img src="../../../assets/images/sample2.jpg" alt="Landscape 2">
 			<img src="../../../assets/images/sample3.jpg" alt="Bulb">

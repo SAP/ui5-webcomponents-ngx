@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-combobox</code> component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.
 
@@ -53,19 +53,19 @@ export const basicExample: Story<ComboBoxComponent> = (
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 
-		<ui5-combobox value-state="Success" value="Item 1">
+		<ui5-combobox value-state="Positive" value="Item 1">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 
-		<ui5-combobox value-state="Warning" value="Item 2">
+		<ui5-combobox value-state="Critical" value="Item 2">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 
-		<ui5-combobox value-state="Error" value="Item 3">
+		<ui5-combobox value-state="Negative" value="Item 3">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
@@ -78,13 +78,13 @@ export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-combobox value="Disabled" disabled="">
+		<ui5-combobox value="Disabled" [disabled]="true">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 
-		<ui5-combobox value="Readonly" readonly="">
+		<ui5-combobox value="Readonly" [readonly]="true">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
@@ -145,17 +145,22 @@ export const comboBoxWithGroupingOfItems: Story<ComboBoxComponent> = (
   props: args,
   template: `
 		<ui5-combobox placeholder="ComboBox with grouping of suggestions">
-			<ui5-cb-group-item text="A"></ui5-cb-group-item>
-			<ui5-cb-item text="Argentina"></ui5-cb-item>
-			<ui5-cb-item text="Australia"></ui5-cb-item>
-			<ui5-cb-item text="Austria"></ui5-cb-item>	
-			<ui5-cb-group-item text="B"></ui5-cb-group-item>
-			<ui5-cb-item text="Bahrain"></ui5-cb-item>
-			<ui5-cb-item text="Belgium"></ui5-cb-item>
-			<ui5-cb-item text="Brazil"></ui5-cb-item>
-			<ui5-cb-group-item text="C"></ui5-cb-group-item>
-			<ui5-cb-item text="Canada"></ui5-cb-item>
-			<ui5-cb-item text="Chile"></ui5-cb-item>
+			<ui5-cb-item-group text="A">
+				<ui5-cb-item text="Argentina"></ui5-cb-item>
+				<ui5-cb-item text="Australia"></ui5-cb-item>
+				<ui5-cb-item text="Austria"></ui5-cb-item>	
+			</ui5-cb-item-group>
+			
+			<ui5-cb-item-group text="B">
+				<ui5-cb-item text="Bahrain"></ui5-cb-item>
+				<ui5-cb-item text="Belgium"></ui5-cb-item>
+				<ui5-cb-item text="Brazil"></ui5-cb-item>
+			</ui5-cb-item-group>
+			
+			<ui5-cb-item-group text="C">
+				<ui5-cb-item text="Canada"></ui5-cb-item>
+				<ui5-cb-item text="Chile"></ui5-cb-item>
+			</ui5-cb-item-group>
 		</ui5-combobox>
 	`,
 });

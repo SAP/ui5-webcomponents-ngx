@@ -5,17 +5,24 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> An IllustratedMessage is a recommended combination of a solution-oriented message, an engaging illustration, and conversational tone to better communicate an empty or a success state than just show a message alone.
+const description = `
+### Overview 
+
+An IllustratedMessage is a recommended combination of a solution-oriented message, an engaging illustration, and conversational tone to better communicate an empty or a success state than just show a message alone.
 
 Each illustration has default internationalised title and subtitle texts. Also they can be managed with <code>titleText</code> and <code>subtitleText</code> properties.
 
 To display the desired illustration, use the <code>name</code> property, where you can find the list of all available illustrations. <br><br> <b>Note:</b> By default the “BeforeSearch” illustration is loaded. To use other illustrations, make sure you import them in addition, for example: <br> <code>import "@ui5/webcomponents-fiori/dist/illustrations/NoData.js"</code> <br> <b>Note:</b> Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import:: <br> <code>import "@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js"</code>
 
-<h3>Structure</h3> The IllustratedMessage consists of the following elements, which are displayed below each other in the following order: <br> <ul> <li>Illustration</li> <li>Title</li> <li>Subtitle</li> <li>Actions</li> </ul>
+### Structure
 
-<h3>Usage</h3> <code>ui5-illustrated-message</code> is meant to be used inside container component, for example a <code>ui5-card</code>, a <code>ui5-dialog</code> or a <code>ui5-page</code>
+The IllustratedMessage consists of the following elements, which are displayed below each other in the following order: <br> <ul> <li>Illustration</li> <li>Title</li> <li>Subtitle</li> <li>Actions</li> </ul>
 
-<h3>ES6 Module Import</h3>
+### Usage 
+
+<code>ui5-illustrated-message</code> is meant to be used inside container component, for example a <code>ui5-card</code>, a <code>ui5-dialog</code> or a <code>ui5-page</code>
+
+### ES6 Module Import
 
 <code>import { IllustratedMessageComponent } from "@ui5/webcomponents-ngx/fiori/illustrated-message";</code>`;
 export default {

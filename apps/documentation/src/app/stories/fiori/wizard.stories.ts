@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-wizard</code> helps users to complete a complex task by dividing it into sections and guiding them through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.
 
@@ -64,7 +64,7 @@ export const wizard: Story<WizardComponent> = (
   props: args,
   template: `
 		<ui5-wizard id="wiz">
-			<ui5-wizard-step icon="product" title-text="Product type" selected="">
+			<ui5-wizard-step icon="product" title-text="Product type" [selected]="true">
 				<div style="display: flex; min-height: 200px; flex-direction: column;">
 					<ui5-title>1. Product Type</ui5-title><br>
 
@@ -79,7 +79,7 @@ export const wizard: Story<WizardComponent> = (
 				<ui5-button id="toStep2" design="Emphasized">Step 2</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="hint" title-text="Product Information" disabled="">
+			<ui5-wizard-step icon="hint" title-text="Product Information" [disabled]="true">
 				<div style="display: flex;flex-direction: column">
 					<ui5-title>2. Product Information</ui5-title><br>
 					<ui5-label wrapping-type="Normal">
@@ -100,7 +100,7 @@ export const wizard: Story<WizardComponent> = (
 						<div style="display: flex; flex-direction: row; margin-top: 1rem; justify-content: flex-end; align-items: center;">
 							<ui5-label>Manifacturer</ui5-label>
 							<ui5-select>
-								<ui5-option selected="">Apple</ui5-option>
+								<ui5-option [selected]="true">Apple</ui5-option>
 								<ui5-option>Samsung</ui5-option>
 								<ui5-option>Huawei</ui5-option>
 							</ui5-select>
@@ -113,10 +113,10 @@ export const wizard: Story<WizardComponent> = (
 					</div>
 				</div>
 
-				<ui5-button id="toStep3" design="Emphasized" hidden="">Step 3</ui5-button>
+				<ui5-button id="toStep3" design="Emphasized" [hidden]="true">Step 3</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="action-settings" title-text="Options" disabled="">
+			<ui5-wizard-step icon="action-settings" title-text="Options" [disabled]="true">
 				<div style="display: flex; flex-direction: column;">
 					<ui5-title>3. Options</ui5-title><br>
 
@@ -136,7 +136,7 @@ export const wizard: Story<WizardComponent> = (
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-top: 1rem">
 							<ui5-label>Availability</ui5-label>
 							<ui5-segmented-button id="segButton1">
-								<ui5-toggle-button icon="employee" pressed="">In stock</ui5-toggle-button>
+								<ui5-toggle-button icon="employee" [pressed]="true">In stock</ui5-toggle-button>
 								<ui5-toggle-button>In depot</ui5-toggle-button>
 								<ui5-toggle-button>Damaged</ui5-toggle-button>
 								<ui5-toggle-button>Out of stock</ui5-toggle-button>
@@ -146,7 +146,7 @@ export const wizard: Story<WizardComponent> = (
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-top: 1rem">
 							<ui5-label>Size</ui5-label>
 							<ui5-segmented-button id="sb">
-								<ui5-toggle-button icon="employee" pressed="">Small</ui5-toggle-button>
+								<ui5-toggle-button icon="employee" [pressed]="true">Small</ui5-toggle-button>
 								<ui5-toggle-button>Medium</ui5-toggle-button>
 								<ui5-toggle-button>Large</ui5-toggle-button>
 							</ui5-segmented-button>
@@ -154,10 +154,10 @@ export const wizard: Story<WizardComponent> = (
 					</div>
 				</div>
 
-				<ui5-button id="toStep4" design="Emphasized" hidden="">Step 4</ui5-button>
+				<ui5-button id="toStep4" design="Emphasized" [hidden]="true">Step 4</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="lead" title-text="Pricing" disabled="">
+			<ui5-wizard-step icon="lead" title-text="Pricing" [disabled]="true">
 				<div style="display: flex; flex-direction: column;">
 					<ui5-title>4. Pricing</ui5-title><br>
 					<ui5-label wrapping-type="Normal">
@@ -180,7 +180,7 @@ export const wizard: Story<WizardComponent> = (
 
 						<div style="display: flex; flex-direction: row; margin-top: 1rem; justify-content: flex-end; align-items: center;">
 							<ui5-label>Vat included</ui5-label>
-							<ui5-switch checked=""></ui5-switch>
+							<ui5-switch [checked]="true"></ui5-switch>
 						</div>
 					</div>
 				</div>

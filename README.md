@@ -11,9 +11,7 @@ Angular without
 needing to use the [CUSTOM_ELEMENTS_SCHEMA](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA)
 or [NO_ERRORS_SCHEMA](https://angular.io/api/core/NO_ERRORS_SCHEMA) schemas,
 while providing full type safety and access to underlying web components in a type safe environment.
-Everything that works and is available on the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) side, will
-work here as well, with few minor differences, which are described in
-the [documentation site](https://sap.github.io/ui5-webcomponents-ngx/).
+Everything that works and is available on the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) side.
 
 ## Requirements and Setup
 
@@ -38,10 +36,10 @@ yarn add @ui5/webcomponents-ngx
 Import the module in your `app.module.ts` file:
 
 ```typescript
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
-import {Ui5WebcomponentsModule} from '@ui5/webcomponents-ngx'; // here it is
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx'; // here it is
 
 @NgModule({
   declarations: [
@@ -66,6 +64,17 @@ documentation.
 
 Every form-capable component can be used with Angular's native form approaches. Meaning all the
 `formControlName` and `ngModel`s will work as expected.
+
+## Versions
+
+The table shows
+- the `Angular` compatible version
+- the `@ui5/webcomponents` version that `@ui5/webcomponents-ngx` is built upon and .
+
+|@ui5/webcomponents-ngx| Angular  |@ui5/webcomponents|
+|----------------------|----------|------------------|
+|0.3.2                 | 16 & 17  | 1.9.x            |
+
 
 ## Support, Feedback, Contributing
 

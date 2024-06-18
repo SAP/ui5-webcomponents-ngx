@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
+const description = `### Overview The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
 
 <h3>Structure</h3> The most important properties of the Slider are: <ul> <li>min - The minimum value of the slider range.</li> <li>max - The maximum value of the slider range.</li> <li>value - The current value of the slider range.</li> <li>step - Determines the increments in which the slider will move.</li> <li>showTooltip - Determines if a tooltip should be displayed above the handle.</li> <li>showTickmarks - Displays a visual divider between the step values.</li> <li>labelInterval - Labels some or all of the tickmarks with their values.</li> </ul>
 
@@ -47,7 +47,7 @@ export const basicSlider: Story<SliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-slider></ui5-slider>
+		<ui5-slider [value]="30"></ui5-slider>
 	`,
 });
 
@@ -56,7 +56,7 @@ export const sliderWithTooltip: Story<SliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-slider min="0" max="20" show-tooltip=""></ui5-slider>
+		<ui5-slider [min]="0" [max]="20" [value]="10" [showTooltip]="true"></ui5-slider>
 	`,
 });
 
@@ -65,7 +65,7 @@ export const disabledSliderWithTickmarksAndLabels: Story<SliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-slider min="20" max="100" label-interval="5" disabled="" show-tickmarks=""></ui5-slider>
+		<ui5-slider [min]="20" [max]="100" [labelInterval]="5" [disabled]="true" [showTickmarks]="true"></ui5-slider>
 	`,
 });
 
@@ -74,6 +74,6 @@ export const sliderTooltipTickmarksAndLabels: Story<SliderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-slider min="-20" max="20" step="2" value="12" show-tooltip="" label-interval="2" show-tickmarks=""></ui5-slider>
+		<ui5-slider [min]="-20" [max]="20" step="2" [value]="12" [showTooltip]="true" [labelInterval]="2" [showTickmarks]="true"></ui5-slider>
 	`,
 });

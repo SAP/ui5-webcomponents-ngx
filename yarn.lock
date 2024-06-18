@@ -6536,10 +6536,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sap-theming/theming-base-content@npm:11.10.0":
-  version: 11.10.0
-  resolution: "@sap-theming/theming-base-content@npm:11.10.0"
-  checksum: 55c5c129a5c6632cee4826e72726070581ebf93bf269ce63566f058070ee1a56636e39f4d8d7571c2e75d1ae30e47c33704d4c54ed0a26e9c479c915b39b5167
+"@sap-theming/theming-base-content@npm:11.12.0":
+  version: 11.12.0
+  resolution: "@sap-theming/theming-base-content@npm:11.12.0"
+  checksum: 2dfb2e22ea453092b1b6e4509da542570f60d75a1a1003894c8fa60dfcedc33d55efcc2f9efc71d987edd940493c8bd1b012331a7dde4e64b1fbb4db46d73447
   languageName: node
   linkType: hard
 
@@ -9055,79 +9055,91 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-base@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-base@npm:1.22.0"
+"@ui5/webcomponents-base@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-base@npm:2.0.0-rc.5"
   dependencies:
     "@lit-labs/ssr-dom-shim": ^1.1.2
     lit-html: ^2.0.1
-  checksum: 235e7961a20ed33624bd551ef9eaf32fdff6cd147d678399cabbcd38fb71c9718b06a92f52d780109e5eba70f78ac31e3b936a3520428f6d39bae2aac49fa806
+  checksum: 8bde9c1a59f2f2451ae83f8786ba6e6d97a8a9ec46d026c17b1c66af46ba3d918f85b4369f25a7dc723e072fec69a02dc4103993c959636262f43c801b7fc36d
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-fiori@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-fiori@npm:1.22.0"
+"@ui5/webcomponents-compat@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-compat@npm:2.0.0-rc.5"
   dependencies:
-    "@ui5/webcomponents": 1.22.0
-    "@ui5/webcomponents-base": 1.22.0
-    "@ui5/webcomponents-icons": 1.22.0
-    "@ui5/webcomponents-theming": 1.22.0
+    "@ui5/webcomponents": 2.0.0-rc.5
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+    "@ui5/webcomponents-icons": 2.0.0-rc.5
+    "@ui5/webcomponents-theming": 2.0.0-rc.5
+  checksum: 1ca2252e3be6fafaa2aa07416606701c0f167fd35cd632c45af42fd6a129b1ce8df340de9a944c63a6af728c354050c4822441ac0c3b5889df0b56f3b147ec34
+  languageName: node
+  linkType: hard
+
+"@ui5/webcomponents-fiori@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-fiori@npm:2.0.0-rc.5"
+  dependencies:
+    "@ui5/webcomponents": 2.0.0-rc.5
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+    "@ui5/webcomponents-icons": 2.0.0-rc.5
+    "@ui5/webcomponents-theming": 2.0.0-rc.5
     "@zxing/library": ^0.17.1
-  checksum: 4db5cece0671c2a8f1e47a4298c2d0aec42ffa591357d3b54f88987792138a27125b6cf1813e934cc449d1f89192b9033f82f4db7838c3b0ddf81951e537d966
+  checksum: 6857a45d08cd8ef0791da49fa9b8eaf8ead94c62ab71696414851fd4c861e51996def854391c8745acdbcfd83a16039846365a8eba73b206f401535ed5b8b545
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons-business-suite@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-icons-business-suite@npm:1.22.0"
+"@ui5/webcomponents-icons-business-suite@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-icons-business-suite@npm:2.0.0-rc.5"
   dependencies:
-    "@ui5/webcomponents-base": 1.22.0
-  checksum: e84a09bf6759327ea536f07b3a26fa766c209ce550f630c6a7d5af8fe50d684af509fe4e27a2799a49de0ecbb589d053e961413d53daea02abd76a87899916ef
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+  checksum: 40aaa7a1fb53657db0fcd12f52c99864dec45e029c8f55f1c59e2f48c97cb6d8ce290f9f0cca0fd7b2c7536c129316cec56eee25a6b64e3925d3968914f9224d
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons-tnt@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-icons-tnt@npm:1.22.0"
+"@ui5/webcomponents-icons-tnt@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-icons-tnt@npm:2.0.0-rc.5"
   dependencies:
-    "@ui5/webcomponents-base": 1.22.0
-  checksum: 5dbdaab5cb190fd386d4f122178f59e0d1496efbb826c3ff9e1c1c7dd624b9e52577b70c9398987eb0752aaf5b1343b35fa77202999a10181608a5ef56d6c6c2
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+  checksum: d566307206f873190e659dc35f1c04fe7f1452cda35ba24f7624f1f3df3b51e395390de31291eefe41290b95b1304a9b275c059e09a81c1ebb369e42b690a4f3
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-icons@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-icons@npm:1.22.0"
+"@ui5/webcomponents-icons@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-icons@npm:2.0.0-rc.5"
   dependencies:
-    "@ui5/webcomponents-base": 1.22.0
-  checksum: 3e759c6ec79cec4c83eabf1940226474084e81e6b9563d932b5341985d7f8577ad821a0f86a4aa5d6ad3cc8150b39fd0a2b20db9410935047dd5b912bc0d1eb4
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+  checksum: 83d49a3a7c19705fed6f4d4d2e971f600bf83fdd9b0b3f88a325cdaca15370b66ddc28abe257cbbf5ae17908ef80fe312e0a9ed04f280c51ad016b3e8270434b
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-localization@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-localization@npm:1.22.0"
+"@ui5/webcomponents-localization@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-localization@npm:2.0.0-rc.5"
   dependencies:
     "@types/openui5": ^1.113.0
-    "@ui5/webcomponents-base": 1.22.0
-  checksum: b596751246c83027e9a835aaa6e0b09683dc113ba09882e00e3898efec945c8ad65524efbe760e553d47dd2b48257e96c0fa4c3c0a7065bdb8b237e9546d21f4
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+  checksum: b7e316a128ae8112d5676037d34c7336b551bb519251c2cf74b0b0b81cbc7b2214794013d36504b28eafa75cca8065beb36db43e14b490f9f6768eefb7a3d373
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-theming@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-theming@npm:1.22.0"
+"@ui5/webcomponents-theming@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-theming@npm:2.0.0-rc.5"
   dependencies:
-    "@sap-theming/theming-base-content": 11.10.0
-    "@ui5/webcomponents-base": 1.22.0
-  checksum: 330a5779b0ead7876a37dcbcd946680576aaa61ecd795d305380fcaec3f9494eccd0d52d6c18113ce8da5f76fff633178adec2b82e049025739786668ffea433
+    "@sap-theming/theming-base-content": 11.12.0
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+  checksum: 5249dd43b5ecd7cf1db737e2a0648c5b8cc9487c23080dc1483420f47ea24ce5590f88e62d12ab52f19df3130b00267b65ae9105739d63a7a5db593e059a7ef7
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents-tools@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents-tools@npm:1.22.0"
+"@ui5/webcomponents-tools@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents-tools@npm:2.0.0-rc.5"
   dependencies:
     "@custom-elements-manifest/analyzer": ^0.8.4
     "@typescript-eslint/eslint-plugin": ^6.9.0
@@ -9139,6 +9151,7 @@ __metadata:
     "@wdio/spec-reporter": ^7.19.7
     "@wdio/static-server-service": ^7.19.5
     ajv: ^8.12.0
+    cem-plugin-vs-code-custom-data-generator: ^1.4.2
     chai: ^4.3.4
     child_process: ^1.0.2
     chokidar: ^3.5.1
@@ -9147,6 +9160,7 @@ __metadata:
     comment-parser: ^1.4.0
     concurrently: ^6.0.0
     cross-env: ^7.0.3
+    custom-element-jet-brains-integration: ^1.4.4
     escodegen: ^2.0.0
     eslint: ^7.22.0
     eslint-config-airbnb-base: ^14.2.1
@@ -9158,7 +9172,6 @@ __metadata:
     globby: ^13.1.1
     handlebars: ^4.7.7
     is-port-reachable: ^3.1.0
-    jsdoc: ^3.6.6
     json-beautify: ^1.1.1
     mkdirp: ^1.0.4
     nps: ^5.10.0
@@ -9182,21 +9195,21 @@ __metadata:
   bin:
     wc-create-ui5-element: bin/create-ui5-element.js
     wc-dev: bin/dev.js
-  checksum: ed84fbfc0cfae6e00b5835b1b98b44fed390c7f911fcf50c6a2dcba26372b75b52c13fc0a5c6c5ccf41ae5c38e478a72dfd5ed9af0ce32170f1be273c1c27ccf
+  checksum: 55dce2517e7b4b1de47f04b4397b0ddfd9eab33355b04de84f02a2488ce6b094c16acbdbb344d29c8d2887c63528006d36a6c8af2154349190fdace0ce2f05d1
   languageName: node
   linkType: hard
 
-"@ui5/webcomponents@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@ui5/webcomponents@npm:1.22.0"
+"@ui5/webcomponents@npm:2.0.0-rc.5":
+  version: 2.0.0-rc.5
+  resolution: "@ui5/webcomponents@npm:2.0.0-rc.5"
   dependencies:
-    "@ui5/webcomponents-base": 1.22.0
-    "@ui5/webcomponents-icons": 1.22.0
-    "@ui5/webcomponents-icons-business-suite": 1.22.0
-    "@ui5/webcomponents-icons-tnt": 1.22.0
-    "@ui5/webcomponents-localization": 1.22.0
-    "@ui5/webcomponents-theming": 1.22.0
-  checksum: cbc280ef9ab9330d289de533072324067f46c0057ee511b3a03329125f2493253cd80ebf9ab6788d736c2f2b45694d664d562ef55a2f2b5faa960f5d32cca345
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+    "@ui5/webcomponents-icons": 2.0.0-rc.5
+    "@ui5/webcomponents-icons-business-suite": 2.0.0-rc.5
+    "@ui5/webcomponents-icons-tnt": 2.0.0-rc.5
+    "@ui5/webcomponents-localization": 2.0.0-rc.5
+    "@ui5/webcomponents-theming": 2.0.0-rc.5
+  checksum: 55351031988a1df95dba6d82242b54abae37be4619304b67c7565b03ed9bc5d1289f8648424395424fa35c433c4824d8bc76200bd4ca1941a1a4d115c011f3a8
   languageName: node
   linkType: hard
 
@@ -11576,6 +11589,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cem-plugin-vs-code-custom-data-generator@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "cem-plugin-vs-code-custom-data-generator@npm:1.4.2"
+  dependencies:
+    prettier: ^2.7.1
+  checksum: f182abb3f0b12496c69ca2c006af2240277edc86756d90e9e050dd8c41c77aa15435adab9cd367640c936fead2f3e88a4a15088deaae944e1a424404b777bda3
+  languageName: node
+  linkType: hard
+
 "chai@npm:^4.3.4":
   version: 4.4.1
   resolution: "chai@npm:4.4.1"
@@ -11805,6 +11827,13 @@ __metadata:
   version: 3.8.0
   resolution: "ci-info@npm:3.8.0"
   checksum: d0a4d3160497cae54294974a7246202244fff031b0a6ea20dd57b10ec510aa17399c41a1b0982142c105f3255aff2173e5c0dd7302ee1b2f28ba3debda375098
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.7.0":
+  version: 3.9.0
+  resolution: "ci-info@npm:3.9.0"
+  checksum: 6b19dc9b2966d1f8c2041a838217299718f15d6c4b63ae36e4674edd2bee48f780e94761286a56aa59eb305a85fbea4ddffb7630ec063e7ec7e7e5ad42549a87
   languageName: node
   linkType: hard
 
@@ -13262,6 +13291,15 @@ __metadata:
   version: 0.2.2
   resolution: "cuint@npm:0.2.2"
   checksum: b8127a93a7f16ce120ffcb22108014327c9808b258ee20e7dbb4c6740d7cb0f0c12d18a054eb716b0f2470090666abaae8a082d3cd5ef0e94fa447dd155842c4
+  languageName: node
+  linkType: hard
+
+"custom-element-jet-brains-integration@npm:^1.4.4":
+  version: 1.5.0
+  resolution: "custom-element-jet-brains-integration@npm:1.5.0"
+  dependencies:
+    prettier: ^2.8.0
+  checksum: f240485f59daa00bba581bdfed28bbc89f697f2cde8e30ddefb204ed1c00d3afb573423615e4409b543fdc79c3ea0c6ee498933de18e9670a08f80e28df1a3ad
   languageName: node
   linkType: hard
 
@@ -15844,6 +15882,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"find-yarn-workspace-root@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "find-yarn-workspace-root@npm:2.0.0"
+  dependencies:
+    micromatch: ^4.0.2
+  checksum: fa5ca8f9d08fe7a54ce7c0a5931ff9b7e36f9ee7b9475fb13752bcea80ec6b5f180fa5102d60b376d5526ce924ea3fc6b19301262efa0a5d248dd710f3644242
+  languageName: node
+  linkType: hard
+
 "flat-cache@npm:^3.0.4":
   version: 3.0.4
   resolution: "flat-cache@npm:3.0.4"
@@ -16125,7 +16172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^9.1.0":
+"fs-extra@npm:^9.0.0, fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
   dependencies:
@@ -18336,7 +18383,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-wsl@npm:^2.2.0":
+"is-wsl@npm:^2.1.1, is-wsl@npm:^2.2.0":
   version: 2.2.0
   resolution: "is-wsl@npm:2.2.0"
   dependencies:
@@ -19201,7 +19248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdoc@npm:^3.6.11, jsdoc@npm:^3.6.6":
+"jsdoc@npm:^3.6.11":
   version: 3.6.11
   resolution: "jsdoc@npm:3.6.11"
   dependencies:
@@ -19348,6 +19395,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-stable-stringify@npm:^1.0.2":
+  version: 1.1.1
+  resolution: "json-stable-stringify@npm:1.1.1"
+  dependencies:
+    call-bind: ^1.0.5
+    isarray: ^2.0.5
+    jsonify: ^0.0.1
+    object-keys: ^1.1.1
+  checksum: e1ba06600fd278767eeff53f28e408e29c867e79abf564e7aadc3ce8f31f667258f8db278ef28831e45884dd687388fa1910f46e599fc19fb94c9afbbe3a4de8
+  languageName: node
+  linkType: hard
+
 "json-stringify-safe@npm:^5.0.1, json-stringify-safe@npm:~5.0.1":
   version: 5.0.1
   resolution: "json-stringify-safe@npm:5.0.1"
@@ -19440,6 +19499,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonify@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "jsonify@npm:0.0.1"
+  checksum: 027287e1c0294fce15f18c0ff990cfc2318e7f01fb76515f784d5cd0784abfec6fc5c2355c3a2f2cb0ad7f4aa2f5b74ebbfe4e80476c35b2d13cabdb572e1134
+  languageName: node
+  linkType: hard
+
 "jsonparse@npm:^1.2.0, jsonparse@npm:^1.3.1":
   version: 1.3.1
   resolution: "jsonparse@npm:1.3.1"
@@ -19499,6 +19565,15 @@ __metadata:
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
   checksum: 3ab01e7b1d440b22fe4c31f23d8d38b4d9b91d9f291df683476576493d5dfd2e03848a8b05813dd0c3f0e835bc63f433007ddeceb71f05cb25c45ae1b19c6d3b
+  languageName: node
+  linkType: hard
+
+"klaw-sync@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "klaw-sync@npm:6.0.0"
+  dependencies:
+    graceful-fs: ^4.1.11
+  checksum: 0da397f8961313c3ef8f79fb63af9002cde5a8fb2aeb1a37351feff0dd6006129c790400c3f5c3b4e757bedcabb13d21ec0a5eaef5a593d59515d4f2c291e475
   languageName: node
   linkType: hard
 
@@ -22702,6 +22777,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"open@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "open@npm:7.4.2"
+  dependencies:
+    is-docker: ^2.0.0
+    is-wsl: ^2.1.1
+  checksum: 3333900ec0e420d64c23b831bc3467e57031461d843c801f569b2204a1acc3cd7b3ec3c7897afc9dde86491dfa289708eb92bba164093d8bd88fb2c231843c91
+  languageName: node
+  linkType: hard
+
 "opener@npm:^1.5.1":
   version: 1.5.2
   resolution: "opener@npm:1.5.2"
@@ -23256,6 +23341,31 @@ __metadata:
     no-case: ^3.0.4
     tslib: ^2.0.3
   checksum: ba98bfd595fc91ef3d30f4243b1aee2f6ec41c53b4546bfa3039487c367abaa182471dcfc830a1f9e1a0df00c14a370514fa2b3a1aacc68b15a460c31116873e
+  languageName: node
+  linkType: hard
+
+"patch-package@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "patch-package@npm:8.0.0"
+  dependencies:
+    "@yarnpkg/lockfile": ^1.1.0
+    chalk: ^4.1.2
+    ci-info: ^3.7.0
+    cross-spawn: ^7.0.3
+    find-yarn-workspace-root: ^2.0.0
+    fs-extra: ^9.0.0
+    json-stable-stringify: ^1.0.2
+    klaw-sync: ^6.0.0
+    minimist: ^1.2.6
+    open: ^7.4.2
+    rimraf: ^2.6.3
+    semver: ^7.5.3
+    slash: ^2.0.0
+    tmp: ^0.0.33
+    yaml: ^2.2.2
+  bin:
+    patch-package: index.js
+  checksum: d23cddc4d1622e2d8c7ca31b145c6eddb24bd271f69905e766de5e1f199f0b9a5479a6a6939ea857288399d4ed249285639d539a2c00fbddb7daa39934b007a2
   languageName: node
   linkType: hard
 
@@ -24483,7 +24593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.8.0":
+"prettier@npm:^2.7.1, prettier@npm:^2.8.0":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
@@ -26415,6 +26525,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"slash@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "slash@npm:2.0.0"
+  checksum: 512d4350735375bd11647233cb0e2f93beca6f53441015eea241fe784d8068281c3987fbaa93e7ef1c38df68d9c60013045c92837423c69115297d6169aa85e6
+  languageName: node
+  linkType: hard
+
 "slash@npm:^4.0.0":
   version: 4.0.0
   resolution: "slash@npm:4.0.0"
@@ -28250,14 +28367,15 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 6.19.0
     "@typescript-eslint/parser": 6.19.0
     "@ui5/tooling-webc": 0.1.4
-    "@ui5/webcomponents": 1.22.0
-    "@ui5/webcomponents-base": 1.22.0
-    "@ui5/webcomponents-fiori": 1.22.0
-    "@ui5/webcomponents-icons": 1.22.0
-    "@ui5/webcomponents-icons-business-suite": 1.22.0
-    "@ui5/webcomponents-icons-tnt": 1.22.0
-    "@ui5/webcomponents-theming": 1.22.0
-    "@ui5/webcomponents-tools": 1.22.0
+    "@ui5/webcomponents": 2.0.0-rc.5
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+    "@ui5/webcomponents-compat": 2.0.0-rc.5
+    "@ui5/webcomponents-fiori": 2.0.0-rc.5
+    "@ui5/webcomponents-icons": 2.0.0-rc.5
+    "@ui5/webcomponents-icons-business-suite": 2.0.0-rc.5
+    "@ui5/webcomponents-icons-tnt": 2.0.0-rc.5
+    "@ui5/webcomponents-theming": 2.0.0-rc.5
+    "@ui5/webcomponents-tools": 2.0.0-rc.5
     ajv-formats: ^2.1.1
     conventional-changelog: ^3.1.25
     conventional-changelog-angular: ^5.0.13
@@ -28282,6 +28400,7 @@ __metadata:
     lodash: 4.17.21
     ng-packagr: 17.0.3
     nx: 17.2.8
+    patch-package: ^8.0.0
     postcss: 8.4.31
     postcss-import: 14.1.0
     postcss-preset-env: 7.5.0
@@ -29679,6 +29798,15 @@ __metadata:
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: ce4ada136e8a78a0b08dc10b4b900936912d15de59905b2bf415b4d33c63df1d555d23acb2a41b23cf9fb5da41c256441afca3d6509de7247daa062fd2c5ea5f
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.2.2":
+  version: 2.4.3
+  resolution: "yaml@npm:2.4.3"
+  bin:
+    yaml: bin.mjs
+  checksum: cf466e40dcd39d816eb8a8fcbb069897a1ff4bff46a4bf7bb4b7940be3dfcc820901720e4ead71eb7db00229a554664161dbe4bbeb87b6ad0c1c78c12897955d
   languageName: node
   linkType: hard
 

@@ -10,7 +10,7 @@ import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";
 
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-calendar</code> component allows users to select one or more dates. <br><br> Currently selected dates are represented with instances of <code>ui5-date</code> as children of the <code>ui5-calendar</code>. The value property of each <code>ui5-date</code> must be a date string, correctly formatted according to the <code>ui5-calendar</code>'s <code>formatPattern</code> property. Whenever the user changes the date selection, <code>ui5-calendar</code> will automatically create/remove instances of <code>ui5-date</code> in itself, unless you prevent this behavior by calling <code>preventDefault()</code> for the <code>selected-dates-change</code> event. This is useful if you want to control the selected dates externally. <br><br>
 
@@ -77,7 +77,7 @@ export const calendarWithHiddenWeekNumbers: Story<CalendarComponent> = (
   props: args,
   template: `
 		<div class="datepicker-width">
-			<ui5-calendar hide-week-numbers=""></ui5-calendar>
+			<ui5-calendar [hideWeekNumbers]="true"></ui5-calendar>
 		</div>
 	`,
 });

@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-multi-combobox</code> component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.
 
@@ -48,13 +48,13 @@ export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
   props: args,
   template: `
 		<ui5-multi-combobox placeholder="Type your value">
-			<ui5-mcb-item selected="" text="UI5"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="UI5"></ui5-mcb-item>
 		</ui5-multi-combobox>
-		<ui5-multi-combobox readonly="" value="Readonly combo">
-			<ui5-mcb-item selected="" text="UI5"></ui5-mcb-item>
+		<ui5-multi-combobox [readonly]="true" value="Readonly combo">
+			<ui5-mcb-item [selected]="true" text="UI5"></ui5-mcb-item>
 		</ui5-multi-combobox>
-		<ui5-multi-combobox disabled="" value="Disabled combo">
-			<ui5-mcb-item selected="" text="UI5"></ui5-mcb-item>
+		<ui5-multi-combobox [disabled]="true" value="Disabled combo">
+			<ui5-mcb-item [selected]="true" text="UI5"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,
 });
@@ -65,7 +65,7 @@ export const multiComboBoxWithItems: Story<MultiComboBoxComponent> = (
   props: args,
   template: `
 		<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries">
-			<ui5-mcb-item selected="" text="Argentina"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Argentina"></ui5-mcb-item>
 			<ui5-mcb-item text="Bulgaria"></ui5-mcb-item>
 			<ui5-mcb-item text="Denmark"></ui5-mcb-item>
 			<ui5-mcb-item text="England"></ui5-mcb-item>
@@ -84,15 +84,15 @@ export const multiComboBoxWithFreeTextInput: Story<MultiComboBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries" allow-custom-values="">
+		<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries" [allowCustomValues]="true">
 			<ui5-mcb-item text="Argentina"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="Bulgaria"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Bulgaria"></ui5-mcb-item>
 			<ui5-mcb-item text="Denmark"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="England"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="England"></ui5-mcb-item>
 			<ui5-mcb-item text="Albania"></ui5-mcb-item>
 			<ui5-mcb-item text="Morocco"></ui5-mcb-item>
 			<ui5-mcb-item text="Portugal"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="Germany"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Germany"></ui5-mcb-item>
 			<ui5-mcb-item text="Philippines"></ui5-mcb-item>
 			<ui5-mcb-item text="Paraguay"></ui5-mcb-item>
 		</ui5-multi-combobox>
@@ -104,21 +104,21 @@ export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-multi-combobox value-state="Success">
+		<ui5-multi-combobox value-state="Positive">
 			<ui5-mcb-item text="Fortune"></ui5-mcb-item>
 			<ui5-mcb-item text="Luck"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="Success"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Positive"></ui5-mcb-item>
 		</ui5-multi-combobox>
 		
-		<ui5-multi-combobox value-state="Warning">
+		<ui5-multi-combobox value-state="Critical">
 			<ui5-mcb-item text="Attention"></ui5-mcb-item>
 			<ui5-mcb-item text="Caution"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="Warning"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Critical"></ui5-mcb-item>
 		</ui5-multi-combobox>
 		
-		<ui5-multi-combobox value-state="Error">
+		<ui5-multi-combobox value-state="Negative">
 			<ui5-mcb-item text="Fault"></ui5-mcb-item>
-			<ui5-mcb-item selected="" text="Error"></ui5-mcb-item>
+			<ui5-mcb-item [selected]="true" text="Negative"></ui5-mcb-item>
 			<ui5-mcb-item text="Mistake"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,

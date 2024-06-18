@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-transformer-fs-commit",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0-rc.3",
   "license": "Apache-2.0",
   "type": "commonjs"
 }

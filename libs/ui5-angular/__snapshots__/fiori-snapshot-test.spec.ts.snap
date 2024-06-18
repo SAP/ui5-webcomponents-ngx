@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot test Fiori Bar should match the snapshot 1`] = `
-"import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  NgZone,
-  inject,
-} from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/Bar.js';
-import Bar from '@ui5/webcomponents-fiori/dist/Bar.js';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['design'])
-@Component({
-  standalone: true,
-  selector: 'ui5-bar',
-  template: '<ng-content></ng-content>',
-  inputs: ['design'],
-})
-class BarComponent {
-  /**
-     Defines the component's design.
-    */
-  design!: 'Header' | 'Subheader' | 'Footer' | 'FloatingFooter';
-
-  private elementRef: ElementRef<Bar> = inject(ElementRef);
-  private zone = inject(NgZone);
-  private cdr = inject(ChangeDetectorRef);
-
-  get element(): Bar {
-    return this.elementRef.nativeElement;
-  }
-
-  constructor() {
-    this.cdr.detach();
-  }
-}
-export { BarComponent };
-"
-`;
-
 exports[`Snapshot test Fiori Barcode Scanner Dialog should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -55,16 +15,30 @@ import {
   BarcodeScannerDialogScanErrorEventDetail,
   BarcodeScannerDialogScanSuccessEventDetail,
 } from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import { ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-
-@ProxyOutputs(['scan-success: ui5ScanSuccess', 'scan-error: ui5ScanError'])
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['open'])
+@ProxyOutputs([
+  'close: ui5Close',
+  'scan-success: ui5ScanSuccess',
+  'scan-error: ui5ScanError',
+])
 @Component({
   standalone: true,
   selector: 'ui5-barcode-scanner-dialog',
   template: '<ng-content></ng-content>',
-  outputs: ['ui5ScanSuccess', 'ui5ScanError'],
+  inputs: ['open'],
+  outputs: ['ui5Close', 'ui5ScanSuccess', 'ui5ScanError'],
 })
 class BarcodeScannerDialogComponent {
+  /**
+     Indicates whether the dialog is open.
+    */
+  open!: boolean;
+
+  /**
+     Fired when the user closes the component.
+    */
+  ui5Close!: EventEmitter<void>;
   /**
      Fires when the scan is completed successfuuly.
     */
@@ -87,6 +61,142 @@ class BarcodeScannerDialogComponent {
   }
 }
 export { BarcodeScannerDialogComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Dynamic Page Header should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/DynamicPageHeader.js';
+import DynamicPageHeader from '@ui5/webcomponents-fiori/dist/DynamicPageHeader.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-dynamic-page-header',
+  template: '<ng-content></ng-content>',
+})
+class DynamicPageHeaderComponent {
+  private elementRef: ElementRef<DynamicPageHeader> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): DynamicPageHeader {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { DynamicPageHeaderComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Dynamic Page Title should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/DynamicPageTitle.js';
+import DynamicPageTitle from '@ui5/webcomponents-fiori/dist/DynamicPageTitle.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-dynamic-page-title',
+  template: '<ng-content></ng-content>',
+})
+class DynamicPageTitleComponent {
+  private elementRef: ElementRef<DynamicPageTitle> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): DynamicPageTitle {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { DynamicPageTitleComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Dynamic Page should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/DynamicPage.js';
+import DynamicPage from '@ui5/webcomponents-fiori/dist/DynamicPage.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['hidePinButton', 'headerPinned', 'showFooter', 'headerSnapped'])
+@ProxyOutputs([
+  'pin-button-toggle: ui5PinButtonToggle',
+  'title-toggle: ui5TitleToggle',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-dynamic-page',
+  template: '<ng-content></ng-content>',
+  inputs: ['hidePinButton', 'headerPinned', 'showFooter', 'headerSnapped'],
+  outputs: ['ui5PinButtonToggle', 'ui5TitleToggle'],
+})
+class DynamicPageComponent {
+  /**
+     Defines if the pin button is hidden.
+    */
+  hidePinButton!: boolean;
+
+  /**
+     Defines if the header is pinned.
+    */
+  headerPinned!: boolean;
+
+  /**
+     Defines if the footer is shown.
+    */
+  showFooter!: boolean;
+
+  /**
+     Defines if the header is snapped.
+    */
+  headerSnapped!: boolean;
+
+  /**
+     Fired when the pin header button is toggled.
+    */
+  ui5PinButtonToggle!: EventEmitter<void>;
+  /**
+     Fired when the expand/collapse area of the title is toggled.
+    */
+  ui5TitleToggle!: EventEmitter<void>;
+
+  private elementRef: ElementRef<DynamicPage> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): DynamicPage {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { DynamicPageComponent };
 "
 `;
 
@@ -142,30 +252,11 @@ class DynamicSideContentComponent {
   /**
      Defines whether the side content is positioned before the main content (left side
 in LTR mode), or after the the main content (right side in LTR mode).
-
-<br><br>
-<b>The available values are:</b>
-
-<ul>
-<li><code>Start</code></li>
-<li><code>End</code></li>
-</ul>
     */
   sideContentPosition!: 'End' | 'Start';
 
   /**
      Defines on which breakpoints the side content is visible.
-
-<br><br>
-<b>The available values are:</b>
-
-<ul>
-<li><code>AlwaysShow</code></li>
-<li><code>ShowAboveL</code></li>
-<li><code>ShowAboveM</code></li>
-<li><code>ShowAboveS</code></li>
-<li><code>NeverShow</code></li>
-</ul>
     */
   sideContentVisibility!:
     | 'AlwaysShow'
@@ -176,16 +267,6 @@ in LTR mode), or after the the main content (right side in LTR mode).
 
   /**
      Defines on which breakpoints the side content falls down below the main content.
-
-<br><br>
-<b>The available values are:</b>
-
-<ul>
-<li><code>BelowXL</code></li>
-<li><code>BelowL</code></li>
-<li><code>BelowM</code></li>
-<li><code>OnMinimumWidth</code></li>
-</ul>
     */
   sideContentFallDown!: 'BelowXL' | 'BelowL' | 'BelowM' | 'OnMinimumWidth';
 
@@ -319,34 +400,28 @@ exports[`Snapshot test Fiori Flexible Column Layout should match the snapshot 1`
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import {
+  FCLAccessibilityAttributes,
   default as FlexibleColumnLayout,
-  FlexibleColumnLayoutAccessibilityRoles,
-  FlexibleColumnLayoutAccessibilityTexts,
   FlexibleColumnLayoutLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs([
-  'layout',
-  'hideArrows',
-  'accessibilityTexts',
-  'accessibilityRoles',
-])
+@ProxyInputs(['layout', 'hideArrows', 'accessibilityAttributes'])
 @ProxyOutputs(['layout-change: ui5LayoutChange'])
 @Component({
   standalone: true,
   selector: 'ui5-flexible-column-layout',
   template: '<ng-content></ng-content>',
-  inputs: ['layout', 'hideArrows', 'accessibilityTexts', 'accessibilityRoles'],
+  inputs: ['layout', 'hideArrows', 'accessibilityAttributes'],
   outputs: ['ui5LayoutChange'],
 })
 class FlexibleColumnLayoutComponent {
   /**
      Defines the columns layout and their proportion.
-<br><br>
-<b>Note:</b> The layout also depends on the screen size - one column for screens smaller than 599px,
+
+**Note:** The layout also depends on the screen size - one column for screens smaller than 599px,
 two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
-<br><br>
-<b>For example:</b> layout=<code>TwoColumnsStartExpanded</code> means the layout will display up to two columns
+
+**For example:** layout=\`TwoColumnsStartExpanded\` means the layout will display up to two columns
 in 67%/33% proportion.
     */
   layout!:
@@ -367,32 +442,30 @@ used for expanding and shrinking the columns.
   hideArrows!: boolean;
 
   /**
-     An object of strings that defines several additional accessibility texts for even further customization.
+     Defines additional accessibility attributes on different areas of the component.
 
-It supports the following fields:
- - <code>startColumnAccessibleName</code>: the accessibility name for the <code>startColumn</code> region
- - <code>midColumnAccessibleName</code>: the accessibility name for the <code>midColumn</code> region
- - <code>endColumnAccessibleName</code>: the accessibility name for the <code>endColumn</code> region
- - <code>startArrowLeftText</code>: the text that the first arrow (between the <code>begin</code> and <code>mid</code> columns) will have when pointing to the left
- - <code>startArrowRightText</code>: the text that the first arrow (between the <code>begin</code> and <code>mid</code> columns) will have when pointing to the right
- - <code>endArrowLeftText</code>: the text that the second arrow (between the <code>mid</code> and <code>end</code> columns) will have when pointing to the left
- - <code>endArrowRightText</code>: the text that the second arrow (between the <code>mid</code> and <code>end</code> columns) will have when pointing to the right
- - <code>startArrowContainerAccessibleName</code>: the text that the first arrow container (between the <code>begin</code> and <code>mid</code> columns) will have as <code>aria-label</code>
- - <code>endArrowContainerAccessibleName</code>: the text that the second arrow container (between the <code>mid</code> and <code>end</code> columns) will have as <code>aria-label</code>
+The accessibilityAttributes object has the following fields,
+where each field is an object supporting one or more accessibility attributes:
+
+ - **startColumn**: \`startColumn.role\` and \`startColumn.name\`.
+ - **midColumn**: \`midColumn.role\` and \`midColumn.name\`.
+ - **endColumn**: \`endColumn.role\` and \`endColumn.name\`.
+ - **startArrowContainer**: \`startArrowContainer.role\` and \`startArrowContainer.name\`.
+ - **endArrowContainer**: \`endArrowContainerrole.role\` and \`endArrowContainer.name\`.
+ - **startArrowLeft**: \`startArrowLeft.name\`.
+ - **startArrowRight**: \`startArrowRight.name\`.
+ - **endArrowLeft**: \`endArrowLeft.name\`.
+ - **endArrowRight**: \`endArrowRight.name\`.
+
+The accessibility attributes support the following values:
+
+- **role**: Defines the accessible ARIA landmark role of the area.
+Accepts the following values: \`none\`, \`complementary\`, \`contentinfo\`, \`main\` or \`region\`.
+
+- **name**: Defines the accessible ARIA name of the area.
+Accepts any string.
     */
-  accessibilityTexts!: FlexibleColumnLayoutAccessibilityTexts;
-
-  /**
-     An object of strings that defines additional accessibility roles for further customization.
-
-It supports the following fields:
- - <code>startColumnRole</code>: the accessibility role for the <code>startColumn</code>
- - <code>startArrowContainerRole</code>: the accessibility role for the first arrow container (between the <code>begin</code> and <code>mid</code> columns)
- - <code>midColumnRole</code>: the accessibility role for the <code>midColumn</code>
- - <code>endArrowContainerRole</code>: the accessibility role for the second arrow container (between the <code>mid</code> and <code>end</code> columns)
- - <code>endColumnRole</code>: the accessibility role for the <code>endColumn</code>
-    */
-  accessibilityRoles!: FlexibleColumnLayoutAccessibilityRoles;
+  accessibilityAttributes!: FCLAccessibilityAttributes;
 
   /**
      Fired when the layout changes via user interaction by clicking the arrows
@@ -429,76 +502,64 @@ import IllustratedMessage from '@ui5/webcomponents-fiori/dist/IllustratedMessage
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'name',
-  'size',
+  'design',
   'subtitleText',
   'titleText',
   'accessibleNameRef',
-  'titleLevel',
 ])
 @Component({
   standalone: true,
   selector: 'ui5-illustrated-message',
   template: '<ng-content></ng-content>',
-  inputs: [
-    'name',
-    'size',
-    'subtitleText',
-    'titleText',
-    'accessibleNameRef',
-    'titleLevel',
-  ],
+  inputs: ['name', 'design', 'subtitleText', 'titleText', 'accessibleNameRef'],
 })
 class IllustratedMessageComponent {
   /**
      Defines the illustration name that will be displayed in the component.
-<br>
+
 Example:
-<br>
-<code>name='BeforeSearch'</code>, <code>name='UnableToUpload'</code>, etc..
-<br>
-<br>
-<b>Note:</b> To use the TNT illustrations,
-you need to set the <code>tnt</code> or <code>Tnt</code> prefix in front of the icon's name.
-<br>
+
+\`name='BeforeSearch'\`, \`name='UnableToUpload'\`, etc..
+
+**Note:** To use the TNT illustrations,
+you need to set the \`tnt\` or \`Tnt\` prefix in front of the icon's name.
+
 Example:
-<br>
-<code>name='tnt/Avatar'</code> or <code>name='TntAvatar'</code>.
-<br>
-<br>
-<b>Note:</b> By default the <code>BeforeSearch</code> illustration is loaded.
+
+\`name='tnt/Avatar'\` or \`name='TntAvatar'\`.
+
+**Note:** By default the \`BeforeSearch\` illustration is loaded.
 When using an illustration type, other than the default, it should be loaded in addition:
-<br>
-<code>import \\"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\\";</code>
-<br>
-<br>
+
+\`import \\"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\\";\`
+
 For TNT illustrations:
-<br>
-<code>import \\"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\\";</code>
+
+\`import \\"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\\";\`
     */
   name!: string;
 
   /**
      Determines which illustration breakpoint variant is used.
-<br><br>
 
-As <code>IllustratedMessage</code> adapts itself around the <code>Illustration</code>, the other
-elements of the component are displayed differently on the different breakpoints/illustration sizes.
+As \`IllustratedMessage\` adapts itself around the \`Illustration\`, the other
+elements of the component are displayed differently on the different breakpoints/illustration designs.
     */
-  size!: 'Auto' | 'Base' | 'Spot' | 'Dialog' | 'Scene';
+  design!: 'Auto' | 'Base' | 'Dot' | 'Spot' | 'Dialog' | 'Scene';
 
   /**
      Defines the subtitle of the component.
-<br><br>
-<b>Note:</b> Using this property, the default subtitle text of illustration will be overwritten.
-<br><br>
-<b>Note:</b> Using <code>subtitle</code> slot, the default of this property will be overwritten.
+
+**Note:** Using this property, the default subtitle text of illustration will be overwritten.
+
+**Note:** Using \`subtitle\` slot, the default of this property will be overwritten.
     */
   subtitleText!: string;
 
   /**
      Defines the title of the component.
-<br><br>
-<b>Note:</b> Using this property, the default title text of illustration will be overwritten.
+
+**Note:** Using this property, the default title text of illustration will be overwritten.
     */
   titleText!: string;
 
@@ -506,13 +567,6 @@ elements of the component are displayed differently on the different breakpoints
      Receives id(or many ids) of the elements that label the component.
     */
   accessibleNameRef!: string;
-
-  /**
-     Defines the semantic level of the title.
-
-<b>Note:</b> Used for accessibility purposes only.
-    */
-  titleLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
 
   private elementRef: ElementRef<IllustratedMessage> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -563,12 +617,6 @@ class MediaGalleryItemComponent {
 
   /**
      Determines the layout of the item container.
-<br><br>
-Available options are:
-<ul>
-<li><code>Square</code></li>
-<li><code>Wide</code></li>
-</ul>
     */
   layout!: 'Square' | 'Wide';
 
@@ -630,16 +678,16 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class MediaGalleryComponent {
   /**
-     If set to <code>true</code>, all thumbnails are rendered in a scrollable container.
-If <code>false</code>, only up to five thumbnails are rendered, followed by
+     If set to \`true\`, all thumbnails are rendered in a scrollable container.
+If \`false\`, only up to five thumbnails are rendered, followed by
 an overflow button that shows the count of the remaining thumbnails.
     */
   showAllThumbnails!: boolean;
 
   /**
-     If enabled, a <code>display-area-click</code> event is fired
+     If enabled, a \`display-area-click\` event is fired
 when the user clicks or taps on the display area.
-<br>
+
 The display area is the central area that contains
 the enlarged content of the currently selected item.
     */
@@ -671,7 +719,7 @@ vs. the central display area.
     */
   ui5OverflowClick!: EventEmitter<void>;
   /**
-     Fired when the display area is clicked.<br>
+     Fired when the display area is clicked.
 The display area is the central area that contains
 the enlarged content of the currently selected item.
     */
@@ -695,84 +743,6 @@ export { MediaGalleryComponent };
 
 exports[`Snapshot test Fiori Ng Package Json should match the snapshot 1`] = `"{\\"lib\\":{\\"entryFile\\":\\"./index.ts\\"}}"`;
 
-exports[`Snapshot test Fiori Notification Action should match the snapshot 1`] = `
-"import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  NgZone,
-  inject,
-} from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-import {
-  default as NotificationAction,
-  NotificationActionClickEventDetail,
-} from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text', 'disabled', 'design', 'icon'])
-@ProxyOutputs(['click: ui5Click'])
-@Component({
-  standalone: true,
-  selector: 'ui5-notification-action',
-  template: '<ng-content></ng-content>',
-  inputs: ['text', 'disabled', 'design', 'icon'],
-  outputs: ['ui5Click'],
-})
-class NotificationActionComponent {
-  /**
-     Defines the text of the <code>ui5-notification-action</code>.
-    */
-  text!: string;
-
-  /**
-     Defines if the action is disabled.
-<br><br>
-<b>Note:</b> a disabled action can't be pressed or focused, and it is not in the tab chain.
-    */
-  disabled!: boolean;
-
-  /**
-     Defines the action design.
-    */
-  design!:
-    | 'Default'
-    | 'Positive'
-    | 'Negative'
-    | 'Transparent'
-    | 'Emphasized'
-    | 'Attention';
-
-  /**
-     Defines the <code>icon</code> source URI.
-<br><br>
-<b>Note:</b>
-SAP-icons font provides numerous built-in icons. To find all the available icons, see the
-<ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
-    */
-  icon!: string;
-
-  /**
-     Fired, when the action is pressed.
-    */
-  ui5Click!: EventEmitter<NotificationActionClickEventDetail>;
-
-  private elementRef: ElementRef<NotificationAction> = inject(ElementRef);
-  private zone = inject(NgZone);
-  private cdr = inject(ChangeDetectorRef);
-
-  get element(): NotificationAction {
-    return this.elementRef.nativeElement;
-  }
-
-  constructor() {
-    this.cdr.detach();
-  }
-}
-export { NotificationActionComponent };
-"
-`;
-
 exports[`Snapshot test Fiori Notification List Group Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -784,20 +754,16 @@ exports[`Snapshot test Fiori Notification List Group Item should match the snaps
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import NotificationListGroupItem from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
-import { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'selected',
   'titleText',
-  'priority',
-  'showClose',
   'read',
-  'busy',
-  'busyDelay',
+  'loading',
+  'loadingDelay',
   'collapsed',
-  'showCounter',
 ])
-@ProxyOutputs(['close: ui5Close', 'toggle: ui5Toggle'])
+@ProxyOutputs(['toggle: ui5Toggle'])
 @Component({
   standalone: true,
   selector: 'ui5-li-notification-group',
@@ -805,41 +771,28 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   inputs: [
     'selected',
     'titleText',
-    'priority',
-    'showClose',
     'read',
-    'busy',
-    'busyDelay',
+    'loading',
+    'loadingDelay',
     'collapsed',
-    'showCounter',
   ],
-  outputs: ['ui5Close', 'ui5Toggle'],
+  outputs: ['ui5Toggle'],
 })
 class NotificationListGroupItemComponent {
   /**
-     Defines the selected state of the <code>ListItem</code>.
+     Defines the selected state of the component.
     */
   selected!: boolean;
 
   /**
-     Defines the <code>titleText</code> of the item.
+     Defines the \`titleText\` of the item.
     */
   titleText!: string;
 
   /**
-     Defines the <code>priority</code> of the item.
-    */
-  priority!: 'High' | 'Medium' | 'Low' | 'None';
+     Defines if the \`notification\` is new or has been already read.
 
-  /**
-     Defines if the <code>close</code> button would be displayed.
-    */
-  showClose!: boolean;
-
-  /**
-     Defines if the <code>notification</code> is new or has been already read.
-<br><br>
-<b>Note:</b> if set to <code>false</code> the <code>titleText</code> has bold font,
+**Note:** if set to \`false\` the \`titleText\` has bold font,
 if set to true - it has a normal font.
     */
   read!: boolean;
@@ -847,12 +800,12 @@ if set to true - it has a normal font.
   /**
      Defines if a busy indicator would be displayed over the item.
     */
-  busy!: boolean;
+  loading!: boolean;
 
   /**
      Defines the delay in milliseconds, after which the busy indicator will show up for this component.
     */
-  busyDelay!: number;
+  loadingDelay!: number;
 
   /**
      Defines if the group is collapsed or expanded.
@@ -860,16 +813,7 @@ if set to true - it has a normal font.
   collapsed!: boolean;
 
   /**
-     Defines if the items <code>counter</code> would be displayed.
-    */
-  showCounter!: boolean;
-
-  /**
-     Fired when the <code>Close</code> button is pressed.
-    */
-  ui5Close!: EventEmitter<NotificationListItemBaseCloseEventDetail>;
-  /**
-     Fired when the <code>ui5-li-notification-group</code> is expanded/collapsed by user interaction.
+     Fired when the \`ui5-li-notification-group\` is expanded/collapsed by user interaction.
     */
   ui5Toggle!: EventEmitter<void>;
 
@@ -900,18 +844,21 @@ exports[`Snapshot test Fiori Notification List Item should match the snapshot 1`
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
-import NotificationListItem from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
-import { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
+import {
+  default as NotificationListItem,
+  NotificationListItemCloseEventDetail,
+} from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'selected',
   'titleText',
-  'priority',
-  'showClose',
   'read',
-  'busy',
-  'busyDelay',
+  'loading',
+  'loadingDelay',
   'wrappingType',
+  'state',
+  'showClose',
+  'importance',
 ])
 @ProxyOutputs(['close: ui5Close'])
 @Component({
@@ -921,40 +868,31 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   inputs: [
     'selected',
     'titleText',
-    'priority',
-    'showClose',
     'read',
-    'busy',
-    'busyDelay',
+    'loading',
+    'loadingDelay',
     'wrappingType',
+    'state',
+    'showClose',
+    'importance',
   ],
   outputs: ['ui5Close'],
 })
 class NotificationListItemComponent {
   /**
-     Defines the selected state of the <code>ListItem</code>.
+     Defines the selected state of the component.
     */
   selected!: boolean;
 
   /**
-     Defines the <code>titleText</code> of the item.
+     Defines the \`titleText\` of the item.
     */
   titleText!: string;
 
   /**
-     Defines the <code>priority</code> of the item.
-    */
-  priority!: 'High' | 'Medium' | 'Low' | 'None';
+     Defines if the \`notification\` is new or has been already read.
 
-  /**
-     Defines if the <code>close</code> button would be displayed.
-    */
-  showClose!: boolean;
-
-  /**
-     Defines if the <code>notification</code> is new or has been already read.
-<br><br>
-<b>Note:</b> if set to <code>false</code> the <code>titleText</code> has bold font,
+**Note:** if set to \`false\` the \`titleText\` has bold font,
 if set to true - it has a normal font.
     */
   read!: boolean;
@@ -962,27 +900,41 @@ if set to true - it has a normal font.
   /**
      Defines if a busy indicator would be displayed over the item.
     */
-  busy!: boolean;
+  loading!: boolean;
 
   /**
      Defines the delay in milliseconds, after which the busy indicator will show up for this component.
     */
-  busyDelay!: number;
+  loadingDelay!: number;
 
   /**
-     Defines if the <code>titleText</code> and <code>description</code> should wrap,
+     Defines if the \`titleText\` and \`description\` should wrap,
 they truncate by default.
 
-<br><br>
-<b>Note:</b> by default the <code>titleText</code> and <code>description</code>,
-and a <code>ShowMore/Less</code> button would be displayed.
+**Note:** by default the \`titleText\` and \`description\`,
+and a \`ShowMore/Less\` button would be displayed.
     */
   wrappingType!: 'None' | 'Normal';
 
   /**
-     Fired when the <code>Close</code> button is pressed.
+     Defines the status indicator of the item.
     */
-  ui5Close!: EventEmitter<NotificationListItemBaseCloseEventDetail>;
+  state!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+
+  /**
+     Defines if the \`Close\` button would be displayed.
+    */
+  showClose!: boolean;
+
+  /**
+     Defines the \`Important\` label of the item.
+    */
+  importance!: 'Standard' | 'Important';
+
+  /**
+     Fired when the \`Close\` button is pressed.
+    */
+  ui5Close!: EventEmitter<NotificationListItemCloseEventDetail>;
 
   private elementRef: ElementRef<NotificationListItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1000,6 +952,71 @@ export { NotificationListItemComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Notification List should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NotificationList.js';
+import {
+  NotificationItemClickEventDetail,
+  NotificationItemCloseEventDetail,
+  NotificationItemToggleEventDetail,
+  default as NotificationList,
+} from '@ui5/webcomponents-fiori/dist/NotificationList.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['noDataText'])
+@ProxyOutputs([
+  'item-click: ui5ItemClick',
+  'item-close: ui5ItemClose',
+  'item-toggle: ui5ItemToggle',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-notification-list',
+  template: '<ng-content></ng-content>',
+  inputs: ['noDataText'],
+  outputs: ['ui5ItemClick', 'ui5ItemClose', 'ui5ItemToggle'],
+})
+class NotificationListComponent {
+  /**
+     Defines the text that is displayed when the component contains no items.
+    */
+  noDataText!: string;
+
+  /**
+     Fired when an item is clicked.
+    */
+  ui5ItemClick!: EventEmitter<NotificationItemClickEventDetail>;
+  /**
+     Fired when the \`Close\` button of any item is clicked.
+    */
+  ui5ItemClose!: EventEmitter<NotificationItemCloseEventDetail>;
+  /**
+     Fired when an item is toggled.
+    */
+  ui5ItemToggle!: EventEmitter<NotificationItemToggleEventDetail>;
+
+  private elementRef: ElementRef<NotificationList> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): NotificationList {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { NotificationListComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Page should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -1011,29 +1028,18 @@ exports[`Snapshot test Fiori Page should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/Page.js';
 import Page from '@ui5/webcomponents-fiori/dist/Page.js';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs([
-  'backgroundDesign',
-  'disableScrolling',
-  'floatingFooter',
-  'hideFooter',
-])
+@ProxyInputs(['backgroundDesign', 'noScrolling', 'fixedFooter', 'hideFooter'])
 @Component({
   standalone: true,
   selector: 'ui5-page',
   template: '<ng-content></ng-content>',
-  inputs: [
-    'backgroundDesign',
-    'disableScrolling',
-    'floatingFooter',
-    'hideFooter',
-  ],
+  inputs: ['backgroundDesign', 'noScrolling', 'fixedFooter', 'hideFooter'],
 })
 class PageComponent {
   /**
-     Defines the background color of the <code>ui5-page</code>.
-<br><br>
-<b>Note:</b> When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.
-<br><br>
+     Defines the background color of the \`ui5-page\`.
+
+**Note:** When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.
     */
   backgroundDesign!: 'List' | 'Solid' | 'Transparent';
 
@@ -1041,14 +1047,14 @@ class PageComponent {
      Disables vertical scrolling of page content.
 If set to true, there will be no vertical scrolling at all.
     */
-  disableScrolling!: boolean;
+  noScrolling!: boolean;
 
   /**
-     Defines if the footer should float over the content.
-<br><br>
-<b>Note:</b> When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.
+     Defines if the footer is fixed at the very bottom of the page.
+
+**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.
     */
-  floatingFooter!: boolean;
+  fixedFooter!: boolean;
 
   /**
      Defines the footer visibility.
@@ -1105,26 +1111,25 @@ class ProductSwitchItemComponent {
 
   /**
      Defines the icon to be displayed as a graphical element within the component.
-<br><br>
-Example:
-<br>
-<pre>ui5-product-switch-item icon=\\"palette\\"</pre>
 
-See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
+Example:
+
+\`<ui5-product-switch-item icon=\\"palette\\">\`
+
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
     */
   icon!: string;
 
   /**
-     Defines a target where the <code>targetSrc</code> content must be open.
-<br><br>
+     Defines a target where the \`targetSrc\` content must be open.
+
 Available options are:
-<ul>
-<li><code>_self</code></li>
-<li><code>_top</code></li>
-<li><code>_blank</code></li>
-<li><code>_parent</code></li>
-<li><code>_search</code></li>
-</ul>
+
+- \`_self\`
+- \`_top\`
+- \`_blank\`
+- \`_parent\`
+- \`_search\`
     */
   target!: string;
 
@@ -1134,7 +1139,7 @@ Available options are:
   targetSrc!: string;
 
   /**
-     Fired when the <code>ui5-product-switch-item</code> is activated either with a
+     Fired when the \`ui5-product-switch-item\` is activated either with a
 click/tap or by using the Enter or Space key.
     */
   ui5Click!: EventEmitter<void>;
@@ -1220,8 +1225,8 @@ class ShellBarItemComponent {
 
   /**
      Defines the item text.
-  <br><br>
-  <b>Note:</b> The text is only displayed inside the overflow popover list view.
+ 
+  **Note:** The text is only displayed inside the overflow popover list view.
     */
   text!: string;
 
@@ -1264,9 +1269,6 @@ import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import {
   default as ShellBar,
   ShellBarAccessibilityAttributes,
-  ShellBarAccessibilityRoles,
-  ShellBarAccessibilityTexts,
-  ShellBarCoPilotClickEventDetail,
   ShellBarLogoClickEventDetail,
   ShellBarMenuItemClickEventDetail,
   ShellBarNotificationsClickEventDetail,
@@ -1281,10 +1283,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'notificationsCount',
   'showNotifications',
   'showProductSwitch',
-  'showCoPilot',
   'showSearchField',
-  'accessibilityRoles',
-  'accessibilityTexts',
   'accessibilityAttributes',
 ])
 @ProxyOutputs([
@@ -1292,7 +1291,6 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'profile-click: ui5ProfileClick',
   'product-switch-click: ui5ProductSwitchClick',
   'logo-click: ui5LogoClick',
-  'co-pilot-click: ui5CoPilotClick',
   'menu-item-click: ui5MenuItemClick',
   'search-button-click: ui5SearchButtonClick',
 ])
@@ -1306,10 +1304,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'notificationsCount',
     'showNotifications',
     'showProductSwitch',
-    'showCoPilot',
     'showSearchField',
-    'accessibilityRoles',
-    'accessibilityTexts',
     'accessibilityAttributes',
   ],
   outputs: [
@@ -1317,28 +1312,27 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'ui5ProfileClick',
     'ui5ProductSwitchClick',
     'ui5LogoClick',
-    'ui5CoPilotClick',
     'ui5MenuItemClick',
     'ui5SearchButtonClick',
   ],
 })
 class ShellBarComponent {
   /**
-     Defines the <code>primaryTitle</code>.
-<br><br>
-<b>Note:</b> The <code>primaryTitle</code> would be hidden on S screen size (less than approx. 700px).
+     Defines the \`primaryTitle\`.
+
+**Note:** The \`primaryTitle\` would be hidden on S screen size (less than approx. 700px).
     */
   primaryTitle!: string;
 
   /**
-     Defines the <code>secondaryTitle</code>.
-<br><br>
-<b>Note:</b> The <code>secondaryTitle</code> would be hidden on S and M screen sizes (less than approx. 1300px).
+     Defines the \`secondaryTitle\`.
+
+**Note:** The \`secondaryTitle\` would be hidden on S and M screen sizes (less than approx. 1300px).
     */
   secondaryTitle!: string;
 
   /**
-     Defines the <code>notificationsCount</code>,
+     Defines the \`notificationsCount\`,
 displayed in the notification icon top-right corner.
     */
   notificationsCount!: string;
@@ -1354,59 +1348,40 @@ displayed in the notification icon top-right corner.
   showProductSwitch!: boolean;
 
   /**
-     Defines, if the product CoPilot icon would be displayed.
-<br><b>Note:</b> By default the co-pilot is displayed as static SVG.
-If you need an animated co-pilot, you can import the <code>\\"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js\\"</code> module as add-on feature.
-    */
-  showCoPilot!: boolean;
+     Defines, if the Search Field would be displayed when there is a valid \`searchField\` slot.
 
-  /**
-     Defines, if the Search Field would be displayed when there is a valid <code>searchField</code> slot.
-<br><b>Note:</b> By default the Search Field is not displayed.
+**Note:** By default the Search Field is not displayed.
     */
   showSearchField!: boolean;
 
   /**
-     An object of strings that defines additional accessibility roles for further customization.
+     Defines additional accessibility attributes on different areas of the component.
 
-It supports the following fields:
- - <code>logoRole</code>: the accessibility role for the <code>logo</code>
-    */
-  accessibilityRoles!: ShellBarAccessibilityRoles;
+The accessibilityAttributes object has the following fields,
+where each field is an object supporting one or more accessibility attributes:
 
-  /**
-     An object of strings that defines several additional accessibility texts
-for even further customization.
+- **logo** - \`logo.role\` and \`logo.name\`.
+- **notifications** - \`notifications.expanded\` and \`notifications.hasPopup\`.
+- **profile** - \`profile.expanded\`, \`profile.hasPopup\` and \`profile.name\`.
+- **product** - \`product.expanded\` and \`product.hasPopup\`.
+- **search** - \`search.expanded\` and \`search.hasPopup\`.
+- **overflow** - \`overflow.expanded\` and \`overflow.hasPopup\`.
 
-It supports the following fields:
-- <code>profileButtonTitle</code>: defines the tooltip for the profile button
-- <code>logoTitle</code>: defines the tooltip for the logo
-    */
-  accessibilityTexts!: ShellBarAccessibilityTexts;
+The accessibility attributes support the following values:
 
-  /**
-     An object of strings that defines several additional accessibility attribute values
-for customization depending on the use case.
+- **role**: Defines the accessible ARIA role of the logo area.
+Accepts the following string values: \`button\` or \`link\`.
 
-It supports the following fields:
+- **expanded**: Indicates whether the button, or another grouping element it controls,
+is currently expanded or collapsed.
+Accepts the following string values: \`true\` or \`false\`.
 
-<ul>
-		<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-		<ul>
-			<li><code>true</code></li>
-			<li><code>false</code></li>
-		</ul>
-		</li>
-		<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-			<ul>
-			<li><code>Dialog</code></li>
-			<li><code>Grid</code></li>
-			<li><code>ListBox</code></li>
-			<li><code>Menu</code></li>
-			<li><code>Tree</code></li>
-			</ul>
-		</li>
-</ul>
+- **hasPopup**: Indicates the availability and type of interactive popup element,
+such as menu or dialog, that can be triggered by the button.
+
+Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
+- **name**: Defines the accessible ARIA name of the area.
+Accepts any string.
     */
   accessibilityAttributes!: ShellBarAccessibilityAttributes;
 
@@ -1420,7 +1395,8 @@ It supports the following fields:
   ui5ProfileClick!: EventEmitter<ShellBarProfileClickEventDetail>;
   /**
      Fired, when the product switch icon is activated.
-<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.
+
+**Note:** You can prevent closing of overflow popover by calling \`event.preventDefault()\`.
     */
   ui5ProductSwitchClick!: EventEmitter<ShellBarProductSwitchClickEventDetail>;
   /**
@@ -1428,17 +1404,15 @@ It supports the following fields:
     */
   ui5LogoClick!: EventEmitter<ShellBarLogoClickEventDetail>;
   /**
-     Fired, when the co pilot is activated.
-    */
-  ui5CoPilotClick!: EventEmitter<ShellBarCoPilotClickEventDetail>;
-  /**
      Fired, when a menu item is activated
-<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.
+
+**Note:** You can prevent closing of overflow popover by calling \`event.preventDefault()\`.
     */
   ui5MenuItemClick!: EventEmitter<ShellBarMenuItemClickEventDetail>;
   /**
      Fired, when the search button is activated.
-<b>Note:</b> You can prevent expanding/collapsing of the search field by calling <code>event.preventDefault()</code>.
+
+**Note:** You can prevent expanding/collapsing of the search field by calling \`event.preventDefault()\`.
     */
   ui5SearchButtonClick!: EventEmitter<ShellBarSearchButtonEventDetail>;
 
@@ -1458,6 +1432,65 @@ export { ShellBarComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Side Navigation Group should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SideNavigationGroup.js';
+import SideNavigationGroup from '@ui5/webcomponents-fiori/dist/SideNavigationGroup.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'disabled', 'tooltip', 'expanded'])
+@Component({
+  standalone: true,
+  selector: 'ui5-side-navigation-group',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'disabled', 'tooltip', 'expanded'],
+})
+class SideNavigationGroupComponent {
+  /**
+     Defines the text of the item.
+    */
+  text!: string;
+
+  /**
+     Defines whether the component is disabled.
+A disabled component can't be pressed or
+focused, and it is not in the tab chain.
+    */
+  disabled!: boolean;
+
+  /**
+     Defines the tooltip of the component.
+
+A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+    */
+  tooltip!: string;
+
+  /**
+     Defines if the item is expanded
+    */
+  expanded!: boolean;
+
+  private elementRef: ElementRef<SideNavigationGroup> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SideNavigationGroup {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SideNavigationGroupComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -1471,12 +1504,10 @@ import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import SideNavigationItem from '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
-  'text',
   'icon',
   'selected',
   'href',
   'target',
-  'disabled',
   'expanded',
   'wholeItemToggleable',
 ])
@@ -1486,12 +1517,10 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   selector: 'ui5-side-navigation-item',
   template: '<ng-content></ng-content>',
   inputs: [
-    'text',
     'icon',
     'selected',
     'href',
     'target',
-    'disabled',
     'expanded',
     'wholeItemToggleable',
   ],
@@ -1499,17 +1528,11 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class SideNavigationItemComponent {
   /**
-     Defines the text of the item.
-    */
-  text!: string;
-
-  /**
      Defines the icon of the item.
-<br><br>
 
 The SAP-icons font provides numerous options.
-<br>
-See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
+
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
     */
   icon!: string;
 
@@ -1522,33 +1545,24 @@ See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https:/
      Defines the link target URI. Supports standard hyperlink behavior.
 If a JavaScript action should be triggered,
 this should not be set, but instead an event handler
-for the <code>click</code> event should be registered.
+for the \`click\` event should be registered.
     */
   href!: string;
 
   /**
      Defines the component target.
-<br><br>
-<b>Notes:</b>
 
-<ul>
-<li><code>_self</code></li>
-<li><code>_top</code></li>
-<li><code>_blank</code></li>
-<li><code>_parent</code></li>
-<li><code>_search</code></li>
-</ul>
+**Notes:**
 
-<b>This property must only be used when the <code>href</code> property is set.</b>
+- \`_self\`
+- \`_top\`
+- \`_blank\`
+- \`_parent\`
+- \`_search\`
+
+**This property must only be used when the \`href\` property is set.**
     */
   target!: string;
-
-  /**
-     Defines whether the component is disabled.
-A disabled component can't be pressed or
-focused, and it is not in the tab chain.
-    */
-  disabled!: boolean;
 
   /**
      Defines if the item is expanded
@@ -1557,14 +1571,14 @@ focused, and it is not in the tab chain.
 
   /**
      Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).
-If set to true, clicking the whole item will toggle the sub items, and it won't fire the <code>click</code> event.
+If set to true, clicking the whole item will toggle the sub items, and it won't fire the \`click\` event.
 By default, only clicking the arrow icon will toggle the sub items.
     */
   wholeItemToggleable!: boolean;
 
   /**
      Fired when the component is activated either with a
-click/tap or by using the Enter or Space key.
+click/tap or by using the [Enter] or [Space] keys.
     */
   ui5Click!: EventEmitter<void>;
 
@@ -1596,28 +1610,22 @@ exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import SideNavigationSubItem from '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text', 'icon', 'selected', 'href', 'target', 'disabled'])
+@ProxyInputs(['icon', 'selected', 'href', 'target'])
 @ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation-sub-item',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'icon', 'selected', 'href', 'target', 'disabled'],
+  inputs: ['icon', 'selected', 'href', 'target'],
   outputs: ['ui5Click'],
 })
 class SideNavigationSubItemComponent {
   /**
-     Defines the text of the item.
-    */
-  text!: string;
-
-  /**
      Defines the icon of the item.
-<br><br>
 
 The SAP-icons font provides numerous options.
-<br>
-See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
+
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
     */
   icon!: string;
 
@@ -1630,37 +1638,28 @@ See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https:/
      Defines the link target URI. Supports standard hyperlink behavior.
 If a JavaScript action should be triggered,
 this should not be set, but instead an event handler
-for the <code>click</code> event should be registered.
+for the \`click\` event should be registered.
     */
   href!: string;
 
   /**
      Defines the component target.
-<br><br>
-<b>Notes:</b>
 
-<ul>
-<li><code>_self</code></li>
-<li><code>_top</code></li>
-<li><code>_blank</code></li>
-<li><code>_parent</code></li>
-<li><code>_search</code></li>
-</ul>
+**Notes:**
 
-<b>This property must only be used when the <code>href</code> property is set.</b>
+- \`_self\`
+- \`_top\`
+- \`_blank\`
+- \`_parent\`
+- \`_search\`
+
+**This property must only be used when the \`href\` property is set.**
     */
   target!: string;
 
   /**
-     Defines whether the component is disabled.
-A disabled component can't be pressed or
-focused, and it is not in the tab chain.
-    */
-  disabled!: boolean;
-
-  /**
      Fired when the component is activated either with a
-click/tap or by using the Enter or Space key.
+click/tap or by using the [Enter] or [Space] keys.
     */
   ui5Click!: EventEmitter<void>;
 
@@ -1706,7 +1705,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class SideNavigationComponent {
   /**
-     Defines whether the <code>ui5-side-navigation</code> is expanded or collapsed.
+     Defines whether the \`ui5-side-navigation\` is expanded or collapsed.
     */
   collapsed!: boolean;
 
@@ -1820,21 +1819,20 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class TimelineItemComponent {
   /**
-     Defines the icon to be displayed as graphical element within the <code>ui5-timeline-item</code>.
+     Defines the icon to be displayed as graphical element within the \`ui5-timeline-item\`.
 SAP-icons font provides numerous options.
-<br><br>
 
-See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
     */
   icon!: string;
 
   /**
-     Defines the name of the item, displayed before the <code>title-text</code>.
+     Defines the name of the item, displayed before the \`title-text\`.
     */
   name!: string;
 
   /**
-     Defines if the <code>name</code> is clickable.
+     Defines if the \`name\` is clickable.
     */
   nameClickable!: boolean;
 
@@ -1851,8 +1849,8 @@ See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https:/
   /**
      Fired when the item name is pressed either with a
 click/tap or by using the Enter or Space key.
-<br><br>
-<b>Note:</b> The event will not be fired if the <code>name-clickable</code>
+
+**Note:** The event will not be fired if the \`name-clickable\`
 attribute is not set.
     */
   ui5NameClick!: EventEmitter<void>;
@@ -1894,14 +1892,6 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 class TimelineComponent {
   /**
      Defines the items orientation.
-
-<br><br>
-<b>Note:</b>
-Available options are:
-<ul>
-<li><code>Vertical</code></li>
-<li><code>Horizontal</code></li>
-</ul>
     */
   layout!: 'Vertical' | 'Horizontal';
 
@@ -1930,8 +1920,10 @@ exports[`Snapshot test Fiori Ui 5 Fiori Module Ts should match the snapshot 1`] 
 "import { NgModule } from \\"@angular/core\\";
 import { Ui5WebcomponentsFioriThemingService } from \\"@ui5/webcomponents-ngx/fiori/theming\\";
 import \\"@ui5/webcomponents-fiori/dist/Assets.js\\";
-import { BarComponent } from \\"@ui5/webcomponents-ngx/fiori/bar\\";
 import { BarcodeScannerDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog\\";
+import { DynamicPageComponent } from \\"@ui5/webcomponents-ngx/fiori/dynamic-page\\";
+import { DynamicPageHeaderComponent } from \\"@ui5/webcomponents-ngx/fiori/dynamic-page-header\\";
+import { DynamicPageTitleComponent } from \\"@ui5/webcomponents-ngx/fiori/dynamic-page-title\\";
 import { DynamicSideContentComponent } from \\"@ui5/webcomponents-ngx/fiori/dynamic-side-content\\";
 import { FilterItemComponent } from \\"@ui5/webcomponents-ngx/fiori/filter-item\\";
 import { FilterItemOptionComponent } from \\"@ui5/webcomponents-ngx/fiori/filter-item-option\\";
@@ -1939,7 +1931,7 @@ import { FlexibleColumnLayoutComponent } from \\"@ui5/webcomponents-ngx/fiori/fl
 import { IllustratedMessageComponent } from \\"@ui5/webcomponents-ngx/fiori/illustrated-message\\";
 import { MediaGalleryComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery\\";
 import { MediaGalleryItemComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery-item\\";
-import { NotificationActionComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-action\\";
+import { NotificationListComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list\\";
 import { NotificationListGroupItemComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list-group-item\\";
 import { NotificationListItemComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list-item\\";
 import { PageComponent } from \\"@ui5/webcomponents-ngx/fiori/page\\";
@@ -1948,6 +1940,7 @@ import { ProductSwitchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/produ
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
 import { SideNavigationComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation\\";
+import { SideNavigationGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-group\\";
 import { SideNavigationItemComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-item\\";
 import { SideNavigationSubItemComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-sub-item\\";
 import { SortItemComponent } from \\"@ui5/webcomponents-ngx/fiori/sort-item\\";
@@ -1960,8 +1953,10 @@ import { WizardComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard\\";
 import { WizardStepComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard-step\\";
 
 const imports = [
-  BarComponent,
   BarcodeScannerDialogComponent,
+  DynamicPageComponent,
+  DynamicPageHeaderComponent,
+  DynamicPageTitleComponent,
   DynamicSideContentComponent,
   FilterItemComponent,
   FilterItemOptionComponent,
@@ -1969,7 +1964,7 @@ const imports = [
   IllustratedMessageComponent,
   MediaGalleryComponent,
   MediaGalleryItemComponent,
-  NotificationActionComponent,
+  NotificationListComponent,
   NotificationListGroupItemComponent,
   NotificationListItemComponent,
   PageComponent,
@@ -1978,6 +1973,7 @@ const imports = [
   ShellBarComponent,
   ShellBarItemComponent,
   SideNavigationComponent,
+  SideNavigationGroupComponent,
   SideNavigationItemComponent,
   SideNavigationSubItemComponent,
   SortItemComponent,
@@ -2016,12 +2012,14 @@ exports[`Snapshot test Fiori Upload Collection Item should match the snapshot 1`
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import UploadCollectionItem from '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 @ProxyInputs([
   'selected',
   'type',
   'accessibilityAttributes',
   'navigated',
+  'tooltip',
+  'highlight',
   'file',
   'fileName',
   'fileNameClickable',
@@ -2048,6 +2046,8 @@ import { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
     'type',
     'accessibilityAttributes',
     'navigated',
+    'tooltip',
+    'highlight',
     'file',
     'fileName',
     'fileNameClickable',
@@ -2068,45 +2068,50 @@ import { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 })
 class UploadCollectionItemComponent {
   /**
-     Defines the selected state of the <code>ListItem</code>.
+     Defines the selected state of the component.
     */
   selected!: boolean;
 
   /**
      Defines the visual indication and behavior of the list items.
-Available options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.
-<br><br>
-<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,
-while with type <code>Inactive</code> and <code>Detail</code> - will not.
+Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
+
+**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
+while with type \`Inactive\` and \`Detail\` - will not.
     */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
 
   /**
-     An object of strings that defines several additional accessibility attribute values
-for customization depending on the use case.
+     Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
 
- It supports the following fields:
+- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
 
-<ul>
-		<li><code>ariaSetsize</code>: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.
-		The value of each <code>aria-setsize</code> is an integer reflecting number of items in the complete set.
-		<b>Note: </b> If the size of the entire set is unknown, set <code>aria-setsize=\\"-1\\"</code>.
-		</li>
-		<li><code>ariaPosinset</code>: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.
-		The value of each <code>aria-posinset</code> is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-		</li>
-</ul>
+	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
     */
-  accessibilityAttributes!: AccessibilityAttributes;
+  accessibilityAttributes!: ListItemAccessibilityAttributes;
 
   /**
      The navigated state of the list item.
-If set to <code>true</code>, a navigation indicator is displayed at the end of the list item.
+If set to \`true\`, a navigation indicator is displayed at the end of the list item.
     */
   navigated!: boolean;
 
   /**
-     Holds an instance of <code>File</code> associated with this item.
+     Defines the text of the tooltip that would be displayed for the list item.
+    */
+  tooltip!: string;
+
+  /**
+     Defines the highlight state of the list items.
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+    */
+  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+
+  /**
+     Holds an instance of \`File\` associated with this item.
     */
   file!: File | null | undefined;
 
@@ -2116,7 +2121,7 @@ If set to <code>true</code>, a navigation indicator is displayed at the end of t
   fileName!: string;
 
   /**
-     If set to <code>true</code> the file name will be clickable and it will fire <code>file-name-click</code> event upon click.
+     If set to \`true\` the file name will be clickable and it will fire \`file-name-click\` event upon click.
     */
   fileNameClickable!: boolean;
 
@@ -2126,62 +2131,66 @@ If set to <code>true</code>, a navigation indicator is displayed at the end of t
   disableDeleteButton!: boolean;
 
   /**
-     By default, the delete button will always be shown, regardless of the <code>ui5-upload-collection</code>'s property <code>mode</code>.
-Setting this property to <code>true</code> will hide the delete button.
+     Hides the delete button.
     */
   hideDeleteButton!: boolean;
 
   /**
-     Hides the retry button when <code>uploadState</code> property is <code>Error</code>.
+     Hides the retry button when \`uploadState\` property is \`Error\`.
     */
   hideRetryButton!: boolean;
 
   /**
-     Hides the terminate button when <code>uploadState</code> property is <code>Uploading</code>.
+     Hides the terminate button when \`uploadState\` property is \`Uploading\`.
     */
   hideTerminateButton!: boolean;
 
   /**
      The upload progress in percentage.
-<br><br>
-<b>Note:</b> Expected values are in the interval [0, 100].
+
+**Note:** Expected values are in the interval [0, 100].
     */
   progress!: number;
 
   /**
-     If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed.
-Also if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired.
-If set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.
+     Upload state.
+
+Depending on this property, the item displays the following:
+
+- \`Ready\` - progress indicator is displayed.
+- \`Uploading\` - progress indicator and terminate button are displayed. When the terminate button is pressed, \`terminate\` event is fired.
+- \`Error\` - progress indicator and retry button are displayed. When the retry button is pressed, \`retry\` event is fired.
+- \`Complete\` - progress indicator is not displayed.
     */
   uploadState!: 'Complete' | 'Error' | 'Ready' | 'Uploading';
 
   /**
-     Fired when the user clicks on the detail button when type is <code>Detail</code>.
+     Fired when the user clicks on the detail button when type is \`Detail\`.
     */
   ui5DetailClick!: EventEmitter<void>;
   /**
      Fired when the file name is clicked.
-<br><br>
-<b>Note:</b> This event is only available when <code>fileNameClickable</code> property is <code>true</code>.
+
+**Note:** This event is only available when \`fileNameClickable\` property is \`true\`.
     */
   ui5FileNameClick!: EventEmitter<void>;
   /**
-     Fired when the <code>fileName</code> property gets changed.
-<br><br>
-<b>Note:</b> An edit button is displayed on each item,
-when the <code>ui5-upload-collection-item</code> <code>type</code> property is set to <code>Detail</code>.
+     Fired when the \`fileName\` property gets changed.
+
+**Note:** An edit button is displayed on each item,
+when the \`ui5-upload-collection-item\` \`type\` property is set to \`Detail\`.
     */
   ui5Rename!: EventEmitter<void>;
   /**
      Fired when the terminate button is pressed.
-<br><br>
-<b>Note:</b> Terminate button is displayed when <code>uploadState</code> property is set to <code>Uploading</code>.
+
+**Note:** Terminate button is displayed when \`uploadState\` property is set to \`Uploading\`.
     */
   ui5Terminate!: EventEmitter<void>;
   /**
      Fired when the retry button is pressed.
-<br><br>
-<b>Note:</b> Retry button is displayed when <code>uploadState</code> property is set to <code>Error</code>.
+
+**Note:** Retry button is displayed when \`uploadState\` property is set to \`Error\`.
     */
   ui5Retry!: EventEmitter<void>;
 
@@ -2218,7 +2227,7 @@ import {
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
-  'mode',
+  'selectionMode',
   'noDataDescription',
   'noDataText',
   'hideDragOverlay',
@@ -2234,7 +2243,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   selector: 'ui5-upload-collection',
   template: '<ng-content></ng-content>',
   inputs: [
-    'mode',
+    'selectionMode',
     'noDataDescription',
     'noDataText',
     'hideDragOverlay',
@@ -2244,19 +2253,15 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class UploadCollectionComponent {
   /**
-     Defines the mode of the <code>ui5-upload-collection</code>.
-
-<br><b>Note:</b>
-Mode \\"Delete\\" has no effect. The delete button is controlled by the <code>hideDeleteButton</code> property of UploadCollectionItem
+     Defines the selection mode of the \`ui5-upload-collection\`.
     */
-  mode!:
+  selectionMode!:
     | 'None'
-    | 'SingleSelect'
-    | 'SingleSelectBegin'
-    | 'SingleSelectEnd'
-    | 'SingleSelectAuto'
-    | 'MultiSelect'
-    | 'Delete';
+    | 'Single'
+    | 'SingleStart'
+    | 'SingleEnd'
+    | 'SingleAuto'
+    | 'Multiple';
 
   /**
      Allows you to set your own text for the 'No data' description.
@@ -2269,11 +2274,11 @@ Mode \\"Delete\\" has no effect. The delete button is controlled by the <code>hi
   noDataText!: string;
 
   /**
-     By default there will be drag and drop overlay shown over the <code>ui5-upload-collection</code> when files
+     By default there will be drag and drop overlay shown over the \`ui5-upload-collection\` when files
 are dragged. If you don't intend to use drag and drop, set this property.
-<br><br>
-<b>Note:</b> It is up to the application developer to add handler for <code>drop</code> event and handle it.
-<code>ui5-upload-collection</code> only displays an overlay.
+
+**Note:** It is up to the application developer to add handler for \`drop\` event and handle it.
+\`ui5-upload-collection\` only displays an overlay.
     */
   hideDragOverlay!: boolean;
 
@@ -2284,8 +2289,8 @@ are dragged. If you don't intend to use drag and drop, set this property.
 
   /**
      Fired when an element is dropped inside the drag and drop overlay.
-<br><br>
-<b>Note:</b> The <code>drop</code> event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the <code>ui5-upload-collection</code>.
+
+**Note:** The \`drop\` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the \`ui5-upload-collection\`.
     */
   ui5Drop!: EventEmitter<Event>;
   /**
@@ -2294,7 +2299,7 @@ are dragged. If you don't intend to use drag and drop, set this property.
   ui5ItemDelete!: EventEmitter<UploadCollectionItemDeleteEventDetail>;
   /**
      Fired when selection is changed by user interaction
-in <code>SingleSelect</code> and <code>MultiSelect</code> modes.
+in \`Single\` and \`Multiple\` modes.
     */
   ui5SelectionChange!: EventEmitter<UploadCollectionSelectionChangeEventDetail>;
 
@@ -2358,7 +2363,7 @@ class ViewSettingsDialogComponent {
     */
   ui5Cancel!: EventEmitter<ViewSettingsDialogCancelEventDetail>;
   /**
-     Fired before the component is opened. <b>This event does not bubble.</b>
+     Fired before the component is opened. **This event does not bubble.**
     */
   ui5BeforeOpen!: EventEmitter<void>;
 
@@ -2412,58 +2417,51 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 })
 class WizardStepComponent {
   /**
-     Defines the <code>titleText</code> of the step.
-<br><br>
+     Defines the \`titleText\` of the step.
 
-<b>Note:</b> The text is displayed in the <code>ui5-wizard</code> navigation header.
+**Note:** The text is displayed in the \`ui5-wizard\` navigation header.
     */
   titleText!: string;
 
   /**
-     Defines the <code>subtitleText</code> of the step.
-<br><br>
+     Defines the \`subtitleText\` of the step.
 
-<b>Note:</b> the text is displayed in the <code>ui5-wizard</code> navigation header.
+**Note:** the text is displayed in the \`ui5-wizard\` navigation header.
     */
   subtitleText!: string;
 
   /**
-     Defines the <code>icon</code> of the step.
-<br><br>
+     Defines the \`icon\` of the step.
 
-<b>Note:</b> The icon is displayed in the <code>ui5-wizard</code> navigation header.
-<br><br>
+**Note:** The icon is displayed in the \`ui5-wizard\` navigation header.
 
 The SAP-icons font provides numerous options.
-See all the available icons in the <ui5-link target=\\"_blank\\" href=\\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\\">Icon Explorer</ui5-link>.
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
     */
   icon!: string;
 
   /**
-     Defines if the step is <code>disabled</code>. When disabled the step is displayed,
+     Defines if the step is \`disabled\`. When disabled the step is displayed,
 but the user can't select the step by clicking or navigate to it with scrolling.
-<br><br>
 
-<b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time.
-In this case the <code>selected</code> property would take precedence.
+**Note:** Step can't be \`selected\` and \`disabled\` at the same time.
+In this case the \`selected\` property would take precedence.
     */
   disabled!: boolean;
 
   /**
-     Defines the step's <code>selected</code> state - the step that is currently active.
-<br><br>
+     Defines the step's \`selected\` state - the step that is currently active.
 
-<b>Note:</b> Step can't be <code>selected</code> and <code>disabled</code> at the same time.
-In this case the <code>selected</code> property would take precedence.
+**Note:** Step can't be \`selected\` and \`disabled\` at the same time.
+In this case the \`selected\` property would take precedence.
     */
   selected!: boolean;
 
   /**
-     When <code>branching</code> is enabled a dashed line would be displayed after the step,
+     When \`branching\` is enabled a dashed line would be displayed after the step,
 meant to indicate that the next step is not yet known and depends on user choice in the current step.
-<br><br>
 
-<b>Note:</b> It is recommended to use <code>branching</code> on the last known step
+**Note:** It is recommended to use \`branching\` on the last known step
 and later add new steps when it becomes clear how the wizard flow should continue.
     */
   branching!: boolean;
@@ -2510,7 +2508,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 })
 class WizardComponent {
   /**
-     Defines how the content of the <code>ui5-wizard</code> would be visualized.
+     Defines how the content of the \`ui5-wizard\` would be visualized.
     */
   contentLayout!: 'MultipleSteps' | 'SingleStep';
 

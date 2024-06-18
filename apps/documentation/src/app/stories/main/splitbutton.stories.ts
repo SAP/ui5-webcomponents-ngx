@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 <code>ui5-split-button</code> enables users to trigger actions. It is constructed of two separate actions - default action and arrow action that can be activated by clicking or tapping, or by pressing certain keyboard keys - <code>Space</code> or <code>Enter</code> for default action, and <code>Arrow Down</code> or <code>Arrow Up</code> for arrow action.
 
@@ -41,8 +41,8 @@ export const defaultSplitButton: Story<SplitButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-split-button class="samples-margin">Default</ui5-split-button>
-		<ui5-split-button disabled="" class="samples-margin">Default</ui5-split-button>
+		<ui5-split-button>Default</ui5-split-button>
+		<ui5-split-button [disabled]="true">Default</ui5-split-button>
 	`,
 });
 
@@ -51,12 +51,12 @@ export const splitButtonWithDesign: Story<SplitButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-split-button design="Default" class="samples-margin">Default</ui5-split-button>
-		<ui5-split-button design="Emphasized" class="samples-margin">Emphasized</ui5-split-button>
-		<ui5-split-button design="Positive" class="samples-margin">Positive</ui5-split-button>
-		<ui5-split-button design="Negative" class="samples-margin">Negative</ui5-split-button>
-		<ui5-split-button design="Attention" class="samples-margin">Attention</ui5-split-button>
-		<ui5-split-button design="Transparent" class="samples-margin">Transparent</ui5-split-button>
+		<ui5-split-button design="Default">Default</ui5-split-button>
+		<ui5-split-button design="Emphasized">Emphasized</ui5-split-button>
+		<ui5-split-button design="Positive">Positive</ui5-split-button>
+		<ui5-split-button design="Negative">Negative</ui5-split-button>
+		<ui5-split-button design="Attention">Attention</ui5-split-button>
+		<ui5-split-button design="Transparent">Transparent</ui5-split-button>
 	`,
 });
 
@@ -65,7 +65,7 @@ export const splitButtonWithIcons: Story<SplitButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-split-button icon="add" class="samples-margin">Icon</ui5-split-button>
-		<ui5-split-button icon="add" active-icon="accept" class="samples-margin">Icon + Active Icon</ui5-split-button>
+		<ui5-split-button icon="add">Icon</ui5-split-button>
+		<ui5-split-button icon="add" active-icon="accept">Icon + Active Icon</ui5-split-button>
 	`,
 });

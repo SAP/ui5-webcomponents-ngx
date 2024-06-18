@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, IconComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-icon</code> component represents an SVG icon. There are two main scenarios how the <code>ui5-icon</code> component is used: as a purely decorative element, <br> or as an interactive element that can be focused and clicked.
 

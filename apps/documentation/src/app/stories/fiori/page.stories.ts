@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, PageComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-page</code> is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer. <h3>Structure</h3> <h4>Header</h4> The top most area of the page is occupied by the header. The standard header includes a navigation button and a title. <h4>Content</h4> The content occupies the main part of the page. Only the content area is scrollable by default. This can be prevented by setting <code>enableScrolling</code> to <code>false</code>. <h4>Footer</h4> The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the <code>floatingFooter</code> property.
 
@@ -34,7 +34,7 @@ export const pageWithFloatingFooter: Story<PageComponent> = (
 ) => ({
   props: args,
   template: `
-        <ui5-page id="page" style="height: 700px; width: 500px" background-design="List" floating-footer="" show-footer="">
+        <ui5-page id="page" style="height: 700px; width: 500px" background-design="List" >
             <ui5-bar design="Header" slot="header">
                 <ui5-button icon="home" tooltip="Go home" slot="startContent"></ui5-button>
                 <ui5-label>Title</ui5-label>

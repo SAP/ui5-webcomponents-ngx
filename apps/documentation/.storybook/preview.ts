@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/AllIcons';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
-import {getRTL} from '@ui5/webcomponents-base/dist/config/RTL';
+import applyDirection from "@ui5/webcomponents-base/dist/locale/applyDirection.js";
 import {getTheme, setTheme} from '@ui5/webcomponents-base/dist/config/Theme';
 
 type Themes = {
@@ -33,10 +33,17 @@ export const parameters = {
   },
 };
 
+const setDirection = (direction) => {
+  document.body.setAttribute("dir", direction);
+  applyDirection();
+}
+
+
 const withThemeProvider = (Story, storyContext) => {
   const {theme, rtl, density} = storyContext.globals;
   setTheme(themes[theme]);
-  document.body.setAttribute("dir", rtl === "RTL" ? "rtl" : "ltr");
+
+  setDirection(rtl === "RTL" ? "rtl" : "ltr");
 
   document.body.classList.remove("sapUiSizeCozy");
   document.body.classList.remove("sapUiSizeCompact");
@@ -63,7 +70,7 @@ export const globalTypes = {
   },
   rtl: {
     description: "Global rtl mode for components",
-    defaultValue: getRTL(),
+    defaultValue: "LTR",
     toolbar: {
       title: "Direction",
       icon: "",

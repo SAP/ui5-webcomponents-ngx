@@ -2,7 +2,7 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, BarComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
+const description = `### Overview The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
 
 <h3>Usage</h3> With the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter. <br> <b>Note:</b> Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.
 
@@ -18,9 +18,9 @@ const description = `<h3 class="comment-api-title">Overview</h3> The Bar is a co
 
 <h3>ES6 Module Import</h3>
 
-<code>import { BarComponent } from "@ui5/webcomponents-ngx/fiori/bar";</code>`;
+<code>import { BarComponent } from "@ui5/webcomponents-ngx/main/bar";</code>`;
 export default {
-  title: 'UI5 Web Components / Fiori / Bar',
+  title: 'UI5 Web Components / Main / Bar',
   component: BarComponent,
   decorators: [
     moduleMetadata({

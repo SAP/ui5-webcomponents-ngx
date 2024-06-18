@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-date-picker</code> component provides an input field with assigned calendar which opens on user action. The <code>ui5-date-picker</code> allows users to select a localized date using touch, mouse, or keyboard input. It consists of two parts: the date input field and the date picker.
 
@@ -82,7 +82,7 @@ export const datePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyy
   props: args,
   template: `
 		<div class="datepicker-width">
-			<ui5-date-picker id="myDatepicker12" min-date="1/1/2020" max-date="4/5/2020" format-pattern="dd/MM/yyyy"></ui5-date-picker>
+			<ui5-date-picker value="29/04/2020" min-date="1/1/2020" max-date="4/5/2020" format-pattern="dd/MM/yyyy"></ui5-date-picker>
 		</div>
 	`,
 });
@@ -148,7 +148,7 @@ export const disabledDatePicker: Story<DatePickerComponent> = (
   props: args,
   template: `
 			<div class="datepicker-width">
-				<ui5-date-picker disabled="" value="8 September 2021"></ui5-date-picker>
+				<ui5-date-picker [disabled]="true" value="8 September 2021"></ui5-date-picker>
 			</div>
 		`,
 });
@@ -159,7 +159,7 @@ export const readonlyDatePicker: Story<DatePickerComponent> = (
   props: args,
   template: `
 			<div class="datepicker-width">
-				<ui5-date-picker readonly="" value="8 September 2021"></ui5-date-picker>
+				<ui5-date-picker [readonly]="true" value="8 September 2021"></ui5-date-picker>
 			</div>
 		`,
 });

@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 Displays a group of avatars arranged horizontally. It is useful to visually showcase a group of related avatars, such as, project team members or employees.
 
@@ -42,50 +42,42 @@ export default {
   },
 } as Meta;
 
-export const avatarGroupSizes: Story<AvatarGroupComponent> = (
+export const avatarGroupTypeIndividual: Story<AvatarGroupComponent> = (
   args: AvatarGroupComponent & any
 ) => ({
   props: args,
   template: `
 		<ui5-avatar-group type="Individual">
-			<ui5-avatar size="S">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_1.png" alt="Man Avatar 1">
 			</ui5-avatar>
-			<ui5-avatar size="S" initials="JD"></ui5-avatar>
-			<ui5-avatar size="S">
+			<ui5-avatar initials="JD"></ui5-avatar>
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/woman_avatar_5.png" alt="Woman Avatar 5">
 			</ui5-avatar>
-			<ui5-avatar size="S">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
 			</ui5-avatar>
 		</ui5-avatar-group>
+	
+	`,
+});
 
-		<br>
 
-		<ui5-avatar-group type="Individual">
-			<ui5-avatar size="M">
-				<img src="../../../assets/images/avatars/man_avatar_1.png" alt="Man Avatar 1">
-			</ui5-avatar>
-			<ui5-avatar size="M" initials="JD"></ui5-avatar>
-			<ui5-avatar size="M">
-				<img src="../../../assets/images/avatars/woman_avatar_5.png" alt="Woman Avatar 5">
-			</ui5-avatar>
-			<ui5-avatar size="M">
-				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
-			</ui5-avatar>
-		</ui5-avatar-group>
-
-		<br>
-
+export const avatarGroupTypeGroup: Story<AvatarGroupComponent> = (
+  args: AvatarGroupComponent & any
+) => ({
+  props: args,
+  template: `
 		<ui5-avatar-group type="Group">
-			<ui5-avatar size="L">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_1.png" alt="Man Avatar 1">
 			</ui5-avatar>
-			<ui5-avatar size="L" initials="JD"></ui5-avatar>
-			<ui5-avatar size="L">
+			<ui5-avatar initials="JD"></ui5-avatar>
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/woman_avatar_5.png" alt="Woman Avatar 5">
 			</ui5-avatar>
-			<ui5-avatar size="L">
+			<ui5-avatar>
 				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
 			</ui5-avatar>
 		</ui5-avatar-group>

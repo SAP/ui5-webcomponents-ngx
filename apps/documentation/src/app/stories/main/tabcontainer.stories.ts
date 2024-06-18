@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3>
+const description = `### Overview
 
 The <code>ui5-tabcontainer</code> represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
 
@@ -44,16 +44,16 @@ export default {
   },
 } as Meta;
 
-export const ui5TabcontainerWidthCalc10020625RemImportant: Story<
+export const basicTabContainer: Story<
   TabContainerComponent
 > = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
-		<ui5-tabcontainer class="full-width">
+		<ui5-tabcontainer>
 			<ui5-tab icon="menu" text="Tab 1">
 				<ui5-label>Quibusdam, veniam! Architecto debitis iusto ad et, asperiores quisquam perferendis reprehenderit ipsa voluptate minus minima, perspiciatis cum. Totam harum necessitatibus numquam voluptatum.</ui5-label>
 			</ui5-tab>
-			<ui5-tab icon="activities" text="Tab 2" selected="">
+			<ui5-tab icon="activities" text="Tab 2" [selected]="true">
 				<ui5-label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga magni facere error dicta beatae optio repudiandae vero, quidem voluptatibus perferendis eum maiores rem tempore voluptates aperiam eos enim delectus unde.</ui5-label>
 			</ui5-tab>
 			<ui5-tab icon="add" text="Tab 3">
@@ -75,9 +75,9 @@ export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-tabcontainer class="full-width" collapsed="" fixed="">
+		<ui5-tabcontainer [collapsed]="true">
 			<ui5-tab text="Home"></ui5-tab>
-			<ui5-tab text="What's new" selected=""></ui5-tab>
+			<ui5-tab text="What's new" [selected]="true"></ui5-tab>
 			<ui5-tab text="Who are we"></ui5-tab>
 			<ui5-tab text="About"></ui5-tab>
 			<ui5-tab text="Contacts"></ui5-tab>
@@ -90,7 +90,7 @@ export const textOnlyEndOverflow: Story<TabContainerComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-tabcontainer collapsed="" fixed="">
+		<ui5-tabcontainer [collapsed]="true">
 			<ui5-tab text="Tab 1">
 			</ui5-tab>
 			<ui5-tab text="Tab 2">
@@ -115,7 +115,7 @@ export const textOnlyEndOverflow: Story<TabContainerComponent> = (
 			</ui5-tab>
 			<ui5-tab text="Tab 12">
 			</ui5-tab>
-			<ui5-tab text="Tab 13" selected="">
+			<ui5-tab text="Tab 13" [selected]="true">
 			</ui5-tab>
 			<ui5-tab text="Tab 14">
 			</ui5-tab>
@@ -146,10 +146,10 @@ export const tabContainerWithTextAndAdditionalText: Story<
 > = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
-		<ui5-tabcontainer collapsed="" fixed="">
+		<ui5-tabcontainer [collapsed]="true">
 			<ui5-tab text="Info" additional-text="3">
 			</ui5-tab>
-			<ui5-tab text="Attachments" additional-text="24" selected="">
+			<ui5-tab text="Attachments" additional-text="24" [selected]="true">
 			</ui5-tab>
 			<ui5-tab text="Notes" additional-text="16">
 			</ui5-tab>
@@ -164,19 +164,19 @@ export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-tabcontainer tab-layout="Inline" collapsed="" fixed="">
+		<ui5-tabcontainer tab-layout="Inline" [collapsed]="true">
 			<ui5-tab text="Monitors" additional-text="10">
 			</ui5-tab>
-			<ui5-tab text="Cameras" additional-text="2" selected="">
+			<ui5-tab text="Cameras" additional-text="2" [selected]="true">
 			</ui5-tab>
 			<ui5-tab text="Rooms" additional-text="16">
 			</ui5-tab>
 		</ui5-tabcontainer>
 
-		<ui5-tabcontainer tab-layout="Inline" collapsed="" fixed="">
+		<ui5-tabcontainer tab-layout="Inline" [collapsed]="true">
 			<ui5-tab icon="laptop" text="Monitors" additional-text="10">
 			</ui5-tab>
-			<ui5-tab icon="video" text="Cameras" additional-text="2" selected="">
+			<ui5-tab icon="video" text="Cameras" additional-text="2" [selected]="true">
 			</ui5-tab>
 			<ui5-tab icon="home" text="Rooms" additional-text="16">
 			</ui5-tab>
@@ -189,7 +189,7 @@ export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-tabcontainer collapsed="">
+		<ui5-tabcontainer [collapsed]="true">
 			<ui5-tab text="Notes">
 				Notes go here ...
 			</ui5-tab>
@@ -197,24 +197,24 @@ export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
 				Products go here ...
 				<ui5-tab slot="subTabs" text="Computers">
 					Computers go here ...
-					<ui5-tab slot="subTabs" text="Laptops">
+					<ui5-tab slot="items" text="Laptops">
 						Laptops go here ...
 					</ui5-tab>
-					<ui5-tab slot="subTabs" text="Desktops">
+					<ui5-tab slot="items" text="Desktops">
 						<ui5-tab slot="subTabs" text="Work Stations">
 							Work Stations go here ...
 						</ui5-tab>
-						<ui5-tab slot="subTabs" text="Game Stations">
+						<ui5-tab slot="items" text="Game Stations">
 							Game Stations go here ...
 						</ui5-tab>
 						Desktops go here ...
 					</ui5-tab>
 				</ui5-tab>
-				<ui5-tab text="Phones" slot="subTabs">
-					<ui5-tab text="Smartphones" slot="subTabs">
+				<ui5-tab text="Phones" slot="items">
+					<ui5-tab text="Smartphones" slot="items">
 						Smartphones go here ...
 					</ui5-tab>
-					<ui5-tab text="Tablets" slot="subTabs">
+					<ui5-tab text="Tablets" slot="items">
 						Tablets go here ...
 					</ui5-tab>
 					Phones go here ...
@@ -222,7 +222,7 @@ export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
 			</ui5-tab>
 			<ui5-tab text="Orders">
 				Orders go here ...
-				<ui5-tab slot="subTabs" text="Attachments">
+				<ui5-tab slot="items" text="Attachments">
 					Order attachments go here ...
 				</ui5-tab>
 			</ui5-tab>

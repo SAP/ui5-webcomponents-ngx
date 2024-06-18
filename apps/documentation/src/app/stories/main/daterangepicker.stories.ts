@@ -5,7 +5,7 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `<h3 class="comment-api-title">Overview</h3> The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
+const description = `### Overview The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
 
 <h3>Usage</h3> The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the <code>ui5-daterange-picker</code> <h3>ES6 Module Import</h3>
 
@@ -71,7 +71,7 @@ export const disabledDateRangePicker: Story<DateRangePickerComponent> = (
   props: args,
   template: `
 		<div class="daterange-picker-width">
-			<ui5-daterange-picker disabled="" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
+			<ui5-daterange-picker [disabled]="true" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
 });
@@ -82,7 +82,7 @@ export const readonlyDateRangePicker: Story<DateRangePickerComponent> = (
   props: args,
   template: `
 		<div class="daterange-picker-width">
-			<ui5-daterange-picker readonly="" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
+			<ui5-daterange-picker [readonly]="true" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
 });

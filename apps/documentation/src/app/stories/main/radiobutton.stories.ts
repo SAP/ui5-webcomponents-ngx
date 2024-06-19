@@ -39,14 +39,14 @@ export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-radio-button text="Option A" [checked]="true" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option A" checked name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option B" value-state="None" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option C" value-state="Critical" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option D" value-state="Negative" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option C" value-state="Positive" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option D" value-state="Information" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option E" [disabled]="true" name="GroupA"></ui5-radio-button>
-		<ui5-radio-button text="Option F" [readonly]="true" name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option E" disabled name="GroupA"></ui5-radio-button>
+		<ui5-radio-button text="Option F" readonly name="GroupA"></ui5-radio-button>
 	`,
 });
 
@@ -56,19 +56,17 @@ export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
   props: args,
   template: `
 		<div aria-labelledby="radioGroupTitle1" role="radiogroup" id="radioGroup">
-			<ui5-title id="radioGroupTitle1">Group of states</ui5-title>
-			<ui5-label id="lblRadioGroup">Selected radio: None</ui5-label>
-			<ui5-radio-button text="None" value-state="None" [checked]="true" name="GroupB"></ui5-radio-button>
+			<ui5-title level="H5">Group of states</ui5-title>
+			<ui5-radio-button text="None" value-state="None" name="GroupB"></ui5-radio-button>
 			<ui5-radio-button text="Critical" value-state="Critical" name="GroupB"></ui5-radio-button>
-			<ui5-radio-button text="Negative" value-state="Negative" name="GroupB"></ui5-radio-button>
+			<ui5-radio-button checked text="Negative" value-state="Negative" name="GroupB"></ui5-radio-button>
 			<ui5-radio-button text="Positive" value-state="Positive" name="GroupB"></ui5-radio-button>
 			<ui5-radio-button text="Information" value-state="Information" name="GroupB"></ui5-radio-button>
 		</div>
 		<div aria-labelledby="radioGroupTitle2" role="radiogroup" id="radioGroup2">
-			<ui5-title id="radioGroupTitle2">Group of options</ui5-title>
-			<ui5-label id="lblRadioGroup2">Selected radio: Option A</ui5-label>
-			<ui5-radio-button text="Option A" [checked]="true" name="GroupC"></ui5-radio-button>
-			<ui5-radio-button text="Option B" value-state="None" name="GroupC"></ui5-radio-button>
+			<ui5-title level="H5">Group of options</ui5-title>
+			<ui5-radio-button text="Option A" name="GroupC"></ui5-radio-button>
+			<ui5-radio-button checked text="Option B" value-state="None" name="GroupC"></ui5-radio-button>
 			<ui5-radio-button text="Option C" value-state="None" name="GroupC"></ui5-radio-button>
 		</div>
 	`,

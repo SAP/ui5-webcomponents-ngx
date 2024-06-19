@@ -47,11 +47,11 @@ export const Table: Story<TableComponent> = (
 					<span>Product</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demandPopin]="true">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin>
 					<span>Supplier</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demandPopin]="true" class="table-header-text-alignment">
+				<ui5-table-column slot="columns" min-width="800" popin-text="Country" demand-popin class="table-header-text-alignment">
 					<span>Country</span>
 				</ui5-table-column>
 
@@ -103,11 +103,11 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 					<span>Product</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demandPopin]="true">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin>
 					<span>Supplier</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demandPopin]="true" class="table-header-text-alignment">
+				<ui5-table-column slot="columns" min-width="800" popin-text="Country" demand-popin class="table-header-text-alignment">
 					<span>Country</span>
 				</ui5-table-column>
 
@@ -123,7 +123,7 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 					<ui5-table-cell><span>1 eur / kg</span></ui5-table-cell>
 				</ui5-table-row>
 
-				<ui5-table-row [selected]="true">
+				<ui5-table-row selected>
 					<ui5-table-cell><span>Banana</span></ui5-table-cell>
 					<ui5-table-cell><span>Yellow Company Inc.</span></ui5-table-cell>
 					<ui5-table-cell><span>Ecuador</span></ui5-table-cell>
@@ -159,11 +159,11 @@ export const tableInMultiSelectMode: Story<TableComponent> = (
 					<span>Product</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" [demandPopin]="true">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Supplier" demand-popin>
 					<span>Supplier</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="800" popin-text="Weight" [demandPopin]="true" class="table-header-text-alignment">
+				<ui5-table-column slot="columns" min-width="800" popin-text="Country" demand-popin class="table-header-text-alignment">
 					<span>Country</span>
 				</ui5-table-column>
 
@@ -179,14 +179,14 @@ export const tableInMultiSelectMode: Story<TableComponent> = (
 					<ui5-table-cell><span>1 eur / kg</span></ui5-table-cell>
 				</ui5-table-row>
 
-				<ui5-table-row [selected]="true">
+				<ui5-table-row selected>
 					<ui5-table-cell><span>Banana</span></ui5-table-cell>
 					<ui5-table-cell><span>Yellow Company Inc.</span></ui5-table-cell>
 					<ui5-table-cell><span>Ecuador</span></ui5-table-cell>
 					<ui5-table-cell><span>2 eur / kg</span></ui5-table-cell>
 				</ui5-table-row>
 
-				<ui5-table-row [selected]="true">
+				<ui5-table-row selected>
 					<ui5-table-cell><span>Tomato</span></ui5-table-cell>
 					<ui5-table-cell><span>Red Gardens Inc.</span></ui5-table-cell>
 					<ui5-table-cell><span>Bulgaria</span></ui5-table-cell>
@@ -220,11 +220,11 @@ export const tableWithNoData: Story<TableComponent> = (
 					<span style="line-height: 1.4rem">Supplier</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" [demandPopin]="true">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
 					<span style="line-height: 1.4rem">Dimensions</span>
 				</ui5-table-column>
 
-				<ui5-table-column slot="columns" min-width="600" popin-text="Weight" [demandPopin]="true">
+				<ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
 					<span style="line-height: 1.4rem">Weight</span>
 				</ui5-table-column>
 
@@ -245,7 +245,7 @@ export const tableWithGroupingAndSingleSelect: Story<
 			<ui5-table-column id="column-1" slot="columns">
 				<ui5-label>City</ui5-label>
 			</ui5-table-column>
-			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" [demandPopin]="true">
+			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" demand-popin>
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 			<ui5-table-column id="column-3" slot="columns" min-width="500">
@@ -259,7 +259,7 @@ export const tableWithGroupingAndSingleSelect: Story<
 				<ui5-table-cell><span>Company 1</span></ui5-table-cell>
 				<ui5-table-cell><span>Bulgaria</span></ui5-table-cell>
 			</ui5-table-row>
-			<ui5-table-row [selected]="true">
+			<ui5-table-row selected>
 				<ui5-table-cell><span>Plovdiv</span></ui5-table-cell>
 				<ui5-table-cell><span>Company 2</span></ui5-table-cell>
 				<ui5-table-cell><span>Bulgaria</span></ui5-table-cell>
@@ -290,7 +290,7 @@ export const tableWithGroupingAndMultiSelect: Story<TableComponent> = (
 			<ui5-table-column id="column-1" slot="columns">
 				<ui5-label>City</ui5-label>
 			</ui5-table-column>
-			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" [demandPopin]="true">
+			<ui5-table-column id="column-2" slot="columns" min-width="500" popin-text="Supplier" demand-popin>
 				<ui5-label>Supplier</ui5-label>
 			</ui5-table-column>
 			<ui5-table-column id="column-3" slot="columns" min-width="500">
@@ -304,7 +304,7 @@ export const tableWithGroupingAndMultiSelect: Story<TableComponent> = (
 				<ui5-table-cell><span>Company 1</span></ui5-table-cell>
 				<ui5-table-cell><span>Bulgaria</span></ui5-table-cell>
 			</ui5-table-row>
-			<ui5-table-row [selected]="true">
+			<ui5-table-row selected>
 				<ui5-table-cell><span>Plovdiv</span></ui5-table-cell>
 				<ui5-table-cell><span>Company 2</span></ui5-table-cell>
 				<ui5-table-cell><span>Bulgaria</span></ui5-table-cell>

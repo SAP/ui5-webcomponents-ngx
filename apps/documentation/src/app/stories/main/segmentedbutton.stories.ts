@@ -37,7 +37,7 @@ export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
   template: `
         <ui5-segmented-button accessible-name="Geographic location">
             <ui5-segmented-button-item>Map</ui5-segmented-button-item>
-            <ui5-segmented-button-item [selected]="true">Satellite</ui5-segmented-button-item>
+            <ui5-segmented-button-item selected>Satellite</ui5-segmented-button-item>
             <ui5-segmented-button-item>Terrain</ui5-segmented-button-item>
         </ui5-segmented-button>
 	`,
@@ -49,7 +49,7 @@ export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
   props: args,
   template: `
 		<ui5-segmented-button>
-			<ui5-segmented-button-item icon="employee" [selected]="true"></ui5-segmented-button-item>
+			<ui5-segmented-button-item icon="employee" selected></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="menu"></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="factory"></ui5-segmented-button-item>
 		</ui5-segmented-button>
@@ -63,7 +63,7 @@ export const segmentedButtonWith5SegmentedButtonItems: Story<
   template: `
 		<ui5-segmented-button>
 			<ui5-segmented-button-item>Item</ui5-segmented-button-item>
-			<ui5-segmented-button-item [selected]="true">Pressed SegmentedButtonItem With Bigger Text</ui5-segmented-button-item>
+			<ui5-segmented-button-item selected>Pressed SegmentedButtonItem With Bigger Text</ui5-segmented-button-item>
 			<ui5-segmented-button-item>Item</ui5-segmented-button-item>
 			<ui5-segmented-button-item>SegmentedButtonItem</ui5-segmented-button-item>
 			<ui5-segmented-button-item>Press me</ui5-segmented-button-item>

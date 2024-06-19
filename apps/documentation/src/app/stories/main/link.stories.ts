@@ -40,7 +40,7 @@ export const differentLinkDesigns: Story<LinkComponent> = (
   template: `
 		<ui5-link class="samples-big-margin-right" href="https://www.sap.com" target="_blank">Standard Link</ui5-link>
 		<ui5-link class="samples-big-margin-right" href="https://www.sap.com" target="_blank" design="Subtle">Subtle link</ui5-link>
-		<ui5-link class="samples-big-margin-right" href="https://www.sap.com" target="_blank" [disabled]="true">Disabled</ui5-link>
+		<ui5-link class="samples-big-margin-right" href="https://www.sap.com" target="_blank" disabled>Disabled</ui5-link>
 		<ui5-link class="samples-big-margin-right" href="https://www.sap.com" target="_blank" design="Emphasized">Emphasized</ui5-link>
 	`,
 });

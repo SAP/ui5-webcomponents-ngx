@@ -46,7 +46,7 @@ export const fileUploaderWithNoInput: Story<FileUploaderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-file-uploader [hideInput]="true">
+		<ui5-file-uploader hide-input>
 			<ui5-button>Upload File</ui5-button>
 		</ui5-file-uploader>
 	`,
@@ -57,11 +57,11 @@ export const customFileUploaders: Story<FileUploaderComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-file-uploader [hideInput]="true">
+		<ui5-file-uploader hide-input>
 			<ui5-avatar icon="upload"></ui5-avatar>
 		</ui5-file-uploader>
 
-		<ui5-file-uploader [hideInput]="true">
+		<ui5-file-uploader hide-input>
 			<ui5-tag>Upload File</ui5-tag>
 		</ui5-file-uploader>
 	`,

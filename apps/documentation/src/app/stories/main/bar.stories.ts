@@ -2,21 +2,29 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, BarComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
+const description = `
+### Overview 
+The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
 
-<h3>Usage</h3> With the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter. <br> <b>Note:</b> Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.
+### Usage
 
-<h3>Responsive Behavior</h3> The default slot will be centered in the available space between the startContent and the endContent areas, therefore it might not always be centered in the entire bar.
+With the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter. <br> <b>Note:</b> Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.
 
-<h3>CSS Shadow Parts</h3>
+### Responsive Behavior
+
+The default slot will be centered in the available space between the startContent and the endContent areas, therefore it might not always be centered in the entire bar.
+
+### CSS Shadow Parts
 
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-bar</code> exposes the following CSS Shadow Parts: <ul> <li>bar - Used to style the wrapper of the content of the component</li> </ul>
 
-<h3>Keyboard Handling</h3>
+### Keyboard Handling
 
-<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
+#### Fast Navigation 
 
-<h3>ES6 Module Import</h3>
+This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
+
+### ES6 Module Import
 
 <code>import { BarComponent } from "@ui5/webcomponents-ngx/main/bar";</code>`;
 export default {

@@ -45,7 +45,7 @@ export const basicSideNavigation = () => ({
   <ui5-side-navigation>
       <ui5-side-navigation-item text="Home" icon="home"></ui5-side-navigation-item>
 
-      <ui5-side-navigation-group text="Group 1" [expanded]="true">
+      <ui5-side-navigation-group text="Group 1" expanded>
           <ui5-side-navigation-item text="External Link" icon="chain-link" href="https://sap.com" target="_blank"></ui5-side-navigation-item>
           <ui5-side-navigation-item text="People" expanded icon="group">
             <ui5-side-navigation-sub-item text="From My Team"></ui5-side-navigation-sub-item>
@@ -53,7 +53,7 @@ export const basicSideNavigation = () => ({
           </ui5-side-navigation-item>
       </ui5-side-navigation-group>
 
-      <ui5-side-navigation-group text="Group 2" [expanded]="true">
+      <ui5-side-navigation-group text="Group 2" expanded>
           <ui5-side-navigation-item text="Locations" icon="locate-me" selected></ui5-side-navigation-item>
           <ui5-side-navigation-item text="Locations" disabled icon="locate-me"></ui5-side-navigation-item>
           <ui5-side-navigation-item text="Events" icon="calendar">

@@ -83,7 +83,7 @@ export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-panel [fixed]="true" accessible-role="Complementary" header-text="Country Of Birth">
+		<ui5-panel fixed accessible-role="Complementary" header-text="Country Of Birth">
 			<ui5-list mode="SingleSelectBegin">
 				<ui5-li key="country1">Argentina</ui5-li>
 				<ui5-li key="country2">Bulgaria</ui5-li>

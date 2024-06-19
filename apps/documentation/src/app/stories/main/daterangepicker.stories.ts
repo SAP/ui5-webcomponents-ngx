@@ -71,7 +71,7 @@ export const disabledDateRangePicker: Story<DateRangePickerComponent> = (
   props: args,
   template: `
 		<div class="daterange-picker-width">
-			<ui5-daterange-picker [disabled]="true" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
+			<ui5-daterange-picker disabled value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
 });
@@ -82,7 +82,7 @@ export const readonlyDateRangePicker: Story<DateRangePickerComponent> = (
   props: args,
   template: `
 		<div class="daterange-picker-width">
-			<ui5-daterange-picker [readonly]="true" value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
+			<ui5-daterange-picker readonly value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
 });

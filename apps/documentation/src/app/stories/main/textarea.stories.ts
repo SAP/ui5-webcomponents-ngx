@@ -48,7 +48,7 @@ export const textAreaWithMaximumLength: Story<TextAreaComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-textarea class="textarea-width" placeholder="Type no more than 10 symbols" [maxlength]="10" [showExceededText]="true"></ui5-textarea>
+		<ui5-textarea class="textarea-width" placeholder="Type no more than 10 symbols" [maxlength]="10" show-exceeded-text></ui5-textarea>
 	`,
 });
 

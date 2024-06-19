@@ -39,7 +39,7 @@ export const usage: Story<MediaGalleryComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-media-gallery [showAllThumbnails]="true">
+		<ui5-media-gallery show-all-thumbnails>
 			<ui5-media-gallery-item>
 				<img src="/assets/images/HT-1000.jpg">
 			</ui5-media-gallery-item>
@@ -67,7 +67,7 @@ export const mediaGalleryWithVerticalLayout: Story<MediaGalleryComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-media-gallery [showAllThumbnails]="true" layout="Vertical">
+		<ui5-media-gallery show-all-thumbnails layout="Vertical">
 			<ui5-media-gallery-item>
 				<img src="/assets/images/HT-1000.jpg">
 			</ui5-media-gallery-item>
@@ -95,7 +95,7 @@ export const mediaGalleryWithThumbnailsOnTheRight: Story<
 > = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
-		<ui5-media-gallery [showAllThumbnails]="true" layout="Horizontal" menu-horizontal-align="Right">
+		<ui5-media-gallery show-all-thumbnails layout="Horizontal" menu-horizontal-align="Right">
 			<ui5-media-gallery-item>
 				<img src="/assets/images/HT-1000.jpg">
 			</ui5-media-gallery-item>
@@ -152,7 +152,7 @@ export const mediaGalleryWithDisabledContent: Story<MediaGalleryComponent> = (
   props: args,
   template: `
 		<ui5-media-gallery>
-			<ui5-media-gallery-item [disabled]="true">
+			<ui5-media-gallery-item disabled>
 				<img src="/assets/images/HT-1000.jpg">
 			</ui5-media-gallery-item>
 			<ui5-media-gallery-item>
@@ -171,7 +171,7 @@ export const mediaGalleryWithInitiallySelectedItem: Story<
 			<ui5-media-gallery-item>
 				<img src="/assets/images/HT-1000.jpg">
 			</ui5-media-gallery-item>
-			<ui5-media-gallery-item [selected]="true">
+			<ui5-media-gallery-item selected>
 				<img src="/assets/images/HT-1010.jpg">
 			</ui5-media-gallery-item>
 		</ui5-media-gallery>

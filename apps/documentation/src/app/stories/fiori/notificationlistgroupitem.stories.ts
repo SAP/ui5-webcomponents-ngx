@@ -49,7 +49,7 @@ export const basicSample = () => ({
     priority="High"
   >
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
       priority="High"
     >
@@ -69,7 +69,7 @@ export const basicSample = () => ({
     </ui5-li-notification>
 
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
       priority="High"
     >
@@ -98,10 +98,10 @@ export const basicSample = () => ({
   <ui5-li-notification-group
     title-text="Deliveries"
     priority="Medium"
-    [collapsed]="true"
+    collapsed
   >
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New Delivery (#2900) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
       priority="Medium"
     >
@@ -119,7 +119,7 @@ export const basicSample = () => ({
     </ui5-li-notification>
 
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New Delivery (#29001) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
       priority="Medium"
     >
@@ -136,14 +136,14 @@ export const basicSample = () => ({
 
   <ui5-li-notification-group
     priority="Low"
-    [collapsed]="true"
+    collapsed
     title-text="Meetings With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
   >
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New meeting at Building (#35001)"
       priority="Low"
-      [read]="true"
+     read
     >
       And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet,
       consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor,
@@ -155,10 +155,10 @@ export const basicSample = () => ({
     </ui5-li-notification>
 
     <ui5-li-notification
-      [showClose]="true"
+      show-close
       title-text="New meeting at Building (#35001)"
       priority="Low"
-      [read]="true"
+     read
     >
       And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet,
       consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor,
@@ -180,7 +180,7 @@ export const inShellbar = () => ({
 <ui5-shellbar
   primary-title="Corporate Portal"
   logo="/assets/images/sap-logo-svg.svg"
-  [showNotifications]="true"
+  show-notifications
   notifications-count="6"
   (notificationsClick)="popover.open=true;popover.opener = $event.detail.targetRef"
 >
@@ -193,7 +193,7 @@ export const inShellbar = () => ({
       priority="High"
     >
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
         priority="High"
       >
@@ -211,7 +211,7 @@ export const inShellbar = () => ({
       </ui5-li-notification>
 
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
         priority="High"
       >
@@ -237,10 +237,10 @@ export const inShellbar = () => ({
     <ui5-li-notification-group
       title-text="Deliveries"
       priority="Medium"
-      [collapsed]="true"
+      collapsed
     >
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New Delivery (#2900) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
         priority="Medium"
       >
@@ -253,7 +253,7 @@ export const inShellbar = () => ({
       </ui5-li-notification>
 
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New Delivery (#29001) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
         priority="Medium"
       >
@@ -275,14 +275,14 @@ export const inShellbar = () => ({
 
     <ui5-li-notification-group
       priority="High"
-      [collapsed]="true"
+      collapsed
       title-text="Meetings With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
     >
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New meeting at Building (#35001)"
         priority="High"
-        [read]="true"
+       read
       >
         And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
         <ui5-avatar icon="employee" size="XS" slot="avatar"></ui5-avatar>
@@ -292,10 +292,10 @@ export const inShellbar = () => ({
       </ui5-li-notification>
 
       <ui5-li-notification
-        [showClose]="true"
+        show-close
         title-text="New meeting at Building (#35001)"
         priority="High"
-        [read]="true"
+       read
       >
         And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
         <ui5-avatar icon="employee" size="XS" slot="avatar"></ui5-avatar>

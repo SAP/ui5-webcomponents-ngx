@@ -63,8 +63,9 @@ export const wizard: Story<WizardComponent> = (
 ) => ({
   props: args,
   template: `
+		<div style="height: 500px">
 		<ui5-wizard id="wiz">
-			<ui5-wizard-step icon="product" title-text="Product type" [selected]="true">
+			<ui5-wizard-step icon="product" title-text="Product type" selected>
 				<div style="display: flex; min-height: 200px; flex-direction: column;">
 					<ui5-title>1. Product Type</ui5-title><br>
 
@@ -75,11 +76,9 @@ export const wizard: Story<WizardComponent> = (
 					<ui5-label wrapping-type="Normal">Sed fermentum, mi et tristique ullamcorper, sapien sapien faucibus sem, quis pretium nibh lorem malesuada diam. Nulla quis arcu aliquet, feugiat massa semper, volutpat diam. Nam vitae ante posuere, molestie neque sit amet, dapibus velit. Maecenas eleifend tempor lorem. Mauris vitae elementum mi, sed eleifend ligula. Nulla tempor vulputate dolor, nec dignissim quam convallis ut. Praesent vitae commodo felis, ut iaculis felis. Fusce quis eleifend sapien, eget facilisis nibh. Suspendisse est velit, scelerisque ut commodo eget, dignissim quis metus. Cras faucibus consequat gravida. Curabitur vitae quam felis. Phasellus ac leo eleifend, commodo tortor et, varius quam. Aliquam erat volutpat.
 					</ui5-label>
 				</div>
-
-				<ui5-button id="toStep2" design="Emphasized">Step 2</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="hint" title-text="Product Information" [disabled]="true">
+			<ui5-wizard-step icon="hint" title-text="Product Information">
 				<div style="display: flex;flex-direction: column">
 					<ui5-title>2. Product Information</ui5-title><br>
 					<ui5-label wrapping-type="Normal">
@@ -100,7 +99,7 @@ export const wizard: Story<WizardComponent> = (
 						<div style="display: flex; flex-direction: row; margin-top: 1rem; justify-content: flex-end; align-items: center;">
 							<ui5-label>Manifacturer</ui5-label>
 							<ui5-select>
-								<ui5-option [selected]="true">Apple</ui5-option>
+								<ui5-option selected>Apple</ui5-option>
 								<ui5-option>Samsung</ui5-option>
 								<ui5-option>Huawei</ui5-option>
 							</ui5-select>
@@ -113,10 +112,10 @@ export const wizard: Story<WizardComponent> = (
 					</div>
 				</div>
 
-				<ui5-button id="toStep3" design="Emphasized" [hidden]="true">Step 3</ui5-button>
+				<ui5-button id="toStep3" design="Emphasized" hidden>Step 3</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="action-settings" title-text="Options" [disabled]="true">
+			<ui5-wizard-step icon="action-settings" title-text="Options">
 				<div style="display: flex; flex-direction: column;">
 					<ui5-title>3. Options</ui5-title><br>
 
@@ -136,28 +135,26 @@ export const wizard: Story<WizardComponent> = (
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-top: 1rem">
 							<ui5-label>Availability</ui5-label>
 							<ui5-segmented-button id="segButton1">
-								<ui5-toggle-button icon="employee" [pressed]="true">In stock</ui5-toggle-button>
-								<ui5-toggle-button>In depot</ui5-toggle-button>
-								<ui5-toggle-button>Damaged</ui5-toggle-button>
-								<ui5-toggle-button>Out of stock</ui5-toggle-button>
+								<ui5-segmented-button-item icon="employee" selected>In stock</ui5-segmented-button-item>
+								<ui5-segmented-button-item>In depot</ui5-segmented-button-item>
+								<ui5-segmented-button-item>Damaged</ui5-segmented-button-item>
+								<ui5-segmented-button-item>Out of stock</ui5-segmented-button-item>
 							</ui5-segmented-button>
 						</div>
 
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; margin-top: 1rem">
 							<ui5-label>Size</ui5-label>
 							<ui5-segmented-button id="sb">
-								<ui5-toggle-button icon="employee" [pressed]="true">Small</ui5-toggle-button>
-								<ui5-toggle-button>Medium</ui5-toggle-button>
-								<ui5-toggle-button>Large</ui5-toggle-button>
+								<ui5-segmented-button-item icon="employee" selected>Small</ui5-segmented-button-item>
+								<ui5-segmented-button-item>Medium</ui5-segmented-button-item>
+								<ui5-segmented-button-item>Large</ui5-segmented-button-item>
 							</ui5-segmented-button>
 						</div>
 					</div>
 				</div>
-
-				<ui5-button id="toStep4" design="Emphasized" [hidden]="true">Step 4</ui5-button>
 			</ui5-wizard-step>
 
-			<ui5-wizard-step icon="lead" title-text="Pricing" [disabled]="true">
+			<ui5-wizard-step icon="lead" title-text="Pricing">
 				<div style="display: flex; flex-direction: column;">
 					<ui5-title>4. Pricing</ui5-title><br>
 					<ui5-label wrapping-type="Normal">
@@ -180,7 +177,7 @@ export const wizard: Story<WizardComponent> = (
 
 						<div style="display: flex; flex-direction: row; margin-top: 1rem; justify-content: flex-end; align-items: center;">
 							<ui5-label>Vat included</ui5-label>
-							<ui5-switch [checked]="true"></ui5-switch>
+							<ui5-switch checked></ui5-switch>
 						</div>
 					</div>
 				</div>
@@ -188,5 +185,6 @@ export const wizard: Story<WizardComponent> = (
 				<ui5-button id="finalize" design="Emphasized">Finalize</ui5-button>
 			</ui5-wizard-step>
 		</ui5-wizard>
+		</div>
 	`,
 });

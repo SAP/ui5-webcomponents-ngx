@@ -4,6 +4,10 @@ import {
   DatePickerComponent,
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
+import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";
+import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";
 
 const description = `### Overview
 
@@ -148,7 +152,7 @@ export const disabledDatePicker: Story<DatePickerComponent> = (
   props: args,
   template: `
 			<div class="datepicker-width">
-				<ui5-date-picker [disabled]="true" value="8 September 2021"></ui5-date-picker>
+				<ui5-date-picker disabled value="8 September 2021"></ui5-date-picker>
 			</div>
 		`,
 });
@@ -159,7 +163,7 @@ export const readonlyDatePicker: Story<DatePickerComponent> = (
   props: args,
   template: `
 			<div class="datepicker-width">
-				<ui5-date-picker [readonly]="true" value="8 September 2021"></ui5-date-picker>
+				<ui5-date-picker readonly value="8 September 2021"></ui5-date-picker>
 			</div>
 		`,
 });

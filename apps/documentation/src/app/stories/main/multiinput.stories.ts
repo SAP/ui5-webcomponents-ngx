@@ -36,7 +36,7 @@ export const basicMultiInput: Story<MultiInputComponent> = (
   props: args,
   template: `
 		<ui5-multi-input value="basic input"></ui5-multi-input>
-		<ui5-multi-input [showValueHelpIcon]="true" value="value help icon"></ui5-multi-input>
+		<ui5-multi-input show-value-help-icon value="value help icon"></ui5-multi-input>
 	`,
 });
 

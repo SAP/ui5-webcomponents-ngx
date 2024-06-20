@@ -77,7 +77,7 @@ export const calendarWithHiddenWeekNumbers: Story<CalendarComponent> = (
   props: args,
   template: `
 		<div class="datepicker-width">
-			<ui5-calendar [hideWeekNumbers]="true"></ui5-calendar>
+			<ui5-calendar hide-week-numbers></ui5-calendar>
 		</div>
 	`,
 });

@@ -43,7 +43,7 @@ export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeature
   template: `
 		<ui5-button id="btn" (click)="colorPalettePopover.open=true">Open ColorPalettePopover</ui5-button>
 
-		<ui5-color-palette-popover opener="btn" #colorPalettePopover="ui5ColorPalettePopover" [showRecentColors]="true" [showDefaultColor]="true" default-color="green">
+		<ui5-color-palette-popover opener="btn" #colorPalettePopover="ui5ColorPalettePopover" show-recent-colors show-default-color default-color="green">
 			<ui5-color-palette-item value="pink"></ui5-color-palette-item>
 			<ui5-color-palette-item value="darkblue"></ui5-color-palette-item>
 			<ui5-color-palette-item value="#444444"></ui5-color-palette-item>

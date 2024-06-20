@@ -44,7 +44,7 @@ export const basicButton: Story<ButtonComponent> = (
   props: args,
   template: `
 		<ui5-button design="Default">Default</ui5-button>
-		<ui5-button [disabled]="true">Disabled</ui5-button>
+		<ui5-button disabled>Disabled</ui5-button>
 		<ui5-button design="Transparent">Cancel</ui5-button>
 		<ui5-button design="Positive">Approve</ui5-button>
 		<ui5-button design="Negative">Decline</ui5-button>

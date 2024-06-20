@@ -45,8 +45,8 @@ export const basicStepInput: Story<StepInputComponent> = (
   template: `
 		<div>
 			<ui5-step-input [value]="5"></ui5-step-input>
-			<ui5-step-input [readonly]="true" [value]="5"></ui5-step-input>
-			<ui5-step-input [disabled]="true" [value]="5"></ui5-step-input>
+			<ui5-step-input readonly [value]="5"></ui5-step-input>
+			<ui5-step-input disabled [value]="5"></ui5-step-input>
 		</div>
 	`,
 });
@@ -96,7 +96,7 @@ export const stepInputWithLabel: Story<StepInputComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label for="myStepInput" [required]="true" [showColon]="true">Number</ui5-label>
-		<ui5-step-input id="myStepInput" placeholder="Enter your Number" [required]="true"></ui5-step-input>
+		<ui5-label for="myStepInput" required showColon>Number</ui5-label>
+		<ui5-step-input id="myStepInput" placeholder="Enter your Number" required></ui5-step-input>
 	`,
 });

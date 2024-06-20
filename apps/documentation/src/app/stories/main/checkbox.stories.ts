@@ -43,10 +43,10 @@ export const basicCheckBox: Story<CheckBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-checkbox text="Chocolate" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Strawberry" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Waffles" [checked]="true" value-state="Negative"></ui5-checkbox>
-		<ui5-checkbox text="Cake" [checked]="true" value-state="Critical"></ui5-checkbox>
+		<ui5-checkbox text="Chocolate" checked></ui5-checkbox>
+		<ui5-checkbox text="Strawberry" checked></ui5-checkbox>
+		<ui5-checkbox text="Waffles" checked value-state="Negative"></ui5-checkbox>
+		<ui5-checkbox text="Cake" checked value-state="Critical"></ui5-checkbox>
 	`,
 });
 
@@ -59,20 +59,20 @@ export const checkBoxStates: Story<CheckBoxComponent> = (
 		<ui5-checkbox text="Negative" value-state="Negative"></ui5-checkbox>
 		<ui5-checkbox text="Critical" value-state="Critical"></ui5-checkbox>
 		<ui5-checkbox text="Information" value-state="Information"></ui5-checkbox>
-		<ui5-checkbox text="Disabled" [disabled]="true" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Readonly" [readonly]="true" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Success disabled" [disabled]="true" value-state="Positive" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Error disabled" [disabled]="true" value-state="Negative" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Warning disabled " [disabled]="true" value-state="Critical" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Information disabled " [disabled]="true" value-state="Information" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Success readonly" [readonly]="true" value-state="Positive" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Error readonly" [readonly]="true" value-state="Negative" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Warning readonly" [readonly]="true" value-state="Critical" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Information readonly" [readonly]="true" value-state="Information" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Success indeterminate" value-state="Positive" [indeterminate]="true" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Error indeterminate" value-state="Negative" [indeterminate]="true" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Warning indeterminate" value-state="Critical" [indeterminate]="true" [checked]="true"></ui5-checkbox>
-		<ui5-checkbox text="Information indeterminate" value-state="Information" [indeterminate]="true" [checked]="true"></ui5-checkbox>
+		<ui5-checkbox text="Disabled" disabled checked></ui5-checkbox>
+		<ui5-checkbox text="Readonly" readonly checked></ui5-checkbox>
+		<ui5-checkbox text="Success disabled" disabled value-state="Positive" checked></ui5-checkbox>
+		<ui5-checkbox text="Error disabled" disabled value-state="Negative" checked></ui5-checkbox>
+		<ui5-checkbox text="Warning disabled " disabled value-state="Critical" checked></ui5-checkbox>
+		<ui5-checkbox text="Information disabled " disabled value-state="Information" checked></ui5-checkbox>
+		<ui5-checkbox text="Success readonly" readonly value-state="Positive" checked></ui5-checkbox>
+		<ui5-checkbox text="Error readonly" readonly value-state="Negative" checked></ui5-checkbox>
+		<ui5-checkbox text="Warning readonly" readonly value-state="Critical" checked></ui5-checkbox>
+		<ui5-checkbox text="Information readonly" readonly value-state="Information" checked></ui5-checkbox>
+		<ui5-checkbox text="Success indeterminate" value-state="Positive" indeterminate checked></ui5-checkbox>
+		<ui5-checkbox text="Error indeterminate" value-state="Negative" indeterminate checked></ui5-checkbox>
+		<ui5-checkbox text="Warning indeterminate" value-state="Critical" indeterminate checked></ui5-checkbox>
+		<ui5-checkbox text="Information indeterminate" value-state="Information" indeterminate checked></ui5-checkbox>
 	`,
 });
 

@@ -60,7 +60,7 @@ export const shellBarWithSearchAndNotifications: Story<ShellBarComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" [showNotifications]="true" notifications-count="22">
+		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" show-notifications notifications-count="22">
 			<ui5-avatar slot="profile">
 				<img src="/assets/images/avatars/woman_avatar_5.png">
 			</ui5-avatar>
@@ -75,7 +75,7 @@ export const shellBarWithProductSwitchAndCoPilot: Story<ShellBarComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" [showProductSwitch]="true" [showNotifications]="true" notifications-count="22">
+		<ui5-shellbar primary-title="Corporate Portal" secondary-title="secondary title" show-product-switch show-notifications notifications-count="22">
 			<img slot="logo" src="/assets/images/sap-logo-svg.svg">
 
 			<ui5-avatar slot="profile">

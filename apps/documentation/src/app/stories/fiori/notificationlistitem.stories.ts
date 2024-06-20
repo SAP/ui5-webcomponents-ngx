@@ -49,7 +49,7 @@ export const notificationListItemCustomActions: Story<
   props: args,
   template: `
 		<ui5-list id="myList3" class="full-width" header-text="Notifications">
-			<ui5-li-notification [showClose]="true" priority="Low" title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
+			<ui5-li-notification show-close priority="Low" title-text="New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/woman_avatar_1.png">
@@ -63,7 +63,7 @@ export const notificationListItemCustomActions: Story<
 				</ui5-menu>
 			</ui5-li-notification>
 
-			<ui5-li-notification [showClose]="true" priority="Low" title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
+			<ui5-li-notification show-close priority="Low" title-text="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/man_avatar_1.png">
@@ -76,7 +76,7 @@ export const notificationListItemCustomActions: Story<
 				</ui5-menu>
 			</ui5-li-notification>
 
-			<ui5-li-notification [showClose]="true" priority="Low" title-text="New order (#2525) With a short title">
+			<ui5-li-notification show-close priority="Low" title-text="New order (#2525) With a short title">
 				And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.
 				<ui5-avatar size="XS" slot="avatar">
 					<img src="/assets/images/avatars/man_avatar_2.png">

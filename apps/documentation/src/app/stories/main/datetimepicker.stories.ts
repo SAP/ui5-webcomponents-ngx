@@ -69,7 +69,7 @@ export const dateTimePickerInStates: Story<DateTimePickerComponent> = (
 		<ui5-datetime-picker value-state="Information"></ui5-datetime-picker>
 		<ui5-datetime-picker value-state="Positive"></ui5-datetime-picker>
 		<br><br>
-		<ui5-datetime-picker [readonly]="true" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
-		<ui5-datetime-picker [disabled]="true" value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
+		<ui5-datetime-picker readonly value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
+		<ui5-datetime-picker disabled value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
 	`,
 });

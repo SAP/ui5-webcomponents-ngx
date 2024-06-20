@@ -54,7 +54,7 @@ export const productSwitchInShellbar: Story<ProductSwitchComponent> = (
         primary-title="Corporate Portal"
         secondary-title="home"
         logo="/assets/images/sap-logo-svg.svg"
-        [showProductSwitch]="true"
+        show-product-switch
         (productSwitchClick)="popover.open=true;popover.opener = $event.detail.targetRef"
 >
 </ui5-shellbar>

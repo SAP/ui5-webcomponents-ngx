@@ -52,7 +52,7 @@ export const draggableAndResizableDialog: Story<DialogComponent> = (
   template: `
 		<ui5-button (click)="dialog.open=true" >Open Draggable/Resizable dialog</ui5-button>
 
-		<ui5-dialog #dialog="ui5Dialog" header-text="Draggable/Resizable dialog" [resizable]="true" [draggable]="true">
+		<ui5-dialog #dialog="ui5Dialog" header-text="Draggable/Resizable dialog" resizable draggable>
 			<p>Resize this dialog by dragging it by its resize handle.</p>
 			<p>This feature available only on Desktop.</p>
 

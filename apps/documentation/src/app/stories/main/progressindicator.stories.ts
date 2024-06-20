@@ -37,7 +37,7 @@ export const basicProgressIndicator: Story<ProgressIndicatorComponent> = (
   template: `
         <ui5-progress-indicator value="0"></ui5-progress-indicator>
         <ui5-progress-indicator value="25"></ui5-progress-indicator>
-        <ui5-progress-indicator value="75" [disabled]="true"></ui5-progress-indicator>
+        <ui5-progress-indicator value="75" disabled></ui5-progress-indicator>
         <ui5-progress-indicator value="100"></ui5-progress-indicator>
 	`,
 });

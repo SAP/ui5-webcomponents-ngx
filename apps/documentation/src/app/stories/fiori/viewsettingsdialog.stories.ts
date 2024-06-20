@@ -48,8 +48,8 @@ export const usage: Story<ViewSettingsDialogComponent> = (
   template: `
 		<ui5-button (click)="vsd.element.show()">Open ViewSettingsDialog</ui5-button>
 		<ui5-view-settings-dialog #vsd="ui5ViewSettingsDialog">
-				<ui5-sort-item slot="sortItems" text="Name" [selected]="true"></ui5-sort-item>
-				<ui5-sort-item slot="sortItems" text="Position"></ui5-sort-item>
+				<ui5-sort-item slot="sortItems" text="Name"></ui5-sort-item>
+				<ui5-sort-item slot="sortItems" text="Position" selected></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Company"></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Department"></ui5-sort-item>
 		

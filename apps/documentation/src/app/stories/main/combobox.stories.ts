@@ -78,13 +78,13 @@ export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-combobox value="Disabled" [disabled]="true">
+		<ui5-combobox value="Disabled" disabled>
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 
-		<ui5-combobox value="Readonly" [readonly]="true">
+		<ui5-combobox value="Readonly" readonly>
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
 			<ui5-cb-item text="Item 3"></ui5-cb-item>

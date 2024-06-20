@@ -41,7 +41,7 @@ export const requiredLabel: Story<LabelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label [required]="true">Required Label</ui5-label>
+		<ui5-label required>Required Label</ui5-label>
 	`,
 });
 
@@ -50,7 +50,7 @@ export const requiredLabelWithColon: Story<LabelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label [required]="true" [showColon]="true">Required Label</ui5-label>
+		<ui5-label required showColon>Required Label</ui5-label>
 	`,
 });
 
@@ -77,25 +77,25 @@ export const labelFor: Story<LabelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label id="myLabel" for="myInput" [required]="true" [showColon]="true">First name</ui5-label>
-		<ui5-input id="myInput" [required]="true" placeholder="Enter your name"></ui5-input>
+		<ui5-label id="myLabel" for="myInput" required showColon>First name</ui5-label>
+		<ui5-input id="myInput" required placeholder="Enter your name"></ui5-input>
 		<br>
-		<ui5-label id="myLabel2" for="myDP" [required]="true" [showColon]="true">Date of birth</ui5-label>
-		<ui5-date-picker id="myDP" [required]="true"></ui5-date-picker>
+		<ui5-label id="myLabel2" for="myDP" required showColon>Date of birth</ui5-label>
+		<ui5-date-picker id="myDP" required></ui5-date-picker>
 		<br>
-		<ui5-label id="myLabel3" for="mySelect" [required]="true" [showColon]="true">Job</ui5-label>
-		<ui5-select id="mySelect" [required]="true">
+		<ui5-label id="myLabel3" for="mySelect" required showColon>Job</ui5-label>
+		<ui5-select id="mySelect" required>
 			<ui5-option>Manager</ui5-option>
 			<ui5-option>Sales</ui5-option>
-			<ui5-option [selected]="true">Developer</ui5-option>
+			<ui5-option selected>Developer</ui5-option>
 		</ui5-select>
 		<br>
-		<ui5-label id="myLabel4" for="myTextArea" [required]="true" [showColon]="true">Description label test</ui5-label>
-		<ui5-textarea id="myTextArea" [required]="true" placeholder="Type as much text as you wish"></ui5-textarea>
+		<ui5-label id="myLabel4" for="myTextArea" required showColon>Description label test</ui5-label>
+		<ui5-textarea id="myTextArea" required placeholder="Type as much text as you wish"></ui5-textarea>
 		<br>
 		<div style="display: flex; align-items: center;">
-			<ui5-label for="myCB" [required]="true" [showColon]="true">Accept terms of use</ui5-label>
-			<ui5-checkbox id="myCB" [required]="true"></ui5-checkbox>
+			<ui5-label for="myCB" required showColon>Accept terms of use</ui5-label>
+			<ui5-checkbox id="myCB" required></ui5-checkbox>
 		</div>
 		<pre class="prettyprint lang-html"><xmp>
 <ui5-label id="myLabel" for="myInput" required show-colon>First name</ui5-label>

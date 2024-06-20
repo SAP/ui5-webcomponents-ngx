@@ -3,19 +3,19 @@
 
 <h3>Radio</h3>
 <section>
-  <button (click)="updateRadioFormModel()">radioControl.setValue("Option 1")</button>FormControl value: {{ radioControl.value }}, touched: {{ radioControl.touched }}<br>
+  <ui5-button (click)="updateRadioFormModel()">radioControl.setValue("Option 1")</ui5-button>FormControl value: {{ radioControl.value }}, touched: {{ radioControl.touched }}<br>
 
   <ui5-radio-button name="GroupA" text="Option 1" [value]="'Option 1'" [formControl]="radioControl"></ui5-radio-button>
-  <ui5-radio-button name="GroupA" text="Option 2" value="Option 2" [formControl]="radioControl" [checked]="true"></ui5-radio-button>
+  <ui5-radio-button name="GroupA" text="Option 2" value="Option 2" [formControl]="radioControl" checked></ui5-radio-button>
   <ui5-radio-button name="GroupA" text="Option 3" value="Option 3" [formControl]="radioControl"></ui5-radio-button>
 </section>
 
 
 <h3>Select</h3>
 <section>
-  <button (click)="updateSelectFormModel()">selectControl.setValue("phone")</button> FormControl value: {{ selectControl.value }}, touched: {{ selectControl.touched }}<br>
+  <ui5-button (click)="updateSelectFormModel()">selectControl.setValue("phone")</ui5-button> FormControl value: {{ selectControl.value }}, touched: {{ selectControl.touched }}<br>
 
-  <ui5-select class="select" [formControl]="selectControl" formControlName="sel">
+  <ui5-select class="select" [formControl]="selectControl">
     <ui5-option value="phone">Phone</ui5-option>
     <ui5-option value="tablet">Tablet</ui5-option>
     <ui5-option value="desktop">Desktop</ui5-option>
@@ -25,7 +25,7 @@
 
 <h3>CheckBox</h3>
 <section>
-	<button (click)="updateCbFormModel()">cbControl.setValue(true)</button>FormControl value: {{ cbControl.value }}, touched: {{ cbControl.touched }}<br>
+	<ui5-button (click)="updateCbFormModel()">cbControl.setValue(true)</ui5-button>FormControl value: {{ cbControl.value }}, touched: {{ cbControl.touched }}<br>
 
 	<ui5-checkbox [formControl]="cbControl"></ui5-checkbox>
 </section>
@@ -33,29 +33,29 @@
 
 <h3>Input</h3>
 <section>
-  <button (click)="updateInpFormModel()">inpControl.setValue("form updated")</button> FormControl value: {{ inpControl.value }}, touched: {{ inpControl.touched }}<br>
+  <ui5-button (click)="updateInpFormModel()">inpControl.setValue("form updated")</ui5-button> FormControl value: {{ inpControl.value }}, touched: {{ inpControl.touched }}<br>
 
   <ui5-input [formControl]="inpControl"></ui5-input>
 </section>
 
 <h3>DatePicker</h3>
 <section>
-  <button (click)="updateDPFormModel()">dpControl.setValue("29 мая 2024 г.")</button> FormControl value: {{ dpControl.value }}, touched: {{ dpControl.touched }}<br>
+  <ui5-button (click)="updateDPFormModel()">dpControl.setValue("29 мая 2024 г.")</ui5-button> FormControl value: {{ dpControl.value }}, touched: {{ dpControl.touched }}<br>
 
   <ui5-date-picker [formControl]="dpControl"></ui5-date-picker>
 </section>
 
 
 <h2>Profile Form</h2>
-<p><ui5-label [showColon]="true">Name</ui5-label> <ui5-text>{{ profileForm.value.name || "N/A"}}</ui5-text> </p>
-<p><ui5-label [showColon]="true">Email</ui5-label> <ui5-text>{{ profileForm.value.email || "N/A"}}</ui5-text></p>
+<p><ui5-label show-colon>Name</ui5-label> <ui5-text>{{ profileForm.value.name || "N/A"}}</ui5-text> </p>
+<p><ui5-label showColon>Email</ui5-label> <ui5-text>{{ profileForm.value.email || "N/A"}}</ui5-text></p>
 
 <form [formGroup]="profileForm"  (ngSubmit)="handleSubmit()">
 
-  <ui5-label for="nameInp" [showColon]="true">Name</ui5-label>
+  <ui5-label for="nameInp" show-colon>Name</ui5-label>
   <ui5-input id="nameInp" formControlName="name"></ui5-input>
 
-  <ui5-label for="emailInp" [showColon]="true">Email</ui5-label>
+  <ui5-label for="emailInp" show-colon>Email</ui5-label>
   <ui5-input formControlName="email"></ui5-input>
 
   <ui5-button type="Submit" [disabled]="!profileForm.valid">Submit</ui5-button>

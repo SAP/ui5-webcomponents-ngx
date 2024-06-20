@@ -28,17 +28,16 @@ import {
 })
 class AvatarGroupComponent {
   /**
-     Defines the mode of the \`AvatarGroup\`.
-    */
+        Defines the mode of the \`AvatarGroup\`.
+        */
   type!: 'Group' | 'Individual';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following field is supported:
 
 - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
-    */
+        */
   accessibilityAttributes!: AvatarGroupAccessibilityAttributes;
 
   /**
@@ -73,7 +72,9 @@ exports[`Snapshot test Main Avatar should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -114,22 +115,22 @@ import {
 })
 class AvatarComponent {
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 A disabled component can't be pressed or
 focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines if the avatar is interactive (focusable and pressable).
+        Defines if the avatar is interactive (focusable and pressable).
 
 **Note:** This property won't have effect if the \`disabled\`
 property is set to \`true\`.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
-
   /**
-     Defines the name of the UI5 Icon, that will be displayed.
+        Defines the name of the UI5 Icon, that will be displayed.
 
 **Note:** If \`image\` slot is provided, the property will be ignored.
 
@@ -142,11 +143,10 @@ property is set to \`true\`.
 **Note:** If no icon or an empty one is provided, by default the \\"employee\\" icon should be displayed.
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the name of the fallback icon, which should be displayed in the following cases:
+        Defines the name of the fallback icon, which should be displayed in the following cases:
 
 	- If the initials are not valid (more than 3 letters, unsupported languages or empty initials).
 	- If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).
@@ -161,29 +161,25 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
 \`<ui5-avatar fallback-icon=\\"alert\\">\`
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   fallbackIcon!: string;
-
   /**
-     Defines the displayed initials.
+        Defines the displayed initials.
 
 Up to three Latin letters can be displayed as initials.
-    */
+        */
   initials!: string;
-
   /**
-     Defines the shape of the component.
-    */
+        Defines the shape of the component.
+        */
   shape!: 'Circle' | 'Square';
-
   /**
-     Defines predefined size of the component.
-    */
+        Defines predefined size of the component.
+        */
   size!: 'XS' | 'S' | 'M' | 'L' | 'XL';
-
   /**
-     Defines the background color of the desired image.
-    */
+        Defines the background color of the desired image.
+        */
   colorScheme!:
     | 'Accent1'
     | 'Accent2'
@@ -196,20 +192,18 @@ Up to three Latin letters can be displayed as initials.
     | 'Accent9'
     | 'Accent10'
     | 'Placeholder';
-
   /**
-     Defines the text alternative of the component.
+        Defines the text alternative of the component.
 If not provided a default text alternative will be set, if present.
-    */
+        */
   accessibleName!: string;
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following field is supported:
 
 - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
-    */
+        */
   accessibilityAttributes!: AvatarAccessibilityAttributes;
 
   private elementRef: ElementRef<Avatar> = inject(ElementRef);
@@ -249,8 +243,8 @@ import Bar from '@ui5/webcomponents/dist/Bar.js';
 })
 class BarComponent {
   /**
-     Defines the component's design.
-    */
+        Defines the component's design.
+        */
   design!: 'Header' | 'Subheader' | 'Footer' | 'FloatingFooter';
 
   private elementRef: ElementRef<Bar> = inject(ElementRef);
@@ -290,14 +284,13 @@ import BreadcrumbsItem from '@ui5/webcomponents/dist/BreadcrumbsItem.js';
 })
 class BreadcrumbsItemComponent {
   /**
-     Defines the link href.
+        Defines the link href.
 
 **Note:** Standard hyperlink behavior is supported.
-    */
+        */
   href!: string;
-
   /**
-     Defines the link target.
+        Defines the link target.
 
 Available options are:
 
@@ -308,12 +301,11 @@ Available options are:
 - \`_search\`
 
 **Note:** This property must only be used when the \`href\` property is set.
-    */
+        */
   target!: string | undefined;
-
   /**
-     Defines the accessible ARIA name of the item.
-    */
+        Defines the accessible ARIA name of the item.
+        */
   accessibleName!: string;
 
   private elementRef: ElementRef<BreadcrumbsItem> = inject(ElementRef);
@@ -359,17 +351,16 @@ import {
 })
 class BreadcrumbsComponent {
   /**
-     Defines the visual appearance of the last BreadcrumbsItem.
+        Defines the visual appearance of the last BreadcrumbsItem.
 
 The Breadcrumbs supports two visual appearances for the last BreadcrumbsItem:
 - \\"Standard\\" - displaying the last item as \\"current page\\" (bold and without separator)
 - \\"NoCurrentPage\\" - displaying the last item as a regular BreadcrumbsItem, followed by separator
-    */
+        */
   design!: 'Standard' | 'NoCurrentPage';
-
   /**
-     Determines the visual style of the separator between the breadcrumb items.
-    */
+        Determines the visual style of the separator between the breadcrumb items.
+        */
   separators!:
     | 'Slash'
     | 'BackSlash'
@@ -406,7 +397,9 @@ exports[`Snapshot test Main Busy Indicator should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -422,28 +415,25 @@ import BusyIndicator from '@ui5/webcomponents/dist/BusyIndicator.js';
 })
 class BusyIndicatorComponent {
   /**
-     Defines text to be displayed below the component. It can be used to inform the user of the current operation.
-    */
+        Defines text to be displayed below the component. It can be used to inform the user of the current operation.
+        */
   text!: string;
-
   /**
-     Defines the size of the component.
-    */
+        Defines the size of the component.
+        */
   size!: 'S' | 'M' | 'L';
-
   /**
-     Defines if the busy indicator is visible on the screen. By default it is not.
-    */
+        Defines if the busy indicator is visible on the screen. By default it is not.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   active!: boolean;
-
   /**
-     Defines the delay in milliseconds, after which the busy indicator will be visible on the screen.
-    */
+        Defines the delay in milliseconds, after which the busy indicator will be visible on the screen.
+        */
   delay!: number;
-
   /**
-     Defines the placement of the text.
-    */
+        Defines the placement of the text.
+        */
   textPlacement!: 'Top' | 'Bottom';
 
   private elementRef: ElementRef<BusyIndicator> = inject(ElementRef);
@@ -468,7 +458,9 @@ exports[`Snapshot test Main Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -513,8 +505,8 @@ import {
 })
 class ButtonComponent {
   /**
-     Defines the component design.
-    */
+        Defines the component design.
+        */
   design!:
     | 'Default'
     | 'Positive'
@@ -522,25 +514,23 @@ class ButtonComponent {
     | 'Transparent'
     | 'Emphasized'
     | 'Attention';
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 A disabled component can't be pressed or
 focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the icon, displayed as graphical element within the component.
+        Defines the icon, displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the icon, displayed as graphical element within the component after the button text.
+        Defines the icon, displayed as graphical element within the component after the button text.
 
 **Note:** It is highly recommended to use \`endIcon\` property only together with \`icon\` and/or \`text\` properties.
 Usage of \`endIcon\` only should be avoided.
@@ -549,36 +539,32 @@ The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   endIcon!: string;
-
   /**
-     When set to \`true\`, the component will
+        When set to \`true\`, the component will
 automatically submit the nearest HTML form element on \`press\`.
 
 **Note:** This property is only applicable within the context of an HTML Form element.\`
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   submits!: boolean;
-
   /**
-     Defines the tooltip of the component.
+        Defines the tooltip of the component.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
-    */
+        */
   tooltip!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
@@ -589,21 +575,19 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
-    */
+        */
   accessibilityAttributes!: ButtonAccessibilityAttributes;
-
   /**
-     Defines whether the button has special form-related functionality.
+        Defines whether the button has special form-related functionality.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   type!: 'Button' | 'Submit' | 'Reset';
-
   /**
-     Describes the accessibility role of the button.
+        Describes the accessibility role of the button.
 
 **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
-    */
+        */
   accessibleRole!: 'Button' | 'Link';
 
   /**
@@ -652,15 +636,14 @@ import CalendarDateRange from '@ui5/webcomponents/dist/CalendarDateRange.js';
 })
 class CalendarDateRangeComponent {
   /**
-     Start of date range formatted according to the \`formatPattern\` property
+        Start of date range formatted according to the \`formatPattern\` property
 of the \`ui5-calendar\` that hosts the component.
-    */
+        */
   startValue!: string;
-
   /**
-     End of date range formatted according to the \`formatPattern\` property
+        End of date range formatted according to the \`formatPattern\` property
 of the \`ui5-calendar\` that hosts the component.
-    */
+        */
   endValue!: string;
 
   private elementRef: ElementRef<CalendarDateRange> = inject(ElementRef);
@@ -700,9 +683,9 @@ import CalendarDate from '@ui5/webcomponents/dist/CalendarDate.js';
 })
 class CalendarDateComponent {
   /**
-     The date formatted according to the \`formatPattern\` property
+        The date formatted according to the \`formatPattern\` property
 of the \`ui5-calendar\` that hosts the component.
-    */
+        */
   value!: string;
 
   private elementRef: ElementRef<CalendarDate> = inject(ElementRef);
@@ -742,13 +725,12 @@ import CalendarLegendItem from '@ui5/webcomponents/dist/CalendarLegendItem.js';
 })
 class CalendarLegendItemComponent {
   /**
-     Defines the text content of the Calendar Legend Item.
-    */
+        Defines the text content of the Calendar Legend Item.
+        */
   text!: string;
-
   /**
-     Defines the type of the Calendar Legend Item.
-    */
+        Defines the type of the Calendar Legend Item.
+        */
   type!:
     | 'None'
     | 'Working'
@@ -795,7 +777,9 @@ exports[`Snapshot test Main Calendar Legend should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -821,23 +805,24 @@ import CalendarLegend from '@ui5/webcomponents/dist/CalendarLegend.js';
 })
 class CalendarLegendComponent {
   /**
-     Hides the Today item in the legend.
-    */
+        Hides the Today item in the legend.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideToday!: boolean;
-
   /**
-     Hides the Selected day item in the legend.
-    */
+        Hides the Selected day item in the legend.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideSelectedDay!: boolean;
-
   /**
-     Hides the Non-Working day item in the legend.
-    */
+        Hides the Non-Working day item in the legend.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideNonWorkingDay!: boolean;
-
   /**
-     Hides the Working day item in the legend.
-    */
+        Hides the Working day item in the legend.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideWorkingDay!: boolean;
 
   private elementRef: ElementRef<CalendarLegend> = inject(ElementRef);
@@ -862,7 +847,9 @@ exports[`Snapshot test Main Calendar should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -899,9 +886,9 @@ import {
 })
 class CalendarComponent {
   /**
-     Sets a calendar type used for display.
+        Sets a calendar type used for display.
 If not set, the calendar type of the global configuration is used.
-    */
+        */
   primaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -909,11 +896,10 @@ If not set, the calendar type of the global configuration is used.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Defines the secondary calendar type.
+        Defines the secondary calendar type.
 If not set, the calendar will only show the primary calendar type.
-    */
+        */
   secondaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -921,42 +907,38 @@ If not set, the calendar will only show the primary calendar type.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Determines the format, displayed in the input field.
-    */
+        Determines the format, displayed in the input field.
+        */
   formatPattern!: string;
-
   /**
-     Determines the minimum date available for selection.
+        Determines the minimum date available for selection.
 
 **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   minDate!: string;
-
   /**
-     Determines the maximum date available for selection.
+        Determines the maximum date available for selection.
 
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   maxDate!: string;
-
   /**
-     Defines the type of selection used in the calendar component.
+        Defines the type of selection used in the calendar component.
 Accepted property values are:
 
 - \`CalendarSelectionMode.Single\` - enables a single date selection.(default value)
 - \`CalendarSelectionMode.Range\` - enables selection of a date range.
 - \`CalendarSelectionMode.Multiple\` - enables selection of multiple dates.
-    */
+        */
   selectionMode!: 'Single' | 'Multiple' | 'Range';
-
   /**
-     Defines the visibility of the week numbers column.
+        Defines the visibility of the week numbers column.
 
 **Note:** For calendars other than Gregorian,
 the week numbers are not displayed regardless of what is set.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideWeekNumbers!: boolean;
 
   /**
@@ -989,7 +971,9 @@ exports[`Snapshot test Main Card Header should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -1007,24 +991,22 @@ import CardHeader from '@ui5/webcomponents/dist/CardHeader.js';
 })
 class CardHeaderComponent {
   /**
-     Defines the title text.
-    */
+        Defines the title text.
+        */
   titleText!: string;
-
   /**
-     Defines the subtitle text.
-    */
+        Defines the subtitle text.
+        */
   subtitleText!: string;
-
   /**
-     Defines the additional text.
-    */
+        Defines the additional text.
+        */
   additionalText!: string;
-
   /**
-     Defines if the component would be interactive,
+        Defines if the component would be interactive,
 e.g gets hover effect, gets focus outline and \`click\` event is fired, when pressed.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
 
   /**
@@ -1071,15 +1053,14 @@ import Card from '@ui5/webcomponents/dist/Card.js';
 })
 class CardComponent {
   /**
-     Defines the accessible name of the component, which is used as the name of the card region and should be unique per card.
+        Defines the accessible name of the component, which is used as the name of the card region and should be unique per card.
 
 **Note:** \`accessibleName\` should be always set, unless \`accessibleNameRef\` is set.
-    */
+        */
   accessibleName!: string;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   private elementRef: ElementRef<Card> = inject(ElementRef);
@@ -1104,7 +1085,9 @@ exports[`Snapshot test Main Carousel should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -1149,22 +1132,20 @@ import {
 })
 class CarouselComponent {
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines the IDs of the elements that label the input.
-    */
+        Defines the IDs of the elements that label the input.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
-    */
+        Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   cyclic!: boolean;
-
   /**
-     Defines the number of items per page depending on the carousel width.
+        Defines the number of items per page depending on the carousel width.
 
 - 'S' for screens smaller than 600 pixels.
 - 'M' for screens greater than or equal to 600 pixels and smaller than 1024 pixels.
@@ -1172,56 +1153,51 @@ class CarouselComponent {
 - 'XL' for screens greater than or equal to 1440 pixels.
 
 One item per page is shown by default.
-    */
+        */
   itemsPerPage!: string;
-
   /**
-     Defines the visibility of the navigation arrows.
+        Defines the visibility of the navigation arrows.
 If set to true the navigation arrows will be hidden.
 
 **Note:** The navigation arrows are never displayed on touch devices.
 In this case, the user can swipe to navigate through the items.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideNavigationArrows!: boolean;
-
   /**
-     Defines the visibility of the page indicator.
+        Defines the visibility of the page indicator.
 If set to true the page indicator will be hidden.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hidePageIndicator!: boolean;
-
   /**
-     Defines the style of the page indicator.
+        Defines the style of the page indicator.
 Available options are:
 
 - \`Default\` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
 - \`Numeric\` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
-    */
+        */
   pageIndicatorType!: 'Default' | 'Numeric';
-
   /**
-     Defines the carousel's background design.
-    */
+        Defines the carousel's background design.
+        */
   backgroundDesign!: 'Solid' | 'Transparent' | 'Translucent';
-
   /**
-     Defines the page indicator background design.
-    */
+        Defines the page indicator background design.
+        */
   pageIndicatorBackgroundDesign!: 'Solid' | 'Transparent' | 'Translucent';
-
   /**
-     Defines the page indicator border design.
-    */
+        Defines the page indicator border design.
+        */
   pageIndicatorBorderDesign!: 'Solid' | 'None';
-
   /**
-     Defines the position of arrows.
+        Defines the position of arrows.
 
 Available options are:
 
 - \`Content\` - the arrows are placed on the sides of the current page.
 - \`Navigation\` - the arrows are placed on the sides of the page indicator.
-    */
+        */
   arrowsPlacement!: 'Content' | 'Navigation';
 
   /**
@@ -1253,7 +1229,9 @@ exports[`Snapshot test Main Check Box should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -1300,47 +1278,45 @@ import CheckBox from '@ui5/webcomponents/dist/CheckBox.js';
 })
 class CheckBoxComponent {
   /**
-     Receives id(or many ids) of the elements that label the component
-    */
+        Receives id(or many ids) of the elements that label the component
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Determines whether the \`ui5-checkbox\` is in display only state.
+        Determines whether the \`ui5-checkbox\` is in display only state.
 
 When set to \`true\`, the \`ui5-checkbox\` is not interactive, not editable, not focusable
 and not in the tab chain. This setting is used for forms in review mode.
 
 **Note:** When the property \`disabled\` is set to \`true\` this property has no effect.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   displayOnly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines whether the component is displayed as partially checked.
+        Defines whether the component is displayed as partially checked.
 
 **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user
 interaction and the resulting visual state depends on the values of the \`indeterminate\`
@@ -1349,40 +1325,37 @@ and \`checked\` properties:
 -  If the component is checked and indeterminate, it will be displayed as partially checked
 -  If the component is checked and it is not indeterminate, it will be displayed as checked
 -  If the component is not checked, it will be displayed as not checked regardless value of the indeterminate attribute
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   indeterminate!: boolean;
-
   /**
-     Defines if the component is checked.
+        Defines if the component is checked.
 
 **Note:** The property can be changed with user interaction,
 either by cliking/tapping on the component, or by
 pressing the Enter or Space key.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   checked!: boolean;
-
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component text wraps when there is not enough space.
+        Defines whether the component text wraps when there is not enough space.
 
 **Note:** for option \\"Normal\\" the text will wrap and the words will not be broken based on hyphenation.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
 
   /**
@@ -1421,7 +1394,9 @@ exports[`Snapshot test Main Color Palette Item should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -1437,18 +1412,18 @@ import ColorPaletteItem from '@ui5/webcomponents/dist/ColorPaletteItem.js';
 })
 class ColorPaletteItemComponent {
   /**
-     Defines the colour of the component.
+        Defines the colour of the component.
 
 **Note:** The value should be a valid CSS color.
-    */
+        */
   value!: string | undefined;
-
   /**
-     Defines if the component is selected.
+        Defines if the component is selected.
 
 **Note:** Only one item must be selected per <code>ui5-color-palette</code>.
 If more than one item is defined as selected, the last one would be considered as the selected one.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
 
   private elementRef: ElementRef<ColorPaletteItem> = inject(ElementRef);
@@ -1473,7 +1448,9 @@ exports[`Snapshot test Main Color Palette Popover should match the snapshot 1`] 
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -1508,39 +1485,38 @@ import {
 })
 class ColorPalettePopoverComponent {
   /**
-     Defines whether the user can see the last used colors in the bottom of the component
-    */
+        Defines whether the user can see the last used colors in the bottom of the component
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showRecentColors!: boolean;
-
   /**
-     Defines whether the user can choose a custom color from a component.
+        Defines whether the user can choose a custom color from a component.
 
 **Note:** In order to use this property you need to import the following module: \`\\"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js\\"\`
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showMoreColors!: boolean;
-
   /**
-     Defines whether the user can choose the default color from a button.
-    */
+        Defines whether the user can choose the default color from a button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showDefaultColor!: boolean;
-
   /**
-     Defines the default color of the component.
+        Defines the default color of the component.
 
 **Note:** The default color should be a part of the ColorPalette colors\`
-    */
+        */
   defaultColor!: string | undefined;
-
   /**
-     Defines the open | closed state of the popover.
-    */
+        Defines the open | closed state of the popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the ID or DOM Reference of the element that the popover is shown at.
+        Defines the ID or DOM Reference of the element that the popover is shown at.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
-    */
+        */
   opener!: HTMLElement | string | undefined;
 
   /**
@@ -1638,17 +1614,16 @@ import ColorPicker from '@ui5/webcomponents/dist/ColorPicker.js';
 })
 class ColorPickerComponent {
   /**
-     Defines the currently selected color of the component.
+        Defines the currently selected color of the component.
 
 **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
-    */
+        */
   value!: string;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
 
   /**
@@ -1693,8 +1668,8 @@ import ComboBoxItemGroup from '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
 })
 class ComboBoxItemGroupComponent {
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
 
   private elementRef: ElementRef<ComboBoxItemGroup> = inject(ElementRef);
@@ -1734,13 +1709,12 @@ import ComboBoxItem from '@ui5/webcomponents/dist/ComboBoxItem.js';
 })
 class ComboBoxItemComponent {
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
-
   /**
-     Defines the additional text of the component.
-    */
+        Defines the additional text of the component.
+        */
   additionalText!: string;
 
   private elementRef: ElementRef<ComboBoxItem> = inject(ElementRef);
@@ -1765,7 +1739,9 @@ exports[`Snapshot test Main Combo Box should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -1824,76 +1800,70 @@ import {
 })
 class ComboBoxComponent {
   /**
-     Defines the value of the component.
-    */
+        Defines the value of the component.
+        */
   value!: string;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines whether the value will be autocompleted to match an item
-    */
+        Defines whether the value will be autocompleted to match an item
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noTypeahead!: boolean;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the
+        Defines a short hint intended to aid the user with data entry when the
 component has no value.
-    */
+        */
   placeholder!: string;
-
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Indicates whether a loading indicator should be shown in the picker.
-    */
+        Indicates whether a loading indicator should be shown in the picker.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
-
   /**
-     Defines the filter type of the component.
-    */
+        Defines the filter type of the component.
+        */
   filter!: 'StartsWithPerTerm' | 'StartsWith' | 'Contains' | 'None';
-
   /**
-     Defines whether the clear icon of the combobox will be shown.
-    */
+        Defines whether the clear icon of the combobox will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showClearIcon!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component
-    */
+        Receives id(or many ids) of the elements that label the component
+        */
   accessibleNameRef!: string;
 
   /**
@@ -1943,7 +1913,9 @@ exports[`Snapshot test Main Custom List Item should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -1980,21 +1952,20 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
 })
 class CustomListItemComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the visual indication and behavior of the list items.
+        Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
 
 **Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
 while with type \`Inactive\` and \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
@@ -2002,36 +1973,33 @@ The following fields are supported:
 
 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-    */
+        */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
-
   /**
-     The navigated state of the list item.
+        The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
-
   /**
-     Defines the highlight state of the list items.
+        Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the item is movable.
-    */
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   movable!: boolean;
-
   /**
-     Defines the text alternative of the component.
+        Defines the text alternative of the component.
 
 **Note**: If not provided a default text alternative will be set, if present.
-    */
+        */
   accessibleName!: string;
 
   /**
@@ -2061,7 +2029,9 @@ exports[`Snapshot test Main Date Picker should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -2128,9 +2098,9 @@ import {
 })
 class DatePickerComponent {
   /**
-     Sets a calendar type used for display.
+        Sets a calendar type used for display.
 If not set, the calendar type of the global configuration is used.
-    */
+        */
   primaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2138,11 +2108,10 @@ If not set, the calendar type of the global configuration is used.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Defines the secondary calendar type.
+        Defines the secondary calendar type.
 If not set, the calendar will only show the primary calendar type.
-    */
+        */
   secondaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2150,88 +2119,79 @@ If not set, the calendar will only show the primary calendar type.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Determines the format, displayed in the input field.
-    */
+        Determines the format, displayed in the input field.
+        */
   formatPattern!: string;
-
   /**
-     Determines the minimum date available for selection.
+        Determines the minimum date available for selection.
 
 **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   minDate!: string;
-
   /**
-     Determines the maximum date available for selection.
+        Determines the maximum date available for selection.
 
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   maxDate!: string;
-
   /**
-     Defines a formatted date value.
-    */
+        Defines a formatted date value.
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Determines whether the component is displayed as disabled.
-    */
+        Determines whether the component is displayed as disabled.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines whether the component is displayed as read-only.
-    */
+        Determines whether the component is displayed as read-only.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines a short hint, intended to aid the user with data entry when the
+        Defines a short hint, intended to aid the user with data entry when the
 component has no value.
 
 **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
 Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
-    */
+        */
   placeholder!: string | undefined;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the visibility of the week numbers column.
+        Defines the visibility of the week numbers column.
 
 **Note:** For calendars other than Gregorian,
 the week numbers are not displayed regardless of what is set.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideWeekNumbers!: boolean;
-
   /**
-     Defines the open or closed state of the popover.
-    */
+        Defines the open or closed state of the popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the aria-label attribute for the component.
-    */
+        Defines the aria-label attribute for the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -2281,7 +2241,9 @@ exports[`Snapshot test Main Date Range Picker should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -2350,9 +2312,9 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
 })
 class DateRangePickerComponent {
   /**
-     Sets a calendar type used for display.
+        Sets a calendar type used for display.
 If not set, the calendar type of the global configuration is used.
-    */
+        */
   primaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2360,11 +2322,10 @@ If not set, the calendar type of the global configuration is used.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Defines the secondary calendar type.
+        Defines the secondary calendar type.
 If not set, the calendar will only show the primary calendar type.
-    */
+        */
   secondaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2372,94 +2333,84 @@ If not set, the calendar will only show the primary calendar type.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Determines the format, displayed in the input field.
-    */
+        Determines the format, displayed in the input field.
+        */
   formatPattern!: string;
-
   /**
-     Determines the minimum date available for selection.
+        Determines the minimum date available for selection.
 
 **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   minDate!: string;
-
   /**
-     Determines the maximum date available for selection.
+        Determines the maximum date available for selection.
 
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   maxDate!: string;
-
   /**
-     Defines a formatted date value.
-    */
+        Defines a formatted date value.
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Determines whether the component is displayed as disabled.
-    */
+        Determines whether the component is displayed as disabled.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines whether the component is displayed as read-only.
-    */
+        Determines whether the component is displayed as read-only.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines a short hint, intended to aid the user with data entry when the
+        Defines a short hint, intended to aid the user with data entry when the
 component has no value.
 
 **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
 Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
-    */
+        */
   placeholder!: string | undefined;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the visibility of the week numbers column.
+        Defines the visibility of the week numbers column.
 
 **Note:** For calendars other than Gregorian,
 the week numbers are not displayed regardless of what is set.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideWeekNumbers!: boolean;
-
   /**
-     Defines the open or closed state of the popover.
-    */
+        Defines the open or closed state of the popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the aria-label attribute for the component.
-    */
+        Defines the aria-label attribute for the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Determines the symbol which separates the dates.
+        Determines the symbol which separates the dates.
 If not supplied, the default time interval delimiter for the current locale will be used.
-    */
+        */
   delimiter!: string;
 
   /**
@@ -2509,7 +2460,9 @@ exports[`Snapshot test Main Date Time Picker should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -2576,9 +2529,9 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
 })
 class DateTimePickerComponent {
   /**
-     Sets a calendar type used for display.
+        Sets a calendar type used for display.
 If not set, the calendar type of the global configuration is used.
-    */
+        */
   primaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2586,11 +2539,10 @@ If not set, the calendar type of the global configuration is used.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Defines the secondary calendar type.
+        Defines the secondary calendar type.
 If not set, the calendar will only show the primary calendar type.
-    */
+        */
   secondaryCalendarType!:
     | 'Gregorian'
     | 'Islamic'
@@ -2598,88 +2550,79 @@ If not set, the calendar will only show the primary calendar type.
     | 'Buddhist'
     | 'Persian'
     | undefined;
-
   /**
-     Determines the format, displayed in the input field.
-    */
+        Determines the format, displayed in the input field.
+        */
   formatPattern!: string;
-
   /**
-     Determines the minimum date available for selection.
+        Determines the minimum date available for selection.
 
 **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   minDate!: string;
-
   /**
-     Determines the maximum date available for selection.
+        Determines the maximum date available for selection.
 
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
-    */
+        */
   maxDate!: string;
-
   /**
-     Defines a formatted date value.
-    */
+        Defines a formatted date value.
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Determines whether the component is displayed as disabled.
-    */
+        Determines whether the component is displayed as disabled.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines whether the component is displayed as read-only.
-    */
+        Determines whether the component is displayed as read-only.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines a short hint, intended to aid the user with data entry when the
+        Defines a short hint, intended to aid the user with data entry when the
 component has no value.
 
 **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
 Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
-    */
+        */
   placeholder!: string | undefined;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the visibility of the week numbers column.
+        Defines the visibility of the week numbers column.
 
 **Note:** For calendars other than Gregorian,
 the week numbers are not displayed regardless of what is set.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideWeekNumbers!: boolean;
-
   /**
-     Defines the open or closed state of the popover.
-    */
+        Defines the open or closed state of the popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the aria-label attribute for the component.
-    */
+        Defines the aria-label attribute for the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -2729,7 +2672,9 @@ exports[`Snapshot test Main Dialog should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -2779,61 +2724,56 @@ import { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
 })
 class DialogComponent {
   /**
-     Defines the ID of the HTML Element, which will get the initial focus.
+        Defines the ID of the HTML Element, which will get the initial focus.
 
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
-    */
+        */
   initialFocus!: string;
-
   /**
-     Defines if the focus should be returned to the previously focused element,
+        Defines if the focus should be returned to the previously focused element,
 when the popup closes.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventFocusRestore!: boolean;
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Allows setting a custom role.
-    */
+        Allows setting a custom role.
+        */
   accessibleRole!: 'None' | 'Dialog' | 'AlertDialog';
-
   /**
-     Indicates whether initial focus should be prevented.
-    */
+        Indicates whether initial focus should be prevented.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventInitialFocus!: boolean;
-
   /**
-     Indicates if the element is open
-    */
+        Indicates if the element is open
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the header text.
+        Defines the header text.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
-    */
+        */
   headerText!: string;
-
   /**
-     Determines whether the component should be stretched to fullscreen.
+        Determines whether the component should be stretched to fullscreen.
 
 **Note:** The component will be stretched to approximately
 90% of the viewport.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   stretch!: boolean;
-
   /**
-     Determines whether the component is draggable.
+        Determines whether the component is draggable.
 If this property is set to true, the Dialog will be draggable by its header.
 
 **Note:** The component can be draggable only in desktop mode.
@@ -2841,26 +2781,26 @@ If this property is set to true, the Dialog will be draggable by its header.
 **Note:** This property overrides the default HTML \\"draggable\\" attribute native behavior.
 When \\"draggable\\" is set to true, the native browser \\"draggable\\"
 behavior is prevented and only the Dialog custom logic (\\"draggable by its header\\") works.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   draggable!: boolean;
-
   /**
-     Configures the component to be resizable.
+        Configures the component to be resizable.
 If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages.
 In RTL languages, the resize handle will be placed in the bottom left corner.
 
 **Note:** The component can be resizable only in desktop mode.
 
 **Note:** Upon resizing, externally defined height and width styling will be ignored.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   resizable!: boolean;
-
   /**
-     Defines the state of the \`Dialog\`.
+        Defines the state of the \`Dialog\`.
 
 **Note:** If \`\\"Negative\\"\` and \`\\"Critical\\"\` states is set, it will change the
 accessibility role to \\"alertdialog\\", if the accessibleRole property is set to \`\\"Dialog\\"\`.
-    */
+        */
   state!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
 
   /**
@@ -2902,7 +2842,9 @@ exports[`Snapshot test Main File Uploader should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -2944,49 +2886,45 @@ import {
 })
 class FileUploaderComponent {
   /**
-     Comma-separated list of file types that the component should accept.
+        Comma-separated list of file types that the component should accept.
 
 **Note:** Please make sure you are adding the \`.\` in front on the file type, e.g. \`.png\` in case you want to accept png's only.
-    */
+        */
   accept!: string;
-
   /**
-     If set to \\"true\\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.
-    */
+        If set to \\"true\\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideInput!: boolean;
-
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Allows multiple files to be chosen.
-    */
+        Allows multiple files to be chosen.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   multiple!: boolean;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the component has no value.
-    */
+        Defines a short hint intended to aid the user with data entry when the component has no value.
+        */
   placeholder!: string;
-
   /**
-     Defines the name/names of the file/files to upload.
-    */
+        Defines the name/names of the file/files to upload.
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
 
   /**
@@ -3043,14 +2981,13 @@ import FormGroup from '@ui5/webcomponents/dist/FormGroup.js';
 })
 class FormGroupComponent {
   /**
-     Defines header text of the component.
-    */
+        Defines header text of the component.
+        */
   headerText!: string;
-
   /**
-     Defines column span of the component,
+        Defines column span of the component,
 e.g how many columns the group should span to.
-    */
+        */
   columnSpan!: number | undefined;
 
   private elementRef: ElementRef<FormGroup> = inject(ElementRef);
@@ -3090,13 +3027,13 @@ import FormItem from '@ui5/webcomponents/dist/FormItem.js';
 })
 class FormItemComponent {
   /**
-     Defines the column span of the component,
+        Defines the column span of the component,
 e.g how many columns the component should span to.
 
 **Note:** The column span should be a number between 1 and the available columns of the FormGroup (when items are placed in a group)
 or the Form. The available columns can be affected by the FormGroup#columnSpan and/or the Form#layout.
 A number bigger than the available columns won't take effect.
-    */
+        */
   columnSpan!: number | undefined;
 
   private elementRef: ElementRef<FormItem> = inject(ElementRef);
@@ -3136,18 +3073,17 @@ import Form from '@ui5/webcomponents/dist/Form.js';
 })
 class FormComponent {
   /**
-     Defines the number of columns to distribute the form content by breakpoint.
+        Defines the number of columns to distribute the form content by breakpoint.
 
 Supported values:
 - \`S\` - 1 column by default (1 column is recommended)
 - \`M\` - 1 column by default (up to 2 columns are recommended)
 - \`L\` - 2 columns by default (up to 3 columns are recommended)
 - \`XL\` - 2 columns by default (up to 6 columns  are recommended)
-    */
+        */
   layout!: string;
-
   /**
-     Defines the width proportion of the labels and fields of a FormItem by breakpoint.
+        Defines the width proportion of the labels and fields of a FormItem by breakpoint.
 
 By default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,
 and 12/12 in S size, e.g in S the label is on top of its associated field.
@@ -3155,23 +3091,21 @@ and 12/12 in S size, e.g in S the label is on top of its associated field.
 The supported values are between 1 and 12. Greater the number, more space the label will use.
 
 **Note:** If \\"12\\" is set, the label will be displayed on top of its assosiated field.
-    */
+        */
   labelSpan!: string;
-
   /**
-     Defines the header text of the component.
+        Defines the header text of the component.
 
 **Note:** The property gets overridden by the \`header\` slot.
-    */
+        */
   headerText!: string;
-
   /**
-     Defines the vertical spacing between form items.
+        Defines the vertical spacing between form items.
 
 **Note:** If the Form is meant to be switched between \\"non-edit\\" and \\"edit\\" modes,
 we recommend using \\"Large\\" item spacing in \\"non-edit\\" mode, and \\"Normal\\" - for \\"edit\\" mode,
 to avoid \\"jumping\\" effect, caused by the hight difference between texts in \\"non-edit\\" mode and the input fields in \\"edit\\" mode.
-    */
+        */
   itemSpacing!: 'Normal' | 'Large';
 
   private elementRef: ElementRef<Form> = inject(ElementRef);
@@ -3195,7 +3129,9 @@ exports[`Snapshot test Main Icon should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -3211,8 +3147,8 @@ import Icon from '@ui5/webcomponents/dist/Icon.js';
 })
 class IconComponent {
   /**
-     Defines the component semantic design.
-    */
+        Defines the component semantic design.
+        */
   design!:
     | 'Contrast'
     | 'Critical'
@@ -3222,9 +3158,8 @@ class IconComponent {
     | 'Neutral'
     | 'NonInteractive'
     | 'Positive';
-
   /**
-     Defines the unique identifier (icon name) of the component.
+        Defines the unique identifier (icon name) of the component.
 
 To browse all available icons, see the
 [SAP Icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html),
@@ -3245,28 +3180,26 @@ you need to set the \`business-suite\` prefix in front of the icon's name.
 
 Example:
 \`name='business-suite/3d'\`, \`name='business-suite/1x2-grid-layout'\`, \`name='business-suite/4x4-grid-layout'\`.
-    */
+        */
   name!: string;
-
   /**
-     Defines the text alternative of the component.
+        Defines the text alternative of the component.
 If not provided a default text alternative will be set, if present.
 
 **Note:** Every icon should have a text alternative in order to
 calculate its accessible name.
-    */
+        */
   accessibleName!: string;
-
   /**
-     Defines whether the component should have a tooltip.
+        Defines whether the component should have a tooltip.
 
 **Note:** The tooltip text should be provided via the \`accessible-name\` property.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showTooltip!: boolean;
-
   /**
-     Defines the mode of the component.
-    */
+        Defines the mode of the component.
+        */
   mode!: 'Image' | 'Decorative' | 'Interactive';
 
   private elementRef: ElementRef<Icon> = inject(ElementRef);
@@ -3293,7 +3226,9 @@ exports[`Snapshot test Main Input should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -3364,38 +3299,37 @@ import {
 })
 class InputComponent {
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the
+        Defines a short hint intended to aid the user with data entry when the
 component has no value.
-    */
+        */
   placeholder!: string;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines whether the value will be autcompleted to match an item
-    */
+        Defines whether the value will be autcompleted to match an item
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noTypeahead!: boolean;
-
   /**
-     Defines the HTML type of the component.
+        Defines the HTML type of the component.
 
 **Notes:**
 
@@ -3403,63 +3337,57 @@ but still provides visual feedback upon user interaction.
 and the current language settings, especially for type \`Number\`.
 - The property is mostly intended to be used with touch devices
 that use different soft keyboard layouts depending on the given input type.
-    */
+        */
   type!: 'Text' | 'Email' | 'Number' | 'Password' | 'Tel' | 'URL' | 'Search';
-
   /**
-     Defines the value of the component.
+        Defines the value of the component.
 
 **Note:** The property is updated upon typing.
-    */
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines whether the component should show suggestions, if such are present.
+        Defines whether the component should show suggestions, if such are present.
 
 **Note:** You need to import the \`InputSuggestions\` module
 from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable this functionality.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showSuggestions!: boolean;
-
   /**
-     Sets the maximum number of characters available in the input field.
+        Sets the maximum number of characters available in the input field.
 
 **Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.
-    */
+        */
   maxlength!: number | undefined;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the input.
-    */
+        Receives id(or many ids) of the elements that label the input.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines whether the clear icon of the input will be shown.
-    */
+        Defines whether the clear icon of the input will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showClearIcon!: boolean;
-
   /**
-     Defines whether the suggestions picker is open.
+        Defines whether the suggestions picker is open.
 The picker will not open if the \`showSuggestions\` property is set to \`false\`, the input is disabled or the input is readonly.
 The picker will close automatically and \`close\` event will be fired if the input is not in the viewport.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
 
   /**
@@ -3516,7 +3444,9 @@ exports[`Snapshot test Main Label should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -3532,33 +3462,32 @@ import Label from '@ui5/webcomponents/dist/Label.js';
 })
 class LabelComponent {
   /**
-     Defines the labeled input by providing its ID.
+        Defines the labeled input by providing its ID.
 
 **Note:** Can be used with both \`ui5-input\` and native input.
-    */
+        */
   for!: string;
-
   /**
-     Defines whether colon is added to the component text.
+        Defines whether colon is added to the component text.
 
 **Note:** Usually used in forms.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showColon!: boolean;
-
   /**
-     Defines whether an asterisk character is added to the component text.
+        Defines whether an asterisk character is added to the component text.
 
 **Note:** Usually indicates that user input (bound with the \`for\` property) is required.
 In that case the \`required\` property of
 the corresponding input should also be set.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines how the text of a component will be displayed when there is not enough space.
+        Defines how the text of a component will be displayed when there is not enough space.
 
 **Note:** for option \\"Normal\\" the text will wrap and the words will not be broken based on hyphenation.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
 
   private elementRef: ElementRef<Label> = inject(ElementRef);
@@ -3583,7 +3512,9 @@ exports[`Snapshot test Main Link should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -3627,26 +3558,24 @@ import {
 })
 class LinkComponent {
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** When disabled, the click event cannot be triggered by the user.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the tooltip of the component.
-    */
+        Defines the tooltip of the component.
+        */
   tooltip!: string;
-
   /**
-     Defines the component href.
+        Defines the component href.
 
 **Note:** Standard hyperlink behavior is supported.
-    */
+        */
   href!: string;
-
   /**
-     Defines the component target.
+        Defines the component target.
 
 **Notes:**
 
@@ -3657,42 +3586,36 @@ class LinkComponent {
 - \`_search\`
 
 **This property must only be used when the \`href\` property is set.**
-    */
+        */
   target!: string;
-
   /**
-     Defines the component design.
+        Defines the component design.
 
 **Note:** Avaialble options are \`Default\`, \`Subtle\`, and \`Emphasized\`.
-    */
+        */
   design!: 'Default' | 'Subtle' | 'Emphasized';
-
   /**
-     Defines how the text of a component will be displayed when there is not enough space.
+        Defines how the text of a component will be displayed when there is not enough space.
 
 **Note:** By default the text will wrap. If \\"None\\" is set - the text will truncate.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the input
-    */
+        Receives id(or many ids) of the elements that label the input
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the ARIA role of the component.
+        Defines the ARIA role of the component.
 
 **Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.
-    */
+        */
   accessibleRole!: 'Link' | 'Button';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
@@ -3700,7 +3623,7 @@ Accepts the following string values: \`true\` or \`false\`.
 
 - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
-    */
+        */
   accessibilityAttributes!: LinkAccessibilityAttributes;
 
   /**
@@ -3746,13 +3669,12 @@ import ListItemGroup from '@ui5/webcomponents/dist/ListItemGroup.js';
 })
 class ListItemGroupComponent {
   /**
-     Defines the header text of the <code>ui5-li-group</code>.
-    */
+        Defines the header text of the <code>ui5-li-group</code>.
+        */
   headerText!: string;
-
   /**
-     Defines the accessible name of the header.
-    */
+        Defines the accessible name of the header.
+        */
   headerAccessibleName!: string;
 
   private elementRef: ElementRef<ListItemGroup> = inject(ElementRef);
@@ -3777,7 +3699,9 @@ exports[`Snapshot test Main List should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -3849,25 +3773,23 @@ import {
 })
 class ListComponent {
   /**
-     Defines the component header text.
+        Defines the component header text.
 
 **Note:** If \`header\` is set this property is ignored.
-    */
+        */
   headerText!: string;
-
   /**
-     Defines the footer text.
-    */
+        Defines the footer text.
+        */
   footerText!: string;
-
   /**
-     Determines whether the component is indented.
-    */
+        Determines whether the component is indented.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   indent!: boolean;
-
   /**
-     Defines the selection mode of the component.
-    */
+        Defines the selection mode of the component.
+        */
   selectionMode!:
     | 'None'
     | 'Single'
@@ -3876,58 +3798,50 @@ class ListComponent {
     | 'SingleAuto'
     | 'Multiple'
     | 'Delete';
-
   /**
-     Defines the text that is displayed when the component contains no items.
-    */
+        Defines the text that is displayed when the component contains no items.
+        */
   noDataText!: string;
-
   /**
-     Defines the item separator style that is used.
-    */
+        Defines the item separator style that is used.
+        */
   separators!: 'All' | 'Inner' | 'None';
-
   /**
-     Defines whether the component will have growing capability either by pressing a \`More\` button,
+        Defines whether the component will have growing capability either by pressing a \`More\` button,
 or via user scroll. In both cases \`load-more\` event is fired.
 
 **Restrictions:** \`growing=\\"Scroll\\"\` is not supported for Internet Explorer,
 on IE the component will fallback to \`growing=\\"Button\\"\`.
-    */
+        */
   growing!: 'Button' | 'Scroll' | 'None';
-
   /**
-     Defines the text that will be displayed inside the growing button.
+        Defines the text that will be displayed inside the growing button.
 
 **Note:** If not specified a built-in text will be displayed.
 
 **Note:** This property takes effect if the \`growing\` property is set to the \`Button\`.
-    */
+        */
   growingButtonText!: string;
-
   /**
-     Defines if the component would display a loading indicator over the list.
-    */
+        Defines if the component would display a loading indicator over the list.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
-
   /**
-     Defines the delay in milliseconds, after which the loading indicator will show up for this component.
-    */
+        Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+        */
   loadingDelay!: number;
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines the IDs of the elements that label the input.
-    */
+        Defines the IDs of the elements that label the input.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the accessible role of the component.
-    */
+        Defines the accessible role of the component.
+        */
   accessibleRole!: 'List' | 'Menu' | 'Tree' | 'ListBox';
 
   /**
@@ -4001,7 +3915,9 @@ exports[`Snapshot test Main Menu Item should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -4050,21 +3966,20 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
 })
 class MenuItemComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the visual indication and behavior of the list items.
+        Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
 
 **Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
 while with type \`Inactive\` and \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
@@ -4072,79 +3987,72 @@ The following fields are supported:
 
 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-    */
+        */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
-
   /**
-     The navigated state of the list item.
+        The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
-
   /**
-     Defines the text of the tooltip for the menu item.
-    */
+        Defines the text of the tooltip for the menu item.
+        */
   tooltip!: string;
-
   /**
-     Defines the highlight state of the list items.
+        Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines the text of the tree item.
-    */
+        Defines the text of the tree item.
+        */
   text!: string;
-
   /**
-     Defines the \`additionalText\`, displayed in the end of the menu item.
+        Defines the \`additionalText\`, displayed in the end of the menu item.
 
 **Note:** The additional text will not be displayed if there are items added in \`items\` slot or there are
 components added to \`endContent\` slot.
 
 The priority of what will be displayed at the end of the menu item is as follows:
 sub-menu arrow (if there are items added in \`items\` slot) -> components added in \`endContent\` -> text set to \`additionalText\`.
-    */
+        */
   additionalText!: string;
-
   /**
-     Defines the icon to be displayed as graphical element within the component.
+        Defines the icon to be displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
 
 **Example:**
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines whether a visual separator should be rendered before the item.
-    */
+        Defines whether a visual separator should be rendered before the item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   startsSection!: boolean;
-
   /**
-     Defines whether \`ui5-menu-item\` is in disabled state.
+        Defines whether \`ui5-menu-item\` is in disabled state.
 
 **Note:** A disabled \`ui5-menu-item\` is noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
 
 **Note:** If set to \`true\` a \`ui5-busy-indicator\` component will be displayed into the related one to the current \`ui5-menu-item\` sub-menu popover.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
-
   /**
-     Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
-    */
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+        */
   loadingDelay!: number;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
 
   /**
@@ -4174,7 +4082,9 @@ exports[`Snapshot test Main Menu should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -4209,30 +4119,28 @@ import {
 })
 class MenuComponent {
   /**
-     Defines the header text of the menu (displayed on mobile).
-    */
+        Defines the header text of the menu (displayed on mobile).
+        */
   headerText!: string;
-
   /**
-     Indicates if the menu is open
-    */
+        Indicates if the menu is open
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
-    */
+        Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
-
   /**
-     Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
-    */
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
+        */
   loadingDelay!: number;
-
   /**
-     Defines the ID or DOM Reference of the element at which the menu is shown.
+        Defines the ID or DOM Reference of the element at which the menu is shown.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
-    */
+        */
   opener!: HTMLElement | string;
 
   /**
@@ -4282,7 +4190,9 @@ exports[`Snapshot test Main Message Strip should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -4300,8 +4210,8 @@ import MessageStrip from '@ui5/webcomponents/dist/MessageStrip.js';
 })
 class MessageStripComponent {
   /**
-     Defines the component type.
-    */
+        Defines the component type.
+        */
   design!:
     | 'Information'
     | 'Positive'
@@ -4309,25 +4219,24 @@ class MessageStripComponent {
     | 'Critical'
     | 'ColorSet1'
     | 'ColorSet2';
-
   /**
-     Defines the color scheme of the component.
+        Defines the color scheme of the component.
 There are 10 predefined schemes.
 To use one you can set a number from \`\\"1\\"\` to \`\\"10\\"\`. The \`colorScheme\` \`\\"1\\"\` will be set by default.
-    */
+        */
   colorScheme!: string;
-
   /**
-     Defines whether the MessageStrip will show an icon in the beginning.
+        Defines whether the MessageStrip will show an icon in the beginning.
 You can directly provide an icon with the \`icon\` slot. Otherwise, the default icon for the type will be used.
 
  * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideIcon!: boolean;
-
   /**
-     Defines whether the MessageStrip renders close button.
-    */
+        Defines whether the MessageStrip renders close button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideCloseButton!: boolean;
 
   /**
@@ -4373,8 +4282,8 @@ import MultiComboBoxGroupItem from '@ui5/webcomponents/dist/MultiComboBoxGroupIt
 })
 class MultiComboBoxGroupItemComponent {
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
 
   private elementRef: ElementRef<MultiComboBoxGroupItem> = inject(ElementRef);
@@ -4398,7 +4307,9 @@ exports[`Snapshot test Main Multi Combo Box Item should match the snapshot 1`] =
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -4414,18 +4325,17 @@ import MultiComboBoxItem from '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 })
 class MultiComboBoxItemComponent {
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
-
   /**
-     Defines the additional text of the component.
-    */
+        Defines the additional text of the component.
+        */
   additionalText!: string;
-
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
 
   private elementRef: ElementRef<MultiComboBoxItem> = inject(ElementRef);
@@ -4450,7 +4360,9 @@ exports[`Snapshot test Main Multi Combo Box should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -4512,85 +4424,79 @@ import {
 })
 class MultiComboBoxComponent {
   /**
-     Defines the value of the component.
+        Defines the value of the component.
 
 **Note:** The property is updated upon typing.
-    */
+        */
   value!: string;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
 **Note:** When the component is used inside a form element,
 the value is sent as the first element in the form data, even if it's empty.
-    */
+        */
   name!: string;
-
   /**
-     Defines whether the value will be autcompleted to match an item
-    */
+        Defines whether the value will be autcompleted to match an item
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noTypeahead!: boolean;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the
+        Defines a short hint intended to aid the user with data entry when the
 component has no value.
-    */
+        */
   placeholder!: string;
-
   /**
-     Defines if the user input will be prevented, if no matching item has been found
-    */
+        Defines if the user input will be prevented, if no matching item has been found
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noValidation!: boolean;
-
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines the filter type of the component.
-    */
+        Defines the filter type of the component.
+        */
   filter!: 'StartsWithPerTerm' | 'StartsWith' | 'Contains' | 'None';
-
   /**
-     Defines whether the clear icon of the multi-combobox will be shown.
-    */
+        Defines whether the clear icon of the multi-combobox will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showClearIcon!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Determines if the select all checkbox is visible on top of suggestions.
-    */
+        Determines if the select all checkbox is visible on top of suggestions.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showSelectAll!: boolean;
 
   /**
@@ -4642,7 +4548,9 @@ exports[`Snapshot test Main Multi Input should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -4720,38 +4628,37 @@ import {
 })
 class MultiInputComponent {
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the
+        Defines a short hint intended to aid the user with data entry when the
 component has no value.
-    */
+        */
   placeholder!: string;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines whether the value will be autcompleted to match an item
-    */
+        Defines whether the value will be autcompleted to match an item
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noTypeahead!: boolean;
-
   /**
-     Defines the HTML type of the component.
+        Defines the HTML type of the component.
 
 **Notes:**
 
@@ -4759,71 +4666,65 @@ but still provides visual feedback upon user interaction.
 and the current language settings, especially for type \`Number\`.
 - The property is mostly intended to be used with touch devices
 that use different soft keyboard layouts depending on the given input type.
-    */
+        */
   type!: 'Text' | 'Email' | 'Number' | 'Password' | 'Tel' | 'URL' | 'Search';
-
   /**
-     Defines the value of the component.
+        Defines the value of the component.
 
 **Note:** The property is updated upon typing.
-    */
+        */
   value!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
 **Note:** When the component is used inside a form element,
 the value is sent as the first element in the form data, even if it's empty.
-    */
+        */
   name!: string;
-
   /**
-     Defines whether the component should show suggestions, if such are present.
+        Defines whether the component should show suggestions, if such are present.
 
 **Note:** You need to import the \`InputSuggestions\` module
 from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable this functionality.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showSuggestions!: boolean;
-
   /**
-     Sets the maximum number of characters available in the input field.
+        Sets the maximum number of characters available in the input field.
 
 **Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.
-    */
+        */
   maxlength!: number | undefined;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the input.
-    */
+        Receives id(or many ids) of the elements that label the input.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines whether the clear icon of the input will be shown.
-    */
+        Defines whether the clear icon of the input will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showClearIcon!: boolean;
-
   /**
-     Defines whether the suggestions picker is open.
+        Defines whether the suggestions picker is open.
 The picker will not open if the \`showSuggestions\` property is set to \`false\`, the input is disabled or the input is readonly.
 The picker will close automatically and \`close\` event will be fired if the input is not in the viewport.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Determines whether a value help icon will be visualized in the end of the input.
+        Determines whether a value help icon will be visualized in the end of the input.
 Pressing the icon will fire \`value-help-trigger\` event.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showValueHelpIcon!: boolean;
 
   /**
@@ -4891,7 +4792,9 @@ exports[`Snapshot test Main Option Custom should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -4907,25 +4810,23 @@ import OptionCustom from '@ui5/webcomponents/dist/OptionCustom.js';
 })
 class OptionCustomComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the text, displayed inside the \`ui5-select\` input filed
+        Defines the text, displayed inside the \`ui5-select\` input filed
 when the option gets selected.
-    */
+        */
   displayText!: string;
-
   /**
-     Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
+        Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
 For more information on HTML Form support, see the \`name\` property of \`ui5-select\`.
-    */
+        */
   value!: string;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
 
   private elementRef: ElementRef<OptionCustom> = inject(ElementRef);
@@ -4949,7 +4850,9 @@ exports[`Snapshot test Main Option should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -4965,33 +4868,30 @@ import Option from '@ui5/webcomponents/dist/Option.js';
 })
 class OptionComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
+        Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
 For more information on HTML Form support, see the \`name\` property of \`ui5-select\`.
-    */
+        */
   value!: string;
-
   /**
-     Defines the \`icon\` source URI.
+        Defines the \`icon\` source URI.
 
 **Note:**
 SAP-icons font provides numerous built-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the \`additionalText\`, displayed in the end of the list item.
-    */
+        Defines the \`additionalText\`, displayed in the end of the list item.
+        */
   additionalText!: string;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
 
   private elementRef: ElementRef<Option> = inject(ElementRef);
@@ -5016,7 +4916,9 @@ exports[`Snapshot test Main Panel should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -5052,53 +4954,50 @@ import Panel from '@ui5/webcomponents/dist/Panel.js';
 })
 class PanelComponent {
   /**
-     This property is used to set the header text of the component.
+        This property is used to set the header text of the component.
 The text is visible in both expanded and collapsed states.
 
 **Note:** This property is overridden by the \`header\` slot.
-    */
+        */
   headerText!: string;
-
   /**
-     Determines whether the component is in a fixed state that is not
+        Determines whether the component is in a fixed state that is not
 expandable/collapsible by user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   fixed!: boolean;
-
   /**
-     Indicates whether the component is collapsed and only the header is displayed.
-    */
+        Indicates whether the component is collapsed and only the header is displayed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   collapsed!: boolean;
-
   /**
-     Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
-    */
+        Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   noAnimation!: boolean;
-
   /**
-     Sets the accessible ARIA role of the component.
+        Sets the accessible ARIA role of the component.
 Depending on the usage, you can change the role from the default \`Form\`
 to \`Region\` or \`Complementary\`.
-    */
+        */
   accessibleRole!: 'Complementary' | 'Form' | 'Region';
-
   /**
-     Defines the \\"aria-level\\" of component heading,
+        Defines the \\"aria-level\\" of component heading,
 set by the \`headerText\`.
-    */
+        */
   headerLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Indicates whether the Panel header is sticky or not.
+        Indicates whether the Panel header is sticky or not.
 If stickyHeader is set to true, then whenever you scroll the content or
 the application, the header of the panel will be always visible and
 a solid color will be used for its design.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   stickyHeader!: boolean;
 
   /**
@@ -5128,7 +5027,9 @@ exports[`Snapshot test Main Popover should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -5184,89 +5085,81 @@ import { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
 })
 class PopoverComponent {
   /**
-     Defines the ID of the HTML Element, which will get the initial focus.
+        Defines the ID of the HTML Element, which will get the initial focus.
 
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
-    */
+        */
   initialFocus!: string;
-
   /**
-     Defines if the focus should be returned to the previously focused element,
+        Defines if the focus should be returned to the previously focused element,
 when the popup closes.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventFocusRestore!: boolean;
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Allows setting a custom role.
-    */
+        Allows setting a custom role.
+        */
   accessibleRole!: 'None' | 'Dialog' | 'AlertDialog';
-
   /**
-     Indicates whether initial focus should be prevented.
-    */
+        Indicates whether initial focus should be prevented.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventInitialFocus!: boolean;
-
   /**
-     Indicates if the element is open
-    */
+        Indicates if the element is open
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the header text.
+        Defines the header text.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
-    */
+        */
   headerText!: string;
-
   /**
-     Determines on which side the component is placed at.
-    */
+        Determines on which side the component is placed at.
+        */
   placement!: 'Start' | 'End' | 'Top' | 'Bottom';
-
   /**
-     Determines the horizontal alignment of the component.
-    */
+        Determines the horizontal alignment of the component.
+        */
   horizontalAlign!: 'Center' | 'Start' | 'End' | 'Stretch';
-
   /**
-     Determines the vertical alignment of the component.
-    */
+        Determines the vertical alignment of the component.
+        */
   verticalAlign!: 'Center' | 'Top' | 'Bottom' | 'Stretch';
-
   /**
-     Defines whether the component should close when
+        Defines whether the component should close when
 clicking/tapping outside of the popover.
 If enabled, it blocks any interaction with the background.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   modal!: boolean;
-
   /**
-     Determines whether the component arrow is hidden.
-    */
+        Determines whether the component arrow is hidden.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideArrow!: boolean;
-
   /**
-     Determines if there is no enough space, the component can be placed
+        Determines if there is no enough space, the component can be placed
 over the target.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   allowTargetOverlap!: boolean;
-
   /**
-     Defines the ID or DOM Reference of the element at which the popover is shown.
+        Defines the ID or DOM Reference of the element at which the popover is shown.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
-    */
+        */
   opener!: HTMLElement | string | undefined;
 
   /**
@@ -5307,7 +5200,9 @@ exports[`Snapshot test Main Progress Indicator should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -5335,36 +5230,33 @@ import ProgressIndicator from '@ui5/webcomponents/dist/ProgressIndicator.js';
 })
 class ProgressIndicatorComponent {
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines whether the component value is shown.
-    */
+        Defines whether the component value is shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideValue!: boolean;
-
   /**
-     Specifies the numerical value in percent for the length of the component.
+        Specifies the numerical value in percent for the length of the component.
 
 **Note:**
 If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.
-    */
+        */
   value!: number;
-
   /**
-     Specifies the text value to be displayed in the bar.
+        Specifies the text value to be displayed in the bar.
 
 **Note:**
 
 - If there is no value provided or the value is empty, the default percentage value is shown.
 - If \`hideValue\` property is \`true\` both the \`displayValue\` and \`value\` property values are not shown.
-    */
+        */
   displayValue!: string | null | undefined;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
 
   private elementRef: ElementRef<ProgressIndicator> = inject(ElementRef);
@@ -5389,7 +5281,9 @@ exports[`Snapshot test Main Radio Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -5434,46 +5328,44 @@ import RadioButton from '@ui5/webcomponents/dist/RadioButton.js';
 })
 class RadioButtonComponent {
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines whether the component is checked or not.
+        Defines whether the component is checked or not.
 
 **Note:** The property value can be changed with user interaction,
 either by clicking/tapping on the component,
 or by using the Space or Enter key.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   checked!: boolean;
-
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 Radio buttons with the same \`name\` will form a radio button group.
 
@@ -5482,31 +5374,27 @@ Radio buttons with the same \`name\` will form a radio button group.
 **Note:** The selection can be changed with \`ARROW_UP/DOWN\` and \`ARROW_LEFT/RIGHT\` keys between radio buttons in same group.
 
 **Note:** Only one radio button can be selected per group.
-    */
+        */
   name!: string;
-
   /**
-     Defines the form value of the component.
+        Defines the form value of the component.
 When a form with a radio button group is submitted, the group's value
 will be the value of the currently selected radio button.
-    */
+        */
   value!: string;
-
   /**
-     Defines whether the component text wraps when there is not enough space.
+        Defines whether the component text wraps when there is not enough space.
 
 **Note:** for option \\"Normal\\" the text will wrap and the words will not be broken based on hyphenation.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -5545,7 +5433,9 @@ exports[`Snapshot test Main Range Slider should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -5593,68 +5483,61 @@ import RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
 })
 class RangeSliderComponent {
   /**
-     Defines the minimum value of the slider.
-    */
+        Defines the minimum value of the slider.
+        */
   min!: number;
-
   /**
-     Defines the maximum value of the slider.
-    */
+        Defines the maximum value of the slider.
+        */
   max!: number;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
+        Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
 
 **Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.
-    */
+        */
   step!: number;
-
   /**
-     Displays a label with a value on every N-th step.
+        Displays a label with a value on every N-th step.
 
 **Note:** The step and tickmarks properties must be enabled.
 Example - if the step value is set to 2 and the label interval is also specified to 2 - then every second
 tickmark will be labelled, which means every 4th value number.
-    */
+        */
   labelInterval!: number;
-
   /**
-     Enables tickmarks visualization for each step.
+        Enables tickmarks visualization for each step.
 
 **Note:** The step must be a positive number.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showTickmarks!: boolean;
-
   /**
-     Enables handle tooltip displaying the current value.
-    */
+        Enables handle tooltip displaying the current value.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showTooltip!: boolean;
-
   /**
-     Defines whether the slider is in disabled state.
-    */
+        Defines whether the slider is in disabled state.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines start point of a selection - position of a first handle on the slider.
-    */
+        Defines start point of a selection - position of a first handle on the slider.
+        */
   startValue!: number;
-
   /**
-     Defines end point of a selection - position of a second handle on the slider.
-    */
+        Defines end point of a selection - position of a second handle on the slider.
+        */
   endValue!: number;
 
   /**
@@ -5698,7 +5581,9 @@ exports[`Snapshot test Main Rating Indicator should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -5734,54 +5619,50 @@ import RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
 })
 class RatingIndicatorComponent {
   /**
-     The indicated value of the rating.
+        The indicated value of the rating.
 
 **Note:** If you set a number which is not round, it would be shown as follows:
 
 - 1.0 - 1.2 -> 1
 - 1.3 - 1.7 -> 1.5
 - 1.8 - 1.9 -> 2
-    */
+        */
   value!: number;
-
   /**
-     The number of displayed rating symbols.
-    */
+        The number of displayed rating symbols.
+        */
   max!: number;
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines the tooltip of the component.
-    */
+        Defines the tooltip of the component.
+        */
   tooltip!: string;
 
   /**
@@ -5811,7 +5692,9 @@ exports[`Snapshot test Main Responsive Popover should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -5867,89 +5750,81 @@ import ResponsivePopover from '@ui5/webcomponents/dist/ResponsivePopover.js';
 })
 class ResponsivePopoverComponent {
   /**
-     Defines the ID of the HTML Element, which will get the initial focus.
+        Defines the ID of the HTML Element, which will get the initial focus.
 
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
-    */
+        */
   initialFocus!: string;
-
   /**
-     Defines if the focus should be returned to the previously focused element,
+        Defines if the focus should be returned to the previously focused element,
 when the popup closes.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventFocusRestore!: boolean;
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Allows setting a custom role.
-    */
+        Allows setting a custom role.
+        */
   accessibleRole!: 'None' | 'Dialog' | 'AlertDialog';
-
   /**
-     Indicates whether initial focus should be prevented.
-    */
+        Indicates whether initial focus should be prevented.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventInitialFocus!: boolean;
-
   /**
-     Indicates if the element is open
-    */
+        Indicates if the element is open
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
-
   /**
-     Defines the header text.
+        Defines the header text.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
-    */
+        */
   headerText!: string;
-
   /**
-     Determines on which side the component is placed at.
-    */
+        Determines on which side the component is placed at.
+        */
   placement!: 'Start' | 'End' | 'Top' | 'Bottom';
-
   /**
-     Determines the horizontal alignment of the component.
-    */
+        Determines the horizontal alignment of the component.
+        */
   horizontalAlign!: 'Center' | 'Start' | 'End' | 'Stretch';
-
   /**
-     Determines the vertical alignment of the component.
-    */
+        Determines the vertical alignment of the component.
+        */
   verticalAlign!: 'Center' | 'Top' | 'Bottom' | 'Stretch';
-
   /**
-     Defines whether the component should close when
+        Defines whether the component should close when
 clicking/tapping outside of the popover.
 If enabled, it blocks any interaction with the background.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   modal!: boolean;
-
   /**
-     Determines whether the component arrow is hidden.
-    */
+        Determines whether the component arrow is hidden.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideArrow!: boolean;
-
   /**
-     Determines if there is no enough space, the component can be placed
+        Determines if there is no enough space, the component can be placed
 over the target.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   allowTargetOverlap!: boolean;
-
   /**
-     Defines the ID or DOM Reference of the element at which the popover is shown.
+        Defines the ID or DOM Reference of the element at which the popover is shown.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
-    */
+        */
   opener!: HTMLElement | string | undefined;
 
   /**
@@ -5990,7 +5865,9 @@ exports[`Snapshot test Main Segmented Button Item should match the snapshot 1`] 
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -6020,41 +5897,38 @@ import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js'
 })
 class SegmentedButtonItemComponent {
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 A disabled component can't be selected or
 focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines whether the component is displayed as selected.
-    */
+        Determines whether the component is displayed as selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the tooltip of the component.
+        Defines the tooltip of the component.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
-    */
+        */
   tooltip!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the icon, displayed as graphical element within the component.
+        Defines the icon, displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
 
   private elementRef: ElementRef<SegmentedButtonItem> = inject(ElementRef);
@@ -6100,13 +5974,12 @@ import {
 })
 class SegmentedButtonComponent {
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Defines the component selection mode.
-    */
+        Defines the component selection mode.
+        */
   selectionMode!: 'Single' | 'Multiple';
 
   /**
@@ -6136,7 +6009,9 @@ exports[`Snapshot test Main Select should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -6184,49 +6059,45 @@ import {
 })
 class SelectComponent {
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the select.
-    */
+        Receives id(or many ids) of the elements that label the select.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the value of the component:
+        Defines the value of the component:
 
 - when get - returns the value of the component, e.g. the \`value\` property of the selected option or its text content.
 
@@ -6234,7 +6105,7 @@ but still provides visual feedback upon user interaction.
 
 **Note:** If the given value does not match any existing option,
 the first option will get selected.
-    */
+        */
   value!: string;
 
   /**
@@ -6287,7 +6158,9 @@ exports[`Snapshot test Main Slider should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -6333,63 +6206,57 @@ import Slider from '@ui5/webcomponents/dist/Slider.js';
 })
 class SliderComponent {
   /**
-     Defines the minimum value of the slider.
-    */
+        Defines the minimum value of the slider.
+        */
   min!: number;
-
   /**
-     Defines the maximum value of the slider.
-    */
+        Defines the maximum value of the slider.
+        */
   max!: number;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
+        Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
 
 **Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.
-    */
+        */
   step!: number;
-
   /**
-     Displays a label with a value on every N-th step.
+        Displays a label with a value on every N-th step.
 
 **Note:** The step and tickmarks properties must be enabled.
 Example - if the step value is set to 2 and the label interval is also specified to 2 - then every second
 tickmark will be labelled, which means every 4th value number.
-    */
+        */
   labelInterval!: number;
-
   /**
-     Enables tickmarks visualization for each step.
+        Enables tickmarks visualization for each step.
 
 **Note:** The step must be a positive number.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showTickmarks!: boolean;
-
   /**
-     Enables handle tooltip displaying the current value.
-    */
+        Enables handle tooltip displaying the current value.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showTooltip!: boolean;
-
   /**
-     Defines whether the slider is in disabled state.
-    */
+        Defines whether the slider is in disabled state.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Current value of the slider
-    */
+        Current value of the slider
+        */
   value!: number;
 
   /**
@@ -6448,14 +6315,13 @@ import SpecialCalendarDate from '@ui5/webcomponents/dist/SpecialCalendarDate.js'
 })
 class SpecialCalendarDateComponent {
   /**
-     The date formatted according to the \`formatPattern\` property
+        The date formatted according to the \`formatPattern\` property
 of the \`ui5-calendar\` that hosts the component.
-    */
+        */
   value!: string;
-
   /**
-     Defines the type of the special date.
-    */
+        Defines the type of the special date.
+        */
   type!:
     | 'None'
     | 'Working'
@@ -6503,7 +6369,9 @@ exports[`Snapshot test Main Split Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -6527,23 +6395,22 @@ import SplitButton from '@ui5/webcomponents/dist/SplitButton.js';
 })
 class SplitButtonComponent {
   /**
-     Defines the icon to be displayed as graphical element within the component.
+        Defines the icon to be displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
 
 Example:
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines whether the arrow button should have the active state styles or not.
-    */
+        Defines whether the arrow button should have the active state styles or not.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   activeArrowButton!: boolean;
-
   /**
-     Defines the component design.
-    */
+        Defines the component design.
+        */
   design!:
     | 'Default'
     | 'Positive'
@@ -6551,17 +6418,16 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
     | 'Transparent'
     | 'Emphasized'
     | 'Attention';
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 A disabled component can't be pressed or
 focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
 
   /**
@@ -6595,7 +6461,9 @@ exports[`Snapshot test Main Standard List Item should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -6644,21 +6512,20 @@ import StandardListItem from '@ui5/webcomponents/dist/StandardListItem.js';
 })
 class StandardListItemComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the visual indication and behavior of the list items.
+        Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
 
 **Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
 while with type \`Inactive\` and \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
@@ -6666,80 +6533,72 @@ The following fields are supported:
 
 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-    */
+        */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
-
   /**
-     The navigated state of the list item.
+        The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
-
   /**
-     Defines the highlight state of the list items.
+        Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines the description displayed right under the item text, if such is present.
-    */
+        Defines the description displayed right under the item text, if such is present.
+        */
   description!: string;
-
   /**
-     Defines the \`icon\` source URI.
+        Defines the \`icon\` source URI.
 
 **Note:**
 SAP-icons font provides numerous built-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines whether the \`icon\` should be displayed in the beginning of the list item or in the end.
+        Defines whether the \`icon\` should be displayed in the beginning of the list item or in the end.
 
 **Note:** If \`image\` is set, the \`icon\` would be displayed after the \`image\`.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   iconEnd!: boolean;
-
   /**
-     Defines the \`image\` source URI.
+        Defines the \`image\` source URI.
 
 **Note:** The \`image\` would be displayed in the beginning of the list item.
-    */
+        */
   image!: string;
-
   /**
-     Defines the \`additionalText\`, displayed in the end of the list item.
-    */
+        Defines the \`additionalText\`, displayed in the end of the list item.
+        */
   additionalText!: string;
-
   /**
-     Defines the state of the \`additionalText\`.
+        Defines the state of the \`additionalText\`.
 
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   additionalTextState!:
     | 'None'
     | 'Positive'
     | 'Critical'
     | 'Negative'
     | 'Information';
-
   /**
-     Defines whether the item is movable.
-    */
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   movable!: boolean;
-
   /**
-     Defines the text alternative of the component.
+        Defines the text alternative of the component.
 Note: If not provided a default text alternative will be set, if present.
-    */
+        */
   accessibleName!: string;
 
   /**
@@ -6769,7 +6628,9 @@ exports[`Snapshot test Main Step Input should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -6818,74 +6679,65 @@ import {
 })
 class StepInputComponent {
   /**
-     Defines a value of the component.
-    */
+        Defines a value of the component.
+        */
   value!: number;
-
   /**
-     Defines a minimum value of the component.
-    */
+        Defines a minimum value of the component.
+        */
   min!: number | undefined;
-
   /**
-     Defines a maximum value of the component.
-    */
+        Defines a maximum value of the component.
+        */
   max!: number | undefined;
-
   /**
-     Defines a step of increasing/decreasing the value of the component.
-    */
+        Defines a step of increasing/decreasing the value of the component.
+        */
   step!: number;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Determines whether the component is displayed as disabled.
-    */
+        Determines whether the component is displayed as disabled.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Determines whether the component is displayed as read-only.
-    */
+        Determines whether the component is displayed as read-only.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines a short hint, intended to aid the user with data entry when the
+        Defines a short hint, intended to aid the user with data entry when the
 component has no value.
 
 **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
 Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
-    */
+        */
   placeholder!: string | undefined;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Determines the number of digits after the decimal point of the component.
-    */
+        Determines the number of digits after the decimal point of the component.
+        */
   valuePrecision!: number;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -6936,8 +6788,8 @@ import SuggestionGroupItem from '@ui5/webcomponents/dist/SuggestionGroupItem.js'
 })
 class SuggestionGroupItemComponent {
   /**
-     Defines the text of the \`ui5-suggestion-group-item\`.
-    */
+        Defines the text of the \`ui5-suggestion-group-item\`.
+        */
   text!: string;
 
   private elementRef: ElementRef<SuggestionGroupItem> = inject(ElementRef);
@@ -6961,7 +6813,9 @@ exports[`Snapshot test Main Suggestion Item should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -6995,55 +6849,49 @@ import SuggestionItem from '@ui5/webcomponents/dist/SuggestionItem.js';
 })
 class SuggestionItemComponent {
   /**
-     Defines the text of the component.
-    */
+        Defines the text of the component.
+        */
   text!: string;
-
   /**
-     Defines the visual indication and behavior of the item.
+        Defines the visual indication and behavior of the item.
 Available options are \`Active\` (by default), \`Inactive\` and \`Detail\`.
 
 **Note:** When set to \`Active\`, the item will provide visual response upon press and hover,
 while when \`Inactive\` or \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the description displayed right under the item text, if such is present.
-    */
+        Defines the description displayed right under the item text, if such is present.
+        */
   description!: string;
-
   /**
-     Defines the \`icon\` source URI.
+        Defines the \`icon\` source URI.
 
 **Note:**
 SAP-icons font provides numerous built-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines whether the \`icon\` should be displayed in the beginning of the item or in the end.
+        Defines whether the \`icon\` should be displayed in the beginning of the item or in the end.
 
 **Note:** If \`image\` is set, the \`icon\` would be displayed after the \`image\`.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   iconEnd!: boolean;
-
   /**
-     Defines the \`image\` source URI.
+        Defines the \`image\` source URI.
 
 **Note:** The \`image\` would be displayed in the beginning of the item.
-    */
+        */
   image!: string;
-
   /**
-     Defines the \`additionalText\`, displayed in the end of the item.
-    */
+        Defines the \`additionalText\`, displayed in the end of the item.
+        */
   additionalText!: string;
-
   /**
-     Defines the state of the \`additionalText\`.
-    */
+        Defines the state of the \`additionalText\`.
+        */
   additionalTextState!:
     | 'None'
     | 'Positive'
@@ -7073,7 +6921,9 @@ exports[`Snapshot test Main Switch should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -7116,75 +6966,69 @@ import Switch from '@ui5/webcomponents/dist/Switch.js';
 })
 class SwitchComponent {
   /**
-     Defines the component design.
+        Defines the component design.
 
 **Note:** If \`Graphical\` type is set,
 positive and negative icons will replace the \`textOn\` and \`textOff\`.
-    */
+        */
   design!: 'Textual' | 'Graphical';
-
   /**
-     Defines if the component is checked.
+        Defines if the component is checked.
 
 **Note:** The property can be changed with user interaction,
 either by cliking the component, or by pressing the \`Enter\` or \`Space\` key.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   checked!: boolean;
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** A disabled component is noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the text, displayed when the component is checked.
+        Defines the text, displayed when the component is checked.
 
 **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
-    */
+        */
   textOn!: string;
-
   /**
-     Defines the text, displayed when the component is not checked.
+        Defines the text, displayed when the component is not checked.
 
 **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
-    */
+        */
   textOff!: string;
-
   /**
-     Sets the accessible ARIA name of the component.
+        Sets the accessible ARIA name of the component.
 
 **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an \`accessibleName\`.
 Providing an \`accessibleNameRef\` or an \`accessibleName\` is mandatory in the cases when \`textOn\` and \`textOff\` properties aren't set.
-    */
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
+        Receives id(or many ids) of the elements that label the component.
 
 **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an \`accessibleName\`.
 Providing an \`accessibleNameRef\` or an \`accessibleName\` is mandatory in the cases when \`textOn\` and \`textOff\` properties aren't set.
-    */
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the tooltip of the component.
+        Defines the tooltip of the component.
 
 **Note:** If applicable an external label reference should always be the preferred option to provide context to the \`ui5-switch\` component over a tooltip.
-    */
+        */
   tooltip!: string;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
 
   /**
@@ -7224,7 +7068,9 @@ exports[`Snapshot test Main Tab Container should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -7262,37 +7108,34 @@ import {
 })
 class TabContainerComponent {
   /**
-     Defines whether the tab content is collapsed.
-    */
+        Defines whether the tab content is collapsed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   collapsed!: boolean;
-
   /**
-     Defines the alignment of the content and the \`additionalText\` of a tab.
+        Defines the alignment of the content and the \`additionalText\` of a tab.
 
 **Note:**
 The content and the \`additionalText\` would be displayed vertically by default,
 but when set to \`Inline\`, they would be displayed horizontally.
-    */
+        */
   tabLayout!: 'Inline' | 'Standard';
-
   /**
-     Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible.
+        Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible.
 All other tabs that can 't fit on the screen are available in an overflow tab \\"More\\".
 
 **Note:**
 Only one overflow at the end would be displayed by default,
 but when set to \`StartAndEnd\`, there will be two overflows on both ends, and tab order will not change on tab selection.
-    */
+        */
   overflowMode!: 'End' | 'StartAndEnd';
-
   /**
-     Sets the background color of the Tab Container's header as \`Solid\`, \`Transparent\`, or \`Translucent\`.
-    */
+        Sets the background color of the Tab Container's header as \`Solid\`, \`Transparent\`, or \`Translucent\`.
+        */
   headerBackgroundDesign!: 'Solid' | 'Transparent' | 'Translucent';
-
   /**
-     Sets the background color of the Tab Container's content as \`Solid\`, \`Transparent\`, or \`Translucent\`.
-    */
+        Sets the background color of the Tab Container's content as \`Solid\`, \`Transparent\`, or \`Translucent\`.
+        */
   contentBackgroundDesign!: 'Solid' | 'Transparent' | 'Translucent';
 
   /**
@@ -7367,7 +7210,9 @@ exports[`Snapshot test Main Tab should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -7390,29 +7235,26 @@ import Tab from '@ui5/webcomponents/dist/Tab.js';
 })
 class TabComponent {
   /**
-     The text to be displayed for the item.
-    */
+        The text to be displayed for the item.
+        */
   text!: string;
-
   /**
-     Disabled tabs can't be selected.
-    */
+        Disabled tabs can't be selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Represents the \\"additionalText\\" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the \\"additionalText\\" is displayed larger.
-    */
+        Represents the \\"additionalText\\" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the \\"additionalText\\" is displayed larger.
+        */
   additionalText!: string;
-
   /**
-     Defines the icon source URI to be displayed as graphical element within the component.
+        Defines the icon source URI to be displayed as graphical element within the component.
 The SAP-icons font provides numerous built-in icons.
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the component's design color.
+        Defines the component's design color.
 
 The design is applied to:
 
@@ -7423,12 +7265,12 @@ The design is applied to:
 Available designs are: \`\\"Default\\"\`, \`\\"Neutral\\"\`, \`\\"Positive\\"\`, \`\\"Critical\\"\` and \`\\"Negative\\"\`.
 
 **Note:** The design depends on the current theme.
-    */
+        */
   design!: 'Default' | 'Positive' | 'Negative' | 'Critical' | 'Neutral';
-
   /**
-     Specifies if the component is selected.
-    */
+        Specifies if the component is selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
 
   private elementRef: ElementRef<Tab> = inject(ElementRef);
@@ -7453,7 +7295,9 @@ exports[`Snapshot test Main Tag should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -7485,8 +7329,8 @@ import Tag from '@ui5/webcomponents/dist/Tag.js';
 })
 class TagComponent {
   /**
-     Defines the design type of the component.
-    */
+        Defines the design type of the component.
+        */
   design!:
     | 'Set1'
     | 'Set2'
@@ -7496,38 +7340,35 @@ class TagComponent {
     | 'Positive'
     | 'Negative'
     | 'Critical';
-
   /**
-     Defines the color scheme of the component.
+        Defines the color scheme of the component.
 There are 10 predefined schemes.
 To use one you can set a number from \`\\"1\\"\` to \`\\"10\\"\`. The \`colorScheme\` \`\\"1\\"\` will be set by default.
-    */
+        */
   colorScheme!: string;
-
   /**
-     Defines if the default state icon is shown.
-    */
+        Defines if the default state icon is shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideStateIcon!: boolean;
-
   /**
-     Defines if the component is interactive (focusable and pressable).
+        Defines if the component is interactive (focusable and pressable).
 
 **Note:** The tag cannot be \`interactive\`
 when \`design\` property is \`TagDesign.Set3\`
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
-
   /**
-     Defines how the text of a component will be displayed when there is not enough space.
+        Defines how the text of a component will be displayed when there is not enough space.
 
 **Note:** For option \\"Normal\\" the text will wrap and the
 words will not be broken based on hyphenation.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
-
   /**
-     Defines predefined size of the component.
-    */
+        Defines predefined size of the component.
+        */
   size!: 'S' | 'L';
 
   /**
@@ -7559,7 +7400,9 @@ exports[`Snapshot test Main Text Area should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -7618,96 +7461,88 @@ import TextArea from '@ui5/webcomponents/dist/TextArea.js';
 })
 class TextAreaComponent {
   /**
-     Defines the value of the component.
-    */
+        Defines the value of the component.
+        */
   value!: string;
-
   /**
-     Indicates whether the user can interact with the component or not.
+        Indicates whether the user can interact with the component or not.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is required.
-    */
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
-
   /**
-     Defines a short hint intended to aid the user with data entry when the component has no value.
-    */
+        Defines a short hint intended to aid the user with data entry when the component has no value.
+        */
   placeholder!: string;
-
   /**
-     Defines the value state of the component.
+        Defines the value state of the component.
 
 **Note:** If \`maxlength\` property is set,
 the component turns into \\"Warning\\" state once the characters exceeds the limit.
 In this case, only the \\"Error\\" state is considered and can be applied.
-    */
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines the number of visible text rows for the component.
+        Defines the number of visible text rows for the component.
 
 **Notes:**
 
 - If the \`growing\` property is enabled, this property defines the minimum rows to be displayed
 in the textarea.
 - The CSS \`height\` property wins over the \`rows\` property, if both are set.
-    */
+        */
   rows!: number;
-
   /**
-     Defines the maximum number of characters that the \`value\` can have.
-    */
+        Defines the maximum number of characters that the \`value\` can have.
+        */
   maxlength!: number | undefined;
-
   /**
-     Determines whether the characters exceeding the maximum allowed character count are visible
+        Determines whether the characters exceeding the maximum allowed character count are visible
 in the component.
 
 If set to \`false\`, the user is not allowed to enter more characters than what is set in the
 \`maxlength\` property.
 If set to \`true\` the characters exceeding the \`maxlength\` value are selected on
 paste and the counter below the component displays their number.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   showExceededText!: boolean;
-
   /**
-     Enables the component to automatically grow and shrink dynamically with its content.
-    */
+        Enables the component to automatically grow and shrink dynamically with its content.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   growing!: boolean;
-
   /**
-     Defines the maximum number of rows that the component can grow.
-    */
+        Defines the maximum number of rows that the component can grow.
+        */
   growingMaxRows!: number;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the textarea.
-    */
+        Receives id(or many ids) of the elements that label the textarea.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -7775,8 +7610,8 @@ import Text from '@ui5/webcomponents/dist/Text.js';
 })
 class TextComponent {
   /**
-     Defines the number of lines the text should wrap before it truncates.
-    */
+        Defines the number of lines the text should wrap before it truncates.
+        */
   maxLines!: number;
 
   private elementRef: ElementRef<Text> = inject(ElementRef);
@@ -7819,7 +7654,9 @@ exports[`Snapshot test Main Time Picker should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
@@ -7870,54 +7707,50 @@ import {
 })
 class TimePickerComponent {
   /**
-     Defines a formatted time value.
-    */
+        Defines a formatted time value.
+        */
   value!: string | undefined;
-
   /**
-     Determines the name by which the component will be identified upon submission in an HTML form.
+        Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   name!: string;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines the disabled state of the comonent.
-    */
+        Defines the disabled state of the comonent.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the readonly state of the comonent.
-    */
+        Defines the readonly state of the comonent.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines a short hint, intended to aid the user with data entry when the
+        Defines a short hint, intended to aid the user with data entry when the
 component has no value.
 
 **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
 Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
-    */
+        */
   placeholder!: string | undefined;
-
   /**
-     Determines the format, displayed in the input field.
+        Determines the format, displayed in the input field.
 
 Example:
 HH:mm:ss -> 11:42:35
 hh:mm:ss a -> 2:23:15 PM
 mm:ss -> 12:04 (only minutes and seconds)
-    */
+        */
   formatPattern!: string;
-
   /**
-     Defines the open or closed state of the popover.
-    */
+        Defines the open or closed state of the popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
 
   /**
@@ -7985,16 +7818,15 @@ import Title from '@ui5/webcomponents/dist/Title.js';
 })
 class TitleComponent {
   /**
-     Defines how the text of a component will be displayed when there is not enough space.
+        Defines how the text of a component will be displayed when there is not enough space.
 
 **Note:** for option \\"Normal\\" the text will wrap and the words will not be broken based on hyphenation.
-    */
+        */
   wrappingType!: 'None' | 'Normal';
-
   /**
-     Defines the component level.
+        Defines the component level.
 Available options are: \`\\"H6\\"\` to \`\\"H1\\"\`.
-    */
+        */
   level!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
 
   private elementRef: ElementRef<Title> = inject(ElementRef);
@@ -8019,7 +7851,9 @@ exports[`Snapshot test Main Toast should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8037,17 +7871,16 @@ import Toast from '@ui5/webcomponents/dist/Toast.js';
 })
 class ToastComponent {
   /**
-     Defines the duration in milliseconds for which component
+        Defines the duration in milliseconds for which component
 remains on the screen before it's automatically closed.
 
 **Note:** The minimum supported value is \`500\` ms
 and even if a lower value is set, the duration would remain \`500\` ms.
-    */
+        */
   duration!: number;
-
   /**
-     Defines the placement of the component.
-    */
+        Defines the placement of the component.
+        */
   placement!:
     | 'TopStart'
     | 'TopCenter'
@@ -8058,10 +7891,10 @@ and even if a lower value is set, the duration would remain \`500\` ms.
     | 'BottomStart'
     | 'BottomCenter'
     | 'BottomEnd';
-
   /**
-     Indicates whether the component is open (visible).
-    */
+        Indicates whether the component is open (visible).
+        */
+  @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
 
   /**
@@ -8091,7 +7924,9 @@ exports[`Snapshot test Main Toggle Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8136,8 +7971,8 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
 })
 class ToggleButtonComponent {
   /**
-     Defines the component design.
-    */
+        Defines the component design.
+        */
   design!:
     | 'Default'
     | 'Positive'
@@ -8145,25 +7980,23 @@ class ToggleButtonComponent {
     | 'Transparent'
     | 'Emphasized'
     | 'Attention';
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 A disabled component can't be pressed or
 focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the icon, displayed as graphical element within the component.
+        Defines the icon, displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the icon, displayed as graphical element within the component after the button text.
+        Defines the icon, displayed as graphical element within the component after the button text.
 
 **Note:** It is highly recommended to use \`endIcon\` property only together with \`icon\` and/or \`text\` properties.
 Usage of \`endIcon\` only should be avoided.
@@ -8172,36 +8005,32 @@ The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   endIcon!: string;
-
   /**
-     When set to \`true\`, the component will
+        When set to \`true\`, the component will
 automatically submit the nearest HTML form element on \`press\`.
 
 **Note:** This property is only applicable within the context of an HTML Form element.\`
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   submits!: boolean;
-
   /**
-     Defines the tooltip of the component.
+        Defines the tooltip of the component.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
-    */
+        */
   tooltip!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
@@ -8212,26 +8041,24 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
-    */
+        */
   accessibilityAttributes!: ButtonAccessibilityAttributes;
-
   /**
-     Defines whether the button has special form-related functionality.
+        Defines whether the button has special form-related functionality.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
-    */
+        */
   type!: 'Button' | 'Submit' | 'Reset';
-
   /**
-     Describes the accessibility role of the button.
+        Describes the accessibility role of the button.
 
 **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
-    */
+        */
   accessibleRole!: 'Button' | 'Link';
-
   /**
-     Determines whether the component is displayed as pressed.
-    */
+        Determines whether the component is displayed as pressed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   pressed!: boolean;
 
   /**
@@ -8264,7 +8091,9 @@ exports[`Snapshot test Main Token should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -8280,13 +8109,13 @@ import Token from '@ui5/webcomponents/dist/Token.js';
 })
 class TokenComponent {
   /**
-     Defines the text of the token.
-    */
+        Defines the text of the token.
+        */
   text!: string;
-
   /**
-     Defines whether the component is selected or not.
-    */
+        Defines whether the component is selected or not.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
 
   private elementRef: ElementRef<Token> = inject(ElementRef);
@@ -8311,7 +8140,9 @@ exports[`Snapshot test Main Tokenizer should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8336,28 +8167,27 @@ import {
 })
 class TokenizerComponent {
   /**
-     Defines whether the component is read-only.
+        Defines whether the component is read-only.
 
 **Note:** A read-only component is not editable,
 but still provides visual feedback upon user interaction.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
-
   /**
-     Defines whether the component is disabled.
+        Defines whether the component is disabled.
 
 **Note:** A disabled component is completely noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string | undefined;
 
   /**
@@ -8391,7 +8221,9 @@ exports[`Snapshot test Main Toolbar Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8438,27 +8270,26 @@ import {
 })
 class ToolbarButtonComponent {
   /**
-     Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
+        Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
 the item never goes in the Popover, if \\"AlwaysOverflow\\" - it never comes out of it.
-    */
+        */
   overflowPriority!: 'Default' | 'NeverOverflow' | 'AlwaysOverflow';
-
   /**
-     Defines if the toolbar overflow popup should close upon intereaction with the item.
+        Defines if the toolbar overflow popup should close upon intereaction with the item.
 It will close by default.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventOverflowClosing!: boolean;
-
   /**
-     Defines if the action is disabled.
+        Defines if the action is disabled.
 
 **Note:** a disabled action can't be pressed or focused, and it is not in the tab chain.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the action design.
-    */
+        Defines the action design.
+        */
   design!:
     | 'Default'
     | 'Positive'
@@ -8466,17 +8297,15 @@ It will close by default.
     | 'Transparent'
     | 'Emphasized'
     | 'Attention';
-
   /**
-     Defines the \`icon\` source URI.
+        Defines the \`icon\` source URI.
 
 **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   icon!: string;
-
   /**
-     Defines the icon, displayed as graphical element within the component after the button text.
+        Defines the icon, displayed as graphical element within the component after the button text.
 
 **Note:** It is highly recommended to use \`endIcon\` property only together with \`icon\` and/or \`text\` properties.
 Usage of \`endIcon\` only should be avoided.
@@ -8485,28 +8314,24 @@ The SAP-icons font provides numerous options.
 
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-    */
+        */
   endIcon!: string;
-
   /**
-     Defines the tooltip of the component.
+        Defines the tooltip of the component.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
-    */
+        */
   tooltip!: string;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string | undefined;
-
   /**
-     Receives id(or many ids) of the elements that label the component.
-    */
+        Receives id(or many ids) of the elements that label the component.
+        */
   accessibleNameRef!: string;
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 
 The following fields are supported:
 
@@ -8518,19 +8343,17 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
-    */
+        */
   accessibilityAttributes!: ToolbarAccessibilityAttributes;
-
   /**
-     Button text
-    */
+        Button text
+        */
   text!: string;
-
   /**
-     Defines the width of the button.
+        Defines the width of the button.
 
 **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
-    */
+        */
   width!: string | undefined;
 
   /**
@@ -8563,7 +8386,9 @@ exports[`Snapshot test Main Toolbar Select Option should match the snapshot 1`] 
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -8579,8 +8404,9 @@ import ToolbarSelectOption from '@ui5/webcomponents/dist/ToolbarSelectOption.js'
 })
 class ToolbarSelectOptionComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
 
   private elementRef: ElementRef<ToolbarSelectOption> = inject(ElementRef);
@@ -8605,7 +8431,9 @@ exports[`Snapshot test Main Toolbar Select should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8642,44 +8470,40 @@ import {
 })
 class ToolbarSelectComponent {
   /**
-     Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
+        Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
 the item never goes in the Popover, if \\"AlwaysOverflow\\" - it never comes out of it.
-    */
+        */
   overflowPriority!: 'Default' | 'NeverOverflow' | 'AlwaysOverflow';
-
   /**
-     Defines if the toolbar overflow popup should close upon intereaction with the item.
+        Defines if the toolbar overflow popup should close upon intereaction with the item.
 It will close by default.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventOverflowClosing!: boolean;
-
   /**
-     Defines the width of the select.
+        Defines the width of the select.
 
 **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
-    */
+        */
   width!: string | undefined;
-
   /**
-     Defines the value state of the component.
-    */
+        Defines the value state of the component.
+        */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     Defines whether the component is in disabled state.
+        Defines whether the component is in disabled state.
 
 **Note:** A disabled component is noninteractive.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the select.
-    */
+        Receives id(or many ids) of the elements that label the select.
+        */
   accessibleNameRef!: string;
 
   /**
@@ -8716,7 +8540,9 @@ exports[`Snapshot test Main Toolbar Separator should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -8732,15 +8558,15 @@ import ToolbarSeparator from '@ui5/webcomponents/dist/ToolbarSeparator.js';
 })
 class ToolbarSeparatorComponent {
   /**
-     Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
+        Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
 the item never goes in the Popover, if \\"AlwaysOverflow\\" - it never comes out of it.
-    */
+        */
   overflowPriority!: 'Default' | 'NeverOverflow' | 'AlwaysOverflow';
-
   /**
-     Defines if the toolbar overflow popup should close upon intereaction with the item.
+        Defines if the toolbar overflow popup should close upon intereaction with the item.
 It will close by default.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventOverflowClosing!: boolean;
 
   private elementRef: ElementRef<ToolbarSeparator> = inject(ElementRef);
@@ -8764,7 +8590,9 @@ exports[`Snapshot test Main Toolbar Spacer should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -8780,22 +8608,21 @@ import ToolbarSpacer from '@ui5/webcomponents/dist/ToolbarSpacer.js';
 })
 class ToolbarSpacerComponent {
   /**
-     Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
+        Property used to define the access of the item to the overflow Popover. If \\"NeverOverflow\\" option is set,
 the item never goes in the Popover, if \\"AlwaysOverflow\\" - it never comes out of it.
-    */
+        */
   overflowPriority!: 'Default' | 'NeverOverflow' | 'AlwaysOverflow';
-
   /**
-     Defines if the toolbar overflow popup should close upon intereaction with the item.
+        Defines if the toolbar overflow popup should close upon intereaction with the item.
 It will close by default.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   preventOverflowClosing!: boolean;
-
   /**
-     Defines the width of the spacer.
+        Defines the width of the spacer.
 
 **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
-    */
+        */
   width!: string | undefined;
 
   private elementRef: ElementRef<ToolbarSpacer> = inject(ElementRef);
@@ -8835,18 +8662,16 @@ import Toolbar from '@ui5/webcomponents/dist/Toolbar.js';
 })
 class ToolbarComponent {
   /**
-     Indicated the direction in which the Toolbar items will be aligned.
-    */
+        Indicated the direction in which the Toolbar items will be aligned.
+        */
   alignContent!: 'Start' | 'End';
-
   /**
-     Defines the accessible ARIA name of the component.
-    */
+        Defines the accessible ARIA name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Receives id(or many ids) of the elements that label the input.
-    */
+        Receives id(or many ids) of the elements that label the input.
+        */
   accessibleNameRef!: string;
 
   private elementRef: ElementRef<Toolbar> = inject(ElementRef);
@@ -8871,7 +8696,9 @@ exports[`Snapshot test Main Tree Item Custom should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -8920,21 +8747,20 @@ import TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
 })
 class TreeItemCustomComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the visual indication and behavior of the list items.
+        Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
 
 **Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
 while with type \`Inactive\` and \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
@@ -8942,43 +8768,39 @@ The following fields are supported:
 
 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-    */
+        */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
-
   /**
-     The navigated state of the list item.
+        The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
-
   /**
-     Defines the highlight state of the list items.
+        Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     If set, an icon will be displayed before the text of the tree list item.
-    */
+        If set, an icon will be displayed before the text of the tree list item.
+        */
   icon!: string;
-
   /**
-     Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
-    */
+        Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   expanded!: boolean;
-
   /**
-     Defines whether the item is movable.
-    */
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   movable!: boolean;
-
   /**
-     Defines whether the selection of a tree node is displayed as partially selected.
+        Defines whether the selection of a tree node is displayed as partially selected.
 
 **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user
 interaction, meaning that the resulting visual state depends on the values of the \`indeterminate\`
@@ -8989,38 +8811,37 @@ and \`selected\` properties:
 -  If a tree node has \`selected\` set to \`false\`, it is displayed as not selected regardless of the value of the \`indeterminate\` property.
 
 **Note:** This property takes effect only when the \`ui5-tree\` is in \`Multiple\` mode.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   indeterminate!: boolean;
-
   /**
-     Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
+        Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
 
 **Note:** This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons.
 Set this to \`true\` for nodes you intend to load lazily, when the user clicks the expand button.
 It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hasChildren!: boolean;
-
   /**
-     Defines the state of the \`additionalText\`.
+        Defines the state of the \`additionalText\`.
 
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   additionalTextState!:
     | 'None'
     | 'Positive'
     | 'Critical'
     | 'Negative'
     | 'Information';
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines whether the tree list item should display the selection element.
-    */
+        Defines whether the tree list item should display the selection element.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hideSelectionElement!: boolean;
 
   /**
@@ -9050,7 +8871,9 @@ exports[`Snapshot test Main Tree Item should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -9101,21 +8924,20 @@ import TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
 })
 class TreeItemComponent {
   /**
-     Defines the selected state of the component.
-    */
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-
   /**
-     Defines the visual indication and behavior of the list items.
+        Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
 
 **Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
 while with type \`Inactive\` and \`Detail\` - will not.
-    */
+        */
   type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-
   /**
-     Defines the additional accessibility attributes that will be applied to the component.
+        Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
 - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
@@ -9123,43 +8945,39 @@ The following fields are supported:
 
 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-    */
+        */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
-
   /**
-     The navigated state of the list item.
+        The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
-
   /**
-     Defines the text of the tooltip that would be displayed for the list item.
-    */
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
   tooltip!: string;
-
   /**
-     Defines the highlight state of the list items.
+        Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-
   /**
-     If set, an icon will be displayed before the text of the tree list item.
-    */
+        If set, an icon will be displayed before the text of the tree list item.
+        */
   icon!: string;
-
   /**
-     Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
-    */
+        Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   expanded!: boolean;
-
   /**
-     Defines whether the item is movable.
-    */
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
   movable!: boolean;
-
   /**
-     Defines whether the selection of a tree node is displayed as partially selected.
+        Defines whether the selection of a tree node is displayed as partially selected.
 
 **Note:** The indeterminate state can be set only programmatically and can’t be achieved by user
 interaction, meaning that the resulting visual state depends on the values of the \`indeterminate\`
@@ -9170,43 +8988,40 @@ and \`selected\` properties:
 -  If a tree node has \`selected\` set to \`false\`, it is displayed as not selected regardless of the value of the \`indeterminate\` property.
 
 **Note:** This property takes effect only when the \`ui5-tree\` is in \`Multiple\` mode.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   indeterminate!: boolean;
-
   /**
-     Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
+        Defines whether the tree node has children, even if currently no other tree nodes are slotted inside.
 
 **Note:** This property is useful for showing big tree structures where not all nodes are initially loaded due to performance reasons.
 Set this to \`true\` for nodes you intend to load lazily, when the user clicks the expand button.
 It is not necessary to set this property otherwise. If a tree item has children, the expand button will be displayed anyway.
-    */
+        */
+  @InputDecorator({ transform: booleanAttribute })
   hasChildren!: boolean;
-
   /**
-     Defines the state of the \`additionalText\`.
+        Defines the state of the \`additionalText\`.
 
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-    */
+        */
   additionalTextState!:
     | 'None'
     | 'Positive'
     | 'Critical'
     | 'Negative'
     | 'Information';
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines the text of the tree item.
-    */
+        Defines the text of the tree item.
+        */
   text!: string;
-
   /**
-     Defines the \`additionalText\`, displayed in the end of the tree item.
-    */
+        Defines the \`additionalText\`, displayed in the end of the tree item.
+        */
   additionalText!: string;
 
   /**
@@ -9290,9 +9105,9 @@ import {
 })
 class TreeComponent {
   /**
-     Defines the selection mode of the component. Since the tree uses a \`ui5-list\` to display its structure,
+        Defines the selection mode of the component. Since the tree uses a \`ui5-list\` to display its structure,
 the tree modes are exactly the same as the list modes, and are all applicable.
-    */
+        */
   selectionMode!:
     | 'None'
     | 'Single'
@@ -9301,32 +9116,27 @@ the tree modes are exactly the same as the list modes, and are all applicable.
     | 'SingleAuto'
     | 'Multiple'
     | 'Delete';
-
   /**
-     Defines the text that is displayed when the component contains no items.
-    */
+        Defines the text that is displayed when the component contains no items.
+        */
   noDataText!: string;
-
   /**
-     Defines the component header text.
+        Defines the component header text.
 
 **Note:** If the \`header\` slot is set, this property is ignored.
-    */
+        */
   headerText!: string;
-
   /**
-     Defines the component footer text.
-    */
+        Defines the component footer text.
+        */
   footerText!: string;
-
   /**
-     Defines the accessible name of the component.
-    */
+        Defines the accessible name of the component.
+        */
   accessibleName!: string;
-
   /**
-     Defines the IDs of the elements that label the component.
-    */
+        Defines the IDs of the elements that label the component.
+        */
   accessibleNameRef!: string;
 
   /**

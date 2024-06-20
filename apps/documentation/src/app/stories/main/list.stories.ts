@@ -74,7 +74,7 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
   template: `
 		<ui5-list id="myList1" class="samples-margin-bottom full-width" mode="MultiSelect" header-text="Multiple selection is possible">
 				<ui5-li>Pineapple</ui5-li>
-				<ui5-li [selected]="true">Orange</ui5-li>
+				<ui5-li selected>Orange</ui5-li>
 				<ui5-li>Banana</ui5-li>
 				<ui5-li>Mango</ui5-li>
 		</ui5-list>
@@ -84,7 +84,7 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
 export const busyList: Story<ListComponent> = (args: ListComponent & any) => ({
   props: args,
   template: `
-		<ui5-list header-text="Fetching data ..." class="full-width" [loading]="true"></ui5-list>
+		<ui5-list header-text="Fetching data ..." class="full-width" loading></ui5-list>
 	`,
 });
 
@@ -95,21 +95,21 @@ export const listWithGroupHeaders: Story<ListComponent> = (
   template: `
 		<ui5-list header-text="Community" mode="MultiSelect">
 			<ui5-li-group header-text="Front End Developers">
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Jennifer</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" [iconEnd]="true">Lora</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" [iconEnd]="true">Carlotta</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end>Jennifer</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" icon-end>Lora</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" icon-end>Carlotta</ui5-li>
 			</ui5-li-group>
 
 			<ui5-li-group header-text="Back End Developers">
-				<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Clark</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" [iconEnd]="true">Ellen</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Adam</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" icon-end>Clark</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" icon-end>Ellen</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" icon-end>Adam</ui5-li>
 			</ui5-li-group>
 
 			<ui5-li-group header-text="Full-stack Developers">
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" [iconEnd]="true">Susan</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">David</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" [iconEnd]="true">Natalie</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" icon-end>Susan</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" icon-end>David</ui5-li>
+				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end>Natalie</ui5-li>
 			</ui5-li-group>
 		</ui5-list>
 	`,

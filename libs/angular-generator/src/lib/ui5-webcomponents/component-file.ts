@@ -40,7 +40,7 @@ export class ComponentFile extends AngularGeneratedFile {
       exported: this.componentClassName,
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
-    this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef', 'inject'], '@angular/core');
+    this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef', 'booleanAttribute', 'Input as InputDecorator', 'inject'], '@angular/core');
     if (this.componentData.outputs.length) {
       this.addImport(['EventEmitter'], '@angular/core');
       this.addImport(['ProxyOutputs'], utilsFile.relativePathFrom);
@@ -102,11 +102,20 @@ export class ComponentFile extends AngularGeneratedFile {
   }
 
   get inputsCode(): string {
-    return this.componentData.inputs.map(i => `
-    /**
-     ${i.description}
-    */
-    ${i.name}${i.defaultValue ? '!' : '?'}: ${i.type}`).join(';\n');
+    return this.componentData.inputs.map(i => {
+      let decoratorExpr = "";
+
+      if (i.type === "boolean") {
+        decoratorExpr = `@InputDecorator({ transform: booleanAttribute })\n`;
+      }
+
+      return `
+        /**
+        ${i.description}
+        */
+        ${decoratorExpr} ${i.name}!: ${i.type};
+      `
+    }).join(';\n');
   }
 
   set cvaGetterCode(val: string) {

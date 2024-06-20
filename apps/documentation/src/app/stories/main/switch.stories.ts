@@ -45,11 +45,11 @@ export const basicSwitch: Story<SwitchComponent> = (
   props: args,
   template: `
 		<ui5-switch text-on="On" text-off="Off"></ui5-switch>
-		<ui5-switch text-on="On" text-off="Off" [checked]="true"></ui5-switch>
+		<ui5-switch text-on="On" text-off="Off" checked></ui5-switch>
 		<ui5-switch></ui5-switch>
-		<ui5-switch [checked]="true"></ui5-switch>
-		<ui5-switch text-on="Yes" text-off="No" [disabled]="true"></ui5-switch>
-		<ui5-switch text-on="Yes" text-off="No" [checked]="true" [disabled]="true"></ui5-switch>
+		<ui5-switch checked></ui5-switch>
+		<ui5-switch text-on="Yes" text-off="No" disabled></ui5-switch>
+		<ui5-switch text-on="Yes" text-off="No" checked disabled></ui5-switch>
 	`,
 });
 
@@ -59,8 +59,8 @@ export const graphicalSwitch: Story<SwitchComponent> = (
   props: args,
   template: `
 		<ui5-switch accessible-name="graphical" design="Graphical"></ui5-switch>
-		<ui5-switch accessible-name="graphical" design="Graphical" [checked]="true"></ui5-switch>
-		<ui5-switch accessible-name="graphical" design="Graphical" [disabled]="true"></ui5-switch>
-		<ui5-switch accessible-name="graphical" design="Graphical" [disabled]="true" [checked]="true"></ui5-switch>
+		<ui5-switch accessible-name="graphical" design="Graphical" checked></ui5-switch>
+		<ui5-switch accessible-name="graphical" design="Graphical" disabled></ui5-switch>
+		<ui5-switch accessible-name="graphical" design="Graphical" disabled checked></ui5-switch>
 	`,
 });

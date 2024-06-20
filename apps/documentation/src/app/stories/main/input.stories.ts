@@ -36,9 +36,9 @@ export const basicInput: Story<InputComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" [showClearIcon]="true" value="Input"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" [readonly]="true" value="readonly Input"></ui5-input>
-		<ui5-input class="samples-margin samples-responsive-margin-bottom" [disabled]="true" value="Disabled Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" show-clear-icon value="Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" readonly value="readonly Input"></ui5-input>
+		<ui5-input class="samples-margin samples-responsive-margin-bottom" disabled value="Disabled Input"></ui5-input>
 	`,
 });
 
@@ -73,12 +73,12 @@ export const inputWithLabel: Story<InputComponent> = (
   props: args,
   template: `
 		<div class="flex-column samples-margin">
-			<ui5-label class="samples-big-margin-right" for="myInput" [required]="true" [showColon]="true">Name</ui5-label>
-			<ui5-input id="myInput" placeholder="Enter your Name" [required]="true"></ui5-input>
+			<ui5-label class="samples-big-margin-right" for="myInput" required showColon>Name</ui5-label>
+			<ui5-input id="myInput" placeholder="Enter your Name" required></ui5-input>
 		</div>
 		<div class="flex-column">
-			<ui5-label class="samples-big-margin-right" for="myPassword" [required]="true" [showColon]="true">Secret Code</ui5-label>
-			<ui5-input id="myPassword" type="Password" value-state="Negative" placeholder="Enter your Secret Code" [required]="true"></ui5-input>
+			<ui5-label class="samples-big-margin-right" for="myPassword" required showColon>Secret Code</ui5-label>
+			<ui5-input id="myPassword" type="Password" value-state="Negative" placeholder="Enter your Secret Code" required></ui5-input>
 		</div>
 	`,
 });

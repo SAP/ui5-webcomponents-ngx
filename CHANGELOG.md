@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-rc.7](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.6...v0.3.0-rc.7) (2024-06-20)
+
+### Features
+
+- enable setting bollean attrs to ui5webc ngx wrappers ([#133](https://github.com/SAP/ui5-webcomponents-ngx/issues/133)) ([7e3b9b7](https://github.com/SAP/ui5-webcomponents-ngx/commit/7e3b9b77a46d14de8654ccafc2a87a3b6b1088f4))
+
+# [0.3.0-rc.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.5...v0.3.0-rc.6) (2024-06-18)
+
+**Note:** Version bump only for package ui5-webcomponents-ngx
+
+# [0.3.0-rc.5](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.4...v0.3.0-rc.5) (2024-06-18)
+
+**Note:** Version bump only for package ui5-webcomponents-ngx
+
+# [0.3.0-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.3...v0.3.0-rc.4) (2024-06-18)
+
+**Note:** Version bump only for package ui5-webcomponents-ngx
+
 # [0.3.0-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.2...v0.3.0-rc.3) (2024-06-18)
 
 **Note:** Version bump only for package ui5-webcomponents-ngx

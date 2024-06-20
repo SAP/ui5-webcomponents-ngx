@@ -103,7 +103,7 @@ export const dynamicSideContentWithHideMainContentSet: Story<
 
 		<div class="wrapper100">
 			<ui5-page>
-				<ui5-dynamic-side-content [hideMainContent]="true">
+				<ui5-dynamic-side-content hide-main-content>
 					<div>
 						<h1>Main Content</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.</p>
@@ -132,7 +132,7 @@ export const dynamicSideContentWithHideSideContentSet: Story<
 
 		<div class="wrapper100">
 			<ui5-page>
-				<ui5-dynamic-side-content [hideSideContent]="true">
+				<ui5-dynamic-side-content hide-side-content>
 					<div>
 						<h1>Main Content</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.</p>
@@ -161,7 +161,7 @@ export const dynamicSideContentWithEqualSplitSet: Story<
 
 		<div class="wrapper100">
 			<ui5-page>
-				<ui5-dynamic-side-content [equalSplit]="true" >
+				<ui5-dynamic-side-content equal-split>
 					<div>
 						<h1>Main Content</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.</p>

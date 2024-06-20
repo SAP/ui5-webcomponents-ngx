@@ -36,15 +36,15 @@ export const toggleButtonStates: Story<ToggleButtonComponent> = (
   props: args,
   template: `
 		<ui5-toggle-button class="samples-margin">ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" [pressed]="true">Pressed ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" [disabled]="true">Disabled ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" [disabled]="true" [pressed]="true">Disabled and Pressed ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" pressed>Pressed ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" disabled>Disabled ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" disabled pressed>Disabled and Pressed ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Positive">Accept ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" design="Positive" [pressed]="true">Pressed Accept ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" design="Positive" pressed>Pressed Accept ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Negative">Reject ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" design="Negative" [pressed]="true">Pressed Reject ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" design="Negative" pressed>Pressed Reject ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Transparent">Transparent ToggleButton</ui5-toggle-button>
-		<ui5-toggle-button class="samples-margin" design="Transparent" [pressed]="true">Pressed Transparent ToggleButton</ui5-toggle-button>
+		<ui5-toggle-button class="samples-margin" design="Transparent" pressed>Pressed Transparent ToggleButton</ui5-toggle-button>
 	`,
 });
 
@@ -67,15 +67,15 @@ export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
   props: args,
   template: `
 			<ui5-toggle-button class="samples-margin" icon="away"></ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" icon="action-settings" [pressed]="true"></ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" icon="action-settings" pressed></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="add"></ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" icon="alert" [pressed]="true"></ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" icon="alert" pressed></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="accept" design="Positive"></ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" icon="bookmark" design="Positive" [pressed]="true"></ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" icon="bookmark" design="Positive" pressed></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="cancel" design="Negative"></ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" icon="call" design="Negative" [pressed]="true"></ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" icon="call" design="Negative" pressed></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="camera" design="Transparent"></ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" icon="cart" design="Transparent" [pressed]="true"></ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" icon="cart" design="Transparent" pressed></ui5-toggle-button>
 	`,
 });
 
@@ -85,14 +85,14 @@ export const toggleButton: Story<ToggleButtonComponent> = (
   props: args,
   template: `
 			<ui5-toggle-button class="samples-margin">Yes/No</ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" [pressed]="true">Yes/No</ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" pressed>Yes/No</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin">Toggle Button</ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" [pressed]="true">Toggle Button pressed</ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" pressed>Toggle Button pressed</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" design="Positive">On/Off</ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" design="Positive" [pressed]="true">On/Off</ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" design="Positive" pressed>On/Off</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" design="Negative">Menu</ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" design="Negative" [pressed]="true">Menu</ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" design="Negative" pressed>Menu</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" design="Transparent">Transparent</ui5-toggle-button>
-			<ui5-toggle-button class="samples-margin" design="Transparent" [pressed]="true">Transparent</ui5-toggle-button>
+			<ui5-toggle-button class="samples-margin" design="Transparent" pressed>Transparent</ui5-toggle-button>
 	`,
 });

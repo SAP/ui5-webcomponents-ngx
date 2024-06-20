@@ -41,9 +41,9 @@ export const busyIndicatorWithDifferentSize: Story<BusyIndicatorComponent> = (
 ) => ({
   props: args,
   template: `
-			<ui5-busy-indicator [active]="true" size="S"></ui5-busy-indicator>
-			<ui5-busy-indicator [active]="true" size="M"></ui5-busy-indicator>
-			<ui5-busy-indicator [active]="true" size="L"></ui5-busy-indicator>
+			<ui5-busy-indicator active size="S"></ui5-busy-indicator>
+			<ui5-busy-indicator active size="M"></ui5-busy-indicator>
+			<ui5-busy-indicator active size="L"></ui5-busy-indicator>
 		`,
 });
 

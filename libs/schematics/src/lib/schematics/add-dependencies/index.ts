@@ -6,7 +6,7 @@ import { askConfirmation } from "../../utils/prompt";
 import { AddDependenciesSchematicOptions } from "./schema";
 import { readModulePackageJson } from "./module-pkg-json";
 
-const angularVersion = major(readModulePackageJson('@angular/core').packageJson.version);
+// const angularVersion = major(readModulePackageJson('@angular/core').packageJson.version);
 
 export function addDependencies(options: AddDependenciesSchematicOptions): Rule {
   return async (tree, context) => {
@@ -21,8 +21,9 @@ export function addDependencies(options: AddDependenciesSchematicOptions): Rule 
         }
         if (!satisfies(currentVersion, dep.version)) {
           if (dep.name.startsWith('@angular') || dep.name === 'ng-packagr') {
+            const neededAngularVersion = major(dep.version.replace('^', '').replace('~', ''))
             mismatchedDependencies[dep.name] = [currentVersion, {
-              version: `^${angularVersion}.0.0`,
+              version: `^${neededAngularVersion}.0.0`,
               name: dep.name,
               type: dep.type
             }];
@@ -32,8 +33,9 @@ export function addDependencies(options: AddDependenciesSchematicOptions): Rule 
         }
       } catch (e) {
         if (dep.name.startsWith('@angular') || dep.name === 'ng-packagr') {
+          const neededAngularVersion = major(dep.version.replace('^', '').replace('~', ''))
           mismatchedDependencies[dep.name] = ['None', {
-            version: `^${angularVersion}.0.0`,
+            version: `^${neededAngularVersion}.0.0`,
             name: dep.name,
             type: dep.type
           }];

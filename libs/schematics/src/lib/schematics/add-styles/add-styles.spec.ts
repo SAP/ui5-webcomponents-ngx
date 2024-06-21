@@ -31,7 +31,7 @@ describe('add-styles', () => {
     const styles = angularJson.projects.test.architect.build.options.styles;
 
     allCommonCss.forEach((value) => {
-      expect(styles).toContain(`node_modules/@fundamental-styles/common-css/dist/${value}.css`)
+      expect(styles).toContain(`node_modules/@sap-ui/common-css/dist/${value}.css`)
     });
   });
 
@@ -44,9 +44,9 @@ describe('add-styles', () => {
     const styles = angularJson.projects.test.architect.build.options.styles;
     allCommonCss.forEach((value) => {
       if (firstThreeCommonCss.includes(value)) {
-        expect(styles).toContain(`node_modules/@fundamental-styles/common-css/dist/${value}.css`)
+        expect(styles).toContain(`node_modules/@sap-ui/common-css/dist/${value}.css`)
       } else {
-        expect(styles).not.toContain(`node_modules/@fundamental-styles/common-css/dist/${value}.css`)
+        expect(styles).not.toContain(`node_modules/@sap-ui/common-css/dist/${value}.css`)
       }
     });
   });

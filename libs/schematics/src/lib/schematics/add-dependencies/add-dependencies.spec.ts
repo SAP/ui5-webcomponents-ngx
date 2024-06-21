@@ -55,7 +55,7 @@ describe('add-dependencies', () => {
 
     const packageJson = tree.readJson('package.json') as { dependencies: Record<string, string> };
 
-    expect(packageJson.dependencies['@angular/core']).toEqual('^18.0.4');
+    expect(packageJson.dependencies['@angular/core']).toEqual('^18.0.0');
   });
 
 });

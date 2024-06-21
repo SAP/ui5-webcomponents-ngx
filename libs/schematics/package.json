@@ -9,11 +9,11 @@
     "directory": "libs/schematics"
   },
   "peerDependencies": {
-    "@schematics/angular": ">= 15.0.0 < 18.0.0",
-    "@angular-devkit/core": ">= 15.0.0 < 18.0.0",
-    "@angular-devkit/schematics": ">= 15.0.0 < 18.0.0",
-    "@angular/common": ">= 15.0.0 < 18.0.0",
-    "@angular/core": ">= 15.0.0 < 18.0.0",
+    "@schematics/angular": ">= 15.0.0 < 19.0.0",
+    "@angular-devkit/core": ">= 15.0.0 < 19.0.0",
+    "@angular-devkit/schematics": ">= 15.0.0 < 19.0.0",
+    "@angular/common": ">= 15.0.0 < 19.0.0",
+    "@angular/core": ">= 15.0.0 < 19.0.0",
     "fast-glob": "^3.3.2",
     "inquirer": "^9.2.11"
   },

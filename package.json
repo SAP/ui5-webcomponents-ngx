@@ -12,7 +12,6 @@
     "version:prerelease": "npx lerna version prerelease",
     "version:release": "npx lerna version --conventional-graduate",
     "prepare": "husky install",
-    "create:hotfix": "node scripts/release-hotfix.js",
     "build:all": "nx run-many --target=build --all --skip-nx-cache --configuration=production --exclude=documentation,playground",
     "publish:all": "npm run build:all && node linking-helper.js",
     "create:hotfix": "node scripts/release-hotfix.js",

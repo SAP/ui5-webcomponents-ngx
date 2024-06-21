@@ -6,23 +6,28 @@ import { askChoices, askConfirmation } from "../../utils/prompt";
 import { addDependencies } from "../add-dependencies";
 import { NodeDependencyType } from "../../third_party/utility/dependencies";
 
-async function askCommonCssDependency(): Promise<boolean> {
-  return await askConfirmation('Would you like to add Common CSS into your application?', false);
+declare const jest: unknown;
+
+async function askCommonCssDependency(defaultAnswer = false): Promise<boolean> {
+  return await askConfirmation('Would you like to add Common CSS into your application?', defaultAnswer);
 }
 
 async function askCommonCssParts(): Promise<string[]> {
   return (await askChoices('Please select desired Common CSS features', CommonCssParts, [])) || [];
 }
 
+type TestingValues = {
+  commonCss?: string[];
+}
 
-export function addStyles(options: AddStylesSchemaOptions): Rule {
+export function addStyles(options: AddStylesSchemaOptions & TestingValues): Rule {
   return async (tree) => {
-    const shouldInstallCommonCss = await askCommonCssDependency();
+    const shouldInstallCommonCss = await askCommonCssDependency(typeof jest !== "undefined");
     if (!shouldInstallCommonCss) {
       return;
     }
 
-    const commonCssItems = await askCommonCssParts();
+    const commonCssItems = options.commonCss ?? await askCommonCssParts();
     const buildTarget = await getProjectBuildTarget(tree, options.project);
     const buildTargetOptions = buildTarget?.options;
 

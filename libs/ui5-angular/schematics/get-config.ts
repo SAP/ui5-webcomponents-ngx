@@ -1,4 +1,4 @@
-import { AvailableThemes, CommonCssParts } from "./config";
+import { CommonCssParts } from "./config";
 import { Schema } from "./schema";
 import { askQuestion } from './utils/promt';
 
@@ -33,3 +33,4 @@ async function askCommonCssParts(): Promise<string[]> {
     choices: CommonCssParts,
   });
 }
+

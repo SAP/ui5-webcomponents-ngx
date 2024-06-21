@@ -6,11 +6,11 @@ import {
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 The <code>ui5-responsive-popover</code> acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
 
-### Usage 
+### Usage
 
 Use it when you want to make sure that all the content is visible on any device.
 

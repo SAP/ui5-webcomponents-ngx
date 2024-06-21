@@ -67,13 +67,14 @@ Every form-capable component can be used with Angular's native form approaches. 
 
 ## Versions
 
-The table shows
+The table shows for each `@ui5/webcomponents-ngx` version:
 - the `Angular` compatible version
-- the `@ui5/webcomponents` version that `@ui5/webcomponents-ngx` is built upon and .
+- the `@ui5/webcomponents` compatible version
 
 |@ui5/webcomponents-ngx| Angular  |@ui5/webcomponents|
 |----------------------|----------|------------------|
-|0.3.2                 | 16 & 17  | 1.9.x            |
+|0.2                   | 16       | 1.9.x            |
+|0.3.x                 | 17       | 2.0.x            |
 
 
 ## Support, Feedback, Contributing

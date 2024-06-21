@@ -31,6 +31,7 @@
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
+    "@ui5/theming-ngx": "0.3.0-rc.8",
     "tslib": "^2.4.1"
   },
   "schematics": "./schematics/collection.json",

@@ -5,6 +5,7 @@ import { askQuestion } from './utils/promt';
 export async function collectConfig(): Promise<Partial<Schema>> {
   const schema: Partial<Schema> = {
     commonCss: [],
+    theming: true,
     defaultTheme: 'sap_horizon'
   };
 
@@ -12,12 +13,6 @@ export async function collectConfig(): Promise<Partial<Schema>> {
 
   if (includeCommonCss) {
     schema.commonCss = await askCommonCssParts();
-  }
-
-  schema.theming = await askThemingDependency();
-
-  if (schema.theming) {
-    schema.defaultTheme = await askDefaultTheme();
   }
 
   return schema;
@@ -39,20 +34,3 @@ async function askCommonCssParts(): Promise<string[]> {
   });
 }
 
-async function askThemingDependency(): Promise<boolean> {
-  return await askQuestion({
-    type: 'confirm',
-    message:
-      'Would you like to add Theming capabilities into your application?',
-    default: true,
-  });
-}
-
-async function askDefaultTheme(): Promise<string> {
-  return await askQuestion({
-    type: 'list',
-    message: 'Please select desired Common CSS features',
-    default: 'sap_horizon',
-    choices: AvailableThemes,
-  });
-}

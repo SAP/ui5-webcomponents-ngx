@@ -11,9 +11,8 @@ const {format} = require("prettier");
 
 const pascalCase = src => (str => str.charAt(0).toUpperCase() + str.slice(1))(camelCase(src));
 
-const classNameForThemingService = (packageName: 'fiori' | 'main' | 'compat') => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;
 /**
- * @param packageName {'fiori' | 'main'}
+ * @param packageName {'fiori' | 'main' | 'compat'}
  * @returns {`Ui5Webcomponents${'Fiori' | 'Main'}ThemingService`}
  */
 const classNameForThemingService = (packageName) => `Ui5Webcomponents${pascalCase(packageName)}ThemingService`;

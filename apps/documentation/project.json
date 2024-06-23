@@ -10,10 +10,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "sync": {
-      "executor": "@ui5/webcomponents-nx:sync",
-      "options": {
-        "configFiles": ["apps/documentation/api-json.config.ts"]
-      },
+      "command": "ts-node {projectRoot}/sync.ts",
       "outputs": ["{projectRoot}/src/api-json.json"]
     },
     "serve": {
@@ -46,7 +43,8 @@
           "quiet": true,
           "docs": true
         }
-      }
+      },
+      "dependsOn": ["sync"]
     }
   },
   "tags": []

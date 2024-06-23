@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["libs/*", "libs/*/*"],
+  "packages": ["libs/*"],
   "version": "0.3.0-rc.8",
   "conventionalCommits": true,
   "tagVersionPrefix": "v",

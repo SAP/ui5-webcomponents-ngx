@@ -6,30 +6,6 @@
       "factory": "./ng-add/index#ngAdd",
       "schema": "./ng-add/schema.json"
     },
-    "proceed-with-schematics": {
-      "description": "Calls chain of schematics to update project configuration based on users preferences.",
-      "factory": "./ng-add/index#proceedWithSchematics",
-      "schema": "./ng-add/schema.json",
-      "private": true
-    },
-    "add-dependencies": {
-      "description": "Adds external libraries as a dependencies for styling and theming purposes.",
-      "factory": "./add-dependencies/index#addDependencies",
-      "schema": "./add-dependencies/schema.json",
-      "private": true
-    },
-    "add-styles": {
-      "description": "Adds @fundamental-styles/common-css packages to the angular application.",
-      "factory": "./add-styles/index#addStyles",
-      "schema": "./add-styles/schema.json",
-      "private": true
-    },
-    "add-theming": {
-      "description": "Adds theming capabilities to the angular application.",
-      "factory": "./add-theming/index#addTheming",
-      "schema": "./add-theming/schema.json",
-      "private": true
-    },
     "add-i18n": {
       "description": "Adds i18n capabilities to the angular application.",
       "factory": "./add-i18n/index#addI18n",

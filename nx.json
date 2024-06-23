@@ -5,14 +5,11 @@
   },
   "targetDefaults": {
     "sync": {
-      "dependsOn": ["^build"],
-      "cache": true
-    },
-    "prepare": {
-      "dependsOn": ["build"]
+      "dependsOn": ["^sync"],
+      "cache": false
     },
     "build": {
-      "dependsOn": ["^build", "sync"],
+      "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
       "cache": true
     },

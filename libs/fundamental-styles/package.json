@@ -9,11 +9,18 @@
     "directory": "libs/fundamental-styles"
   },
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@angular/common": ">= 15.0.0 < 19.0.0",
+    "@angular/core": ">= 15.0.0 < 19.0.0",
+    "fundamental-styles": "FUNDAMENTAL_STYLES_VERSION_PLACEHOLDER",
+    "@sap-theming/theming-base-content": "THEMING_BASE_CONTENT_VERSION_PLACEHOLDER",
+    "@sap-ui/common-css": "COMMON_CSS_VERSION_PLACEHOLDER",
+    "@ui5/theming-ngx": "VERSION_PLACEHOLDER"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@ui5/webcomponents-ngx-schematics": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-schema-parser": "VERSION_PLACEHOLDER",
+    "@ui5/webcomponents-transformer": "VERSION_PLACEHOLDER"
   },
   "schematics": "./schematics/collection.json"
 }

@@ -1,4 +1,4 @@
-import { ImportData } from "../import-data";
+import { ImportData } from "./import-types";
 
 export interface InputType {
   description: string;

@@ -5,13 +5,22 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
+const description = `
+### Overview
 
-<h3>Usage</h3> The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the <code>ui5-daterange-picker</code> <h3>ES6 Module Import</h3>
+The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
+
+### Usage
+
+The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the <code>ui5-daterange-picker</code>
+
+### ES6 Module Import
 
 <code>import { DateRangePickerComponent } from "@ui5/webcomponents-ngx/main/date-range-picker";</code>
 
-<h3>Keyboard Handling</h3> The <code>ui5-daterange-picker</code> provides advanced keyboard handling. <br>
+### Keyboard Handling
+
+The <code>ui5-daterange-picker</code> provides advanced keyboard handling. <br>
 
 When the <code>ui5-daterange-picker</code> input field is focused the user can increment or decrement respectively the range start or end date, depending on where the cursor is. The following shortcuts are available: <br> <ul> <li>[PAGEDOWN] - Decrements the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEDOWN] - Decrements the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEDOWN] - Decrements the corresponding year by one</li> <li>[PAGEUP] - Increments the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEUP] - Increments the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEUP] - Increments the corresponding year by one</li> </ul>`;
 export default {

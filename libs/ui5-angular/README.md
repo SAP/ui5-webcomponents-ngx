@@ -24,15 +24,15 @@ import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx'; // All componen
 ```
 
 #### Theming
-For using theming, you need to install `@ui5/theming-ngx` package and import the `Ui5ThemingModule` in your app module.
+For using theming, you need import the `Ui5ThemingModule` in your app module.
 
 ```typescript
-import { Ui5ThemingModule } from '@ui5/webcomponents-ngx/theming'; // Theming module import
+import { Ui5WebcomponentsThemingModule } from '@ui5/webcomponents-ngx/theming'; // Theming module import
 
 @NgModule({
   imports: [
     BrowserModule,
-    Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}) // Theming module import
+    Ui5WebcomponentsThemingModule, // Theming module import
   ]
 })
 export class AppModule { }

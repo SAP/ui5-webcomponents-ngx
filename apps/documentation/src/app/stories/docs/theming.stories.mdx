@@ -13,10 +13,6 @@ The theme is a way to customize the look and feel of the components. It is a set
 
 ## Usage
 
-For using theming you should have package `@ui5/theming-ngx` installed.
-
-> **note:** `@ui5/theming-ngx` is a peer dependency of `@ui5/webcomponents-ngx` and it is not installed automatically, but if you installed `@ui5/webcomponents-ngx` with the `ng add` schematic, it will be installed automatically.
-
 First, you need to import the theming module in your root module and use it like this:
 
 ```typescript
@@ -25,9 +21,7 @@ import { Ui5ThemingModule } from "@ui5/theming-ngx";
 
 @NgModule({
   imports: [
-    Ui5ThemingModule.forRoot({
-      defaultTheme: "sap_horizon"
-    }),
+    Ui5ThemingModule,
   ],
 })
 export class AppModule {}

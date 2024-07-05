@@ -144,7 +144,7 @@ property is set to \`true\`.
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines the name of the fallback icon, which should be displayed in the following cases:
 
@@ -168,7 +168,7 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
 
 Up to three Latin letters can be displayed as initials.
         */
-  initials!: string;
+  initials!: string | undefined;
   /**
         Defines the shape of the component.
         */
@@ -196,7 +196,7 @@ Up to three Latin letters can be displayed as initials.
         Defines the text alternative of the component.
 If not provided a default text alternative will be set, if present.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the additional accessibility attributes that will be applied to the component.
 The following field is supported:
@@ -288,7 +288,7 @@ class BreadcrumbsItemComponent {
 
 **Note:** Standard hyperlink behavior is supported.
         */
-  href!: string;
+  href!: string | undefined;
   /**
         Defines the link target.
 
@@ -306,7 +306,7 @@ Available options are:
   /**
         Defines the accessible ARIA name of the item.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
 
   private elementRef: ElementRef<BreadcrumbsItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -417,7 +417,7 @@ class BusyIndicatorComponent {
   /**
         Defines text to be displayed below the component. It can be used to inform the user of the current operation.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the size of the component.
         */
@@ -528,7 +528,7 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component after the button text.
 
@@ -540,7 +540,7 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  endIcon!: string;
+  endIcon!: string | undefined;
   /**
         When set to \`true\`, the component will
 automatically submit the nearest HTML form element on \`press\`.
@@ -554,7 +554,7 @@ automatically submit the nearest HTML form element on \`press\`.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
@@ -562,7 +562,7 @@ automatically submit the nearest HTML form element on \`press\`.
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
@@ -727,7 +727,7 @@ class CalendarLegendItemComponent {
   /**
         Defines the text content of the Calendar Legend Item.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the type of the Calendar Legend Item.
         */
@@ -910,7 +910,7 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the format, displayed in the input field.
         */
-  formatPattern!: string;
+  formatPattern!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -993,15 +993,15 @@ class CardHeaderComponent {
   /**
         Defines the title text.
         */
-  titleText!: string;
+  titleText!: string | undefined;
   /**
         Defines the subtitle text.
         */
-  subtitleText!: string;
+  subtitleText!: string | undefined;
   /**
         Defines the additional text.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
   /**
         Defines if the component would be interactive,
 e.g gets hover effect, gets focus outline and \`click\` event is fired, when pressed.
@@ -1057,11 +1057,11 @@ class CardComponent {
 
 **Note:** \`accessibleName\` should be always set, unless \`accessibleNameRef\` is set.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   private elementRef: ElementRef<Card> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1134,11 +1134,11 @@ class CarouselComponent {
   /**
         Defines the accessible name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the IDs of the elements that label the input.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines whether the carousel should loop, i.e show the first page after the last page is reached and vice versa.
         */
@@ -1280,11 +1280,11 @@ class CheckBoxComponent {
   /**
         Receives id(or many ids) of the elements that label the component
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines whether the component is disabled.
 
@@ -1340,7 +1340,7 @@ pressing the Enter or Space key.
   /**
         Defines the text of the component.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the value state of the component.
         */
@@ -1349,6 +1349,7 @@ pressing the Enter or Space key.
         Defines whether the component text wraps when there is not enough space.
 
 **Note:** for option \\"Normal\\" the text will wrap and the words will not be broken based on hyphenation.
+**Note:** for option \\"None\\" the text will be truncated with an ellipsis.
         */
   wrappingType!: 'None' | 'Normal';
   /**
@@ -1356,7 +1357,7 @@ pressing the Enter or Space key.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
 
   /**
      Fired when the component checked state changes.
@@ -1416,7 +1417,7 @@ class ColorPaletteItemComponent {
 
 **Note:** The value should be a valid CSS color.
         */
-  value!: string | undefined;
+  value!: string;
   /**
         Defines if the component is selected.
 
@@ -1624,7 +1625,7 @@ class ColorPickerComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
 
   /**
      Fired when the the selected color is changed
@@ -1658,19 +1659,19 @@ exports[`Snapshot test Main Combo Box Item Group should match the snapshot 1`] =
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
 import ComboBoxItemGroup from '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
-@ProxyInputs(['text'])
+@ProxyInputs(['headerText'])
 @Component({
   standalone: true,
   selector: 'ui5-cb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['text'],
+  inputs: ['headerText'],
   exportAs: 'ui5CbItemGroup',
 })
 class ComboBoxItemGroupComponent {
   /**
         Defines the text of the component.
         */
-  text!: string;
+  headerText!: string | undefined;
 
   private elementRef: ElementRef<ComboBoxItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1711,11 +1712,11 @@ class ComboBoxItemComponent {
   /**
         Defines the text of the component.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the additional text of the component.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
 
   private elementRef: ElementRef<ComboBoxItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1808,7 +1809,7 @@ class ComboBoxComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines whether the value will be autocompleted to match an item
         */
@@ -1818,7 +1819,7 @@ class ComboBoxComponent {
         Defines a short hint intended to aid the user with data entry when the
 component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines whether the component is in disabled state.
 
@@ -1860,11 +1861,11 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter, focusout or an item is selected.
@@ -1904,122 +1905,6 @@ but still provides visual feedback upon user interaction.
   }
 }
 export { ComboBoxComponent };
-"
-`;
-
-exports[`Snapshot test Main Custom List Item should match the snapshot 1`] = `
-"import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input as InputDecorator,
-  NgZone,
-  booleanAttribute,
-  inject,
-} from '@angular/core';
-import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import '@ui5/webcomponents/dist/CustomListItem.js';
-import CustomListItem from '@ui5/webcomponents/dist/CustomListItem.js';
-import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-@ProxyInputs([
-  'selected',
-  'type',
-  'accessibilityAttributes',
-  'navigated',
-  'tooltip',
-  'highlight',
-  'movable',
-  'accessibleName',
-])
-@ProxyOutputs(['detail-click: ui5DetailClick'])
-@Component({
-  standalone: true,
-  selector: 'ui5-li-custom',
-  template: '<ng-content></ng-content>',
-  inputs: [
-    'selected',
-    'type',
-    'accessibilityAttributes',
-    'navigated',
-    'tooltip',
-    'highlight',
-    'movable',
-    'accessibleName',
-  ],
-  outputs: ['ui5DetailClick'],
-  exportAs: 'ui5LiCustom',
-})
-class CustomListItemComponent {
-  /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
-  /**
-        Defines the visual indication and behavior of the list items.
-Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
-
-**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
-while with type \`Inactive\` and \`Detail\` - will not.
-        */
-  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-  /**
-        Defines the additional accessibility attributes that will be applied to the component.
-The following fields are supported:
-
-- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
-
-	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-        */
-  accessibilityAttributes!: ListItemAccessibilityAttributes;
-  /**
-        The navigated state of the list item.
-If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  navigated!: boolean;
-  /**
-        Defines the text of the tooltip that would be displayed for the list item.
-        */
-  tooltip!: string;
-  /**
-        Defines the highlight state of the list items.
-Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-        */
-  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-  /**
-        Defines whether the item is movable.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  movable!: boolean;
-  /**
-        Defines the text alternative of the component.
-
-**Note**: If not provided a default text alternative will be set, if present.
-        */
-  accessibleName!: string;
-
-  /**
-     Fired when the user clicks on the detail button when type is \`Detail\`.
-    */
-  ui5DetailClick!: EventEmitter<void>;
-
-  private elementRef: ElementRef<CustomListItem> = inject(ElementRef);
-  private zone = inject(NgZone);
-  private cdr = inject(ChangeDetectorRef);
-
-  get element(): CustomListItem {
-    return this.elementRef.nativeElement;
-  }
-
-  constructor() {
-    this.cdr.detach();
-  }
-}
-export { CustomListItemComponent };
 "
 `;
 
@@ -2122,7 +2007,7 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the format, displayed in the input field.
         */
-  formatPattern!: string;
+  formatPattern!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2171,7 +2056,7 @@ Passing an empty string as the value of this property will make the component ap
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the visibility of the week numbers column.
 
@@ -2188,11 +2073,11 @@ the week numbers are not displayed regardless of what is set.
   /**
         Defines the aria-label attribute for the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -2336,7 +2221,7 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the format, displayed in the input field.
         */
-  formatPattern!: string;
+  formatPattern!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2385,7 +2270,7 @@ Passing an empty string as the value of this property will make the component ap
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the visibility of the week numbers column.
 
@@ -2402,16 +2287,16 @@ the week numbers are not displayed regardless of what is set.
   /**
         Defines the aria-label attribute for the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Determines the symbol which separates the dates.
 If not supplied, the default time interval delimiter for the current locale will be used.
         */
-  delimiter!: string;
+  delimiter!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -2553,7 +2438,7 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the format, displayed in the input field.
         */
-  formatPattern!: string;
+  formatPattern!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2602,7 +2487,7 @@ Passing an empty string as the value of this property will make the component ap
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the visibility of the week numbers column.
 
@@ -2619,11 +2504,11 @@ the week numbers are not displayed regardless of what is set.
   /**
         Defines the aria-label attribute for the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -2729,7 +2614,7 @@ class DialogComponent {
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
         */
-  initialFocus!: string;
+  initialFocus!: string | undefined;
   /**
         Defines if the focus should be returned to the previously focused element,
 when the popup closes.
@@ -2743,7 +2628,7 @@ when the popup closes.
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Allows setting a custom role.
         */
@@ -2763,7 +2648,7 @@ when the popup closes.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Determines whether the component should be stretched to fullscreen.
 
@@ -2890,7 +2775,7 @@ class FileUploaderComponent {
 
 **Note:** Please make sure you are adding the \`.\` in front on the file type, e.g. \`.png\` in case you want to accept png's only.
         */
-  accept!: string;
+  accept!: string | undefined;
   /**
         If set to \\"true\\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.
         */
@@ -2913,11 +2798,11 @@ class FileUploaderComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines a short hint intended to aid the user with data entry when the component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines the name/names of the file/files to upload.
         */
@@ -2983,7 +2868,7 @@ class FormGroupComponent {
   /**
         Defines header text of the component.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Defines column span of the component,
 e.g how many columns the group should span to.
@@ -3098,7 +2983,7 @@ The supported values are between 1 and 12. Greater the number, more space the la
 
 **Note:** The property gets overridden by the \`header\` slot.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Defines the vertical spacing between form items.
 
@@ -3181,7 +3066,7 @@ you need to set the \`business-suite\` prefix in front of the icon's name.
 Example:
 \`name='business-suite/3d'\`, \`name='business-suite/1x2-grid-layout'\`, \`name='business-suite/4x4-grid-layout'\`.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the text alternative of the component.
 If not provided a default text alternative will be set, if present.
@@ -3189,7 +3074,7 @@ If not provided a default text alternative will be set, if present.
 **Note:** Every icon should have a text alternative in order to
 calculate its accessible name.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines whether the component should have a tooltip.
 
@@ -3309,7 +3194,7 @@ class InputComponent {
         Defines a short hint intended to aid the user with data entry when the
 component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines whether the component is read-only.
 
@@ -3354,7 +3239,7 @@ that use different soft keyboard layouts depending on the given input type.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines whether the component should show suggestions, if such are present.
 
@@ -3372,11 +3257,11 @@ from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable th
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the input.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines whether the clear icon of the input will be shown.
         */
@@ -3466,7 +3351,7 @@ class LabelComponent {
 
 **Note:** Can be used with both \`ui5-input\` and native input.
         */
-  for!: string;
+  for!: string | undefined;
   /**
         Defines whether colon is added to the component text.
 
@@ -3535,6 +3420,8 @@ import {
   'accessibleNameRef',
   'accessibleRole',
   'accessibilityAttributes',
+  'icon',
+  'endIcon',
 ])
 @ProxyOutputs(['click: ui5Click'])
 @Component({
@@ -3552,6 +3439,8 @@ import {
     'accessibleNameRef',
     'accessibleRole',
     'accessibilityAttributes',
+    'icon',
+    'endIcon',
   ],
   outputs: ['ui5Click'],
   exportAs: 'ui5Link',
@@ -3567,13 +3456,13 @@ class LinkComponent {
   /**
         Defines the tooltip of the component.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the component href.
 
 **Note:** Standard hyperlink behavior is supported.
         */
-  href!: string;
+  href!: string | undefined;
   /**
         Defines the component target.
 
@@ -3587,7 +3476,7 @@ class LinkComponent {
 
 **This property must only be used when the \`href\` property is set.**
         */
-  target!: string;
+  target!: string | undefined;
   /**
         Defines the component design.
 
@@ -3603,11 +3492,11 @@ class LinkComponent {
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the input
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the ARIA role of the component.
 
@@ -3625,6 +3514,28 @@ Accepts the following string values: \`true\` or \`false\`.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
         */
   accessibilityAttributes!: LinkAccessibilityAttributes;
+  /**
+        Defines the icon, displayed as graphical element within the component before the link's text.
+The SAP-icons font provides numerous options.
+
+**Note:** Usage of icon-only link is not supported, the link must always have a text.
+
+**Note:** We recommend using аn icon in the beginning or the end only, and with text.
+
+See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+        */
+  icon!: string | undefined;
+  /**
+        Defines the icon, displayed as graphical element within the component after the link's text.
+The SAP-icons font provides numerous options.
+
+**Note:** Usage of icon-only link is not supported, the link must always have a text.
+
+**Note:** We recommend using аn icon in the beginning or the end only, and with text.
+
+See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+        */
+  endIcon!: string | undefined;
 
   /**
      Fired when the component is triggered either with a mouse/tap
@@ -3645,6 +3556,122 @@ or by using the Enter key.
   }
 }
 export { LinkComponent };
+"
+`;
+
+exports[`Snapshot test Main List Item Custom should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import '@ui5/webcomponents/dist/ListItemCustom.js';
+import ListItemCustom from '@ui5/webcomponents/dist/ListItemCustom.js';
+@ProxyInputs([
+  'type',
+  'accessibilityAttributes',
+  'navigated',
+  'tooltip',
+  'highlight',
+  'selected',
+  'movable',
+  'accessibleName',
+])
+@ProxyOutputs(['detail-click: ui5DetailClick'])
+@Component({
+  standalone: true,
+  selector: 'ui5-li-custom',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'type',
+    'accessibilityAttributes',
+    'navigated',
+    'tooltip',
+    'highlight',
+    'selected',
+    'movable',
+    'accessibleName',
+  ],
+  outputs: ['ui5DetailClick'],
+  exportAs: 'ui5LiCustom',
+})
+class ListItemCustomComponent {
+  /**
+        Defines the visual indication and behavior of the list items.
+Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
+
+**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
+while with type \`Inactive\` and \`Detail\` - will not.
+        */
+  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
+
+	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+        */
+  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  /**
+        The navigated state of the list item.
+If set to \`true\`, a navigation indicator is displayed at the end of the list item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  navigated!: boolean;
+  /**
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
+  tooltip!: string | undefined;
+  /**
+        Defines the highlight state of the list items.
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+        */
+  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+  /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  movable!: boolean;
+  /**
+        Defines the text alternative of the component.
+
+**Note**: If not provided a default text alternative will be set, if present.
+        */
+  accessibleName!: string | undefined;
+
+  /**
+     Fired when the user clicks on the detail button when type is \`Detail\`.
+    */
+  ui5DetailClick!: EventEmitter<void>;
+
+  private elementRef: ElementRef<ListItemCustom> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ListItemCustom {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ListItemCustomComponent };
 "
 `;
 
@@ -3671,11 +3698,11 @@ class ListItemGroupComponent {
   /**
         Defines the header text of the <code>ui5-li-group</code>.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Defines the accessible name of the header.
         */
-  headerAccessibleName!: string;
+  headerAccessibleName!: string | undefined;
 
   private elementRef: ElementRef<ListItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -3690,6 +3717,163 @@ class ListItemGroupComponent {
   }
 }
 export { ListItemGroupComponent };
+"
+`;
+
+exports[`Snapshot test Main List Item Standard should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import '@ui5/webcomponents/dist/ListItemStandard.js';
+import ListItemStandard from '@ui5/webcomponents/dist/ListItemStandard.js';
+@ProxyInputs([
+  'type',
+  'accessibilityAttributes',
+  'navigated',
+  'tooltip',
+  'highlight',
+  'selected',
+  'description',
+  'icon',
+  'iconEnd',
+  'additionalText',
+  'additionalTextState',
+  'movable',
+  'accessibleName',
+])
+@ProxyOutputs(['detail-click: ui5DetailClick'])
+@Component({
+  standalone: true,
+  selector: 'ui5-li',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'type',
+    'accessibilityAttributes',
+    'navigated',
+    'tooltip',
+    'highlight',
+    'selected',
+    'description',
+    'icon',
+    'iconEnd',
+    'additionalText',
+    'additionalTextState',
+    'movable',
+    'accessibleName',
+  ],
+  outputs: ['ui5DetailClick'],
+  exportAs: 'ui5Li',
+})
+class ListItemStandardComponent {
+  /**
+        Defines the visual indication and behavior of the list items.
+Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
+
+**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
+while with type \`Inactive\` and \`Detail\` - will not.
+        */
+  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
+
+	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+        */
+  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  /**
+        The navigated state of the list item.
+If set to \`true\`, a navigation indicator is displayed at the end of the list item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  navigated!: boolean;
+  /**
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
+  tooltip!: string | undefined;
+  /**
+        Defines the highlight state of the list items.
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+        */
+  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+  /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines the description displayed right under the item text, if such is present.
+        */
+  description!: string | undefined;
+  /**
+        Defines the \`icon\` source URI.
+
+**Note:**
+SAP-icons font provides numerous built-in icons. To find all the available icons, see the
+[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+        */
+  icon!: string | undefined;
+  /**
+        Defines whether the \`icon\` should be displayed in the beginning of the list item or in the end.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  iconEnd!: boolean;
+  /**
+        Defines the \`additionalText\`, displayed in the end of the list item.
+        */
+  additionalText!: string | undefined;
+  /**
+        Defines the state of the \`additionalText\`.
+
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+        */
+  additionalTextState!:
+    | 'None'
+    | 'Positive'
+    | 'Critical'
+    | 'Negative'
+    | 'Information';
+  /**
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  movable!: boolean;
+  /**
+        Defines the text alternative of the component.
+Note: If not provided a default text alternative will be set, if present.
+        */
+  accessibleName!: string | undefined;
+
+  /**
+     Fired when the user clicks on the detail button when type is \`Detail\`.
+    */
+  ui5DetailClick!: EventEmitter<void>;
+
+  private elementRef: ElementRef<ListItemStandard> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ListItemStandard {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ListItemStandardComponent };
 "
 `;
 
@@ -3777,11 +3961,11 @@ class ListComponent {
 
 **Note:** If \`header\` is set this property is ignored.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Defines the footer text.
         */
-  footerText!: string;
+  footerText!: string | undefined;
   /**
         Determines whether the component is indented.
         */
@@ -3801,7 +3985,7 @@ class ListComponent {
   /**
         Defines the text that is displayed when the component contains no items.
         */
-  noDataText!: string;
+  noDataText!: string | undefined;
   /**
         Defines the item separator style that is used.
         */
@@ -3821,7 +4005,7 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
 
 **Note:** This property takes effect if the \`growing\` property is set to the \`Button\`.
         */
-  growingButtonText!: string;
+  growingButtonText!: string | undefined;
   /**
         Defines if the component would display a loading indicator over the list.
         */
@@ -3834,11 +4018,11 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
   /**
         Defines the accessible name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the IDs of the elements that label the input.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the accessible role of the component.
         */
@@ -3925,16 +4109,15 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
 import '@ui5/webcomponents/dist/MenuItem.js';
 import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
 @ProxyInputs([
-  'selected',
   'type',
   'accessibilityAttributes',
   'navigated',
   'tooltip',
   'highlight',
+  'selected',
   'text',
   'additionalText',
   'icon',
-  'startsSection',
   'disabled',
   'loading',
   'loadingDelay',
@@ -3946,16 +4129,15 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
   selector: 'ui5-menu-item',
   template: '<ng-content></ng-content>',
   inputs: [
-    'selected',
     'type',
     'accessibilityAttributes',
     'navigated',
     'tooltip',
     'highlight',
+    'selected',
     'text',
     'additionalText',
     'icon',
-    'startsSection',
     'disabled',
     'loading',
     'loadingDelay',
@@ -3965,11 +4147,6 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
   exportAs: 'ui5MenuItem',
 })
 class MenuItemComponent {
-  /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
   /**
         Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
@@ -3998,16 +4175,21 @@ If set to \`true\`, a navigation indicator is displayed at the end of the list i
   /**
         Defines the text of the tooltip for the menu item.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
         */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
   /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
         Defines the text of the tree item.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the \`additionalText\`, displayed in the end of the menu item.
 
@@ -4017,7 +4199,7 @@ components added to \`endContent\` slot.
 The priority of what will be displayed at the end of the menu item is as follows:
 sub-menu arrow (if there are items added in \`items\` slot) -> components added in \`endContent\` -> text set to \`additionalText\`.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
   /**
         Defines the icon to be displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
@@ -4026,12 +4208,7 @@ The SAP-icons font provides numerous options.
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
-  /**
-        Defines whether a visual separator should be rendered before the item.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  startsSection!: boolean;
+  icon!: string | undefined;
   /**
         Defines whether \`ui5-menu-item\` is in disabled state.
 
@@ -4053,7 +4230,7 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
 
   /**
      Fired when the user clicks on the detail button when type is \`Detail\`.
@@ -4073,6 +4250,40 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
   }
 }
 export { MenuItemComponent };
+"
+`;
+
+exports[`Snapshot test Main Menu Separator should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents/dist/MenuSeparator.js';
+import MenuSeparator from '@ui5/webcomponents/dist/MenuSeparator.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-menu-separator',
+  template: '<ng-content></ng-content>',
+  exportAs: 'ui5MenuSeparator',
+})
+class MenuSeparatorComponent {
+  private elementRef: ElementRef<MenuSeparator> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): MenuSeparator {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { MenuSeparatorComponent };
 "
 `;
 
@@ -4121,7 +4332,7 @@ class MenuComponent {
   /**
         Defines the header text of the menu (displayed on mobile).
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Indicates if the menu is open
         */
@@ -4141,7 +4352,7 @@ class MenuComponent {
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string;
+  opener!: HTMLElement | string | undefined;
 
   /**
      Fired when an item is being clicked.
@@ -4261,7 +4472,7 @@ export { MessageStripComponent };
 "
 `;
 
-exports[`Snapshot test Main Multi Combo Box Group Item should match the snapshot 1`] = `
+exports[`Snapshot test Main Multi Combo Box Item Group should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
   Component,
@@ -4270,27 +4481,27 @@ exports[`Snapshot test Main Multi Combo Box Group Item should match the snapshot
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
-import MultiComboBoxGroupItem from '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
-@ProxyInputs(['text'])
+import '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
+import MultiComboBoxItemGroup from '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
+@ProxyInputs(['headerText'])
 @Component({
   standalone: true,
-  selector: 'ui5-mcb-group-item',
+  selector: 'ui5-mcb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['text'],
-  exportAs: 'ui5McbGroupItem',
+  inputs: ['headerText'],
+  exportAs: 'ui5McbItemGroup',
 })
-class MultiComboBoxGroupItemComponent {
+class MultiComboBoxItemGroupComponent {
   /**
         Defines the text of the component.
         */
-  text!: string;
+  headerText!: string | undefined;
 
-  private elementRef: ElementRef<MultiComboBoxGroupItem> = inject(ElementRef);
+  private elementRef: ElementRef<MultiComboBoxItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
 
-  get element(): MultiComboBoxGroupItem {
+  get element(): MultiComboBoxItemGroup {
     return this.elementRef.nativeElement;
   }
 
@@ -4298,7 +4509,7 @@ class MultiComboBoxGroupItemComponent {
     this.cdr.detach();
   }
 }
-export { MultiComboBoxGroupItemComponent };
+export { MultiComboBoxItemGroupComponent };
 "
 `;
 
@@ -4327,11 +4538,11 @@ class MultiComboBoxItemComponent {
   /**
         Defines the text of the component.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the additional text of the component.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
   /**
         Defines the selected state of the component.
         */
@@ -4391,7 +4602,8 @@ import {
 @ProxyOutputs([
   'change: ui5Change',
   'input: ui5Input',
-  'open-change: ui5OpenChange',
+  'open: ui5Open',
+  'close: ui5Close',
   'selection-change: ui5SelectionChange',
 ])
 @Component({
@@ -4414,7 +4626,13 @@ import {
     'accessibleNameRef',
     'showSelectAll',
   ],
-  outputs: ['ui5Change', 'ui5Input', 'ui5OpenChange', 'ui5SelectionChange'],
+  outputs: [
+    'ui5Change',
+    'ui5Input',
+    'ui5Open',
+    'ui5Close',
+    'ui5SelectionChange',
+  ],
   exportAs: 'ui5MultiCombobox',
   hostDirectives: [GenericControlValueAccessor],
   host: {
@@ -4436,7 +4654,7 @@ class MultiComboBoxComponent {
 **Note:** When the component is used inside a form element,
 the value is sent as the first element in the form data, even if it's empty.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines whether the value will be autcompleted to match an item
         */
@@ -4446,7 +4664,7 @@ the value is sent as the first element in the form data, even if it's empty.
         Defines a short hint intended to aid the user with data entry when the
 component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines if the user input will be prevented, if no matching item has been found
         */
@@ -4488,11 +4706,11 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Determines if the select all checkbox is visible on top of suggestions.
         */
@@ -4508,9 +4726,13 @@ but still provides visual feedback upon user interaction.
     */
   ui5Input!: EventEmitter<void>;
   /**
-     Fired when the dropdown is opened or closed.
+     Fired when the dropdown is opened.
     */
-  ui5OpenChange!: EventEmitter<void>;
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired when the dropdown is closed.
+    */
+  ui5Close!: EventEmitter<void>;
   /**
      Fired when selection is changed by user interaction.
     */
@@ -4638,7 +4860,7 @@ class MultiInputComponent {
         Defines a short hint intended to aid the user with data entry when the
 component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines whether the component is read-only.
 
@@ -4685,7 +4907,7 @@ that use different soft keyboard layouts depending on the given input type.
 **Note:** When the component is used inside a form element,
 the value is sent as the first element in the form data, even if it's empty.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines whether the component should show suggestions, if such are present.
 
@@ -4703,11 +4925,11 @@ from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable th
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the input.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines whether the clear icon of the input will be shown.
         */
@@ -4800,34 +5022,34 @@ exports[`Snapshot test Main Option Custom should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/OptionCustom.js';
 import OptionCustom from '@ui5/webcomponents/dist/OptionCustom.js';
-@ProxyInputs(['selected', 'displayText', 'value', 'tooltip'])
+@ProxyInputs(['displayText', 'value', 'tooltip', 'selected'])
 @Component({
   standalone: true,
   selector: 'ui5-option-custom',
   template: '<ng-content></ng-content>',
-  inputs: ['selected', 'displayText', 'value', 'tooltip'],
+  inputs: ['displayText', 'value', 'tooltip', 'selected'],
   exportAs: 'ui5OptionCustom',
 })
 class OptionCustomComponent {
+  /**
+        Defines the text, displayed inside the \`ui5-select\` input filed
+when the option gets selected.
+        */
+  displayText!: string | undefined;
+  /**
+        Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
+For more information on HTML Form support, see the \`name\` property of \`ui5-select\`.
+        */
+  value!: string | undefined;
+  /**
+        Defines the tooltip of the option.
+        */
+  tooltip!: string | undefined;
   /**
         Defines the selected state of the component.
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
-  /**
-        Defines the text, displayed inside the \`ui5-select\` input filed
-when the option gets selected.
-        */
-  displayText!: string;
-  /**
-        Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
-For more information on HTML Form support, see the \`name\` property of \`ui5-select\`.
-        */
-  value!: string;
-  /**
-        Defines the text of the tooltip that would be displayed for the list item.
-        */
-  tooltip!: string;
 
   private elementRef: ElementRef<OptionCustom> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4858,25 +5080,20 @@ exports[`Snapshot test Main Option should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Option.js';
 import Option from '@ui5/webcomponents/dist/Option.js';
-@ProxyInputs(['selected', 'value', 'icon', 'additionalText', 'tooltip'])
+@ProxyInputs(['value', 'icon', 'additionalText', 'tooltip', 'selected'])
 @Component({
   standalone: true,
   selector: 'ui5-option',
   template: '<ng-content></ng-content>',
-  inputs: ['selected', 'value', 'icon', 'additionalText', 'tooltip'],
+  inputs: ['value', 'icon', 'additionalText', 'tooltip', 'selected'],
   exportAs: 'ui5Option',
 })
 class OptionComponent {
   /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
-  /**
         Defines the value of the \`ui5-select\` inside an HTML Form element when this component is selected.
 For more information on HTML Form support, see the \`name\` property of \`ui5-select\`.
         */
-  value!: string;
+  value!: string | undefined;
   /**
         Defines the \`icon\` source URI.
 
@@ -4884,15 +5101,20 @@ For more information on HTML Form support, see the \`name\` property of \`ui5-se
 SAP-icons font provides numerous built-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
-        Defines the \`additionalText\`, displayed in the end of the list item.
+        Defines the \`additionalText\`, displayed in the end of the option.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
   /**
-        Defines the text of the tooltip that would be displayed for the list item.
+        Defines the tooltip of the option.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
+  /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
 
   private elementRef: ElementRef<Option> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4959,7 +5181,7 @@ The text is visible in both expanded and collapsed states.
 
 **Note:** This property is overridden by the \`header\` slot.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Determines whether the component is in a fixed state that is not
 expandable/collapsible by user interaction.
@@ -4990,7 +5212,7 @@ set by the \`headerText\`.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Indicates whether the Panel header is sticky or not.
 If stickyHeader is set to true, then whenever you scroll the content or
@@ -5090,7 +5312,7 @@ class PopoverComponent {
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
         */
-  initialFocus!: string;
+  initialFocus!: string | undefined;
   /**
         Defines if the focus should be returned to the previously focused element,
 when the popup closes.
@@ -5104,7 +5326,7 @@ when the popup closes.
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Allows setting a custom role.
         */
@@ -5124,7 +5346,7 @@ when the popup closes.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Determines on which side the component is placed at.
         */
@@ -5232,7 +5454,7 @@ class ProgressIndicatorComponent {
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines whether the component value is shown.
         */
@@ -5253,7 +5475,7 @@ If a value greater than 100 is provided, the percentValue is set to 100. In othe
 - If there is no value provided or the value is empty, the default percentage value is shown.
 - If \`hideValue\` property is \`true\` both the \`displayValue\` and \`value\` property values are not shown.
         */
-  displayValue!: string | null | undefined;
+  displayValue!: string | undefined;
   /**
         Defines the value state of the component.
         */
@@ -5359,7 +5581,7 @@ or by using the Space or Enter key.
   /**
         Defines the text of the component.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the value state of the component.
         */
@@ -5375,7 +5597,7 @@ Radio buttons with the same \`name\` will form a radio button group.
 
 **Note:** Only one radio button can be selected per group.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the form value of the component.
 When a form with a radio button group is submitted, the group's value
@@ -5391,11 +5613,11 @@ will be the value of the currently selected radio button.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the component checked state changes.
@@ -5495,7 +5717,7 @@ class RangeSliderComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
 
@@ -5530,7 +5752,7 @@ tickmark will be labelled, which means every 4th value number.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines start point of a selection - position of a first handle on the slider.
         */
@@ -5650,11 +5872,11 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines whether the component is required.
         */
@@ -5663,7 +5885,7 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the tooltip of the component.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
 
   /**
      The event is fired when the value changes.
@@ -5755,7 +5977,7 @@ class ResponsivePopoverComponent {
 **Note:** If an element with \`autofocus\` attribute is added inside the component,
 \`initialFocus\` won't take effect.
         */
-  initialFocus!: string;
+  initialFocus!: string | undefined;
   /**
         Defines if the focus should be returned to the previously focused element,
 when the popup closes.
@@ -5769,7 +5991,7 @@ when the popup closes.
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Allows setting a custom role.
         */
@@ -5789,7 +6011,7 @@ when the popup closes.
 
 **Note:** If \`header\` slot is provided, the \`headerText\` is ignored.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Determines on which side the component is placed at.
         */
@@ -5913,7 +6135,7 @@ focused, and it is not in the tab chain.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
@@ -5921,7 +6143,7 @@ focused, and it is not in the tab chain.
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
@@ -5929,7 +6151,7 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
 
   private elementRef: ElementRef<SegmentedButtonItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -6070,7 +6292,7 @@ class SelectComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the value state of the component.
         */
@@ -6091,11 +6313,11 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the select.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the value of the component:
 
@@ -6218,7 +6440,7 @@ class SliderComponent {
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).
 
@@ -6253,7 +6475,7 @@ tickmark will be labelled, which means every 4th value number.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Current value of the slider
         */
@@ -6402,7 +6624,7 @@ Example:
 
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines whether the arrow button should have the active state styles or not.
         */
@@ -6452,173 +6674,6 @@ focused, and it is not in the tab chain.
   }
 }
 export { SplitButtonComponent };
-"
-`;
-
-exports[`Snapshot test Main Standard List Item should match the snapshot 1`] = `
-"import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input as InputDecorator,
-  NgZone,
-  booleanAttribute,
-  inject,
-} from '@angular/core';
-import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-import '@ui5/webcomponents/dist/StandardListItem.js';
-import StandardListItem from '@ui5/webcomponents/dist/StandardListItem.js';
-@ProxyInputs([
-  'selected',
-  'type',
-  'accessibilityAttributes',
-  'navigated',
-  'tooltip',
-  'highlight',
-  'description',
-  'icon',
-  'iconEnd',
-  'image',
-  'additionalText',
-  'additionalTextState',
-  'movable',
-  'accessibleName',
-])
-@ProxyOutputs(['detail-click: ui5DetailClick'])
-@Component({
-  standalone: true,
-  selector: 'ui5-li',
-  template: '<ng-content></ng-content>',
-  inputs: [
-    'selected',
-    'type',
-    'accessibilityAttributes',
-    'navigated',
-    'tooltip',
-    'highlight',
-    'description',
-    'icon',
-    'iconEnd',
-    'image',
-    'additionalText',
-    'additionalTextState',
-    'movable',
-    'accessibleName',
-  ],
-  outputs: ['ui5DetailClick'],
-  exportAs: 'ui5Li',
-})
-class StandardListItemComponent {
-  /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
-  /**
-        Defines the visual indication and behavior of the list items.
-Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
-
-**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
-while with type \`Inactive\` and \`Detail\` - will not.
-        */
-  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-  /**
-        Defines the additional accessibility attributes that will be applied to the component.
-The following fields are supported:
-
-- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
-
-	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-        */
-  accessibilityAttributes!: ListItemAccessibilityAttributes;
-  /**
-        The navigated state of the list item.
-If set to \`true\`, a navigation indicator is displayed at the end of the list item.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  navigated!: boolean;
-  /**
-        Defines the text of the tooltip that would be displayed for the list item.
-        */
-  tooltip!: string;
-  /**
-        Defines the highlight state of the list items.
-Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-        */
-  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
-  /**
-        Defines the description displayed right under the item text, if such is present.
-        */
-  description!: string;
-  /**
-        Defines the \`icon\` source URI.
-
-**Note:**
-SAP-icons font provides numerous built-in icons. To find all the available icons, see the
-[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-        */
-  icon!: string;
-  /**
-        Defines whether the \`icon\` should be displayed in the beginning of the list item or in the end.
-
-**Note:** If \`image\` is set, the \`icon\` would be displayed after the \`image\`.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  iconEnd!: boolean;
-  /**
-        Defines the \`image\` source URI.
-
-**Note:** The \`image\` would be displayed in the beginning of the list item.
-        */
-  image!: string;
-  /**
-        Defines the \`additionalText\`, displayed in the end of the list item.
-        */
-  additionalText!: string;
-  /**
-        Defines the state of the \`additionalText\`.
-
-Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
-        */
-  additionalTextState!:
-    | 'None'
-    | 'Positive'
-    | 'Critical'
-    | 'Negative'
-    | 'Information';
-  /**
-        Defines whether the item is movable.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  movable!: boolean;
-  /**
-        Defines the text alternative of the component.
-Note: If not provided a default text alternative will be set, if present.
-        */
-  accessibleName!: string;
-
-  /**
-     Fired when the user clicks on the detail button when type is \`Detail\`.
-    */
-  ui5DetailClick!: EventEmitter<void>;
-
-  private elementRef: ElementRef<StandardListItem> = inject(ElementRef);
-  private zone = inject(NgZone);
-  private cdr = inject(ChangeDetectorRef);
-
-  get element(): StandardListItem {
-    return this.elementRef.nativeElement;
-  }
-
-  constructor() {
-    this.cdr.detach();
-  }
-}
-export { StandardListItemComponent };
 "
 `;
 
@@ -6726,7 +6781,7 @@ Passing an empty string as the value of this property will make the component ap
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Determines the number of digits after the decimal point of the component.
         */
@@ -6734,11 +6789,11 @@ Passing an empty string as the value of this property will make the component ap
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -6767,7 +6822,7 @@ export { StepInputComponent };
 "
 `;
 
-exports[`Snapshot test Main Suggestion Group Item should match the snapshot 1`] = `
+exports[`Snapshot test Main Suggestion Item Custom should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
   Component,
@@ -6776,27 +6831,28 @@ exports[`Snapshot test Main Suggestion Group Item should match the snapshot 1`] 
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-import '@ui5/webcomponents/dist/SuggestionGroupItem.js';
-import SuggestionGroupItem from '@ui5/webcomponents/dist/SuggestionGroupItem.js';
+import '@ui5/webcomponents/dist/SuggestionItemCustom.js';
+import SuggestionItemCustom from '@ui5/webcomponents/dist/SuggestionItemCustom.js';
 @ProxyInputs(['text'])
 @Component({
   standalone: true,
-  selector: 'ui5-suggestion-group-item',
+  selector: 'ui5-suggestion-item-custom',
   template: '<ng-content></ng-content>',
   inputs: ['text'],
-  exportAs: 'ui5SuggestionGroupItem',
+  exportAs: 'ui5SuggestionItemCustom',
 })
-class SuggestionGroupItemComponent {
+class SuggestionItemCustomComponent {
   /**
-        Defines the text of the \`ui5-suggestion-group-item\`.
+        Defines the text of the \`ui5-suggestion-item-custom\`.
+**Note:** The text property is considered only for autocomplete.
         */
-  text!: string;
+  text!: string | undefined;
 
-  private elementRef: ElementRef<SuggestionGroupItem> = inject(ElementRef);
+  private elementRef: ElementRef<SuggestionItemCustom> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
 
-  get element(): SuggestionGroupItem {
+  get element(): SuggestionItemCustom {
     return this.elementRef.nativeElement;
   }
 
@@ -6804,7 +6860,52 @@ class SuggestionGroupItemComponent {
     this.cdr.detach();
   }
 }
-export { SuggestionGroupItemComponent };
+export { SuggestionItemCustomComponent };
+"
+`;
+
+exports[`Snapshot test Main Suggestion Item Group should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/SuggestionItemGroup.js';
+import SuggestionItemGroup from '@ui5/webcomponents/dist/SuggestionItemGroup.js';
+@ProxyInputs(['headerText', 'headerAccessibleName'])
+@Component({
+  standalone: true,
+  selector: 'ui5-suggestion-item-group',
+  template: '<ng-content></ng-content>',
+  inputs: ['headerText', 'headerAccessibleName'],
+  exportAs: 'ui5SuggestionItemGroup',
+})
+class SuggestionItemGroupComponent {
+  /**
+        Defines the header text of the <code>ui5-li-group</code>.
+        */
+  headerText!: string | undefined;
+  /**
+        Defines the accessible name of the header.
+        */
+  headerAccessibleName!: string | undefined;
+
+  private elementRef: ElementRef<SuggestionItemGroup> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SuggestionItemGroup {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SuggestionItemGroupComponent };
 "
 `;
 
@@ -6813,91 +6914,29 @@ exports[`Snapshot test Main Suggestion Item should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Input as InputDecorator,
   NgZone,
-  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/SuggestionItem.js';
 import SuggestionItem from '@ui5/webcomponents/dist/SuggestionItem.js';
-@ProxyInputs([
-  'text',
-  'type',
-  'description',
-  'icon',
-  'iconEnd',
-  'image',
-  'additionalText',
-  'additionalTextState',
-])
+@ProxyInputs(['text', 'additionalText'])
 @Component({
   standalone: true,
   selector: 'ui5-suggestion-item',
   template: '<ng-content></ng-content>',
-  inputs: [
-    'text',
-    'type',
-    'description',
-    'icon',
-    'iconEnd',
-    'image',
-    'additionalText',
-    'additionalTextState',
-  ],
+  inputs: ['text', 'additionalText'],
   exportAs: 'ui5SuggestionItem',
 })
 class SuggestionItemComponent {
   /**
         Defines the text of the component.
         */
-  text!: string;
-  /**
-        Defines the visual indication and behavior of the item.
-Available options are \`Active\` (by default), \`Inactive\` and \`Detail\`.
-
-**Note:** When set to \`Active\`, the item will provide visual response upon press and hover,
-while when \`Inactive\` or \`Detail\` - will not.
-        */
-  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
-  /**
-        Defines the description displayed right under the item text, if such is present.
-        */
-  description!: string;
-  /**
-        Defines the \`icon\` source URI.
-
-**Note:**
-SAP-icons font provides numerous built-in icons. To find all the available icons, see the
-[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-        */
-  icon!: string;
-  /**
-        Defines whether the \`icon\` should be displayed in the beginning of the item or in the end.
-
-**Note:** If \`image\` is set, the \`icon\` would be displayed after the \`image\`.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  iconEnd!: boolean;
-  /**
-        Defines the \`image\` source URI.
-
-**Note:** The \`image\` would be displayed in the beginning of the item.
-        */
-  image!: string;
+  text!: string | undefined;
   /**
         Defines the \`additionalText\`, displayed in the end of the item.
         */
-  additionalText!: string;
-  /**
-        Defines the state of the \`additionalText\`.
-        */
-  additionalTextState!:
-    | 'None'
-    | 'Positive'
-    | 'Critical'
-    | 'Negative'
-    | 'Information';
+  additionalText!: string | undefined;
 
   private elementRef: ElementRef<SuggestionItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -6992,33 +7031,33 @@ either by cliking the component, or by pressing the \`Enter\` or \`Space\` key.
 
 **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
         */
-  textOn!: string;
+  textOn!: string | undefined;
   /**
         Defines the text, displayed when the component is not checked.
 
 **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
         */
-  textOff!: string;
+  textOff!: string | undefined;
   /**
         Sets the accessible ARIA name of the component.
 
 **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an \`accessibleName\`.
 Providing an \`accessibleNameRef\` or an \`accessibleName\` is mandatory in the cases when \`textOn\` and \`textOff\` properties aren't set.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the component.
 
 **Note**: We recommend that you set an accessibleNameRef pointing to an external label or at least an \`accessibleName\`.
 Providing an \`accessibleNameRef\` or an \`accessibleName\` is mandatory in the cases when \`textOn\` and \`textOff\` properties aren't set.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the tooltip of the component.
 
 **Note:** If applicable an external label reference should always be the preferred option to provide context to the \`ui5-switch\` component over a tooltip.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines whether the component is required.
         */
@@ -7029,7 +7068,7 @@ Providing an \`accessibleNameRef\` or an \`accessibleName\` is mandatory in the 
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
 
   /**
      Fired when the component checked state changes.
@@ -7237,7 +7276,7 @@ class TabComponent {
   /**
         The text to be displayed for the item.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Disabled tabs can't be selected.
         */
@@ -7246,13 +7285,13 @@ class TabComponent {
   /**
         Represents the \\"additionalText\\" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the \\"additionalText\\" is displayed larger.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
   /**
         Defines the icon source URI to be displayed as graphical element within the component.
 The SAP-icons font provides numerous built-in icons.
 See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines the component's design color.
 
@@ -7286,6 +7325,415 @@ Available designs are: \`\\"Default\\"\`, \`\\"Neutral\\"\`, \`\\"Positive\\"\`,
   }
 }
 export { TabComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Cell should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents/dist/TableCell.js';
+import TableCell from '@ui5/webcomponents/dist/TableCell.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-table-cell',
+  template: '<ng-content></ng-content>',
+  exportAs: 'ui5TableCell',
+})
+class TableCellComponent {
+  private elementRef: ElementRef<TableCell> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableCell {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableCellComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Growing should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableGrowing.js';
+import TableGrowing from '@ui5/webcomponents/dist/TableGrowing.js';
+@ProxyInputs(['type', 'growingText', 'growingSubText'])
+@ProxyOutputs(['load-more: ui5LoadMore'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-growing',
+  template: '<ng-content></ng-content>',
+  inputs: ['type', 'growingText', 'growingSubText'],
+  outputs: ['ui5LoadMore'],
+  exportAs: 'ui5TableGrowing',
+})
+class TableGrowingComponent {
+  /**
+        Defines the mode of the <code>ui5-table</code> growing.
+
+Available options are:
+
+Button - Shows a More button at the bottom of the table, pressing it will load more rows.
+
+Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.
+        */
+  type!: 'Button' | 'Scroll';
+  /**
+        Defines the text that will be displayed inside the growing button.
+Has no effect when type is set to \`Scroll\`.
+
+**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the
+current language.
+        */
+  growingText!: string | undefined;
+  /**
+        Defines the text that will be displayed below the \`growingText\` inside the growing button.
+Has no effect when type is set to Scroll.
+        */
+  growingSubText!: string | undefined;
+
+  /**
+     Fired when the growing button is pressed or the user scrolls to the end of the table.
+    */
+  ui5LoadMore!: EventEmitter<void>;
+
+  private elementRef: ElementRef<TableGrowing> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableGrowing {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableGrowingComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Header Cell should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableHeaderCell.js';
+import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
+@ProxyInputs(['width', 'minWidth', 'maxWidth', 'importance'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-header-cell',
+  template: '<ng-content></ng-content>',
+  inputs: ['width', 'minWidth', 'maxWidth', 'importance'],
+  exportAs: 'ui5TableHeaderCell',
+})
+class TableHeaderCellComponent {
+  /**
+        Defines the width of column.
+        */
+  width!: string;
+  /**
+        Defines the minimum width of the column.
+
+If the table is in \`Popin\` mode, the column will move into the popin when
+when the minimum width does not fit anymore.
+        */
+  minWidth!: string;
+  /**
+        Defines the maximum width of the column.
+        */
+  maxWidth!: string;
+  /**
+        Defines the importance of the column.
+
+This property affects the popin behaviour.
+Columns with higher importance will move into the popin area later then less important
+columns.
+        */
+  importance!: number;
+
+  private elementRef: ElementRef<TableHeaderCell> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableHeaderCell {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableHeaderCellComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Header Row should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableHeaderRow.js';
+import TableHeaderRow from '@ui5/webcomponents/dist/TableHeaderRow.js';
+@ProxyInputs(['sticky'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-header-row',
+  template: '<ng-content></ng-content>',
+  inputs: ['sticky'],
+  exportAs: 'ui5TableHeaderRow',
+})
+class TableHeaderRowComponent {
+  /**
+        Sticks the \`ui5-table-header-row\` to the top of a table.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  sticky!: boolean;
+
+  private elementRef: ElementRef<TableHeaderRow> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableHeaderRow {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableHeaderRowComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Row should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableRow.js';
+import TableRow from '@ui5/webcomponents/dist/TableRow.js';
+@ProxyInputs(['rowKey', 'interactive', 'navigated'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-row',
+  template: '<ng-content></ng-content>',
+  inputs: ['rowKey', 'interactive', 'navigated'],
+  exportAs: 'ui5TableRow',
+})
+class TableRowComponent {
+  /**
+        Unique identifier of the row.
+        */
+  rowKey!: string;
+  /**
+        Defines the interactive state of the row.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  interactive!: boolean;
+  /**
+        Defines the navigated state of the row.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  navigated!: boolean;
+
+  private elementRef: ElementRef<TableRow> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableRow {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableRowComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Selection should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableSelection.js';
+import TableSelection from '@ui5/webcomponents/dist/TableSelection.js';
+@ProxyInputs(['mode', 'selected'])
+@ProxyOutputs(['change: ui5Change'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-selection',
+  template: '<ng-content></ng-content>',
+  inputs: ['mode', 'selected'],
+  outputs: ['ui5Change'],
+  exportAs: 'ui5TableSelection',
+})
+class TableSelectionComponent {
+  /**
+        Defines the selection mode.
+        */
+  mode!: 'None' | 'Single' | 'Multiple';
+  /**
+        Defines the selected rows separated by a space.
+        */
+  selected!: string;
+
+  /**
+     Fired when selection is changed by user interaction.
+    */
+  ui5Change!: EventEmitter<void>;
+
+  private elementRef: ElementRef<TableSelection> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableSelection {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableSelectionComponent };
+"
+`;
+
+exports[`Snapshot test Main Table should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/Table.js';
+import {
+  default as Table,
+  TableRowClickEventDetail,
+} from '@ui5/webcomponents/dist/Table.js';
+@ProxyInputs([
+  'accessibleName',
+  'accessibleNameRef',
+  'noDataText',
+  'overflowMode',
+  'loading',
+  'loadingDelay',
+])
+@ProxyOutputs(['row-click: ui5RowClick'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'accessibleName',
+    'accessibleNameRef',
+    'noDataText',
+    'overflowMode',
+    'loading',
+    'loadingDelay',
+  ],
+  outputs: ['ui5RowClick'],
+  exportAs: 'ui5Table',
+})
+class TableComponent {
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Identifies the element (or elements) that labels the component.
+        */
+  accessibleNameRef!: string | undefined;
+  /**
+        Defines the text to be displayed when there are no rows in the component.
+        */
+  noDataText!: string | undefined;
+  /**
+        Defines the mode of the <code>ui5-table</code> overflow behavior.
+
+Available options are:
+
+<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.
+
+<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.
+        */
+  overflowMode!: 'Scroll' | 'Popin';
+  /**
+        Defines if the loading indicator should be shown.
+
+<b>Note:</b> When the component is loading, it is non-interactive.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+        */
+  loadingDelay!: number;
+
+  /**
+     Fired when an interactive row is clicked.
+    */
+  ui5RowClick!: EventEmitter<TableRowClickEventDetail>;
+
+  private elementRef: ElementRef<Table> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): Table {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableComponent };
 "
 `;
 
@@ -7334,7 +7782,6 @@ class TagComponent {
   design!:
     | 'Set1'
     | 'Set2'
-    | 'Set3'
     | 'Neutral'
     | 'Information'
     | 'Positive'
@@ -7353,9 +7800,6 @@ To use one you can set a number from \`\\"1\\"\` to \`\\"10\\"\`. The \`colorSch
   hideStateIcon!: boolean;
   /**
         Defines if the component is interactive (focusable and pressable).
-
-**Note:** The tag cannot be \`interactive\`
-when \`design\` property is \`TagDesign.Set3\`
         */
   @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
@@ -7487,7 +7931,7 @@ but still provides visual feedback upon user interaction.
   /**
         Defines a short hint intended to aid the user with data entry when the component has no value.
         */
-  placeholder!: string;
+  placeholder!: string | undefined;
   /**
         Defines the value state of the component.
 
@@ -7535,15 +7979,15 @@ paste and the counter below the component displays their number.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the textarea.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the text has changed and the focus leaves the component.
@@ -7709,13 +8153,13 @@ class TimePickerComponent {
   /**
         Defines a formatted time value.
         */
-  value!: string | undefined;
+  value!: string;
   /**
         Determines the name by which the component will be identified upon submission in an HTML form.
 
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
-  name!: string;
+  name!: string | undefined;
   /**
         Defines the value state of the component.
         */
@@ -7746,7 +8190,7 @@ HH:mm:ss -> 11:42:35
 hh:mm:ss a -> 2:23:15 PM
 mm:ss -> 12:04 (only minutes and seconds)
         */
-  formatPattern!: string;
+  formatPattern!: string | undefined;
   /**
         Defines the open or closed state of the popover.
         */
@@ -7994,7 +8438,7 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component after the button text.
 
@@ -8006,7 +8450,7 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  endIcon!: string;
+  endIcon!: string | undefined;
   /**
         When set to \`true\`, the component will
 automatically submit the nearest HTML form element on \`press\`.
@@ -8020,7 +8464,7 @@ automatically submit the nearest HTML form element on \`press\`.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
@@ -8028,7 +8472,7 @@ automatically submit the nearest HTML form element on \`press\`.
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
@@ -8111,7 +8555,7 @@ class TokenComponent {
   /**
         Defines the text of the token.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines whether the component is selected or not.
         */
@@ -8229,8 +8673,8 @@ exports[`Snapshot test Main Toolbar Button should match the snapshot 1`] = `
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ToolbarButton.js';
 import {
-  ToolbarAccessibilityAttributes,
   default as ToolbarButton,
+  ToolbarButtonAccessibilityAttributes,
 } from '@ui5/webcomponents/dist/ToolbarButton.js';
 @ProxyInputs([
   'overflowPriority',
@@ -8303,7 +8747,7 @@ It will close by default.
 **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the
 [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component after the button text.
 
@@ -8315,13 +8759,13 @@ The SAP-icons font provides numerous options.
 Example:
 See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
-  endIcon!: string;
+  endIcon!: string | undefined;
   /**
         Defines the tooltip of the component.
 
 **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the accessible ARIA name of the component.
         */
@@ -8329,7 +8773,7 @@ See all the available icons within the [Icon Explorer](https://sdk.openui5.org/t
   /**
         Receives id(or many ids) of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
   /**
         Defines the additional accessibility attributes that will be applied to the component.
 
@@ -8344,11 +8788,11 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
         */
-  accessibilityAttributes!: ToolbarAccessibilityAttributes;
+  accessibilityAttributes!: ToolbarButtonAccessibilityAttributes;
   /**
         Button text
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the width of the button.
 
@@ -8500,11 +8944,11 @@ It will close by default.
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the select.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the selected option changes.
@@ -8652,12 +9096,12 @@ exports[`Snapshot test Main Toolbar should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Toolbar.js';
 import Toolbar from '@ui5/webcomponents/dist/Toolbar.js';
-@ProxyInputs(['alignContent', 'accessibleName', 'accessibleNameRef'])
+@ProxyInputs(['alignContent', 'accessibleName', 'accessibleNameRef', 'design'])
 @Component({
   standalone: true,
   selector: 'ui5-toolbar',
   template: '<ng-content></ng-content>',
-  inputs: ['alignContent', 'accessibleName', 'accessibleNameRef'],
+  inputs: ['alignContent', 'accessibleName', 'accessibleNameRef', 'design'],
   exportAs: 'ui5Toolbar',
 })
 class ToolbarComponent {
@@ -8668,11 +9112,15 @@ class ToolbarComponent {
   /**
         Defines the accessible ARIA name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Receives id(or many ids) of the elements that label the input.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
+  /**
+        Defines the toolbar design.
+        */
+  design!: 'Solid' | 'Transparent';
 
   private elementRef: ElementRef<Toolbar> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8706,12 +9154,12 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
 @ProxyInputs([
-  'selected',
   'type',
   'accessibilityAttributes',
   'navigated',
   'tooltip',
   'highlight',
+  'selected',
   'icon',
   'expanded',
   'movable',
@@ -8727,12 +9175,12 @@ import TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
   selector: 'ui5-tree-item-custom',
   template: '<ng-content></ng-content>',
   inputs: [
-    'selected',
     'type',
     'accessibilityAttributes',
     'navigated',
     'tooltip',
     'highlight',
+    'selected',
     'icon',
     'expanded',
     'movable',
@@ -8746,11 +9194,6 @@ import TreeItemCustom from '@ui5/webcomponents/dist/TreeItemCustom.js';
   exportAs: 'ui5TreeItemCustom',
 })
 class TreeItemCustomComponent {
-  /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
   /**
         Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
@@ -8779,16 +9222,21 @@ If set to \`true\`, a navigation indicator is displayed at the end of the list i
   /**
         Defines the text of the tooltip that would be displayed for the list item.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
         */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
   /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
         If set, an icon will be displayed before the text of the tree list item.
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
         */
@@ -8837,7 +9285,7 @@ Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Cri
   /**
         Defines the accessible name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines whether the tree list item should display the selection element.
         */
@@ -8881,12 +9329,12 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
 import '@ui5/webcomponents/dist/TreeItem.js';
 import TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
 @ProxyInputs([
-  'selected',
   'type',
   'accessibilityAttributes',
   'navigated',
   'tooltip',
   'highlight',
+  'selected',
   'icon',
   'expanded',
   'movable',
@@ -8903,12 +9351,12 @@ import TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
   selector: 'ui5-tree-item',
   template: '<ng-content></ng-content>',
   inputs: [
-    'selected',
     'type',
     'accessibilityAttributes',
     'navigated',
     'tooltip',
     'highlight',
+    'selected',
     'icon',
     'expanded',
     'movable',
@@ -8923,11 +9371,6 @@ import TreeItem from '@ui5/webcomponents/dist/TreeItem.js';
   exportAs: 'ui5TreeItem',
 })
 class TreeItemComponent {
-  /**
-        Defines the selected state of the component.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
   /**
         Defines the visual indication and behavior of the list items.
 Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
@@ -8956,16 +9399,21 @@ If set to \`true\`, a navigation indicator is displayed at the end of the list i
   /**
         Defines the text of the tooltip that would be displayed for the list item.
         */
-  tooltip!: string;
+  tooltip!: string | undefined;
   /**
         Defines the highlight state of the list items.
 Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
         */
   highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
   /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
         If set, an icon will be displayed before the text of the tree list item.
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines whether the tree list item will show a collapse or expand icon inside its toggle button.
         */
@@ -9014,15 +9462,15 @@ Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Cri
   /**
         Defines the accessible name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the text of the tree item.
         */
-  text!: string;
+  text!: string | undefined;
   /**
         Defines the \`additionalText\`, displayed in the end of the tree item.
         */
-  additionalText!: string;
+  additionalText!: string | undefined;
 
   /**
      Fired when the user clicks on the detail button when type is \`Detail\`.
@@ -9115,29 +9563,30 @@ the tree modes are exactly the same as the list modes, and are all applicable.
     | 'SingleEnd'
     | 'SingleAuto'
     | 'Multiple'
-    | 'Delete';
+    | 'Delete'
+    | undefined;
   /**
         Defines the text that is displayed when the component contains no items.
         */
-  noDataText!: string;
+  noDataText!: string | undefined;
   /**
         Defines the component header text.
 
 **Note:** If the \`header\` slot is set, this property is ignored.
         */
-  headerText!: string;
+  headerText!: string | undefined;
   /**
         Defines the component footer text.
         */
-  footerText!: string;
+  footerText!: string | undefined;
   /**
         Defines the accessible name of the component.
         */
-  accessibleName!: string;
+  accessibleName!: string | undefined;
   /**
         Defines the IDs of the elements that label the component.
         */
-  accessibleNameRef!: string;
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when a tree item is expanded or collapsed.
@@ -9215,7 +9664,6 @@ import { ColorPickerComponent } from \\"@ui5/webcomponents-ngx/main/color-picker
 import { ComboBoxComponent } from \\"@ui5/webcomponents-ngx/main/combo-box\\";
 import { ComboBoxItemComponent } from \\"@ui5/webcomponents-ngx/main/combo-box-item\\";
 import { ComboBoxItemGroupComponent } from \\"@ui5/webcomponents-ngx/main/combo-box-item-group\\";
-import { CustomListItemComponent } from \\"@ui5/webcomponents-ngx/main/custom-list-item\\";
 import { DatePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-picker\\";
 import { DateRangePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-range-picker\\";
 import { DateTimePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-time-picker\\";
@@ -9229,13 +9677,16 @@ import { InputComponent } from \\"@ui5/webcomponents-ngx/main/input\\";
 import { LabelComponent } from \\"@ui5/webcomponents-ngx/main/label\\";
 import { LinkComponent } from \\"@ui5/webcomponents-ngx/main/link\\";
 import { ListComponent } from \\"@ui5/webcomponents-ngx/main/list\\";
+import { ListItemCustomComponent } from \\"@ui5/webcomponents-ngx/main/list-item-custom\\";
 import { ListItemGroupComponent } from \\"@ui5/webcomponents-ngx/main/list-item-group\\";
+import { ListItemStandardComponent } from \\"@ui5/webcomponents-ngx/main/list-item-standard\\";
 import { MenuComponent } from \\"@ui5/webcomponents-ngx/main/menu\\";
 import { MenuItemComponent } from \\"@ui5/webcomponents-ngx/main/menu-item\\";
+import { MenuSeparatorComponent } from \\"@ui5/webcomponents-ngx/main/menu-separator\\";
 import { MessageStripComponent } from \\"@ui5/webcomponents-ngx/main/message-strip\\";
 import { MultiComboBoxComponent } from \\"@ui5/webcomponents-ngx/main/multi-combo-box\\";
-import { MultiComboBoxGroupItemComponent } from \\"@ui5/webcomponents-ngx/main/multi-combo-box-group-item\\";
 import { MultiComboBoxItemComponent } from \\"@ui5/webcomponents-ngx/main/multi-combo-box-item\\";
+import { MultiComboBoxItemGroupComponent } from \\"@ui5/webcomponents-ngx/main/multi-combo-box-item-group\\";
 import { MultiInputComponent } from \\"@ui5/webcomponents-ngx/main/multi-input\\";
 import { OptionComponent } from \\"@ui5/webcomponents-ngx/main/option\\";
 import { OptionCustomComponent } from \\"@ui5/webcomponents-ngx/main/option-custom\\";
@@ -9252,14 +9703,21 @@ import { SelectComponent } from \\"@ui5/webcomponents-ngx/main/select\\";
 import { SliderComponent } from \\"@ui5/webcomponents-ngx/main/slider\\";
 import { SpecialCalendarDateComponent } from \\"@ui5/webcomponents-ngx/main/special-calendar-date\\";
 import { SplitButtonComponent } from \\"@ui5/webcomponents-ngx/main/split-button\\";
-import { StandardListItemComponent } from \\"@ui5/webcomponents-ngx/main/standard-list-item\\";
 import { StepInputComponent } from \\"@ui5/webcomponents-ngx/main/step-input\\";
-import { SuggestionGroupItemComponent } from \\"@ui5/webcomponents-ngx/main/suggestion-group-item\\";
 import { SuggestionItemComponent } from \\"@ui5/webcomponents-ngx/main/suggestion-item\\";
+import { SuggestionItemCustomComponent } from \\"@ui5/webcomponents-ngx/main/suggestion-item-custom\\";
+import { SuggestionItemGroupComponent } from \\"@ui5/webcomponents-ngx/main/suggestion-item-group\\";
 import { SwitchComponent } from \\"@ui5/webcomponents-ngx/main/switch\\";
 import { TabComponent } from \\"@ui5/webcomponents-ngx/main/tab\\";
 import { TabContainerComponent } from \\"@ui5/webcomponents-ngx/main/tab-container\\";
 import { TabSeparatorComponent } from \\"@ui5/webcomponents-ngx/main/tab-separator\\";
+import { TableComponent } from \\"@ui5/webcomponents-ngx/main/table\\";
+import { TableCellComponent } from \\"@ui5/webcomponents-ngx/main/table-cell\\";
+import { TableGrowingComponent } from \\"@ui5/webcomponents-ngx/main/table-growing\\";
+import { TableHeaderCellComponent } from \\"@ui5/webcomponents-ngx/main/table-header-cell\\";
+import { TableHeaderRowComponent } from \\"@ui5/webcomponents-ngx/main/table-header-row\\";
+import { TableRowComponent } from \\"@ui5/webcomponents-ngx/main/table-row\\";
+import { TableSelectionComponent } from \\"@ui5/webcomponents-ngx/main/table-selection\\";
 import { TagComponent } from \\"@ui5/webcomponents-ngx/main/tag\\";
 import { TextComponent } from \\"@ui5/webcomponents-ngx/main/text\\";
 import { TextAreaComponent } from \\"@ui5/webcomponents-ngx/main/text-area\\";
@@ -9303,7 +9761,6 @@ const imports = [
   ComboBoxComponent,
   ComboBoxItemComponent,
   ComboBoxItemGroupComponent,
-  CustomListItemComponent,
   DatePickerComponent,
   DateRangePickerComponent,
   DateTimePickerComponent,
@@ -9317,13 +9774,16 @@ const imports = [
   LabelComponent,
   LinkComponent,
   ListComponent,
+  ListItemCustomComponent,
   ListItemGroupComponent,
+  ListItemStandardComponent,
   MenuComponent,
   MenuItemComponent,
+  MenuSeparatorComponent,
   MessageStripComponent,
   MultiComboBoxComponent,
-  MultiComboBoxGroupItemComponent,
   MultiComboBoxItemComponent,
+  MultiComboBoxItemGroupComponent,
   MultiInputComponent,
   OptionComponent,
   OptionCustomComponent,
@@ -9340,14 +9800,21 @@ const imports = [
   SliderComponent,
   SpecialCalendarDateComponent,
   SplitButtonComponent,
-  StandardListItemComponent,
   StepInputComponent,
-  SuggestionGroupItemComponent,
   SuggestionItemComponent,
+  SuggestionItemCustomComponent,
+  SuggestionItemGroupComponent,
   SwitchComponent,
   TabComponent,
   TabContainerComponent,
   TabSeparatorComponent,
+  TableComponent,
+  TableCellComponent,
+  TableGrowingComponent,
+  TableHeaderCellComponent,
+  TableHeaderRowComponent,
+  TableRowComponent,
+  TableSelectionComponent,
   TagComponent,
   TextComponent,
   TextAreaComponent,

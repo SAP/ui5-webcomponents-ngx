@@ -46,9 +46,20 @@ export const cardWithList: Story<CardComponent> = (
 
 			<div class="card-content">
 				<ui5-list separators="None" class="card-content-child" style="width: 100%; margin-bottom: 0.75rem;">
-					<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" description="User Researcher">Alain Chevalier</ui5-li>
-					<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" description="Artist">Monique Legrand</ui5-li>
-					<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" description="UX Specialist">Isabella Adams</ui5-li>
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Jennifer
+						<img slot="image" src="../../../assets/images/avatars/woman_avatar_3.png" />
+					</ui5-li>
+
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Lora
+						<img slot="image" src="../../../assets/images/avatars/woman_avatar_4.png" />
+					</ui5-li>
+
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Carlotta
+						<img slot="image" src="../../../assets/images/avatars/woman_avatar_5.png" />
+					</ui5-li>
 				</ui5-list>
 
 			</div>
@@ -60,9 +71,20 @@ export const cardWithList: Story<CardComponent> = (
 
 			<div class="card-content">
 				<ui5-list separators="None" class="card-content-child" style="width: 100%; margin-bottom: 0.75rem;">
-					<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" description="Software Architect">Richard Wilson</ui5-li>
-					<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" description="Visual Designer">Elena Petrova</ui5-li>
-					<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" description="Quality Specialist">John Miller</ui5-li>
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Clark
+						<img slot="image" src="../../../assets/images/avatars/man_avatar_1.png" />
+					</ui5-li>
+
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Ellen
+						<img slot="image" src="../../../assets/images/avatars/woman_avatar_1.png" />
+					</ui5-li>
+
+					<ui5-li icon="navigation-right-arrow" icon-end>
+						Adam
+						<img slot="image" src="../../../assets/images/avatars/man_avatar_2.png" />
+					</ui5-li>
 				</ui5-list>
 			</div>
 		</ui5-card>

@@ -42,9 +42,13 @@ export const basicMenu: Story = () => ({
   <ui5-menu opener="btn" #menuBasic="ui5Menu">
       <ui5-menu-item text="New File" icon="add-document"></ui5-menu-item>
       <ui5-menu-item text="New Folder" icon="add-folder" disabled></ui5-menu-item>
-      <ui5-menu-item text="Open" icon="open-folder" starts-section></ui5-menu-item>
-      <ui5-menu-item text="Close"></ui5-menu-item>
-      <ui5-menu-item text="Preferences" icon="action-settings" starts-section></ui5-menu-item>
+      <ui5-menu-item text="Open" icon="open-folder"></ui5-menu-item>
+
+      <ui5-menu-separator></ui5-menu-separator>
+      <ui5-menu-item text="Close" icon="decline"></ui5-menu-item>
+      <ui5-menu-item text="Preferences" icon="action-settings"></ui5-menu-item>
+
+      <ui5-menu-separator></ui5-menu-separator>
       <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>
   </ui5-menu>
   `
@@ -57,7 +61,9 @@ export const menuWithSubmenu: Story = () => ({
   <ui5-menu opener="btn2" #menuSubs="ui5Menu">
       <ui5-menu-item text="New File" icon="add-document"></ui5-menu-item>
       <ui5-menu-item text="New Folder" icon="add-folder" disabled></ui5-menu-item>
-      <ui5-menu-item text="Open" icon="open-folder" starts-section>
+
+      <ui5-menu-separator></ui5-menu-separator>
+      <ui5-menu-item text="Open" icon="open-folder">
           <ui5-menu-item text="Open Locally" icon="open-folder">
               <ui5-menu-item text="Open from C"></ui5-menu-item>
               <ui5-menu-item text="Open from D"></ui5-menu-item>
@@ -74,7 +80,9 @@ export const menuWithSubmenu: Story = () => ({
           <ui5-menu-item text="Save on Cloud" icon="upload-to-cloud"></ui5-menu-item>
       </ui5-menu-item>
       <ui5-menu-item text="Close"></ui5-menu-item>
-      <ui5-menu-item text="Preferences" icon="action-settings" starts-section></ui5-menu-item>
+
+      <ui5-menu-separator></ui5-menu-separator>
+      <ui5-menu-item text="Preferences" icon="action-settings"></ui5-menu-item>
       <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>
   </ui5-menu>
   `
@@ -87,9 +95,13 @@ export const MenuWithAdditionalTextOnMenuItems: Story = () => ({
   <ui5-menu opener="btn2" #menuAdditionalText="ui5Menu">
       <ui5-menu-item text="New File" icon="add-document" additional-text="Ctrl+N"></ui5-menu-item>
       <ui5-menu-item text="New Folder" icon="add-folder" additional-text="Ctrl+F" disabled></ui5-menu-item>
-      <ui5-menu-item text="Open" icon="open-folder" starts-section></ui5-menu-item>
+
+      <ui5-menu-separator></ui5-menu-separator>
+      <ui5-menu-item text="Open" icon="open-folder"></ui5-menu-item>
       <ui5-menu-item text="Close"></ui5-menu-item>
-      <ui5-menu-item text="Preferences" icon="action-settings" starts-section></ui5-menu-item>
+
+      <ui5-menu-separator></ui5-menu-separator>
+      <ui5-menu-item text="Preferences" icon="action-settings"></ui5-menu-item>
       <ui5-menu-item text="Exit" icon="journey-arrive" additional-text="Ctrl+X"></ui5-menu-item>
   </ui5-menu>
   `

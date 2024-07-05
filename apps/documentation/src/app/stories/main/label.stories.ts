@@ -59,7 +59,7 @@ export const truncatedLabel: Story<LabelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label style="width:200px">Long labels are truncated by default.</ui5-label>
+		<ui5-label wrapping-type="None" style="width:300px">When wrapping-type='None' is set long labels are truncated.</ui5-label>
 	`,
 });
 
@@ -68,7 +68,7 @@ export const wrappedLabel: Story<LabelComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-label style="width:200px" wrapping-type="Normal">Long labels can wrap if the 'wrapping-type="Normal"' property is set.</ui5-label>
+		<ui5-label style="width:300px">Long labels wrap iby default when the text odes not fit the space.</ui5-label>
 	`,
 });
 

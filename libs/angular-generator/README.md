@@ -23,7 +23,6 @@ const components = await apiJsonParser({
   apiJsonPaths: [
     '@ui5/webcomponents-base/dist/api.json',
     '@ui5/webcomponents-fiori/dist/api.json',
-    '@ui5/webcomponents-compat/dist/api.json',
     '@ui5/webcomponents/dist/api.json'
   ]
 });

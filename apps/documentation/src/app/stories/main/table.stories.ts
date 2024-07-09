@@ -126,7 +126,7 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 ) => ({
   props: args,
   template: `
-  	<ui5-table id="table" accessible-name-ref="title" no-data-text="No data found">
+  	<ui5-table accessible-name-ref="title" no-data-text="No data found">
   			<ui5-table-selection id="selection" slot="features" mode="Single"></ui5-table-selection>
 
 			<ui5-table-header-row slot="headerRow">
@@ -167,7 +167,7 @@ export const tableInMultipleSelectMode: Story<TableComponent> = (
   ) => ({
 	props: args,
 	template: `
-		<ui5-table id="table" accessible-name-ref="title" no-data-text="No data found">
+		<ui5-table accessible-name-ref="title" no-data-text="No data found">
 				<ui5-table-selection id="selection" slot="features" mode="Multiple"></ui5-table-selection>
   
 			  <ui5-table-header-row slot="headerRow">
@@ -209,12 +209,12 @@ export const tableWithNoData: Story<TableComponent> = (
 ) => ({
   props: args,
   template: `
-  	<ui5-table id="table" overflow-mode="Popin">
+  	<ui5-table overflow-mode="Popin">
 
 		<ui5-table-header-row slot="headerRow">
-			<ui5-table-header-cell id="produtCol" width="300px"><span>Product</span></ui5-table-header-cell>
-			<ui5-table-header-cell id="supplierCol" width="200px">Supplier</ui5-table-header-cell>
-			<ui5-table-header-cell id="dimensionsCol" width="300px">Dimensions</ui5-table-header-cell>
+			<ui5-table-header-cell width="300px"><span>Product</span></ui5-table-header-cell>
+			<ui5-table-header-cell width="200px">Supplier</ui5-table-header-cell>
+			<ui5-table-header-cell width="300px">Dimensions</ui5-table-header-cell>
 		</ui5-table-header-row>
 
   		<ui5-illustrated-message slot="nodata" name="NoData"></ui5-illustrated-message>

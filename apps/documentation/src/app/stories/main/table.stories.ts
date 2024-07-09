@@ -1,5 +1,5 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent } from '@ui5/webcomponents-ngx';
+import { Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent, TableSelectionComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -69,7 +69,7 @@ export default {
   component: TableComponent,
   decorators: [
     moduleMetadata({
-      imports: [Ui5WebcomponentsModule],
+      imports: [Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent, TableSelectionComponent],
     }),
   ],
   parameters: {
@@ -83,7 +83,7 @@ export default {
 } as Meta;
 
 export const Table: Story<TableComponent> = (
-  args: TableComponent & any
+  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,
   template: `
@@ -122,7 +122,7 @@ export const Table: Story<TableComponent> = (
 });
 
 export const tableInSingleSelectMode: Story<TableComponent> = (
-  args: TableComponent & any
+  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,
   template: `
@@ -163,7 +163,7 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 });
 
 export const tableInMultipleSelectMode: Story<TableComponent> = (
-	args: TableComponent & any
+	args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
   ) => ({
 	props: args,
 	template: `
@@ -205,7 +205,7 @@ export const tableInMultipleSelectMode: Story<TableComponent> = (
 
 
 export const tableWithNoData: Story<TableComponent> = (
-  args: TableComponent & any
+  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,
   template: `

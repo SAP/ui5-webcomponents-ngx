@@ -7,7 +7,7 @@ The project is divided into 2 main parts:
 - Publishable library - `ui5-angular`, aka `@ui5/webcomponents-ngx`
 - Libraries for creating the publishable library.
   - `wrapper` - Contains core logic for wrapping the web components.
-  - `ui5-schema-parser` - Contains logic for parsing the web components API JSONs into `ComponentData` structure
+  - `ui5-schema-parser` - Contains logic for parsing the web components `custom-elements-manifest.json` into `ComponentData` structure
   - `angular-generator` - Contains logic for generating the Angular components and directives from `ComponentData` interface.
   - `fs-commit` - Contains logic for committing the generated files to the filesystem(or any other persistence layer).
 
@@ -48,9 +48,9 @@ one and use it in your wrapper configuration.
 
 ### API JSON parser - @ui5/webcomponents-schema-parser
 
-API JSON parser is a library that contains logic for parsing the web components API JSONs into `ComponentData` structure.
-It expects that it will receive the paths to the API JSONs, which should be in the format of the `@ui5/webcomponents` export.
-If there are multiple API JSONs, which depend on each other(e.g `@ui5/webcomponents` depends on `@ui5/webcomponents-base` for some types),
+API JSON parser is a library that contains logic for parsing the web components `custom-elements-manifest.json` into `ComponentData` structure.
+It expects that it will receive the paths to the `custom-elements-manifest.json`, which should be in the format of the `@ui5/webcomponents` export.
+If there are multiple `custom-elements-manifest.json` files, which depend on each other(e.g `@ui5/webcomponents` depends on `@ui5/webcomponents-base` for some types),
 it will combine then and return the single `ComponentData` object per component. Additionally resulted `ComponentData` may have reference
 to other `ComponentData` objects.
 

@@ -81,7 +81,7 @@ export const checkBoxWithTextWrapping: Story<CheckBoxComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-checkbox text="ui5-checkbox with 'wrapping-type=Normal' set and some long text." wrapping-type="Normal" style="width:200px"></ui5-checkbox>
-		<ui5-checkbox text="Another ui5-checkbox with very long text here" wrapping-type="Normal" style="width:200px"></ui5-checkbox>
+  <ui5-checkbox text="set wrapping-type='None' to make it truncate instead" wrapping-type="None" style="width:300px"></ui5-checkbox>
+		<ui5-checkbox text="ui5-checkbox text wraps by default when some long text is set." style="width:300px"></ui5-checkbox>
 	`,
 });

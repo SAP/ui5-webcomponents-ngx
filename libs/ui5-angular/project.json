@@ -27,7 +27,6 @@
       },
       "outputs": [
         "{projectRoot}/fiori",
-        "{projectRoot}/compat",
         "{projectRoot}/main",
         "{projectRoot}/generic-cva",
         "{projectRoot}/utils",

@@ -18,6 +18,7 @@ All the components that are included in this library, are standalone and can be 
 
 ```typescript
 import { Ui5MainModule } from '@ui5/webcomponents-ngx/main'; // Main module import
+import { Ui5FioriModule } from '@ui5/webcomponents-ngx/fiori'; // Fiori module import
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx'; // All components import
 ```
 

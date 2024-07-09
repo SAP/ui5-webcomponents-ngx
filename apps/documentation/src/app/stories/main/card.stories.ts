@@ -99,69 +99,39 @@ export const cardWithTable: Story<CardComponent> = (
 		<ui5-card>
 			<ui5-card-header slot="header" title-text="New Purchase Orders" subtitle-text="Today" status="3 of 15">
 			</ui5-card-header>
-			<ui5-table class="demo-table">
-				<!-- Columns -->
-				<ui5-table-column slot="columns">
-					<ui5-label>Sales Order</ui5-label>
-				</ui5-table-column>
+					
+			<ui5-table>
+					<ui5-table-header-row slot="headerRow">
+						<ui5-table-header-cell id="produtCol" width="300px"><span>Product</span></ui5-table-header-cell>
+						<ui5-table-header-cell id="supplierCol" width="200px">Supplier</ui5-table-header-cell>
+						<ui5-table-header-cell id="dimensionsCol" width="300px">Dimensions</ui5-table-header-cell>
+						<ui5-table-header-cell id="weightCol" width="100px">Weight</ui5-table-header-cell>
+						<ui5-table-header-cell id="priceCol" width="220px">Price</ui5-table-header-cell>
+					</ui5-table-header-row>
 
-				<ui5-table-column slot="columns">
-					<ui5-label>Customer</ui5-label>
-				</ui5-table-column>
-
-				<ui5-table-column slot="columns">
-					<ui5-label>Net Amount</ui5-label>
-				</ui5-table-column>
-
-				<ui5-table-column slot="columns" min-width="450" popin-text="Status" demand-popin>
-					<ui5-label>Status</ui5-label>
-				</ui5-table-column>
-
-				<ui5-table-row>
-					<ui5-table-cell>
-						<ui5-label>5000010050</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<ui5-label>Entertainment Argentinia</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-							<ui5-label>6k USD</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<span class="status-success">Aproved</span>
-					</ui5-table-cell>
-				</ui5-table-row>
-
-				<ui5-table-row>
-					<ui5-table-cell>
-						<ui5-label>5000010051</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<ui5-label>Brazil Techologies</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-							<ui5-label>2k USD</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<span class="status-error">Rejected</span>
-					</ui5-table-cell>
-				</ui5-table-row>
-
-				<ui5-table-row>
-					<ui5-table-cell>
-						<ui5-label>5000010052</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<ui5-label>Robert Brown Ent.</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-							<ui5-label>17k USD</ui5-label>
-					</ui5-table-cell>
-					<ui5-table-cell>
-						<span class="status-warning">Pending</span>
-					</ui5-table-cell>
-				</ui5-table-row>
+					<ui5-table-row>
+						<ui5-table-cell><ui5-label><b>Notebook Basic 15</b><br>HT-1000</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>Very Best Screens</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>30 x 18 x 3 cm</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label style="color: #2b7c2b"><b>4.2</b> KG</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label><b>956</b> EUR</ui5-label></ui5-table-cell>
+					</ui5-table-row>
+					<ui5-table-row>
+						<ui5-table-cell><ui5-label><b>Notebook Basic 17</b><br>HT-1001</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>Smartcards</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>29 x 17 x 3.1 cm</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label style="color: #2b7c2b"><b>4.5</b> KG</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label><b>1249</b> EUR</ui5-label></ui5-table-cell>
+					</ui5-table-row>
+					<ui5-table-row>
+						<ui5-table-cell><ui5-label><b>Notebook Basic 18</b><br>HT-1002</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>Technocom</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label>32 x 21 x 4 cm</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label style="color: #2b7c2b"><b>3.7</b> KG</ui5-label></ui5-table-cell>
+						<ui5-table-cell><ui5-label><b>29</b> EUR</ui5-label></ui5-table-cell>
+					</ui5-table-row>
 			</ui5-table>
+
 		</ui5-card>
 	`,
 });
@@ -235,5 +205,24 @@ export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
 				</div>
 			</div>
 		</ui5-card>
+
+		<style>
+			.content,
+			.content-group {
+				display: flex;
+				flex-direction: column;
+				padding-block-end: 1rem;
+			}
+			.content-padding {
+				padding: 0.5rem 1rem 0 1rem;
+				box-sizing: border-box;
+			}
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, 22rem);
+				grid-auto-rows: 1fr;
+				gap: 1rem;
+			}
+		</style>
 	`,
 });

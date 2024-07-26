@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, IconComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { IconComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -53,7 +53,7 @@ export default {
   },
 } as Meta;
 
-export const basicIcons: Story<IconComponent> = (
+export const basicIcons = (
   args: IconComponent & any
 ) => ({
   props: args,
@@ -66,7 +66,7 @@ export const basicIcons: Story<IconComponent> = (
 	`,
 });
 
-export const sapFioriToolsIcons: Story<IconComponent> = (
+export const sapFioriToolsIcons = (
   args: IconComponent & any
 ) => ({
   props: args,
@@ -79,7 +79,7 @@ export const sapFioriToolsIcons: Story<IconComponent> = (
 	`,
 });
 
-export const customizedIcons: Story<IconComponent> = (
+export const customizedIcons = (
   args: IconComponent & any
 ) => ({
   props: args,

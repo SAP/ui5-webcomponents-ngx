@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ToolbarComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ToolbarComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `The <code>ui5-toolbar</code> component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.
@@ -35,7 +32,7 @@ export default {
   },
 } as Meta;
 
-export const basicTimePicker: Story<ToolbarComponent> = (
+export const basicTimePicker = (
   args: ToolbarComponent & any
 ) => ({
   props: args,

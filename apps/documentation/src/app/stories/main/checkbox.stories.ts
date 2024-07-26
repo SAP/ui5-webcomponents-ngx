@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  CheckBoxComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { CheckBoxComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -38,7 +35,7 @@ export default {
   },
 } as Meta;
 
-export const basicCheckBox: Story<CheckBoxComponent> = (
+export const basicCheckBox = (
   args: CheckBoxComponent & any
 ) => ({
   props: args,
@@ -50,7 +47,7 @@ export const basicCheckBox: Story<CheckBoxComponent> = (
 	`,
 });
 
-export const checkBoxStates: Story<CheckBoxComponent> = (
+export const checkBoxStates = (
   args: CheckBoxComponent & any
 ) => ({
   props: args,
@@ -76,7 +73,7 @@ export const checkBoxStates: Story<CheckBoxComponent> = (
 	`,
 });
 
-export const checkBoxWithTextWrapping: Story<CheckBoxComponent> = (
+export const checkBoxWithTextWrapping = (
   args: CheckBoxComponent & any
 ) => ({
   props: args,

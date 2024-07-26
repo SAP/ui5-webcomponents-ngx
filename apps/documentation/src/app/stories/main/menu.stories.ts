@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, MenuComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { MenuComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -35,10 +35,10 @@ export default {
   },
 } as Meta;
 
-export const basicMenu: Story = () => ({
+export const basicMenu = () => ({
   template: `
   <ui5-button id="btn" (click)="menuBasic.open=true">Open Menu</ui5-button>
-  
+
   <ui5-menu opener="btn" #menuBasic="ui5Menu">
       <ui5-menu-item text="New File" icon="add-document"></ui5-menu-item>
       <ui5-menu-item text="New Folder" icon="add-folder" disabled></ui5-menu-item>
@@ -54,7 +54,7 @@ export const basicMenu: Story = () => ({
   `
 });
 
-export const menuWithSubmenu: Story = () => ({
+export const menuWithSubmenu = () => ({
   template: `
   <ui5-button id="btn2" (click)="menuSubs.open=true">Open Menu</ui5-button>
 
@@ -88,7 +88,7 @@ export const menuWithSubmenu: Story = () => ({
   `
 });
 
-export const MenuWithAdditionalTextOnMenuItems: Story = () => ({
+export const MenuWithAdditionalTextOnMenuItems = () => ({
   template: `
   <ui5-button id="btn2" (click)="menuAdditionalText.open=true">Open Menu</ui5-button>
 

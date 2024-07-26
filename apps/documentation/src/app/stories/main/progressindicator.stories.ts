@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ProgressIndicatorComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ProgressIndicatorComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -35,7 +32,7 @@ export default {
   },
 } as Meta;
 
-export const basicProgressIndicator: Story<ProgressIndicatorComponent> = (
+export const basicProgressIndicator = (
   args: ProgressIndicatorComponent & any
 ) => ({
   props: args,
@@ -47,18 +44,14 @@ export const basicProgressIndicator: Story<ProgressIndicatorComponent> = (
 	`,
 });
 
-export const progressIndicatorWithCustomDisplayValue: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
+export const progressIndicatorWithCustomDisplayValue = (args: ProgressIndicatorComponent & any) => ({
   props: args,
   template: `
         <ui5-progress-indicator value="25" display-value="Custom Display Value"></ui5-progress-indicator>
 	`,
 });
 
-export const progressIndicatorWithValueState: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
+export const progressIndicatorWithValueState = (args: ProgressIndicatorComponent & any) => ({
   props: args,
   template: `
         <ui5-progress-indicator value-state="None" value="25"></ui5-progress-indicator>
@@ -69,9 +62,7 @@ export const progressIndicatorWithValueState: Story<
 	`,
 });
 
-export const progressIndicatorWithCustomSizes: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
+export const progressIndicatorWithCustomSizes = (args: ProgressIndicatorComponent & any) => ({
   props: args,
   template: `
         <ui5-progress-indicator value="25" style="height: 50px; width: 200px;"></ui5-progress-indicator>

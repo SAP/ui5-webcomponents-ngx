@@ -1,12 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SwitchComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { SwitchComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 The <code>ui5-switch</code> component is used for changing between binary states. <br> The component can display texts, that will be switched, based on the component state, via the <code>textOn</code> and <code>textOff</code> properties, but texts longer than 3 letters will be cutted off. <br> However, users are able to customize the width of <code>ui5-switch</code> with pure CSS (<code>&lt;ui5-switch style="width: 200px"></code>), and set widths, depending on the texts they would use. <br> Note: the component would not automatically stretch to fit the whole text width.
 
@@ -39,7 +36,7 @@ export default {
   },
 } as Meta;
 
-export const basicSwitch: Story<SwitchComponent> = (
+export const basicSwitch = (
   args: SwitchComponent & any
 ) => ({
   props: args,
@@ -53,7 +50,7 @@ export const basicSwitch: Story<SwitchComponent> = (
 	`,
 });
 
-export const graphicalSwitch: Story<SwitchComponent> = (
+export const graphicalSwitch = (
   args: SwitchComponent & any
 ) => ({
   props: args,

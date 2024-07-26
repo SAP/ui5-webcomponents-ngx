@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, FormComponent, } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { FormComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -28,22 +28,22 @@ export default {
   },
 } as Meta;
 
-export const basicForm: Story<FormComponent> = (
+export const basicForm = (
   args: FormComponent & any
 ) => ({
   props: args,
-  template: ` 
+  template: `
         <ui5-form  header-text="Address">
           <ui5-form-item>
             <ui5-label slot="labelContent">Name:</ui5-label>
             <ui5-text>Red Point Stores</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
             <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
             <ui5-text>411 Maintown</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
             <ui5-label slot="labelContent">Street:</ui5-label>
             <ui5-text>Main St 1618</ui5-text>
@@ -58,23 +58,23 @@ export const basicForm: Story<FormComponent> = (
 });
 
 
-export const formLayout: Story<FormComponent> = (
+export const formLayout = (
   args: FormComponent & any
 ) => ({
   props: args,
-  template: ` 
+  template: `
     <ui5-form header-text="Form Layout: S1 M2 L3 XL5" layout="S1 M2 L3 XL5" label-span="S12 M12 L12 XL12">
       <ui5-form-group header-text="Address">
           <ui5-form-item>
               <ui5-label slot="labelContent">Name:</ui5-label>
               <ui5-text>Red Point Stores</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
               <ui5-text>411 Maintown</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">Street:</ui5-label>
               <ui5-text>Main St 1618</ui5-text>
@@ -96,12 +96,12 @@ export const formLayout: Story<FormComponent> = (
               <ui5-label slot="labelContent">Twitter:</ui5-label>
               <ui5-text>sap</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">Email:</ui5-label>
               <ui5-link>john.smithsap.com</ui5-link>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">Tel:</ui5-label>
               <ui5-link>+49 6227 747474</ui5-link>
@@ -134,12 +134,12 @@ export const formLayout: Story<FormComponent> = (
               <ui5-label slot="labelContent">Name:</ui5-label>
               <ui5-text>Red Point Stores</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
               <ui5-text>411 Maintown</ui5-text>
           </ui5-form-item>
-          
+
           <ui5-form-item>
               <ui5-label slot="labelContent">Street:</ui5-label>
               <ui5-text>Main St 1618</ui5-text>
@@ -159,11 +159,11 @@ export const formLayout: Story<FormComponent> = (
 	`,
 });
 
-export const formGroups: Story<FormComponent> = (
+export const formGroups = (
   args: FormComponent & any
 ) => ({
   props: args,
-  template: ` 
+  template: `
     <ui5-form header-text="Supplier" layout="S1 M3 L4 XL4" label-span="S12 M12 L12 XL4">
 
     <ui5-form-group header-text="Address">
@@ -171,12 +171,12 @@ export const formGroups: Story<FormComponent> = (
             <ui5-label slot="labelContent">Name:</ui5-label>
             <ui5-text>Red Point Stores</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
             <ui5-text>411 Maintown</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">Street:</ui5-label>
             <ui5-text>Main St 1618</ui5-text>
@@ -198,12 +198,12 @@ export const formGroups: Story<FormComponent> = (
             <ui5-label slot="labelContent">Twitter:</ui5-label>
             <ui5-text>sap</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">Email:</ui5-label>
             <ui5-link>john.smith.sap.com</ui5-link>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">Tel:</ui5-label>
             <ui5-link>+49 6227 747474</ui5-link>
@@ -236,12 +236,12 @@ export const formGroups: Story<FormComponent> = (
             <ui5-label slot="labelContent">Name:</ui5-label>
             <ui5-text>Red Point Stores</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
             <ui5-text>411 Maintown</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">Street:</ui5-label>
             <ui5-text>Main St 1618</ui5-text>
@@ -262,22 +262,22 @@ export const formGroups: Story<FormComponent> = (
 });
 
 
-export const labelSpan: Story<FormComponent> = (
+export const labelSpan = (
   args: FormComponent & any
 ) => ({
   props: args,
-  template: ` 
+  template: `
       <ui5-form  header-text="Label Span: S12 M4 L4 XL4" label-span="S12 M4 L4 XL4">
         <ui5-form-item>
             <ui5-label slot="labelContent">Name:</ui5-label>
             <ui5-text class="text">Red Point Stores</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
             <ui5-text class="text">411 Maintown</ui5-text>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label slot="labelContent">Street:</ui5-label>
             <ui5-text class="text">Main St 1618</ui5-text>
@@ -296,12 +296,12 @@ export const labelSpan: Story<FormComponent> = (
           <ui5-label slot="labelContent">Name:</ui5-label>
           <ui5-text class="text">Red Point Stores</ui5-text>
       </ui5-form-item>
-      
+
       <ui5-form-item>
           <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
           <ui5-text class="text">411 Maintown</ui5-text>
       </ui5-form-item>
-      
+
       <ui5-form-item>
           <ui5-label slot="labelContent">Street:</ui5-label>
           <ui5-text class="text">Main St 1618</ui5-text>
@@ -320,12 +320,12 @@ export const labelSpan: Story<FormComponent> = (
           <ui5-label slot="labelContent">Name:</ui5-label>
           <ui5-text class="text">Red Point Stores</ui5-text>
       </ui5-form-item>
-      
+
       <ui5-form-item>
           <ui5-label slot="labelContent">ZIP Code/City:</ui5-label>
           <ui5-text class="text">411 Maintown</ui5-text>
       </ui5-form-item>
-      
+
       <ui5-form-item>
           <ui5-label slot="labelContent">Street:</ui5-label>
           <ui5-text class="text">Main St 1618</ui5-text>
@@ -348,11 +348,11 @@ export const labelSpan: Story<FormComponent> = (
 	`,
 });
 
-export const customHeader: Story<FormComponent> = (
+export const customHeader = (
   args: FormComponent & any
 ) => ({
   props: args,
-  template: ` 
+  template: `
         <ui5-form layout="S1 M2 L2 XL2" item-spacing="Large" style="width: 600px;">
 
         <ui5-bar design="Subheader" slot="header">
@@ -365,7 +365,7 @@ export const customHeader: Story<FormComponent> = (
             <ui5-label for="nameInp" slot="labelContent">Name:</ui5-label>
             <ui5-input value="Red Point Stores" id="nameInp"></ui5-input>
         </ui5-form-item>
-        
+
         <ui5-form-item>
             <ui5-label id="countryLbl" for="countrySel" slot="labelContent">Country:</ui5-label>
             <ui5-select id="countrySel" accessible-name-ref="countryLbl">

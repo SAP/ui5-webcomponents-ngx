@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/playground/src",
   "prefix": "ui-angular",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -81,6 +82,5 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }

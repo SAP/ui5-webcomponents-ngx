@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ButtonComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ButtonComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -38,7 +35,7 @@ export default {
   },
 } as Meta;
 
-export const basicButton: Story<ButtonComponent> = (
+export const basicButton = (
   args: ButtonComponent & any
 ) => ({
   props: args,
@@ -53,7 +50,7 @@ export const basicButton: Story<ButtonComponent> = (
 	`,
 });
 
-export const buttonWithIcon: Story<ButtonComponent> = (
+export const buttonWithIcon = (
   args: ButtonComponent & any
 ) => ({
   props: args,
@@ -67,7 +64,7 @@ export const buttonWithIcon: Story<ButtonComponent> = (
 	`,
 });
 
-export const iconOnlyButton: Story<ButtonComponent> = (
+export const iconOnlyButton = (
   args: ButtonComponent & any
 ) => ({
   props: args,
@@ -96,7 +93,7 @@ export const iconOnlyButton: Story<ButtonComponent> = (
 	`,
 });
 
-export const buttonWithDesign: Story<ButtonComponent> = (
+export const buttonWithDesign = (
   args: ButtonComponent & any
 ) => ({
   props: args,

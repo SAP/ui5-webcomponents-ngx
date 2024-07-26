@@ -1,10 +1,7 @@
-import {Meta, Story, moduleMetadata} from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  BarcodeScannerDialogComponent,
-} from '@ui5/webcomponents-ngx';
-import {extractArgTypes} from '../../arg-type-tools';
-import {CommonModule} from "@angular/common";
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { BarcodeScannerDialogComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
+import { extractArgTypes } from '../../arg-type-tools';
+import { CommonModule } from "@angular/common";
 
 const description = `
 ### Overview
@@ -32,7 +29,7 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = () => ({
+export const Default = () => ({
   template: `
     <ui5-barcode-scanner-dialog
       #dlgScan="ui5BarcodeScannerDialog"

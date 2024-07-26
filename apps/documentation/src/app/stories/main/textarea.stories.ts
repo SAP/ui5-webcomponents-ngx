@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TextAreaComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TextAreaComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -34,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const basicTextArea: Story<TextAreaComponent> = (
+export const basicTextArea = (
   args: TextAreaComponent & any
 ) => ({
   props: args,
@@ -43,7 +40,7 @@ export const basicTextArea: Story<TextAreaComponent> = (
 	`,
 });
 
-export const textAreaWithMaximumLength: Story<TextAreaComponent> = (
+export const textAreaWithMaximumLength = (
   args: TextAreaComponent & any
 ) => ({
   props: args,
@@ -52,7 +49,7 @@ export const textAreaWithMaximumLength: Story<TextAreaComponent> = (
 	`,
 });
 
-export const textAreaWithLabel: Story<TextAreaComponent> = (
+export const textAreaWithLabel = (
   args: TextAreaComponent & any
 ) => ({
   props: args,

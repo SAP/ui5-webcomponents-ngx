@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ToggleButtonComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ToggleButtonComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -30,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const toggleButtonStates: Story<ToggleButtonComponent> = (
+export const toggleButtonStates = (
   args: ToggleButtonComponent & any
 ) => ({
   props: args,
@@ -48,7 +45,7 @@ export const toggleButtonStates: Story<ToggleButtonComponent> = (
 	`,
 });
 
-export const toggleButtonWithIcon: Story<ToggleButtonComponent> = (
+export const toggleButtonWithIcon = (
   args: ToggleButtonComponent & any
 ) => ({
   props: args,
@@ -61,7 +58,7 @@ export const toggleButtonWithIcon: Story<ToggleButtonComponent> = (
 	`,
 });
 
-export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
+export const toggleButtonWithIconOnly = (
   args: ToggleButtonComponent & any
 ) => ({
   props: args,
@@ -79,7 +76,7 @@ export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
 	`,
 });
 
-export const toggleButton: Story<ToggleButtonComponent> = (
+export const toggleButton = (
   args: ToggleButtonComponent & any
 ) => ({
   props: args,

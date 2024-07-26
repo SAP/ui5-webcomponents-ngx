@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  BusyIndicatorComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { BusyIndicatorComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -36,7 +33,7 @@ export default {
   },
 } as Meta;
 
-export const busyIndicatorWithDifferentSize: Story<BusyIndicatorComponent> = (
+export const busyIndicatorWithDifferentSize = (
   args: BusyIndicatorComponent & any
 ) => ({
   props: args,
@@ -47,9 +44,7 @@ export const busyIndicatorWithDifferentSize: Story<BusyIndicatorComponent> = (
 		`,
 });
 
-export const busyIndicatorWrappingOtherElements: Story<
-  BusyIndicatorComponent
-> = (args: BusyIndicatorComponent & any) => ({
+export const busyIndicatorWrappingOtherElements = (args: BusyIndicatorComponent & any) => ({
   props: args,
   template: `
 		<ui5-button id="fetch-btn" style="width: 120px;">Fetch List Data</ui5-button>

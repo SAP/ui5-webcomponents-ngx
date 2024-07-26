@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ColorPickerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ColorPickerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview The <code>ui5-color-picker</code> allows users to choose any color and provides different input options for selecting colors.
@@ -34,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const pickColor: Story<ColorPickerComponent> = (
+export const pickColor = (
   args: ColorPickerComponent & any
 ) => ({
   props: args,

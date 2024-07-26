@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  RatingIndicatorComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { RatingIndicatorComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -45,7 +42,7 @@ export default {
   },
 } as Meta;
 
-export const basicRatingIndicator: Story<RatingIndicatorComponent> = (
+export const basicRatingIndicator = (
   args: RatingIndicatorComponent & any
 ) => ({
   props: args,
@@ -56,9 +53,7 @@ export const basicRatingIndicator: Story<RatingIndicatorComponent> = (
 	`,
 });
 
-export const ratingIndicatorWithDifferentMaxValue: Story<
-  RatingIndicatorComponent
-> = (args: RatingIndicatorComponent & any) => ({
+export const ratingIndicatorWithDifferentMaxValue = (args: RatingIndicatorComponent & any) => ({
   props: args,
   template: `
 		<ui5-rating-indicator max="10" value="5"></ui5-rating-indicator>
@@ -66,7 +61,7 @@ export const ratingIndicatorWithDifferentMaxValue: Story<
 	`,
 });
 
-export const disabledRatingIndicator: Story<RatingIndicatorComponent> = (
+export const disabledRatingIndicator = (
   args: RatingIndicatorComponent & any
 ) => ({
   props: args,
@@ -77,7 +72,7 @@ export const disabledRatingIndicator: Story<RatingIndicatorComponent> = (
 	`,
 });
 
-export const readonlyRatingIndicator: Story<RatingIndicatorComponent> = (
+export const readonlyRatingIndicator = (
   args: RatingIndicatorComponent & any
 ) => ({
   props: args,

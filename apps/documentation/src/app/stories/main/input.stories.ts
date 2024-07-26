@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, InputComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { InputComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -31,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const basicInput: Story<InputComponent> = (
+export const basicInput = (
   args: InputComponent & any
 ) => ({
   props: args,
@@ -42,7 +42,7 @@ export const basicInput: Story<InputComponent> = (
 	`,
 });
 
-export const inputWithValueState: Story<InputComponent> = (
+export const inputWithValueState = (
   args: InputComponent & any
 ) => ({
   props: args,
@@ -54,7 +54,7 @@ export const inputWithValueState: Story<InputComponent> = (
 	`,
 });
 
-export const inputAsSearchField: Story<InputComponent> = (
+export const inputAsSearchField = (
   args: InputComponent & any
 ) => ({
   props: args,
@@ -67,7 +67,7 @@ export const inputAsSearchField: Story<InputComponent> = (
 	`,
 });
 
-export const inputWithLabel: Story<InputComponent> = (
+export const inputWithLabel = (
   args: InputComponent & any
 ) => ({
   props: args,

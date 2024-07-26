@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, PageComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { PageComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -29,7 +29,7 @@ export default {
   },
 } as Meta;
 
-export const pageWithFloatingFooter: Story<PageComponent> = (
+export const pageWithFloatingFooter = (
   args: PageComponent & any
 ) => ({
   props: args,

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ShellBarComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ShellBarComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -40,7 +37,7 @@ export default {
   },
 } as Meta;
 
-export const basicShellBar: Story<ShellBarComponent> = (
+export const basicShellBar = (
   args: ShellBarComponent & any
 ) => ({
   props: args,
@@ -55,7 +52,7 @@ export const basicShellBar: Story<ShellBarComponent> = (
 	`,
 });
 
-export const shellBarWithSearchAndNotifications: Story<ShellBarComponent> = (
+export const shellBarWithSearchAndNotifications = (
   args: ShellBarComponent & any
 ) => ({
   props: args,
@@ -70,7 +67,7 @@ export const shellBarWithSearchAndNotifications: Story<ShellBarComponent> = (
 	`,
 });
 
-export const shellBarWithProductSwitchAndCoPilot: Story<ShellBarComponent> = (
+export const shellBarWithProductSwitchAndCoPilot = (
   args: ShellBarComponent & any
 ) => ({
   props: args,

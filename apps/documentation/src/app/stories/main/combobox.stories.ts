@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ComboBoxComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ComboBoxComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -42,7 +39,7 @@ export default {
   },
 } as Meta;
 
-export const basicExample: Story<ComboBoxComponent> = (
+export const basicExample = (
   args: ComboBoxComponent & any
 ) => ({
   props: args,
@@ -73,7 +70,7 @@ export const basicExample: Story<ComboBoxComponent> = (
 	`,
 });
 
-export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
+export const disabledAndReadonlyProperties = (
   args: ComboBoxComponent & any
 ) => ({
   props: args,
@@ -92,9 +89,7 @@ export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
 	`,
 });
 
-export const filtersStartsWithPerTermDefaultStartsWithContains: Story<
-  ComboBoxComponent
-> = (args: ComboBoxComponent & any) => ({
+export const filtersStartsWithPerTermDefaultStartsWithContains = (args: ComboBoxComponent & any) => ({
   props: args,
   template: `
 			<ui5-combobox placeholder="Starts With Per Term filter (default)">
@@ -124,7 +119,7 @@ export const filtersStartsWithPerTermDefaultStartsWithContains: Story<
 		`,
 });
 
-export const comboBoxWithTwoColumnLayoutItems: Story<ComboBoxComponent> = (
+export const comboBoxWithTwoColumnLayoutItems = (
   args: ComboBoxComponent & any
 ) => ({
   props: args,
@@ -139,7 +134,7 @@ export const comboBoxWithTwoColumnLayoutItems: Story<ComboBoxComponent> = (
 	`,
 });
 
-export const comboBoxWithGroupingOfItems: Story<ComboBoxComponent> = (
+export const comboBoxWithGroupingOfItems = (
   args: ComboBoxComponent & any
 ) => ({
   props: args,

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DynamicPageComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { DynamicPageComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -41,9 +38,7 @@ export default {
   },
 } as Meta;
 
-export const dynamicSideContentWithDefaultProperties: Story<
-  DynamicPageComponent
-> = (args: DynamicPageComponent & any) => ({
+export const dynamicSideContentWithDefaultProperties = (args: DynamicPageComponent & any) => ({
   props: args,
   template: `
 		<div class="wrapper">
@@ -78,7 +73,7 @@ export const dynamicSideContentWithDefaultProperties: Story<
 				<ui5-toolbar-button design="Transparent" icon="action-settings"></ui5-toolbar-button>
 			</ui5-toolbar>
 		</ui5-dynamic-page-title>
-		
+
 		<ui5-dynamic-page-header slot="headerArea">
 			<div class="product-info">
 				<ui5-avatar id="avatar" shape="square" icon="laptop" color-scheme="Accent5" size="L"></ui5-avatar>
@@ -210,29 +205,29 @@ export const dynamicSideContentWithDefaultProperties: Story<
 		.content-padding > * {
 			padding: 0.5rem;
 		}
-		
+
 		.product-info {
 			display: flex;
 			flex-wrap: wrap;
 		}
-		
+
 		.product-info [ui5-avatar],
 		.product-info .product-info-cell {
 			margin-right: 2rem;
-			margin-bottom: 1rem; 
+			margin-bottom: 1rem;
 		}
-		
+
 		.product-info-cell {
 			display: flex;
 			gap: 5px;
 			flex-direction: column;
 		}
-		
+
 		.product-description {
 			display: inline;
 			max-width: 300px;
 		}
-		
+
 		.snapped-title-heading {
 			display: flex;
 			align-items: center;

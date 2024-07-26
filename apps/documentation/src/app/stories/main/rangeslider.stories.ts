@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  RangeSliderComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { RangeSliderComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -47,7 +44,7 @@ export default {
   },
 } as Meta;
 
-export const basicRangeSlider: Story<RangeSliderComponent> = (
+export const basicRangeSlider = (
   args: RangeSliderComponent & any
 ) => ({
   props: args,
@@ -56,16 +53,14 @@ export const basicRangeSlider: Story<RangeSliderComponent> = (
 	`,
 });
 
-export const rangeSliderWithCustomMinMaxStartValueAndEndValueProperties: Story<
-  RangeSliderComponent
-> = (args: RangeSliderComponent & any) => ({
+export const rangeSliderWithCustomMinMaxStartValueAndEndValueProperties = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
 		<ui5-range-slider [min]="100" [max]="200" [startValue]="120" [endValue]="150"></ui5-range-slider>
 	`,
 });
 
-export const rangeSliderWithTooltips: Story<RangeSliderComponent> = (
+export const rangeSliderWithTooltips = (
   args: RangeSliderComponent & any
 ) => ({
   props: args,
@@ -74,18 +69,14 @@ export const rangeSliderWithTooltips: Story<RangeSliderComponent> = (
 	`,
 });
 
-export const rangeSliderWithTickmarksAndCustomStep: Story<
-  RangeSliderComponent
-> = (args: RangeSliderComponent & any) => ({
+export const rangeSliderWithTickmarksAndCustomStep = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
 		<ui5-range-slider step="2" [startValue]="12" [endValue]="24" show-tickmarks></ui5-range-slider>
 	`,
 });
 
-export const rangeSliderWithTooltipsTickmarksAndLabels: Story<
-  RangeSliderComponent
-> = (args: RangeSliderComponent & any) => ({
+export const rangeSliderWithTooltipsTickmarksAndLabels = (args: RangeSliderComponent & any) => ({
   props: args,
   template: `
 		<ui5-range-slider [min]="0" [max]="112" [step]="2" [startValue]="4" [endValue]="12" show-tooltip [labelInterval]="2" show-tickmarks></ui5-range-slider>

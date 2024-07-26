@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  PopoverComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { PopoverComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -40,18 +37,18 @@ export default {
   },
 } as Meta;
 
-export const BasicPopover: Story = () => ({
+export const BasicPopover = () => ({
   template: `
     <ui5-button
       id="btn"
       design="Emphasized"
-      (click)="popover.open=true" 
+      (click)="popover.open=true"
     >
       Open Popover
     </ui5-button>
 
     <ui5-popover #popover="ui5Popover"
-      opener="btn" 
+      opener="btn"
       header-text="Newsletter subscription"
       >
         <ui5-label for="emailInput" required>Email:</ui5-label>

@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/fundamental-styles",
   "prefix": "ui-angular",
+  "tags": [],
   "targets": {
     "prepare": {
       "executor": "@ui5/webcomponents-nx:prepare",
@@ -51,6 +52,5 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  BreadcrumbsComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { BreadcrumbsComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview Enables users to navigate between items by providing a list of links to previous steps in the user's navigation path. It helps the user to be aware of their location within the application and allows faster navigation. <br><br> The last three steps can be accessed as links directly, while the remaining links prior to them are available in a drop-down menu. <br><br> You can choose the type of separator to be used from a number of predefined options.
@@ -26,7 +23,7 @@ export default {
   },
 } as Meta;
 
-export const standardBreadcrumbs: Story<BreadcrumbsComponent> = (
+export const standardBreadcrumbs = (
   args: BreadcrumbsComponent & any
 ) => ({
   props: args,
@@ -39,7 +36,7 @@ export const standardBreadcrumbs: Story<BreadcrumbsComponent> = (
 	`,
 });
 
-export const breadcrumbsWithNoCurrentPage: Story<BreadcrumbsComponent> = (
+export const breadcrumbsWithNoCurrentPage = (
   args: BreadcrumbsComponent & any
 ) => ({
   props: args,
@@ -51,7 +48,7 @@ export const breadcrumbsWithNoCurrentPage: Story<BreadcrumbsComponent> = (
 	`,
 });
 
-export const breadcrumbsWithSpecificSeparator: Story<BreadcrumbsComponent> = (
+export const breadcrumbsWithSpecificSeparator = (
   args: BreadcrumbsComponent & any
 ) => ({
   props: args,

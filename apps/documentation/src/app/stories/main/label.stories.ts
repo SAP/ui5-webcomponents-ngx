@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, LabelComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { LabelComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -27,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const basicLabel: Story<LabelComponent> = (
+export const basicLabel = (
   args: LabelComponent & any
 ) => ({
   props: args,
@@ -36,7 +36,7 @@ export const basicLabel: Story<LabelComponent> = (
 	`,
 });
 
-export const requiredLabel: Story<LabelComponent> = (
+export const requiredLabel = (
   args: LabelComponent & any
 ) => ({
   props: args,
@@ -45,7 +45,7 @@ export const requiredLabel: Story<LabelComponent> = (
 	`,
 });
 
-export const requiredLabelWithColon: Story<LabelComponent> = (
+export const requiredLabelWithColon = (
   args: LabelComponent & any
 ) => ({
   props: args,
@@ -54,7 +54,7 @@ export const requiredLabelWithColon: Story<LabelComponent> = (
 	`,
 });
 
-export const truncatedLabel: Story<LabelComponent> = (
+export const truncatedLabel = (
   args: LabelComponent & any
 ) => ({
   props: args,
@@ -63,7 +63,7 @@ export const truncatedLabel: Story<LabelComponent> = (
 	`,
 });
 
-export const wrappedLabel: Story<LabelComponent> = (
+export const wrappedLabel = (
   args: LabelComponent & any
 ) => ({
   props: args,
@@ -72,7 +72,7 @@ export const wrappedLabel: Story<LabelComponent> = (
 	`,
 });
 
-export const labelFor: Story<LabelComponent> = (
+export const labelFor = (
   args: LabelComponent & any
 ) => ({
   props: args,

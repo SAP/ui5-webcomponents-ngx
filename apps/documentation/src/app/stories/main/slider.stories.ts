@@ -1,12 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SliderComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { SliderComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.
 
@@ -51,7 +48,7 @@ export default {
   },
 } as Meta;
 
-export const basicSlider: Story<SliderComponent> = (
+export const basicSlider = (
   args: SliderComponent & any
 ) => ({
   props: args,
@@ -60,7 +57,7 @@ export const basicSlider: Story<SliderComponent> = (
 	`,
 });
 
-export const sliderWithTooltip: Story<SliderComponent> = (
+export const sliderWithTooltip = (
   args: SliderComponent & any
 ) => ({
   props: args,
@@ -69,7 +66,7 @@ export const sliderWithTooltip: Story<SliderComponent> = (
 	`,
 });
 
-export const disabledSliderWithTickmarksAndLabels: Story<SliderComponent> = (
+export const disabledSliderWithTickmarksAndLabels = (
   args: SliderComponent & any
 ) => ({
   props: args,
@@ -78,7 +75,7 @@ export const disabledSliderWithTickmarksAndLabels: Story<SliderComponent> = (
 	`,
 });
 
-export const sliderTooltipTickmarksAndLabels: Story<SliderComponent> = (
+export const sliderTooltipTickmarksAndLabels = (
   args: SliderComponent & any
 ) => ({
   props: args,

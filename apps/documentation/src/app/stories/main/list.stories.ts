@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, ListComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ListComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -40,7 +40,7 @@ export default {
   },
 } as Meta;
 
-export const basicList: Story<ListComponent> = (args: ListComponent & any) => ({
+export const basicList = (args) =>({
   props: args,
   template: `
 		<ui5-list id="myList" class="full-width">
@@ -52,7 +52,7 @@ export const basicList: Story<ListComponent> = (args: ListComponent & any) => ({
 	`,
 });
 
-export const listWithGrowingScroll: Story<ListComponent> = (
+export const listWithGrowingScroll = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -70,7 +70,7 @@ export const listWithGrowingScroll: Story<ListComponent> = (
 	`,
 });
 
-export const listInMultiSelectionMode: Story<ListComponent> = (
+export const listInMultiSelectionMode = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -84,14 +84,14 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
 	`,
 });
 
-export const busyList: Story<ListComponent> = (args: ListComponent & any) => ({
+export const busyList = (args) =>({
   props: args,
   template: `
 		<ui5-list header-text="Fetching data ..." class="full-width" loading></ui5-list>
 	`,
 });
 
-export const listWithGroupHeaders: Story<ListComponent> = (
+export const listWithGroupHeaders = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -151,7 +151,7 @@ export const listWithGroupHeaders: Story<ListComponent> = (
 	`,
 });
 
-export const listItemsUsingImageSlot: Story<ListComponent> = (
+export const listItemsUsingImageSlot = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -167,7 +167,7 @@ export const listItemsUsingImageSlot: Story<ListComponent> = (
 	`,
 });
 
-export const listInDeleteMode: Story<ListComponent> = (
+export const listInDeleteMode = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -185,7 +185,7 @@ export const listInDeleteMode: Story<ListComponent> = (
 	`,
 });
 
-export const listWithNoData: Story<ListComponent> = (
+export const listWithNoData = (
   args: ListComponent & any
 ) => ({
   props: args,
@@ -194,7 +194,7 @@ export const listWithNoData: Story<ListComponent> = (
 	`,
 });
 
-export const listItemSeparationTypes: Story<ListComponent> = (
+export const listItemSeparationTypes = (
   args: ListComponent & any
 ) => ({
   props: args,

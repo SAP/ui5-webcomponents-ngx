@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  StepInputComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { StepInputComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -38,7 +35,7 @@ export default {
   },
 } as Meta;
 
-export const basicStepInput: Story<StepInputComponent> = (
+export const basicStepInput = (
   args: StepInputComponent & any
 ) => ({
   props: args,
@@ -51,7 +48,7 @@ export const basicStepInput: Story<StepInputComponent> = (
 	`,
 });
 
-export const stepInputWithAlignment: Story<StepInputComponent> = (
+export const stepInputWithAlignment = (
   args: StepInputComponent & any
 ) => ({
   props: args,
@@ -64,9 +61,7 @@ export const stepInputWithAlignment: Story<StepInputComponent> = (
 	`,
 });
 
-export const stepInputWithMinMaxStepAndValuePrecision: Story<
-  StepInputComponent
-> = (args: StepInputComponent & any) => ({
+export const stepInputWithMinMaxStepAndValuePrecision = (args: StepInputComponent & any) => ({
   props: args,
   template: `
 		<div>
@@ -77,7 +72,7 @@ export const stepInputWithMinMaxStepAndValuePrecision: Story<
 	`,
 });
 
-export const stepInputWithValueState: Story<StepInputComponent> = (
+export const stepInputWithValueState = (
   args: StepInputComponent & any
 ) => ({
   props: args,
@@ -91,7 +86,7 @@ export const stepInputWithValueState: Story<StepInputComponent> = (
 	`,
 });
 
-export const stepInputWithLabel: Story<StepInputComponent> = (
+export const stepInputWithLabel = (
   args: StepInputComponent & any
 ) => ({
   props: args,

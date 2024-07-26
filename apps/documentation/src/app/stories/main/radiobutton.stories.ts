@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  RadioButtonComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { RadioButtonComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -34,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
+export const basicRadioButtonTypes = (
   args: RadioButtonComponent & any
 ) => ({
   props: args,
@@ -50,9 +47,7 @@ export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
 	`,
 });
 
-export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
-  RadioButtonComponent
-> = (args: RadioButtonComponent & any) => ({
+export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys = (args: RadioButtonComponent & any) => ({
   props: args,
   template: `
 		<div aria-labelledby="radioGroupTitle1" role="radiogroup" id="radioGroup">
@@ -72,7 +67,7 @@ export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
 	`,
 });
 
-export const radioButtonWithTextWrapping: Story<RadioButtonComponent> = (
+export const radioButtonWithTextWrapping = (
   args: RadioButtonComponent & any
 ) => ({
   props: args,

@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, PanelComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { PanelComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -41,7 +41,7 @@ export default {
   },
 } as Meta;
 
-export const basicPanel: Story<PanelComponent> = (
+export const basicPanel = (
   args: PanelComponent & any
 ) => ({
   props: args,
@@ -58,7 +58,7 @@ export const basicPanel: Story<PanelComponent> = (
 	`,
 });
 
-export const panelWithList: Story<PanelComponent> = (
+export const panelWithList = (
   args: PanelComponent & any
 ) => ({
   props: args,
@@ -78,7 +78,7 @@ export const panelWithList: Story<PanelComponent> = (
 	`,
 });
 
-export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
+export const fixedPanelCantBeCollapsedExpanded = (
   args: PanelComponent & any
 ) => ({
   props: args,
@@ -94,7 +94,7 @@ export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
 	`,
 });
 
-export const panelWithCustomHeader: Story<PanelComponent> = (
+export const panelWithCustomHeader = (
   args: PanelComponent & any
 ) => ({
   props: args,

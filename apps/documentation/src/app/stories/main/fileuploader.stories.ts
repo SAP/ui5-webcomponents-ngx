@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  FileUploaderComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { FileUploaderComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -30,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const uploadSingleFile: Story<FileUploaderComponent> = (
+export const uploadSingleFile = (
   args: FileUploaderComponent & any
 ) => ({
   props: args,
@@ -41,7 +38,7 @@ export const uploadSingleFile: Story<FileUploaderComponent> = (
 	`,
 });
 
-export const fileUploaderWithNoInput: Story<FileUploaderComponent> = (
+export const fileUploaderWithNoInput = (
   args: FileUploaderComponent & any
 ) => ({
   props: args,
@@ -52,7 +49,7 @@ export const fileUploaderWithNoInput: Story<FileUploaderComponent> = (
 	`,
 });
 
-export const customFileUploaders: Story<FileUploaderComponent> = (
+export const customFileUploaders = (
   args: FileUploaderComponent & any
 ) => ({
   props: args,
@@ -67,7 +64,7 @@ export const customFileUploaders: Story<FileUploaderComponent> = (
 	`,
 });
 
-export const buttonWithIconFileUploader: Story<FileUploaderComponent> = (
+export const buttonWithIconFileUploader = (
   args: FileUploaderComponent & any
 ) => ({
   props: args,

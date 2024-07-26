@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MediaGalleryComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { MediaGalleryComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -34,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const usage: Story<MediaGalleryComponent> = (
+export const usage = (
   args: MediaGalleryComponent & any
 ) => ({
   props: args,
@@ -62,7 +59,7 @@ export const usage: Story<MediaGalleryComponent> = (
 	`,
 });
 
-export const mediaGalleryWithVerticalLayout: Story<MediaGalleryComponent> = (
+export const mediaGalleryWithVerticalLayout = (
   args: MediaGalleryComponent & any
 ) => ({
   props: args,
@@ -90,9 +87,7 @@ export const mediaGalleryWithVerticalLayout: Story<MediaGalleryComponent> = (
 	`,
 });
 
-export const mediaGalleryWithThumbnailsOnTheRight: Story<
-  MediaGalleryComponent
-> = (args: MediaGalleryComponent & any) => ({
+export const mediaGalleryWithThumbnailsOnTheRight = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery show-all-thumbnails layout="Horizontal" menu-horizontal-align="Right">
@@ -118,9 +113,7 @@ export const mediaGalleryWithThumbnailsOnTheRight: Story<
 	`,
 });
 
-export const mediaGalleryItemWithSeparateImageForItsThumbnail: Story<
-  MediaGalleryComponent
-> = (args: MediaGalleryComponent & any) => ({
+export const mediaGalleryItemWithSeparateImageForItsThumbnail = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery>
@@ -132,7 +125,7 @@ export const mediaGalleryItemWithSeparateImageForItsThumbnail: Story<
 	`,
 });
 
-export const mediaGalleryItemWithVideoContent: Story<MediaGalleryComponent> = (
+export const mediaGalleryItemWithVideoContent = (
   args: MediaGalleryComponent & any
 ) => ({
   props: args,
@@ -146,7 +139,7 @@ export const mediaGalleryItemWithVideoContent: Story<MediaGalleryComponent> = (
 	`,
 });
 
-export const mediaGalleryWithDisabledContent: Story<MediaGalleryComponent> = (
+export const mediaGalleryWithDisabledContent = (
   args: MediaGalleryComponent & any
 ) => ({
   props: args,
@@ -162,9 +155,7 @@ export const mediaGalleryWithDisabledContent: Story<MediaGalleryComponent> = (
 	`,
 });
 
-export const mediaGalleryWithInitiallySelectedItem: Story<
-  MediaGalleryComponent
-> = (args: MediaGalleryComponent & any) => ({
+export const mediaGalleryWithInitiallySelectedItem = (args: MediaGalleryComponent & any) => ({
   props: args,
   template: `
 		<ui5-media-gallery>

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  WizardComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { Ui5WebcomponentsModule, WizardComponent, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -58,7 +55,7 @@ export default {
   },
 } as Meta;
 
-export const wizard: Story<WizardComponent> = (
+export const wizard = (
   args: WizardComponent & any
 ) => ({
   props: args,

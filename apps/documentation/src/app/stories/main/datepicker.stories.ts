@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DatePickerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { DatePickerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";
@@ -56,7 +53,7 @@ export default {
   },
 } as Meta;
 
-export const basicDatePicker: Story<DatePickerComponent> = (
+export const basicDatePicker = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -67,9 +64,7 @@ export const basicDatePicker: Story<DatePickerComponent> = (
 	`,
 });
 
-export const datePickerWithPlaceholderTooltipEventsValueStateAndValueStateMessage: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithPlaceholderTooltipEventsValueStateAndValueStateMessage = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">
@@ -80,9 +75,7 @@ export const datePickerWithPlaceholderTooltipEventsValueStateAndValueStateMessag
 	`,
 });
 
-export const datePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">
@@ -91,9 +84,7 @@ export const datePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyy
 	`,
 });
 
-export const datePickerWithShortcutsTypeTodayOrYesterdayAndPressEnter: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithShortcutsTypeTodayOrYesterdayAndPressEnter = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">
@@ -102,7 +93,7 @@ export const datePickerWithShortcutsTypeTodayOrYesterdayAndPressEnter: Story<
 	`,
 });
 
-export const datePickerWithFormatPatternShort: Story<DatePickerComponent> = (
+export const datePickerWithFormatPatternShort = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -113,7 +104,7 @@ export const datePickerWithFormatPatternShort: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithFormatPatternLong: Story<DatePickerComponent> = (
+export const datePickerWithFormatPatternLong = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -124,9 +115,7 @@ export const datePickerWithFormatPatternLong: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithFormatPatternQqqYyyyMmmDdValueQ42018Feb14: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithFormatPatternQqqYyyyMmmDdValueQ42018Feb14 = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">
@@ -135,9 +124,7 @@ export const datePickerWithFormatPatternQqqYyyyMmmDdValueQ42018Feb14: Story<
 	`,
 });
 
-export const datePickerWithFormatPatternEeeMDYyyy: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithFormatPatternEeeMDYyyy = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 			<div class="datepicker-width">
@@ -146,7 +133,7 @@ export const datePickerWithFormatPatternEeeMDYyyy: Story<
 		`,
 });
 
-export const disabledDatePicker: Story<DatePickerComponent> = (
+export const disabledDatePicker = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -157,7 +144,7 @@ export const disabledDatePicker: Story<DatePickerComponent> = (
 		`,
 });
 
-export const readonlyDatePicker: Story<DatePickerComponent> = (
+export const readonlyDatePicker = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -168,7 +155,7 @@ export const readonlyDatePicker: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithJapaneseCalendarType: Story<DatePickerComponent> = (
+export const datePickerWithJapaneseCalendarType = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -179,7 +166,7 @@ export const datePickerWithJapaneseCalendarType: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithIslamicCalendarType: Story<DatePickerComponent> = (
+export const datePickerWithIslamicCalendarType = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -190,7 +177,7 @@ export const datePickerWithIslamicCalendarType: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithBuddhistCalendarType: Story<DatePickerComponent> = (
+export const datePickerWithBuddhistCalendarType = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -201,7 +188,7 @@ export const datePickerWithBuddhistCalendarType: Story<DatePickerComponent> = (
 		`,
 });
 
-export const datePickerWithPersianCalendarType: Story<DatePickerComponent> = (
+export const datePickerWithPersianCalendarType = (
   args: DatePickerComponent & any
 ) => ({
   props: args,
@@ -212,9 +199,7 @@ export const datePickerWithPersianCalendarType: Story<DatePickerComponent> = (
     `,
 });
 
-export const datePickerWithPrimaryAndSecondaryCalendarType: Story<
-  DatePickerComponent
-> = (args: DatePickerComponent & any) => ({
+export const datePickerWithPrimaryAndSecondaryCalendarType = (args: DatePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">

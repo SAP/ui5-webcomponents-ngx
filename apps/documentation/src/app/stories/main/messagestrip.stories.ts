@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MessageStripComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { MessageStripComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -38,7 +35,7 @@ export default {
   },
 } as Meta;
 
-export const messageStrip: Story<MessageStripComponent> = (
+export const messageStrip = (
   args: MessageStripComponent & any
 ) => ({
   props: args,
@@ -50,7 +47,7 @@ export const messageStrip: Story<MessageStripComponent> = (
 	`,
 });
 
-export const messageStripWithNoCloseButton: Story<MessageStripComponent> = (
+export const messageStripWithNoCloseButton = (
   args: MessageStripComponent & any
 ) => ({
   props: args,
@@ -62,7 +59,7 @@ export const messageStripWithNoCloseButton: Story<MessageStripComponent> = (
 	`,
 });
 
-export const messageStripWithNoIcon: Story<MessageStripComponent> = (
+export const messageStripWithNoIcon = (
   args: MessageStripComponent & any
 ) => ({
   props: args,
@@ -74,7 +71,7 @@ export const messageStripWithNoIcon: Story<MessageStripComponent> = (
 	`,
 });
 
-export const customMessageStrip: Story<MessageStripComponent> = (
+export const customMessageStrip = (
   args: MessageStripComponent & any
 ) => ({
   props: args,

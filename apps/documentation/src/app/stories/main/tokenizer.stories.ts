@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TokenizerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TokenizerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -37,7 +34,7 @@ export default {
   },
 } as Meta;
 
-export const basicTokenizer: Story<TokenizerComponent> = (
+export const basicTokenizer = (
   args: TokenizerComponent & any
 ) => ({
   props: args,

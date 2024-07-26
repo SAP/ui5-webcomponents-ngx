@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DateRangePickerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { DateRangePickerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -41,7 +38,7 @@ export default {
   },
 } as Meta;
 
-export const basicDateRangePicker: Story<DateRangePickerComponent> = (
+export const basicDateRangePicker = (
   args: DateRangePickerComponent & any
 ) => ({
   props: args,
@@ -52,9 +49,7 @@ export const basicDateRangePicker: Story<DateRangePickerComponent> = (
 	`,
 });
 
-export const dateRangePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy: Story<
-  DateRangePickerComponent
-> = (args: DateRangePickerComponent & any) => ({
+export const dateRangePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy = (args: DateRangePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="daterange-picker-width">
@@ -63,9 +58,7 @@ export const dateRangePickerWithMinimumAndMaximumDate112020452020FormatPatternDd
 	`,
 });
 
-export const dateRangePickerWithFormatPatternLong: Story<
-  DateRangePickerComponent
-> = (args: DateRangePickerComponent & any) => ({
+export const dateRangePickerWithFormatPatternLong = (args: DateRangePickerComponent & any) => ({
   props: args,
   template: `
 		<div class="daterange-picker-width">
@@ -74,7 +67,7 @@ export const dateRangePickerWithFormatPatternLong: Story<
 	`,
 });
 
-export const disabledDateRangePicker: Story<DateRangePickerComponent> = (
+export const disabledDateRangePicker = (
   args: DateRangePickerComponent & any
 ) => ({
   props: args,
@@ -85,7 +78,7 @@ export const disabledDateRangePicker: Story<DateRangePickerComponent> = (
 	`,
 });
 
-export const readonlyDateRangePicker: Story<DateRangePickerComponent> = (
+export const readonlyDateRangePicker = (
   args: DateRangePickerComponent & any
 ) => ({
   props: args,

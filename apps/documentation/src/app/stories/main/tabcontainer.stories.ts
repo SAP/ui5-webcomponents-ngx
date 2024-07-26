@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TabContainerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TabContainerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -44,9 +41,7 @@ export default {
   },
 } as Meta;
 
-export const basicTabContainer: Story<
-  TabContainerComponent
-> = (args: TabContainerComponent & any) => ({
+export const basicTabContainer = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
 		<ui5-tabcontainer>
@@ -70,7 +65,7 @@ export const basicTabContainer: Story<
 	`,
 });
 
-export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
+export const tabContainerWithTextOnlyTabs = (
   args: TabContainerComponent & any
 ) => ({
   props: args,
@@ -85,7 +80,7 @@ export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
 	`,
 });
 
-export const textOnlyEndOverflow: Story<TabContainerComponent> = (
+export const textOnlyEndOverflow = (
   args: TabContainerComponent & any
 ) => ({
   props: args,
@@ -141,9 +136,7 @@ export const textOnlyEndOverflow: Story<TabContainerComponent> = (
 	`,
 });
 
-export const tabContainerWithTextAndAdditionalText: Story<
-  TabContainerComponent
-> = (args: TabContainerComponent & any) => ({
+export const tabContainerWithTextAndAdditionalText = (args: TabContainerComponent & any) => ({
   props: args,
   template: `
 		<ui5-tabcontainer collapsed>
@@ -159,7 +152,7 @@ export const tabContainerWithTextAndAdditionalText: Story<
 	`,
 });
 
-export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
+export const tabContainerWithTabLayoutInline = (
   args: TabContainerComponent & any
 ) => ({
   props: args,
@@ -184,7 +177,7 @@ export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
 	`,
 });
 
-export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
+export const tabContainerWithNestedTabs = (
   args: TabContainerComponent & any
 ) => ({
   props: args,

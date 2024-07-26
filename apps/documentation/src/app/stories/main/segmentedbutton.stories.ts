@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SegmentedButtonComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { SegmentedButtonComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -30,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
+export const basicSegmentedButton = (
   args: SegmentedButtonComponent & any
 ) => ({
   props: args,
@@ -43,7 +40,7 @@ export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
 	`,
 });
 
-export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
+export const segmentedButtonWithIcons = (
   args: SegmentedButtonComponent & any
 ) => ({
   props: args,
@@ -56,9 +53,7 @@ export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
 	`,
 });
 
-export const segmentedButtonWith5SegmentedButtonItems: Story<
-  SegmentedButtonComponent
-> = (args: SegmentedButtonComponent & any) => ({
+export const segmentedButtonWith5SegmentedButtonItems = (args: SegmentedButtonComponent & any) => ({
   props: args,
   template: `
 		<ui5-segmented-button>

@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TagComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TagComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -29,7 +29,7 @@ export default {
   },
 } as Meta;
 
-export const basicTag: Story<TagComponent> = (
+export const basicTag = (
   args: TagComponent & any
 ) => ({
   props: args,
@@ -54,7 +54,7 @@ export const basicTag: Story<TagComponent> = (
 	`,
 });
 
-export const tagWithIcon: Story<TagComponent> = (
+export const tagWithIcon = (
   args: TagComponent & any
 ) => ({
   props: args,

@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, CardComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { CardComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -33,7 +33,7 @@ export default {
   },
 } as Meta;
 
-export const cardWithList: Story<CardComponent> = (
+export const cardWithList = (
   args: CardComponent & any
 ) => ({
   props: args,
@@ -91,7 +91,7 @@ export const cardWithList: Story<CardComponent> = (
 	`,
 });
 
-export const cardWithTable: Story<CardComponent> = (
+export const cardWithTable = (
   args: CardComponent & any
 ) => ({
   props: args,
@@ -99,7 +99,7 @@ export const cardWithTable: Story<CardComponent> = (
 		<ui5-card>
 			<ui5-card-header slot="header" title-text="New Purchase Orders" subtitle-text="Today" status="3 of 15">
 			</ui5-card-header>
-					
+
 			<ui5-table>
 					<ui5-table-header-row slot="headerRow">
 						<ui5-table-header-cell id="produtCol" width="300px"><span>Product</span></ui5-table-header-cell>
@@ -136,7 +136,7 @@ export const cardWithTable: Story<CardComponent> = (
 	`,
 });
 
-export const cardWithTimeline: Story<CardComponent> = (
+export const cardWithTimeline = (
   args: CardComponent & any
 ) => ({
   props: args,
@@ -157,7 +157,7 @@ export const cardWithTimeline: Story<CardComponent> = (
 	`,
 });
 
-export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
+export const moreCards = (args) =>({
   props: args,
   template: `
 		<ui5-card class="small">

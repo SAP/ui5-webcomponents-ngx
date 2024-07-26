@@ -1,5 +1,14 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent, TableSelectionComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import {
+  TableCellComponent,
+  TableComponent,
+  TableGrowingComponent,
+  TableHeaderCellComponent,
+  TableHeaderRowComponent,
+  TableRowComponent,
+  TableSelectionComponent,
+  Ui5WebcomponentsModule
+} from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -82,7 +91,7 @@ export default {
   },
 } as Meta;
 
-export const Table: Story<TableComponent> = (
+export const Table = (
   args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,
@@ -121,7 +130,7 @@ export const Table: Story<TableComponent> = (
 	`,
 });
 
-export const tableInSingleSelectMode: Story<TableComponent> = (
+export const tableInSingleSelectMode = (
   args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,
@@ -162,14 +171,14 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 	`,
 });
 
-export const tableInMultipleSelectMode: Story<TableComponent> = (
+export const tableInMultipleSelectMode = (
 	args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
   ) => ({
 	props: args,
 	template: `
 		<ui5-table accessible-name-ref="title" no-data-text="No data found">
 				<ui5-table-selection id="selection" slot="features" mode="Multiple"></ui5-table-selection>
-  
+
 			  <ui5-table-header-row slot="headerRow">
 				  <ui5-table-header-cell id="produtCol" width="300px"><span>Product</span></ui5-table-header-cell>
 				  <ui5-table-header-cell id="supplierCol">Supplier</ui5-table-header-cell>
@@ -177,7 +186,7 @@ export const tableInMultipleSelectMode: Story<TableComponent> = (
 				  <ui5-table-header-cell id="weightCol" popin-text="Weight">Weight</ui5-table-header-cell>
 				  <ui5-table-header-cell id="priceCol" min-width="220px" style="text-align: end;">Price</ui5-table-header-cell>
 			  </ui5-table-header-row>
-  
+
 			  <ui5-table-row row-key="0">
 				  <ui5-table-cell><ui5-label><b>Notebook Basic 15</b><br>HT-1000</ui5-label></ui5-table-cell>
 				  <ui5-table-cell><ui5-label>Very Best Screens</ui5-label></ui5-table-cell>
@@ -204,7 +213,7 @@ export const tableInMultipleSelectMode: Story<TableComponent> = (
   });
 
 
-export const tableWithNoData: Story<TableComponent> = (
+export const tableWithNoData = (
   args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
 ) => ({
   props: args,

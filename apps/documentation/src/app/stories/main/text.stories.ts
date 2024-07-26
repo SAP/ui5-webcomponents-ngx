@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TextComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TextComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -27,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const basicText: Story<TextComponent> = (
+export const basicText = (
   args: TextComponent & any
 ) => ({
   props: args,

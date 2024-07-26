@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TitleComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TitleComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -27,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const titleInAllAvailableLevels: Story<TitleComponent> = (
+export const titleInAllAvailableLevels = (
   args: TitleComponent & any
 ) => ({
   props: args,

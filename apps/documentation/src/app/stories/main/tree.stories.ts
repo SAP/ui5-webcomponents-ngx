@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TreeComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TreeComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -40,7 +40,7 @@ export default {
   },
 } as Meta;
 
-export const basicTree: Story<TreeComponent> = (args: TreeComponent & any) => ({
+export const basicTree = (args) => ({
   props: args,
   template: `
 		<ui5-tree>
@@ -69,7 +69,7 @@ export const basicTree: Story<TreeComponent> = (args: TreeComponent & any) => ({
 	`,
 });
 
-export const treeWithMultipleSelection: Story<TreeComponent> = (
+export const treeWithMultipleSelection = (
   args: TreeComponent & any
 ) => ({
   props: args,
@@ -101,7 +101,7 @@ export const treeWithMultipleSelection: Story<TreeComponent> = (
 });
 
 
-export const treeWithCustomItems: Story<TreeComponent> = (
+export const treeWithCustomItems = (
   args: TreeComponent & any
 ) => ({
   props: args,
@@ -112,14 +112,14 @@ export const treeWithCustomItems: Story<TreeComponent> = (
 			</div>
 			<ui5-tree-item-custom expanded show-toggle-button hide-selection-element type="Active" level="1">
 				<ui5-button slot="content">Level 1</ui5-button>
-		
+
 				<ui5-tree-item-custom type="Active" show-toggle-button level="2" expanded>
 					<ui5-select slot="content">
 						<ui5-option>Level 2</ui5-option>
 						<ui5-option>Option 2.1</ui5-option>
 						<ui5-option>Option 2.3</ui5-option>
 					</ui5-select>
-		
+
 					<ui5-tree-item-custom hide-selection-element type="Active" level="3">
 						<ui5-button slot="content">Level 3</ui5-button>
 					</ui5-tree-item-custom>

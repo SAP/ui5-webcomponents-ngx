@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  CalendarComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { CalendarComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";
@@ -49,7 +46,7 @@ export default {
   },
 } as Meta;
 
-export const basicCalendar: Story<CalendarComponent> = (
+export const basicCalendar = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -60,9 +57,7 @@ export const basicCalendar: Story<CalendarComponent> = (
 	`,
 });
 
-export const calendarWithMinimumAndMaximumDateFormatPattern: Story<
-  CalendarComponent
-> = (args: CalendarComponent & any) => ({
+export const calendarWithMinimumAndMaximumDateFormatPattern = (args: CalendarComponent & any) => ({
   props: args,
   template: `
 		<div class="datepicker-width">
@@ -71,7 +66,7 @@ export const calendarWithMinimumAndMaximumDateFormatPattern: Story<
 	`,
 });
 
-export const calendarWithHiddenWeekNumbers: Story<CalendarComponent> = (
+export const calendarWithHiddenWeekNumbers = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -82,7 +77,7 @@ export const calendarWithHiddenWeekNumbers: Story<CalendarComponent> = (
 	`,
 });
 
-export const calendarWithSelectionModeMultiple: Story<CalendarComponent> = (
+export const calendarWithSelectionModeMultiple = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -93,7 +88,7 @@ export const calendarWithSelectionModeMultiple: Story<CalendarComponent> = (
 	`,
 });
 
-export const calendarWithSelectionModeRange: Story<CalendarComponent> = (
+export const calendarWithSelectionModeRange = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -104,7 +99,7 @@ export const calendarWithSelectionModeRange: Story<CalendarComponent> = (
 	`,
 });
 
-export const japaneseCalendar: Story<CalendarComponent> = (
+export const japaneseCalendar = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -115,7 +110,7 @@ export const japaneseCalendar: Story<CalendarComponent> = (
 	`,
 });
 
-export const islamicCalendar: Story<CalendarComponent> = (
+export const islamicCalendar = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -126,7 +121,7 @@ export const islamicCalendar: Story<CalendarComponent> = (
 	`,
 });
 
-export const buddhistCalendar: Story<CalendarComponent> = (
+export const buddhistCalendar = (
   args: CalendarComponent & any
 ) => ({
   props: args,
@@ -137,7 +132,7 @@ export const buddhistCalendar: Story<CalendarComponent> = (
 	`,
 });
 
-export const persianCalendar: Story<CalendarComponent> = (
+export const persianCalendar = (
   args: CalendarComponent & any
 ) => ({
   props: args,

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ColorPalettePopoverComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ColorPalettePopoverComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview Represents a predefined range of colors for easier selection.
@@ -36,9 +33,7 @@ export default {
   },
 } as Meta;
 
-export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeatures: Story<
-  ColorPalettePopoverComponent
-> = (args: ColorPalettePopoverComponent & any) => ({
+export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeatures = (args: ColorPalettePopoverComponent & any) => ({
   props: args,
   template: `
 		<ui5-button id="btn" (click)="colorPalettePopover.open=true">Open ColorPalettePopover</ui5-button>

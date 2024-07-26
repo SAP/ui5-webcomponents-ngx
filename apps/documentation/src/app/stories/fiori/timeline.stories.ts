@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TimelineComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TimelineComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -26,7 +23,7 @@ export default {
   },
 } as Meta;
 
-export const basicTimeline: Story<TimelineComponent> = (
+export const basicTimeline = (
   args: TimelineComponent & any
 ) => ({
   props: args,
@@ -43,7 +40,7 @@ export const basicTimeline: Story<TimelineComponent> = (
 	`,
 });
 
-export const horizontalTimeline: Story<TimelineComponent> = (
+export const horizontalTimeline = (
   args: TimelineComponent & any
 ) => ({
   props: args,

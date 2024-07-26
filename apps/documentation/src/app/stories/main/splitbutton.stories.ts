@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SplitButtonComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { SplitButtonComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -14,7 +11,7 @@ const description = `
 
 <code>ui5-split-button</code> consists two separate buttons: <ul> <li>for the first one (default action) you can define some <code>text</code> or an <code>icon</code>, or both. Also, it is possible to define different icon for active state of this button - <code>activeIcon</code>.</li> <li>the second one (arrow action) contains only <code>slim-arrow-down</code> icon.</li> </ul> You can choose a <code>design</code> from a set of predefined types (the same as for ui5-button) that offer different styling to correspond to the triggered action. Both text and arrow actions have the same design. <br><br> You can set the <code>ui5-split-button</code> as enabled or disabled. Both parts of an enabled <code>ui5-split-button</code> can be pressed by clicking or tapping it, or by certain keys, which changes the style to provide visual feedback to the user that it is pressed or hovered over with the mouse cursor. A disabled <code>ui5-split-button</code> appears inactive and any of the two buttons cannot be pressed.
 
-### Keyboard Handling 
+### Keyboard Handling
 
 <ul> <li><code>Space</code> or <code>Enter</code> - triggers the default action</li> <li><code>Shift</code> or <code>Escape</code> - if <code>Space</code> is pressed, releases the default action button without triggering the click event.</li> <li><code>Arrow Down</code>, <code>Arrow Up</code>, <code>Alt</code>+<code>Arrow Down</code>, <code>Alt</code>+<code>Arrow Up</code>, or <code>F4</code> - triggers the arrow action</li> There are separate events that are fired on activating of <code>ui5-split-button</code> parts: <ul> <li><code>click</code> for the first button (default action)</li> <li><code>arrow-click</code> for the second button (arrow action)</li> </ul> </ul>
 
@@ -39,7 +36,7 @@ export default {
   },
 } as Meta;
 
-export const defaultSplitButton: Story<SplitButtonComponent> = (
+export const defaultSplitButton = (
   args: SplitButtonComponent & any
 ) => ({
   props: args,
@@ -49,7 +46,7 @@ export const defaultSplitButton: Story<SplitButtonComponent> = (
 	`,
 });
 
-export const splitButtonWithDesign: Story<SplitButtonComponent> = (
+export const splitButtonWithDesign = (
   args: SplitButtonComponent & any
 ) => ({
   props: args,
@@ -63,7 +60,7 @@ export const splitButtonWithDesign: Story<SplitButtonComponent> = (
 	`,
 });
 
-export const splitButtonWithIcons: Story<SplitButtonComponent> = (
+export const splitButtonWithIcons = (
   args: SplitButtonComponent & any
 ) => ({
   props: args,

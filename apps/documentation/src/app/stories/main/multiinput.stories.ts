@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MultiInputComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { MultiInputComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `<h3>Overview</h3> A <code>ui5-multi-input</code> field allows the user to enter multiple values, which are displayed as <code>ui5-token</code>.
@@ -30,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const basicMultiInput: Story<MultiInputComponent> = (
+export const basicMultiInput = (
   args: MultiInputComponent & any
 ) => ({
   props: args,
@@ -40,7 +37,7 @@ export const basicMultiInput: Story<MultiInputComponent> = (
 	`,
 });
 
-export const multiInputWithTokens: Story<MultiInputComponent> = (
+export const multiInputWithTokens = (
   args: MultiInputComponent & any
 ) => ({
   props: args,

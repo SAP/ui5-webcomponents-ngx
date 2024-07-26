@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, ToastComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ToastComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -31,7 +31,7 @@ export default {
   },
 } as Meta;
 
-export const basicToast: Story<ToastComponent> = (
+export const basicToast = (
   args: ToastComponent & any
 ) => ({
   props: args,
@@ -41,7 +41,7 @@ export const basicToast: Story<ToastComponent> = (
 	`,
 });
 
-export const toastDuration: Story<ToastComponent> = (
+export const toastDuration = (
   args: ToastComponent & any
 ) => ({
   props: args,
@@ -56,7 +56,7 @@ export const toastDuration: Story<ToastComponent> = (
 	`,
 });
 
-export const toastPlacements: Story<ToastComponent> = (
+export const toastPlacements = (
   args: ToastComponent & any
 ) => ({
   props: args,

@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DynamicSideContentComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { DynamicSideContentComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -60,9 +57,7 @@ export default {
   },
 } as Meta;
 
-export const dynamicSideContentWithDefaultProperties: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithDefaultProperties  = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>
@@ -89,9 +84,7 @@ export const dynamicSideContentWithDefaultProperties: Story<
 	`,
 });
 
-export const dynamicSideContentWithHideMainContentSet: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithHideMainContentSet  = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>
@@ -118,9 +111,7 @@ export const dynamicSideContentWithHideMainContentSet: Story<
 	`,
 });
 
-export const dynamicSideContentWithHideSideContentSet: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithHideSideContentSet = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   	<style>
@@ -147,9 +138,7 @@ export const dynamicSideContentWithHideSideContentSet: Story<
 	`,
 });
 
-export const dynamicSideContentWithEqualSplitSet: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithEqualSplitSet = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>
@@ -176,9 +165,7 @@ export const dynamicSideContentWithEqualSplitSet: Story<
 	`,
 });
 
-export const dynamicSideContentWithSideContentPositionStart: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithSideContentPositionStart = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>
@@ -205,9 +192,7 @@ export const dynamicSideContentWithSideContentPositionStart: Story<
 	`,
 });
 
-export const dynamicSideContentWithSideContentFallDownBelowXl: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithSideContentFallDownBelowXl = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>
@@ -234,9 +219,7 @@ export const dynamicSideContentWithSideContentFallDownBelowXl: Story<
 	`,
 });
 
-export const dynamicSideContentWithSideContentVisibilityShowAboveM: Story<
-  DynamicSideContentComponent
-> = (args: DynamicSideContentComponent & any) => ({
+export const dynamicSideContentWithSideContentVisibilityShowAboveM = (args: DynamicSideContentComponent & any) => ({
   props: args,
   template: `
   		<style>

@@ -1,9 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ProductSwitchComponent,
-  ShellBarComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ProductSwitchComponent, ShellBarComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -31,7 +27,7 @@ export default {
   },
 } as Meta;
 
-export const basicProductSwitch: Story<ProductSwitchComponent> = (
+export const basicProductSwitch = (
   args: ProductSwitchComponent & any
 ) => ({
   props: args,
@@ -45,7 +41,7 @@ export const basicProductSwitch: Story<ProductSwitchComponent> = (
 	`,
 });
 
-export const productSwitchInShellbar: Story<ProductSwitchComponent> = (
+export const productSwitchInShellbar = (
     args: ProductSwitchComponent & ShellBarComponent & any
   ) => ({
     props: args,

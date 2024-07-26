@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  AvatarGroupComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { AvatarGroupComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -42,7 +39,7 @@ export default {
   },
 } as Meta;
 
-export const avatarGroupTypeIndividual: Story<AvatarGroupComponent> = (
+export const avatarGroupTypeIndividual = (
   args: AvatarGroupComponent & any
 ) => ({
   props: args,
@@ -59,12 +56,12 @@ export const avatarGroupTypeIndividual: Story<AvatarGroupComponent> = (
 				<img src="../../../assets/images/avatars/man_avatar_3.png" alt="Man Avatar 3">
 			</ui5-avatar>
 		</ui5-avatar-group>
-	
+
 	`,
 });
 
 
-export const avatarGroupTypeGroup: Story<AvatarGroupComponent> = (
+export const avatarGroupTypeGroup = (
   args: AvatarGroupComponent & any
 ) => ({
   props: args,

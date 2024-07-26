@@ -4,7 +4,7 @@ import {AngularGeneratedFile} from "../angular-generated-file";
 
 /**
  * The utils file generator.
- * The output code is responsible for creating the ProxyInputs, ProxyMethods and ProxyOutputs decorators,
+ * The output code is responsible for creating the ProxyInputs and ProxyOutputs decorators,
  * which are used to proxy the inputs, outputs and methods of the web component to the Angular component.
  */
 export class UtilsFile extends AngularGeneratedFile {

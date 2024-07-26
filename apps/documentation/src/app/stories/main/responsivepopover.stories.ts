@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ResponsivePopoverComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { ResponsivePopoverComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -35,7 +32,7 @@ export default {
   },
 } as Meta;
 
-export const BasicResponsivePopover: Story = () => ({
+export const BasicResponsivePopover = () => ({
   template: `
   <ui5-button id="btn"  (click)="popover.open=true"  design="Emphasized">Open ResponsivePopover</ui5-button>
 

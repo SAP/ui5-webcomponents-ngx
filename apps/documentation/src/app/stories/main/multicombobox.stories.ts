@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MultiComboBoxComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { MultiComboBoxComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -42,7 +39,7 @@ export default {
   },
 } as Meta;
 
-export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
+export const basicMultiComboBox = (
   args: MultiComboBoxComponent & any
 ) => ({
   props: args,
@@ -59,7 +56,7 @@ export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
 	`,
 });
 
-export const multiComboBoxWithItems: Story<MultiComboBoxComponent> = (
+export const multiComboBoxWithItems = (
   args: MultiComboBoxComponent & any
 ) => ({
   props: args,
@@ -79,7 +76,7 @@ export const multiComboBoxWithItems: Story<MultiComboBoxComponent> = (
 	`,
 });
 
-export const multiComboBoxWithFreeTextInput: Story<MultiComboBoxComponent> = (
+export const multiComboBoxWithFreeTextInput = (
   args: MultiComboBoxComponent & any
 ) => ({
   props: args,
@@ -99,7 +96,7 @@ export const multiComboBoxWithFreeTextInput: Story<MultiComboBoxComponent> = (
 	`,
 });
 
-export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
+export const multiComboBoxWithValueState = (
   args: MultiComboBoxComponent & any
 ) => ({
   props: args,
@@ -109,13 +106,13 @@ export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
 			<ui5-mcb-item text="Luck"></ui5-mcb-item>
 			<ui5-mcb-item selected text="Positive"></ui5-mcb-item>
 		</ui5-multi-combobox>
-		
+
 		<ui5-multi-combobox value-state="Critical">
 			<ui5-mcb-item text="Attention"></ui5-mcb-item>
 			<ui5-mcb-item text="Caution"></ui5-mcb-item>
 			<ui5-mcb-item selected text="Critical"></ui5-mcb-item>
 		</ui5-multi-combobox>
-		
+
 		<ui5-multi-combobox value-state="Negative">
 			<ui5-mcb-item text="Fault"></ui5-mcb-item>
 			<ui5-mcb-item selected text="Negative"></ui5-mcb-item>
@@ -124,7 +121,7 @@ export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
 	`,
 });
 
-export const multiComboBoxWithGroupingOfItems: Story<MultiComboBoxComponent> = (
+export const multiComboBoxWithGroupingOfItems = (
   args: MultiComboBoxComponent & any
 ) => ({
   props: args,

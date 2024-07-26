@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-icons/dist/AllIcons';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
 import applyDirection from "@ui5/webcomponents-base/dist/locale/applyDirection.js";
-import {getTheme, setTheme} from '@ui5/webcomponents-base/dist/config/Theme';
+import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 
 type Themes = {
   [name: string]: string;
@@ -90,3 +90,4 @@ export const globalTypes = {
     },
   },
 };
+export const tags = ["autodocs"];

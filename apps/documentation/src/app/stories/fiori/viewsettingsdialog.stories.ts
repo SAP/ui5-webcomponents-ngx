@@ -1,12 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ViewSettingsDialogComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { Ui5WebcomponentsModule, ViewSettingsDialogComponent, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.
 
@@ -16,7 +13,7 @@ The <code>ui5-view-settings-dialog</code> interrupts the current application pro
 
 A <code>ui5-view-settings-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-view-settings-dialog</code> is usually displayed at the center of the screen.
 
-### Responsive Behavior 
+### Responsive Behavior
 
 <code>ui5-view-settings-dialog</code> stretches on full screen on phones.
 
@@ -41,7 +38,7 @@ export default {
   },
 } as Meta;
 
-export const usage: Story<ViewSettingsDialogComponent> = (
+export const usage = (
   args: ViewSettingsDialogComponent & any
 ) => ({
   props: args,
@@ -52,7 +49,7 @@ export const usage: Story<ViewSettingsDialogComponent> = (
 				<ui5-sort-item slot="sortItems" text="Position" selected></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Company"></ui5-sort-item>
 				<ui5-sort-item slot="sortItems" text="Department"></ui5-sort-item>
-		
+
 				<ui5-filter-item slot="filterItems" text="Position">
 					<ui5-filter-item-option slot="values" text="CTO"></ui5-filter-item-option>
 					<ui5-filter-item-option slot="values" text="CPO"></ui5-filter-item-option>

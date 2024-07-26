@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  CarouselComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { CarouselComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -55,7 +52,7 @@ export default {
   },
 } as Meta;
 
-export const carouselWithSingleItemPerPage: Story<CarouselComponent> = (
+export const carouselWithSingleItemPerPage = (
   args: CarouselComponent & any
 ) => ({
   props: args,
@@ -68,7 +65,7 @@ export const carouselWithSingleItemPerPage: Story<CarouselComponent> = (
 	`,
 });
 
-export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
+export const carouselWithMultipleItemsPerPage = (
   args: CarouselComponent & any
 ) => ({
   props: args,
@@ -153,7 +150,7 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 	`,
 });
 
-export const carouselWithArrowPlacementAndCyclic: Story<CarouselComponent> = (
+export const carouselWithArrowPlacementAndCyclic = (
   args: CarouselComponent & any
 ) => ({
   props: args,

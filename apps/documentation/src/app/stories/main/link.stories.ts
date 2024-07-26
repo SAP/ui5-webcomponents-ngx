@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, LinkComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { LinkComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -36,7 +36,7 @@ export default {
   },
 } as Meta;
 
-export const differentLinkDesigns: Story<LinkComponent> = (
+export const differentLinkDesigns = (
   args: LinkComponent & any
 ) => ({
   props: args,

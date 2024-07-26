@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  AvatarComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { AvatarComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -36,7 +33,7 @@ export default {
   },
 } as Meta;
 
-export const basicAvatar: Story<AvatarComponent> = (
+export const basicAvatar = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -56,7 +53,7 @@ export const basicAvatar: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarShapes: Story<AvatarComponent> = (
+export const avatarShapes = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -70,7 +67,7 @@ export const avatarShapes: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarSizes: Story<AvatarComponent> = (
+export const avatarSizes = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -93,7 +90,7 @@ export const avatarSizes: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarWithUi5Icons: Story<AvatarComponent> = (
+export const avatarWithUi5Icons = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -106,7 +103,7 @@ export const avatarWithUi5Icons: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarWithInitials: Story<AvatarComponent> = (
+export const avatarWithInitials = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -119,7 +116,7 @@ export const avatarWithInitials: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarObjectFitTypesContainAndCover: Story<AvatarComponent> = (
+export const avatarObjectFitTypesContainAndCover = (
   args: AvatarComponent & any
 ) => ({
   props: args,
@@ -133,7 +130,7 @@ export const avatarObjectFitTypesContainAndCover: Story<AvatarComponent> = (
 	`,
 });
 
-export const avatarWithVisualAffordance: Story<AvatarComponent> = (
+export const avatarWithVisualAffordance = (
   args: AvatarComponent & any
 ) => ({
   props: args,

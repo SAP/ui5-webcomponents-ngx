@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TimePickerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { TimePickerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview The <code>ui5-time-picker</code> component provides an input field with assigned sliders which are opened on user action. The <code>ui5-time-picker</code> allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.
@@ -36,7 +33,7 @@ export default {
   },
 } as Meta;
 
-export const basicTimePicker: Story<TimePickerComponent> = (
+export const basicTimePicker = (
   args: TimePickerComponent & any
 ) => ({
   props: args,
@@ -45,7 +42,7 @@ export const basicTimePicker: Story<TimePickerComponent> = (
 	`,
 });
 
-export const timePickerInTwelveHoursFormat: Story<TimePickerComponent> = (
+export const timePickerInTwelveHoursFormat = (
   args: TimePickerComponent & any
 ) => ({
   props: args,
@@ -54,7 +51,7 @@ export const timePickerInTwelveHoursFormat: Story<TimePickerComponent> = (
 	`,
 });
 
-export const timePickerWithOnlyMinutesAndSeconds: Story<TimePickerComponent> = (
+export const timePickerWithOnlyMinutesAndSeconds = (
   args: TimePickerComponent & any
 ) => ({
   props: args,
@@ -63,9 +60,7 @@ export const timePickerWithOnlyMinutesAndSeconds: Story<TimePickerComponent> = (
 	`,
 });
 
-export const timePickerWithValueStateAndValueStateMessage: Story<
-  TimePickerComponent
-> = (args: TimePickerComponent & any) => ({
+export const timePickerWithValueStateAndValueStateMessage = (args: TimePickerComponent & any) => ({
   props: args,
   template: `
 		<ui5-time-picker id="timepicker3" format-pattern="mm:ss" value-state="Negative">

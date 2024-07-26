@@ -1,12 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  IllustratedMessageComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { IllustratedMessageComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 An IllustratedMessage is a recommended combination of a solution-oriented message, an engaging illustration, and conversational tone to better communicate an empty or a success state than just show a message alone.
 
@@ -18,7 +15,7 @@ To display the desired illustration, use the <code>name</code> property, where y
 
 The IllustratedMessage consists of the following elements, which are displayed below each other in the following order: <br> <ul> <li>Illustration</li> <li>Title</li> <li>Subtitle</li> <li>Actions</li> </ul>
 
-### Usage 
+### Usage
 
 <code>ui5-illustrated-message</code> is meant to be used inside container component, for example a <code>ui5-card</code>, a <code>ui5-dialog</code> or a <code>ui5-page</code>
 
@@ -43,7 +40,7 @@ export default {
   },
 } as Meta;
 
-export const illustratedMessage: Story<IllustratedMessageComponent> = (
+export const illustratedMessage = (
   args: IllustratedMessageComponent & any
 ) => ({
   props: args,
@@ -56,7 +53,7 @@ export const illustratedMessage: Story<IllustratedMessageComponent> = (
 });
 
 
-export const illustratedMessageWithCustomTitleAndSubtitle: Story<IllustratedMessageComponent> = (
+export const illustratedMessageWithCustomTitleAndSubtitle = (
   args: IllustratedMessageComponent & any
 ) => ({
   props: args,
@@ -69,7 +66,7 @@ export const illustratedMessageWithCustomTitleAndSubtitle: Story<IllustratedMess
 });
 
 
-export const illustratedMessageInDialog: Story<IllustratedMessageComponent> = (
+export const illustratedMessageInDialog = (
   args: IllustratedMessageComponent & any
 ) => ({
   props: args,

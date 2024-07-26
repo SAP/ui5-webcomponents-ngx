@@ -1,9 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, BarComponent } from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { BarComponent, Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 The Bar is a container which is primarily used to hold titles, buttons and input elements and its design and functionality is the basis for page headers and footers. The component consists of three areas to hold its content - startContent slot, default slot and endContent slot. It has the capability to center content, such as a title, while having other components on the left and right side.
 
 ### Usage
@@ -20,7 +20,7 @@ The default slot will be centered in the available space between the startConten
 
 ### Keyboard Handling
 
-#### Fast Navigation 
+#### Fast Navigation
 
 This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
 
@@ -45,7 +45,7 @@ export default {
   },
 } as Meta;
 
-export const headerBar: Story<BarComponent> = (args: BarComponent & any) => ({
+export const headerBar = (args) => ({
   props: args,
   template: `
 		<ui5-bar design="Header">
@@ -56,7 +56,7 @@ export const headerBar: Story<BarComponent> = (args: BarComponent & any) => ({
 	`,
 });
 
-export const subheaderBar: Story<BarComponent> = (
+export const subheaderBar = (
   args: BarComponent & any
 ) => ({
   props: args,
@@ -69,7 +69,7 @@ export const subheaderBar: Story<BarComponent> = (
 	`,
 });
 
-export const footerBar: Story<BarComponent> = (args: BarComponent & any) => ({
+export const footerBar= (args) => ({
   props: args,
   template: `
 		<ui5-bar design="Footer">
@@ -80,7 +80,7 @@ export const footerBar: Story<BarComponent> = (args: BarComponent & any) => ({
 	`,
 });
 
-export const floatingFooterBar: Story<BarComponent> = (
+export const floatingFooterBar = (
   args: BarComponent & any
 ) => ({
   props: args,

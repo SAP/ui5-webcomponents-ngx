@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DateTimePickerComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { DateTimePickerComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -53,7 +50,7 @@ export default {
   },
 } as Meta;
 
-export const dateTimePicker: Story<DateTimePickerComponent> = (
+export const dateTimePicker = (
   args: DateTimePickerComponent & any
 ) => ({
   props: args,
@@ -62,7 +59,7 @@ export const dateTimePicker: Story<DateTimePickerComponent> = (
 	`,
 });
 
-export const dateTimePickerInStates: Story<DateTimePickerComponent> = (
+export const dateTimePickerInStates = (
   args: DateTimePickerComponent & any
 ) => ({
   props: args,

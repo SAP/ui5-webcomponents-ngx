@@ -1,8 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  FlexibleColumnLayoutComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { FlexibleColumnLayoutComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -44,7 +41,7 @@ export default {
   },
 } as Meta;
 
-export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
+export const usage = () => ({
   template: `
 
   <div style="width: 1200px;">
@@ -65,7 +62,7 @@ export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
           <ui5-li>Hello worild!</ui5-li>
         </ui5-list>
     </div>
-  
+
       <div slot="midColumn">
         <div>
           <ui5-title>Mid Column</ui5-title>
@@ -81,7 +78,7 @@ export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
           <ui5-li>Hello worild!</ui5-li>
         </ui5-list>
     </div>
-  
+
       <div class="col" slot="endColumn">
         <div>
             <ui5-title>End Column</ui5-title>

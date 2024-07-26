@@ -1,12 +1,9 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  NotificationListItemComponent,
-} from '@ui5/webcomponents-ngx';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { NotificationListItemComponent, Ui5WebcomponentsModule, } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 The <code>ui5-li-notification</code> is a type of list item, meant to display notifications. <br>
 
@@ -14,7 +11,7 @@ The component has a rich set of various properties that allows the user to set <
 
 The user can: <ul> <li>display a <code>Close</code> button</li> <li>can control whether the <code>titleText</code> and <code>description</code> should wrap or truncate and display a <code>ShowMore</code> button to switch between less and more information</li> <li>add custom actions by using the <code>menu</code> slot</li> </ul>
 
-### Usage 
+### Usage
 
 The component can be used in a standard <code>ui5-list</code>.
 
@@ -43,9 +40,7 @@ export default {
   },
 } as Meta;
 
-export const notificationListItemCustomActions: Story<
-  NotificationListItemComponent
-> = (args: NotificationListItemComponent & any) => ({
+export const notificationListItemCustomActions = (args: NotificationListItemComponent & any) => ({
   props: args,
   template: `
 		<ui5-list id="myList3" class="full-width" header-text="Notifications">

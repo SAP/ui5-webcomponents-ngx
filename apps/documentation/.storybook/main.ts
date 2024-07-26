@@ -5,10 +5,13 @@ const config: StorybookConfig = {
     to: 'assets'
   }],
   stories: ['../src/app/**/*.stories.mdx', '../src/app/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-mdx-gfm'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-mdx-gfm',
+    '@chromatic-com/storybook'
+  ],
   framework: '@storybook/angular',
   docs: {
-    autodocs: true,
     defaultName: 'Docs'
   }
 };

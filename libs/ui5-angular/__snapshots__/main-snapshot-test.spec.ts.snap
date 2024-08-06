@@ -1037,18 +1037,20 @@ exports[`Snapshot test Main Card should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Card.js';
 import Card from '@ui5/webcomponents/dist/Card.js';
-@ProxyInputs(['accessibleName', 'accessibleNameRef'])
+@ProxyInputs(['accessibleName', 'accessibleNameRef', 'loading', 'loadingDelay'])
 @Component({
   standalone: true,
   selector: 'ui5-card',
   template: '<ng-content></ng-content>',
-  inputs: ['accessibleName', 'accessibleNameRef'],
+  inputs: ['accessibleName', 'accessibleNameRef', 'loading', 'loadingDelay'],
   exportAs: 'ui5Card',
 })
 class CardComponent {
@@ -1062,6 +1064,15 @@ class CardComponent {
         Defines the IDs of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines if a loading indicator would be displayed over the card.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines the delay in milliseconds, after which the loading indicator will show up for this card.
+        */
+  loadingDelay!: number;
 
   private elementRef: ElementRef<Card> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2296,7 +2307,7 @@ the week numbers are not displayed regardless of what is set.
         Determines the symbol which separates the dates.
 If not supplied, the default time interval delimiter for the current locale will be used.
         */
-  delimiter!: string | undefined;
+  delimiter!: string;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -3143,6 +3154,7 @@ import {
 @ProxyOutputs([
   'change: ui5Change',
   'input: ui5Input',
+  'select: ui5Select',
   'selection-change: ui5SelectionChange',
   'open: ui5Open',
   'close: ui5Close',
@@ -3171,6 +3183,7 @@ import {
   outputs: [
     'ui5Change',
     'ui5Input',
+    'ui5Select',
     'ui5SelectionChange',
     'ui5Open',
     'ui5Close',
@@ -3284,6 +3297,10 @@ The picker will close automatically and \`close\` event will be fired if the inp
 and when a suggestion item has been selected.
     */
   ui5Input!: EventEmitter<void>;
+  /**
+     Fired when some text has been selected.
+    */
+  ui5Select!: EventEmitter<void>;
   /**
      Fired when the user navigates to a suggestion item via the ARROW keys,
 as a preview, before the final selection.
@@ -3680,18 +3697,24 @@ exports[`Snapshot test Main List Item Group should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ListItemGroup.js';
-import ListItemGroup from '@ui5/webcomponents/dist/ListItemGroup.js';
+import {
+  default as ListItemGroup,
+  ListItemGroupMoveEventDetail,
+} from '@ui5/webcomponents/dist/ListItemGroup.js';
 @ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-li-group',
   template: '<ng-content></ng-content>',
   inputs: ['headerText', 'headerAccessibleName'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5LiGroup',
 })
 class ListItemGroupComponent {
@@ -3703,6 +3726,19 @@ class ListItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
 
   private elementRef: ElementRef<ListItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4159,11 +4195,9 @@ while with type \`Inactive\` and \`Detail\` - will not.
         Defines the additional accessibility attributes that will be applied to the component.
 The following fields are supported:
 
-- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
+- **ariaKeyShortcuts**: Indicated the availability of a keyboard shortcuts defined for the menu item.
 
-	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+- **role**: Defines the role of the menu item. If not set, menu item will have default role=\\"menuitem\\".
         */
   accessibilityAttributes!: ListItemAccessibilityAttributes;
   /**
@@ -4804,6 +4838,7 @@ import {
 @ProxyOutputs([
   'change: ui5Change',
   'input: ui5Input',
+  'select: ui5Select',
   'selection-change: ui5SelectionChange',
   'open: ui5Open',
   'close: ui5Close',
@@ -4835,6 +4870,7 @@ import {
   outputs: [
     'ui5Change',
     'ui5Input',
+    'ui5Select',
     'ui5SelectionChange',
     'ui5Open',
     'ui5Close',
@@ -4958,6 +4994,10 @@ Pressing the icon will fire \`value-help-trigger\` event.
 and when a suggestion item has been selected.
     */
   ui5Input!: EventEmitter<void>;
+  /**
+     Fired when some text has been selected.
+    */
+  ui5Select!: EventEmitter<void>;
   /**
      Fired when the user navigates to a suggestion item via the ARROW keys,
 as a preview, before the final selection.
@@ -6869,18 +6909,22 @@ exports[`Snapshot test Main Suggestion Item Group should match the snapshot 1`] 
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
 import '@ui5/webcomponents/dist/SuggestionItemGroup.js';
 import SuggestionItemGroup from '@ui5/webcomponents/dist/SuggestionItemGroup.js';
 @ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-suggestion-item-group',
   template: '<ng-content></ng-content>',
   inputs: ['headerText', 'headerAccessibleName'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5SuggestionItemGroup',
 })
 class SuggestionItemGroupComponent {
@@ -6892,6 +6936,19 @@ class SuggestionItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
 
   private elementRef: ElementRef<SuggestionItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -7514,6 +7571,9 @@ import TableHeaderRow from '@ui5/webcomponents/dist/TableHeaderRow.js';
 class TableHeaderRowComponent {
   /**
         Sticks the \`ui5-table-header-row\` to the top of a table.
+
+Note: If used in combination with overflowMode \\"Scroll\\", the table needs a defined height
+or needs to be inside of a container with a defined height for the sticky header to work as expected.
         */
   @InputDecorator({ transform: booleanAttribute })
   sticky!: boolean;
@@ -7936,8 +7996,8 @@ but still provides visual feedback upon user interaction.
         Defines the value state of the component.
 
 **Note:** If \`maxlength\` property is set,
-the component turns into \\"Warning\\" state once the characters exceeds the limit.
-In this case, only the \\"Error\\" state is considered and can be applied.
+the component turns into \\"Critical\\" state once the characters exceeds the limit.
+In this case, only the \\"Negative\\" state is considered and can be applied.
         */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
   /**
@@ -8120,6 +8180,9 @@ import {
   'placeholder',
   'formatPattern',
   'open',
+  'required',
+  'accessibleName',
+  'accessibleNameRef',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -8140,6 +8203,9 @@ import {
     'placeholder',
     'formatPattern',
     'open',
+    'required',
+    'accessibleName',
+    'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5Open', 'ui5Close'],
   exportAs: 'ui5TimePicker',
@@ -8196,6 +8262,19 @@ mm:ss -> 12:04 (only minutes and seconds)
         */
   @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
+  /**
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  required!: boolean;
+  /**
+        Defines the aria-label attribute for the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Receives id (or many ids) of the elements that label the component.
+        */
+  accessibleNameRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by clicking the \\"OK\\" button or
@@ -8252,12 +8331,12 @@ exports[`Snapshot test Main Title should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Title.js';
 import Title from '@ui5/webcomponents/dist/Title.js';
-@ProxyInputs(['wrappingType', 'level'])
+@ProxyInputs(['wrappingType', 'level', 'size'])
 @Component({
   standalone: true,
   selector: 'ui5-title',
   template: '<ng-content></ng-content>',
-  inputs: ['wrappingType', 'level'],
+  inputs: ['wrappingType', 'level', 'size'],
   exportAs: 'ui5Title',
 })
 class TitleComponent {
@@ -8270,8 +8349,15 @@ class TitleComponent {
   /**
         Defines the component level.
 Available options are: \`\\"H6\\"\` to \`\\"H1\\"\`.
+This property does not influence the style of the component.
+Use the property \`size\` for this purpose instead.
         */
   level!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
+  /**
+        Defines the visual appearance of the title.
+Available options are: \`\\"H6\\"\` to \`\\"H1\\"\`.
+        */
+  size!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
 
   private elementRef: ElementRef<Title> = inject(ElementRef);
   private zone = inject(NgZone);

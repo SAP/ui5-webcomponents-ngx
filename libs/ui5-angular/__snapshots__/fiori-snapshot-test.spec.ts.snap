@@ -1354,7 +1354,7 @@ where each field is an object supporting one or more accessibility attributes:
 - **notifications** - \`notifications.expanded\` and \`notifications.hasPopup\`.
 - **profile** - \`profile.expanded\`, \`profile.hasPopup\` and \`profile.name\`.
 - **product** - \`product.expanded\` and \`product.hasPopup\`.
-- **search** - \`search.expanded\` and \`search.hasPopup\`.
+- **search** - \`search.hasPopup\`.
 - **overflow** - \`overflow.expanded\` and \`overflow.hasPopup\`.
 
 The accessibility attributes support the following values:
@@ -1836,6 +1836,62 @@ export { Ui5WebcomponentsFioriThemingService };
 "
 `;
 
+exports[`Snapshot test Fiori Timeline Group Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/TimelineGroupItem.js';
+import TimelineGroupItem from '@ui5/webcomponents-fiori/dist/TimelineGroupItem.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['groupName', 'collapsed'])
+@ProxyOutputs(['toggle: ui5Toggle'])
+@Component({
+  standalone: true,
+  selector: 'ui5-timeline-group-item',
+  template: '<ng-content></ng-content>',
+  inputs: ['groupName', 'collapsed'],
+  outputs: ['ui5Toggle'],
+  exportAs: 'ui5TimelineGroupItem',
+})
+class TimelineGroupItemComponent {
+  /**
+        Defines the text of the button that expands and collapses the group.
+        */
+  groupName!: string | undefined;
+  /**
+        Determines if the group is collapsed or expanded.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  collapsed!: boolean;
+
+  /**
+     Fired when the group item is expanded or collapsed.
+    */
+  ui5Toggle!: EventEmitter<void>;
+
+  private elementRef: ElementRef<TimelineGroupItem> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TimelineGroupItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TimelineGroupItemComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Timeline Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -1985,6 +2041,7 @@ import { SideNavigationItemComponent } from \\"@ui5/webcomponents-ngx/fiori/side
 import { SideNavigationSubItemComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-sub-item\\";
 import { SortItemComponent } from \\"@ui5/webcomponents-ngx/fiori/sort-item\\";
 import { TimelineComponent } from \\"@ui5/webcomponents-ngx/fiori/timeline\\";
+import { TimelineGroupItemComponent } from \\"@ui5/webcomponents-ngx/fiori/timeline-group-item\\";
 import { TimelineItemComponent } from \\"@ui5/webcomponents-ngx/fiori/timeline-item\\";
 import { UploadCollectionComponent } from \\"@ui5/webcomponents-ngx/fiori/upload-collection\\";
 import { UploadCollectionItemComponent } from \\"@ui5/webcomponents-ngx/fiori/upload-collection-item\\";
@@ -2018,6 +2075,7 @@ const imports = [
   SideNavigationSubItemComponent,
   SortItemComponent,
   TimelineComponent,
+  TimelineGroupItemComponent,
   TimelineItemComponent,
   UploadCollectionComponent,
   UploadCollectionItemComponent,

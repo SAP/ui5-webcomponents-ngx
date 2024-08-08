@@ -4975,380 +4975,6 @@
             "extends": "Partial"
         },
         {
-            "name": "CustomListItemComponentEventsMap",
-            "id": "interface-CustomListItemComponentEventsMap-0190130637dc5051a1bf03ebc2c4c26cd1965afde3cbdad79d569315b39821a8d1c53b097004e3086e0761097553ae934d69cce586b7f3bc2c9421f28fb2a761",
-            "file": "libs/ui5-angular/main/custom-list-item/index.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "detailClick",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "CustomEvent<void>",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 165,
-            "methods": [],
-            "extends": "Omit"
-        },
-        {
-            "name": "CustomListItemElement",
-            "id": "interface-CustomListItemElement-0190130637dc5051a1bf03ebc2c4c26cd1965afde3cbdad79d569315b39821a8d1c53b097004e3086e0761097553ae934d69cce586b7f3bc2c9421f28fb2a761",
-            "file": "libs/ui5-angular/main/custom-list-item/index.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "accessibleName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 31
-                },
-                {
-                    "name": "navigated",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 29
-                },
-                {
-                    "name": "selected",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 28
-                },
-                {
-                    "name": "type",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "\"Active\" | \"Detail\" | \"Inactive\" | \"Navigation\"",
-                    "optional": false,
-                    "description": "",
-                    "line": 30
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 167,
-            "methods": [
-                {
-                    "name": "addEventListener",
-                    "args": [
-                        {
-                            "name": "type",
-                            "type": "K",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "listener",
-                            "type": "function",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "this",
-                                    "type": "CustomListItemElement",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                },
-                                {
-                                    "name": "ev",
-                                    "type": "",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ]
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | AddEventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [
-                        "K"
-                    ],
-                    "line": 32,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "type": "K",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "listener",
-                            "type": "function",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "this",
-                                    "type": "CustomListItemElement",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                },
-                                {
-                                    "name": "ev",
-                                    "type": "",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | AddEventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "addEventListener",
-                    "args": [
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "listener",
-                            "type": "EventListenerOrEventListenerObject",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | AddEventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 40,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "listener",
-                            "type": "EventListenerOrEventListenerObject",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | AddEventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "removeEventListener",
-                    "args": [
-                        {
-                            "name": "type",
-                            "type": "K",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "listener",
-                            "type": "function",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "this",
-                                    "type": "CustomListItemElement",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                },
-                                {
-                                    "name": "ev",
-                                    "type": "",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ]
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | EventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [
-                        "K"
-                    ],
-                    "line": 45,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "type": "K",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "listener",
-                            "type": "function",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "this",
-                                    "type": "CustomListItemElement",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                },
-                                {
-                                    "name": "ev",
-                                    "type": "",
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | EventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "removeEventListener",
-                    "args": [
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "listener",
-                            "type": "EventListenerOrEventListenerObject",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | EventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 53,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "listener",
-                            "type": "EventListenerOrEventListenerObject",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "boolean | EventListenerOptions",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "extends": "Partial"
-        },
-        {
             "name": "DatePickerComponentEventsMap",
             "id": "interface-DatePickerComponentEventsMap-9682a9f590bc384e83f4e2a39468e437012c24fd4808366f10e3ab4e88647416b90d048daf604ac1cc2a521710e336fc9ac38a2357888758e85a70e03019a9f1",
             "file": "libs/ui5-angular/main/date-picker/index.ts",
@@ -11428,15 +11054,6 @@
                     "line": 30
                 },
                 {
-                    "name": "startsSection",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 31
-                },
-                {
                     "name": "text",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -12679,29 +12296,6 @@
                     ]
                 }
             ],
-            "extends": "Partial"
-        },
-        {
-            "name": "MultiComboBoxGroupItemElement",
-            "id": "interface-MultiComboBoxGroupItemElement-f04f3397a382abab81e530ab5dfad1afe6c11826f74957a08751f53ba540960f8273ccb8797d9abb558c694f867c6b452dbef914bb12ea810d2969a88c6b3f27",
-            "file": "libs/ui5-angular/main/multi-combo-box-group-item/index.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "text",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 165,
-            "methods": [],
             "extends": "Partial"
         },
         {
@@ -20496,15 +20090,6 @@
                     "optional": false,
                     "description": "",
                     "line": 36
-                },
-                {
-                    "name": "wholeItemToggleable",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 37
                 }
             ],
             "indexSignatures": [],
@@ -23204,29 +22789,6 @@
                     ]
                 }
             ],
-            "extends": "Partial"
-        },
-        {
-            "name": "SuggestionGroupItemElement",
-            "id": "interface-SuggestionGroupItemElement-7c8c338b3ac4f3efb9a70b3f86b44e34831e2908b0dea8754b10c717defe03823253de5dc0c389ad92538eb2e963f9319c5583de2c72d701e8f21ba77b3ad557",
-            "file": "libs/ui5-angular/main/suggestion-group-item/index.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "text",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 165,
-            "methods": [],
             "extends": "Partial"
         },
         {
@@ -34738,150 +34300,6 @@
             }
         },
         {
-            "name": "CustomListItemComponent",
-            "id": "component-CustomListItemComponent-0190130637dc5051a1bf03ebc2c4c26cd1965afde3cbdad79d569315b39821a8d1c53b097004e3086e0761097553ae934d69cce586b7f3bc2c9421f28fb2a761",
-            "file": "libs/ui5-angular/main/custom-list-item/index.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "exportAs": "ui5CustomListItem",
-            "inputs": [
-                "effectiveDir: effective-dir",
-                "isUi5Element: is-ui-5-element",
-                "selected",
-                "navigated",
-                "type",
-                "accessibleName: accessible-name"
-            ],
-            "outputs": [
-                "detailClick: ui5DetailClick"
-            ],
-            "providers": [],
-            "selector": "ui5-li-custom",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<ng-content></ng-content>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "accessibleName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 111
-                },
-                {
-                    "name": "navigated",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 109
-                },
-                {
-                    "name": "selected",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 108
-                },
-                {
-                    "name": "type",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 110
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "c",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "elementRef",
-                        "type": "ElementRef<CustomListItemElement>",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 111,
-                "jsdoctags": [
-                    {
-                        "name": "c",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "elementRef",
-                        "type": "ElementRef<CustomListItemElement>",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "accessors": {
-                "element": {
-                    "name": "element",
-                    "getSignature": {
-                        "name": "element",
-                        "type": "",
-                        "returnType": "CustomListItemElement",
-                        "line": 120
-                    }
-                }
-            }
-        },
-        {
             "name": "DatePickerComponent",
             "id": "component-DatePickerComponent-9682a9f590bc384e83f4e2a39468e437012c24fd4808366f10e3ab4e88647416b90d048daf604ac1cc2a521710e336fc9ac38a2357888758e85a70e03019a9f1",
             "file": "libs/ui5-angular/main/date-picker/index.ts",
@@ -39299,7 +38717,6 @@
                 "additionalText: additional-text",
                 "disabled",
                 "icon",
-                "startsSection: starts-section",
                 "text"
             ],
             "outputs": [],
@@ -39348,15 +38765,6 @@
                     "optional": true,
                     "description": "",
                     "line": 90
-                },
-                {
-                    "name": "startsSection",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 91
                 },
                 {
                     "name": "text",
@@ -44643,8 +44051,7 @@
                 "expanded",
                 "icon",
                 "selected",
-                "text",
-                "wholeItemToggleable: whole-item-toggleable"
+                "text"
             ],
             "outputs": [
                 "click: ui5Click"
@@ -44694,15 +44101,6 @@
                     "optional": true,
                     "description": "",
                     "line": 119
-                },
-                {
-                    "name": "wholeItemToggleable",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 120
                 }
             ],
             "methodsClass": [],
@@ -46051,118 +45449,6 @@
                         "type": "",
                         "returnType": "StepInputElement",
                         "line": 156
-                    }
-                }
-            }
-        },
-        {
-            "name": "SuggestionGroupItemComponent",
-            "id": "component-SuggestionGroupItemComponent-7c8c338b3ac4f3efb9a70b3f86b44e34831e2908b0dea8754b10c717defe03823253de5dc0c389ad92538eb2e963f9319c5583de2c72d701e8f21ba77b3ad557",
-            "file": "libs/ui5-angular/main/suggestion-group-item/index.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "exportAs": "ui5SuggestionGroupItem",
-            "inputs": [
-                "effectiveDir: effective-dir",
-                "isUi5Element: is-ui-5-element",
-                "text"
-            ],
-            "outputs": [],
-            "providers": [],
-            "selector": "ui5-suggestion-group-item",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<ng-content></ng-content>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "text",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 58
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "c",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "elementRef",
-                        "type": "ElementRef<SuggestionGroupItemElement>",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 58,
-                "jsdoctags": [
-                    {
-                        "name": "c",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "elementRef",
-                        "type": "ElementRef<SuggestionGroupItemElement>",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "accessors": {
-                "element": {
-                    "name": "element",
-                    "getSignature": {
-                        "name": "element",
-                        "type": "",
-                        "returnType": "SuggestionGroupItemElement",
-                        "line": 67
                     }
                 }
             }
@@ -51465,7 +50751,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  TagComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  CustomListItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionGroupItemComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
+                "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  TagComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
             },
             {
                 "name": "packageNames",
@@ -52233,7 +51519,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  BadgeComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  CustomListItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionGroupItemComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
+                    "defaultValue": "[\n  AvatarComponent,\n  AvatarGroupComponent,\n  BadgeComponent,\n  BreadcrumbsComponent,\n  BreadcrumbsItemComponent,\n  BusyIndicatorComponent,\n  ButtonComponent,\n  CalendarComponent,\n  CalendarDateComponent,\n  CardComponent,\n  CardHeaderComponent,\n  CarouselComponent,\n  CheckBoxComponent,\n  ColorPaletteComponent,\n  ColorPaletteItemComponent,\n  ColorPalettePopoverComponent,\n  ColorPickerComponent,\n  ComboBoxComponent,\n  ComboBoxGroupItemComponent,\n  ComboBoxItemComponent,\n  DatePickerComponent,\n  DateRangePickerComponent,\n  DateTimePickerComponent,\n  DayPickerComponent,\n  DialogComponent,\n  FileUploaderComponent,\n  GroupHeaderListItemComponent,\n  IconComponent,\n  InputComponent,\n  LabelComponent,\n  LinkComponent,\n  ListComponent,\n  MenuComponent,\n  MenuItemComponent,\n  MessageStripComponent,\n  MonthPickerComponent,\n  MultiComboBoxComponent,\n  MultiComboBoxGroupItemComponent,\n  MultiComboBoxItemComponent,\n  MultiInputComponent,\n  OptionComponent,\n  PanelComponent,\n  PopoverComponent,\n  ProgressIndicatorComponent,\n  RadioButtonComponent,\n  RangeSliderComponent,\n  RatingIndicatorComponent,\n  ResponsivePopoverComponent,\n  SegmentedButtonComponent,\n  SegmentedButtonItemComponent,\n  SelectComponent,\n  SliderComponent,\n  SliderBaseComponent,\n  SplitButtonComponent,\n  StandardListItemComponent,\n  StepInputComponent,\n  SuggestionItemComponent,\n  SwitchComponent,\n  TabComponent,\n  TabContainerComponent,\n  TableComponent,\n  TableCellComponent,\n  TableColumnComponent,\n  TableGroupRowComponent,\n  TableRowComponent,\n  TabSeparatorComponent,\n  TextAreaComponent,\n  TimePickerComponent,\n  TitleComponent,\n  ToastComponent,\n  ToggleButtonComponent,\n  TokenComponent,\n  TreeComponent,\n  TreeItemComponent,\n  TreeItemCustomComponent,\n  WheelSliderComponent,\n  YearPickerComponent,\n]"
                 }
             ],
             "libs/ui5-angular/i18n/i18n.tokens.ts": [

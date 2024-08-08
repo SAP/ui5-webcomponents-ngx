@@ -5,11 +5,16 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
+const description = `
+### Overview
 
-<h3>Responsive Behavior</h3> You can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.
+Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
 
-<h3>ES6 Module Import</h3>
+### Responsive Behavior
+
+You can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.
+
+### ES6 Module Import
 
 <code>import { ProgressIndicatorComponent } from "@ui5/webcomponents-ngx/main/progress-indicator";</code>`;
 export default {

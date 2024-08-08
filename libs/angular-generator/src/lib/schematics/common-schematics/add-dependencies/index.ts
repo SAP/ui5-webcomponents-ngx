@@ -16,7 +16,7 @@ export function addDependencies(options: Schema): Rule {
       addPackageToPackageJson(tree, commonCssPackageName, 'latest');
     }
 
-    if (options.theming && !getPackageVersionFromPackageJson(tree, themingNgxPackageName)) {
+    if (!getPackageVersionFromPackageJson(tree, themingNgxPackageName)) {
       addPackageToPackageJson(tree, themingNgxPackageName, packageJson.version);
     }
 

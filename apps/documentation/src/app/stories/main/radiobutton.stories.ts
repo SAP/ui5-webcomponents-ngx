@@ -77,7 +77,7 @@ export const radioButtonWithTextWrapping: Story<RadioButtonComponent> = (
 ) => ({
   props: args,
   template: `
-		<ui5-radio-button text="ui5-radio-button with 'wrapping-type=Normal' set and some long text" wrapping-type="Normal" style="width:200px"></ui5-radio-button>
-		<ui5-radio-button text="Another ui5-radio-button with very long text here" wrapping-type="Normal" style="width:200px"></ui5-radio-button>
+		<ui5-radio-button text="ui5-radio-button text wraps by default when it's too long" style="width:300px"></ui5-radio-button>
+		<ui5-radio-button text="set wrapping-type='None' to make it truncate" wrapping-type="None" style="width:300px"></ui5-radio-button>
 	`,
 });

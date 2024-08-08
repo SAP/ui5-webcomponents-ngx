@@ -2,23 +2,26 @@ import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, ListComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
+### Overview
 
 The <code>ui5-list</code> component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency. <br><br> The <code>ui5-list</code> is a container for the available list items: <ul> <li><code>ui5-li</code></li> <li><code>ui5-li-custom</code></li> <li><code>ui5-li-group</code></li> </ul> <br><br> To benefit from the built-in selection mechanism, you can use the available selection modes, such as <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br><br> Additionally, the <code>ui5-list</code> provides header, footer, and customization for the list item separators.
 
 <br><br> <h3>Keyboard Handling</h3>
 
-<h4>Basic Navigation</h4> The <code>ui5-list</code> provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation: <br>
+#### Basic Navigation The <code>ui5-list</code> provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation: <br>
 
 <ul> <li>[UP/DOWN] - Navigates up and down the items</li> <li>[HOME] - Navigates to first item</li> <li>[END] - Navigates to the last item</li> </ul>
 
 The user can use the following keyboard shortcuts to perform actions (such as select, delete), when the <code>mode</code> property is in use: <ul> <li>[SPACE] - Select an item (if <code>type</code> is 'Active') when <code>mode</code> is selection</li> <li>[DELETE] - Delete an item if <code>mode</code> property is <code>Delete</code></li> </ul>
 
-<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
+#### Fast Navigation This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
 
-<h3>ES6 Module Import</h3>
+### ES6 Module Import
 
-<code>import { ListComponent } from "@ui5/webcomponents-ngx/main/list";</code> (for <code>ui5-li-group</code>)`;
+- import { ListComponent } from "@ui5/webcomponents-ngx/main/list"
+`;
+
 export default {
   title: 'UI5 Web Components / Main / List',
   component: ListComponent,
@@ -95,43 +98,70 @@ export const listWithGroupHeaders: Story<ListComponent> = (
   template: `
 		<ui5-list header-text="Community" mode="MultiSelect">
 			<ui5-li-group header-text="Front End Developers">
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end>Jennifer</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_4.png" icon="navigation-right-arrow" icon-end>Lora</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_5.png" icon="navigation-right-arrow" icon-end>Carlotta</ui5-li>
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Jennifer
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_3.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Lora
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_4.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Carlotta
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_5.png" />
+				</ui5-li>
 			</ui5-li-group>
 
 			<ui5-li-group header-text="Back End Developers">
-				<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" icon="navigation-right-arrow" icon-end>Clark</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" icon="navigation-right-arrow" icon-end>Ellen</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" icon="navigation-right-arrow" icon-end>Adam</ui5-li>
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Clark
+					<img slot="image" src="../../../assets/images/avatars/man_avatar_1.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Ellen
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_1.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Adam
+					<img slot="image" src="../../../assets/images/avatars/man_avatar_2.png" />
+				</ui5-li>
 			</ui5-li-group>
 
 			<ui5-li-group header-text="Full-stack Developers">
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" icon="navigation-right-arrow" icon-end>Susan</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" icon="navigation-right-arrow" icon-end>David</ui5-li>
-				<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" icon="navigation-right-arrow" icon-end>Natalie</ui5-li>
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Susan
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_2.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					David
+					<img slot="image" src="../../../assets/images/avatars/man_avatar_3.png" />
+				</ui5-li>
+
+				<ui5-li icon="navigation-right-arrow" icon-end>
+					Natalie
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_3.png" />
+				</ui5-li>
 			</ui5-li-group>
 		</ui5-list>
 	`,
 });
 
-export const listItemsUsingImageContentSlot: Story<ListComponent> = (
+export const listItemsUsingImageSlot: Story<ListComponent> = (
   args: ListComponent & any
 ) => ({
   props: args,
   template: `
 		<ui5-list class="full-width">
-			<ui5-li> Avatar inside imageContent slot
-				<div slot="imageContent">
-					<ui5-avatar shape="Square" initials="ABC" color-scheme="Accent2"></ui5-avatar>
-				</div>
+			<ui5-li> ui5-avatar element inside the "image" slot
+					<ui5-avatar slot="image" shape="Square" initials="ABC" color-scheme="Accent2"></ui5-avatar>
 			</ui5-li>
-			<ui5-li> Avatar inside imageContent slot
-				<div slot="imageContent">
-					<ui5-avatar>
-						<img src="./img/woman_avatar_5.png" alt="Woman image">
-					</ui5-avatar>
-				</div>
+			<ui5-li>  native img element inside the "image" slot
+					<img slot="image" src="../../../assets/images/avatars/woman_avatar_3.png" />
 			</ui5-li>
 		</ui5-list>
 	`,

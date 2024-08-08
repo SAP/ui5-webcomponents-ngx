@@ -19,20 +19,19 @@ All the components that are included in this library, are standalone and can be 
 ```typescript
 import { Ui5MainModule } from '@ui5/webcomponents-ngx/main'; // Main module import
 import { Ui5FioriModule } from '@ui5/webcomponents-ngx/fiori'; // Fiori module import
-import { Ui5CompatModule } from '@ui5/webcomponents-ngx/compat'; // Fiori module import
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx'; // All components import
 ```
 
 #### Theming
-For using theming, you need to install `@ui5/theming-ngx` package and import the `Ui5ThemingModule` in your app module.
+For using theming, you need import the `Ui5ThemingModule` in your app module.
 
 ```typescript
-import { Ui5ThemingModule } from '@ui5/webcomponents-ngx/theming'; // Theming module import
+import { Ui5WebcomponentsThemingModule } from '@ui5/webcomponents-ngx/theming'; // Theming module import
 
 @NgModule({
   imports: [
     BrowserModule,
-    Ui5ThemingModule.forRoot({defaultTheme: 'sap_horizon'}) // Theming module import
+    Ui5WebcomponentsThemingModule, // Theming module import
   ]
 })
 export class AppModule { }

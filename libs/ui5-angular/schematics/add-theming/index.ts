@@ -8,10 +8,6 @@ import { getProjectDefinition } from "../utils/get-project-definition";
 export function addTheming(options: Schema): Rule {
   return (tree, context) =>
     updateWorkspace(async (workspace) => {
-      if (!options.theming) {
-        return;
-      }
-
       const projectDefinition = getProjectDefinition(workspace, options.project);
 
       const update: { changes: Change[], file: string } = addThemingModule(tree, projectDefinition, context, options);

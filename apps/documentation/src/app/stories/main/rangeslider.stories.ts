@@ -6,15 +6,15 @@ import {
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
-### Overview 
+### Overview
 
 Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.
 
-### Structure 
+### Structure
 
 The most important properties of the Range Slider are: <ul> <li>min - The minimum value of the slider range.</li> <li>max - The maximum value of the slider range.</li> <li>value - The current value of the slider.</li> <li>step - Determines the increments in which the slider will move.</li> <li>showTooltip - Determines if a tooltip should be displayed above the handle.</li> <li>showTickmarks - Displays a visual divider between the step values.</li> <li>labelInterval - Labels some or all of the tickmarks with their values.</li> </ul> <h4>Notes:</h4> <ul> <li>The right and left handle can be moved individually and their positions could therefore switch.</li> <li>The entire range can be moved along the interval.</li> </ul> ### Usage The most common use case is to select and move sub-ranges on a continuous numerical scale.
 
-### Responsive Behavior 
+### Responsive Behavior
 
 You can move the currently selected range by clicking on it and dragging it along the interval.
 

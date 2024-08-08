@@ -48,9 +48,9 @@ export const basicPanel: Story<PanelComponent> = (
   template: `
 		<ui5-panel width="100%" accessible-role="Complementary" header-text="Both expandable and expanded">
 			<h1>I am a native heading!</h1>
-			<ui5-label wrapping-type="Normal">Short text.</ui5-label>
+			<ui5-label>Short text.</ui5-label>
 			<br>
-			<ui5-label wrapping-type="Normal">Another text.</ui5-label>
+			<ui5-label>Another text.</ui5-label>
 			<p>
 				Aute ullamco officia fugiat culpa do tempor tempor aute excepteur magna. Quis velit adipisicing excepteur do eu duis elit. Sunt ea pariatur nulla est laborum proident sunt labore commodo Lorem laboris nisi Lorem.
 			</p>

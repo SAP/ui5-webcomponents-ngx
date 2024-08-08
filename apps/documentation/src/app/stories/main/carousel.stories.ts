@@ -5,33 +5,38 @@ import {
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
-const description = `### Overview The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>
+const description = `
+### Overview
 
-<h3>Usage</h3>
+The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>
 
-<h4>When to use:</h4>
+### Usage
+
+#### When to use:
 
 <ul> <li>The items you want to display are very different from each other.</li> <li>You want to display the items one after the other.</li> </ul>
 
-<h4>When not to use:</h4>
+#### When not to use:
 
 <ul> <li>The items you want to display need to be visible at the same time.</li> <li>The items you want to display are uniform and very similar.</li> </ul>
 
-<h3>Keyboard Handling</h3>
+### Keyboard Handling
 
-<h4>Basic Navigation</h4> When the <code>ui5-carousel</code> is focused the user can navigate between the items with the following keyboard shortcuts: <br>
+#### Basic Navigation When the <code>ui5-carousel</code> is focused the user can navigate between the items with the following keyboard shortcuts: <br>
 
-<h3>CSS Shadow Parts</h3>
+### CSS Shadow Parts
 
 <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-carousel</code> exposes the following CSS Shadow Parts: <ul> <li>content - Used to style the content of the component</li> </ul>
 
-* <h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
+* #### Fast Navigation This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
 
 <ul> <li>[UP/DOWN] - Navigates to previous and next item</li> <li>[LEFT/RIGHT] - Navigates to previous and next item</li> </ul>
 
-<h3>ES6 Module Import</h3>
+### ES6 Module Import
 
-<code>import { CarouselComponent } from "@ui5/webcomponents-ngx/main/carousel";</code>`;
+- import { CarouselComponent } from "@ui5/webcomponents-ngx/main/carousel";
+`;
+
 export default {
   title: 'UI5 Web Components / Main / Carousel',
   component: CarouselComponent,
@@ -102,9 +107,20 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 
 				<div class="card-content">
 					<ui5-list separators="None" class="card-content-child" style="width: 100%">
-						<ui5-li image="../../../assets/images/avatars/man_avatar_1.png" description="User Researcher">Alain Chevalier</ui5-li>
-						<ui5-li image="../../../assets/images/avatars/woman_avatar_1.png" description="Artist">Monique Legrand</ui5-li>
-						<ui5-li image="../../../assets/images/avatars/woman_avatar_2.png" description="UX Specialist">Michael Adams</ui5-li>
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							Susan
+							<img slot="image" src="../../../assets/images/avatars/woman_avatar_2.png" />
+						</ui5-li>
+
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							David
+							<img slot="image" src="../../../assets/images/avatars/man_avatar_3.png" />
+						</ui5-li>
+
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							Natalie
+							<img slot="image" src="../../../assets/images/avatars/woman_avatar_3.png" />
+						</ui5-li>
 					</ui5-list>
 				</div>
 			</ui5-card>
@@ -116,9 +132,20 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 
 				<div class="card-content">
 					<ui5-list separators="None" class="card-content-child" style="width: 100%">
-						<ui5-li image="../../../assets/images/avatars/man_avatar_2.png" description="Software Architect">Richard Wilson</ui5-li>
-						<ui5-li image="../../../assets/images/avatars/woman_avatar_3.png" description="Visual Designer">Elena Petrova</ui5-li>
-						<ui5-li image="../../../assets/images/avatars/man_avatar_3.png" description="Quality Specialist">John Miller</ui5-li>
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							Clark
+							<img slot="image" src="../../../assets/images/avatars/man_avatar_1.png" />
+						</ui5-li>
+
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							Ellen
+							<img slot="image" src="../../../assets/images/avatars/woman_avatar_1.png" />
+						</ui5-li>
+
+						<ui5-li icon="navigation-right-arrow" icon-end>
+							Adam
+							<img slot="image" src="../../../assets/images/avatars/man_avatar_2.png" />
+						</ui5-li>
 					</ui5-list>
 				</div>
 			</ui5-card>

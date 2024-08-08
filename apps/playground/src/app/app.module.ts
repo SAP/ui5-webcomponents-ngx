@@ -22,6 +22,7 @@ const Russian = {
 @NgModule({
   declarations: [AppComponent, MainComponent],
   imports: [
+    Ui5WebcomponentsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

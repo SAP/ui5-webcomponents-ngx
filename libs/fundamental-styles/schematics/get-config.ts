@@ -33,4 +33,3 @@ async function askCommonCssParts(): Promise<string[]> {
     choices: CommonCssParts,
   });
 }
-

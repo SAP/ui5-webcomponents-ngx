@@ -118,7 +118,7 @@ function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefiniti
 } {
   const mainFile = getProjectMainFile(projectDefinition);
   const mainFileSource = getSourceFile(tree, mainFile);
-  const bootstrapCall = findBootstrapApplicationCall(mainFileSource);
+  const bootstrapCall = findBootstrapApplicationCall(tree, mainFile);
   if (!bootstrapCall) {
     throw new SchematicsException('Could not find bootstrap call in main.ts');
   }

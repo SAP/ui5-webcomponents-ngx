@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-rc.14](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.13...v0.3.0-rc.14) (2024-08-12)
+
+### Bug Fixes
+
+- migrate to ng18 and nx19 ([#146](https://github.com/SAP/ui5-webcomponents-ngx/issues/146)) ([644c69b](https://github.com/SAP/ui5-webcomponents-ngx/commit/644c69bf44f98000b6844ad853d75e66ae6b302d))
+
+### BREAKING CHANGES
+
+- Angular 18 migration
+
 # [0.3.0-rc.13](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.3.0-rc.12...v0.3.0-rc.13) (2024-08-12)
 
 ### Bug Fixes

@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/ui5-angular",
   "prefix": "ui-angular",
+  "tags": [],
   "targets": {
     "prepare": {
       "executor": "@ui5/webcomponents-nx:prepare",
@@ -62,6 +63,5 @@
         "jestConfig": "libs/ui5-angular/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

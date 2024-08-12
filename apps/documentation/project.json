@@ -4,10 +4,10 @@
   "projectType": "application",
   "sourceRoot": "apps/documentation/src",
   "prefix": "ui-angular",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     },
     "sync": {
       "executor": "@ui5/webcomponents-nx:sync",
@@ -48,6 +48,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

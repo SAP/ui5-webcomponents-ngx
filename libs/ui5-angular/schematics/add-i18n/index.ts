@@ -6,7 +6,7 @@ import { ProjectDefinition } from "@schematics/angular/utility";
 import { SchematicContext } from "@angular-devkit/schematics/src/engine/interface";
 import { getAppModulePath } from "@schematics/angular/utility/ng-ast-utils";
 import { addImportToModule, insertImport } from "@schematics/angular/utility/ast-utils";
-import { findBootstrapApplicationCall } from "@schematics/angular/private/standalone";
+import { findBootstrapApplicationCall } from "@schematics/angular/utility/standalone/util";
 import { getProjectDefinition } from "../utils/get-project-definition";
 import { getProjectMainFile } from "../utils/project-main-file";
 import { getModuleDeclaration } from "../utils/getModuleDeclaration";
@@ -118,7 +118,7 @@ function addModuleToStandaloneApp(tree: Tree, projectDefinition: ProjectDefiniti
 } {
   const mainFile = getProjectMainFile(projectDefinition);
   const mainFileSource = getSourceFile(tree, mainFile);
-  const bootstrapCall = findBootstrapApplicationCall(mainFileSource);
+  const bootstrapCall = findBootstrapApplicationCall(tree, mainFile);
   if (!bootstrapCall) {
     throw new SchematicsException('Could not find bootstrap call in main.ts');
   }

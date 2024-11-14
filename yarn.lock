@@ -28665,7 +28665,6 @@ __metadata:
     ts-node: 10.9.1
     tslib: 2.4.1
     typescript: 5.5.4
-    webpack: ^5.64.0
     zone.js: 0.14.8
   languageName: unknown
   linkType: soft
@@ -29664,7 +29663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5, webpack@npm:^5.64.0, webpack@npm:^5.80.0, webpack@npm:^5.88.0":
+"webpack@npm:5, webpack@npm:^5.80.0, webpack@npm:^5.88.0":
   version: 5.96.1
   resolution: "webpack@npm:5.96.1"
   dependencies:

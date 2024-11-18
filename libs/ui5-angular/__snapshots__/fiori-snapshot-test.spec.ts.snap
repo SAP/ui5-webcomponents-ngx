@@ -753,6 +753,50 @@ export { MediaGalleryComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Navigation Layout should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/NavigationLayout.js';
+import NavigationLayout from '@ui5/webcomponents-fiori/dist/NavigationLayout.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['sideCollapsed'])
+@Component({
+  standalone: true,
+  selector: 'ui5-navigation-layout',
+  template: '<ng-content></ng-content>',
+  inputs: ['sideCollapsed'],
+  exportAs: 'ui5NavigationLayout',
+})
+class NavigationLayoutComponent {
+  /**
+        Indicates whether the side navigation is collapsed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  sideCollapsed!: boolean;
+
+  private elementRef: ElementRef<NavigationLayout> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): NavigationLayout {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { NavigationLayoutComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Ng Package Json should match the snapshot 1`] = `"{\\"lib\\":{\\"entryFile\\":\\"./index.ts\\"}}"`;
 
 exports[`Snapshot test Fiori Notification List Group Item should match the snapshot 1`] = `
@@ -769,14 +813,28 @@ exports[`Snapshot test Fiori Notification List Group Item should match the snaps
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import NotificationListGroupItem from '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['titleText', 'read', 'loading', 'loadingDelay', 'collapsed'])
-@ProxyOutputs(['toggle: ui5Toggle'])
+@ProxyInputs([
+  'titleText',
+  'read',
+  'loading',
+  'loadingDelay',
+  'collapsed',
+  'growing',
+])
+@ProxyOutputs(['toggle: ui5Toggle', 'load-more: ui5LoadMore'])
 @Component({
   standalone: true,
   selector: 'ui5-li-notification-group',
   template: '<ng-content></ng-content>',
-  inputs: ['titleText', 'read', 'loading', 'loadingDelay', 'collapsed'],
-  outputs: ['ui5Toggle'],
+  inputs: [
+    'titleText',
+    'read',
+    'loading',
+    'loadingDelay',
+    'collapsed',
+    'growing',
+  ],
+  outputs: ['ui5Toggle', 'ui5LoadMore'],
   exportAs: 'ui5LiNotificationGroup',
 })
 class NotificationListGroupItemComponent {
@@ -806,11 +864,20 @@ if set to true - it has a normal font.
         */
   @InputDecorator({ transform: booleanAttribute })
   collapsed!: boolean;
+  /**
+        Defines whether the component will have growing capability by pressing a \`More\` button.
+When button is pressed \`load-more\` event will be fired.
+        */
+  growing!: 'Button' | 'None';
 
   /**
      Fired when the \`ui5-li-notification-group\` is expanded/collapsed by user interaction.
     */
   ui5Toggle!: EventEmitter<void>;
+  /**
+     Fired when additional items are requested.
+    */
+  ui5LoadMore!: EventEmitter<void>;
 
   private elementRef: ElementRef<NotificationListGroupItem> =
     inject(ElementRef);
@@ -2027,6 +2094,7 @@ import { FlexibleColumnLayoutComponent } from \\"@ui5/webcomponents-ngx/fiori/fl
 import { IllustratedMessageComponent } from \\"@ui5/webcomponents-ngx/fiori/illustrated-message\\";
 import { MediaGalleryComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery\\";
 import { MediaGalleryItemComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery-item\\";
+import { NavigationLayoutComponent } from \\"@ui5/webcomponents-ngx/fiori/navigation-layout\\";
 import { NotificationListComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list\\";
 import { NotificationListGroupItemComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list-group-item\\";
 import { NotificationListItemComponent } from \\"@ui5/webcomponents-ngx/fiori/notification-list-item\\";
@@ -2061,6 +2129,7 @@ const imports = [
   IllustratedMessageComponent,
   MediaGalleryComponent,
   MediaGalleryItemComponent,
+  NavigationLayoutComponent,
   NotificationListComponent,
   NotificationListGroupItemComponent,
   NotificationListItemComponent,
@@ -2468,7 +2537,7 @@ class ViewSettingsDialogComponent {
     */
   ui5Cancel!: EventEmitter<ViewSettingsDialogCancelEventDetail>;
   /**
-     Fired before the component is opened. **This event does not bubble.**
+     Fired before the component is opened.
     */
   ui5BeforeOpen!: EventEmitter<void>;
   /**

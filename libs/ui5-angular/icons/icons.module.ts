@@ -5,9 +5,9 @@ import {Ui5AngularSelectedIconsToLoad} from "./icons.tokens";
 type IconPackageName = 'sap-icons' | 'tnt-icons' | 'business-suite-icons';
 
 const iconPackageNameToFileMap: Record<IconPackageName, () => Promise<any>> = {
-  'sap-icons': () => import('@ui5/webcomponents-icons/dist/AllIcons').then(() => 'sap-icons'),
-  'tnt-icons': () => import('@ui5/webcomponents-icons-tnt/dist/AllIcons').then(() => 'tnt-icons'),
-  'business-suite-icons': () => import('@ui5/webcomponents-icons-business-suite/dist/AllIcons').then(() => 'business-suite-icons')
+  'sap-icons': () => import('@ui5/webcomponents-icons/dist/AllIcons.js').then(() => 'sap-icons'),
+  'tnt-icons': () => import('@ui5/webcomponents-icons-tnt/dist/AllIcons.js').then(() => 'tnt-icons'),
+  'business-suite-icons': () => import('@ui5/webcomponents-icons-business-suite/dist/AllIcons.js').then(() => 'business-suite-icons')
 }
 
 @NgModule({

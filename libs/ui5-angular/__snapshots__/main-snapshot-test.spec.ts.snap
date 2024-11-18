@@ -864,6 +864,7 @@ import {
   'formatPattern',
   'minDate',
   'maxDate',
+  'calendarWeekNumbering',
   'selectionMode',
   'hideWeekNumbers',
 ])
@@ -878,6 +879,7 @@ import {
     'formatPattern',
     'minDate',
     'maxDate',
+    'calendarWeekNumbering',
     'selectionMode',
     'hideWeekNumbers',
   ],
@@ -923,6 +925,15 @@ If not set, the calendar will only show the primary calendar type.
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
         */
   maxDate!: string;
+  /**
+        Defines how to calculate calendar weeks and first day of the week.
+If not set, the calendar will be displayed according to the currently set global configuration.
+        */
+  calendarWeekNumbering!:
+    | 'Default'
+    | 'ISO_8601'
+    | 'MiddleEastern'
+    | 'WesternTraditional';
   /**
         Defines the type of selection used in the calendar component.
 Accepted property values are:
@@ -1170,8 +1181,7 @@ One item per page is shown by default.
         Defines the visibility of the navigation arrows.
 If set to true the navigation arrows will be hidden.
 
-**Note:** The navigation arrows are never displayed on touch devices.
-In this case, the user can swipe to navigate through the items.
+**Note:** The navigation arrows are always displayed on touch devices.
         */
   @InputDecorator({ transform: booleanAttribute })
   hideNavigationArrows!: boolean;
@@ -1945,6 +1955,7 @@ import {
   'formatPattern',
   'minDate',
   'maxDate',
+  'calendarWeekNumbering',
   'value',
   'valueState',
   'required',
@@ -1961,6 +1972,8 @@ import {
   'change: ui5Change',
   'input: ui5Input',
   'value-state-change: ui5ValueStateChange',
+  'open: ui5Open',
+  'close: ui5Close',
 ])
 @Component({
   standalone: true,
@@ -1972,6 +1985,7 @@ import {
     'formatPattern',
     'minDate',
     'maxDate',
+    'calendarWeekNumbering',
     'value',
     'valueState',
     'required',
@@ -1984,7 +1998,13 @@ import {
     'accessibleName',
     'accessibleNameRef',
   ],
-  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  outputs: [
+    'ui5Change',
+    'ui5Input',
+    'ui5ValueStateChange',
+    'ui5Open',
+    'ui5Close',
+  ],
   exportAs: 'ui5DatePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
@@ -2031,6 +2051,15 @@ If not set, the calendar will only show the primary calendar type.
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
         */
   maxDate!: string;
+  /**
+        Defines how to calculate calendar weeks and first day of the week.
+If not set, the calendar will be displayed according to the currently set global configuration.
+        */
+  calendarWeekNumbering!:
+    | 'Default'
+    | 'ISO_8601'
+    | 'MiddleEastern'
+    | 'WesternTraditional';
   /**
         Defines a formatted date value.
         */
@@ -2104,6 +2133,14 @@ The event is preventable, meaning that if it's default action is
 prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
+  /**
+     Fired after the value-help dialog of the component is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired after the value-help dialog of the component is closed.
+    */
+  ui5Close!: EventEmitter<void>;
 
   private elementRef: ElementRef<DatePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2157,6 +2194,7 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   'formatPattern',
   'minDate',
   'maxDate',
+  'calendarWeekNumbering',
   'value',
   'valueState',
   'required',
@@ -2174,6 +2212,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   'change: ui5Change',
   'input: ui5Input',
   'value-state-change: ui5ValueStateChange',
+  'open: ui5Open',
+  'close: ui5Close',
 ])
 @Component({
   standalone: true,
@@ -2185,6 +2225,7 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'formatPattern',
     'minDate',
     'maxDate',
+    'calendarWeekNumbering',
     'value',
     'valueState',
     'required',
@@ -2198,7 +2239,13 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'accessibleNameRef',
     'delimiter',
   ],
-  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  outputs: [
+    'ui5Change',
+    'ui5Input',
+    'ui5ValueStateChange',
+    'ui5Open',
+    'ui5Close',
+  ],
   exportAs: 'ui5DaterangePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
@@ -2245,6 +2292,15 @@ If not set, the calendar will only show the primary calendar type.
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
         */
   maxDate!: string;
+  /**
+        Defines how to calculate calendar weeks and first day of the week.
+If not set, the calendar will be displayed according to the currently set global configuration.
+        */
+  calendarWeekNumbering!:
+    | 'Default'
+    | 'ISO_8601'
+    | 'MiddleEastern'
+    | 'WesternTraditional';
   /**
         Defines a formatted date value.
         */
@@ -2323,6 +2379,14 @@ The event is preventable, meaning that if it's default action is
 prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
+  /**
+     Fired after the value-help dialog of the component is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired after the value-help dialog of the component is closed.
+    */
+  ui5Close!: EventEmitter<void>;
 
   private elementRef: ElementRef<DateRangePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2376,6 +2440,7 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   'formatPattern',
   'minDate',
   'maxDate',
+  'calendarWeekNumbering',
   'value',
   'valueState',
   'required',
@@ -2392,6 +2457,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   'change: ui5Change',
   'input: ui5Input',
   'value-state-change: ui5ValueStateChange',
+  'open: ui5Open',
+  'close: ui5Close',
 ])
 @Component({
   standalone: true,
@@ -2403,6 +2470,7 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'formatPattern',
     'minDate',
     'maxDate',
+    'calendarWeekNumbering',
     'value',
     'valueState',
     'required',
@@ -2415,7 +2483,13 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'accessibleName',
     'accessibleNameRef',
   ],
-  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
+  outputs: [
+    'ui5Change',
+    'ui5Input',
+    'ui5ValueStateChange',
+    'ui5Open',
+    'ui5Close',
+  ],
   exportAs: 'ui5DatetimePicker',
   hostDirectives: [GenericControlValueAccessor],
   host: {
@@ -2462,6 +2536,15 @@ If not set, the calendar will only show the primary calendar type.
 **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
         */
   maxDate!: string;
+  /**
+        Defines how to calculate calendar weeks and first day of the week.
+If not set, the calendar will be displayed according to the currently set global configuration.
+        */
+  calendarWeekNumbering!:
+    | 'Default'
+    | 'ISO_8601'
+    | 'MiddleEastern'
+    | 'WesternTraditional';
   /**
         Defines a formatted date value.
         */
@@ -2535,6 +2618,14 @@ The event is preventable, meaning that if it's default action is
 prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
+  /**
+     Fired after the value-help dialog of the component is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired after the value-help dialog of the component is closed.
+    */
+  ui5Close!: EventEmitter<void>;
 
   private elementRef: ElementRef<DateTimePicker> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2700,19 +2791,19 @@ accessibility role to \\"alertdialog\\", if the accessibleRole property is set t
   state!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
 
   /**
-     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
     */
   ui5BeforeOpen!: EventEmitter<void>;
   /**
-     Fired after the component is opened. **This event does not bubble.**
+     Fired after the component is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
     */
   ui5BeforeClose!: EventEmitter<PopupBeforeCloseEventDetail>;
   /**
-     Fired after the component is closed. **This event does not bubble.**
+     Fired after the component is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -2749,6 +2840,7 @@ import '@ui5/webcomponents/dist/FileUploader.js';
 import {
   default as FileUploader,
   FileUploaderChangeEventDetail,
+  FileUploaderFileSizeExceedEventDetail,
 } from '@ui5/webcomponents/dist/FileUploader.js';
 @ProxyInputs([
   'accept',
@@ -2758,9 +2850,10 @@ import {
   'name',
   'placeholder',
   'value',
+  'maxFileSize',
   'valueState',
 ])
-@ProxyOutputs(['change: ui5Change'])
+@ProxyOutputs(['change: ui5Change', 'file-size-exceed: ui5FileSizeExceed'])
 @Component({
   standalone: true,
   selector: 'ui5-file-uploader',
@@ -2773,9 +2866,10 @@ import {
     'name',
     'placeholder',
     'value',
+    'maxFileSize',
     'valueState',
   ],
-  outputs: ['ui5Change'],
+  outputs: ['ui5Change', 'ui5FileSizeExceed'],
   exportAs: 'ui5FileUploader',
   hostDirectives: [GenericControlValueAccessor],
   host: { '(change)': '_cva?.onChange?.(cvaValue);' },
@@ -2819,6 +2913,10 @@ class FileUploaderComponent {
         */
   value!: string;
   /**
+        Defines the maximum file size in megabytes which prevents the upload if at least one file exceeds it.
+        */
+  maxFileSize!: number | undefined;
+  /**
         Defines the value state of the component.
         */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
@@ -2829,6 +2927,10 @@ class FileUploaderComponent {
 **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
     */
   ui5Change!: EventEmitter<FileUploaderChangeEventDetail>;
+  /**
+     Event is fired when the size of a file is above the \`maxFileSize\` property value.
+    */
+  ui5FileSizeExceed!: EventEmitter<FileUploaderFileSizeExceedEventDetail>;
 
   private elementRef: ElementRef<FileUploader> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2975,7 +3077,7 @@ Supported values:
 - \`S\` - 1 column by default (1 column is recommended)
 - \`M\` - 1 column by default (up to 2 columns are recommended)
 - \`L\` - 2 columns by default (up to 3 columns are recommended)
-- \`XL\` - 2 columns by default (up to 6 columns  are recommended)
+- \`XL\` - 3 columns by default (up to 6 columns  are recommended)
         */
   layout!: string;
   /**
@@ -5425,19 +5527,19 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
   opener!: HTMLElement | string | undefined;
 
   /**
-     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
     */
   ui5BeforeOpen!: EventEmitter<void>;
   /**
-     Fired after the component is opened. **This event does not bubble.**
+     Fired after the component is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
     */
   ui5BeforeClose!: EventEmitter<PopupBeforeCloseEventDetail>;
   /**
-     Fired after the component is closed. **This event does not bubble.**
+     Fired after the component is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -5712,6 +5814,7 @@ import RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
   'labelInterval',
   'showTickmarks',
   'showTooltip',
+  'editableTooltip',
   'disabled',
   'accessibleName',
   'startValue',
@@ -5730,6 +5833,7 @@ import RangeSlider from '@ui5/webcomponents/dist/RangeSlider.js';
     'labelInterval',
     'showTickmarks',
     'showTooltip',
+    'editableTooltip',
     'disabled',
     'accessibleName',
     'startValue',
@@ -5784,6 +5888,15 @@ tickmark will be labelled, which means every 4th value number.
         */
   @InputDecorator({ transform: booleanAttribute })
   showTooltip!: boolean;
+  /**
+        
+Indicates whether input fields should be used as tooltips for the handles.
+
+**Note:** Setting this option to true will only work if showTooltip is set to true.
+**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  editableTooltip!: boolean;
   /**
         Defines whether the slider is in disabled state.
         */
@@ -6090,19 +6203,19 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
   opener!: HTMLElement | string | undefined;
 
   /**
-     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+     Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
     */
   ui5BeforeOpen!: EventEmitter<void>;
   /**
-     Fired after the component is opened. **This event does not bubble.**
+     Fired after the component is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+     Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
     */
   ui5BeforeClose!: EventEmitter<PopupBeforeCloseEventDetail>;
   /**
-     Fired after the component is closed. **This event does not bubble.**
+     Fired after the component is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -6437,6 +6550,7 @@ import Slider from '@ui5/webcomponents/dist/Slider.js';
   'labelInterval',
   'showTickmarks',
   'showTooltip',
+  'editableTooltip',
   'disabled',
   'accessibleName',
   'value',
@@ -6454,6 +6568,7 @@ import Slider from '@ui5/webcomponents/dist/Slider.js';
     'labelInterval',
     'showTickmarks',
     'showTooltip',
+    'editableTooltip',
     'disabled',
     'accessibleName',
     'value',
@@ -6507,6 +6622,15 @@ tickmark will be labelled, which means every 4th value number.
         */
   @InputDecorator({ transform: booleanAttribute })
   showTooltip!: boolean;
+  /**
+        
+Indicates whether input fields should be used as tooltips for the handles.
+
+**Note:** Setting this option to true will only work if showTooltip is set to true.
+**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  editableTooltip!: boolean;
   /**
         Defines whether the slider is in disabled state.
         */
@@ -7393,16 +7517,24 @@ exports[`Snapshot test Main Table Cell should match the snapshot 1`] = `
   NgZone,
   inject,
 } from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableCell.js';
 import TableCell from '@ui5/webcomponents/dist/TableCell.js';
-
+@ProxyInputs(['horizontalAlign'])
 @Component({
   standalone: true,
   selector: 'ui5-table-cell',
   template: '<ng-content></ng-content>',
+  inputs: ['horizontalAlign'],
   exportAs: 'ui5TableCell',
 })
 class TableCellComponent {
+  /**
+        Determines the horizontal alignment of table cells.
+**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
+        */
+  horizontalAlign!: 'Left' | 'Start' | 'Right' | 'End' | 'Center' | undefined;
+
   private elementRef: ElementRef<TableCell> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
@@ -7498,15 +7630,20 @@ exports[`Snapshot test Main Table Header Cell should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableHeaderCell.js';
 import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
-@ProxyInputs(['width', 'minWidth', 'maxWidth', 'importance'])
+@ProxyInputs(['horizontalAlign', 'width', 'minWidth', 'maxWidth', 'importance'])
 @Component({
   standalone: true,
   selector: 'ui5-table-header-cell',
   template: '<ng-content></ng-content>',
-  inputs: ['width', 'minWidth', 'maxWidth', 'importance'],
+  inputs: ['horizontalAlign', 'width', 'minWidth', 'maxWidth', 'importance'],
   exportAs: 'ui5TableHeaderCell',
 })
 class TableHeaderCellComponent {
+  /**
+        Determines the horizontal alignment of table cells.
+**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
+        */
+  horizontalAlign!: 'Left' | 'Start' | 'Right' | 'End' | 'Center' | undefined;
   /**
         Defines the width of column.
         */
@@ -7572,8 +7709,7 @@ class TableHeaderRowComponent {
   /**
         Sticks the \`ui5-table-header-row\` to the top of a table.
 
-Note: If used in combination with overflowMode \\"Scroll\\", the table needs a defined height
-or needs to be inside of a container with a defined height for the sticky header to work as expected.
+Note: If used in combination with overflowMode \\"Scroll\\", the table needs a defined height for the sticky header to work as expected.
         */
   @InputDecorator({ transform: booleanAttribute })
   sticky!: boolean;
@@ -8104,12 +8240,12 @@ exports[`Snapshot test Main Text should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Text.js';
 import Text from '@ui5/webcomponents/dist/Text.js';
-@ProxyInputs(['maxLines'])
+@ProxyInputs(['maxLines', 'emptyIndicatorMode'])
 @Component({
   standalone: true,
   selector: 'ui5-text',
   template: '<ng-content></ng-content>',
-  inputs: ['maxLines'],
+  inputs: ['maxLines', 'emptyIndicatorMode'],
   exportAs: 'ui5Text',
 })
 class TextComponent {
@@ -8117,6 +8253,10 @@ class TextComponent {
         Defines the number of lines the text should wrap before it truncates.
         */
   maxLines!: number;
+  /**
+        Specifies if an empty indicator should be displayed when there is no text.
+        */
+  emptyIndicatorMode!: 'Off' | 'On';
 
   private elementRef: ElementRef<Text> = inject(ElementRef);
   private zone = inject(NgZone);

@@ -224,6 +224,7 @@ exports[`Snapshot test Fiori Dynamic Side Content should match the snapshot 1`] 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import {
   default as DynamicSideContent,
+  DynamicSideContentAccessibilityAttributes,
   DynamicSideContentLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -234,6 +235,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'sideContentVisibility',
   'sideContentFallDown',
   'equalSplit',
+  'accessibilityAttributes',
 ])
 @ProxyOutputs(['layout-change: ui5LayoutChange'])
 @Component({
@@ -247,6 +249,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'sideContentVisibility',
     'sideContentFallDown',
     'equalSplit',
+    'accessibilityAttributes',
   ],
   outputs: ['ui5LayoutChange'],
   exportAs: 'ui5DynamicSideContent',
@@ -288,6 +291,15 @@ using the toggle method.
         */
   @InputDecorator({ transform: booleanAttribute })
   equalSplit!: boolean;
+  /**
+        Defines additional accessibility attributes on different areas of the component.
+
+The accessibilityAttributes object has the following fields:
+
+ - **mainContent**: \`mainContent.ariaLabel\` defines the aria-label of the main content area. Accepts any string.
+ - **sideContent**: \`sideContent.ariaLabel\` defines the aria-label of the side content area. Accepts any string.
+        */
+  accessibilityAttributes!: DynamicSideContentAccessibilityAttributes;
 
   /**
      Fires when the current breakpoint has been changed.
@@ -758,28 +770,25 @@ exports[`Snapshot test Fiori Navigation Layout should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Input as InputDecorator,
   NgZone,
-  booleanAttribute,
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/NavigationLayout.js';
 import NavigationLayout from '@ui5/webcomponents-fiori/dist/NavigationLayout.js';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['sideCollapsed'])
+@ProxyInputs(['mode'])
 @Component({
   standalone: true,
   selector: 'ui5-navigation-layout',
   template: '<ng-content></ng-content>',
-  inputs: ['sideCollapsed'],
+  inputs: ['mode'],
   exportAs: 'ui5NavigationLayout',
 })
 class NavigationLayoutComponent {
   /**
-        Indicates whether the side navigation is collapsed.
+        Specifies the navigation layout mode.
         */
-  @InputDecorator({ transform: booleanAttribute })
-  sideCollapsed!: boolean;
+  mode!: 'Auto' | 'Collapsed' | 'Expanded';
 
   private elementRef: ElementRef<NavigationLayout> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2113,6 +2122,9 @@ import { TimelineGroupItemComponent } from \\"@ui5/webcomponents-ngx/fiori/timel
 import { TimelineItemComponent } from \\"@ui5/webcomponents-ngx/fiori/timeline-item\\";
 import { UploadCollectionComponent } from \\"@ui5/webcomponents-ngx/fiori/upload-collection\\";
 import { UploadCollectionItemComponent } from \\"@ui5/webcomponents-ngx/fiori/upload-collection-item\\";
+import { UserMenuComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu\\";
+import { UserMenuAccountComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-account\\";
+import { UserMenuItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item\\";
 import { ViewSettingsDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/view-settings-dialog\\";
 import { WizardComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard\\";
 import { WizardStepComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard-step\\";
@@ -2148,6 +2160,9 @@ const imports = [
   TimelineItemComponent,
   UploadCollectionComponent,
   UploadCollectionItemComponent,
+  UserMenuComponent,
+  UserMenuAccountComponent,
+  UserMenuItemComponent,
   ViewSettingsDialogComponent,
   WizardComponent,
   WizardStepComponent,
@@ -2399,7 +2414,6 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'accessibleName',
 ])
 @ProxyOutputs([
-  'drop: ui5Drop',
   'item-delete: ui5ItemDelete',
   'selection-change: ui5SelectionChange',
 ])
@@ -2414,7 +2428,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'hideDragOverlay',
     'accessibleName',
   ],
-  outputs: ['ui5Drop', 'ui5ItemDelete', 'ui5SelectionChange'],
+  outputs: ['ui5ItemDelete', 'ui5SelectionChange'],
   exportAs: 'ui5UploadCollection',
 })
 class UploadCollectionComponent {
@@ -2455,10 +2469,6 @@ are dragged. If you don't intend to use drag and drop, set this property.
 
 **Note:** The \`drop\` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the \`ui5-upload-collection\`.
     */
-  ui5Drop!: EventEmitter<Event>;
-  /**
-     Fired when the delete button of any item is pressed.
-    */
   ui5ItemDelete!: EventEmitter<UploadCollectionItemDeleteEventDetail>;
   /**
      Fired when selection is changed by user interaction
@@ -2479,6 +2489,377 @@ in \`Single\` and \`Multiple\` modes.
   }
 }
 export { UploadCollectionComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Menu Account should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserMenuAccount.js';
+import UserMenuAccount from '@ui5/webcomponents-fiori/dist/UserMenuAccount.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs([
+  'avatarSrc',
+  'avatarInitials',
+  'titleText',
+  'subtitleText',
+  'description',
+  'selected',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-menu-account',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'avatarSrc',
+    'avatarInitials',
+    'titleText',
+    'subtitleText',
+    'description',
+    'selected',
+  ],
+  exportAs: 'ui5UserMenuAccount',
+})
+class UserMenuAccountComponent {
+  /**
+        Defines the avatar image url of the user.
+        */
+  avatarSrc!: string | undefined;
+  /**
+        Defines the avatar initials of the user.
+        */
+  avatarInitials!: string | undefined;
+  /**
+        Defines the title text of the user.
+        */
+  titleText!: string;
+  /**
+        Defines additional text of the user.
+        */
+  subtitleText!: string;
+  /**
+        Defines description of the user.
+        */
+  description!: string;
+  /**
+        Defines if the user is selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+
+  private elementRef: ElementRef<UserMenuAccount> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserMenuAccount {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserMenuAccountComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Menu Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
+import UserMenuItem from '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+@ProxyInputs([
+  'type',
+  'accessibilityAttributes',
+  'navigated',
+  'tooltip',
+  'highlight',
+  'selected',
+  'text',
+  'additionalText',
+  'icon',
+  'disabled',
+  'loading',
+  'loadingDelay',
+  'accessibleName',
+])
+@ProxyOutputs(['detail-click: ui5DetailClick'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-menu-item',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'type',
+    'accessibilityAttributes',
+    'navigated',
+    'tooltip',
+    'highlight',
+    'selected',
+    'text',
+    'additionalText',
+    'icon',
+    'disabled',
+    'loading',
+    'loadingDelay',
+    'accessibleName',
+  ],
+  outputs: ['ui5DetailClick'],
+  exportAs: 'ui5UserMenuItem',
+})
+class UserMenuItemComponent {
+  /**
+        Defines the visual indication and behavior of the list items.
+Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
+
+**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
+while with type \`Inactive\` and \`Detail\` - will not.
+        */
+  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **ariaKeyShortcuts**: Indicated the availability of a keyboard shortcuts defined for the menu item.
+
+- **role**: Defines the role of the menu item. If not set, menu item will have default role=\\"menuitem\\".
+        */
+  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  /**
+        The navigated state of the list item.
+If set to \`true\`, a navigation indicator is displayed at the end of the list item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  navigated!: boolean;
+  /**
+        Defines the text of the tooltip for the menu item.
+        */
+  tooltip!: string | undefined;
+  /**
+        Defines the highlight state of the list items.
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+        */
+  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+  /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines the text of the tree item.
+        */
+  text!: string | undefined;
+  /**
+        Defines the \`additionalText\`, displayed in the end of the menu item.
+
+**Note:** The additional text will not be displayed if there are items added in \`items\` slot or there are
+components added to \`endContent\` slot.
+
+The priority of what will be displayed at the end of the menu item is as follows:
+sub-menu arrow (if there are items added in \`items\` slot) -> components added in \`endContent\` -> text set to \`additionalText\`.
+        */
+  additionalText!: string | undefined;
+  /**
+        Defines the icon to be displayed as graphical element within the component.
+The SAP-icons font provides numerous options.
+
+**Example:**
+
+See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+        */
+  icon!: string | undefined;
+  /**
+        Defines whether \`ui5-menu-item\` is in disabled state.
+
+**Note:** A disabled \`ui5-menu-item\` is noninteractive.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  disabled!: boolean;
+  /**
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+
+**Note:** If set to \`true\` a \`ui5-busy-indicator\` component will be displayed into the related one to the current \`ui5-menu-item\` sub-menu popover.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+        */
+  loadingDelay!: number;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+
+  /**
+     Fired when the user clicks on the detail button when type is \`Detail\`.
+    */
+  ui5DetailClick!: EventEmitter<void>;
+
+  private elementRef: ElementRef<UserMenuItem> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserMenuItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserMenuItemComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Menu should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserMenu.js';
+import {
+  default as UserMenu,
+  UserMenuItemClickEventDetail,
+  UserMenuOtherAccountClickEventDetail,
+} from '@ui5/webcomponents-fiori/dist/UserMenu.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs([
+  'open',
+  'opener',
+  'showManageAccount',
+  'showOtherAccounts',
+  'showAddAccount',
+])
+@ProxyOutputs([
+  'avatar-click: ui5AvatarClick',
+  'manage-account-click: ui5ManageAccountClick',
+  'add-account-click: ui5AddAccountClick',
+  'change-account: ui5ChangeAccount',
+  'item-click: ui5ItemClick',
+  'open: ui5Open',
+  'close: ui5Close',
+  'sign-out-click: ui5SignOutClick',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-menu',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'open',
+    'opener',
+    'showManageAccount',
+    'showOtherAccounts',
+    'showAddAccount',
+  ],
+  outputs: [
+    'ui5AvatarClick',
+    'ui5ManageAccountClick',
+    'ui5AddAccountClick',
+    'ui5ChangeAccount',
+    'ui5ItemClick',
+    'ui5Open',
+    'ui5Close',
+    'ui5SignOutClick',
+  ],
+  exportAs: 'ui5UserMenu',
+})
+class UserMenuComponent {
+  /**
+        Defines if the User Menu is opened.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
+  /**
+        Defines the ID or DOM Reference of the element at which the user menu is shown.
+When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
+You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
+        */
+  opener!: HTMLElement | string | undefined;
+  /**
+        Defines if the User Menu shows the Manage Account option.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showManageAccount!: boolean;
+  /**
+        Defines if the User Menu shows the Other Accounts option.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showOtherAccounts!: boolean;
+  /**
+        Defines if the User Menu shows the Add Account option.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showAddAccount!: boolean;
+
+  /**
+     Fired when the account avatar is selected.
+    */
+  ui5AvatarClick!: EventEmitter<void>;
+  /**
+     Fired when the \\"Manage Account\\" button is selected.
+    */
+  ui5ManageAccountClick!: EventEmitter<void>;
+  /**
+     Fired when the \\"Add Account\\" button is selected.
+    */
+  ui5AddAccountClick!: EventEmitter<void>;
+  /**
+     Fired when the account is switched to a different one.
+    */
+  ui5ChangeAccount!: EventEmitter<UserMenuOtherAccountClickEventDetail>;
+  /**
+     Fired when a menu item is selected.
+    */
+  ui5ItemClick!: EventEmitter<UserMenuItemClickEventDetail>;
+  /**
+     Fired when a user menu is open.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired when a user menu is close.
+    */
+  ui5Close!: EventEmitter<void>;
+  /**
+     Fired when the \\"Sign Out\\" button is selected.
+    */
+  ui5SignOutClick!: EventEmitter<void>;
+
+  private elementRef: ElementRef<UserMenu> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserMenu {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserMenuComponent };
 "
 `;
 

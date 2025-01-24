@@ -479,6 +479,7 @@ import {
   'accessibleName',
   'accessibleNameRef',
   'accessibilityAttributes',
+  'accessibleDescription',
   'type',
   'accessibleRole',
 ])
@@ -497,6 +498,7 @@ import {
     'accessibleName',
     'accessibleNameRef',
     'accessibilityAttributes',
+    'accessibleDescription',
     'type',
     'accessibleRole',
   ],
@@ -577,6 +579,10 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 Accepts a lowercase string value.
         */
   accessibilityAttributes!: ButtonAccessibilityAttributes;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
   /**
         Defines whether the button has special form-related functionality.
 
@@ -1015,7 +1021,7 @@ class CardHeaderComponent {
   additionalText!: string | undefined;
   /**
         Defines if the component would be interactive,
-e.g gets hover effect, gets focus outline and \`click\` event is fired, when pressed.
+e.g gets hover effect and \`click\` event is fired, when pressed.
         */
   @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
@@ -1180,8 +1186,6 @@ One item per page is shown by default.
   /**
         Defines the visibility of the navigation arrows.
 If set to true the navigation arrows will be hidden.
-
-**Note:** The navigation arrows are always displayed on touch devices.
         */
   @InputDecorator({ transform: booleanAttribute })
   hideNavigationArrows!: boolean;
@@ -1618,19 +1622,21 @@ exports[`Snapshot test Main Color Picker should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ColorPicker.js';
 import ColorPicker from '@ui5/webcomponents/dist/ColorPicker.js';
-@ProxyInputs(['value', 'name'])
+@ProxyInputs(['value', 'name', 'simplified'])
 @ProxyOutputs(['change: ui5Change'])
 @Component({
   standalone: true,
   selector: 'ui5-color-picker',
   template: '<ng-content></ng-content>',
-  inputs: ['value', 'name'],
+  inputs: ['value', 'name', 'simplified'],
   outputs: ['ui5Change'],
   exportAs: 'ui5ColorPicker',
 })
@@ -1647,6 +1653,11 @@ class ColorPickerComponent {
 **Note:** This property is only applicable within the context of an HTML Form element.
         */
   name!: string | undefined;
+  /**
+        When set to \`true\`, the alpha slider and inputs for RGB values will not be displayed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  simplified!: boolean;
 
   /**
      Fired when the the selected color is changed
@@ -1674,25 +1685,46 @@ exports[`Snapshot test Main Combo Box Item Group should match the snapshot 1`] =
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
 import ComboBoxItemGroup from '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
-@ProxyInputs(['headerText'])
+import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
+@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-cb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText'],
+  inputs: ['headerText', 'headerAccessibleName'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5CbItemGroup',
 })
 class ComboBoxItemGroupComponent {
   /**
-        Defines the text of the component.
+        Defines the header text of the <code>ui5-li-group</code>.
         */
   headerText!: string | undefined;
+  /**
+        Defines the accessible name of the header.
+        */
+  headerAccessibleName!: string | undefined;
+
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
 
   private elementRef: ElementRef<ComboBoxItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2134,11 +2166,11 @@ prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
   /**
-     Fired after the value-help dialog of the component is opened.
+     Fired after the component's picker is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired after the value-help dialog of the component is closed.
+     Fired after the component's picker is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -2380,11 +2412,11 @@ prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
   /**
-     Fired after the value-help dialog of the component is opened.
+     Fired after the component's picker is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired after the value-help dialog of the component is closed.
+     Fired after the component's picker is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -2619,11 +2651,11 @@ prevented, the component will not update the value state.
     */
   ui5ValueStateChange!: EventEmitter<DatePickerValueStateChangeEventDetail>;
   /**
-     Fired after the value-help dialog of the component is opened.
+     Fired after the component's picker is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired after the value-help dialog of the component is closed.
+     Fired after the component's picker is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -2752,10 +2784,10 @@ when the popup closes.
         */
   headerText!: string | undefined;
   /**
-        Determines whether the component should be stretched to fullscreen.
+        Determines if the dialog will be stretched to full screen on mobile. On desktop,
+the dialog will be stretched to approximately 90% of the viewport.
 
-**Note:** The component will be stretched to approximately
-90% of the viewport.
+**Note:** For better usability of the component it is recommended to set this property to \\"true\\" when the dialog is opened on phone.
         */
   @InputDecorator({ transform: booleanAttribute })
   stretch!: boolean;
@@ -2820,6 +2852,59 @@ accessibility role to \\"alertdialog\\", if the accessibleRole property is set t
   }
 }
 export { DialogComponent };
+"
+`;
+
+exports[`Snapshot test Main Expandable Text should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ExpandableText.js';
+import ExpandableText from '@ui5/webcomponents/dist/ExpandableText.js';
+@ProxyInputs(['text', 'maxCharacters', 'overflowMode', 'emptyIndicatorMode'])
+@Component({
+  standalone: true,
+  selector: 'ui5-expandable-text',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'maxCharacters', 'overflowMode', 'emptyIndicatorMode'],
+  exportAs: 'ui5ExpandableText',
+})
+class ExpandableTextComponent {
+  /**
+        Text of the component.
+        */
+  text!: string | undefined;
+  /**
+        Maximum number of characters to be displayed initially. If the text length exceeds this limit, the text will be truncated with an ellipsis, and the \\"More\\" link will be displayed.
+        */
+  maxCharacters!: number;
+  /**
+        Determines how the full text will be displayed.
+        */
+  overflowMode!: 'InPlace' | 'Popover';
+  /**
+        Specifies if an empty indicator should be displayed when there is no text.
+        */
+  emptyIndicatorMode!: 'Off' | 'On';
+
+  private elementRef: ElementRef<ExpandableText> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ExpandableText {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ExpandableTextComponent };
 "
 `;
 
@@ -3061,12 +3146,12 @@ exports[`Snapshot test Main Form should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Form.js';
 import Form from '@ui5/webcomponents/dist/Form.js';
-@ProxyInputs(['layout', 'labelSpan', 'headerText', 'itemSpacing'])
+@ProxyInputs(['layout', 'labelSpan', 'emptySpan', 'headerText', 'itemSpacing'])
 @Component({
   standalone: true,
   selector: 'ui5-form',
   template: '<ng-content></ng-content>',
-  inputs: ['layout', 'labelSpan', 'headerText', 'itemSpacing'],
+  inputs: ['layout', 'labelSpan', 'emptySpan', 'headerText', 'itemSpacing'],
   exportAs: 'ui5Form',
 })
 class FormComponent {
@@ -3081,7 +3166,7 @@ Supported values:
         */
   layout!: string;
   /**
-        Defines the width proportion of the labels and fields of a FormItem by breakpoint.
+        Defines the width proportion of the labels and fields of a form item by breakpoint.
 
 By default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,
 and 12/12 in S size, e.g in S the label is on top of its associated field.
@@ -3091,6 +3176,17 @@ The supported values are between 1 and 12. Greater the number, more space the la
 **Note:** If \\"12\\" is set, the label will be displayed on top of its assosiated field.
         */
   labelSpan!: string;
+  /**
+        Defines the number of cells that are empty at the end of each form item, configurable by breakpoint.
+
+By default, a form item spans 12 cells, fully divided between its label (4 cells) and field (8 cells), with no empty space at the end.
+The \`emptySpan\` provides additional layout flexibility by defining empty space at the form item’s end.
+
+**Note:**
+- The maximum allowable empty space is 10 cells. At least 1 cell each must remain for the label and the field.
+- When \`emptySpan\` is specified (greater than 0), ensure that the combined value of \`emptySpan\` and \`labelSpan\` does not exceed 11. This guarantees a minimum of 1 cell for the field.
+        */
+  emptySpan!: string;
   /**
         Defines the header text of the component.
 
@@ -3539,6 +3635,7 @@ import {
   'accessibleNameRef',
   'accessibleRole',
   'accessibilityAttributes',
+  'accessibleDescription',
   'icon',
   'endIcon',
 ])
@@ -3558,6 +3655,7 @@ import {
     'accessibleNameRef',
     'accessibleRole',
     'accessibilityAttributes',
+    'accessibleDescription',
     'icon',
     'endIcon',
   ],
@@ -3633,6 +3731,10 @@ Accepts the following string values: \`true\` or \`false\`.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
         */
   accessibilityAttributes!: LinkAccessibilityAttributes;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component before the link's text.
 The SAP-icons font provides numerous options.
@@ -4050,6 +4152,8 @@ import {
   'loadingDelay',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'accessibleRole',
 ])
 @ProxyOutputs([
@@ -4079,6 +4183,8 @@ import {
     'loadingDelay',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'accessibleRole',
   ],
   outputs: [
@@ -4158,9 +4264,17 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
         */
   accessibleName!: string | undefined;
   /**
-        Defines the IDs of the elements that label the input.
+        Defines the IDs of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Defines the IDs of the elements that describe the component.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines the accessible role of the component.
         */
@@ -4613,25 +4727,46 @@ exports[`Snapshot test Main Multi Combo Box Item Group should match the snapshot
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
 import '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
 import MultiComboBoxItemGroup from '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
-@ProxyInputs(['headerText'])
+@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-mcb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText'],
+  inputs: ['headerText', 'headerAccessibleName'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5McbItemGroup',
 })
 class MultiComboBoxItemGroupComponent {
   /**
-        Defines the text of the component.
+        Defines the header text of the <code>ui5-li-group</code>.
         */
   headerText!: string | undefined;
+  /**
+        Defines the accessible name of the header.
+        */
+  headerAccessibleName!: string | undefined;
+
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
 
   private elementRef: ElementRef<MultiComboBoxItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -5701,8 +5836,8 @@ class RadioButtonComponent {
   /**
         Defines whether the component is read-only.
 
-**Note:** A read-only component is not editable,
-but still provides visual feedback upon user interaction.
+**Note:** A read-only component isn't editable or selectable.
+However, because it's focusable, it still provides visual feedback upon user interaction.
         */
   @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
@@ -5717,6 +5852,9 @@ but still provides visual feedback upon user interaction.
 **Note:** The property value can be changed with user interaction,
 either by clicking/tapping on the component,
 or by using the Space or Enter key.
+
+**Note:** Only enabled radio buttons can be checked.
+Read-only radio buttons are not selectable, and therefore are always unchecked.
         */
   @InputDecorator({ transform: booleanAttribute })
   checked!: boolean;
@@ -5967,6 +6105,7 @@ import RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
 @ProxyInputs([
   'value',
   'max',
+  'size',
   'disabled',
   'readonly',
   'accessibleName',
@@ -5982,6 +6121,7 @@ import RatingIndicator from '@ui5/webcomponents/dist/RatingIndicator.js';
   inputs: [
     'value',
     'max',
+    'size',
     'disabled',
     'readonly',
     'accessibleName',
@@ -6007,6 +6147,10 @@ class RatingIndicatorComponent {
         The number of displayed rating symbols.
         */
   max!: number;
+  /**
+        Defines the size of the component.
+        */
+  size!: 'S' | 'M' | 'L';
   /**
         Defines whether the component is disabled.
 
@@ -6786,7 +6930,7 @@ The SAP-icons font provides numerous options.
 
 Example:
 
-See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+See all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
         */
   icon!: string | undefined;
   /**
@@ -6873,7 +7017,11 @@ import {
   'accessibleName',
   'accessibleNameRef',
 ])
-@ProxyOutputs(['change: ui5Change', 'value-state-change: ui5ValueStateChange'])
+@ProxyOutputs([
+  'change: ui5Change',
+  'input: ui5Input',
+  'value-state-change: ui5ValueStateChange',
+])
 @Component({
   standalone: true,
   selector: 'ui5-step-input',
@@ -6893,7 +7041,7 @@ import {
     'accessibleName',
     'accessibleNameRef',
   ],
-  outputs: ['ui5Change', 'ui5ValueStateChange'],
+  outputs: ['ui5Change', 'ui5Input', 'ui5ValueStateChange'],
   exportAs: 'ui5StepInput',
 })
 class StepInputComponent {
@@ -6963,6 +7111,10 @@ Passing an empty string as the value of this property will make the component ap
      Fired when the input operation has finished by pressing Enter or on focusout.
     */
   ui5Change!: EventEmitter<void>;
+  /**
+     Fired when the value of the component changes at each keystroke.
+    */
+  ui5Input!: EventEmitter<void>;
   /**
      Fired before the value state of the component is updated internally.
 The event is preventable, meaning that if it's default action is
@@ -7651,8 +7803,10 @@ class TableHeaderCellComponent {
   /**
         Defines the minimum width of the column.
 
-If the table is in \`Popin\` mode, the column will move into the popin when
-when the minimum width does not fit anymore.
+If the table is in \`Popin\` mode and the minimum width does not fit anymore,
+the column will move into the popin.
+
+**Note:** If \`minWidth\` has the \`auto\` value, the table ensures that the column is wider than at least \`3rem\`.
         */
   minWidth!: string;
   /**
@@ -7743,12 +7897,12 @@ exports[`Snapshot test Main Table Row should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableRow.js';
 import TableRow from '@ui5/webcomponents/dist/TableRow.js';
-@ProxyInputs(['rowKey', 'interactive', 'navigated'])
+@ProxyInputs(['rowKey', 'position', 'interactive', 'navigated', 'movable'])
 @Component({
   standalone: true,
   selector: 'ui5-table-row',
   template: '<ng-content></ng-content>',
-  inputs: ['rowKey', 'interactive', 'navigated'],
+  inputs: ['rowKey', 'position', 'interactive', 'navigated', 'movable'],
   exportAs: 'ui5TableRow',
 })
 class TableRowComponent {
@@ -7756,6 +7910,10 @@ class TableRowComponent {
         Unique identifier of the row.
         */
   rowKey!: string;
+  /**
+        Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.
+        */
+  position!: number;
   /**
         Defines the interactive state of the row.
         */
@@ -7766,6 +7924,11 @@ class TableRowComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   navigated!: boolean;
+  /**
+        Defines whether the row is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  movable!: boolean;
 
   private elementRef: ElementRef<TableRow> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -7836,6 +7999,72 @@ export { TableSelectionComponent };
 "
 `;
 
+exports[`Snapshot test Main Table Virtualizer should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableVirtualizer.js';
+import {
+  RangeChangeEventDetail,
+  default as TableVirtualizer,
+} from '@ui5/webcomponents/dist/TableVirtualizer.js';
+@ProxyInputs(['rowHeight', 'rowCount', 'extraRows'])
+@ProxyOutputs(['range-change: ui5RangeChange'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-virtualizer',
+  template: '<ng-content></ng-content>',
+  inputs: ['rowHeight', 'rowCount', 'extraRows'],
+  outputs: ['ui5RangeChange'],
+  exportAs: 'ui5TableVirtualizer',
+})
+class TableVirtualizerComponent {
+  /**
+        Defines the height of the rows in the table.
+
+**Note:** This property is mandatory for the virtualization to work properly.
+        */
+  rowHeight!: number;
+  /**
+        Defines the total count of rows in the table.
+
+**Note:** This property is mandatory for the virtualization to work properly.
+        */
+  rowCount!: number;
+  /**
+        Defines the count of extra rows to be rendered at the top and bottom of the table.
+
+**Note:** This property is experimental and may be changed or deleted in the future.
+        */
+  extraRows!: number;
+
+  /**
+     Fired when the virtualizer is changed by user interaction e.g. on scrolling.
+    */
+  ui5RangeChange!: EventEmitter<RangeChangeEventDetail>;
+
+  private elementRef: ElementRef<TableVirtualizer> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableVirtualizer {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableVirtualizerComponent };
+"
+`;
+
 exports[`Snapshot test Main Table should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -7851,6 +8080,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Table.js';
 import {
   default as Table,
+  TableMoveEventDetail,
   TableRowClickEventDetail,
 } from '@ui5/webcomponents/dist/Table.js';
 @ProxyInputs([
@@ -7861,7 +8091,11 @@ import {
   'loading',
   'loadingDelay',
 ])
-@ProxyOutputs(['row-click: ui5RowClick'])
+@ProxyOutputs([
+  'row-click: ui5RowClick',
+  'move-over: ui5MoveOver',
+  'move: ui5Move',
+])
 @Component({
   standalone: true,
   selector: 'ui5-table',
@@ -7874,7 +8108,7 @@ import {
     'loading',
     'loadingDelay',
   ],
-  outputs: ['ui5RowClick'],
+  outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5Table',
 })
 class TableComponent {
@@ -7916,6 +8150,26 @@ Available options are:
      Fired when an interactive row is clicked.
     */
   ui5RowClick!: EventEmitter<TableRowClickEventDetail>;
+  /**
+     Fired when a movable item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+
+**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+the \`source\` parameter will be \`null\`.
+    */
+  ui5MoveOver!: EventEmitter<TableMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Notes:**
+
+The \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+
+If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+the \`source\` parameter will be \`null\`.
+    */
+  ui5Move!: EventEmitter<TableMoveEventDetail>;
 
   private elementRef: ElementRef<Table> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8613,6 +8867,7 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
   'accessibleName',
   'accessibleNameRef',
   'accessibilityAttributes',
+  'accessibleDescription',
   'type',
   'accessibleRole',
   'pressed',
@@ -8632,6 +8887,7 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
     'accessibleName',
     'accessibleNameRef',
     'accessibilityAttributes',
+    'accessibleDescription',
     'type',
     'accessibleRole',
     'pressed',
@@ -8713,6 +8969,10 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 Accepts a lowercase string value.
         */
   accessibilityAttributes!: ButtonAccessibilityAttributes;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
   /**
         Defines whether the button has special form-related functionality.
 
@@ -8822,7 +9082,14 @@ import {
   TokenizerSelectionChangeEventDetail,
   TokenizerTokenDeleteEventDetail,
 } from '@ui5/webcomponents/dist/Tokenizer.js';
-@ProxyInputs(['readonly', 'disabled', 'accessibleName', 'accessibleNameRef'])
+@ProxyInputs([
+  'readonly',
+  'multiLine',
+  'showClearAll',
+  'disabled',
+  'accessibleName',
+  'accessibleNameRef',
+])
 @ProxyOutputs([
   'token-delete: ui5TokenDelete',
   'selection-change: ui5SelectionChange',
@@ -8831,7 +9098,14 @@ import {
   standalone: true,
   selector: 'ui5-tokenizer',
   template: '<ng-content></ng-content>',
-  inputs: ['readonly', 'disabled', 'accessibleName', 'accessibleNameRef'],
+  inputs: [
+    'readonly',
+    'multiLine',
+    'showClearAll',
+    'disabled',
+    'accessibleName',
+    'accessibleNameRef',
+  ],
   outputs: ['ui5TokenDelete', 'ui5SelectionChange'],
   exportAs: 'ui5Tokenizer',
 })
@@ -8844,6 +9118,20 @@ but still provides visual feedback upon user interaction.
         */
   @InputDecorator({ transform: booleanAttribute })
   readonly!: boolean;
+  /**
+        Defines whether tokens are displayed on multiple lines.
+
+**Note:** The \`multiLine\` property is in an experimental state and is a subject to change.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  multiLine!: boolean;
+  /**
+        Defines whether \\"Clear All\\" button is present. Ensure \`multiLine\` is enabled, otherwise \`showClearAll\` will have no effect.
+
+**Note:** The \`showClearAll\` property is in an experimental state and is a subject to change.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showClearAll!: boolean;
   /**
         Defines whether the component is disabled.
 
@@ -9746,6 +10034,8 @@ import {
   'footerText',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs([
   'item-toggle: ui5ItemToggle',
@@ -9766,6 +10056,8 @@ import {
     'footerText',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: [
     'ui5ItemToggle',
@@ -9813,6 +10105,14 @@ the tree modes are exactly the same as the list modes, and are all applicable.
         Defines the IDs of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Defines the IDs of the elements that describe the component.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Fired when a tree item is expanded or collapsed.
@@ -9894,6 +10194,7 @@ import { DatePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-picker\\
 import { DateRangePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-range-picker\\";
 import { DateTimePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-time-picker\\";
 import { DialogComponent } from \\"@ui5/webcomponents-ngx/main/dialog\\";
+import { ExpandableTextComponent } from \\"@ui5/webcomponents-ngx/main/expandable-text\\";
 import { FileUploaderComponent } from \\"@ui5/webcomponents-ngx/main/file-uploader\\";
 import { FormComponent } from \\"@ui5/webcomponents-ngx/main/form\\";
 import { FormGroupComponent } from \\"@ui5/webcomponents-ngx/main/form-group\\";
@@ -9944,6 +10245,7 @@ import { TableHeaderCellComponent } from \\"@ui5/webcomponents-ngx/main/table-he
 import { TableHeaderRowComponent } from \\"@ui5/webcomponents-ngx/main/table-header-row\\";
 import { TableRowComponent } from \\"@ui5/webcomponents-ngx/main/table-row\\";
 import { TableSelectionComponent } from \\"@ui5/webcomponents-ngx/main/table-selection\\";
+import { TableVirtualizerComponent } from \\"@ui5/webcomponents-ngx/main/table-virtualizer\\";
 import { TagComponent } from \\"@ui5/webcomponents-ngx/main/tag\\";
 import { TextComponent } from \\"@ui5/webcomponents-ngx/main/text\\";
 import { TextAreaComponent } from \\"@ui5/webcomponents-ngx/main/text-area\\";
@@ -9991,6 +10293,7 @@ const imports = [
   DateRangePickerComponent,
   DateTimePickerComponent,
   DialogComponent,
+  ExpandableTextComponent,
   FileUploaderComponent,
   FormComponent,
   FormGroupComponent,
@@ -10041,6 +10344,7 @@ const imports = [
   TableHeaderRowComponent,
   TableRowComponent,
   TableSelectionComponent,
+  TableVirtualizerComponent,
   TagComponent,
   TextComponent,
   TextAreaComponent,

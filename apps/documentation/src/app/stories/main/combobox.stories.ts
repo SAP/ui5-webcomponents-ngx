@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ComboBoxComponent,
@@ -42,11 +42,10 @@ export default {
   },
 } as Meta;
 
-export const basicExample: Story<ComboBoxComponent> = (
-  args: ComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicExample: StoryObj<ComboBoxComponent> = {
+  render: (args: ComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-combobox placeholder="Enter value">
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
@@ -71,13 +70,13 @@ export const basicExample: Story<ComboBoxComponent> = (
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 	`,
-});
+  }),
+};
 
-export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
-  args: ComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const DisabledAndReadonlyProperties: StoryObj<ComboBoxComponent> = {
+  render: (args: ComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-combobox value="Disabled" disabled>
 			<ui5-cb-item text="Item 1"></ui5-cb-item>
 			<ui5-cb-item text="Item 2"></ui5-cb-item>
@@ -90,13 +89,14 @@ export const disabledAndReadonlyProperties: Story<ComboBoxComponent> = (
 			<ui5-cb-item text="Item 3"></ui5-cb-item>
 		</ui5-combobox>
 	`,
-});
+  }),
+};
 
-export const filtersStartsWithPerTermDefaultStartsWithContains: Story<
-  ComboBoxComponent
-> = (args: ComboBoxComponent & any) => ({
-  props: args,
-  template: `
+export const FiltersStartsWithPerTermDefaultStartsWithContains: StoryObj<ComboBoxComponent> =
+  {
+    render: (args: ComboBoxComponent & any) => ({
+      props: args,
+      template: `
 			<ui5-combobox placeholder="Starts With Per Term filter (default)">
 				<ui5-cb-item text="Austria"></ui5-cb-item>
 				<ui5-cb-item text="Bulgaria"></ui5-cb-item>
@@ -122,13 +122,13 @@ export const filtersStartsWithPerTermDefaultStartsWithContains: Story<
 			</ui5-combobox>
 
 		`,
-});
+    }),
+  };
 
-export const comboBoxWithTwoColumnLayoutItems: Story<ComboBoxComponent> = (
-  args: ComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const ComboBoxWithTwoColumnLayoutItems: StoryObj<ComboBoxComponent> = {
+  render: (args: ComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-combobox placeholder="Two-column Layout">
 			<ui5-cb-item text="Austria" additional-text="AT"></ui5-cb-item>
 			<ui5-cb-item text="Belgium" additional-text="BE"></ui5-cb-item>
@@ -137,13 +137,13 @@ export const comboBoxWithTwoColumnLayoutItems: Story<ComboBoxComponent> = (
 			<ui5-cb-item text="Canada" additional-text="CA"></ui5-cb-item>
 		</ui5-combobox>
 	`,
-});
+  }),
+};
 
-export const comboBoxWithGroupingOfItems: Story<ComboBoxComponent> = (
-  args: ComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const ComboBoxWithGroupingOfItems: StoryObj<ComboBoxComponent> = {
+  render: (args: ComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-combobox placeholder="Grouping of items">
 			<ui5-cb-item-group header-text="A">
 				<ui5-cb-item text="Argentina"></ui5-cb-item>
@@ -163,4 +163,5 @@ export const comboBoxWithGroupingOfItems: Story<ComboBoxComponent> = (
 			</ui5-cb-item-group>
 	  </ui5-combobox>
 	`,
-});
+  }),
+};

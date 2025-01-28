@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   SelectComponent,
@@ -35,24 +35,24 @@ export default {
   },
 } as Meta;
 
-export const basicSelect: Story<SelectComponent> = (
-  args: SelectComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicSelect: StoryObj<SelectComponent> = {
+  render: (args: SelectComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-select>
 			<ui5-option icon="iphone">Phone</ui5-option>
 			<ui5-option icon="ipad">Tablet</ui5-option>
 			<ui5-option icon="laptop" selected>Desktop</ui5-option>
 		</ui5-select>
 	`,
-});
+  }),
+};
 
-export const selectWithValueStateAndValueStateMessage: Story<
-  SelectComponent
-> = (args: SelectComponent & any) => ({
-  props: args,
-  template: `
+export const SelectWithValueStateAndValueStateMessage: StoryObj<SelectComponent> =
+  {
+    render: (args: SelectComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-select value-state="Positive">
 				<ui5-option icon="meal" selected>Apple</ui5-option>
 				<ui5-option icon="meal">Avocado</ui5-option>
@@ -80,13 +80,13 @@ export const selectWithValueStateAndValueStateMessage: Story<
 			<div slot="valueStateMessage">Information message 2. This is a <a href="#">Link</a>. Extra long text used as an information message. Extra long text used as an information message - 2. Extra long text used as an information message - 3.</div>
 		</ui5-select>
 	`,
-});
+    }),
+  };
 
-export const selectWithTwoColumnLayoutItems: Story<SelectComponent> = (
-  args: SelectComponent & any
-) => ({
-  props: args,
-  template: `
+export const SelectWithTwoColumnLayoutItems: StoryObj<SelectComponent> = {
+  render: (args: SelectComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-select>
 			<ui5-option additional-text="AT">Austria</ui5-option>
 			<ui5-option additional-text="BE">Belgium</ui5-option>
@@ -95,14 +95,13 @@ export const selectWithTwoColumnLayoutItems: Story<SelectComponent> = (
 			<ui5-option additional-text="CA">Canada</ui5-option>
 		</ui5-select>
 	`,
-});
+  }),
+};
 
-
-export const selectWithCustomOptions: Story<SelectComponent> = (
-	args: SelectComponent & any
-  ) => ({
-	props: args,
-	template: `
+export const SelectWithCustomOptions: StoryObj<SelectComponent> = {
+  render: (args: SelectComponent & any) => ({
+    props: args,
+    template: `
 		<style>
 			.optContainer {
 				width: 100%;
@@ -172,4 +171,5 @@ export const selectWithCustomOptions: Story<SelectComponent> = (
 			</ui5-option-custom>
 		</ui5-select>
 	  `,
-  });
+  }),
+};

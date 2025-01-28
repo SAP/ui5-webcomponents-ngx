@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ToggleButtonComponent,
@@ -30,11 +30,10 @@ export default {
   },
 } as Meta;
 
-export const toggleButtonStates: Story<ToggleButtonComponent> = (
-  args: ToggleButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const ToggleButtonStates: StoryObj<ToggleButtonComponent> = {
+  render: (args: ToggleButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-toggle-button class="samples-margin">ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" pressed>Pressed ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" disabled>Disabled ToggleButton</ui5-toggle-button>
@@ -46,26 +45,26 @@ export const toggleButtonStates: Story<ToggleButtonComponent> = (
 		<ui5-toggle-button class="samples-margin" design="Transparent">Transparent ToggleButton</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Transparent" pressed>Pressed Transparent ToggleButton</ui5-toggle-button>
 	`,
-});
+  }),
+};
 
-export const toggleButtonWithIcon: Story<ToggleButtonComponent> = (
-  args: ToggleButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const ToggleButtonWithIcon: StoryObj<ToggleButtonComponent> = {
+  render: (args: ToggleButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-toggle-button class="samples-margin" icon="menu">Menu</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Emphasized" icon="add">Add</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Default" icon="nav-back">Back</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Positive" icon="accept">Accept</ui5-toggle-button>
 		<ui5-toggle-button class="samples-margin" design="Negative" icon="sys-cancel">Deny</ui5-toggle-button>
 	`,
-});
+  }),
+};
 
-export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
-  args: ToggleButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const toggleButtonWithIconOnly: StoryObj<ToggleButtonComponent> = {
+  render: (args: ToggleButtonComponent & any) => ({
+    props: args,
+    template: `
 			<ui5-toggle-button class="samples-margin" icon="away"></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="action-settings" pressed></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="add"></ui5-toggle-button>
@@ -77,13 +76,13 @@ export const toggleButtonWithIconOnly: Story<ToggleButtonComponent> = (
 			<ui5-toggle-button class="samples-margin" icon="camera" design="Transparent"></ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" icon="cart" design="Transparent" pressed></ui5-toggle-button>
 	`,
-});
+  }),
+};
 
-export const toggleButton: Story<ToggleButtonComponent> = (
-  args: ToggleButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const ToggleButton: StoryObj<ToggleButtonComponent> = {
+  render: (args: ToggleButtonComponent & any) => ({
+    props: args,
+    template: `
 			<ui5-toggle-button class="samples-margin">Yes/No</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" pressed>Yes/No</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin">Toggle Button</ui5-toggle-button>
@@ -95,4 +94,5 @@ export const toggleButton: Story<ToggleButtonComponent> = (
 			<ui5-toggle-button class="samples-margin" design="Transparent">Transparent</ui5-toggle-button>
 			<ui5-toggle-button class="samples-margin" design="Transparent" pressed>Transparent</ui5-toggle-button>
 	`,
-});
+  }),
+};

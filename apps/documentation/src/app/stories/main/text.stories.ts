@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TextComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -27,11 +27,10 @@ export default {
   },
 } as Meta;
 
-export const basicText: Story<TextComponent> = (
-  args: TextComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicText: StoryObj<TextComponent> = {
+  render: (args: TextComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-text>Basic Text</ui5-text>
 		<br>
 		<br>
@@ -41,4 +40,5 @@ export const basicText: Story<TextComponent> = (
 		<br>
 		<ui5-text max-lines="1">Truncating Text :: This would be wrapped as it is too long This would be wrapped as it is too long This would be wrapped as it is too long This would be wrapped as it is too long This would be wrapped as it is too long This would be wrapped as it is too long</ui5-text>
 	`,
-});
+  }),
+};

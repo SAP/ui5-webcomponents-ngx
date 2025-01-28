@@ -1,5 +1,14 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent, TableSelectionComponent } from '@ui5/webcomponents-ngx';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import {
+  Ui5WebcomponentsModule,
+  TableComponent,
+  TableHeaderCellComponent,
+  TableHeaderRowComponent,
+  TableRowComponent,
+  TableCellComponent,
+  TableGrowingComponent,
+  TableSelectionComponent,
+} from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `
@@ -69,7 +78,16 @@ export default {
   component: TableComponent,
   decorators: [
     moduleMetadata({
-      imports: [Ui5WebcomponentsModule, TableComponent, TableHeaderCellComponent, TableHeaderRowComponent, TableRowComponent, TableCellComponent, TableGrowingComponent, TableSelectionComponent],
+      imports: [
+        Ui5WebcomponentsModule,
+        TableComponent,
+        TableHeaderCellComponent,
+        TableHeaderRowComponent,
+        TableRowComponent,
+        TableCellComponent,
+        TableGrowingComponent,
+        TableSelectionComponent,
+      ],
     }),
   ],
   parameters: {
@@ -82,11 +100,19 @@ export default {
   },
 } as Meta;
 
-export const Table: Story<TableComponent> = (
-  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
-) => ({
-  props: args,
-  template: `
+export const Table: StoryObj<TableComponent> = {
+  render: (
+    args: TableComponent &
+      TableHeaderRowComponent &
+      TableHeaderCellComponent &
+      TableRowComponent &
+      TableCellComponent &
+      TableGrowingComponent &
+      TableSelectionComponent &
+      any,
+  ) => ({
+    props: args,
+    template: `
   <ui5-table>
 		<ui5-table-header-row slot="headerRow">
 			<ui5-table-header-cell id="produtCol" width="300px"><span>Product</span></ui5-table-header-cell>
@@ -119,13 +145,22 @@ export const Table: Story<TableComponent> = (
 		</ui5-table-row>
 </ui5-table>
 	`,
-});
+  }),
+};
 
-export const tableInSingleSelectMode: Story<TableComponent> = (
-  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
-) => ({
-  props: args,
-  template: `
+export const TableInSingleSelectMode: StoryObj<TableComponent> = {
+  render: (
+    args: TableComponent &
+      TableHeaderRowComponent &
+      TableHeaderCellComponent &
+      TableRowComponent &
+      TableCellComponent &
+      TableGrowingComponent &
+      TableSelectionComponent &
+      any,
+  ) => ({
+    props: args,
+    template: `
   	<ui5-table accessible-name-ref="title" no-data-text="No data found">
   			<ui5-table-selection id="selection" slot="features" mode="Single"></ui5-table-selection>
 
@@ -160,13 +195,22 @@ export const tableInSingleSelectMode: Story<TableComponent> = (
 			</ui5-table-row>
 	</ui5-table>
 	`,
-});
+  }),
+};
 
-export const tableInMultipleSelectMode: Story<TableComponent> = (
-	args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
+export const TableInMultipleSelectMode: StoryObj<TableComponent> = {
+  render: (
+    args: TableComponent &
+      TableHeaderRowComponent &
+      TableHeaderCellComponent &
+      TableRowComponent &
+      TableCellComponent &
+      TableGrowingComponent &
+      TableSelectionComponent &
+      any,
   ) => ({
-	props: args,
-	template: `
+    props: args,
+    template: `
 		<ui5-table accessible-name-ref="title" no-data-text="No data found">
 				<ui5-table-selection id="selection" slot="features" mode="Multiple"></ui5-table-selection>
   
@@ -201,14 +245,22 @@ export const tableInMultipleSelectMode: Story<TableComponent> = (
 			  </ui5-table-row>
 	  </ui5-table>
 	  `,
-  });
+  }),
+};
 
-
-export const tableWithNoData: Story<TableComponent> = (
-  args: TableComponent & TableHeaderRowComponent & TableHeaderCellComponent & TableRowComponent & TableCellComponent & TableGrowingComponent & TableSelectionComponent & any
-) => ({
-  props: args,
-  template: `
+export const TableWithNoData: StoryObj<TableComponent> = {
+  render: (
+    args: TableComponent &
+      TableHeaderRowComponent &
+      TableHeaderCellComponent &
+      TableRowComponent &
+      TableCellComponent &
+      TableGrowingComponent &
+      TableSelectionComponent &
+      any,
+  ) => ({
+    props: args,
+    template: `
   	<ui5-table overflow-mode="Popin">
 
 		<ui5-table-header-row slot="headerRow">
@@ -220,5 +272,5 @@ export const tableWithNoData: Story<TableComponent> = (
   		<ui5-illustrated-message slot="nodata" name="NoData"></ui5-illustrated-message>
 	</ui5-table>
 		`,
-});
-
+  }),
+};

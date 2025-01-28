@@ -1,4 +1,4 @@
-import {Meta} from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Theming"></Meta>
 
@@ -16,13 +16,11 @@ The theme is a way to customize the look and feel of the components. It is a set
 First, you need to import the theming module in your root module and use it like this:
 
 ```typescript
-import { NgModule } from "@angular/core";
-import { Ui5ThemingModule } from "@ui5/theming-ngx";
+import { NgModule } from '@angular/core';
+import { Ui5ThemingModule } from '@ui5/theming-ngx';
 
 @NgModule({
-  imports: [
-    Ui5ThemingModule,
-  ],
+  imports: [Ui5ThemingModule],
 })
 export class AppModule {}
 ```
@@ -34,18 +32,18 @@ After that, it will initialize the theme in application startup.
 If you want to switch the theme dynamically, you can use the `Ui5ThemingService` service:
 
 ```typescript
-import { Component } from "@angular/core";
-import { Ui5ThemingService } from "@ui5/theming-ngx";
+import { Component } from '@angular/core';
+import { Ui5ThemingService } from '@ui5/theming-ngx';
 
 @Component({
-  selector: "app-root",
+  selector: 'app-root',
   template: `<ui5-button (click)="switchTheme()">Switch</ui5-button>`,
 })
 export class AppComponent {
   constructor(private ui5ThemingService: Ui5ThemingService) {}
 
   switchTheme() {
-    this.ui5ThemingService.setTheme("sap_fiori_3");
+    this.ui5ThemingService.setTheme('sap_fiori_3');
   }
 }
 ```
@@ -55,20 +53,22 @@ export class AppComponent {
 If you want to use a custom theme, you need to write your own theme provider. Custom theme provider needs to implement the `Ui5ThemingProvider` interface:
 
 ```typescript
-import { inject, Injectable, OnDestroy } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { Ui5ThemingService, Ui5ThemingProvider } from "@ui5/theming-ngx";
+import { inject, Injectable, OnDestroy } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Ui5ThemingService, Ui5ThemingProvider } from '@ui5/theming-ngx';
 
 @Injectable()
 export class CustomThemeProvider implements Ui5ThemingProvider, OnDestroy {
   protected availableThemes = ['some_theme'];
 
-  protected _globalThemingService: Ui5ThemingService | null = inject(Ui5ThemingService, {optional: true});
+  protected _globalThemingService: Ui5ThemingService | null = inject(
+    Ui5ThemingService,
+    { optional: true },
+  );
 
   /** @hidden */
-  constructor(
-  ) {
-      this._globalThemingService?.registerProvider(this);
+  constructor() {
+    this._globalThemingService?.registerProvider(this);
   }
 
   /** @hidden */
@@ -91,24 +91,21 @@ export class CustomThemeProvider implements Ui5ThemingProvider, OnDestroy {
     // implement theme injection logic here
   }
 }
-
 ```
 
 After that, you need to provide it in your root module and inject it somewhere in your application:
 
 ```typescript
-import { NgModule } from "@angular/core";
-import { Ui5ThemingModule } from "@ui5/theming-ngx";
+import { NgModule } from '@angular/core';
+import { Ui5ThemingModule } from '@ui5/theming-ngx';
 
 @NgModule({
   imports: [
     Ui5ThemingModule.forRoot({
-      defaultTheme: "some_theme"
+      defaultTheme: 'some_theme',
     }),
   ],
-  providers: [
-    CustomThemeProvider
-  ]
+  providers: [CustomThemeProvider],
 })
 export class AppModule {
   constructor(private customThemeProvider: CustomThemeProvider) {}

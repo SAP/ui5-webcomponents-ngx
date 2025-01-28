@@ -1,15 +1,21 @@
-import {StorybookConfig} from '@storybook/angular';
+import { StorybookConfig } from '@storybook/angular';
+
 const config: StorybookConfig = {
-  staticDirs: [{
-    from: '../src/assets',
-    to: 'assets'
-  }],
-  stories: ['../src/app/**/*.stories.mdx', '../src/app/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-mdx-gfm'],
-  framework: '@storybook/angular',
+  staticDirs: [
+    {
+      from: '../src/assets',
+      to: 'assets',
+    },
+  ],
+  stories: ['../src/app/**/*.mdx', '../src/app/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-docs'],
+  framework: {
+    name: '@storybook/angular',
+    options: {},
+  },
   docs: {
-    autodocs: true,
-    defaultName: 'Docs'
-  }
+    defaultName: 'Docs',
+  },
 };
-module.exports = config;
+
+export default config;

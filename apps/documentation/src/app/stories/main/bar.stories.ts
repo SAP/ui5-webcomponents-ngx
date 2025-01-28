@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, BarComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -45,50 +45,54 @@ export default {
   },
 } as Meta;
 
-export const headerBar: Story<BarComponent> = (args: BarComponent & any) => ({
-  props: args,
-  template: `
-		<ui5-bar design="Header">
-			<ui5-button icon="home" tooltip="Go home" design="Transparent" slot="startContent"></ui5-button>
-			<ui5-label id="basic-label">Header Title</ui5-label>
-			<ui5-button icon="action-settings" tooltip="Go to settings" slot="endContent"></ui5-button>
-		</ui5-bar>
-	`,
-});
+export const HeaderBar: StoryObj<BarComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui5-bar design="Header">
+        <ui5-button icon="home" tooltip="Go home" design="Transparent" slot="startContent"></ui5-button>
+        <ui5-label id="basic-label">Header Title</ui5-label>
+        <ui5-button icon="action-settings" tooltip="Go to settings" slot="endContent"></ui5-button>
+      </ui5-bar>
+    `,
+  }),
+};
 
-export const subheaderBar: Story<BarComponent> = (
-  args: BarComponent & any
-) => ({
-  props: args,
-  template: `
-		<ui5-bar design="Subheader">
-			<ui5-button icon="home" tooltip="Go home" slot="startContent"></ui5-button>
-			<ui5-label id="basic-label">Subheader Title</ui5-label>
-			<ui5-button icon="action-settings" tooltip="Go to settings" slot="endContent"></ui5-button>
-		</ui5-bar>
-	`,
-});
+export const subheaderBar: StoryObj<BarComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui5-bar design="Subheader">
+        <ui5-button icon="home" tooltip="Go home" slot="startContent"></ui5-button>
+        <ui5-label id="basic-label">Subheader Title</ui5-label>
+        <ui5-button icon="action-settings" tooltip="Go to settings" slot="endContent"></ui5-button>
+      </ui5-bar>
+    `,
+  }),
+};
 
-export const footerBar: Story<BarComponent> = (args: BarComponent & any) => ({
-  props: args,
-  template: `
-		<ui5-bar design="Footer">
-			<ui5-button design="Positive" slot="endContent">Agree</ui5-button>
-			<ui5-button design="Negative" slot="endContent">Decline</ui5-button>
-			<ui5-button design="Transparent" slot="endContent">Cancel</ui5-button>
-		</ui5-bar>
-	`,
-});
+export const FooterBar: StoryObj<BarComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui5-bar design="Footer">
+        <ui5-button design="Positive" slot="endContent">Agree</ui5-button>
+        <ui5-button design="Negative" slot="endContent">Decline</ui5-button>
+        <ui5-button design="Transparent" slot="endContent">Cancel</ui5-button>
+      </ui5-bar>
+    `,
+  }),
+};
 
-export const floatingFooterBar: Story<BarComponent> = (
-  args: BarComponent & any
-) => ({
-  props: args,
-  template: `
-		<ui5-bar design="FloatingFooter">
-			<ui5-button design="Positive" slot="endContent">Agree</ui5-button>
-			<ui5-button design="Negative" slot="endContent">Decline</ui5-button>
-			<ui5-button design="Transparent" slot="endContent">Cancel</ui5-button>
-		</ui5-bar>
-	`,
-});
+export const FloatingFooterBar: StoryObj<BarComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui5-bar design="FloatingFooter">
+        <ui5-button design="Positive" slot="endContent">Agree</ui5-button>
+        <ui5-button design="Negative" slot="endContent">Decline</ui5-button>
+        <ui5-button design="Transparent" slot="endContent">Cancel</ui5-button>
+      </ui5-bar>
+    `,
+  }),
+};

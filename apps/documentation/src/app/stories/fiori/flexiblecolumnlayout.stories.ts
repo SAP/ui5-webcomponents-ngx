@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   FlexibleColumnLayoutComponent,
@@ -44,61 +44,63 @@ export default {
   },
 } as Meta;
 
-export const usage: Story<FlexibleColumnLayoutComponent> = () => ({
-  template: `
-
-  <div style="width: 1200px;">
-
-  <ui5-flexible-column-layout id="fcl" style="height: 600px;" layout="ThreeColumnsMidExpanded">
-      <div slot="startColumn">
-        <div>
-          <ui5-title>Start Column</ui5-title>
-        </div>
-        <ui5-list>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-        </ui5-list>
-    </div>
+export const Usage: StoryObj<FlexibleColumnLayoutComponent> = {
+  render: () => ({
+    template: `
   
-      <div slot="midColumn">
-        <div>
-          <ui5-title>Mid Column</ui5-title>
-        </div>
-        <ui5-list>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-        </ui5-list>
-    </div>
+    <div style="width: 1200px;">
   
-      <div class="col" slot="endColumn">
-        <div>
-            <ui5-title>End Column</ui5-title>
-        </div>
-        <ui5-list>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-          <ui5-li>Hello worild!</ui5-li>
-        </ui5-list>
+    <ui5-flexible-column-layout id="fcl" style="height: 600px;" layout="ThreeColumnsMidExpanded">
+        <div slot="startColumn">
+          <div>
+            <ui5-title>Start Column</ui5-title>
+          </div>
+          <ui5-list>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+          </ui5-list>
       </div>
-    </ui5-flexible-column-layout>
-
-    </div>
-  `,
-});
+    
+        <div slot="midColumn">
+          <div>
+            <ui5-title>Mid Column</ui5-title>
+          </div>
+          <ui5-list>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+          </ui5-list>
+      </div>
+    
+        <div class="col" slot="endColumn">
+          <div>
+              <ui5-title>End Column</ui5-title>
+          </div>
+          <ui5-list>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+            <ui5-li>Hello worild!</ui5-li>
+          </ui5-list>
+        </div>
+      </ui5-flexible-column-layout>
+  
+      </div>
+    `,
+  }),
+};

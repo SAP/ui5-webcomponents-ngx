@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   BusyIndicatorComponent,
@@ -36,27 +36,28 @@ export default {
   },
 } as Meta;
 
-export const busyIndicatorWithDifferentSize: Story<BusyIndicatorComponent> = (
-  args: BusyIndicatorComponent & any
-) => ({
-  props: args,
-  template: `
-			<ui5-busy-indicator active size="S"></ui5-busy-indicator>
-			<ui5-busy-indicator active size="M"></ui5-busy-indicator>
-			<ui5-busy-indicator active size="L"></ui5-busy-indicator>
-		`,
-});
+export const BusyIndicatorWithDifferentSize: StoryObj<BusyIndicatorComponent> =
+  {
+    render: (args) => ({
+      props: args,
+      template: `
+        <ui5-busy-indicator active size="S"></ui5-busy-indicator>
+        <ui5-busy-indicator active size="M"></ui5-busy-indicator>
+        <ui5-busy-indicator active size="L"></ui5-busy-indicator>
+      `,
+    }),
+  };
 
-export const busyIndicatorWrappingOtherElements: Story<
-  BusyIndicatorComponent
-> = (args: BusyIndicatorComponent & any) => ({
-  props: args,
-  template: `
-		<ui5-button id="fetch-btn" style="width: 120px;">Fetch List Data</ui5-button>
+export const BusyIndicatorWrappingOtherElements: StoryObj<BusyIndicatorComponent> =
+  {
+    render: (args) => ({
+      props: args,
+      template: `
+      <ui5-button id="fetch-btn" style="width: 120px;">Fetch List Data</ui5-button>
+      <ui5-busy-indicator id="busy-container" size="M">
+        <ui5-list id="fetch-list" no-data-text="No Data" header-text="Available Items"></ui5-list>
+      </ui5-busy-indicator>
 
-		<ui5-busy-indicator id="busy-container" size="M">
-			<ui5-list id="fetch-list" no-data-text="No Data" header-text="Available Items"></ui5-list>
-		</ui5-busy-indicator>
-
-	`,
-});
+    `,
+    }),
+  };

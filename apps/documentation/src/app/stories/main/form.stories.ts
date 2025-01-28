@@ -1,5 +1,5 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, FormComponent, } from '@ui5/webcomponents-ngx';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { Ui5WebcomponentsModule, FormComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
 const description = `### Overview
@@ -28,11 +28,10 @@ export default {
   },
 } as Meta;
 
-export const basicForm: Story<FormComponent> = (
-  args: FormComponent & any
-) => ({
-  props: args,
-  template: ` 
+export const BasicForm: StoryObj<FormComponent> = {
+  render: (args: FormComponent & any) => ({
+    props: args,
+    template: ` 
         <ui5-form  header-text="Address">
           <ui5-form-item>
             <ui5-label slot="labelContent">Name:</ui5-label>
@@ -55,14 +54,13 @@ export const basicForm: Story<FormComponent> = (
           </ui5-form-item>
         </ui5-form>
 	`,
-});
+  }),
+};
 
-
-export const formLayout: Story<FormComponent> = (
-  args: FormComponent & any
-) => ({
-  props: args,
-  template: ` 
+export const FormLayout: StoryObj<FormComponent> = {
+  render: (args: FormComponent & any) => ({
+    props: args,
+    template: ` 
     <ui5-form header-text="Form Layout: S1 M2 L3 XL5" layout="S1 M2 L3 XL5" label-span="S12 M12 L12 XL12">
       <ui5-form-group header-text="Address">
           <ui5-form-item>
@@ -157,13 +155,13 @@ export const formLayout: Story<FormComponent> = (
       </ui5-form-group>
     </ui5-form>
 	`,
-});
+  }),
+};
 
-export const formGroups: Story<FormComponent> = (
-  args: FormComponent & any
-) => ({
-  props: args,
-  template: ` 
+export const FormGroups: StoryObj<FormComponent> = {
+  render: (args: FormComponent & any) => ({
+    props: args,
+    template: ` 
     <ui5-form header-text="Supplier" layout="S1 M3 L4 XL4" label-span="S12 M12 L12 XL4">
 
     <ui5-form-group header-text="Address">
@@ -259,14 +257,13 @@ export const formGroups: Story<FormComponent> = (
     </ui5-form-group>
 </ui5-form>
 	`,
-});
+  }),
+};
 
-
-export const labelSpan: Story<FormComponent> = (
-  args: FormComponent & any
-) => ({
-  props: args,
-  template: ` 
+export const LabelSpan: StoryObj<FormComponent> = {
+  render: (args: FormComponent & any) => ({
+    props: args,
+    template: ` 
       <ui5-form  header-text="Label Span: S12 M4 L4 XL4" label-span="S12 M4 L4 XL4">
         <ui5-form-item>
             <ui5-label slot="labelContent">Name:</ui5-label>
@@ -346,13 +343,13 @@ export const labelSpan: Story<FormComponent> = (
       }
     </style>
 	`,
-});
+  }),
+};
 
-export const customHeader: Story<FormComponent> = (
-  args: FormComponent & any
-) => ({
-  props: args,
-  template: ` 
+export const CustomHeader: StoryObj<FormComponent> = {
+  render: (args: FormComponent & any) => ({
+    props: args,
+    template: ` 
         <ui5-form layout="S1 M2 L2 XL2" item-spacing="Large" style="width: 600px;">
 
         <ui5-bar design="Subheader" slot="header">
@@ -404,4 +401,5 @@ export const customHeader: Story<FormComponent> = (
         }
       </style>
   `,
-});
+  }),
+};

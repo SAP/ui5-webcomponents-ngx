@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   BreadcrumbsComponent,
@@ -26,77 +26,78 @@ export default {
   },
 } as Meta;
 
-export const standardBreadcrumbs: Story<BreadcrumbsComponent> = (
-  args: BreadcrumbsComponent & any
-) => ({
-  props: args,
-  template: `
-		<ui5-breadcrumbs>
-			<ui5-breadcrumbs-item href="https://www.sap.com" target="_blank">Root Page </ui5-breadcrumbs-item>
-			<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-			<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-		</ui5-breadcrumbs>
-	`,
-});
+export const StandardBreadcrumbs: StoryObj<BreadcrumbsComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+				<ui5-breadcrumbs>
+					<ui5-breadcrumbs-item href="https://www.sap.com" target="_blank">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			`,
+  }),
+};
 
-export const breadcrumbsWithNoCurrentPage: Story<BreadcrumbsComponent> = (
-  args: BreadcrumbsComponent & any
-) => ({
-  props: args,
-  template: `
-		<ui5-breadcrumbs design="NoCurrentPage">
-			<ui5-breadcrumbs-item href="https://www.sap.com" target="_blank">Root Page </ui5-breadcrumbs-item>
-			<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-		</ui5-breadcrumbs>
-	`,
-});
+export const BreadcrumbsWithNoCurrentPage: StoryObj<BreadcrumbsComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+				<ui5-breadcrumbs design="NoCurrentPage">
+					<ui5-breadcrumbs-item href="https://www.sap.com" target="_blank">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			`,
+  }),
+};
 
-export const breadcrumbsWithSpecificSeparator: Story<BreadcrumbsComponent> = (
-  args: BreadcrumbsComponent & any
-) => ({
-  props: args,
-  template: `
-		<div>
-			<ui5-breadcrumbs separator-style="Slash">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-		<div>
-			<ui5-breadcrumbs separator-style="BackSlash">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-		<div>
-			<ui5-breadcrumbs separator-style="DoubleBackSlash">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-		<div>
-			<ui5-breadcrumbs separator-style="DoubleGreaterThan">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-		<div>
-			<ui5-breadcrumbs separator-style="DoubleSlash">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-		<div>
-			<ui5-breadcrumbs separator-style="GreaterThan">
-				<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
-				<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
-			</ui5-breadcrumbs>
-		</div>
-	`,
-});
+export const BreadcrumbsWithSpecificSeparator: StoryObj<BreadcrumbsComponent> =
+  {
+    render: (args) => ({
+      props: args,
+      template: `
+			<div>
+				<ui5-breadcrumbs separator-style="Slash">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+			<div>
+				<ui5-breadcrumbs separator-style="BackSlash">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+			<div>
+				<ui5-breadcrumbs separator-style="DoubleBackSlash">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+			<div>
+				<ui5-breadcrumbs separator-style="DoubleGreaterThan">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+			<div>
+				<ui5-breadcrumbs separator-style="DoubleSlash">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+			<div>
+				<ui5-breadcrumbs separator-style="GreaterThan">
+					<ui5-breadcrumbs-item href="https://www.sap.com">Root Page </ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item href="https://www.sap.com">Parent Page</ui5-breadcrumbs-item>
+					<ui5-breadcrumbs-item>Current Page</ui5-breadcrumbs-item>
+				</ui5-breadcrumbs>
+			</div>
+		`,
+    }),
+  };

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   TimePickerComponent,
@@ -36,40 +36,42 @@ export default {
   },
 } as Meta;
 
-export const basicTimePicker: Story<TimePickerComponent> = (
-  args: TimePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicTimePicker: StoryObj<TimePickerComponent> = {
+  render: (args: TimePickerComponent & any) => ({
+    props: args,
+    template: `
 			<ui5-time-picker id="timepicker1"></ui5-time-picker>
 	`,
-});
+  }),
+};
 
-export const timePickerInTwelveHoursFormat: Story<TimePickerComponent> = (
-  args: TimePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TimePickerInTwelveHoursFormat: StoryObj<TimePickerComponent> = {
+  render: (args: TimePickerComponent & any) => ({
+    props: args,
+    template: `
 			<ui5-time-picker id="timepicker1" format-pattern="hh:mm:ss a"></ui5-time-picker>
 	`,
-});
+  }),
+};
 
-export const timePickerWithOnlyMinutesAndSeconds: Story<TimePickerComponent> = (
-  args: TimePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TimePickerWithOnlyMinutesAndSeconds: StoryObj<TimePickerComponent> =
+  {
+    render: (args: TimePickerComponent & any) => ({
+      props: args,
+      template: `
 			<ui5-time-picker id="timepicker1" format-pattern="mm:ss"></ui5-time-picker>
 	`,
-});
+    }),
+  };
 
-export const timePickerWithValueStateAndValueStateMessage: Story<
-  TimePickerComponent
-> = (args: TimePickerComponent & any) => ({
-  props: args,
-  template: `
+export const TimePickerWithValueStateAndValueStateMessage: StoryObj<TimePickerComponent> =
+  {
+    render: (args: TimePickerComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-time-picker id="timepicker3" format-pattern="mm:ss" value-state="Negative">
 			<div slot="valueStateMessage">Please provide valid value</div>
 		</ui5-time-picker>
 	`,
-});
+    }),
+  };

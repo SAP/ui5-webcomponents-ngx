@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   TabContainerComponent,
@@ -44,11 +44,10 @@ export default {
   },
 } as Meta;
 
-export const basicTabContainer: Story<
-  TabContainerComponent
-> = (args: TabContainerComponent & any) => ({
-  props: args,
-  template: `
+export const BasicTabContainer: StoryObj<TabContainerComponent> = {
+  render: (args: TabContainerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tabcontainer>
 			<ui5-tab icon="menu" text="Tab 1">
 				<ui5-label>Quibusdam, veniam! Architecto debitis iusto ad et, asperiores quisquam perferendis reprehenderit ipsa voluptate minus minima, perspiciatis cum. Totam harum necessitatibus numquam voluptatum.</ui5-label>
@@ -68,13 +67,13 @@ export const basicTabContainer: Story<
 			</ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+  }),
+};
 
-export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
-  args: TabContainerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TabContainerWithTextOnlyTabs: StoryObj<TabContainerComponent> = {
+  render: (args: TabContainerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tabcontainer collapsed>
 			<ui5-tab text="Home"></ui5-tab>
 			<ui5-tab text="What's new" selected></ui5-tab>
@@ -83,13 +82,13 @@ export const tabContainerWithTextOnlyTabs: Story<TabContainerComponent> = (
 			<ui5-tab text="Contacts"></ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+  }),
+};
 
-export const textOnlyEndOverflow: Story<TabContainerComponent> = (
-  args: TabContainerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TextOnlyEndOverflow: StoryObj<TabContainerComponent> = {
+  render: (args: TabContainerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tabcontainer collapsed>
 			<ui5-tab text="Tab 1">
 			</ui5-tab>
@@ -139,13 +138,14 @@ export const textOnlyEndOverflow: Story<TabContainerComponent> = (
 			</ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+  }),
+};
 
-export const tabContainerWithTextAndAdditionalText: Story<
-  TabContainerComponent
-> = (args: TabContainerComponent & any) => ({
-  props: args,
-  template: `
+export const TabContainerWithTextAndAdditionalText: StoryObj<TabContainerComponent> =
+  {
+    render: (args: TabContainerComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-tabcontainer collapsed>
 			<ui5-tab text="Info" additional-text="3">
 			</ui5-tab>
@@ -157,13 +157,14 @@ export const tabContainerWithTextAndAdditionalText: Story<
 			</ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+    }),
+  };
 
-export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
-  args: TabContainerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TabContainerWithTabLayoutInline: StoryObj<TabContainerComponent> =
+  {
+    render: (args: TabContainerComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-tabcontainer tab-layout="Inline" collapsed>
 			<ui5-tab text="Monitors" additional-text="10">
 			</ui5-tab>
@@ -182,13 +183,13 @@ export const tabContainerWithTabLayoutInline: Story<TabContainerComponent> = (
 			</ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+    }),
+  };
 
-export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
-  args: TabContainerComponent & any
-) => ({
-  props: args,
-  template: `
+export const TabContainerWithNestedTabs: StoryObj<TabContainerComponent> = {
+  render: (args: TabContainerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tabcontainer collapsed>
 			<ui5-tab text="Notes">
 				Notes go here ...
@@ -228,4 +229,5 @@ export const tabContainerWithNestedTabs: Story<TabContainerComponent> = (
 			</ui5-tab>
 		</ui5-tabcontainer>
 	`,
-});
+  }),
+};

@@ -1,14 +1,13 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   CalendarComponent,
 } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
-import "@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js";
-import "@ui5/webcomponents-localization/dist/features/calendar/Islamic.js";
-import "@ui5/webcomponents-localization/dist/features/calendar/Japanese.js";
-import "@ui5/webcomponents-localization/dist/features/calendar/Persian.js";
-
+import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
+import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 
 const description = `### Overview
 
@@ -49,101 +48,102 @@ export default {
   },
 } as Meta;
 
-export const basicCalendar: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
-		<div class="datepicker-width">
-			<ui5-calendar></ui5-calendar>
-		</div>
-	`,
-});
+export const BasicCalendar: StoryObj<CalendarComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div class="datepicker-width">
+        <ui5-calendar></ui5-calendar>
+      </div>
+    `,
+  }),
+};
 
-export const calendarWithMinimumAndMaximumDateFormatPattern: Story<
-  CalendarComponent
-> = (args: CalendarComponent & any) => ({
-  props: args,
-  template: `
+export const CalendarWithMinimumAndMaximumDateFormatPattern: StoryObj<CalendarComponent> =
+  {
+    render: (args: CalendarComponent & any) => ({
+      props: args,
+      template: `
 		<div class="datepicker-width">
 			<ui5-calendar min-date="7/7/2020" max-date="20/10/2020" format-pattern="dd/MM/yyyy"></ui5-calendar>
 		</div>
 	`,
-});
+    }),
+  };
 
-export const calendarWithHiddenWeekNumbers: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const CalendarWithHiddenWeekNumbers: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar hide-week-numbers></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const calendarWithSelectionModeMultiple: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const CalendarWithSelectionModeMultiple: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar selection-mode="Multiple"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const calendarWithSelectionModeRange: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const CalendarWithSelectionModeRange: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar selection-mode="Range"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const japaneseCalendar: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const JapaneseCalendar: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar primary-calendar-type="Japanese"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const islamicCalendar: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const IslamicCalendar: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar primary-calendar-type="Islamic"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const buddhistCalendar: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const BuddhistCalendar: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar primary-calendar-type="Buddhist"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};
 
-export const persianCalendar: Story<CalendarComponent> = (
-  args: CalendarComponent & any
-) => ({
-  props: args,
-  template: `
+export const PersianCalendar: StoryObj<CalendarComponent> = {
+  render: (args: CalendarComponent & any) => ({
+    props: args,
+    template: `
 		<div class="datepicker-width">
 			<ui5-calendar primary-calendar-type="Persian"></ui5-calendar>
 		</div>
 	`,
-});
+  }),
+};

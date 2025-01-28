@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ToolbarComponent,
@@ -35,11 +35,10 @@ export default {
   },
 } as Meta;
 
-export const basicTimePicker: Story<ToolbarComponent> = (
-  args: ToolbarComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicTimePicker: StoryObj<ToolbarComponent> = {
+  render: (args: ToolbarComponent & any) => ({
+    props: args,
+    template: `
   <ui5-toolbar>
     <ui5-toolbar-button
        icon="decline"
@@ -63,4 +62,5 @@ export const basicTimePicker: Story<ToolbarComponent> = (
 	  </ui5-toolbar-button>
   </ui5-toolbar>
 	`,
-});
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, ToastComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -31,21 +31,20 @@ export default {
   },
 } as Meta;
 
-export const basicToast: Story<ToastComponent> = (
-  args: ToastComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicToast: StoryObj<ToastComponent> = {
+  render: (args: ToastComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-button (click)="toast.open=true">Basic Toast</ui5-button>
 		<ui5-toast #toast="ui5Toast" placement="MiddleCenter">Basic Toast</ui5-toast>
 	`,
-});
+  }),
+};
 
-export const toastDuration: Story<ToastComponent> = (
-  args: ToastComponent & any
-) => ({
-  props: args,
-  template: `
+export const ToastDuration: StoryObj<ToastComponent> = {
+  render: (args: ToastComponent & any) => ({
+    props: args,
+    template: `
 		<!--Short Toast-->
 		<ui5-button (click)="toast1.open=true">Short Toast</ui5-button>
 		<ui5-toast #toast1="ui5Toast" duration="1500" placement="MiddleCenter">Short Toast</ui5-toast>
@@ -54,13 +53,13 @@ export const toastDuration: Story<ToastComponent> = (
 		<ui5-button (click)="toast2.open=true">Long Toast</ui5-button>
 		<ui5-toast #toast2="ui5Toast" duration="4500" placement="MiddleEnd">Long Toast</ui5-toast>
 	`,
-});
+  }),
+};
 
-export const toastPlacements: Story<ToastComponent> = (
-  args: ToastComponent & any
-) => ({
-  props: args,
-  template: `
+export const ToastPlacements: StoryObj<ToastComponent> = {
+  render: (args: ToastComponent & any) => ({
+    props: args,
+    template: `
 		<!--MiddleCenter-->
 		<ui5-button (click)="toast5.open=true">MiddleCenter</ui5-button>
 		<ui5-toast #toast5="ui5Toast" placement="MiddleCenter">MiddleCenter</ui5-toast>
@@ -69,4 +68,5 @@ export const toastPlacements: Story<ToastComponent> = (
 		<ui5-button (click)="toast6.open=true">MiddleEnd</ui5-button>
 		<ui5-toast #toast6="ui5Toast" placement="MiddleEnd">MiddleEnd</ui5-toast>
 	`,
-});
+  }),
+};

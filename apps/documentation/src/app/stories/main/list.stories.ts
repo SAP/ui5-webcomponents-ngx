@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, ListComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -40,9 +40,10 @@ export default {
   },
 } as Meta;
 
-export const basicList: Story<ListComponent> = (args: ListComponent & any) => ({
-  props: args,
-  template: `
+export const BasicList: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list id="myList" class="full-width">
 			<ui5-li icon="nutrition-activity" description="Tropical plant with an edible fruit" additional-text="In-stock" additional-text-state="Success">Pineapple</ui5-li>
 			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Critical">Orange</ui5-li>
@@ -50,13 +51,13 @@ export const basicList: Story<ListComponent> = (args: ListComponent & any) => ({
 			<ui5-li icon="nutrition-activity" description="The tropical stone fruit" additional-text="Re-stock" additional-text-state="Error">Mango</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const listWithGrowingScroll: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListWithGrowingScroll: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list id="infiniteScrollEx" style="height: 300px" growing="Scroll">
 			<ui5-li icon="nutrition-activity" description="Tropical plant with an edible fruit" additional-text="In-stock" additional-text-state="Success">Pineapple</ui5-li>
 			<ui5-li icon="nutrition-activity" description="Occurs between red and yellow" additional-text="Expires" additional-text-state="Critical">Orange</ui5-li>
@@ -68,13 +69,13 @@ export const listWithGrowingScroll: Story<ListComponent> = (
 			<ui5-li icon="nutrition-activity" description="The pear (/ˈpɛər/) tree and shrub are a species of genus Pyrus, bearing the pomaceous fruit of the same name." additional-text="Re-stock" additional-text-state="Error">Pear</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const listInMultiSelectionMode: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListInMultiSelectionMode: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list id="myList1" class="samples-margin-bottom full-width" mode="MultiSelect" header-text="Multiple selection is possible">
 				<ui5-li>Pineapple</ui5-li>
 				<ui5-li selected>Orange</ui5-li>
@@ -82,20 +83,22 @@ export const listInMultiSelectionMode: Story<ListComponent> = (
 				<ui5-li>Mango</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const busyList: Story<ListComponent> = (args: ListComponent & any) => ({
-  props: args,
-  template: `
+export const BusyList: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list header-text="Fetching data ..." class="full-width" loading></ui5-list>
 	`,
-});
+  }),
+};
 
-export const listWithGroupHeaders: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListWithGroupHeaders: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list header-text="Community" mode="MultiSelect">
 			<ui5-li-group header-text="Front End Developers">
 				<ui5-li icon="navigation-right-arrow" icon-end>
@@ -149,13 +152,13 @@ export const listWithGroupHeaders: Story<ListComponent> = (
 			</ui5-li-group>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const listItemsUsingImageSlot: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListItemsUsingImageSlot: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list class="full-width">
 			<ui5-li> ui5-avatar element inside the "image" slot
 					<ui5-avatar slot="image" shape="Square" initials="ABC" color-scheme="Accent2"></ui5-avatar>
@@ -165,13 +168,13 @@ export const listItemsUsingImageSlot: Story<ListComponent> = (
 			</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const listInDeleteMode: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListInDeleteMode: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list id="myList5" class="full-width" mode="Delete" header-text="Note: The list items removal is up to application developers">
 			<ui5-li>Argentina</ui5-li>
 			<ui5-li>Bulgaria</ui5-li>
@@ -183,22 +186,22 @@ export const listInDeleteMode: Story<ListComponent> = (
 			</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};
 
-export const listWithNoData: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListWithNoData: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list class="full-width" header-text="Products" no-data-text="No Data Available" separators="None"></ui5-list>
 	`,
-});
+  }),
+};
 
-export const listItemSeparationTypes: Story<ListComponent> = (
-  args: ListComponent & any
-) => ({
-  props: args,
-  template: `
+export const ListItemSeparationTypes: StoryObj<ListComponent> = {
+  render: (args: ListComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-list header-text="No separators" separators="None" class="full-width">
 			<ui5-li icon="product">Item #1</ui5-li>
 			<ui5-li icon="product">Item #2</ui5-li>
@@ -210,4 +213,5 @@ export const listItemSeparationTypes: Story<ListComponent> = (
 			<ui5-li icon="shipping-status">Declined</ui5-li>
 		</ui5-list>
 	`,
-});
+  }),
+};

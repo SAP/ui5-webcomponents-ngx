@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ResponsivePopoverComponent,
@@ -35,8 +35,9 @@ export default {
   },
 } as Meta;
 
-export const BasicResponsivePopover: Story = () => ({
-  template: `
+export const BasicResponsivePopover: StoryObj = {
+  render: () => ({
+    template: `
   <ui5-button id="btn"  (click)="popover.open=true"  design="Emphasized">Open ResponsivePopover</ui5-button>
 
   <ui5-responsive-popover opener="btn" #popover="ui5ResponsivePopover" header-text="Newsletter subscription">
@@ -49,5 +50,6 @@ export const BasicResponsivePopover: Story = () => ({
 
       <ui5-label>Note:</ui5-label><ui5-text>If you open the page in mobile, dialog would be displayed.</ui5-text>
   </ui5-responsive-popover>
-  `
-});
+  `,
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   MultiComboBoxComponent,
@@ -42,11 +42,10 @@ export default {
   },
 } as Meta;
 
-export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicMultiComboBox: StoryObj<MultiComboBoxComponent> = {
+  render: (args: MultiComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-multi-combobox placeholder="Type your value">
 			<ui5-mcb-item selected text="UI5"></ui5-mcb-item>
 		</ui5-multi-combobox>
@@ -57,13 +56,13 @@ export const basicMultiComboBox: Story<MultiComboBoxComponent> = (
 			<ui5-mcb-item selected text="UI5"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,
-});
+  }),
+};
 
-export const multiComboBoxWithItems: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const MultiComboBoxWithItems: StoryObj<MultiComboBoxComponent> = {
+  render: (args: MultiComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries">
 			<ui5-mcb-item selected text="Argentina"></ui5-mcb-item>
 			<ui5-mcb-item text="Bulgaria"></ui5-mcb-item>
@@ -77,13 +76,14 @@ export const multiComboBoxWithItems: Story<MultiComboBoxComponent> = (
 			<ui5-mcb-item text="Paraguay"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,
-});
+  }),
+};
 
-export const multiComboBoxWithFreeTextInput: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const MultiComboBoxWithFreeTextInput: StoryObj<MultiComboBoxComponent> =
+  {
+    render: (args: MultiComboBoxComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries" allow-custom-values>
 			<ui5-mcb-item text="Argentina"></ui5-mcb-item>
 			<ui5-mcb-item selected text="Bulgaria"></ui5-mcb-item>
@@ -97,13 +97,13 @@ export const multiComboBoxWithFreeTextInput: Story<MultiComboBoxComponent> = (
 			<ui5-mcb-item text="Paraguay"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,
-});
+    }),
+  };
 
-export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const MultiComboBoxWithValueState: StoryObj<MultiComboBoxComponent> = {
+  render: (args: MultiComboBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-multi-combobox value-state="Positive">
 			<ui5-mcb-item text="Fortune"></ui5-mcb-item>
 			<ui5-mcb-item text="Luck"></ui5-mcb-item>
@@ -122,13 +122,14 @@ export const multiComboBoxWithValueState: Story<MultiComboBoxComponent> = (
 			<ui5-mcb-item text="Mistake"></ui5-mcb-item>
 		</ui5-multi-combobox>
 	`,
-});
+  }),
+};
 
-export const multiComboBoxWithGroupingOfItems: Story<MultiComboBoxComponent> = (
-  args: MultiComboBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const MultiComboBoxWithGroupingOfItems: StoryObj<MultiComboBoxComponent> =
+  {
+    render: (args: MultiComboBoxComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-multi-combobox placeholder="Select a country">
 			<ui5-mcb-item-group header-text="Asia">
 				<ui5-mcb-item text="Afghanistan"></ui5-mcb-item>
@@ -152,4 +153,5 @@ export const multiComboBoxWithGroupingOfItems: Story<MultiComboBoxComponent> = (
 			</ui5-mcb-item-group>
 		</ui5-multi-combobox>
 	`,
-});
+    }),
+  };

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   DateTimePickerComponent,
@@ -53,20 +53,19 @@ export default {
   },
 } as Meta;
 
-export const dateTimePicker: Story<DateTimePickerComponent> = (
-  args: DateTimePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const DateTimePicker: StoryObj<DateTimePickerComponent> = {
+  render: (args: DateTimePickerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-datetime-picker style="width: 230px"></ui5-datetime-picker>
 	`,
-});
+  }),
+};
 
-export const dateTimePickerInStates: Story<DateTimePickerComponent> = (
-  args: DateTimePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const DateTimePickerInStates: StoryObj<DateTimePickerComponent> = {
+  render: (args: DateTimePickerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-datetime-picker value-state="Negative"></ui5-datetime-picker>
 		<ui5-datetime-picker value-state="Critical"></ui5-datetime-picker>
 		<ui5-datetime-picker value-state="Information"></ui5-datetime-picker>
@@ -75,4 +74,5 @@ export const dateTimePickerInStates: Story<DateTimePickerComponent> = (
 		<ui5-datetime-picker readonly value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
 		<ui5-datetime-picker disabled value="2020-04-13-04:16:16 AM"></ui5-datetime-picker>
 	`,
-});
+  }),
+};

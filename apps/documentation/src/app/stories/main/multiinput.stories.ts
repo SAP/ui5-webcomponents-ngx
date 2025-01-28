@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   MultiInputComponent,
@@ -30,21 +30,20 @@ export default {
   },
 } as Meta;
 
-export const basicMultiInput: Story<MultiInputComponent> = (
-  args: MultiInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicMultiInput: StoryObj<MultiInputComponent> = {
+  render: (args: MultiInputComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-multi-input value="basic input"></ui5-multi-input>
 		<ui5-multi-input show-value-help-icon value="value help icon"></ui5-multi-input>
 	`,
-});
+  }),
+};
 
-export const multiInputWithTokens: Story<MultiInputComponent> = (
-  args: MultiInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const MultiInputWithTokens: StoryObj<MultiInputComponent> = {
+  render: (args: MultiInputComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-multi-input style="width: 30%">
 			<ui5-token slot="tokens" text="Bulgaria"></ui5-token>
 		</ui5-multi-input>
@@ -64,4 +63,5 @@ export const multiInputWithTokens: Story<MultiInputComponent> = (
 			<ui5-token slot="tokens" text="USA"></ui5-token>
 		</ui5-multi-input>
 	`,
-});
+  }),
+};

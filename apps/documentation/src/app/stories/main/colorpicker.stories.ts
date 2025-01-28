@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ColorPickerComponent,
@@ -34,11 +34,11 @@ export default {
   },
 } as Meta;
 
-export const pickColor: Story<ColorPickerComponent> = (
-  args: ColorPickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const PickColor: StoryObj<ColorPickerComponent> = {
+  render: (args: ColorPickerComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-color-picker></ui5-color-picker>
 	`,
-});
+  }),
+};

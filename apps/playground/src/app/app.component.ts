@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'ui-angular-root',
-  templateUrl: './app.component.html'
+    selector: 'ui-angular-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent {
   radioControl = new FormControl('Option 2');

@@ -5,7 +5,8 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "@nx/enforce-module-boundaries": [2]
+        "@nx/enforce-module-boundaries": [2],
+        "@angular-eslint/prefer-standalone": "off"
       },
       "extends": [
         "plugin:@nx/angular",

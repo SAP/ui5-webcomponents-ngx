@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, InputComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -31,47 +31,46 @@ export default {
   },
 } as Meta;
 
-export const basicInput: Story<InputComponent> = (
-  args: InputComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicInput: StoryObj<InputComponent> = {
+  render: (args: InputComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" show-clear-icon value="Input"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" readonly value="readonly Input"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" disabled value="Disabled Input"></ui5-input>
 	`,
-});
+  }),
+};
 
-export const inputWithValueState: Story<InputComponent> = (
-  args: InputComponent & any
-) => ({
-  props: args,
-  template: `
+export const InputWithValueState: StoryObj<InputComponent> = {
+  render: (args: InputComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Positive" value-state="Positive"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Critical" value-state="Critical"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Negative" value-state="Negative"></ui5-input>
 		<ui5-input class="samples-margin samples-responsive-margin-bottom" value="Information" value-state="Information"></ui5-input>
 	`,
-});
+  }),
+};
 
-export const inputAsSearchField: Story<InputComponent> = (
-  args: InputComponent & any
-) => ({
-  props: args,
-  template: `
+export const InputAsSearchField: StoryObj<InputComponent> = {
+  render: (args: InputComponent & any) => ({
+    props: args,
+    template: `
 		<div class="flex-column samples-margin">
 			<ui5-input id="searchInput" placeholder="Enter search criteria ..." style="width: 100%">
 				<ui5-icon id="searchIcon" slot="icon" name="search"></ui5-icon>
 			</ui5-input>
 		</div>
 	`,
-});
+  }),
+};
 
-export const inputWithLabel: Story<InputComponent> = (
-  args: InputComponent & any
-) => ({
-  props: args,
-  template: `
+export const InputWithLabel: StoryObj<InputComponent> = {
+  render: (args: InputComponent & any) => ({
+    props: args,
+    template: `
 		<div class="flex-column samples-margin">
 			<ui5-label class="samples-big-margin-right" for="myInput" required showColon>Name</ui5-label>
 			<ui5-input id="myInput" placeholder="Enter your Name" required></ui5-input>
@@ -81,4 +80,5 @@ export const inputWithLabel: Story<InputComponent> = (
 			<ui5-input id="myPassword" type="Password" value-state="Negative" placeholder="Enter your Secret Code" required></ui5-input>
 		</div>
 	`,
-});
+  }),
+};

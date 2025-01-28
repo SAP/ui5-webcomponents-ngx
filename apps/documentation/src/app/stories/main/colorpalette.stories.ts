@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ColorPaletteComponent,
@@ -32,11 +32,10 @@ export default {
   },
 } as Meta;
 
-export const colorPalette: Story<ColorPaletteComponent> = (
-  args: ColorPaletteComponent & any
-) => ({
-  props: args,
-  template: `
+export const ColorPalette: StoryObj<ColorPaletteComponent> = {
+  render: (args: ColorPaletteComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-color-palette>
 			<ui5-color-palette-item value="darkblue"></ui5-color-palette-item>
 			<ui5-color-palette-item value="pink"></ui5-color-palette-item>
@@ -52,4 +51,5 @@ export const colorPalette: Story<ColorPaletteComponent> = (
 			<ui5-color-palette-item value="#ff6699"></ui5-color-palette-item>
 		</ui5-color-palette>
 	`,
-});
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   RadioButtonComponent,
@@ -34,11 +34,10 @@ export default {
   },
 } as Meta;
 
-export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
-  args: RadioButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicRadioButtonTypes: StoryObj<RadioButtonComponent> = {
+  render: (args: RadioButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-radio-button text="Option A" checked name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option B" value-state="None" name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option C" value-state="Critical" name="GroupA"></ui5-radio-button>
@@ -48,13 +47,14 @@ export const basicRadioButtonTypes: Story<RadioButtonComponent> = (
 		<ui5-radio-button text="Option E" disabled name="GroupA"></ui5-radio-button>
 		<ui5-radio-button text="Option F" readonly name="GroupA"></ui5-radio-button>
 	`,
-});
+  }),
+};
 
-export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
-  RadioButtonComponent
-> = (args: RadioButtonComponent & any) => ({
-  props: args,
-  template: `
+export const RadioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: StoryObj<RadioButtonComponent> =
+  {
+    render: (args: RadioButtonComponent & any) => ({
+      props: args,
+      template: `
 		<div aria-labelledby="radioGroupTitle1" role="radiogroup" id="radioGroup">
 			<ui5-title level="H5">Group of states</ui5-title>
 			<ui5-radio-button text="None" value-state="None" name="GroupB"></ui5-radio-button>
@@ -70,14 +70,15 @@ export const radioButtonInGroupNavigateViaUpRightAndDownLeftArrowKeys: Story<
 			<ui5-radio-button text="Option C" value-state="None" name="GroupC"></ui5-radio-button>
 		</div>
 	`,
-});
+    }),
+  };
 
-export const radioButtonWithTextWrapping: Story<RadioButtonComponent> = (
-  args: RadioButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const RadioButtonWithTextWrapping: StoryObj<RadioButtonComponent> = {
+  render: (args: RadioButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-radio-button text="ui5-radio-button text wraps by default when it's too long" style="width:300px"></ui5-radio-button>
 		<ui5-radio-button text="set wrapping-type='None' to make it truncate" wrapping-type="None" style="width:300px"></ui5-radio-button>
 	`,
-});
+  }),
+};

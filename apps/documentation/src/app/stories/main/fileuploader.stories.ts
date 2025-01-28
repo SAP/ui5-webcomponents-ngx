@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   FileUploaderComponent,
@@ -30,33 +30,32 @@ export default {
   },
 } as Meta;
 
-export const uploadSingleFile: Story<FileUploaderComponent> = (
-  args: FileUploaderComponent & any
-) => ({
-  props: args,
-  template: `
+export const UploadSingleFile: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-file-uploader>
 			<ui5-button>Upload Single File</ui5-button>
 		</ui5-file-uploader>
 	`,
-});
+  }),
+};
 
-export const fileUploaderWithNoInput: Story<FileUploaderComponent> = (
-  args: FileUploaderComponent & any
-) => ({
-  props: args,
-  template: `
+export const FileUploaderWithNoInput: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-file-uploader hide-input>
 			<ui5-button>Upload File</ui5-button>
 		</ui5-file-uploader>
 	`,
-});
+  }),
+};
 
-export const customFileUploaders: Story<FileUploaderComponent> = (
-  args: FileUploaderComponent & any
-) => ({
-  props: args,
-  template: `
+export const CustomFileUploaders: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-file-uploader hide-input>
 			<ui5-avatar icon="upload"></ui5-avatar>
 		</ui5-file-uploader>
@@ -65,13 +64,13 @@ export const customFileUploaders: Story<FileUploaderComponent> = (
 			<ui5-tag>Upload File</ui5-tag>
 		</ui5-file-uploader>
 	`,
-});
+  }),
+};
 
-export const buttonWithIconFileUploader: Story<FileUploaderComponent> = (
-  args: FileUploaderComponent & any
-) => ({
-  props: args,
-  template: `
+export const ButtonWithIconFileUploader: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-file-uploader>
 			<ui5-button icon="upload">Upload</ui5-button>
 		</ui5-file-uploader>
@@ -82,4 +81,5 @@ export const buttonWithIconFileUploader: Story<FileUploaderComponent> = (
 			<ui5-button icon="upload"></ui5-button>
 		</ui5-file-uploader>
 	`,
-});
+  }),
+};

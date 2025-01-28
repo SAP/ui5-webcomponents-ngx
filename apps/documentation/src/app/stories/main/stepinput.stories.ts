@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   StepInputComponent,
@@ -38,50 +38,50 @@ export default {
   },
 } as Meta;
 
-export const basicStepInput: Story<StepInputComponent> = (
-  args: StepInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicStepInput: StoryObj<StepInputComponent> = {
+  render: (args: StepInputComponent & any) => ({
+    props: args,
+    template: `
 		<div>
 			<ui5-step-input [value]="5"></ui5-step-input>
 			<ui5-step-input readonly [value]="5"></ui5-step-input>
 			<ui5-step-input disabled [value]="5"></ui5-step-input>
 		</div>
 	`,
-});
+  }),
+};
 
-export const stepInputWithAlignment: Story<StepInputComponent> = (
-  args: StepInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const StepInputWithAlignment: StoryObj<StepInputComponent> = {
+  render: (args: StepInputComponent & any) => ({
+    props: args,
+    template: `
 		<div>
 			<ui5-step-input [value]="5"></ui5-step-input>
 			<ui5-step-input [value]="5" style="text-align: center"></ui5-step-input>
 			<ui5-step-input [value]="5"></ui5-step-input>
 		</div>
 	`,
-});
+  }),
+};
 
-export const stepInputWithMinMaxStepAndValuePrecision: Story<
-  StepInputComponent
-> = (args: StepInputComponent & any) => ({
-  props: args,
-  template: `
+export const StepInputWithMinMaxStepAndValuePrecision: StoryObj<StepInputComponent> =
+  {
+    render: (args: StepInputComponent & any) => ({
+      props: args,
+      template: `
 		<div>
 			<ui5-step-input [value]="5" [min]="0" [max]="10" [step]="1"></ui5-step-input>
 			<ui5-step-input [value]="0" [min]="-100" [max]="100" [step]="10"></ui5-step-input>
 			<ui5-step-input [value]="10" [min]="0" [max]="20" [step]="0.5" [valuePrecision]="1"></ui5-step-input>
 		</div>
 	`,
-});
+    }),
+  };
 
-export const stepInputWithValueState: Story<StepInputComponent> = (
-  args: StepInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const StepInputWithValueState: StoryObj<StepInputComponent> = {
+  render: (args: StepInputComponent & any) => ({
+    props: args,
+    template: `
 		<div>
 			<ui5-step-input value-state="Positive"></ui5-step-input>
 			<ui5-step-input value-state="Critical"></ui5-step-input>
@@ -89,14 +89,15 @@ export const stepInputWithValueState: Story<StepInputComponent> = (
 			<ui5-step-input value-state="Information"></ui5-step-input>
 		</div>
 	`,
-});
+  }),
+};
 
-export const stepInputWithLabel: Story<StepInputComponent> = (
-  args: StepInputComponent & any
-) => ({
-  props: args,
-  template: `
+export const StepInputWithLabel: StoryObj<StepInputComponent> = {
+  render: (args: StepInputComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label for="myStepInput" required showColon>Number</ui5-label>
 		<ui5-step-input id="myStepInput" placeholder="Enter your Number" required></ui5-step-input>
 	`,
-});
+  }),
+};

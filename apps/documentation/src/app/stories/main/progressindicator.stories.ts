@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ProgressIndicatorComponent,
@@ -35,46 +35,49 @@ export default {
   },
 } as Meta;
 
-export const basicProgressIndicator: Story<ProgressIndicatorComponent> = (
-  args: ProgressIndicatorComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicProgressIndicator: StoryObj<ProgressIndicatorComponent> = {
+  render: (args: ProgressIndicatorComponent & any) => ({
+    props: args,
+    template: `
         <ui5-progress-indicator value="0"></ui5-progress-indicator>
         <ui5-progress-indicator value="25"></ui5-progress-indicator>
         <ui5-progress-indicator value="75" disabled></ui5-progress-indicator>
         <ui5-progress-indicator value="100"></ui5-progress-indicator>
 	`,
-});
+  }),
+};
 
-export const progressIndicatorWithCustomDisplayValue: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
-  props: args,
-  template: `
+export const ProgressIndicatorWithCustomDisplayValue: StoryObj<ProgressIndicatorComponent> =
+  {
+    render: (args: ProgressIndicatorComponent & any) => ({
+      props: args,
+      template: `
         <ui5-progress-indicator value="25" display-value="Custom Display Value"></ui5-progress-indicator>
 	`,
-});
+    }),
+  };
 
-export const progressIndicatorWithValueState: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
-  props: args,
-  template: `
+export const ProgressIndicatorWithValueState: StoryObj<ProgressIndicatorComponent> =
+  {
+    render: (args: ProgressIndicatorComponent & any) => ({
+      props: args,
+      template: `
         <ui5-progress-indicator value-state="None" value="25"></ui5-progress-indicator>
         <ui5-progress-indicator value-state="Negative" value="50"></ui5-progress-indicator>
         <ui5-progress-indicator value-state="Critical" value="75"></ui5-progress-indicator>
         <ui5-progress-indicator value-state="Positive" value="90"></ui5-progress-indicator>
         <ui5-progress-indicator value-state="Information" value="100"></ui5-progress-indicator>
 	`,
-});
+    }),
+  };
 
-export const progressIndicatorWithCustomSizes: Story<
-  ProgressIndicatorComponent
-> = (args: ProgressIndicatorComponent & any) => ({
-  props: args,
-  template: `
+export const ProgressIndicatorWithCustomSizes: StoryObj<ProgressIndicatorComponent> =
+  {
+    render: (args: ProgressIndicatorComponent & any) => ({
+      props: args,
+      template: `
         <ui5-progress-indicator value="25" style="height: 50px; width: 200px;"></ui5-progress-indicator>
         <ui5-progress-indicator value="75" style="height: 50px; width: 200px;"></ui5-progress-indicator>
 	`,
-});
+    }),
+  };

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, IconComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -53,38 +53,38 @@ export default {
   },
 } as Meta;
 
-export const basicIcons: Story<IconComponent> = (
-  args: IconComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicIcons: StoryObj<IconComponent> = {
+  render: (args: IconComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-icon class="samples-margin" name="activate"></ui5-icon>
 		<ui5-icon class="samples-margin" name="activities"></ui5-icon>
 		<ui5-icon class="samples-margin" name="add-equipment"></ui5-icon>
 		<ui5-icon class="samples-margin" name="add-document"></ui5-icon>
 		<ui5-icon class="samples-margin" name="add-employee"></ui5-icon>
 	`,
-});
+  }),
+};
 
-export const sapFioriToolsIcons: Story<IconComponent> = (
-  args: IconComponent & any
-) => ({
-  props: args,
-  template: `
+export const SapFioriToolsIcons: StoryObj<IconComponent> = {
+  render: (args: IconComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-icon class="samples-margin" name="tnt/antenna"></ui5-icon>
 		<ui5-icon class="samples-margin" name="tnt/api"></ui5-icon>
 		<ui5-icon class="samples-margin" name="tnt/modem"></ui5-icon>
 		<ui5-icon class="samples-margin" name="tnt/data-store"></ui5-icon>
 		<ui5-icon class="samples-margin" name="tnt/flow"></ui5-icon>
 	`,
-});
+  }),
+};
 
-export const customizedIcons: Story<IconComponent> = (
-  args: IconComponent & any
-) => ({
-  props: args,
-  template: `
+export const CustomizedIcons: StoryObj<IconComponent> = {
+  render: (args: IconComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-icon class="samples-margin" name="employee" style="width:3rem;height:3rem;font-size:1.5rem;color:crimson;background-color:#fafafa"></ui5-icon>
 		<ui5-icon class="samples-margin" name="menu" style="width:3rem;height:3rem;font-size:1.5rem;color:crimson;background-color:#fafafa"></ui5-icon>
 	`,
-});
+  }),
+};

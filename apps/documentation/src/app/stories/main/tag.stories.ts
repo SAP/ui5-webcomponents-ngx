@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TagComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -29,11 +29,10 @@ export default {
   },
 } as Meta;
 
-export const basicTag: Story<TagComponent> = (
-  args: TagComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicTag: StoryObj<TagComponent> = {
+  render: (args: TagComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tag design="Set1" color-scheme="1">available 1</ui5-tag>
 		<ui5-tag design="Set1" color-scheme="2">required 2</ui5-tag>
 		<ui5-tag design="Set1" olor-scheme="3">3K</ui5-tag>
@@ -52,13 +51,13 @@ export const basicTag: Story<TagComponent> = (
 			}
 		</style>
 	`,
-});
+  }),
+};
 
-export const tagWithIcon: Story<TagComponent> = (
-  args: TagComponent & any
-) => ({
-  props: args,
-  template: `
+export const TagWithIcon: StoryObj<TagComponent> = {
+  render: (args: TagComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tag design="Set2" color-scheme="1">
 				<ui5-icon name="accept" slot="icon"></ui5-icon>done
 		</ui5-tag>
@@ -90,4 +89,5 @@ export const tagWithIcon: Story<TagComponent> = (
 			}
 		</style>
 	`,
-});
+  }),
+};

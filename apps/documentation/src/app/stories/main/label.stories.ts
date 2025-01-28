@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, LabelComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -27,56 +27,55 @@ export default {
   },
 } as Meta;
 
-export const basicLabel: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicLabel: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label>The quick brown fox jumps over the lazy dog.</ui5-label>
 	`,
-});
+  }),
+};
 
-export const requiredLabel: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const RequiredLabel: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label required>Required Label</ui5-label>
 	`,
-});
+  }),
+};
 
-export const requiredLabelWithColon: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const RequiredLabelWithColon: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label required showColon>Required Label</ui5-label>
 	`,
-});
+  }),
+};
 
-export const truncatedLabel: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const TruncatedLabel: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label wrapping-type="None" style="width:300px">When wrapping-type='None' is set long labels are truncated.</ui5-label>
 	`,
-});
+  }),
+};
 
-export const wrappedLabel: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const WrappedLabel: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label style="width:300px">Long labels wrap iby default when the text odes not fit the space.</ui5-label>
 	`,
-});
+  }),
+};
 
-export const labelFor: Story<LabelComponent> = (
-  args: LabelComponent & any
-) => ({
-  props: args,
-  template: `
+export const LabelFor: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-label id="myLabel" for="myInput" required showColon>First name</ui5-label>
 		<ui5-input id="myInput" required placeholder="Enter your name"></ui5-input>
 		<br>
@@ -114,4 +113,5 @@ export const labelFor: Story<LabelComponent> = (
 	<ui5-checkbox id="myCB" required></ui5-checkbox>
 		</xmp></pre>
 `,
-});
+  }),
+};

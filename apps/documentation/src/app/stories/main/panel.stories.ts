@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, PanelComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -41,11 +41,10 @@ export default {
   },
 } as Meta;
 
-export const basicPanel: Story<PanelComponent> = (
-  args: PanelComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicPanel: StoryObj<PanelComponent> = {
+  render: (args: PanelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-panel width="100%" accessible-role="Complementary" header-text="Both expandable and expanded">
 			<h1>I am a native heading!</h1>
 			<ui5-label>Short text.</ui5-label>
@@ -56,13 +55,13 @@ export const basicPanel: Story<PanelComponent> = (
 			</p>
 		</ui5-panel>
 	`,
-});
+  }),
+};
 
-export const panelWithList: Story<PanelComponent> = (
-  args: PanelComponent & any
-) => ({
-  props: args,
-  template: `
+export const PanelWithList: StoryObj<PanelComponent> = {
+  render: (args: PanelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-panel accessible-role="Complementary" header-text="Select your country">
 			<ui5-list mode="MultiSelect">
 				<ui5-li key="country1">Argentina</ui5-li>
@@ -76,13 +75,13 @@ export const panelWithList: Story<PanelComponent> = (
 			</ui5-list>
 		</ui5-panel>
 	`,
-});
+  }),
+};
 
-export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
-  args: PanelComponent & any
-) => ({
-  props: args,
-  template: `
+export const FixedPanelCantBeCollapsedExpanded: StoryObj<PanelComponent> = {
+  render: (args: PanelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-panel fixed accessible-role="Complementary" header-text="Country Of Birth">
 			<ui5-list mode="SingleSelectBegin">
 				<ui5-li key="country1">Argentina</ui5-li>
@@ -92,13 +91,13 @@ export const fixedPanelCantBeCollapsedExpanded: Story<PanelComponent> = (
 			</ui5-list>
 		</ui5-panel>
 	`,
-});
+  }),
+};
 
-export const panelWithCustomHeader: Story<PanelComponent> = (
-  args: PanelComponent & any
-) => ({
-  props: args,
-  template: `
+export const PanelWithCustomHeader: StoryObj<PanelComponent> = {
+  render: (args: PanelComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-panel accessible-role="Complementary">
 
 			<!-- Panel header -->
@@ -126,4 +125,5 @@ export const panelWithCustomHeader: Story<PanelComponent> = (
 			}
 		</style>
 	`,
-});
+  }),
+};

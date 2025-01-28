@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   SegmentedButtonComponent,
@@ -30,37 +30,37 @@ export default {
   },
 } as Meta;
 
-export const basicSegmentedButton: Story<SegmentedButtonComponent> = (
-  args: SegmentedButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicSegmentedButton: StoryObj<SegmentedButtonComponent> = {
+  render: (args: SegmentedButtonComponent & any) => ({
+    props: args,
+    template: `
         <ui5-segmented-button accessible-name="Geographic location">
             <ui5-segmented-button-item>Map</ui5-segmented-button-item>
             <ui5-segmented-button-item selected>Satellite</ui5-segmented-button-item>
             <ui5-segmented-button-item>Terrain</ui5-segmented-button-item>
         </ui5-segmented-button>
 	`,
-});
+  }),
+};
 
-export const segmentedButtonWithIcons: Story<SegmentedButtonComponent> = (
-  args: SegmentedButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const SegmentedButtonWithIcons: StoryObj<SegmentedButtonComponent> = {
+  render: (args: SegmentedButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-segmented-button>
 			<ui5-segmented-button-item icon="employee" selected></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="menu"></ui5-segmented-button-item>
 			<ui5-segmented-button-item icon="factory"></ui5-segmented-button-item>
 		</ui5-segmented-button>
 	`,
-});
+  }),
+};
 
-export const segmentedButtonWith5SegmentedButtonItems: Story<
-  SegmentedButtonComponent
-> = (args: SegmentedButtonComponent & any) => ({
-  props: args,
-  template: `
+export const SegmentedButtonWith5SegmentedButtonItems: StoryObj<SegmentedButtonComponent> =
+  {
+    render: (args: SegmentedButtonComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-segmented-button>
 			<ui5-segmented-button-item>Item</ui5-segmented-button-item>
 			<ui5-segmented-button-item selected>Pressed SegmentedButtonItem With Bigger Text</ui5-segmented-button-item>
@@ -69,4 +69,5 @@ export const segmentedButtonWith5SegmentedButtonItems: Story<
 			<ui5-segmented-button-item>Press me</ui5-segmented-button-item>
 		</ui5-segmented-button>
 	`,
-});
+    }),
+  };

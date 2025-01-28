@@ -1,4 +1,4 @@
-import {Meta} from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Difference from underlying library" />
 
@@ -19,7 +19,6 @@ Every event name will be transformed to the schema `ui5${pascalCase(originalEven
 the event name will be `ui5SelectedDatesChange`. In most cases, you will not have to think about it, since all the properties and outputs are typed for Angular users and your IDE will give you autocompletion
 for all of them.
 
-
 ### Component imports
 
 In `@ui5/webcomponents` in order to use the component, you should import it as needed, but in `@ui5/webcomponents-ngx` you can import components as a module, as well as standalone components.
@@ -28,11 +27,13 @@ The standalone components are exported from their respective directories, so you
 ```typescript
 import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
 ```
+
 These components can be used as standard standalone components, or if you want to import all the components that are in for example `main` package, you can do it like this:
 
 ```typescript
 import { Ui5MainModule } from '@ui5/webcomponents-ngx/main';
 ```
+
 And then you should use them in your `NgModule` just like any other Angular module.
 
 Besides `Ui5MainModule`, there are also `Ui5FioriModule` and `Ui5WebcomponentsModule`, which contains all available components.
@@ -50,7 +51,9 @@ import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
   selector: 'some-component',
   standalone: true,
   imports: [CompactDirective, ButtonComponent],
-  template: `<ui5-button (click)="compact = !compact" [ui5Compact]="compact">Toggle compact</ui5-button>`,
+  template: `<ui5-button (click)="compact = !compact" [ui5Compact]="compact"
+    >Toggle compact</ui5-button
+  >`,
 })
 export class SomeComponent {
   compact = false;

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, MenuComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -35,8 +35,9 @@ export default {
   },
 } as Meta;
 
-export const basicMenu: Story = () => ({
-  template: `
+export const BasicMenu: StoryObj = {
+  render: () => ({
+    template: `
   <ui5-button id="btn" (click)="menuBasic.open=true">Open Menu</ui5-button>
   
   <ui5-menu opener="btn" #menuBasic="ui5Menu">
@@ -51,11 +52,13 @@ export const basicMenu: Story = () => ({
       <ui5-menu-separator></ui5-menu-separator>
       <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>
   </ui5-menu>
-  `
-});
+  `,
+  }),
+};
 
-export const menuWithSubmenu: Story = () => ({
-  template: `
+export const MenuWithSubmenu: StoryObj = {
+  render: () => ({
+    template: `
   <ui5-button id="btn2" (click)="menuSubs.open=true">Open Menu</ui5-button>
 
   <ui5-menu opener="btn2" #menuSubs="ui5Menu">
@@ -85,11 +88,13 @@ export const menuWithSubmenu: Story = () => ({
       <ui5-menu-item text="Preferences" icon="action-settings"></ui5-menu-item>
       <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>
   </ui5-menu>
-  `
-});
+  `,
+  }),
+};
 
-export const MenuWithAdditionalTextOnMenuItems: Story = () => ({
-  template: `
+export const MenuWithAdditionalTextOnMenuItems: StoryObj = {
+  render: () => ({
+    template: `
   <ui5-button id="btn2" (click)="menuAdditionalText.open=true">Open Menu</ui5-button>
 
   <ui5-menu opener="btn2" #menuAdditionalText="ui5Menu">
@@ -104,5 +109,6 @@ export const MenuWithAdditionalTextOnMenuItems: Story = () => ({
       <ui5-menu-item text="Preferences" icon="action-settings"></ui5-menu-item>
       <ui5-menu-item text="Exit" icon="journey-arrive" additional-text="Ctrl+X"></ui5-menu-item>
   </ui5-menu>
-  `
-});
+  `,
+  }),
+};

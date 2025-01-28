@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   TokenizerComponent,
@@ -37,11 +37,10 @@ export default {
   },
 } as Meta;
 
-export const basicTokenizer: Story<TokenizerComponent> = (
-  args: TokenizerComponent & any
-) => ({
-  props: args,
-  template: `
+export const basicTokenizer: StoryObj<TokenizerComponent> = {
+  render: (args: TokenizerComponent & any) => ({
+    props: args,
+    template: `
     <div style="width: 200px">
       <ui5-tokenizer style="width: 100%">
         <ui5-token text="Andora"></ui5-token>
@@ -52,5 +51,5 @@ export const basicTokenizer: Story<TokenizerComponent> = (
       </ui5-tokenizer>
     </div>
 	`,
-});
-
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, TreeComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -40,9 +40,10 @@ export default {
   },
 } as Meta;
 
-export const basicTree: Story<TreeComponent> = (args: TreeComponent & any) => ({
-  props: args,
-  template: `
+export const BasicTree: StoryObj<TreeComponent> = {
+  render: (args: TreeComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tree>
 			<ui5-tree-item expanded text="Tree 1" icon="paste" selected>
 				<ui5-tree-item expanded text="Tree 1.1" selected>
@@ -67,13 +68,13 @@ export const basicTree: Story<TreeComponent> = (args: TreeComponent & any) => ({
 			</ui5-tree-item>
 		</ui5-tree>
 	`,
-});
+  }),
+};
 
-export const treeWithMultipleSelection: Story<TreeComponent> = (
-  args: TreeComponent & any
-) => ({
-  props: args,
-  template: `
+export const TreeWithMultipleSelection: StoryObj<TreeComponent> = {
+  render: (args: TreeComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tree selection-mode="Multiple">
 			<ui5-tree-item expanded text="Tree 1" icon="paste" selected>
 				<ui5-tree-item expanded text="Tree 1.1" selected>
@@ -98,14 +99,13 @@ export const treeWithMultipleSelection: Story<TreeComponent> = (
 			</ui5-tree-item>
 		</ui5-tree>
 	`,
-});
+  }),
+};
 
-
-export const treeWithCustomItems: Story<TreeComponent> = (
-  args: TreeComponent & any
-) => ({
-  props: args,
-  template: `
+export const TreeWithCustomItems: StoryObj<TreeComponent> = {
+  render: (args: TreeComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-tree mode="MultiSelect">
 			<div slot="header">
 				<ui5-title level="H4">Tree with custom items</ui5-title>
@@ -127,4 +127,5 @@ export const treeWithCustomItems: Story<TreeComponent> = (
 			</ui5-tree-item-custom>
 		</ui5-tree>
 	`,
-});
+  }),
+};

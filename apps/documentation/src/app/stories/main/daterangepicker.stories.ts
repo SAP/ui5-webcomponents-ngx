@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   DateRangePickerComponent,
@@ -41,57 +41,59 @@ export default {
   },
 } as Meta;
 
-export const basicDateRangePicker: Story<DateRangePickerComponent> = (
-  args: DateRangePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicDateRangePicker: StoryObj<DateRangePickerComponent> = {
+  render: (args: DateRangePickerComponent & any) => ({
+    props: args,
+    template: `
 		<div class="daterange-picker-width">
 			<ui5-daterange-picker id="mydaterange-picker1"></ui5-daterange-picker>
 		</div>
 	`,
-});
+  }),
+};
 
-export const dateRangePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy: Story<
-  DateRangePickerComponent
-> = (args: DateRangePickerComponent & any) => ({
-  props: args,
-  template: `
+export const DateRangePickerWithMinimumAndMaximumDate112020452020FormatPatternDdMmYyyy: StoryObj<DateRangePickerComponent> =
+  {
+    render: (args: DateRangePickerComponent & any) => ({
+      props: args,
+      template: `
 		<div class="daterange-picker-width">
 			<ui5-daterange-picker id="mydaterange-picker12" min-date="1/1/2020" max-date="4/5/2020" format-pattern="dd/MM/yyyy"></ui5-daterange-picker>
 		</div>
 	`,
-});
+    }),
+  };
 
-export const dateRangePickerWithFormatPatternLong: Story<
-  DateRangePickerComponent
-> = (args: DateRangePickerComponent & any) => ({
-  props: args,
-  template: `
+export const DateRangePickerWithFormatPatternLong: StoryObj<DateRangePickerComponent> =
+  {
+    render: (args: DateRangePickerComponent & any) => ({
+      props: args,
+      template: `
 		<div class="daterange-picker-width">
 			<ui5-daterange-picker format-pattern="long"></ui5-daterange-picker>
 		</div>
 	`,
-});
+    }),
+  };
 
-export const disabledDateRangePicker: Story<DateRangePickerComponent> = (
-  args: DateRangePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const disabledDateRangePicker: StoryObj<DateRangePickerComponent> = {
+  render: (args: DateRangePickerComponent & any) => ({
+    props: args,
+    template: `
 		<div class="daterange-picker-width">
 			<ui5-daterange-picker disabled value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
-});
+  }),
+};
 
-export const readonlyDateRangePicker: Story<DateRangePickerComponent> = (
-  args: DateRangePickerComponent & any
-) => ({
-  props: args,
-  template: `
+export const ReadonlyDateRangePicker: StoryObj<DateRangePickerComponent> = {
+  render: (args: DateRangePickerComponent & any) => ({
+    props: args,
+    template: `
 		<div class="daterange-picker-width">
 			<ui5-daterange-picker readonly value="Mar 31, 2021 - Apr 9, 2021"></ui5-daterange-picker>
 		</div>
 	`,
-});
+  }),
+};

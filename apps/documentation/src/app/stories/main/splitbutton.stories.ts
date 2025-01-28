@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   SplitButtonComponent,
@@ -39,21 +39,20 @@ export default {
   },
 } as Meta;
 
-export const defaultSplitButton: Story<SplitButtonComponent> = (
-  args: SplitButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const DefaultSplitButton: StoryObj<SplitButtonComponent> = {
+  render: (args: SplitButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-split-button>Default</ui5-split-button>
 		<ui5-split-button disabled>Default</ui5-split-button>
 	`,
-});
+  }),
+};
 
-export const splitButtonWithDesign: Story<SplitButtonComponent> = (
-  args: SplitButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const SplitButtonWithDesign: StoryObj<SplitButtonComponent> = {
+  render: (args: SplitButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-split-button design="Default">Default</ui5-split-button>
 		<ui5-split-button design="Emphasized">Emphasized</ui5-split-button>
 		<ui5-split-button design="Positive">Positive</ui5-split-button>
@@ -61,14 +60,15 @@ export const splitButtonWithDesign: Story<SplitButtonComponent> = (
 		<ui5-split-button design="Attention">Attention</ui5-split-button>
 		<ui5-split-button design="Transparent">Transparent</ui5-split-button>
 	`,
-});
+  }),
+};
 
-export const splitButtonWithIcons: Story<SplitButtonComponent> = (
-  args: SplitButtonComponent & any
-) => ({
-  props: args,
-  template: `
+export const SplitButtonWithIcons: StoryObj<SplitButtonComponent> = {
+  render: (args: SplitButtonComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-split-button icon="add">Icon</ui5-split-button>
 		<ui5-split-button icon="add" active-icon="accept">Icon + Active Icon</ui5-split-button>
 	`,
-});
+  }),
+};

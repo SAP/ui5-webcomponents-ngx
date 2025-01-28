@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   CheckBoxComponent,
@@ -38,23 +38,22 @@ export default {
   },
 } as Meta;
 
-export const basicCheckBox: Story<CheckBoxComponent> = (
-  args: CheckBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const BasicCheckBox: StoryObj<CheckBoxComponent> = {
+  render: (args: CheckBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-checkbox text="Chocolate" checked></ui5-checkbox>
 		<ui5-checkbox text="Strawberry" checked></ui5-checkbox>
 		<ui5-checkbox text="Waffles" checked value-state="Negative"></ui5-checkbox>
 		<ui5-checkbox text="Cake" checked value-state="Critical"></ui5-checkbox>
 	`,
-});
+  }),
+};
 
-export const checkBoxStates: Story<CheckBoxComponent> = (
-  args: CheckBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const CheckBoxStates: StoryObj<CheckBoxComponent> = {
+  render: (args: CheckBoxComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-checkbox text="Positive" value-state="Positive"></ui5-checkbox>
 		<ui5-checkbox text="Negative" value-state="Negative"></ui5-checkbox>
 		<ui5-checkbox text="Critical" value-state="Critical"></ui5-checkbox>
@@ -74,14 +73,15 @@ export const checkBoxStates: Story<CheckBoxComponent> = (
 		<ui5-checkbox text="Warning indeterminate" value-state="Critical" indeterminate checked></ui5-checkbox>
 		<ui5-checkbox text="Information indeterminate" value-state="Information" indeterminate checked></ui5-checkbox>
 	`,
-});
+  }),
+};
 
-export const checkBoxWithTextWrapping: Story<CheckBoxComponent> = (
-  args: CheckBoxComponent & any
-) => ({
-  props: args,
-  template: `
+export const CheckBoxWithTextWrapping: StoryObj<CheckBoxComponent> = {
+  render: (args: CheckBoxComponent & any) => ({
+    props: args,
+    template: `
   <ui5-checkbox text="set wrapping-type='None' to make it truncate instead" wrapping-type="None" style="width:300px"></ui5-checkbox>
 		<ui5-checkbox text="ui5-checkbox text wraps by default when some long text is set." style="width:300px"></ui5-checkbox>
 	`,
-});
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Ui5WebcomponentsModule, CardComponent } from '@ui5/webcomponents-ngx';
 import { extractArgTypes } from '../../arg-type-tools';
 
@@ -33,11 +33,10 @@ export default {
   },
 } as Meta;
 
-export const cardWithList: Story<CardComponent> = (
-  args: CardComponent & any
-) => ({
-  props: args,
-  template: `
+export const CardWithList: StoryObj<CardComponent> = {
+  render: (args: CardComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-card class="medium">
 			<ui5-card-header slot="header" title-text="Team Space" subtitle-text="Direct Reports" status="3 of 10">
 				<ui5-icon name="group" slot="avatar"></ui5-icon>
@@ -89,13 +88,13 @@ export const cardWithList: Story<CardComponent> = (
 			</div>
 		</ui5-card>
 	`,
-});
+  }),
+};
 
-export const cardWithTable: Story<CardComponent> = (
-  args: CardComponent & any
-) => ({
-  props: args,
-  template: `
+export const CardWithTable: StoryObj<CardComponent> = {
+  render: (args: CardComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-card>
 			<ui5-card-header slot="header" title-text="New Purchase Orders" subtitle-text="Today" status="3 of 15">
 			</ui5-card-header>
@@ -134,13 +133,13 @@ export const cardWithTable: Story<CardComponent> = (
 
 		</ui5-card>
 	`,
-});
+  }),
+};
 
-export const cardWithTimeline: Story<CardComponent> = (
-  args: CardComponent & any
-) => ({
-  props: args,
-  template: `
+export const cardWithTimeline: StoryObj<CardComponent> = {
+  render: (args: CardComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-card class="medium">
 			<ui5-card-header slot="header" title-text="Upcoming Activities" subtitle-text="For Today">
 			</ui5-card-header>
@@ -155,11 +154,13 @@ export const cardWithTimeline: Story<CardComponent> = (
 			</ui5-timeline>
 		</ui5-card>
 	`,
-});
+  }),
+};
 
-export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
-  props: args,
-  template: `
+export const MoreCards: StoryObj<CardComponent> = {
+  render: (args: CardComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-card class="small">
 			<ui5-card-header slot="header" title-text="David Williams" subtitle-text="Sales Manager">
 				<img src="../../../assets/images/avatars/man_avatar_1.png" slot="avatar">
@@ -225,4 +226,5 @@ export const moreCards: Story<CardComponent> = (args: CardComponent & any) => ({
 			}
 		</style>
 	`,
-});
+  }),
+};

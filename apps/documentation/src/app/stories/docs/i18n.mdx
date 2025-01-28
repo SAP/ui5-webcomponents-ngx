@@ -1,6 +1,6 @@
-import {Meta} from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
-<Meta title="I18n"/>
+<Meta title="I18n" />
 
 # I18n
 
@@ -14,31 +14,31 @@ So for the seamless Angular experience and not only, we have additional layer of
 For interacting with `@ui5/webcomponents-ngx` i18n features and have ability to use pipe, you need to import the module and use it in your application.
 
 ```ts
-import {NgModule} from "@angular/core";
-import { Ui5I18nModule } from "@ui5/webcomponents-ngx/i18n";
+import { NgModule } from '@angular/core';
+import { Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
 const EnTranslations = `
     SOME_KEY=Some key value
 `;
 
 const UaTranslations = {
-    SOME_KEY: 'Some key value in Ukrainian'
+  SOME_KEY: 'Some key value in Ukrainian',
 };
 
 @NgModule({
   imports: [
-      ...otherImports,
-      Ui5I18nModule.forRoot({
-          language: 'en',
-          fetchDefaultLanguage: true,
-          bundle: {
-              name: 'root_bundle',
-              translations: {
-                  en: EnTranslations,
-                  ua: UaTranslations
-              }
-          }
-      })
-  ]
+    ...otherImports,
+    Ui5I18nModule.forRoot({
+      language: 'en',
+      fetchDefaultLanguage: true,
+      bundle: {
+        name: 'root_bundle',
+        translations: {
+          en: EnTranslations,
+          ua: UaTranslations,
+        },
+      },
+    }),
+  ],
 })
 export class AppModule {}
 ```
@@ -46,27 +46,27 @@ export class AppModule {}
 There might be some cases where you want to override certain text translations for child modules. For that, you can use `Ui5I18nModule.forChild` method. If some key will not be found in the child module, **it will be searched in the parent module**.
 
 ```ts
-import {NgModule} from "@angular/core";
-import {Ui5I18nModule} from "./i18n.module";
+import { NgModule } from '@angular/core';
+import { Ui5I18nModule } from './i18n.module';
 const EnTranslations = `
     SOME_KEY=Some key value for child
 `;
 
 const UaTranslations = {
-    SOME_KEY: 'Some key value for child in Ukrainian'
+  SOME_KEY: 'Some key value for child in Ukrainian',
 };
 
 @NgModule({
   imports: [
-      ...otherImports,
-      Ui5I18nModule.forChild({
-          name: 'root_bundle',
-          translations: {
-              en: EnTranslations,
-              ua: UaTranslations
-          }
-      })
-  ]
+    ...otherImports,
+    Ui5I18nModule.forChild({
+      name: 'root_bundle',
+      translations: {
+        en: EnTranslations,
+        ua: UaTranslations,
+      },
+    }),
+  ],
 })
 export class ChildModule {}
 ```
@@ -78,37 +78,37 @@ Ui5I18nModule.forRoot({
   language: 'en',
   fetchDefaultLanguage: true,
   bundle: {
-      name: 'root_bundle',
-      translations: {
-          en: fetch('/assets/i18n/en.json'),
-          ua: fetch('/assets/i18n/messages_ua')
-      }
-  }
-})
+    name: 'root_bundle',
+    translations: {
+      en: fetch('/assets/i18n/en.json'),
+      ua: fetch('/assets/i18n/messages_ua'),
+    },
+  },
+});
 ```
 
 or there can be a factory involved for providing translations, then you have full Angular DI in your hands:
 
 ```ts
-import {inject} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import { inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 Ui5I18nModule.forRoot({
   language: 'en',
   fetchDefaultLanguage: true,
   bundle: {
-      name: 'root_bundle',
-      translations: {
-          useFactory: () => {
-              const http = inject(HttpClient);
-              return {
-                  en: http.get('/assets/i18n/en.json'),
-                  ua: http.get('/assets/i18n/messages_ua')
-              }
-          }
-      }
-  }
-})
+    name: 'root_bundle',
+    translations: {
+      useFactory: () => {
+        const http = inject(HttpClient);
+        return {
+          en: http.get('/assets/i18n/en.json'),
+          ua: http.get('/assets/i18n/messages_ua'),
+        };
+      },
+    },
+  },
+});
 ```
 
 ### ui5I18n pipe
@@ -116,17 +116,13 @@ Ui5I18nModule.forRoot({
 `Ui5I18nModule` provides `ui5I18n` pipe which can be used in templates to translate text.
 
 ```html
-<b>
-    {{ 'SOME_KEY' | ui5I18n }}
-</b>
+<b> {{ 'SOME_KEY' | ui5I18n }} </b>
 ```
 
 if translation has a placeholder, you can pass it as a second argument to the pipe:
 
 ```html
-<b>
-    {{ 'SOME_KEY' | ui5I18n: 'value' }}
-</b>
+<b> {{ 'SOME_KEY' | ui5I18n: 'value' }} </b>
 ```
 
 This pipe is **unpure** and it will update rendered value if target language changes.
@@ -136,17 +132,19 @@ This pipe is **unpure** and it will update rendered value if target language cha
 `Ui5I18nModule` provides `I18nService` which can be used to translate text in the code.
 
 ```ts
-import {Component,inject} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {HttpClient,HttpClientModule} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {I18nService, Ui5I18nModule} from "@ui5/webcomponents-ngx/i18n";
-import {ButtonComponent} from "@ui5/webcomponents-ngx/main/button";
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { I18nService, Ui5I18nModule } from '@ui5/webcomponents-ngx/i18n';
+import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  template: `<ui5-button (ui5Click)="i18nService.setLanguage('ua')">{{ translatedText$ | async }}</ui5-button>`,
+  template: `<ui5-button (ui5Click)="i18nService.setLanguage('ua')">{{
+    translatedText$ | async
+  }}</ui5-button>`,
   imports: [
     CommonModule,
     HttpClientModule,
@@ -161,16 +159,16 @@ import {ButtonComponent} from "@ui5/webcomponents-ngx/main/button";
             const http = inject(HttpClient);
             return {
               en: http.get('/assets/i18n/en.json'),
-              ua: http.get('/assets/i18n/messages_ua')
-            }
-          }
-        }
-      }
-    })
-  ]
+              ua: http.get('/assets/i18n/messages_ua'),
+            };
+          },
+        },
+      },
+    }),
+  ],
 })
 export class AppComponent {
-    i18nService = inject(I18nService);
-    translatedText$: Observable<string> = this.i18nService.getText('SOME_KEY');
+  i18nService = inject(I18nService);
+  translatedText$: Observable<string> = this.i18nService.getText('SOME_KEY');
 }
 ```

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   ColorPalettePopoverComponent,
@@ -36,11 +36,11 @@ export default {
   },
 } as Meta;
 
-export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeatures: Story<
-  ColorPalettePopoverComponent
-> = (args: ColorPalettePopoverComponent & any) => ({
-  props: args,
-  template: `
+export const ColorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeatures: StoryObj<ColorPalettePopoverComponent> =
+  {
+    render: (args: ColorPalettePopoverComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-button id="btn" (click)="colorPalettePopover.open=true">Open ColorPalettePopover</ui5-button>
 
 		<ui5-color-palette-popover opener="btn" #colorPalettePopover="ui5ColorPalettePopover" show-recent-colors show-default-color default-color="green">
@@ -58,4 +58,5 @@ export const colorPalettePopoverWithRecentColorsDefaultColorAndMoreColorsFeature
 			<ui5-color-palette-item value="#ff6699"></ui5-color-palette-item>
 		</ui5-color-palette-popover>
 	`,
-});
+    }),
+  };

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   CarouselComponent,
@@ -55,24 +55,23 @@ export default {
   },
 } as Meta;
 
-export const carouselWithSingleItemPerPage: Story<CarouselComponent> = (
-  args: CarouselComponent & any
-) => ({
-  props: args,
-  template: `
+export const CarouselWithSingleItemPerPage: StoryObj<CarouselComponent> = {
+  render: (args: CarouselComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-carousel>
 			<img src="../../../assets/images/sample1.jpg" alt="Landscape 1">
 			<img src="../../../assets/images/sample2.jpg" alt="Landscape 2">
 			<img src="../../../assets/images/sample3.jpg" alt="Bulb">
 		</ui5-carousel>
 	`,
-});
+  }),
+};
 
-export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
-  args: CarouselComponent & any
-) => ({
-  props: args,
-  template: `
+export const CarouselWithMultipleItemsPerPage: StoryObj<CarouselComponent> = {
+  render: (args: CarouselComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-carousel items-per-page="S1 M2 L2">
 			<ui5-card class="medium">
 				<ui5-card-header slot="header" title-text="Activities" subtitle-text="For Today"></ui5-card-header>
@@ -151,17 +150,19 @@ export const carouselWithMultipleItemsPerPage: Story<CarouselComponent> = (
 			</ui5-card>
 		</ui5-carousel>
 	`,
-});
+  }),
+};
 
-export const carouselWithArrowPlacementAndCyclic: Story<CarouselComponent> = (
-  args: CarouselComponent & any
-) => ({
-  props: args,
-  template: `
+export const CarouselWithArrowPlacementAndCyclic: StoryObj<CarouselComponent> =
+  {
+    render: (args: CarouselComponent & any) => ({
+      props: args,
+      template: `
 		<ui5-carousel arrows-placement="Navigation" cyclic>
 			<img src="../../../assets/images/sample1.jpg" alt="Landscape 1">
 			<img src="../../../assets/images/sample2.jpg" alt="Landscape 2">
 			<img src="../../../assets/images/sample3.jpg" alt="Bulb">
 		</ui5-carousel>
 	`,
-});
+    }),
+  };

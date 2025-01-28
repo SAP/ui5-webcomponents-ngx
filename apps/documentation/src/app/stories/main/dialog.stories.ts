@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   DialogComponent,
@@ -45,11 +45,10 @@ export default {
   },
 } as Meta;
 
-export const draggableAndResizableDialog: Story<DialogComponent> = (
-  args: DialogComponent & any
-) => ({
-  props: args,
-  template: `
+export const DraggableAndResizableDialog: StoryObj<DialogComponent> = {
+  render: (args: DialogComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-button (click)="dialog.open=true" >Open Draggable/Resizable dialog</ui5-button>
 
 		<ui5-dialog #dialog="ui5Dialog" header-text="Draggable/Resizable dialog" resizable draggable>
@@ -64,13 +63,13 @@ export const draggableAndResizableDialog: Story<DialogComponent> = (
 			</div>
 		</ui5-dialog>
 	`,
-});
+  }),
+};
 
-export const dialogWithSapFioriStyledFooter: Story<DialogComponent> = (
-  args: DialogComponent & any
-) => ({
-  props: args,
-  template: `
+export const DialogWithSapFioriStyledFooter: StoryObj<DialogComponent> = {
+  render: (args: DialogComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-button (click)="dialog.open=true">Open dialog</ui5-button>
 
 		<ui5-dialog #dialog="ui5Dialog" header-text="SAP Fiori Styled Footer">
@@ -81,13 +80,13 @@ export const dialogWithSapFioriStyledFooter: Story<DialogComponent> = (
 			</div>
 		</ui5-dialog>
 	`,
-});
+  }),
+};
 
-export const dialogsWithVariousStateProperties: Story<DialogComponent> = (
-  args: DialogComponent & any
-) => ({
-  props: args,
-  template: `
+export const DialogsWithVariousStateProperties: StoryObj<DialogComponent> = {
+  render: (args: DialogComponent & any) => ({
+    props: args,
+    template: `
 		<ui5-button (click)="dialog.open=true">Open error state dialog</ui5-button>
 		<ui5-button (click)="dialog2.open=true">Open information state dialog</ui5-button>
 		<ui5-button (click)="dialog3.open=true">Open success state dialog</ui5-button>
@@ -121,4 +120,5 @@ export const dialogsWithVariousStateProperties: Story<DialogComponent> = (
 			</div>
 		</ui5-dialog>
 	`,
-});
+  }),
+};

@@ -1,4 +1,4 @@
-import { Meta, Story, moduleMetadata } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import {
   Ui5WebcomponentsModule,
   PopoverComponent,
@@ -40,8 +40,9 @@ export default {
   },
 } as Meta;
 
-export const BasicPopover: Story = () => ({
-  template: `
+export const BasicPopover: StoryObj = {
+  render: () => ({
+    template: `
     <ui5-button
       id="btn"
       design="Emphasized"
@@ -57,5 +58,6 @@ export const BasicPopover: Story = () => ({
         <ui5-label for="emailInput" required>Email:</ui5-label>
         <ui5-input id="emailInput" style="min-width: 150px;"placeholder="Enter Email"></ui5-input>
     </ui5-popover>
-  `
-});
+  `,
+  }),
+};

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-ngx",
-  "version": "0.3.3-rc.0",
+  "version": "0.3.3-rc.1",
   "license": "Apache-2.0",
   "author": "SAP SE (https://www.sap.com)",
   "keywords": [
@@ -30,7 +30,7 @@
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
-    "@ui5/theming-ngx": "^0.3.3-rc.0",
+    "@ui5/theming-ngx": "^0.3.3-rc.1",
     "tslib": "^2.4.1"
   },
   "schematics": "./schematics/collection.json",

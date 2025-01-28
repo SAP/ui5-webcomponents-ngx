@@ -67,5 +67,6 @@
   "defaultProject": "documentation",
   "nxCloudAccessToken": "YTA5ZjBmYWItOTIxOC00ODdkLTkzMGEtZGFmZDk3NTUyODhhfHJlYWQ=",
   "useInferencePlugins": false,
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "useLegacyCache": true
 }

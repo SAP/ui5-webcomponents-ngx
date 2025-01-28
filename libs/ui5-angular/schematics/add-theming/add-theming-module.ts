@@ -97,3 +97,5 @@ function addModuleToStandaloneApp(host: Tree, project: ProjectDefinition): { cha
 
   return {changes: [], file: mainFile};
 }
+
+

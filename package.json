@@ -126,12 +126,12 @@
     "webpack": "^5.64.0"
   },
   "lint-staged": {
-      "*": [
-          "yarn nx format:write --uncommitted"
-      ],
-      "*.{js,ts,html,md,json,yml}": [
-          "yarn eslint --fix"
-      ]
+    "*": [
+      "yarn nx format:write --uncommitted"
+    ],
+    "*.{js,ts,html,md,json,yml}": [
+      "yarn eslint --fix"
+    ]
   },
   "packageManager": "yarn@3.6.1"
 }

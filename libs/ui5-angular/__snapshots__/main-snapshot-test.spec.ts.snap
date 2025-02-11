@@ -452,6 +452,56 @@ export { BusyIndicatorComponent };
 "
 `;
 
+exports[`Snapshot test Main Button Badge should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/ButtonBadge.js';
+import ButtonBadge from '@ui5/webcomponents/dist/ButtonBadge.js';
+@ProxyInputs(['design', 'text'])
+@Component({
+  standalone: true,
+  selector: 'ui5-button-badge',
+  template: '<ng-content></ng-content>',
+  inputs: ['design', 'text'],
+  exportAs: 'ui5ButtonBadge',
+})
+class ButtonBadgeComponent {
+  /**
+        Defines the badge placement and appearance.
+- **InlineText** - displayed inside the button after its text, and recommended for **compact** density.
+- **OverlayText** - displayed at the top-end corner of the button, and recommended for **cozy** density.
+- **AttentionDot** - displayed at the top-end corner of the button as a dot, and suitable for both **cozy** and **compact** densities.
+        */
+  design!: 'InlineText' | 'OverlayText' | 'AttentionDot';
+  /**
+        Defines the text of the component.
+
+**Note:** Text is not applied when the \`design\` property is set to \`AttentionDot\`.
+        */
+  text!: string;
+
+  private elementRef: ElementRef<ButtonBadge> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ButtonBadge {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ButtonBadgeComponent };
+"
+`;
+
 exports[`Snapshot test Main Button should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -1517,8 +1567,6 @@ class ColorPalettePopoverComponent {
   showRecentColors!: boolean;
   /**
         Defines whether the user can choose a custom color from a component.
-
-**Note:** In order to use this property you need to import the following module: \`\\"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js\\"\`
         */
   @InputDecorator({ transform: booleanAttribute })
   showMoreColors!: boolean;
@@ -3453,9 +3501,6 @@ that use different soft keyboard layouts depending on the given input type.
   name!: string | undefined;
   /**
         Defines whether the component should show suggestions, if such are present.
-
-**Note:** You need to import the \`InputSuggestions\` module
-from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable this functionality.
         */
   @InputDecorator({ transform: booleanAttribute })
   showSuggestions!: boolean;
@@ -4283,6 +4328,10 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
   /**
      Fired when an item is activated, unless the item's \`type\` property
 is set to \`Inactive\`.
+
+**Note**: This event is not triggered by interactions with selection components such as the checkboxes and radio buttons,
+associated with non-default \`selectionMode\` values, or if any other **interactive** component
+(such as a button or input) within the list item is directly clicked.
     */
   ui5ItemClick!: EventEmitter<ListItemClickEventDetail>;
   /**
@@ -4359,7 +4408,11 @@ exports[`Snapshot test Main Menu Item should match the snapshot 1`] = `
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import '@ui5/webcomponents/dist/MenuItem.js';
-import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
+import {
+  MenuBeforeCloseEventDetail,
+  MenuBeforeOpenEventDetail,
+  default as MenuItem,
+} from '@ui5/webcomponents/dist/MenuItem.js';
 @ProxyInputs([
   'type',
   'accessibilityAttributes',
@@ -4375,7 +4428,13 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
   'loadingDelay',
   'accessibleName',
 ])
-@ProxyOutputs(['detail-click: ui5DetailClick'])
+@ProxyOutputs([
+  'detail-click: ui5DetailClick',
+  'before-open: ui5BeforeOpen',
+  'open: ui5Open',
+  'before-close: ui5BeforeClose',
+  'close: ui5Close',
+])
 @Component({
   standalone: true,
   selector: 'ui5-menu-item',
@@ -4395,7 +4454,13 @@ import MenuItem from '@ui5/webcomponents/dist/MenuItem.js';
     'loadingDelay',
     'accessibleName',
   ],
-  outputs: ['ui5DetailClick'],
+  outputs: [
+    'ui5DetailClick',
+    'ui5BeforeOpen',
+    'ui5Open',
+    'ui5BeforeClose',
+    'ui5Close',
+  ],
   exportAs: 'ui5MenuItem',
 })
 class MenuItemComponent {
@@ -4486,6 +4551,24 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
      Fired when the user clicks on the detail button when type is \`Detail\`.
     */
   ui5DetailClick!: EventEmitter<void>;
+  /**
+     Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.
+
+**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
+    */
+  ui5BeforeOpen!: EventEmitter<MenuBeforeOpenEventDetail>;
+  /**
+     Fired after the menu is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.
+    */
+  ui5BeforeClose!: EventEmitter<MenuBeforeCloseEventDetail>;
+  /**
+     Fired after the menu is closed.
+    */
+  ui5Close!: EventEmitter<void>;
 
   private elementRef: ElementRef<MenuItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -4611,21 +4694,21 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
     */
   ui5ItemClick!: EventEmitter<MenuItemClickEventDetail>;
   /**
-     Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
+     Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.
 
 **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
     */
   ui5BeforeOpen!: EventEmitter<MenuBeforeOpenEventDetail>;
   /**
-     Fired after the menu is opened. **This event does not bubble.**
+     Fired after the menu is opened.
     */
   ui5Open!: EventEmitter<void>;
   /**
-     Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
+     Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.
     */
   ui5BeforeClose!: EventEmitter<MenuBeforeCloseEventDetail>;
   /**
-     Fired after the menu is closed. **This event does not bubble.**
+     Fired after the menu is closed.
     */
   ui5Close!: EventEmitter<void>;
 
@@ -5183,9 +5266,6 @@ the value is sent as the first element in the form data, even if it's empty.
   name!: string | undefined;
   /**
         Defines whether the component should show suggestions, if such are present.
-
-**Note:** You need to import the \`InputSuggestions\` module
-from \`\\"@ui5/webcomponents/dist/features/InputSuggestions.js\\"\` to enable this functionality.
         */
   @InputDecorator({ transform: booleanAttribute })
   showSuggestions!: boolean;
@@ -7683,7 +7763,6 @@ import TableCell from '@ui5/webcomponents/dist/TableCell.js';
 class TableCellComponent {
   /**
         Determines the horizontal alignment of table cells.
-**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
         */
   horizontalAlign!: 'Left' | 'Start' | 'Right' | 'End' | 'Center' | undefined;
 
@@ -7733,7 +7812,8 @@ Available options are:
 
 Button - Shows a More button at the bottom of the table, pressing it will load more rows.
 
-Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.
+Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,
+a growing button will be rendered instead to ensure growing functionality.
         */
   type!: 'Button' | 'Scroll';
   /**
@@ -7782,18 +7862,31 @@ exports[`Snapshot test Main Table Header Cell should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableHeaderCell.js';
 import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
-@ProxyInputs(['horizontalAlign', 'width', 'minWidth', 'maxWidth', 'importance'])
+@ProxyInputs([
+  'horizontalAlign',
+  'width',
+  'minWidth',
+  'maxWidth',
+  'importance',
+  'popinText',
+])
 @Component({
   standalone: true,
   selector: 'ui5-table-header-cell',
   template: '<ng-content></ng-content>',
-  inputs: ['horizontalAlign', 'width', 'minWidth', 'maxWidth', 'importance'],
+  inputs: [
+    'horizontalAlign',
+    'width',
+    'minWidth',
+    'maxWidth',
+    'importance',
+    'popinText',
+  ],
   exportAs: 'ui5TableHeaderCell',
 })
 class TableHeaderCellComponent {
   /**
         Determines the horizontal alignment of table cells.
-**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
         */
   horizontalAlign!: 'Left' | 'Start' | 'Right' | 'End' | 'Center' | undefined;
   /**
@@ -7821,6 +7914,10 @@ Columns with higher importance will move into the popin area later then less imp
 columns.
         */
   importance!: number;
+  /**
+        The text for the column when it pops in.
+        */
+  popinText!: string | undefined;
 
   private elementRef: ElementRef<TableHeaderCell> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -7884,6 +7981,123 @@ export { TableHeaderRowComponent };
 "
 `;
 
+exports[`Snapshot test Main Table Row Action Navigation should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableRowActionNavigation.js';
+import TableRowActionNavigation from '@ui5/webcomponents/dist/TableRowActionNavigation.js';
+@ProxyInputs(['invisible', 'interactive'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-row-action-navigation',
+  template: '<ng-content></ng-content>',
+  inputs: ['invisible', 'interactive'],
+  exportAs: 'ui5TableRowActionNavigation',
+})
+class TableRowActionNavigationComponent {
+  /**
+        Defines the visibility of the row action.
+
+**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  invisible!: boolean;
+  /**
+        Defines the interactive state of the navigation action.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  interactive!: boolean;
+
+  private elementRef: ElementRef<TableRowActionNavigation> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableRowActionNavigation {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableRowActionNavigationComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Row Action should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableRowAction.js';
+import TableRowAction from '@ui5/webcomponents/dist/TableRowAction.js';
+@ProxyInputs(['invisible', 'icon', 'text', 'disabled'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-row-action',
+  template: '<ng-content></ng-content>',
+  inputs: ['invisible', 'icon', 'text', 'disabled'],
+  exportAs: 'ui5TableRowAction',
+})
+class TableRowActionComponent {
+  /**
+        Defines the visibility of the row action.
+
+**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  invisible!: boolean;
+  /**
+        Defines the icon of the row action.
+
+**Note:** For row actions to work properly, this property is mandatory.
+
+**Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the
+[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+        */
+  icon!: string;
+  /**
+        Defines the text of the row action.
+
+**Note:** For row actions to work properly, this property is mandatory.
+        */
+  text!: string;
+  /**
+        Defines the disabled state of the row action.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  disabled!: boolean;
+
+  private elementRef: ElementRef<TableRowAction> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableRowAction {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableRowActionComponent };
+"
+`;
+
 exports[`Snapshot test Main Table Row should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -7911,7 +8125,7 @@ class TableRowComponent {
         */
   rowKey!: string;
   /**
-        Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.
+        Defines the position of the row respect to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
         */
   position!: number;
   /**
@@ -8028,13 +8242,13 @@ class TableVirtualizerComponent {
   /**
         Defines the height of the rows in the table.
 
-**Note:** This property is mandatory for the virtualization to work properly.
+**Note:** For virtualization to work properly, this property is mandatory.
         */
   rowHeight!: number;
   /**
         Defines the total count of rows in the table.
 
-**Note:** This property is mandatory for the virtualization to work properly.
+**Note:** For virtualization to work properly, this property is mandatory.
         */
   rowCount!: number;
   /**
@@ -8081,6 +8295,7 @@ import '@ui5/webcomponents/dist/Table.js';
 import {
   default as Table,
   TableMoveEventDetail,
+  TableRowActionClickEventDetail,
   TableRowClickEventDetail,
 } from '@ui5/webcomponents/dist/Table.js';
 @ProxyInputs([
@@ -8090,11 +8305,13 @@ import {
   'overflowMode',
   'loading',
   'loadingDelay',
+  'rowActionCount',
 ])
 @ProxyOutputs([
   'row-click: ui5RowClick',
   'move-over: ui5MoveOver',
   'move: ui5Move',
+  'row-action-click: ui5RowActionClick',
 ])
 @Component({
   standalone: true,
@@ -8107,8 +8324,9 @@ import {
     'overflowMode',
     'loading',
     'loadingDelay',
+    'rowActionCount',
   ],
-  outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move'],
+  outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move', 'ui5RowActionClick'],
   exportAs: 'ui5Table',
 })
 class TableComponent {
@@ -8137,7 +8355,7 @@ Available options are:
   /**
         Defines if the loading indicator should be shown.
 
-<b>Note:</b> When the component is loading, it is non-interactive.
+**Note:** When the component is loading, it is not interactive.
         */
   @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
@@ -8145,6 +8363,12 @@ Available options are:
         Defines the delay in milliseconds, after which the loading indicator will show up for this component.
         */
   loadingDelay!: number;
+  /**
+        Defines the maximum number of row actions that is displayed, which determines the width of the row action column.
+
+**Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.
+        */
+  rowActionCount!: number;
 
   /**
      Fired when an interactive row is clicked.
@@ -8170,6 +8394,10 @@ If the dragging operation is a cross-browser operation or files are moved to a p
 the \`source\` parameter will be \`null\`.
     */
   ui5Move!: EventEmitter<TableMoveEventDetail>;
+  /**
+     Fired when a row action is clicked.
+    */
+  ui5RowActionClick!: EventEmitter<TableRowActionClickEventDetail>;
 
   private elementRef: ElementRef<Table> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -10174,6 +10402,7 @@ import { BreadcrumbsComponent } from \\"@ui5/webcomponents-ngx/main/breadcrumbs\
 import { BreadcrumbsItemComponent } from \\"@ui5/webcomponents-ngx/main/breadcrumbs-item\\";
 import { BusyIndicatorComponent } from \\"@ui5/webcomponents-ngx/main/busy-indicator\\";
 import { ButtonComponent } from \\"@ui5/webcomponents-ngx/main/button\\";
+import { ButtonBadgeComponent } from \\"@ui5/webcomponents-ngx/main/button-badge\\";
 import { CalendarComponent } from \\"@ui5/webcomponents-ngx/main/calendar\\";
 import { CalendarDateComponent } from \\"@ui5/webcomponents-ngx/main/calendar-date\\";
 import { CalendarDateRangeComponent } from \\"@ui5/webcomponents-ngx/main/calendar-date-range\\";
@@ -10244,6 +10473,8 @@ import { TableGrowingComponent } from \\"@ui5/webcomponents-ngx/main/table-growi
 import { TableHeaderCellComponent } from \\"@ui5/webcomponents-ngx/main/table-header-cell\\";
 import { TableHeaderRowComponent } from \\"@ui5/webcomponents-ngx/main/table-header-row\\";
 import { TableRowComponent } from \\"@ui5/webcomponents-ngx/main/table-row\\";
+import { TableRowActionComponent } from \\"@ui5/webcomponents-ngx/main/table-row-action\\";
+import { TableRowActionNavigationComponent } from \\"@ui5/webcomponents-ngx/main/table-row-action-navigation\\";
 import { TableSelectionComponent } from \\"@ui5/webcomponents-ngx/main/table-selection\\";
 import { TableVirtualizerComponent } from \\"@ui5/webcomponents-ngx/main/table-virtualizer\\";
 import { TagComponent } from \\"@ui5/webcomponents-ngx/main/tag\\";
@@ -10273,6 +10504,7 @@ const imports = [
   BreadcrumbsItemComponent,
   BusyIndicatorComponent,
   ButtonComponent,
+  ButtonBadgeComponent,
   CalendarComponent,
   CalendarDateComponent,
   CalendarDateRangeComponent,
@@ -10343,6 +10575,8 @@ const imports = [
   TableHeaderCellComponent,
   TableHeaderRowComponent,
   TableRowComponent,
+  TableRowActionComponent,
+  TableRowActionNavigationComponent,
   TableSelectionComponent,
   TableVirtualizerComponent,
   TagComponent,

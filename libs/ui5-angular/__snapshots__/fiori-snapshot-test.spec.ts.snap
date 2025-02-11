@@ -461,6 +461,8 @@ in 67%/33% proportion.
     | 'ThreeColumnsEndExpanded'
     | 'ThreeColumnsStartExpandedEndHidden'
     | 'ThreeColumnsMidExpandedEndHidden'
+    | 'ThreeColumnsStartHiddenMidExpanded'
+    | 'ThreeColumnsStartHiddenEndExpanded'
     | 'MidColumnFullScreen'
     | 'EndColumnFullScreen';
   /**
@@ -1322,6 +1324,40 @@ export { ShellBarItemComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Shell Bar Spacer should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ShellBarSpacer.js';
+import ShellBarSpacer from '@ui5/webcomponents-fiori/dist/ShellBarSpacer.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-shellbar-spacer',
+  template: '<ng-content></ng-content>',
+  exportAs: 'ui5ShellbarSpacer',
+})
+class ShellBarSpacerComponent {
+  private elementRef: ElementRef<ShellBarSpacer> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ShellBarSpacer {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ShellBarSpacerComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Shell Bar should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -1337,6 +1373,7 @@ import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import {
   default as ShellBar,
   ShellBarAccessibilityAttributes,
+  ShellBarContentItemVisibilityChangeEventDetail,
   ShellBarLogoClickEventDetail,
   ShellBarMenuItemClickEventDetail,
   ShellBarNotificationsClickEventDetail,
@@ -1361,6 +1398,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'logo-click: ui5LogoClick',
   'menu-item-click: ui5MenuItemClick',
   'search-button-click: ui5SearchButtonClick',
+  'content-item-visibility-change: ui5ContentItemVisibilityChange',
 ])
 @Component({
   standalone: true,
@@ -1382,6 +1420,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'ui5LogoClick',
     'ui5MenuItemClick',
     'ui5SearchButtonClick',
+    'ui5ContentItemVisibilityChange',
   ],
   exportAs: 'ui5Shellbar',
 })
@@ -1481,6 +1520,11 @@ Accepts any string.
 **Note:** You can prevent expanding/collapsing of the search field by calling \`event.preventDefault()\`.
     */
   ui5SearchButtonClick!: EventEmitter<ShellBarSearchButtonEventDetail>;
+  /**
+     Fired, when an item from the content slot is hidden or shown.
+**Note:** The \`content-item-visibility-change\` event is in an experimental state and is a subject to change.
+    */
+  ui5ContentItemVisibilityChange!: EventEmitter<ShellBarContentItemVisibilityChangeEventDetail>;
 
   private elementRef: ElementRef<ShellBar> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1572,6 +1616,7 @@ exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import SideNavigationItem from '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
+import { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
   'text',
@@ -1581,6 +1626,9 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'selected',
   'href',
   'target',
+  'design',
+  'unselectable',
+  'accessibilityAttributes',
   'expanded',
 ])
 @ProxyOutputs(['click: ui5Click'])
@@ -1596,6 +1644,9 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'selected',
     'href',
     'target',
+    'design',
+    'unselectable',
+    'accessibilityAttributes',
     'expanded',
   ],
   outputs: ['ui5Click'],
@@ -1654,14 +1705,42 @@ for the \`click\` event should be registered.
         */
   target!: string | undefined;
   /**
+        Item design.
+
+**Note:** Items with \\"Action\\" design must not have sub-items.
+        */
+  design!: 'Default' | 'Action';
+  /**
+        Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+
+When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
+To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
+
+
+**Guidelines**:
+- External links should be unselectable.
+- Items that trigger actions (with design \\"Action\\") should be unselectable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  unselectable!: boolean;
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
+
+**Note:** Do not use it on parent items, as it will be overridden if the item is in the overflow menu.
+        */
+  accessibilityAttributes!: SideNavigationItemAccessibilityAttributes;
+  /**
         Defines if the item is expanded
         */
   @InputDecorator({ transform: booleanAttribute })
   expanded!: boolean;
 
   /**
-     Fired when the component is activated either with a
-click/tap or by using the [Enter] or [Space] keys.
+     Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
     */
   ui5Click!: EventEmitter<void>;
 
@@ -1692,6 +1771,7 @@ exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 
   booleanAttribute,
   inject,
 } from '@angular/core';
+import { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import SideNavigationSubItem from '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -1703,13 +1783,27 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'selected',
   'href',
   'target',
+  'design',
+  'unselectable',
+  'accessibilityAttributes',
 ])
 @ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation-sub-item',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'disabled', 'tooltip', 'icon', 'selected', 'href', 'target'],
+  inputs: [
+    'text',
+    'disabled',
+    'tooltip',
+    'icon',
+    'selected',
+    'href',
+    'target',
+    'design',
+    'unselectable',
+    'accessibilityAttributes',
+  ],
   outputs: ['ui5Click'],
   exportAs: 'ui5SideNavigationSubItem',
 })
@@ -1765,10 +1859,38 @@ for the \`click\` event should be registered.
 **This property must only be used when the \`href\` property is set.**
         */
   target!: string | undefined;
+  /**
+        Item design.
+
+**Note:** Items with \\"Action\\" design must not have sub-items.
+        */
+  design!: 'Default' | 'Action';
+  /**
+        Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+
+When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
+To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
+
+
+**Guidelines**:
+- External links should be unselectable.
+- Items that trigger actions (with design \\"Action\\") should be unselectable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  unselectable!: boolean;
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
+
+**Note:** Do not use it on parent items, as it will be overridden if the item is in the overflow menu.
+        */
+  accessibilityAttributes!: SideNavigationItemAccessibilityAttributes;
 
   /**
-     Fired when the component is activated either with a
-click/tap or by using the [Enter] or [Space] keys.
+     Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
     */
   ui5Click!: EventEmitter<void>;
 
@@ -1982,13 +2104,27 @@ exports[`Snapshot test Fiori Timeline Item should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 import TimelineItem from '@ui5/webcomponents-fiori/dist/TimelineItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['icon', 'name', 'nameClickable', 'titleText', 'subtitleText'])
+@ProxyInputs([
+  'icon',
+  'name',
+  'nameClickable',
+  'titleText',
+  'subtitleText',
+  'state',
+])
 @ProxyOutputs(['name-click: ui5NameClick'])
 @Component({
   standalone: true,
   selector: 'ui5-timeline-item',
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'name', 'nameClickable', 'titleText', 'subtitleText'],
+  inputs: [
+    'icon',
+    'name',
+    'nameClickable',
+    'titleText',
+    'subtitleText',
+    'state',
+  ],
   outputs: ['ui5NameClick'],
   exportAs: 'ui5TimelineItem',
 })
@@ -2017,6 +2153,10 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
         Defines the subtitle text of the component.
         */
   subtitleText!: string | undefined;
+  /**
+        Defines the state of the icon displayed in the \`ui5-timeline-item\`.
+        */
+  state!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
 
   /**
      Fired when the item name is pressed either with a
@@ -2048,18 +2188,23 @@ exports[`Snapshot test Fiori Timeline should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
 import Timeline from '@ui5/webcomponents-fiori/dist/Timeline.js';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['layout', 'accessibleName'])
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['layout', 'accessibleName', 'loading', 'loadingDelay', 'growing'])
+@ProxyOutputs(['load-more: ui5LoadMore'])
 @Component({
   standalone: true,
   selector: 'ui5-timeline',
   template: '<ng-content></ng-content>',
-  inputs: ['layout', 'accessibleName'],
+  inputs: ['layout', 'accessibleName', 'loading', 'loadingDelay', 'growing'],
+  outputs: ['ui5LoadMore'],
   exportAs: 'ui5Timeline',
 })
 class TimelineComponent {
@@ -2071,6 +2216,35 @@ class TimelineComponent {
         Defines the accessible ARIA name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines if the component should display a loading indicator over the Timeline.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+        */
+  loadingDelay!: number;
+  /**
+        Defines whether the Timeline will have growing capability either by pressing a \\"More\\" button,
+or via user scroll. In both cases a \`load-more\` event is fired.
+
+Available options:
+
+\`Button\` - Displays a button at the end of the Timeline, which when pressed triggers the \`load-more\` event.
+
+\`Scroll\` -Triggers the \`load-more\` event when the user scrolls to the end of the Timeline.
+
+\`None\` (default) - The growing functionality is off.
+        */
+  growing!: 'Button' | 'Scroll' | 'None';
+
+  /**
+     Fired when the user presses the \`More\` button or scrolls to the Timeline's end.
+
+**Note:** The event will be fired if \`growing\` is set to \`Button\` or \`Scroll\`.
+    */
+  ui5LoadMore!: EventEmitter<void>;
 
   private elementRef: ElementRef<Timeline> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2112,6 +2286,7 @@ import { ProductSwitchComponent } from \\"@ui5/webcomponents-ngx/fiori/product-s
 import { ProductSwitchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/product-switch-item\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
+import { ShellBarSpacerComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-spacer\\";
 import { SideNavigationComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation\\";
 import { SideNavigationGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-group\\";
 import { SideNavigationItemComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-item\\";
@@ -2150,6 +2325,7 @@ const imports = [
   ProductSwitchItemComponent,
   ShellBarComponent,
   ShellBarItemComponent,
+  ShellBarSpacerComponent,
   SideNavigationComponent,
   SideNavigationGroupComponent,
   SideNavigationItemComponent,
@@ -2585,6 +2761,10 @@ import '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
 import UserMenuItem from '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import {
+  MenuBeforeCloseEventDetail,
+  MenuBeforeOpenEventDetail,
+} from '@ui5/webcomponents/dist/MenuItem.js';
 @ProxyInputs([
   'type',
   'accessibilityAttributes',
@@ -2600,7 +2780,13 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
   'loadingDelay',
   'accessibleName',
 ])
-@ProxyOutputs(['detail-click: ui5DetailClick'])
+@ProxyOutputs([
+  'detail-click: ui5DetailClick',
+  'before-open: ui5BeforeOpen',
+  'open: ui5Open',
+  'before-close: ui5BeforeClose',
+  'close: ui5Close',
+])
 @Component({
   standalone: true,
   selector: 'ui5-user-menu-item',
@@ -2620,7 +2806,13 @@ import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListIte
     'loadingDelay',
     'accessibleName',
   ],
-  outputs: ['ui5DetailClick'],
+  outputs: [
+    'ui5DetailClick',
+    'ui5BeforeOpen',
+    'ui5Open',
+    'ui5BeforeClose',
+    'ui5Close',
+  ],
   exportAs: 'ui5UserMenuItem',
 })
 class UserMenuItemComponent {
@@ -2711,6 +2903,24 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
      Fired when the user clicks on the detail button when type is \`Detail\`.
     */
   ui5DetailClick!: EventEmitter<void>;
+  /**
+     Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.
+
+**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
+    */
+  ui5BeforeOpen!: EventEmitter<MenuBeforeOpenEventDetail>;
+  /**
+     Fired after the menu is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.
+    */
+  ui5BeforeClose!: EventEmitter<MenuBeforeCloseEventDetail>;
+  /**
+     Fired after the menu is closed.
+    */
+  ui5Close!: EventEmitter<void>;
 
   private elementRef: ElementRef<UserMenuItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2752,6 +2962,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'showManageAccount',
   'showOtherAccounts',
   'showAddAccount',
+  'showEditButton',
 ])
 @ProxyOutputs([
   'avatar-click: ui5AvatarClick',
@@ -2773,6 +2984,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'showManageAccount',
     'showOtherAccounts',
     'showAddAccount',
+    'showEditButton',
   ],
   outputs: [
     'ui5AvatarClick',
@@ -2813,6 +3025,11 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
         */
   @InputDecorator({ transform: booleanAttribute })
   showAddAccount!: boolean;
+  /**
+        Defines if the User menu shows edit button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showEditButton!: boolean;
 
   /**
      Fired when the account avatar is selected.

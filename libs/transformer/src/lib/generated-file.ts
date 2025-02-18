@@ -212,6 +212,8 @@ export abstract class GeneratedFile<ExportsType = unknown> {
           typeof path === 'function' ? path(this.relativePathCaller) : path;
         const isSelfExport =
           relativePath === this.relativePathFrom(this.relativePathCaller);
+        const shouldRename = relativePath.includes('/ai/') && !relativePath.includes('/ai/theming');
+
         const uniqueSpecifiers = Object.values(
           specifiers.reduce(
             (
@@ -226,9 +228,12 @@ export abstract class GeneratedFile<ExportsType = unknown> {
                 typeof specifier.local === 'string'
                   ? specifier.local
                   : specifier.local();
-              if (!acc[exportedName]) {
-                acc[exportedName] = {
-                  exported: exportedName,
+              
+              const finalExportedName = shouldRename ? `Ai${exportedName}` : exportedName;
+
+              if (!acc[finalExportedName]) {
+                acc[finalExportedName] = {
+                  exported: finalExportedName,
                   local: localName,
                 };
               }

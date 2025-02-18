@@ -7,7 +7,8 @@ export default {
     sources: [
       '@ui5/webcomponents-base/dist/custom-elements-internal.json',
       '@ui5/webcomponents-fiori/dist/custom-elements-internal.json',
-      '@ui5/webcomponents/dist/custom-elements-internal.json'
+      '@ui5/webcomponents/dist/custom-elements-internal.json',
+      '@ui5/webcomponents-ai/dist/custom-elements-internal.json'
     ]
   }),
   transformers: [

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.2...v0.4.3-rc.0) (2025-02-18)
+
+### Bug Fixes
+
+- build issues ([#190](https://github.com/SAP/ui5-webcomponents-ngx/issues/190)) ([8d73cc0](https://github.com/SAP/ui5-webcomponents-ngx/commit/8d73cc0a0f546003c64e1f0ba246b29a172a5d2e))
+
 ## [0.4.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.2-rc.0...v0.4.2) (2025-02-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-transformer

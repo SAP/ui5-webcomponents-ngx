@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3-rc.2](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.3-rc.1...v0.4.3-rc.2) (2025-02-18)
+
+### Features
+
+- add ai package ([#192](https://github.com/SAP/ui5-webcomponents-ngx/issues/192)) ([47afc1d](https://github.com/SAP/ui5-webcomponents-ngx/commit/47afc1d2cebce463efbf4c1f9f0df19b92d7032a))
+
 ## [0.4.3-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.3-rc.0...v0.4.3-rc.1) (2025-02-18)
 
 ### Bug Fixes

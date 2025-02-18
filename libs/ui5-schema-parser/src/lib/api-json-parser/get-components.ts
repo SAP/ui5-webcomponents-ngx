@@ -176,7 +176,8 @@ export function getComponents({
   function getMethods(symbol: SymbolObject, componentData: ComponentData): ComponentData['methods'] {
     return symbol.methods.filter(({visibility}) => visibility === 'public').map((method) => {
       return {
-        name: method.name
+        name: method.name,
+        description: method.description
       }
     });
   }

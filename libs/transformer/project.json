@@ -1,7 +1,7 @@
 {
-  "name": "wrapper",
+  "name": "transformer",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/wrapper/src",
+  "sourceRoot": "libs/transformer/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,23 +9,23 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/wrapper",
-        "main": "libs/wrapper/src/index.ts",
-        "tsConfig": "libs/wrapper/tsconfig.lib.json",
-        "assets": ["libs/wrapper/*.md"]
+        "outputPath": "dist/libs/transformer",
+        "main": "libs/transformer/src/index.ts",
+        "tsConfig": "libs/transformer/tsconfig.lib.json",
+        "assets": ["libs/transformer/*.md"]
       }
     },
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs wrapper {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs transformer {args.ver} {args.tag}"
       },
       "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["libs/wrapper/**/*.ts"]
+        "lintFilePatterns": ["libs/transformer/**/*.ts"]
       }
     }
   }

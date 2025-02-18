@@ -32,7 +32,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
     });
   }
 
-  override getCode(): string {
+  override async getCode(): Promise<string> {
     const declarations = new Set<string>();
     const imports = new Set<string>();
     const providers = new Set([...this.providers.keys()].filter(className => !!this.providers.get(className)?.providersArray));
@@ -78,7 +78,7 @@ export class AngularModuleFile extends AngularGeneratedFile {
     const moduleMetadata = Object.keys(moduleContents).map(key => {
       return `${key}: [...${key}]`;
     }).join(',\n');
-    return prettierFormat(`
+    return await prettierFormat(`
       ${this.getImportsCode()}
 
       ${variableDeclarations}

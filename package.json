@@ -37,6 +37,7 @@
     "@types/react": "^18.0.28",
     "@ui5/tooling-webc": "0.3.1",
     "@ui5/webcomponents": "2.7.2",
+    "@ui5/webcomponents-ai": "2.7.2",
     "@ui5/webcomponents-base": "2.7.2",
     "@ui5/webcomponents-fiori": "2.7.2",
     "@ui5/webcomponents-icons": "2.7.2",

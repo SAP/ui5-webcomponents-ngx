@@ -1,0 +1,1 @@
+export { Ui5AiModule } from './ui5-ai.module';

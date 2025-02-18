@@ -35,9 +35,17 @@ export class ComponentFile extends AngularGeneratedFile {
   }
 
   private initializeImportsAndExports(): void {
+
+    let exportedName = this.componentClassName;
+
+    if ( this.componentData.path.includes('/ai/') ) {
+      console.warn('exportedName: ', exportedName);
+      exportedName = `Ai${this.componentClassName}`;
+
+    }
     this.addExport({
       local: this.componentClassName,
-      exported: this.componentClassName,
+      exported: exportedName,
       types: [ExportSpecifierType.Class, AngularExportSpecifierType.NgModule]
     })
     this.addImport(['Component', 'ElementRef', 'NgZone', 'ChangeDetectorRef', 'booleanAttribute', 'Input as InputDecorator', 'inject'], '@angular/core');

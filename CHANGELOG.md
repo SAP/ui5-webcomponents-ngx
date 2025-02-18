@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3-rc.1](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.3-rc.0...v0.4.3-rc.1) (2025-02-18)
+
+### Bug Fixes
+
+- align to one nx@npm version in yarn.lock ([#191](https://github.com/SAP/ui5-webcomponents-ngx/issues/191)) ([a3cd57c](https://github.com/SAP/ui5-webcomponents-ngx/commit/a3cd57c1fccacf9d638e0269d9342af719a82f50))
+
 ## [0.4.3-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.2...v0.4.3-rc.0) (2025-02-18)
 
 ### Bug Fixes

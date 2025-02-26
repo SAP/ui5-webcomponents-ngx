@@ -15,7 +15,7 @@ const additionalDescription = `
 
 export default {
   title: 'UI5 Web Components / AI / Button',
-  component: AiButtonComponent,
+  component: ButtonComponent,
   decorators: [
     moduleMetadata({
       imports: [

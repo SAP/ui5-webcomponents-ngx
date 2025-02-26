@@ -2,6 +2,8 @@ import '@ui5/webcomponents-icons/dist/AllIcons';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import 'zone.js'; 
+import 'zone.js/testing';
 
 type Themes = {
   [name: string]: string;

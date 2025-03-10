@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.3...v0.4.4-rc.0) (2025-03-10)
+
+**Note:** Version bump only for package @ui5/webcomponents-transformer-fs-commit
+
 ## [0.4.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.3-rc.5...v0.4.3) (2025-02-26)
 
 **Note:** Version bump only for package @ui5/webcomponents-transformer-fs-commit

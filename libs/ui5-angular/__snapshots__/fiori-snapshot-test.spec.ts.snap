@@ -1262,6 +1262,47 @@ export { ProductSwitchComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Search Field Scope Option should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SearchFieldScopeOption.js';
+import SearchFieldScopeOption from '@ui5/webcomponents-fiori/dist/SearchFieldScopeOption.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text'])
+@Component({
+  standalone: true,
+  selector: 'ui5-search-field-scope-option',
+  template: '<ng-content></ng-content>',
+  inputs: ['text'],
+  exportAs: 'ui5SearchFieldScopeOption',
+})
+class SearchFieldScopeOptionComponent {
+  /**
+        Defines the text of the component.
+        */
+  text!: string;
+
+  private elementRef: ElementRef<SearchFieldScopeOption> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SearchFieldScopeOption {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchFieldScopeOptionComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Shell Bar Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -2284,6 +2325,7 @@ import { NotificationListItemComponent } from \\"@ui5/webcomponents-ngx/fiori/no
 import { PageComponent } from \\"@ui5/webcomponents-ngx/fiori/page\\";
 import { ProductSwitchComponent } from \\"@ui5/webcomponents-ngx/fiori/product-switch\\";
 import { ProductSwitchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/product-switch-item\\";
+import { SearchFieldScopeOptionComponent } from \\"@ui5/webcomponents-ngx/fiori/search-field-scope-option\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
 import { ShellBarSpacerComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-spacer\\";
@@ -2300,6 +2342,9 @@ import { UploadCollectionItemComponent } from \\"@ui5/webcomponents-ngx/fiori/up
 import { UserMenuComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu\\";
 import { UserMenuAccountComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-account\\";
 import { UserMenuItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item\\";
+import { UserSettingsDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-dialog\\";
+import { UserSettingsItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-item\\";
+import { UserSettingsViewComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-view\\";
 import { ViewSettingsDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/view-settings-dialog\\";
 import { WizardComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard\\";
 import { WizardStepComponent } from \\"@ui5/webcomponents-ngx/fiori/wizard-step\\";
@@ -2323,6 +2368,7 @@ const imports = [
   PageComponent,
   ProductSwitchComponent,
   ProductSwitchItemComponent,
+  SearchFieldScopeOptionComponent,
   ShellBarComponent,
   ShellBarItemComponent,
   ShellBarSpacerComponent,
@@ -2339,6 +2385,9 @@ const imports = [
   UserMenuComponent,
   UserMenuAccountComponent,
   UserMenuItemComponent,
+  UserSettingsDialogComponent,
+  UserSettingsItemComponent,
+  UserSettingsViewComponent,
   ViewSettingsDialogComponent,
   WizardComponent,
   WizardStepComponent,
@@ -2961,13 +3010,13 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'opener',
   'showManageAccount',
   'showOtherAccounts',
-  'showAddAccount',
+  'showEditAccounts',
   'showEditButton',
 ])
 @ProxyOutputs([
   'avatar-click: ui5AvatarClick',
   'manage-account-click: ui5ManageAccountClick',
-  'add-account-click: ui5AddAccountClick',
+  'edit-accounts-click: ui5EditAccountsClick',
   'change-account: ui5ChangeAccount',
   'item-click: ui5ItemClick',
   'open: ui5Open',
@@ -2983,13 +3032,13 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'opener',
     'showManageAccount',
     'showOtherAccounts',
-    'showAddAccount',
+    'showEditAccounts',
     'showEditButton',
   ],
   outputs: [
     'ui5AvatarClick',
     'ui5ManageAccountClick',
-    'ui5AddAccountClick',
+    'ui5EditAccountsClick',
     'ui5ChangeAccount',
     'ui5ItemClick',
     'ui5Open',
@@ -3021,10 +3070,10 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
   @InputDecorator({ transform: booleanAttribute })
   showOtherAccounts!: boolean;
   /**
-        Defines if the User Menu shows the Add Account option.
+        Defines if the User Menu shows the Edit Accounts option.
         */
   @InputDecorator({ transform: booleanAttribute })
-  showAddAccount!: boolean;
+  showEditAccounts!: boolean;
   /**
         Defines if the User menu shows edit button.
         */
@@ -3040,9 +3089,9 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
     */
   ui5ManageAccountClick!: EventEmitter<void>;
   /**
-     Fired when the \\"Add Account\\" button is selected.
+     Fired when the \\"Edit Accounts\\" button is selected.
     */
-  ui5AddAccountClick!: EventEmitter<void>;
+  ui5EditAccountsClick!: EventEmitter<void>;
   /**
      Fired when the account is switched to a different one.
     */
@@ -3077,6 +3126,256 @@ You can only set the \`opener\` attribute to a DOM Reference when using JavaScri
   }
 }
 export { UserMenuComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings Dialog should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsDialog.js';
+import {
+  default as UserSettingsDialog,
+  UserSettingsItemSelectEventDetail,
+} from '@ui5/webcomponents-fiori/dist/UserSettingsDialog.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['open', 'headerText', 'showSearchField'])
+@ProxyOutputs([
+  'selection-change: ui5SelectionChange',
+  'open: ui5Open',
+  'before-close: ui5BeforeClose',
+  'close: ui5Close',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-dialog',
+  template: '<ng-content></ng-content>',
+  inputs: ['open', 'headerText', 'showSearchField'],
+  outputs: ['ui5SelectionChange', 'ui5Open', 'ui5BeforeClose', 'ui5Close'],
+  exportAs: 'ui5UserSettingsDialog',
+})
+class UserSettingsDialogComponent {
+  /**
+        Defines, if the User Settings Dialog is opened.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
+  /**
+        Defines the headerText of the item.
+        */
+  headerText!: string | undefined;
+  /**
+        Defines if the Search Field would be displayed.
+
+**Note:** By default the Search Field is not displayed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showSearchField!: boolean;
+
+  /**
+     Fired when an item is selected.
+    */
+  ui5SelectionChange!: EventEmitter<UserSettingsItemSelectEventDetail>;
+  /**
+     Fired when a settings dialog is open.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired before the settings dialog is closed.
+    */
+  ui5BeforeClose!: EventEmitter<void>;
+  /**
+     Fired when a settings dialog is closed.
+    */
+  ui5Close!: EventEmitter<void>;
+
+  private elementRef: ElementRef<UserSettingsDialog> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsDialog {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsDialogComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsItem.js';
+import {
+  default as UserSettingsItem,
+  UserSettingsItemViewSelectEventDetail,
+} from '@ui5/webcomponents-fiori/dist/UserSettingsItem.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs([
+  'text',
+  'tooltip',
+  'headerText',
+  'selected',
+  'disabled',
+  'loading',
+  'loadingReason',
+  'icon',
+  'accessibleName',
+])
+@ProxyOutputs(['selection-change: ui5SelectionChange'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-item',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'text',
+    'tooltip',
+    'headerText',
+    'selected',
+    'disabled',
+    'loading',
+    'loadingReason',
+    'icon',
+    'accessibleName',
+  ],
+  outputs: ['ui5SelectionChange'],
+  exportAs: 'ui5UserSettingsItem',
+})
+class UserSettingsItemComponent {
+  /**
+        Defines the text of the user settings item.
+        */
+  text!: string;
+  /**
+        Defines the tooltip of the component.
+
+A tooltip attribute should be provided to represent the meaning or function when the component is collapsed and only the icon is visible.
+        */
+  tooltip!: string;
+  /**
+        Defines the headerText of the item.
+        */
+  headerText!: string | undefined;
+  /**
+        Shows item tab.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines whether the component is in disabled state.
+
+**Note:** A disabled component is completely noninteractive.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  disabled!: boolean;
+  /**
+        Indicates whether a loading indicator should be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Indicates why the control is in loading state.
+        */
+  loadingReason!: string | undefined;
+  /**
+        Defines the icon of the component.
+        */
+  icon!: string;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+
+  /**
+     Fired when a selected view changed.
+    */
+  ui5SelectionChange!: EventEmitter<UserSettingsItemViewSelectEventDetail>;
+
+  private elementRef: ElementRef<UserSettingsItem> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsItemComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings View should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsView.js';
+import UserSettingsView from '@ui5/webcomponents-fiori/dist/UserSettingsView.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'selected', 'secondary'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-view',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'selected', 'secondary'],
+  exportAs: 'ui5UserSettingsView',
+})
+class UserSettingsViewComponent {
+  /**
+        Defines the title text of the user settings view.
+        */
+  text!: string | undefined;
+  /**
+        Defines whether the view is selected. There can be just one selected view at a time.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Indicates whether the view is secondary. It is relevant only if the view is used in \`pages\` slot of \`ui5-user-settings-item\`
+and controls the visibility of the back button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  secondary!: boolean;
+
+  private elementRef: ElementRef<UserSettingsView> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsView {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsViewComponent };
 "
 `;
 

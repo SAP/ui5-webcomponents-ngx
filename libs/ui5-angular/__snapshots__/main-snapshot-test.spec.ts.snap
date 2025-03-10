@@ -483,6 +483,8 @@ class ButtonBadgeComponent {
         Defines the text of the component.
 
 **Note:** Text is not applied when the \`design\` property is set to \`AttentionDot\`.
+
+**Note:** The badge component only accepts numeric values and the \\"+\\" symbol. Using other characters or formats may result in unpredictable behavior, which is not guaranteed or supported.
         */
   text!: string;
 
@@ -3675,6 +3677,7 @@ import {
   'href',
   'target',
   'design',
+  'interactiveAreaSize',
   'wrappingType',
   'accessibleName',
   'accessibleNameRef',
@@ -3695,6 +3698,7 @@ import {
     'href',
     'target',
     'design',
+    'interactiveAreaSize',
     'wrappingType',
     'accessibleName',
     'accessibleNameRef',
@@ -3745,6 +3749,16 @@ class LinkComponent {
 **Note:** Avaialble options are \`Default\`, \`Subtle\`, and \`Emphasized\`.
         */
   design!: 'Default' | 'Subtle' | 'Emphasized';
+  /**
+        Defines the target area size of the link:
+- **InteractiveAreaSize.Normal**: The default target area size.
+- **InteractiveAreaSize.Large**: The target area size is enlarged to 24px in height.
+
+**Note:**The property is designed to make links easier to activate and helps meet the WCAG 2.2 Target Size requirement. It is applicable only for the SAP Horizon themes.
+**Note:**To improve <code>ui5-link</code>'s reliability and usability, it is recommended to use the <code>InteractiveAreaSize.Large</code> value in scenarios where the <code>ui5-link</code> component is placed inside another interactive component, such as a list item or a table cell.
+Setting the <code>interactiveAreaSize</code> property to <code>InteractiveAreaSize.Large</code> increases the <code>ui5-link</code>'s invisible touch area. As a result, the user's intended one-time selection command is more likely to activate the desired <code>ui5-link</code>, with minimal chance of unintentionally activating the underlying component.
+        */
+  interactiveAreaSize!: 'Normal' | 'Large';
   /**
         Defines how the text of a component will be displayed when there is not enough space.
 
@@ -6629,6 +6643,7 @@ import {
   'readonly',
   'accessibleName',
   'accessibleNameRef',
+  'tooltip',
   'value',
 ])
 @ProxyOutputs([
@@ -6649,6 +6664,7 @@ import {
     'readonly',
     'accessibleName',
     'accessibleNameRef',
+    'tooltip',
     'value',
   ],
   outputs: ['ui5Change', 'ui5LiveChange', 'ui5Open', 'ui5Close'],
@@ -6695,6 +6711,10 @@ but still provides visual feedback upon user interaction.
         Receives id(or many ids) of the elements that label the select.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the tooltip of the select.
+        */
+  tooltip!: string | undefined;
   /**
         Defines the value of the component:
 
@@ -7538,6 +7558,7 @@ import {
   'overflowMode',
   'headerBackgroundDesign',
   'contentBackgroundDesign',
+  'noAutoSelection',
 ])
 @ProxyOutputs([
   'tab-select: ui5TabSelect',
@@ -7554,6 +7575,7 @@ import {
     'overflowMode',
     'headerBackgroundDesign',
     'contentBackgroundDesign',
+    'noAutoSelection',
   ],
   outputs: ['ui5TabSelect', 'ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5Tabcontainer',
@@ -7589,6 +7611,14 @@ but when set to \`StartAndEnd\`, there will be two overflows on both ends, and t
         Sets the background color of the Tab Container's content as \`Solid\`, \`Transparent\`, or \`Translucent\`.
         */
   contentBackgroundDesign!: 'Solid' | 'Transparent' | 'Translucent';
+  /**
+        Defines if automatic tab selection is deactivated.
+
+**Note:** By default, if none of the child tabs have the \`selected\` property set, the first tab will be automatically selected.
+Setting this property to \`true\` allows preventing this behavior.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  noAutoSelection!: boolean;
 
   /**
      Fired when a tab is selected.
@@ -7856,19 +7886,29 @@ exports[`Snapshot test Main Table Header Cell Action Ai should match the snapsho
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
+import { ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableHeaderCellActionAI.js';
 import TableHeaderCellActionAI from '@ui5/webcomponents/dist/TableHeaderCellActionAI.js';
+import { TableHeaderCellActionClickEventDetail } from '@ui5/webcomponents/dist/TableHeaderCellActionBase.js';
 
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-table-header-cell-action-ai',
   template: '<ng-content></ng-content>',
+  outputs: ['ui5Click'],
   exportAs: 'ui5TableHeaderCellActionAi',
 })
 class TableHeaderCellActionAIComponent {
+  /**
+     Fired when a header cell action is clicked.
+    */
+  ui5Click!: EventEmitter<TableHeaderCellActionClickEventDetail>;
+
   private elementRef: ElementRef<TableHeaderCellActionAI> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
@@ -8097,12 +8137,12 @@ exports[`Snapshot test Main Table Row Action should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableRowAction.js';
 import TableRowAction from '@ui5/webcomponents/dist/TableRowAction.js';
-@ProxyInputs(['invisible', 'icon', 'text', 'disabled'])
+@ProxyInputs(['invisible', 'icon', 'text'])
 @Component({
   standalone: true,
   selector: 'ui5-table-row-action',
   template: '<ng-content></ng-content>',
-  inputs: ['invisible', 'icon', 'text', 'disabled'],
+  inputs: ['invisible', 'icon', 'text'],
   exportAs: 'ui5TableRowAction',
 })
 class TableRowActionComponent {
@@ -8128,11 +8168,6 @@ class TableRowActionComponent {
 **Note:** For row actions to work properly, this property is mandatory.
         */
   text!: string;
-  /**
-        Defines the disabled state of the row action.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  disabled!: boolean;
 
   private elementRef: ElementRef<TableRowAction> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8174,10 +8209,12 @@ import TableRow from '@ui5/webcomponents/dist/TableRow.js';
 class TableRowComponent {
   /**
         Unique identifier of the row.
+
+**Note:** For selection features to work properly, this property is mandatory, and its value must not contain spaces.
         */
-  rowKey!: string;
+  rowKey!: string | undefined;
   /**
-        Defines the position of the row respect to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
+        Defines the position of the row related to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
         */
   position!: number;
   /**
@@ -8209,6 +8246,104 @@ class TableRowComponent {
   }
 }
 export { TableRowComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Selection Multi should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableSelectionMulti.js';
+import TableSelectionMulti from '@ui5/webcomponents/dist/TableSelectionMulti.js';
+@ProxyInputs(['selected'])
+@ProxyOutputs(['change: ui5Change'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-selection-multi',
+  template: '<ng-content></ng-content>',
+  inputs: ['selected'],
+  outputs: ['ui5Change'],
+  exportAs: 'ui5TableSelectionMulti',
+})
+class TableSelectionMultiComponent {
+  /**
+        Defines the \`row-key\` values of selected rows, with each value separated by a space.
+        */
+  selected!: string | undefined;
+
+  /**
+     Fired when the selection is changed by user interaction.
+    */
+  ui5Change!: EventEmitter<void>;
+
+  private elementRef: ElementRef<TableSelectionMulti> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableSelectionMulti {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableSelectionMultiComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Selection Single should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/TableSelectionSingle.js';
+import TableSelectionSingle from '@ui5/webcomponents/dist/TableSelectionSingle.js';
+@ProxyInputs(['selected'])
+@ProxyOutputs(['change: ui5Change'])
+@Component({
+  standalone: true,
+  selector: 'ui5-table-selection-single',
+  template: '<ng-content></ng-content>',
+  inputs: ['selected'],
+  outputs: ['ui5Change'],
+  exportAs: 'ui5TableSelectionSingle',
+})
+class TableSelectionSingleComponent {
+  /**
+        Defines the \`row-key\` value of the selected row.
+        */
+  selected!: string | undefined;
+
+  /**
+     Fired when the selection is changed by user interaction.
+    */
+  ui5Change!: EventEmitter<void>;
+
+  private elementRef: ElementRef<TableSelectionSingle> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableSelectionSingle {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableSelectionSingleComponent };
 "
 `;
 
@@ -8245,7 +8380,7 @@ class TableSelectionComponent {
   selected!: string;
 
   /**
-     Fired when selection is changed by user interaction.
+     Fired when the selection is changed by user interaction.
     */
   ui5Change!: EventEmitter<void>;
 
@@ -8336,14 +8471,20 @@ exports[`Snapshot test Main Table should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Table.js';
-import Table from '@ui5/webcomponents/dist/Table.js';
+import {
+  default as Table,
+  TableMoveEventDetail,
+  TableRowActionClickEventDetail,
+  TableRowClickEventDetail,
+} from '@ui5/webcomponents/dist/Table.js';
 @ProxyInputs([
   'accessibleName',
   'accessibleNameRef',
@@ -8352,6 +8493,12 @@ import Table from '@ui5/webcomponents/dist/Table.js';
   'loading',
   'loadingDelay',
   'rowActionCount',
+])
+@ProxyOutputs([
+  'row-click: ui5RowClick',
+  'move-over: ui5MoveOver',
+  'move: ui5Move',
+  'row-action-click: ui5RowActionClick',
 ])
 @Component({
   standalone: true,
@@ -8366,6 +8513,7 @@ import Table from '@ui5/webcomponents/dist/Table.js';
     'loadingDelay',
     'rowActionCount',
   ],
+  outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move', 'ui5RowActionClick'],
   exportAs: 'ui5Table',
 })
 class TableComponent {
@@ -8408,6 +8556,35 @@ Available options are:
 **Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.
         */
   rowActionCount!: number;
+
+  /**
+     Fired when an interactive row is clicked.
+    */
+  ui5RowClick!: EventEmitter<TableRowClickEventDetail>;
+  /**
+     Fired when a movable item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+
+**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+the \`source\` parameter will be \`null\`.
+    */
+  ui5MoveOver!: EventEmitter<TableMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Notes:**
+
+The \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+
+If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+the \`source\` parameter will be \`null\`.
+    */
+  ui5Move!: EventEmitter<TableMoveEventDetail>;
+  /**
+     Fired when a row action is clicked.
+    */
+  ui5RowActionClick!: EventEmitter<TableRowActionClickEventDetail>;
 
   private elementRef: ElementRef<Table> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -10487,6 +10664,8 @@ import { TableRowComponent } from \\"@ui5/webcomponents-ngx/main/table-row\\";
 import { TableRowActionComponent } from \\"@ui5/webcomponents-ngx/main/table-row-action\\";
 import { TableRowActionNavigationComponent } from \\"@ui5/webcomponents-ngx/main/table-row-action-navigation\\";
 import { TableSelectionComponent } from \\"@ui5/webcomponents-ngx/main/table-selection\\";
+import { TableSelectionMultiComponent } from \\"@ui5/webcomponents-ngx/main/table-selection-multi\\";
+import { TableSelectionSingleComponent } from \\"@ui5/webcomponents-ngx/main/table-selection-single\\";
 import { TableVirtualizerComponent } from \\"@ui5/webcomponents-ngx/main/table-virtualizer\\";
 import { TagComponent } from \\"@ui5/webcomponents-ngx/main/tag\\";
 import { TextComponent } from \\"@ui5/webcomponents-ngx/main/text\\";
@@ -10590,6 +10769,8 @@ const imports = [
   TableRowActionComponent,
   TableRowActionNavigationComponent,
   TableSelectionComponent,
+  TableSelectionMultiComponent,
+  TableSelectionSingleComponent,
   TableVirtualizerComponent,
   TagComponent,
   TextComponent,

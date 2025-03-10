@@ -8,13 +8,18 @@ const config: StorybookConfig = {
     },
   ],
   stories: ['../src/app/**/*.mdx', '../src/app/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-docs'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
+    '@storybook/addon-mdx-gfm'
+  ],
   framework: {
     name: '@storybook/angular',
     options: {},
   },
   docs: {
     defaultName: 'Docs',
+    autodocs: true
   },
 };
 

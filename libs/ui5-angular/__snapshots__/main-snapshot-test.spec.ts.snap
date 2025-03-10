@@ -7851,12 +7851,48 @@ export { TableGrowingComponent };
 "
 `;
 
-exports[`Snapshot test Main Table Header Cell should match the snapshot 1`] = `
+exports[`Snapshot test Main Table Header Cell Action Ai should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
   Component,
   ElementRef,
   NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents/dist/TableHeaderCellActionAI.js';
+import TableHeaderCellActionAI from '@ui5/webcomponents/dist/TableHeaderCellActionAI.js';
+
+@Component({
+  standalone: true,
+  selector: 'ui5-table-header-cell-action-ai',
+  template: '<ng-content></ng-content>',
+  exportAs: 'ui5TableHeaderCellActionAi',
+})
+class TableHeaderCellActionAIComponent {
+  private elementRef: ElementRef<TableHeaderCellActionAI> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): TableHeaderCellActionAI {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { TableHeaderCellActionAIComponent };
+"
+`;
+
+exports[`Snapshot test Main Table Header Cell should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
@@ -7869,6 +7905,8 @@ import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
   'maxWidth',
   'importance',
   'popinText',
+  'sortIndicator',
+  'popinHidden',
 ])
 @Component({
   standalone: true,
@@ -7881,6 +7919,8 @@ import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
     'maxWidth',
     'importance',
     'popinText',
+    'sortIndicator',
+    'popinHidden',
   ],
   exportAs: 'ui5TableHeaderCell',
 })
@@ -7918,6 +7958,18 @@ columns.
         The text for the column when it pops in.
         */
   popinText!: string | undefined;
+  /**
+        Defines the sort indicator of the column.
+        */
+  sortIndicator!: 'None' | 'Ascending' | 'Descending';
+  /**
+        Defines if the column is hidden in the popin.
+
+**Note:** Please be aware that hiding the column in the popin might lead to accessibility issues as
+users might not be able to access the content of the column on small screens.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  popinHidden!: boolean;
 
   private elementRef: ElementRef<TableHeaderCell> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8284,20 +8336,14 @@ exports[`Snapshot test Main Table should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Table.js';
-import {
-  default as Table,
-  TableMoveEventDetail,
-  TableRowActionClickEventDetail,
-  TableRowClickEventDetail,
-} from '@ui5/webcomponents/dist/Table.js';
+import Table from '@ui5/webcomponents/dist/Table.js';
 @ProxyInputs([
   'accessibleName',
   'accessibleNameRef',
@@ -8306,12 +8352,6 @@ import {
   'loading',
   'loadingDelay',
   'rowActionCount',
-])
-@ProxyOutputs([
-  'row-click: ui5RowClick',
-  'move-over: ui5MoveOver',
-  'move: ui5Move',
-  'row-action-click: ui5RowActionClick',
 ])
 @Component({
   standalone: true,
@@ -8326,7 +8366,6 @@ import {
     'loadingDelay',
     'rowActionCount',
   ],
-  outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move', 'ui5RowActionClick'],
   exportAs: 'ui5Table',
 })
 class TableComponent {
@@ -8369,35 +8408,6 @@ Available options are:
 **Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.
         */
   rowActionCount!: number;
-
-  /**
-     Fired when an interactive row is clicked.
-    */
-  ui5RowClick!: EventEmitter<TableRowClickEventDetail>;
-  /**
-     Fired when a movable item is moved over a potential drop target during a dragging operation.
-
-If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
-
-**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
-the \`source\` parameter will be \`null\`.
-    */
-  ui5MoveOver!: EventEmitter<TableMoveEventDetail>;
-  /**
-     Fired when a movable list item is dropped onto a drop target.
-
-**Notes:**
-
-The \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
-
-If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
-the \`source\` parameter will be \`null\`.
-    */
-  ui5Move!: EventEmitter<TableMoveEventDetail>;
-  /**
-     Fired when a row action is clicked.
-    */
-  ui5RowActionClick!: EventEmitter<TableRowActionClickEventDetail>;
 
   private elementRef: ElementRef<Table> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -10471,6 +10481,7 @@ import { TableComponent } from \\"@ui5/webcomponents-ngx/main/table\\";
 import { TableCellComponent } from \\"@ui5/webcomponents-ngx/main/table-cell\\";
 import { TableGrowingComponent } from \\"@ui5/webcomponents-ngx/main/table-growing\\";
 import { TableHeaderCellComponent } from \\"@ui5/webcomponents-ngx/main/table-header-cell\\";
+import { TableHeaderCellActionAIComponent } from \\"@ui5/webcomponents-ngx/main/table-header-cell-action-ai\\";
 import { TableHeaderRowComponent } from \\"@ui5/webcomponents-ngx/main/table-header-row\\";
 import { TableRowComponent } from \\"@ui5/webcomponents-ngx/main/table-row\\";
 import { TableRowActionComponent } from \\"@ui5/webcomponents-ngx/main/table-row-action\\";
@@ -10573,6 +10584,7 @@ const imports = [
   TableCellComponent,
   TableGrowingComponent,
   TableHeaderCellComponent,
+  TableHeaderCellActionAIComponent,
   TableHeaderRowComponent,
   TableRowComponent,
   TableRowActionComponent,

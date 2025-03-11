@@ -19,11 +19,11 @@ export function addStyles(options: Schema): Rule {
 
     let styles = (buildTargetOptions['styles'] || []) as (string | { input: string })[];
 
-    styles = styles.filter(style => (typeof style === 'string' && !style.startsWith('node_modules/@fundamental-styles/common-css') ||
-    typeof style !== 'string' && !style.input.startsWith('node_modules/@fundamental-styles/common-css')));
+    styles = styles.filter(style => (typeof style === 'string' && !style.startsWith('node_modules/@sap-ui/common-css') ||
+    typeof style !== 'string' && !style.input.startsWith('node_modules/@sap-ui/common-css')));
 
     options.commonCss.forEach((style) => {
-      styles.push(`node_modules/@fundamental-styles/common-css/dist/${style}.css`);
+      styles.push(`node_modules/@sap-ui/common-css/dist/${style}.css`);
     });
 
     buildTargetOptions['styles'] = styles;

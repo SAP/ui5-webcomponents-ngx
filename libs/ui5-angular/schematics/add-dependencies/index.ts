@@ -7,7 +7,7 @@ import {addPackageToPackageJson, getPackageVersionFromPackageJson} from '../util
 // @ts-ignore is needed because the package.json is not available at build time
 import packageJson from "../../package.json";
 
-const commonCssPackageName = '@fundamental-styles/common-css';
+const commonCssPackageName = '@sap-ui/common-css';
 const themingNgxPackageName = '@ui5/theming-ngx';
 
 export function addDependencies(options: Schema): Rule {

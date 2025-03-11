@@ -19,7 +19,7 @@
       "private": true
     },
     "add-styles": {
-      "description": "Adds @fundamental-styles/common-css packages to the angular application.",
+      "description": "Adds @sap-ui/common-css packages to the angular application.",
       "factory": "./add-styles/index#addStyles",
       "schema": "./add-styles/schema.json",
       "private": true

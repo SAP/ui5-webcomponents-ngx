@@ -1,21 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  AvatarComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { AvatarComponent,} from '@ui5/webcomponents-ngx/main/avatar';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-An image-like component that has different display options for representing images and icons in different shapes and sizes, depending on the use case.
-
-The shape can be circular or square. There are several predefined sizes, as well as an option to set a custom size.
-
-<br><br> <h3>Keyboard Handling</h3>
-
-<ul> <li>[SPACE, ENTER, RETURN] - Fires the <code>click</code> event if the <code>interactive</code> property is set to true.</li> <li>[SHIFT] - If [SPACE] is pressed, pressing [SHIFT] releases the component without triggering the click event.</li> </ul> <br><br>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { AvatarComponent } from "@ui5/webcomponents-ngx/main/avatar";</code>`;
 export default {
@@ -30,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('AvatarComponent', AvatarComponent, description),
       },
     },
   },

@@ -1,22 +1,13 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SelectComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { SelectComponent } from '@ui5/webcomponents-ngx/main/select';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview 
 
-The <code>ui5-select</code> component is used to create a drop-down list. The items inside the <code>ui5-select</code> define the available options by using the <code>ui5-option</code> component.
+### Module Import 
 
-### Keyboard Handling
-
-The <code>ui5-select</code> provides advanced keyboard handling. <br> <ul> <li>[F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - Opens/closes the drop-down.</li> <li>[UP, DOWN] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.</li> <li>[SPACE, ENTER] - If the drop-down is opened - selects the focused option.</li> <li>[ESC] - Closes the drop-down without changing the selection.</li> <li>[HOME] - Navigates to first option</li> <li>[END] - Navigates to the last option</li> </ul> <br>
-
-### ES6 Module Import 
-
-<code>import { SelectComponent } from "@ui5/webcomponents-ngx/main/select";</code> (comes with <code>ui5-select</code>)`;
+<code>import { SelectComponent } from "@ui5/webcomponents-ngx/main/select";</code>`;
 export default {
   title: 'UI5 Web Components / Main / Select',
   component: SelectComponent,
@@ -29,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('SelectComponent', SelectComponent, description),
       },
     },
   },

@@ -1,30 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  RatingIndicatorComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { RatingIndicatorComponent } from '@ui5/webcomponents-ngx/main/rating-indicator';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview
 
-The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.
-
-### Usage
-
-The recommended number of icons is between 5 and 7.
-
-### Responsive Behavior
-
-You can change the size of the Rating Indicator by changing its <code>font-size</code> CSS property. <br> Example: <code>&lt;ui5-rating-indicator style="font-size: 3rem;">&lt;/ui5-rating-indicator></code>
-
-### Keyboard Handling
-
-When the <code>ui5-rating-indicator</code> is focused, the user can change the rating with the following keyboard shortcuts: <br>
-
-<ul> <li>[RIGHT/UP] - Increases the value of the rating by one step. If the highest value is reached, does nothing</li> <li>[LEFT/DOWN] - Decreases the value of the rating by one step. If the lowest value is reached, does nothing.</li> <li>[HOME] - Sets the lowest value.</li> <li>[END] - Sets the highest value.</li> <li>[SPACE/ENTER/RETURN] - Increases the value of the rating by one step. If the highest value is reached, sets the rating to the lowest value.</li> <li>Any number - Changes value to the corresponding number. If typed number is larger than the number of values, sets the highest value.</li> </ul>
-
-### ES6 Module Import
+### Module Import
 
 <code>import { RatingIndicatorComponent } from "@ui5/webcomponents-ngx/main/rating-indicator";</code>`;
 export default {
@@ -39,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('RatingIndicatorComponent', RatingIndicatorComponent, description),
       },
     },
   },

@@ -1,27 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ComboBoxComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ComboBoxComponent } from '@ui5/webcomponents-ngx/main/combo-box';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-combobox</code> component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.
-
-It is commonly used to enable users to select an option from a predefined list.
-
-<h3>Structure</h3> The <code>ui5-combobox</code> consists of the following elements:
-
-<ul> <li> Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.</li> <li> Drop-down arrow - expands\collapses the option list.</li> <li> Option list - the list of available options.</li> </ul>
-
-<h3>Keyboard Handling</h3>
-
-The <code>ui5-combobox</code> provides advanced keyboard handling. <br>
-
-<ul> <li>[F4], [ALT]+[UP], or [ALT]+[DOWN] - Toggles the picker.</li> <li>[ESC] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.</li> <li>[ENTER] or [RETURN] - If picker is open, takes over the currently selected item and closes it.</li> <li>[DOWN] - Selects the next matching item in the picker.</li> <li>[UP] - Selects the previous matching item in the picker.</li> <li>[PAGEDOWN] - Moves selection down by page size (10 items by default).</li> <li>[PAGEUP] - Moves selection up by page size (10 items by default). </li> <li>[HOME] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.</li> <li>[END] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ComboBoxComponent } from "@ui5/webcomponents-ngx/main/combo-box";</code>`;
 export default {
@@ -36,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ComboBoxComponent', ComboBoxComponent, description)
       },
     },
   },

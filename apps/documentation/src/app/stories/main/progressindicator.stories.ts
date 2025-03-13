@@ -1,20 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ProgressIndicatorComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ProgressIndicatorComponent } from '@ui5/webcomponents-ngx/main/progress-indicator';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview
 
-Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
-
-### Responsive Behavior
-
-You can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.
-
-### ES6 Module Import
+### Module Import
 
 <code>import { ProgressIndicatorComponent } from "@ui5/webcomponents-ngx/main/progress-indicator";</code>`;
 export default {
@@ -29,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ProgressIndicatorComponent', ProgressIndicatorComponent, description),
       },
     },
   },

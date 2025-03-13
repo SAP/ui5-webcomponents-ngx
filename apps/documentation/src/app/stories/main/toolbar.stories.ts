@@ -1,20 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ToolbarComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ToolbarComponent } from '@ui5/webcomponents-ngx/main/toolbar';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `The <code>ui5-toolbar</code> component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.
+const description = `
 
-<h3>Keyboard Handling</h3> The <code>ui5-toolbar</code> provides advanced keyboard handling.
-<br>
-<ul>
-<li>The control is not interactive, but can contain of interactive elements </li>
-<li>[TAB] - iterates through elements</li>
-</ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ToolbarComponent } from "@ui5/webcomponents-ngx/main/toolbar";</code>`;
 export default {
@@ -29,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ToolbarComponent', ToolbarComponent, description),
       },
     },
   },

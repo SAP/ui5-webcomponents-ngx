@@ -1,12 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TitleComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { TitleComponent } from '@ui5/webcomponents-ngx/main/title';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-title</code> component is used to display titles inside a page. It is a simple, large-sized text with explicit header/title semantics.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { TitleComponent } from "@ui5/webcomponents-ngx/main/title";</code>`;
 export default {
@@ -21,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('TitleComponent', TitleComponent, description),
       },
     },
   },

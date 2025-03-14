@@ -1,17 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ColorPaletteComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ColorPaletteComponent } from '@ui5/webcomponents-ngx/main/color-palette';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview The <code>ui5-color-palette</code> provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.
+const description = `
 
-<h3>Usage</h3>
-
-The <code>ui5-color-palette</code> is meant for users that need to select a color from a predefined set. To define the colors, use the <code>ui5-color-palette-item</code> component inside the default slot of the <code>ui5-color-palette</code>.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ColorPaletteComponent } from "@ui5/webcomponents-ngx/main/color-palette";</code>`;
 export default {
@@ -26,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ColorPaletteComponent', ColorPaletteComponent, description)
       },
     },
   },

@@ -1,15 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MultiInputComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { MultiInputComponent } from '@ui5/webcomponents-ngx/main/multi-input';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `<h3>Overview</h3> A <code>ui5-multi-input</code> field allows the user to enter multiple values, which are displayed as <code>ui5-token</code>.
+const description = `
 
-User can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when: <ul> <li>Type a value in the input and press enter or focus out the input field (<code>change</code> event is fired)</li> <li>Select a value from the suggestion list (<code>suggestion-item-select</code> event is fired)</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { MultiInputComponent } from "@ui5/webcomponents-ngx/main/multi-input";</code>`;
 export default {
@@ -24,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('MultiInputComponent', MultiInputComponent, description),
       },
     },
   },

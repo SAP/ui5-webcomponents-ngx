@@ -1,16 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, ToastComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ToastComponent } from '@ui5/webcomponents-ngx/main/toast';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-toast</code> is a small, non-disruptive popup for success or information messages that disappears automatically after a few seconds.
-
-<h3>Usage</h3>
-
-<h4>When to use:</h4> <ul> <li>You want to display a short success or information message.</li> <li>You do not want to interrupt users while they are performing an action.</li> <li>You want to confirm a successful action.</li> </ul> <h4>When not to use:</h4> <ul> <li>You want to display error or warning message.</li> <li>You want to interrupt users while they are performing an action.</li> <li>You want to make sure that users read the message before they leave the page.</li> <li>You want users to be able to copy some part of the message text.</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ToastComponent } from "@ui5/webcomponents-ngx/main/toast";</code>`;
 export default {
@@ -25,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ToastComponent', ToastComponent, description),
       },
     },
   },

@@ -1,20 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, MenuComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { MenuComponent } from '@ui5/webcomponents-ngx/main/menu';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-<code>ui5-menu</code> component represents a hierarchical menu structure.
-
-<h3>Usage</h3>
-
-<code>ui5-menu</code> contains <code>ui5-menu-item</code> components. An arbitrary hierarchy structure can be represented by recursively nesting menu items.
-
-<h3>Keyboard Handling</h3>
-
-The <code>ui5-menu</code> provides advanced keyboard handling. The user can use the following keyboard shortcuts in order to navigate trough the tree: <ul> <li><code>Arrow Up</code> / <code>Arrow Down</code> - Navigates up and down the menu items that are currently visible.</li> <li><code>Arrow Right</code>, <code>Space</code> or <code>Enter</code> - Opens a sub-menu if there are menu items nested in the currently clicked menu item.</li> <li><code>Arrow Left</code> or <code>Escape</code> - Closes the currently opened sub-menu.</li> </ul> Note: if the text ditrection is set to Right-to-left (RTL), <code>Arrow Right</code> and <code>Arrow Left</code> functionality is swapped. <br>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { MenuComponent } from "@ui5/webcomponents-ngx/main/menu";</code>`;
 export default {
@@ -29,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('MenuComponent', MenuComponent, description),
       },
     },
   },

@@ -1,27 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MultiComboBoxComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { MultiComboBoxComponent } from '@ui5/webcomponents-ngx/main/multi-combo-box';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-multi-combobox</code> component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.
-
-The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options. The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens. <h3>Structure</h3> The <code>ui5-multi-combobox</code> consists of the following elements: <ul> <li> Tokenizer - a list of tokens with selected options.</li> <li> Input field - displays the selected option/s as token/s. Users can type to filter the list.</li> <li> Drop-down arrow - expands\collapses the option list.</li> <li> Option list - the list of available options.</li> </ul> <h3>Keyboard Handling</h3>
-
-The <code>ui5-multi-combobox</code> provides advanced keyboard handling.
-
-<h4>Picker</h4> If the <code>ui5-multi-combobox</code> is focused, you can open or close the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the drop-down is opened, you can use the <code>UP</code> and <code>DOWN</code> arrow keys to navigate through the available options and select one by pressing the <code>Space</code> or <code>Enter</code> keys. <br>
-
-<h4>Tokens</h4> <ul> <li> Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available). </li> <li> Delete - deletes the token and focuses the previous token. </li> <li> Backspace - deletes the token and focus the next token. </li> </ul>
-
-<h3>CSS Shadow Parts</h3>
-
-<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-multi-combobox</code> exposes the following CSS Shadow Parts: <ul> <li>token-{index} - Used to style each token(where <code>token-0</code> corresponds to the first item)</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { MultiComboBoxComponent } from "@ui5/webcomponents-ngx/main/multi-combo-box";</code>`;
 export default {
@@ -36,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('MultiComboBoxComponent', MultiComboBoxComponent, description),
       },
     },
   },

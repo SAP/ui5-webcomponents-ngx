@@ -1,31 +1,13 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TabContainerComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { TabContainerComponent } from '@ui5/webcomponents-ngx/main/tab-container';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-tabcontainer</code> represents a collection of tabs with associated content. Navigation through the tabs changes the content display of the currently active content area. A tab can be labeled with text only, or icons with text.
+<h3>Module Import</h3>
 
-<h3>Structure</h3>
-
-The <code>ui5-tabcontainer</code> can hold two types of entities: <ul> <li><code>ui5-tab</code> - contains all the information on an item (text and icon)</li> <li><code>ui5-tab-separator</code> - used to separate tabs with a line</li> </ul>
-
-<h3>Hierarchies</h3> Multiple sub tabs could be placed underneath one main tab. Nesting allows deeper hierarchies with indentations to indicate the level of each nested tab. When a tab has both sub tabs and own content its click area is split to allow the user to display the content or alternatively to expand / collapse the list of sub tabs.
-
-<h3>CSS Shadow Parts</h3>
-
-<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-tabcontainer</code> exposes the following CSS Shadow Parts: <ul> <li>content - Used to style the content of the component</li> </ul>
-
-<h3>Keyboard Handling</h3>
-
-<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import "@ui5/webcomponents-base/dist/features/F6Navigation.js"</code> <br><br>
-
-<h3>ES6 Module Import</h3>
-
-<code>import { TabContainerComponent } from "@ui5/webcomponents-ngx/main/tab-container";</code> (for <code>ui5-tab-separator</code>)`;
+<code>import { TabContainerComponent } from "@ui5/webcomponents-ngx/main/tab-container";</code>`;
 export default {
   title: 'UI5 Web Components / Main / TabContainer',
   component: TabContainerComponent,
@@ -38,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('TabContainerComponent', TabContainerComponent, description),
       },
     },
   },

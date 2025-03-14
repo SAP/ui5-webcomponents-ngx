@@ -1,15 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  SegmentedButtonComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { SegmentedButtonComponent } from '@ui5/webcomponents-ngx/main/segmented-button';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-segmented-button</code> shows a group of items. When the user clicks or taps one of the items, it stays in a pressed state. It automatically resizes the items to fit proportionally within the component. When no width is set, the component uses the available width. <br><br> <b>Note:</b> There can be just one selected <code>item</code> at a time.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { SegmentedButtonComponent } from "@ui5/webcomponents-ngx/main/segmented-button";</code>`;
 export default {
@@ -24,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('SegmentedButtonComponent', SegmentedButtonComponent, description),
       },
     },
   },

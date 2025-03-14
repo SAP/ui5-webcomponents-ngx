@@ -1,15 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ToggleButtonComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ToggleButtonComponent } from '@ui5/webcomponents-ngx/main/toggle-button';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-toggle-button</code> component is an enhanced <code>ui5-button</code> that can be toggled between pressed and normal states. Users can use the <code>ui5-toggle-button</code> as a switch to turn a setting on or off. It can also be used to represent an independent choice similar to a check box. <br><br> Clicking or tapping on a <code>ui5-toggle-button</code> changes its state to <code>pressed</code>. The button returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any <code>ui5-toggle-button</code>.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ToggleButtonComponent } from "@ui5/webcomponents-ngx/main/toggle-button";</code>`;
 export default {
@@ -24,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ToggleButtonComponent', ToggleButtonComponent, description),
       },
     },
   },

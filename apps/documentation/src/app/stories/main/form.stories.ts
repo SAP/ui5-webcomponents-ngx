@@ -1,13 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, FormComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { FormComponent } from '@ui5/webcomponents-ngx/main/form';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The Form is a layout component that arranges labels and form fields (like input fields) pairs
-into a specific number of columns.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { FormComponent } from "@ui5/webcomponents-ngx/main/form";</code>`;
 export default {
@@ -22,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('FormComponent', FormComponent, description),
       },
     },
   },

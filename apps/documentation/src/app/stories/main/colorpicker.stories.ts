@@ -1,19 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ColorPickerComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { ColorPickerComponent } from '@ui5/webcomponents-ngx/main/color-picker';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview The <code>ui5-color-picker</code> allows users to choose any color and provides different input options for selecting colors.
+const description = `
 
-<h3>Usage</h3>
-
-<h4>When to use:</h4 Use the color picker if: <ul> <li> users need to select any color freely.</li> </ul>
-
-<h4>When not to use:</h4> <ul> <li> Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { ColorPickerComponent } from "@ui5/webcomponents-ngx/main/color-picker";</code>`;
 export default {
@@ -28,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ColorPickerComponent', ColorPickerComponent, description)
       },
     },
   },

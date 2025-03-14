@@ -1,14 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TagComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { TagComponent } from '@ui5/webcomponents-ngx/main/tag';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-tag</code> is a small non-interactive component which contains text information and color chosen from a list of predefined color schemes. It serves the purpose to attract the user attention to some piece of information (state, quantity, condition, etc.).
-
-<h3>Usage Guidelines</h3> <ul> <li>If the text is longer than the width of the component, it doesn’t wrap, it shows ellipsis.</li> <li>When truncated, the full text is not visible, therefore, it’s recommended to make more space for longer texts to be fully displayed.</li> <li>Colors are not semantic and have no visual representation in High Contrast Black (sap_belize_hcb) theme.</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { TagComponent } from "@ui5/webcomponents-ngx/main/tag";</code>`;
 export default {
@@ -23,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('TagComponent', TagComponent, description),
       },
     },
   },

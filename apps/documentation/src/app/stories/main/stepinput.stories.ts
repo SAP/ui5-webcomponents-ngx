@@ -1,23 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  StepInputComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { StepInputComponent } from '@ui5/webcomponents-ngx/main/step-input';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-step-input</code> consists of an input field and buttons with icons to increase/decrease the value with the predefined step. <br><br> The user can change the value of the component by pressing the increase/decrease buttons, by typing a number directly, by using the keyboard up/down and page up/down, or by using the mouse scroll wheel. Decimal values are supported.
-
-<h3>Usage</h3>
-
-The default step is 1 but the app developer can set a different one.
-
-App developers can set a maximum and minimum value for the <code>StepInput</code>. The increase/decrease button and the up/down keyboard navigation become disabled when the value reaches the max/min or a new value is entered from the input which is greater/less than the max/min. <br><br> <h4>When to use:</h4> <ul> <li>To adjust amounts, quantities, or other values quickly.</li> <li>To adjust values for a specific step.</li> </ul>
-
-<h4>When not to use:</h4> <ul> <li>To enter a static number (for example, postal code, phone number, or ID). In this case, use the regular <code>ui5-input</code> instead.</li> <li>To display a value that rarely needs to be adjusted and does not pertain to a particular step. In this case, use the regular <code>ui5-input</code> instead.</li> <li>To enter dates and times. In this case, use date/time related components instead.</li> </ul>
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { StepInputComponent } from "@ui5/webcomponents-ngx/main/step-input";</code>`;
 export default {
@@ -32,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('StepInputComponent', StepInputComponent, description),
       },
     },
   },

@@ -1,26 +1,13 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DynamicPageComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { DynamicPageComponent } from '@ui5/webcomponents-ngx/fiori/dynamic-page';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-A layout component, representing a web page, consisting of a title, header with dynamic behavior, a content area, and an optional floating footer.
+<h3>Module Import</h3>
 
-The component consists of several components:
-
-- DynamicPageTitle - a component, holding the title of the page, the navigation actions, and the content. The displayed content changes based on the current mode of the DynamicPageHeader.
-- DynamicPageHeader - a generic container, which can contain a single layout component and any other HTML elements. The header works in two modes - expanded and snapped, and its behavior can be adjusted with the help of different properties.
-- Content area - a generic container, which can have a single UI5 layout.
-- Footer - positioned at the bottom with a small offset and used for additional actions, the footer floats above the content.
-
-<h3>ES6 Module Import</h3>
-
-<code>import { DynamicPage } from "@ui5/webcomponents-ngx/fiori/dynamic-page";</code>;
-<code>import { DynamicPageTitle } from "@ui5/webcomponents-ngx/fiori/dynamic-page-title";</code>;
-<code>import { DynamicPageHeader } from "@ui5/webcomponents-ngx/fiori/dynamic-page-header";</code>;
+<code>import { DynamicPageComponent } from "@ui5/webcomponents-ngx/fiori/dynamic-page";</code>
 `;
 
 export default {
@@ -35,7 +22,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('DynamicPageComponent', DynamicPageComponent, description),
       },
     },
   },

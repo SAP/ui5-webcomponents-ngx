@@ -1,21 +1,13 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  MediaGalleryComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { MediaGalleryComponent } from '@ui5/webcomponents-ngx/fiori/media-gallery';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-media-gallery</code> component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the <code>ui5-media-gallery-item</code> component.
+<h3>Module Import</h3> 
 
-The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size. <br> The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.
-
-<h3>Keyboard Handling</h3> The <code>ui5-media-gallery</code> provides advanced keyboard handling. <br> When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items: <br>
-
-<ul> <li>[UP/DOWN] - Navigates up and down the items</li> <li>[HOME] - Navigates to first item</li> <li>[END] - Navigates to the last item</li> <li>[SPACE/ENTER] - Select an item</li> </ul> <br>
-
-<h3>ES6 Module Import</h3> <code>import { MediaGalleryComponent } from "@ui5/webcomponents-ngx/fiori/media-gallery";</code>`;
+<code>import { MediaGalleryComponent } from "@ui5/webcomponents-ngx/fiori/media-gallery";</code>`;
 export default {
   title: 'UI5 Web Components / Fiori / MediaGallery',
   component: MediaGalleryComponent,
@@ -28,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('MediaGalleryComponent', MediaGalleryComponent, description),
       },
     },
   },

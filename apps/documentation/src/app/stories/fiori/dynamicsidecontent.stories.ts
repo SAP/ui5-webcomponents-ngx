@@ -1,45 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DynamicSideContentComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { DynamicSideContentComponent } from '@ui5/webcomponents-ngx/fiori/dynamic-side-content';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The DynamicSideContent (<code>ui5-dynamic-side-content</code>) is a layout component that allows additional content to be displayed in a way that flexibly adapts to different screen sizes. The side content appears in a container next to or directly below the main content (it doesn't overlay). When the side content is triggered, the main content becomes narrower (if appearing side-by-side). The side content contains a separate scrollbar when appearing next to the main content.
-
-<h3>Usage</h3>
-
-<i>When to use?</i>
-
-Use this component if you want to display relevant information that is not critical for users to complete a task. Users should have access to all the key functions and critical information in the app even if they do not see the side content. This is important because on smaller screen sizes it may be difficult to display the side content in a way that is easily accessible for the user.
-
-<i>When not to use?</i>
-
-Don't use it if you want to display navigation or critical information that prevents users from completing a task when they have no access to the side content.
-
-<h3>Responsive Behavior</h3>
-
-Screen width > 1440px
-
-<ul><li>Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px each).</li> <li>If the application defines a trigger, the side content can be hidden.</li></ul>
-
-Screen width <= 1440px and > 1024px
-
-<ul><li>Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of 320px each). If the side content width falls below 320 px, it automatically slides under the main content, unless the app development team specifies that it should disappear.</li></ul>
-
-Screen width <= 1024px and > 720px
-
-<ul><li>The side content ratio is fixed to 340px, and the main content takes the rest of the width. Only if the <code>sideContentFallDown</code> is set to <code>OnMinimumWidth</code> and screen width is <= 960px and > 720px the side content falls below the main content.</li></ul>
-
-Screen width <= 720px (for example on a mobile device)
-
-<ul><li>In this case, the side content automatically disappears from the screen (unless specified to stay under the content by setting of <code>sideContentVisibility</code> property to <code>AlwaysShow</code>) and can be triggered from a pre-set trigger (specified within the app). When the side content is triggered, it replaces the main content. We recommend that you always place the trigger for the side content in the same location, such as in the app footer.</li></ul>
-
-A special case allows switching the comparison mode between the main and side content. In this case, the screen is split into 50:50 percent for main vs. side content. The responsive behavior of the equal split is the same as in the standard view - the side content disappears on screen widths of less than 720 px and can only be viewed by triggering it.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { DynamicSideContentComponent } from "@ui5/webcomponents-ngx/fiori/dynamic-side-content";</code>`;
 const meta: Meta<DynamicSideContentComponent> = {
@@ -54,7 +20,7 @@ const meta: Meta<DynamicSideContentComponent> = {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('DynamicSideContentComponent', DynamicSideContentComponent, description),
       },
     },
   },

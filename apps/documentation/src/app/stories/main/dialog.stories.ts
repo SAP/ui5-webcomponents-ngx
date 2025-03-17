@@ -1,26 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  DialogComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { DialogComponent } from '@ui5/webcomponents-ngx/main/dialog';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview 
-The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that an user action is required before it is possible to return to the parent window. To open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other. The content of the <code>ui5-dialog</code> is fully customizable.
 
-### Structure 
-A <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-dialog</code> is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.
-
-### Responsive Behavior 
-
-The <code>stretch</code> property can be used to stretch the <code>ui5-dialog</code> on full screen.
-
-### CSS Shadow Parts
-
-<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-dialog</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>
-
-### ES6 Module Import
+### Module Import
 
 <code>import { DialogComponent } from "@ui5/webcomponents-ngx/main/dialog";</code>
 
@@ -39,7 +24,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('DialogComponent', DialogComponent, description),
       },
     },
   },

@@ -1,18 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, CardComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { CardComponent } from '@ui5/webcomponents-ngx/main/card';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-card</code> is a component that represents information in the form of a tile with separate header and content areas. The content area of a <code>ui5-card</code> can be arbitrary HTML content. The header can be used through slot <code>header</code>. For which there is a <code>ui5-card-header</code> component to achieve the card look and fill.
-
-Note: We recommend the usage of <code>ui5-card-header</code> for the header slot, so advantage can be taken for keyboard handling, styling and accessibility.
-
-<h3>CSS Shadow Parts</h3>
-
-<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { CardComponent } from "@ui5/webcomponents-ngx/main/card";</code> (for <code>ui5-card-header</code>)`;
 export default {
@@ -27,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('CardComponent', CardComponent, description),
       },
     },
   },

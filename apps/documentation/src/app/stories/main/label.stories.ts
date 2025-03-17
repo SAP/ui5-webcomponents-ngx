@@ -1,12 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, LabelComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { LabelComponent } from '@ui5/webcomponents-ngx/main/label';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-label</code> is a component used to represent a label, providing valuable information to the user. Usually it is placed next to a value holder, such as a text field. It informs the user about what data is displayed or expected in the value holder. <br><br> The <code>ui5-label</code> appearance can be influenced by properties, such as <code>required</code> and <code>wrappingType</code>. The appearance of the Label can be configured in a limited way by using the design property. For a broader choice of designs, you can use custom styles.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { LabelComponent } from "@ui5/webcomponents-ngx/main/label";</code>`;
 export default {
@@ -21,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('LabelComponent', LabelComponent, description),
       },
     },
   },

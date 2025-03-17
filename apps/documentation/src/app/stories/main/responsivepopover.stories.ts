@@ -1,22 +1,13 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  ResponsivePopoverComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule} from '@ui5/webcomponents-ngx';
+import { ResponsivePopoverComponent} from '@ui5/webcomponents-ngx/main/responsive-popover';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview
 
-The <code>ui5-responsive-popover</code> acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.
+### Module Import
 
-### Usage
-
-Use it when you want to make sure that all the content is visible on any device.
-
-### CSS Shadow Parts
-
-<ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-responsive-popover</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>`;
+<code>import { RatingIndicatorComponent } from "@ui5/webcomponents-ngx/main/rating-indicator";</code>`;
 export default {
   title: 'UI5 Web Components / Main / ResponsivePopover',
   component: ResponsivePopoverComponent,
@@ -29,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('ResponsivePopoverComponent', ResponsivePopoverComponent, description),
       },
     },
   },

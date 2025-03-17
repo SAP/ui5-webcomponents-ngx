@@ -1,19 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  RadioButtonComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { RadioButtonComponent } from '@ui5/webcomponents-ngx/main/radio-button';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The <code>ui5-radio-button</code> component enables users to select a single option from a set of options. When a <code>ui5-radio-button</code> is selected by the user, the <code>change</code> event is fired. When a <code>ui5-radio-button</code> that is within a group is selected, the one that was previously selected gets automatically deselected. You can group radio buttons by using the <code>name</code> property. <br> <b>Note:</b> If <code>ui5-radio-button</code> is not part of a group, it can be selected once, but can not be deselected back.
-
-<h3>Keyboard Handling</h3>
-
-Once the <code>ui5-radio-button</code> is on focus, it might be selected by pressing the Space and Enter keys. <br> The Arrow Down/Arrow Up and Arrow Left/Arrow Right keys can be used to change selection between next/previous radio buttons in one group, while TAB and SHIFT + TAB can be used to enter or leave the radio button group. <br> <b>Note:</b> On entering radio button group, the focus goes to the currently selected radio button.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { RadioButtonComponent } from "@ui5/webcomponents-ngx/main/radio-button";</code>`;
 export default {
@@ -28,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('RadioButtonComponent', RadioButtonComponent, description),
       },
     },
   },

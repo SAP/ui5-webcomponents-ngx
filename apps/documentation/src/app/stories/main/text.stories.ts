@@ -1,12 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { Ui5WebcomponentsModule, TextComponent } from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { TextComponent } from '@ui5/webcomponents-ngx/main/text';
+import { extractArgTypes,extractDescription } from '../../arg-type-tools';
 
-const description = `### Overview
+const description = `
 
-The ui5-text component displays text that can be used in any content area of an application.
-
-<h3>ES6 Module Import</h3>
+<h3>Module Import</h3>
 
 <code>import { TextComponent } from "@ui5/webcomponents-ngx/main/text";</code>`;
 export default {
@@ -21,7 +20,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('TextComponent', TextComponent, description),
       },
     },
   },

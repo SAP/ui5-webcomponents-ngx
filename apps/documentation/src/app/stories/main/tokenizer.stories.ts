@@ -1,21 +1,11 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  TokenizerComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { TokenizerComponent } from '@ui5/webcomponents-ngx/main/tokenizer';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 
 const description = `
-### Overview
 
-Tokenizer is an invisible container for tokens with built-in overflow mechanism
-and supports keyboard navigation and token selection.
-
-The Tokenizer consists of two parts:
- - Tokens - displays the available tokens.
- - N-more indicator - contains the number of the remaining tokens that cannot be displayed due to the limited space.
-
-### ES6 Module Import
+### Module Import
 <code>import { TokenizerComponent } from "@ui5/webcomponents-ngx/main/tokenizer";</code>
 `;
 
@@ -31,7 +21,7 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('TokenizerComponent', TokenizerComponent, description),
       },
     },
   },

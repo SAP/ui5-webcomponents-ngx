@@ -1,18 +1,14 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import {
-  Ui5WebcomponentsModule,
-  BarcodeScannerDialogComponent,
-} from '@ui5/webcomponents-ngx';
-import { extractArgTypes } from '../../arg-type-tools';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
+import { BarcodeScannerDialogComponent } from '@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog';
+import { extractArgTypes, extractDescription } from '../../arg-type-tools';
 import { CommonModule } from '@angular/common';
 
 const description = `
-### Overview
 
-The <code>BarcodeScannerDialog</code> component provides barcode scanning functionality for all devices that support the <code>MediaDevices.getUserMedia()</code> native API. Opening the dialog launches the device camera and scans for known barcode formats. <br> <br> A <code>scanSuccess</code> event fires whenever a barcode is identified and a <code>scanError</code> event fires when the scan failed (for example, due to missing permisions). <br> <br> Internally, the component uses the zxing-js/library third party OSS.
+###Module Import
 
-For a list of supported barcode formats, see the <ui5-link target="_blank" href="https://github.com/zxing-js/library">zxing-js/library</ui5-link> documentation.
-`;
+<code>import { BarcodeScannerDialogComponent } from '@ui5/webcomponents-ngx/fiori/barcode-scanner-dialog'</code>`;
 
 const meta: Meta<BarcodeScannerDialogComponent> = {
   title: 'UI5 Web Components / Fiori / BarcodeScannerDialog',
@@ -26,7 +22,7 @@ const meta: Meta<BarcodeScannerDialogComponent> = {
     docs: {
       extractArgTypes,
       description: {
-        component: description,
+        component: extractDescription('BarcodeScannerDialog', BarcodeScannerDialogComponent, description),
       },
     },
   },

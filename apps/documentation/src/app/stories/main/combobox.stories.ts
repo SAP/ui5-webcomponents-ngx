@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('ComboBoxComponent', ComboBoxComponent, description)
+        component: extractDescription(
+          'ComboBoxComponent',
+          ComboBoxComponent,
+          description,
+        ),
       },
     },
   },
@@ -146,6 +150,21 @@ export const ComboBoxWithGroupingOfItems: StoryObj<ComboBoxComponent> = {
 				<ui5-cb-item text="Chile"></ui5-cb-item>
 			</ui5-cb-item-group>
 	  </ui5-combobox>
+	`,
+  }),
+};
+
+export const ComboBoxWithClearFilterButton: StoryObj<ComboBoxComponent> = {
+  render: (args: ComboBoxComponent & any) => ({
+    props: args,
+    template: `
+		<ui5-combobox value="Denmark" show-clear-icon>
+			<ui5-cb-item text="Austria"></ui5-cb-item>
+			<ui5-cb-item text="Bulgaria"></ui5-cb-item>
+			<ui5-cb-item text="Germany"></ui5-cb-item>
+			<ui5-cb-item text="Italy"></ui5-cb-item>
+			<ui5-cb-item text="Spain"></ui5-cb-item>
+		</ui5-combobox>
 	`,
   }),
 };

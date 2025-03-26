@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('RatingIndicatorComponent', RatingIndicatorComponent, description),
+        component: extractDescription(
+          'RatingIndicatorComponent',
+          RatingIndicatorComponent,
+          description,
+        ),
       },
     },
   },
@@ -68,3 +72,15 @@ export const ReadonlyRatingIndicator: StoryObj<RatingIndicatorComponent> = {
 	`,
   }),
 };
+
+export const DifferentSizesOfRatingIndicators: StoryObj<RatingIndicatorComponent> =
+  {
+    render: (args: RatingIndicatorComponent & any) => ({
+      props: args,
+      template: `
+    <ui5-rating-indicator Size="S" value="1"></ui5-rating-indicator><br>
+    <ui5-rating-indicator size="M" value="2.5"></ui5-rating-indicator><br>
+    <ui5-rating-indicator size="L" value="5"></ui5-rating-indicator>
+	`,
+    }),
+  };

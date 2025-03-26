@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('ButtonComponent', ButtonComponent, description),
+        component: extractDescription(
+          'ButtonComponent',
+          ButtonComponent,
+          description,
+        ),
       },
     },
   },
@@ -93,6 +97,70 @@ export const ButtonWithDesign: StoryObj<ButtonComponent> = {
 		<ui5-button design="Default">Default</ui5-button>
 		<ui5-button design="Attention">Warning</ui5-button>
 		<ui5-button design="Transparent">Transparent</ui5-button>
+		`,
+  }),
+};
+
+export const CustomStylingButton: StoryObj<ButtonComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+			  <style>
+				  [ui5-button] {
+					  width: 10rem;
+					  color: DarkSlateBlue;
+					  background-color: #f4f2fd;
+					  border-color: DarkSlateBlue;
+				  }
+				  [ui5-button]:active,
+				  [ui5-button]:hover {
+					  background-color: #dad4f7;
+				  }
+			  </style>
+			  <ui5-button>Custom Button</ui5-button>  
+	  `,
+  }),
+};
+
+export const MenuButton: StoryObj<ButtonComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+			<ui5-button id="menuButton" icon="action-settings" end-icon="navigation-down-arrow">Menu</ui5-button>
+			<ui5-menu id="myMenu">
+				<ui5-menu-item text="Item 1"></ui5-menu-item>
+				<ui5-menu-item text="Item 2"></ui5-menu-item>
+				<ui5-menu-item text="Item 3"></ui5-menu-item>
+			</ui5-menu>
+		`,
+  }),
+};
+
+export const ButtonWithBadge: StoryObj<ButtonComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+			<div>
+				<ui5-label>Cozy</ui5-label>
+				<br/>
+				<ui5-button design="Emphasized" icon="employee">Requests
+					<ui5-button-badge design="OverlayText" text="999+" slot="badge"></ui5-button-badge>
+				</ui5-button>
+				<ui5-button>Reviews
+					<ui5-button-badge design="AttentionDot" slot="badge"></ui5-button-badge>
+				</ui5-button>
+
+				<div data-ui5-compact-size>
+					<ui5-label>Compact</ui5-label>
+					<br/>
+					<ui5-button>Messages
+						<ui5-button-badge design="InlineText" text="72" slot="badge"></ui5-button-badge>
+					</ui5-button>
+					<ui5-button>Reviews
+						<ui5-button-badge design="AttentionDot" slot="badge"></ui5-button-badge>
+					</ui5-button>
+				</div>
+			</div>
 		`,
   }),
 };

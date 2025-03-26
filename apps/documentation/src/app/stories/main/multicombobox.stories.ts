@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('MultiComboBoxComponent', MultiComboBoxComponent, description),
+        component: extractDescription(
+          'MultiComboBoxComponent',
+          MultiComboBoxComponent,
+          description,
+        ),
       },
     },
   },
@@ -62,6 +66,26 @@ export const MultiComboBoxWithItems: StoryObj<MultiComboBoxComponent> = {
 	`,
   }),
 };
+
+export const MultiComboBoxWithSelectAllItemsButton: StoryObj<MultiComboBoxComponent> =
+  {
+    render: (args: MultiComboBoxComponent & any) => ({
+      props: args,
+      template: `
+		<ui5-multi-combobox placeholder="Type your value" show-select-all>
+			<ui5-mcb-item text="Albania"></ui5-mcb-item>
+			<ui5-mcb-item selected text="Argentina"></ui5-mcb-item>
+			<ui5-mcb-item text="Bulgaria"></ui5-mcb-item>
+			<ui5-mcb-item text="Denmark"></ui5-mcb-item>
+			<ui5-mcb-item text="England"></ui5-mcb-item>
+			<ui5-mcb-item text="Germany"></ui5-mcb-item>
+			<ui5-mcb-item text="Philippines"></ui5-mcb-item>
+			<ui5-mcb-item text="Portugal"></ui5-mcb-item>
+			<ui5-mcb-item text="The United Kingdom of Great Britain and Northern Ireland"></ui5-mcb-item>
+		</ui5-multi-combobox>
+	  `,
+    }),
+  };
 
 export const MultiComboBoxWithFreeTextInput: StoryObj<MultiComboBoxComponent> =
   {

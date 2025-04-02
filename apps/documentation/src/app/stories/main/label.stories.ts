@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('LabelComponent', LabelComponent, description),
+        component: extractDescription(
+          'LabelComponent',
+          LabelComponent,
+          description,
+        ),
       },
     },
   },
@@ -112,5 +116,15 @@ export const LabelFor: StoryObj<LabelComponent> = {
 	<ui5-checkbox id="myCB" required></ui5-checkbox>
 		</xmp></pre>
 `,
+  }),
+};
+
+export const CustomStylingLabel: StoryObj<LabelComponent> = {
+  render: (args: LabelComponent & any) => ({
+    props: args,
+    template: `
+    <ui5-label style="color: var(--sapPositiveColor); font-size: 1.25rem;">Styled Label</ui5-label>
+    <ui5-label style="color: var(--sapNegativeColor); font-size: 1rem; font-style: italic;">Styled Label</ui5-label>
+  `,
   }),
 };

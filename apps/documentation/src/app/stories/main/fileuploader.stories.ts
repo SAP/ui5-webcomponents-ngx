@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('FileUploaderComponent', FileUploaderComponent, description),
+        component: extractDescription(
+          'FileUploaderComponent',
+          FileUploaderComponent,
+          description,
+        ),
       },
     },
   },
@@ -34,6 +38,30 @@ export const UploadSingleFile: StoryObj<FileUploaderComponent> = {
 			<ui5-button>Upload Single File</ui5-button>
 		</ui5-file-uploader>
 	`,
+  }),
+};
+
+export const UploadMultipleFiles: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
+    <ui5-file-uploader multiple>
+      <ui5-button>Upload Multiple Files</ui5-button>
+    </ui5-file-uploader>
+  `,
+  }),
+};
+
+export const UploadWithSizeLimit: StoryObj<FileUploaderComponent> = {
+  render: (args: FileUploaderComponent & any) => ({
+    props: args,
+    template: `
+    <ui5-file-uploader multiple max-file-size="2" id="fileuploader" placeholder="Upload up to 2 MB">
+        <ui5-button icon="upload"></ui5-button>
+    </ui5-file-uploader>
+
+    <div id="file-exceed-result"></div>
+  `,
   }),
 };
 

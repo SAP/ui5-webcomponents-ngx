@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('BusyIndicatorComponent', BusyIndicatorComponent, description),
+        component: extractDescription(
+          'BusyIndicatorComponent',
+          BusyIndicatorComponent,
+          description,
+        ),
       },
     },
   },
@@ -51,3 +55,17 @@ export const BusyIndicatorWrappingOtherElements: StoryObj<BusyIndicatorComponent
     `,
     }),
   };
+
+export const BusyIndicatorTextPlacement: StoryObj<BusyIndicatorComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui5-busy-indicator text="Loading data from backend server.." active>
+          <div style="height: 200px; width: 200px;"></div>
+      </ui5-busy-indicator>
+      <ui5-busy-indicator text="Loading data from backend server..." text-placement="Top" active>
+          <div style="height: 200px; width: 200px;"></div>
+      </ui5-busy-indicator>
+    `,
+  }),
+};

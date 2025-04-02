@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('TextAreaComponent', TextAreaComponent, description),
+        component: extractDescription(
+          'TextAreaComponent',
+          TextAreaComponent,
+          description,
+        ),
       },
     },
   },
@@ -51,5 +55,22 @@ export const TextAreaWithLabel: StoryObj<TextAreaComponent> = {
 		<ui5-label for="textAreaWithLabelID">Description</ui5-label>
 		<ui5-textarea id="textAreaWithLabelID" class="textarea-width" placeholder="Enter description"></ui5-textarea>
 	`,
+  }),
+};
+
+export const TextAreaStates: StoryObj<TextAreaComponent> = {
+  render: (args: TextAreaComponent & any) => ({
+    props: args,
+    template: `
+    <ui5-textarea disabled></ui5-textarea>
+    <ui5-textarea readonly></ui5-textarea>
+    <ui5-textarea value-state="Positive" placeholder="Positive"></ui5-textarea>
+    <ui5-textarea value-state="Information" placeholder="Information"></ui5-textarea>
+    <ui5-textarea value-state="Critical" placeholder="Critical"></ui5-textarea>
+    <ui5-textarea value-state="Negative" placeholder="Negative"></ui5-textarea>
+    <ui5-textarea value-state="Negative" placeholder="Custom value-state message">
+        <div slot="valueStateMessage">Please provide valid value</div>
+    </ui5-textarea>
+  `,
   }),
 };

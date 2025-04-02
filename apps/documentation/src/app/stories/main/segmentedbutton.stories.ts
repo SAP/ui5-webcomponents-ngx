@@ -20,7 +20,11 @@ export default {
     docs: {
       extractArgTypes,
       description: {
-        component: extractDescription('SegmentedButtonComponent', SegmentedButtonComponent, description),
+        component: extractDescription(
+          'SegmentedButtonComponent',
+          SegmentedButtonComponent,
+          description,
+        ),
       },
     },
   },
@@ -36,6 +40,19 @@ export const BasicSegmentedButton: StoryObj<SegmentedButtonComponent> = {
             <ui5-segmented-button-item>Terrain</ui5-segmented-button-item>
         </ui5-segmented-button>
 	`,
+  }),
+};
+
+export const MultipleSelectionButton: StoryObj<SegmentedButtonComponent> = {
+  render: (args: SegmentedButtonComponent & any) => ({
+    props: args,
+    template: `
+        <ui5-segmented-button accessible-name="Map style" selection-mode="Multiple">
+            <ui5-segmented-button-item>Map</ui5-segmented-button-item>
+            <ui5-segmented-button-item selected>Satellite</ui5-segmented-button-item>
+            <ui5-segmented-button-item>Terrain</ui5-segmented-button-item>
+        </ui5-segmented-button>
+  `,
   }),
 };
 

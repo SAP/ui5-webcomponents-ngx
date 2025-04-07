@@ -17,6 +17,7 @@ node_modules
 .settings/
 *.sublime-workspace
 
+libs/ui5-angular/ai/
 libs/ui5-angular/fiori/
 libs/ui5-angular/main/
 libs/ui5-angular/generic-cva/

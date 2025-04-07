@@ -29,6 +29,7 @@
       "outputs": [
         "{projectRoot}/fiori",
         "{projectRoot}/main",
+        "{projectRoot}/ai",
         "{projectRoot}/generic-cva",
         "{projectRoot}/utils",
         "{projectRoot}/index.ts",

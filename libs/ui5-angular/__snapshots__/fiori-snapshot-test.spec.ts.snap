@@ -1262,36 +1262,57 @@ export { ProductSwitchComponent };
 "
 `;
 
-exports[`Snapshot test Fiori Search Field Scope Option should match the snapshot 1`] = `
+exports[`Snapshot test Fiori Search Item Group should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   NgZone,
   inject,
 } from '@angular/core';
-import '@ui5/webcomponents-fiori/dist/SearchFieldScopeOption.js';
-import SearchFieldScopeOption from '@ui5/webcomponents-fiori/dist/SearchFieldScopeOption.js';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text'])
+import '@ui5/webcomponents-fiori/dist/SearchItemGroup.js';
+import SearchItemGroup from '@ui5/webcomponents-fiori/dist/SearchItemGroup.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
+@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
-  selector: 'ui5-search-field-scope-option',
+  selector: 'ui5-search-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['text'],
-  exportAs: 'ui5SearchFieldScopeOption',
+  inputs: ['headerText', 'headerAccessibleName'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
+  exportAs: 'ui5SearchItemGroup',
 })
-class SearchFieldScopeOptionComponent {
+class SearchItemGroupComponent {
   /**
-        Defines the text of the component.
+        Defines the header text of the <code>ui5-li-group</code>.
         */
-  text!: string;
+  headerText!: string | undefined;
+  /**
+        Defines the accessible name of the header.
+        */
+  headerAccessibleName!: string | undefined;
 
-  private elementRef: ElementRef<SearchFieldScopeOption> = inject(ElementRef);
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
+
+  private elementRef: ElementRef<SearchItemGroup> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
 
-  get element(): SearchFieldScopeOption {
+  get element(): SearchItemGroup {
     return this.elementRef.nativeElement;
   }
 
@@ -1299,7 +1320,298 @@ class SearchFieldScopeOptionComponent {
     this.cdr.detach();
   }
 }
-export { SearchFieldScopeOptionComponent };
+export { SearchItemGroupComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Search Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SearchItem.js';
+import SearchItem from '@ui5/webcomponents-fiori/dist/SearchItem.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'icon', 'selected', 'scopeName'])
+@ProxyOutputs(['delete: ui5Delete'])
+@Component({
+  standalone: true,
+  selector: 'ui5-search-item',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'icon', 'selected', 'scopeName'],
+  outputs: ['ui5Delete'],
+  exportAs: 'ui5SearchItem',
+})
+class SearchItemComponent {
+  /**
+        Defines the heading text of the search item.
+        */
+  text!: string;
+  /**
+        Defines the icon name of the search item.
+        */
+  icon!: string;
+  /**
+        Defines whether the search item is selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines the scope of the search item
+        */
+  scopeName!: string | undefined;
+
+  /**
+     Fired when delete button is pressed.
+    */
+  ui5Delete!: EventEmitter<void>;
+
+  private elementRef: ElementRef<SearchItem> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SearchItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchItemComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Search Message Area should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SearchMessageArea.js';
+import SearchMessageArea from '@ui5/webcomponents-fiori/dist/SearchMessageArea.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'description'])
+@Component({
+  standalone: true,
+  selector: 'ui5-search-message-area',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'description'],
+  exportAs: 'ui5SearchMessageArea',
+})
+class SearchMessageAreaComponent {
+  /**
+        Defines the text to be displayed.
+        */
+  text!: string | undefined;
+  /**
+        Defines the description text to be displayed.
+        */
+  description!: string | undefined;
+
+  private elementRef: ElementRef<SearchMessageArea> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SearchMessageArea {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchMessageAreaComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Search Scope should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SearchScope.js';
+import SearchScope from '@ui5/webcomponents-fiori/dist/SearchScope.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'selected'])
+@Component({
+  standalone: true,
+  selector: 'ui5-search-scope',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'selected'],
+  exportAs: 'ui5SearchScope',
+})
+class SearchScopeComponent {
+  /**
+        Defines the text of the component.
+        */
+  text!: string;
+  /**
+        Indicates whether the item is selected
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+
+  private elementRef: ElementRef<SearchScope> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SearchScope {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchScopeComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Search should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/Search.js';
+import Search from '@ui5/webcomponents-fiori/dist/Search.js';
+import { SearchFieldScopeSelectionChangeDetails } from '@ui5/webcomponents-fiori/dist/SearchField.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs([
+  'loading',
+  'noTypeahead',
+  'open',
+  'showClearIcon',
+  'collapsed',
+  'value',
+  'placeholder',
+  'accessibleName',
+  'searchIconTooltip',
+])
+@ProxyOutputs([
+  'open: ui5Open',
+  'close: ui5Close',
+  'input: ui5Input',
+  'scope-change: ui5ScopeChange',
+  'search: ui5Search',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-search',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'loading',
+    'noTypeahead',
+    'open',
+    'showClearIcon',
+    'collapsed',
+    'value',
+    'placeholder',
+    'accessibleName',
+    'searchIconTooltip',
+  ],
+  outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
+  exportAs: 'ui5Search',
+})
+class SearchComponent {
+  /**
+        Indicates whether a loading indicator should be shown in the popup.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines whether the value will be autcompleted to match an item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  noTypeahead!: boolean;
+  /**
+        Indicates whether the items picker is open.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
+  /**
+        Defines whether the clear icon of the search will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showClearIcon!: boolean;
+  /**
+        Defines whether the component is collapsed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  collapsed!: boolean;
+  /**
+        Defines the value of the component.
+
+**Note:** The property is updated upon typing.
+        */
+  value!: string;
+  /**
+        Defines a short hint intended to aid the user with data entry when the
+component has no value.
+        */
+  placeholder!: string | undefined;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Defines the tooltip of the search icon component.
+        */
+  searchIconTooltip!: string | undefined;
+
+  /**
+     Fired when the popup is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired when the popup is closed.
+    */
+  ui5Close!: EventEmitter<void>;
+  /**
+     Fired when typing in input or clear icon is pressed.
+    */
+  ui5Input!: EventEmitter<void>;
+  /**
+     Fired when the scope has changed.
+    */
+  ui5ScopeChange!: EventEmitter<SearchFieldScopeSelectionChangeDetails>;
+  /**
+     Fired when the user has triggered search with Enter key or Search Button press.
+    */
+  ui5Search!: EventEmitter<void>;
+
+  private elementRef: ElementRef<Search> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): Search {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchComponent };
 "
 `;
 
@@ -1315,16 +1627,17 @@ exports[`Snapshot test Fiori Shell Bar Item should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import {
   default as ShellBarItem,
+  ShellBarItemAccessibilityAttributes,
   ShellBarItemClickEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['icon', 'text', 'count'])
+@ProxyInputs(['icon', 'text', 'count', 'accessibilityAttributes'])
 @ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-shellbar-item',
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'text', 'count'],
+  inputs: ['icon', 'text', 'count', 'accessibilityAttributes'],
   outputs: ['ui5Click'],
   exportAs: 'ui5ShellbarItem',
 })
@@ -1343,6 +1656,23 @@ class ShellBarItemComponent {
         Defines the count displayed in the top-right corner.
         */
   count!: string | undefined;
+  /**
+        Defines additional accessibility attributes on Shellbar Items.
+
+The accessibility attributes support the following values:
+
+- **expanded**: Indicates whether the button, or another grouping element it controls,
+is currently expanded or collapsed.
+Accepts the following string values: \`true\` or \`false\`.
+
+- **hasPopup**: Indicates the availability and type of interactive popup element,
+such as menu or dialog, that can be triggered by the button.
+
+- **controls**: Identifies the element (or elements) whose contents
+or presence are controlled by the component.
+Accepts a lowercase string value, referencing the ID of the element it controls.
+        */
+  accessibilityAttributes!: ShellBarItemAccessibilityAttributes;
 
   /**
      Fired, when the item is pressed.
@@ -1968,13 +2298,13 @@ import {
   SideNavigationSelectionChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['collapsed'])
+@ProxyInputs(['collapsed', 'accessibleName'])
 @ProxyOutputs(['selection-change: ui5SelectionChange'])
 @Component({
   standalone: true,
   selector: 'ui5-side-navigation',
   template: '<ng-content></ng-content>',
-  inputs: ['collapsed'],
+  inputs: ['collapsed', 'accessibleName'],
   outputs: ['ui5SelectionChange'],
   exportAs: 'ui5SideNavigation',
 })
@@ -1984,6 +2314,10 @@ class SideNavigationComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   collapsed!: boolean;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
 
   /**
      Fired when the selection has changed via user interaction
@@ -2325,7 +2659,11 @@ import { NotificationListItemComponent } from \\"@ui5/webcomponents-ngx/fiori/no
 import { PageComponent } from \\"@ui5/webcomponents-ngx/fiori/page\\";
 import { ProductSwitchComponent } from \\"@ui5/webcomponents-ngx/fiori/product-switch\\";
 import { ProductSwitchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/product-switch-item\\";
-import { SearchFieldScopeOptionComponent } from \\"@ui5/webcomponents-ngx/fiori/search-field-scope-option\\";
+import { SearchComponent } from \\"@ui5/webcomponents-ngx/fiori/search\\";
+import { SearchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/search-item\\";
+import { SearchItemGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/search-item-group\\";
+import { SearchMessageAreaComponent } from \\"@ui5/webcomponents-ngx/fiori/search-message-area\\";
+import { SearchScopeComponent } from \\"@ui5/webcomponents-ngx/fiori/search-scope\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
 import { ShellBarSpacerComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-spacer\\";
@@ -2368,7 +2706,11 @@ const imports = [
   PageComponent,
   ProductSwitchComponent,
   ProductSwitchItemComponent,
-  SearchFieldScopeOptionComponent,
+  SearchComponent,
+  SearchItemComponent,
+  SearchItemGroupComponent,
+  SearchMessageAreaComponent,
+  SearchScopeComponent,
   ShellBarComponent,
   ShellBarItemComponent,
   ShellBarSpacerComponent,
@@ -2737,6 +3079,7 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
   'subtitleText',
   'description',
   'selected',
+  'loading',
 ])
 @Component({
   standalone: true,
@@ -2749,6 +3092,7 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
     'subtitleText',
     'description',
     'selected',
+    'loading',
   ],
   exportAs: 'ui5UserMenuAccount',
 })
@@ -2778,6 +3122,11 @@ class UserMenuAccountComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
+  /**
+        Indicates whether a loading indicator should be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
 
   private elementRef: ElementRef<UserMenuAccount> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2809,10 +3158,10 @@ exports[`Snapshot test Fiori User Menu Item should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
 import UserMenuItem from '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
+  MenuItemAccessibilityAttributes,
 } from '@ui5/webcomponents/dist/MenuItem.js';
 @ProxyInputs([
   'type',
@@ -2881,7 +3230,7 @@ The following fields are supported:
 
 - **role**: Defines the role of the menu item. If not set, menu item will have default role=\\"menuitem\\".
         */
-  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  accessibilityAttributes!: MenuItemAccessibilityAttributes;
   /**
         The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.

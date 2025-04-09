@@ -179,8 +179,10 @@ Up to three Latin letters can be displayed as initials.
   size!: 'XS' | 'S' | 'M' | 'L' | 'XL';
   /**
         Defines the background color of the desired image.
+If \`colorScheme\` is set to \`Auto\`, the avatar will be displayed with the \`Accent6\` color.
         */
   colorScheme!:
+    | 'Auto'
     | 'Accent1'
     | 'Accent2'
     | 'Accent3'
@@ -1869,9 +1871,12 @@ import {
   'showClearIcon',
   'accessibleName',
   'accessibleNameRef',
+  'open',
 ])
 @ProxyOutputs([
   'change: ui5Change',
+  'open: ui5Open',
+  'close: ui5Close',
   'input: ui5Input',
   'selection-change: ui5SelectionChange',
 ])
@@ -1893,8 +1898,15 @@ import {
     'showClearIcon',
     'accessibleName',
     'accessibleNameRef',
+    'open',
   ],
-  outputs: ['ui5Change', 'ui5Input', 'ui5SelectionChange'],
+  outputs: [
+    'ui5Change',
+    'ui5Open',
+    'ui5Close',
+    'ui5Input',
+    'ui5SelectionChange',
+  ],
   exportAs: 'ui5Combobox',
   hostDirectives: [GenericControlValueAccessor],
   host: {
@@ -1969,11 +1981,24 @@ but still provides visual feedback upon user interaction.
         Receives id(or many ids) of the elements that label the component
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Indicates whether the items picker is open.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
 
   /**
      Fired when the input operation has finished by pressing Enter, focusout or an item is selected.
     */
   ui5Change!: EventEmitter<void>;
+  /**
+     Fired when the dropdown is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired when the dropdown is closed.
+    */
+  ui5Close!: EventEmitter<void>;
   /**
      Fired when typing in input or clear icon is pressed.
 
@@ -3396,6 +3421,8 @@ import {
   'maxlength',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'showClearIcon',
   'open',
 ])
@@ -3425,6 +3452,8 @@ import {
     'maxlength',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'showClearIcon',
     'open',
   ],
@@ -3520,6 +3549,14 @@ that use different soft keyboard layouts depending on the given input type.
         Receives id(or many ids) of the elements that label the input.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines whether the clear icon of the input will be shown.
         */
@@ -4420,12 +4457,12 @@ exports[`Snapshot test Main Menu Item should match the snapshot 1`] = `
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import '@ui5/webcomponents/dist/MenuItem.js';
 import {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
   default as MenuItem,
+  MenuItemAccessibilityAttributes,
 } from '@ui5/webcomponents/dist/MenuItem.js';
 @ProxyInputs([
   'type',
@@ -4494,7 +4531,7 @@ The following fields are supported:
 
 - **role**: Defines the role of the menu item. If not set, menu item will have default role=\\"menuitem\\".
         */
-  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  accessibilityAttributes!: MenuItemAccessibilityAttributes;
   /**
         The navigated state of the list item.
 If set to \`true\`, a navigation indicator is displayed at the end of the list item.
@@ -4966,6 +5003,7 @@ import {
   'accessibleName',
   'accessibleNameRef',
   'showSelectAll',
+  'open',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -4993,6 +5031,7 @@ import {
     'accessibleName',
     'accessibleNameRef',
     'showSelectAll',
+    'open',
   ],
   outputs: [
     'ui5Change',
@@ -5084,6 +5123,11 @@ but still provides visual feedback upon user interaction.
         */
   @InputDecorator({ transform: booleanAttribute })
   showSelectAll!: boolean;
+  /**
+        Indicates whether the items picker is open.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -5165,6 +5209,8 @@ import {
   'maxlength',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'showClearIcon',
   'open',
   'showValueHelpIcon',
@@ -5197,6 +5243,8 @@ import {
     'maxlength',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'showClearIcon',
     'open',
     'showValueHelpIcon',
@@ -5297,6 +5345,14 @@ the value is sent as the first element in the form data, even if it's empty.
         Receives id(or many ids) of the elements that label the input.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines whether the clear icon of the input will be shown.
         */
@@ -6718,12 +6774,14 @@ but still provides visual feedback upon user interaction.
   /**
         Defines the value of the component:
 
-- when get - returns the value of the component, e.g. the \`value\` property of the selected option or its text content.
-
+- when get - returns the value of the component or the value/text content of the selected option.
 - when set - selects the option with matching \`value\` property or text content.
 
+**Note:** Use either the Select's value or the Options' selected property.
+Mixed usage could result in unexpected behavior.
+
 **Note:** If the given value does not match any existing option,
-the first option will get selected.
+no option will be selected and the Select component will be displayed as empty.
         */
   value!: string;
 
@@ -7824,13 +7882,13 @@ exports[`Snapshot test Main Table Growing should match the snapshot 1`] = `
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableGrowing.js';
 import TableGrowing from '@ui5/webcomponents/dist/TableGrowing.js';
-@ProxyInputs(['type', 'growingText', 'growingSubText'])
+@ProxyInputs(['mode', 'text', 'subtext'])
 @ProxyOutputs(['load-more: ui5LoadMore'])
 @Component({
   standalone: true,
   selector: 'ui5-table-growing',
   template: '<ng-content></ng-content>',
-  inputs: ['type', 'growingText', 'growingSubText'],
+  inputs: ['mode', 'text', 'subtext'],
   outputs: ['ui5LoadMore'],
   exportAs: 'ui5TableGrowing',
 })
@@ -7845,20 +7903,20 @@ Button - Shows a More button at the bottom of the table, pressing it will load m
 Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,
 a growing button will be rendered instead to ensure growing functionality.
         */
-  type!: 'Button' | 'Scroll';
+  mode!: 'Button' | 'Scroll';
   /**
         Defines the text that will be displayed inside the growing button.
-Has no effect when type is set to \`Scroll\`.
+Has no effect when mode is set to \`Scroll\`.
 
-**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the
+**Note:** When not provided and the mode is set to Button, a default text is displayed, corresponding to the
 current language.
         */
-  growingText!: string | undefined;
+  text!: string | undefined;
   /**
-        Defines the text that will be displayed below the \`growingText\` inside the growing button.
-Has no effect when type is set to Scroll.
+        Defines the text that will be displayed below the \`text\` inside the growing button.
+Has no effect when mode is set to Scroll.
         */
-  growingSubText!: string | undefined;
+  subtext!: string | undefined;
 
   /**
      Fired when the growing button is pressed or the user scrolls to the end of the table.
@@ -8078,20 +8136,23 @@ exports[`Snapshot test Main Table Row Action Navigation should match the snapsho
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableRowActionNavigation.js';
 import TableRowActionNavigation from '@ui5/webcomponents/dist/TableRowActionNavigation.js';
 @ProxyInputs(['invisible', 'interactive'])
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-table-row-action-navigation',
   template: '<ng-content></ng-content>',
   inputs: ['invisible', 'interactive'],
+  outputs: ['ui5Click'],
   exportAs: 'ui5TableRowActionNavigation',
 })
 class TableRowActionNavigationComponent {
@@ -8107,6 +8168,11 @@ class TableRowActionNavigationComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   interactive!: boolean;
+
+  /**
+     Fired when a row action is clicked.
+    */
+  ui5Click!: EventEmitter<void>;
 
   private elementRef: ElementRef<TableRowActionNavigation> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8129,20 +8195,23 @@ exports[`Snapshot test Main Table Row Action should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableRowAction.js';
 import TableRowAction from '@ui5/webcomponents/dist/TableRowAction.js';
 @ProxyInputs(['invisible', 'icon', 'text'])
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-table-row-action',
   template: '<ng-content></ng-content>',
   inputs: ['invisible', 'icon', 'text'],
+  outputs: ['ui5Click'],
   exportAs: 'ui5TableRowAction',
 })
 class TableRowActionComponent {
@@ -8168,6 +8237,11 @@ class TableRowActionComponent {
 **Note:** For row actions to work properly, this property is mandatory.
         */
   text!: string;
+
+  /**
+     Fired when a row action is clicked.
+    */
+  ui5Click!: EventEmitter<void>;
 
   private elementRef: ElementRef<TableRowAction> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8216,7 +8290,7 @@ class TableRowComponent {
   /**
         Defines the position of the row related to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
         */
-  position!: number;
+  position!: number | undefined;
   /**
         Defines the interactive state of the row.
         */
@@ -8535,7 +8609,6 @@ class TableComponent {
 Available options are:
 
 <code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.
-
 <code>Popin</code> - Columns are shown as pop-ins instead of regular columns.
         */
   overflowMode!: 'Scroll' | 'Popin';

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.6-rc.10...v0.4.6) (2025-04-09)
+
+**Note:** Version bump only for package @ui5/webcomponents-schema-parser
+
 ## [0.4.6-rc.10](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.6-rc.9...v0.4.6-rc.10) (2025-04-09)
 
 **Note:** Version bump only for package @ui5/webcomponents-schema-parser

@@ -519,7 +519,9 @@ exports[`Snapshot test Fiori Illustrated Message should match the snapshot 1`] =
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
@@ -531,12 +533,20 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
   'subtitleText',
   'titleText',
   'accessibleNameRef',
+  'decorative',
 ])
 @Component({
   standalone: true,
   selector: 'ui5-illustrated-message',
   template: '<ng-content></ng-content>',
-  inputs: ['name', 'design', 'subtitleText', 'titleText', 'accessibleNameRef'],
+  inputs: [
+    'name',
+    'design',
+    'subtitleText',
+    'titleText',
+    'accessibleNameRef',
+    'decorative',
+  ],
   exportAs: 'ui5IllustratedMessage',
 })
 class IllustratedMessageComponent {
@@ -589,6 +599,13 @@ elements of the component are displayed differently on the different breakpoints
         Receives id(or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines whether the illustration is decorative.
+
+When set to \`true\`, the attributes \`role=\\"presentation\\"\` and \`aria-hidden=\\"true\\"\` are applied to the SVG element.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  decorative!: boolean;
 
   private elementRef: ElementRef<IllustratedMessage> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1501,11 +1518,10 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'noTypeahead',
   'open',
   'showClearIcon',
-  'collapsed',
   'value',
   'placeholder',
   'accessibleName',
-  'searchIconTooltip',
+  'accessibleDescription',
 ])
 @ProxyOutputs([
   'open: ui5Open',
@@ -1523,11 +1539,10 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'noTypeahead',
     'open',
     'showClearIcon',
-    'collapsed',
     'value',
     'placeholder',
     'accessibleName',
-    'searchIconTooltip',
+    'accessibleDescription',
   ],
   outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
   exportAs: 'ui5Search',
@@ -1554,11 +1569,6 @@ class SearchComponent {
   @InputDecorator({ transform: booleanAttribute })
   showClearIcon!: boolean;
   /**
-        Defines whether the component is collapsed.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  collapsed!: boolean;
-  /**
         Defines the value of the component.
 
 **Note:** The property is updated upon typing.
@@ -1574,9 +1584,9 @@ component has no value.
         */
   accessibleName!: string | undefined;
   /**
-        Defines the tooltip of the search icon component.
+        Defines the accessible ARIA description of the field.
         */
-  searchIconTooltip!: string | undefined;
+  accessibleDescription!: string | undefined;
 
   /**
      Fired when the popup is opened.
@@ -1648,8 +1658,8 @@ class ShellBarItemComponent {
   icon!: string | undefined;
   /**
         Defines the item text.
- 
-  **Note:** The text is only displayed inside the overflow popover list view.
+
+**Note:** The text is only displayed inside the overflow popover list view.
         */
   text!: string | undefined;
   /**
@@ -1692,6 +1702,133 @@ Accepts a lowercase string value, referencing the ID of the element it controls.
   }
 }
 export { ShellBarItemComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Shell Bar Search should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import { SearchFieldScopeSelectionChangeDetails } from '@ui5/webcomponents-fiori/dist/SearchField.js';
+import '@ui5/webcomponents-fiori/dist/ShellBarSearch.js';
+import ShellBarSearch from '@ui5/webcomponents-fiori/dist/ShellBarSearch.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs([
+  'loading',
+  'noTypeahead',
+  'open',
+  'showClearIcon',
+  'value',
+  'placeholder',
+  'accessibleName',
+  'accessibleDescription',
+])
+@ProxyOutputs([
+  'open: ui5Open',
+  'close: ui5Close',
+  'input: ui5Input',
+  'scope-change: ui5ScopeChange',
+  'search: ui5Search',
+])
+@Component({
+  standalone: true,
+  selector: 'ui5-shellbar-search',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'loading',
+    'noTypeahead',
+    'open',
+    'showClearIcon',
+    'value',
+    'placeholder',
+    'accessibleName',
+    'accessibleDescription',
+  ],
+  outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
+  exportAs: 'ui5ShellbarSearch',
+})
+class ShellBarSearchComponent {
+  /**
+        Indicates whether a loading indicator should be shown in the popup.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Defines whether the value will be autcompleted to match an item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  noTypeahead!: boolean;
+  /**
+        Indicates whether the items picker is open.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  open!: boolean;
+  /**
+        Defines whether the clear icon of the search will be shown.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showClearIcon!: boolean;
+  /**
+        Defines the value of the component.
+
+**Note:** The property is updated upon typing.
+        */
+  value!: string;
+  /**
+        Defines a short hint intended to aid the user with data entry when the
+component has no value.
+        */
+  placeholder!: string | undefined;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Defines the accessible ARIA description of the field.
+        */
+  accessibleDescription!: string | undefined;
+
+  /**
+     Fired when the popup is opened.
+    */
+  ui5Open!: EventEmitter<void>;
+  /**
+     Fired when the popup is closed.
+    */
+  ui5Close!: EventEmitter<void>;
+  /**
+     Fired when typing in input or clear icon is pressed.
+    */
+  ui5Input!: EventEmitter<void>;
+  /**
+     Fired when the scope has changed.
+    */
+  ui5ScopeChange!: EventEmitter<SearchFieldScopeSelectionChangeDetails>;
+  /**
+     Fired when the user has triggered search with Enter key or Search Button press.
+    */
+  ui5Search!: EventEmitter<void>;
+
+  private elementRef: ElementRef<ShellBarSearch> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ShellBarSearch {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ShellBarSearchComponent };
 "
 `;
 
@@ -1751,16 +1888,19 @@ import {
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail,
+  ShellBarSearchFieldToggleEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
+  'hideSearchButton',
+  'disableSearchCollapse',
   'primaryTitle',
   'secondaryTitle',
   'notificationsCount',
   'showNotifications',
   'showProductSwitch',
-  'showSearchField',
   'accessibilityAttributes',
+  'showSearchField',
 ])
 @ProxyOutputs([
   'notifications-click: ui5NotificationsClick',
@@ -1769,6 +1909,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'logo-click: ui5LogoClick',
   'menu-item-click: ui5MenuItemClick',
   'search-button-click: ui5SearchButtonClick',
+  'search-field-toggle: ui5SearchFieldToggle',
   'content-item-visibility-change: ui5ContentItemVisibilityChange',
 ])
 @Component({
@@ -1776,13 +1917,15 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   selector: 'ui5-shellbar',
   template: '<ng-content></ng-content>',
   inputs: [
+    'hideSearchButton',
+    'disableSearchCollapse',
     'primaryTitle',
     'secondaryTitle',
     'notificationsCount',
     'showNotifications',
     'showProductSwitch',
-    'showSearchField',
     'accessibilityAttributes',
+    'showSearchField',
   ],
   outputs: [
     'ui5NotificationsClick',
@@ -1791,11 +1934,26 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'ui5LogoClick',
     'ui5MenuItemClick',
     'ui5SearchButtonClick',
+    'ui5SearchFieldToggle',
     'ui5ContentItemVisibilityChange',
   ],
   exportAs: 'ui5Shellbar',
 })
 class ShellBarComponent {
+  /**
+        Defines the visibility state of the search button.
+
+**Note:** The \`hideSearchButton\` property is in an experimental state and is a subject to change.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  hideSearchButton!: boolean;
+  /**
+        Disables the automatic search field expansion/collapse when the available space is not enough.
+
+**Note:** The \`disableSearchCollapse\` property is in an experimental state and is a subject to change.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  disableSearchCollapse!: boolean;
   /**
         Defines the \`primaryTitle\`.
 
@@ -1824,13 +1982,6 @@ displayed in the notification icon top-right corner.
   @InputDecorator({ transform: booleanAttribute })
   showProductSwitch!: boolean;
   /**
-        Defines, if the Search Field would be displayed when there is a valid \`searchField\` slot.
-
-**Note:** By default the Search Field is not displayed.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  showSearchField!: boolean;
-  /**
         Defines additional accessibility attributes on different areas of the component.
 
 The accessibilityAttributes object has the following fields,
@@ -1842,6 +1993,7 @@ where each field is an object supporting one or more accessibility attributes:
 - **product** - \`product.expanded\` and \`product.hasPopup\`.
 - **search** - \`search.hasPopup\`.
 - **overflow** - \`overflow.expanded\` and \`overflow.hasPopup\`.
+- **branding** - \`branding.name\`.
 
 The accessibility attributes support the following values:
 
@@ -1860,6 +2012,13 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 Accepts any string.
         */
   accessibilityAttributes!: ShellBarAccessibilityAttributes;
+  /**
+        Defines, if the Search Field would be displayed when there is a valid \`searchField\` slot.
+
+**Note:** By default the Search Field is not displayed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showSearchField!: boolean;
 
   /**
      Fired, when the notification icon is activated.
@@ -1891,6 +2050,10 @@ Accepts any string.
 **Note:** You can prevent expanding/collapsing of the search field by calling \`event.preventDefault()\`.
     */
   ui5SearchButtonClick!: EventEmitter<ShellBarSearchButtonEventDetail>;
+  /**
+     Fired, when the search field is expanded or collapsed.
+    */
+  ui5SearchFieldToggle!: EventEmitter<ShellBarSearchFieldToggleEventDetail>;
   /**
      Fired, when an item from the content slot is hidden or shown.
 **Note:** The \`content-item-visibility-change\` event is in an experimental state and is a subject to change.
@@ -1949,7 +2112,8 @@ focused, and it is not in the tab chain.
   /**
         Defines the tooltip of the component.
 
-A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+A tooltip attribute should be provided, in order to represent meaning/function,
+when the component is collapsed (\\"icon only\\" design is visualized) or the item text is truncated.
         */
   tooltip!: string | undefined;
   /**
@@ -2038,7 +2202,8 @@ focused, and it is not in the tab chain.
   /**
         Defines the tooltip of the component.
 
-A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+A tooltip attribute should be provided, in order to represent meaning/function,
+when the component is collapsed (\\"icon only\\" design is visualized) or the item text is truncated.
         */
   tooltip!: string | undefined;
   /**
@@ -2193,7 +2358,8 @@ focused, and it is not in the tab chain.
   /**
         Defines the tooltip of the component.
 
-A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+A tooltip attribute should be provided, in order to represent meaning/function,
+when the component is collapsed (\\"icon only\\" design is visualized) or the item text is truncated.
         */
   tooltip!: string | undefined;
   /**
@@ -2666,6 +2832,7 @@ import { SearchMessageAreaComponent } from \\"@ui5/webcomponents-ngx/fiori/searc
 import { SearchScopeComponent } from \\"@ui5/webcomponents-ngx/fiori/search-scope\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
+import { ShellBarSearchComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-search\\";
 import { ShellBarSpacerComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-spacer\\";
 import { SideNavigationComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation\\";
 import { SideNavigationGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/side-navigation-group\\";
@@ -2713,6 +2880,7 @@ const imports = [
   SearchScopeComponent,
   ShellBarComponent,
   ShellBarItemComponent,
+  ShellBarSearchComponent,
   ShellBarSpacerComponent,
   SideNavigationComponent,
   SideNavigationGroupComponent,

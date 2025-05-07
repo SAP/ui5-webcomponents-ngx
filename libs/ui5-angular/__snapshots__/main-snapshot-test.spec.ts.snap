@@ -522,6 +522,7 @@ import '@ui5/webcomponents/dist/Button.js';
 import {
   default as Button,
   ButtonAccessibilityAttributes,
+  ButtonClickEventDetail,
 } from '@ui5/webcomponents/dist/Button.js';
 @ProxyInputs([
   'design',
@@ -651,13 +652,11 @@ Accepts a lowercase string value.
   accessibleRole!: 'Button' | 'Link';
 
   /**
-     Fired when the component is activated either with a
-mouse/tap or by using the Enter or Space key.
+     Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
 
-**Note:** The event will not be fired if the \`disabled\`
-property is set to \`true\`.
+**Note:** The event will not be fired if the \`disabled\` property is set to \`true\`.
     */
-  ui5Click!: EventEmitter<Event>;
+  ui5Click!: EventEmitter<ButtonClickEventDetail>;
 
   private elementRef: ElementRef<Button> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1391,6 +1390,9 @@ and not in the tab chain. This setting is used for forms in review mode.
   displayOnly!: boolean;
   /**
         Defines whether the component is required.
+
+**Note:** We advise against using the text property of the checkbox when there is a
+label associated with it to avoid having two required asterisks.
         */
   @InputDecorator({ transform: booleanAttribute })
   required!: boolean;
@@ -3129,12 +3131,12 @@ exports[`Snapshot test Main Form Group should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/FormGroup.js';
 import FormGroup from '@ui5/webcomponents/dist/FormGroup.js';
-@ProxyInputs(['headerText', 'columnSpan'])
+@ProxyInputs(['headerText', 'headerLevel', 'columnSpan'])
 @Component({
   standalone: true,
   selector: 'ui5-form-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'columnSpan'],
+  inputs: ['headerText', 'headerLevel', 'columnSpan'],
   exportAs: 'ui5FormGroup',
 })
 class FormGroupComponent {
@@ -3142,6 +3144,11 @@ class FormGroupComponent {
         Defines header text of the component.
         */
   headerText!: string | undefined;
+  /**
+        Defines the compoennt heading level,
+set by the \`headerText\`.
+        */
+  headerLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   /**
         Defines column span of the component,
 e.g how many columns the group should span to.
@@ -3221,15 +3228,35 @@ exports[`Snapshot test Main Form should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Form.js';
 import Form from '@ui5/webcomponents/dist/Form.js';
-@ProxyInputs(['layout', 'labelSpan', 'emptySpan', 'headerText', 'itemSpacing'])
+@ProxyInputs([
+  'accessibleName',
+  'layout',
+  'labelSpan',
+  'emptySpan',
+  'headerText',
+  'headerLevel',
+  'itemSpacing',
+])
 @Component({
   standalone: true,
   selector: 'ui5-form',
   template: '<ng-content></ng-content>',
-  inputs: ['layout', 'labelSpan', 'emptySpan', 'headerText', 'itemSpacing'],
+  inputs: [
+    'accessibleName',
+    'layout',
+    'labelSpan',
+    'emptySpan',
+    'headerText',
+    'headerLevel',
+    'itemSpacing',
+  ],
   exportAs: 'ui5Form',
 })
 class FormComponent {
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
   /**
         Defines the number of columns to distribute the form content by breakpoint.
 
@@ -3268,6 +3295,11 @@ The \`emptySpan\` provides additional layout flexibility by defining empty space
 **Note:** The property gets overridden by the \`header\` slot.
         */
   headerText!: string | undefined;
+  /**
+        Defines the compoennt heading level,
+set by the \`headerText\`.
+        */
+  headerLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   /**
         Defines the vertical spacing between form items.
 
@@ -4078,6 +4110,7 @@ import ListItemStandard from '@ui5/webcomponents/dist/ListItemStandard.js';
   'tooltip',
   'highlight',
   'selected',
+  'text',
   'description',
   'icon',
   'iconEnd',
@@ -4085,6 +4118,7 @@ import ListItemStandard from '@ui5/webcomponents/dist/ListItemStandard.js';
   'additionalTextState',
   'movable',
   'accessibleName',
+  'wrappingType',
 ])
 @ProxyOutputs(['detail-click: ui5DetailClick'])
 @Component({
@@ -4098,6 +4132,7 @@ import ListItemStandard from '@ui5/webcomponents/dist/ListItemStandard.js';
     'tooltip',
     'highlight',
     'selected',
+    'text',
     'description',
     'icon',
     'iconEnd',
@@ -4105,6 +4140,7 @@ import ListItemStandard from '@ui5/webcomponents/dist/ListItemStandard.js';
     'additionalTextState',
     'movable',
     'accessibleName',
+    'wrappingType',
   ],
   outputs: ['ui5DetailClick'],
   exportAs: 'ui5Li',
@@ -4150,6 +4186,10 @@ Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Cri
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
   /**
+        Defines the text of the component.
+        */
+  text!: string | undefined;
+  /**
         Defines the description displayed right under the item text, if such is present.
         */
   description!: string | undefined;
@@ -4191,6 +4231,20 @@ Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Cri
 Note: If not provided a default text alternative will be set, if present.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when the user clicks on the detail button when type is \`Detail\`.
@@ -4690,7 +4744,14 @@ import {
   MenuBeforeOpenEventDetail,
   MenuItemClickEventDetail,
 } from '@ui5/webcomponents/dist/Menu.js';
-@ProxyInputs(['headerText', 'open', 'loading', 'loadingDelay', 'opener'])
+@ProxyInputs([
+  'headerText',
+  'open',
+  'horizontalAlign',
+  'loading',
+  'loadingDelay',
+  'opener',
+])
 @ProxyOutputs([
   'item-click: ui5ItemClick',
   'before-open: ui5BeforeOpen',
@@ -4702,7 +4763,14 @@ import {
   standalone: true,
   selector: 'ui5-menu',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'open', 'loading', 'loadingDelay', 'opener'],
+  inputs: [
+    'headerText',
+    'open',
+    'horizontalAlign',
+    'loading',
+    'loadingDelay',
+    'opener',
+  ],
   outputs: [
     'ui5ItemClick',
     'ui5BeforeOpen',
@@ -4718,17 +4786,21 @@ class MenuComponent {
         */
   headerText!: string | undefined;
   /**
-        Indicates if the menu is open
+        Indicates if the menu is open.
         */
   @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
+  /**
+        Determines the horizontal alignment of the menu relative to its opener control.
+        */
+  horizontalAlign!: 'Center' | 'Start' | 'End' | 'Stretch';
   /**
         Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
         */
   @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
   /**
-        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
         */
   loadingDelay!: number;
   /**
@@ -8000,7 +8072,6 @@ import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
   'horizontalAlign',
   'width',
   'minWidth',
-  'maxWidth',
   'importance',
   'popinText',
   'sortIndicator',
@@ -8014,7 +8085,6 @@ import TableHeaderCell from '@ui5/webcomponents/dist/TableHeaderCell.js';
     'horizontalAlign',
     'width',
     'minWidth',
-    'maxWidth',
     'importance',
     'popinText',
     'sortIndicator',
@@ -8028,22 +8098,28 @@ class TableHeaderCellComponent {
         */
   horizontalAlign!: 'Left' | 'Start' | 'Right' | 'End' | 'Center' | undefined;
   /**
-        Defines the width of column.
+        Defines the width of the column.
+
+By default, the column will grow and shrink according to the available space.
+This will distribute the space proportionally among all columns with no specific width set.
+
+See [\\\\<length\\\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) and
+[\\\\<percentage\\\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) for possible width values.
         */
-  width!: string;
+  width!: string | undefined;
   /**
         Defines the minimum width of the column.
 
 If the table is in \`Popin\` mode and the minimum width does not fit anymore,
 the column will move into the popin.
 
-**Note:** If \`minWidth\` has the \`auto\` value, the table ensures that the column is wider than at least \`3rem\`.
+By default, the table prevents the column from becoming too small.
+Changing this value to a small value might lead to accessibility issues.
+
+**Note:** This property only takes effect for columns with a [\\\\<percentage\\\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) value
+or the default width.
         */
-  minWidth!: string;
-  /**
-        Defines the maximum width of the column.
-        */
-  maxWidth!: string;
+  minWidth!: string | undefined;
   /**
         Defines the importance of the column.
 
@@ -9342,7 +9418,10 @@ exports[`Snapshot test Main Toggle Button should match the snapshot 1`] = `
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-import { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import {
+  ButtonAccessibilityAttributes,
+  ButtonClickEventDetail,
+} from '@ui5/webcomponents/dist/Button.js';
 import '@ui5/webcomponents/dist/ToggleButton.js';
 import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
 @ProxyInputs([
@@ -9480,13 +9559,11 @@ Accepts a lowercase string value.
   pressed!: boolean;
 
   /**
-     Fired when the component is activated either with a
-mouse/tap or by using the Enter or Space key.
+     Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
 
-**Note:** The event will not be fired if the \`disabled\`
-property is set to \`true\`.
+**Note:** The event will not be fired if the \`disabled\` property is set to \`true\`.
     */
-  ui5Click!: EventEmitter<Event>;
+  ui5Click!: EventEmitter<ButtonClickEventDetail>;
 
   private elementRef: ElementRef<ToggleButton> = inject(ElementRef);
   private zone = inject(NgZone);

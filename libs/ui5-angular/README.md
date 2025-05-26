@@ -1,11 +1,11 @@
 ## Ui5 Webcomponents for Angular
 
 ### Description
-This library represents a set of Angular components that wrap the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) library. Every component is compatible with vanilla ui5-webcomponents
-and can be used in the same way, but also provides a set of Angular specific approaches, for a seamless integration with Angular.
+This library provides a set of Angular components that wrap the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) library. Each component is fully compatible with the original UI5 Web Components
+and can be used in the same way. Additionally, the library offers Angular-specific features for seamless integration.
 
 ### Installation
-For automated installation run the following command in your Angular project:
+To install the library in your Angular project, run:
 ```bash
   ng add @ui5/webcomponents-ngx
 ```
@@ -13,36 +13,43 @@ For automated installation run the following command in your Angular project:
 ### Usage
 
 #### Components
-There are two main modules in this library: `UiMainModule` and `Ui5FioriModule`, which are used to import the components as a batch. If you need to import all of the components, you can use the `Ui5WebcomponentsModule` which imports both of the above modules.
-All the components that are included in this library, are standalone and can be used as such, by importing from their respective secondary entrypoints of the library.
+The library offers several modules:
+- `Ui5MainModule`
+- `Ui5FioriModule`
+- `Ui5AiModule`
+
+You can import these modules individually as needed. If you want to import all components at once, use the `Ui5WebcomponentsModule`.
+
+All components are also available as standalone modules via their respective secondary entry points.
 
 ```typescript
-import { Ui5MainModule } from '@ui5/webcomponents-ngx/main'; // Main module import
-import { Ui5FioriModule } from '@ui5/webcomponents-ngx/fiori'; // Fiori module import
-import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx'; // All components import
+import { Ui5MainModule } from '@ui5/webcomponents-ngx/main';
+import { Ui5FioriModule } from '@ui5/webcomponents-ngx/fiori';
+import { Ui5AoModule } from '@ui5/webcomponents-ngx/ai';
+import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 ```
 
 #### Theming
-For using theming, you need import the `Ui5ThemingModule` in your app module.
+To use theming, import the `Ui5WebcomponentsThemingModule` in your app module.
 
 ```typescript
-import { Ui5WebcomponentsThemingModule } from '@ui5/webcomponents-ngx/theming'; // Theming module import
+import { Ui5WebcomponentsThemingModule } from '@ui5/webcomponents-ngx/theming';
 
 @NgModule({
   imports: [
     BrowserModule,
-    Ui5WebcomponentsThemingModule, // Theming module import
+    Ui5WebcomponentsThemingModule,
   ]
 })
 export class AppModule { }
 ```
-**note:** ng-add schematic automatically does these steps for you, so we strongly encourage you to use it.
+**note:** The `ng add` schematic automatically performs these steps, so we strongly recommend using it.
 
 #### Other configurations
-You can configure other parts of the library, such as `language`, `animationMode` and `fetchDefaultLanguage` by using the `Ui5WebcomponentsConfigModule.forRoot`.
+You can configure options, such as `language`, `animationMode`, and `fetchDefaultLanguage` by using the `Ui5WebcomponentsConfigModule.forRoot`.
 
 ```typescript 
-import { Ui5WebcomponentsConfigModule } from '@ui5/webcomponents-ngx/config'; // Config module import
+import { Ui5WebcomponentsConfigModule } from '@ui5/webcomponents-ngx/config';
 
 @NgModule({
   imports: [

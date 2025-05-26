@@ -33,9 +33,6 @@
       ],
       "@ui5/webcomponents-ngx/*": ["libs/ui5-angular/*"],
       "@ui5/webcomponents-nx": ["libs/webcomponents-nx/src/index.ts"],
-      "@ui5/webcomponents-samples-parser": [
-        "libs/ui5-samples-parser/src/index.ts"
-      ],
       "@ui5/webcomponents-schema-parser": [
         "libs/ui5-schema-parser/src/index.ts"
       ],

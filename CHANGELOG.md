@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8-rc.4](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.8-rc.3...v0.4.8-rc.4) (2025-06-05)
+
+### Features
+
+- **deps:** update ui5 webcomponents 2.11 ([#221](https://github.com/SAP/ui5-webcomponents-ngx/issues/221)) ([e41a7da](https://github.com/SAP/ui5-webcomponents-ngx/commit/e41a7da21669f812aff52c0d95f075b483e7ef56))
+
 ## [0.4.8-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.8-rc.2...v0.4.8-rc.3) (2025-05-31)
 
 **Note:** Version bump only for package ui5-webcomponents-ngx

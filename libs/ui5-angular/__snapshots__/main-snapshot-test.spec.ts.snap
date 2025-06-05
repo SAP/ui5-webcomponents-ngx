@@ -72,12 +72,13 @@ exports[`Snapshot test Main Avatar should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Avatar.js';
 import {
   default as Avatar,
@@ -95,6 +96,7 @@ import {
   'accessibleName',
   'accessibilityAttributes',
 ])
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-avatar',
@@ -111,6 +113,7 @@ import {
     'accessibleName',
     'accessibilityAttributes',
   ],
+  outputs: ['ui5Click'],
   exportAs: 'ui5Avatar',
 })
 class AvatarComponent {
@@ -208,6 +211,14 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
         */
   accessibilityAttributes!: AvatarAccessibilityAttributes;
 
+  /**
+     Fired on mouseup, space and enter if avatar is interactive
+
+**Note:** The event will not be fired if the \`disabled\`
+property is set to \`true\`.
+    */
+  ui5Click!: EventEmitter<void>;
+
   private elementRef: ElementRef<Avatar> = inject(ElementRef);
   private zone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
@@ -235,12 +246,12 @@ exports[`Snapshot test Main Bar should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Bar.js';
 import Bar from '@ui5/webcomponents/dist/Bar.js';
-@ProxyInputs(['design'])
+@ProxyInputs(['design', 'accessibleRole'])
 @Component({
   standalone: true,
   selector: 'ui5-bar',
   template: '<ng-content></ng-content>',
-  inputs: ['design'],
+  inputs: ['design', 'accessibleRole'],
   exportAs: 'ui5Bar',
 })
 class BarComponent {
@@ -248,6 +259,16 @@ class BarComponent {
         Defines the component's design.
         */
   design!: 'Header' | 'Subheader' | 'Footer' | 'FloatingFooter';
+  /**
+        Specifies the ARIA role applied to the component for accessibility purposes.
+
+**Note:**
+
+- Set accessibleRole to \\"toolbar\\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.
+
+- If there is only one or no active element, it is recommended to avoid using the \\"toolbar\\" role, as it implies a grouping of multiple interactive controls.
+        */
+  accessibleRole!: 'Toolbar' | 'None';
 
   private elementRef: ElementRef<Bar> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2932,6 +2953,63 @@ export { DialogComponent };
 "
 `;
 
+exports[`Snapshot test Main Dynamic Date Range should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import '@ui5/webcomponents/dist/DynamicDateRange.js';
+import {
+  default as DynamicDateRange,
+  DynamicDateRangeValue,
+} from '@ui5/webcomponents/dist/DynamicDateRange.js';
+@ProxyInputs(['value', 'options'])
+@ProxyOutputs(['change: ui5Change'])
+@Component({
+  standalone: true,
+  selector: 'ui5-dynamic-date-range',
+  template: '<ng-content></ng-content>',
+  inputs: ['value', 'options'],
+  outputs: ['ui5Change'],
+  exportAs: 'ui5DynamicDateRange',
+})
+class DynamicDateRangeComponent {
+  /**
+        Defines the value object.
+        */
+  value!: DynamicDateRangeValue | undefined;
+  /**
+        Defines the options listed as a string, separated by commas and using capital case.
+Example: \\"TODAY, YESTERDAY, DATERANGE\\"
+        */
+  options!: string;
+
+  /**
+     Fired when the input operation has finished by pressing Enter or on focusout or a value is selected in the popover.
+    */
+  ui5Change!: EventEmitter<void>;
+
+  private elementRef: ElementRef<DynamicDateRange> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): DynamicDateRange {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { DynamicDateRangeComponent };
+"
+`;
+
 exports[`Snapshot test Main Expandable Text should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -3330,20 +3408,23 @@ exports[`Snapshot test Main Icon should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Icon.js';
 import Icon from '@ui5/webcomponents/dist/Icon.js';
 @ProxyInputs(['design', 'name', 'accessibleName', 'showTooltip', 'mode'])
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-icon',
   template: '<ng-content></ng-content>',
   inputs: ['design', 'name', 'accessibleName', 'showTooltip', 'mode'],
+  outputs: ['ui5Click'],
   exportAs: 'ui5Icon',
 })
 class IconComponent {
@@ -3402,6 +3483,13 @@ calculate its accessible name.
         Defines the mode of the component.
         */
   mode!: 'Image' | 'Decorative' | 'Interactive';
+
+  /**
+     Fired on mouseup, \`SPACE\` and \`ENTER\`.
+- on mouse click, the icon fires native \`click\` event
+- on \`SPACE\` and \`ENTER\`, the icon fires custom \`click\` event
+    */
+  ui5Click!: EventEmitter<void>;
 
   private elementRef: ElementRef<Icon> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -7837,12 +7925,21 @@ import Tab from '@ui5/webcomponents/dist/Tab.js';
   'icon',
   'design',
   'selected',
+  'movable',
 ])
 @Component({
   standalone: true,
   selector: 'ui5-tab',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'disabled', 'additionalText', 'icon', 'design', 'selected'],
+  inputs: [
+    'text',
+    'disabled',
+    'additionalText',
+    'icon',
+    'design',
+    'selected',
+    'movable',
+  ],
   exportAs: 'ui5Tab',
 })
 class TabComponent {
@@ -7884,6 +7981,11 @@ Available designs are: \`\\"Default\\"\`, \`\\"Neutral\\"\`, \`\\"Positive\\"\`,
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
+  /**
+        Defines if the tab is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  movable!: boolean;
 
   private elementRef: ElementRef<Tab> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -8411,13 +8513,13 @@ exports[`Snapshot test Main Table Selection Multi should match the snapshot 1`] 
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableSelectionMulti.js';
 import TableSelectionMulti from '@ui5/webcomponents/dist/TableSelectionMulti.js';
-@ProxyInputs(['selected'])
+@ProxyInputs(['selected', 'behavior'])
 @ProxyOutputs(['change: ui5Change'])
 @Component({
   standalone: true,
   selector: 'ui5-table-selection-multi',
   template: '<ng-content></ng-content>',
-  inputs: ['selected'],
+  inputs: ['selected', 'behavior'],
   outputs: ['ui5Change'],
   exportAs: 'ui5TableSelectionMulti',
 })
@@ -8426,6 +8528,10 @@ class TableSelectionMultiComponent {
         Defines the \`row-key\` values of selected rows, with each value separated by a space.
         */
   selected!: string | undefined;
+  /**
+        Defines the selection behavior.
+        */
+  behavior!: 'RowSelector' | 'RowOnly';
 
   /**
      Fired when the selection is changed by user interaction.
@@ -8460,13 +8566,13 @@ exports[`Snapshot test Main Table Selection Single should match the snapshot 1`]
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TableSelectionSingle.js';
 import TableSelectionSingle from '@ui5/webcomponents/dist/TableSelectionSingle.js';
-@ProxyInputs(['selected'])
+@ProxyInputs(['selected', 'behavior'])
 @ProxyOutputs(['change: ui5Change'])
 @Component({
   standalone: true,
   selector: 'ui5-table-selection-single',
   template: '<ng-content></ng-content>',
-  inputs: ['selected'],
+  inputs: ['selected', 'behavior'],
   outputs: ['ui5Change'],
   exportAs: 'ui5TableSelectionSingle',
 })
@@ -8475,6 +8581,10 @@ class TableSelectionSingleComponent {
         Defines the \`row-key\` value of the selected row.
         */
   selected!: string | undefined;
+  /**
+        Defines the selection behavior.
+        */
+  behavior!: 'RowSelector' | 'RowOnly';
 
   /**
      Fired when the selection is changed by user interaction.
@@ -8708,6 +8818,9 @@ Available options are:
 
   /**
      Fired when an interactive row is clicked.
+
+**Note:** This event is not fired if the \`behavior\` property of the selection component is set to \`RowOnly\`.
+In that case, use the \`change\` event of the selection component instead.
     */
   ui5RowClick!: EventEmitter<TableRowClickEventDetail>;
   /**
@@ -10590,6 +10703,7 @@ import {
   TreeItemMouseoutEventDetail,
   TreeItemMouseoverEventDetail,
   TreeItemToggleEventDetail,
+  TreeMoveEventDetail,
   TreeSelectionChangeEventDetail,
 } from '@ui5/webcomponents/dist/Tree.js';
 @ProxyInputs([
@@ -10609,6 +10723,8 @@ import {
   'item-click: ui5ItemClick',
   'item-delete: ui5ItemDelete',
   'selection-change: ui5SelectionChange',
+  'move: ui5Move',
+  'move-over: ui5MoveOver',
 ])
 @Component({
   standalone: true,
@@ -10631,6 +10747,8 @@ import {
     'ui5ItemClick',
     'ui5ItemDelete',
     'ui5SelectionChange',
+    'ui5Move',
+    'ui5MoveOver',
   ],
   exportAs: 'ui5Tree',
 })
@@ -10711,6 +10829,18 @@ when the component \`selectionMode\` property is set to \`Delete\`.
 in \`Single\`, \`SingleStart\`, \`SingleEnd\` and \`Multiple\` modes.
     */
   ui5SelectionChange!: EventEmitter<TreeSelectionChangeEventDetail>;
+  /**
+     Fired when a movable tree item is moved over a potential drop target during a drag-and-drop operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5Move!: EventEmitter<TreeMoveEventDetail>;
+  /**
+     Fired when a movable tree item is dropped onto a drop target.
+
+**Note:** The \`move\` event is fired only if there was a preceding \`move-over\` event with prevented default action.
+    */
+  ui5MoveOver!: EventEmitter<TreeMoveEventDetail>;
 
   private elementRef: ElementRef<Tree> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -10760,6 +10890,7 @@ import { DatePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-picker\\
 import { DateRangePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-range-picker\\";
 import { DateTimePickerComponent } from \\"@ui5/webcomponents-ngx/main/date-time-picker\\";
 import { DialogComponent } from \\"@ui5/webcomponents-ngx/main/dialog\\";
+import { DynamicDateRangeComponent } from \\"@ui5/webcomponents-ngx/main/dynamic-date-range\\";
 import { ExpandableTextComponent } from \\"@ui5/webcomponents-ngx/main/expandable-text\\";
 import { FileUploaderComponent } from \\"@ui5/webcomponents-ngx/main/file-uploader\\";
 import { FormComponent } from \\"@ui5/webcomponents-ngx/main/form\\";
@@ -10865,6 +10996,7 @@ const imports = [
   DateRangePickerComponent,
   DateTimePickerComponent,
   DialogComponent,
+  DynamicDateRangeComponent,
   ExpandableTextComponent,
   FileUploaderComponent,
   FormComponent,

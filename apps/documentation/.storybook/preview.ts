@@ -1,5 +1,11 @@
 import '@ui5/webcomponents-icons/dist/AllIcons';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
+import "@ui5/webcomponents/dist/dynamic-date-range-options/Today.js";
+import "@ui5/webcomponents/dist/dynamic-date-range-options/Yesterday.js";
+import "@ui5/webcomponents/dist/dynamic-date-range-options/Tomorrow.js";
+import "@ui5/webcomponents/dist/dynamic-date-range-options/DateRange.js";
+import "@ui5/webcomponents/dist/dynamic-date-range-options/SingleDate.js";
+import "@ui5/webcomponents/dist/dynamic-date-range-options/toDates.js";
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
 import 'zone.js'; 

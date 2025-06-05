@@ -580,7 +580,17 @@ For TNT illustrations:
 As \`IllustratedMessage\` adapts itself around the \`Illustration\`, the other
 elements of the component are displayed differently on the different breakpoints/illustration designs.
         */
-  design!: 'Auto' | 'Base' | 'Dot' | 'Spot' | 'Dialog' | 'Scene';
+  design!:
+    | 'Auto'
+    | 'Base'
+    | 'Dot'
+    | 'Spot'
+    | 'Dialog'
+    | 'Scene'
+    | 'ExtraSmall'
+    | 'Small'
+    | 'Medium'
+    | 'Large';
   /**
         Defines the subtitle of the component.
 
@@ -1355,13 +1365,13 @@ exports[`Snapshot test Fiori Search Item should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/SearchItem.js';
 import SearchItem from '@ui5/webcomponents-fiori/dist/SearchItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text', 'icon', 'selected', 'scopeName'])
+@ProxyInputs(['text', 'description', 'icon', 'selected', 'scopeName'])
 @ProxyOutputs(['delete: ui5Delete'])
 @Component({
   standalone: true,
   selector: 'ui5-search-item',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'icon', 'selected', 'scopeName'],
+  inputs: ['text', 'description', 'icon', 'selected', 'scopeName'],
   outputs: ['ui5Delete'],
   exportAs: 'ui5SearchItem',
 })
@@ -1369,11 +1379,16 @@ class SearchItemComponent {
   /**
         Defines the heading text of the search item.
         */
-  text!: string;
+  text!: string | undefined;
+  /**
+        Defines the description that appears right under the item text, if available.
+        */
+  description!: string | undefined;
   /**
         Defines the icon name of the search item.
+**Note:** If provided, the image slot will be ignored.
         */
-  icon!: string;
+  icon!: string | undefined;
   /**
         Defines whether the search item is selected.
         */
@@ -1899,8 +1914,8 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'notificationsCount',
   'showNotifications',
   'showProductSwitch',
-  'accessibilityAttributes',
   'showSearchField',
+  'accessibilityAttributes',
 ])
 @ProxyOutputs([
   'notifications-click: ui5NotificationsClick',
@@ -1924,8 +1939,8 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'notificationsCount',
     'showNotifications',
     'showProductSwitch',
-    'accessibilityAttributes',
     'showSearchField',
+    'accessibilityAttributes',
   ],
   outputs: [
     'ui5NotificationsClick',
@@ -1982,6 +1997,13 @@ displayed in the notification icon top-right corner.
   @InputDecorator({ transform: booleanAttribute })
   showProductSwitch!: boolean;
   /**
+        Defines, if the Search Field would be displayed when there is a valid \`searchField\` slot.
+
+**Note:** By default the Search Field is not displayed.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showSearchField!: boolean;
+  /**
         Defines additional accessibility attributes on different areas of the component.
 
 The accessibilityAttributes object has the following fields,
@@ -2012,13 +2034,6 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
 Accepts any string.
         */
   accessibilityAttributes!: ShellBarAccessibilityAttributes;
-  /**
-        Defines, if the Search Field would be displayed when there is a valid \`searchField\` slot.
-
-**Note:** By default the Search Field is not displayed.
-        */
-  @InputDecorator({ transform: booleanAttribute })
-  showSearchField!: boolean;
 
   /**
      Fired, when the notification icon is activated.
@@ -2151,6 +2166,7 @@ exports[`Snapshot test Fiori Side Navigation Item should match the snapshot 1`] 
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
 import SideNavigationItem from '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
+import { SideNavigationItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigationItemBase.js';
 import { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs([
@@ -2278,7 +2294,7 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
   /**
      Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
     */
-  ui5Click!: EventEmitter<void>;
+  ui5Click!: EventEmitter<SideNavigationItemClickEventDetail>;
 
   private elementRef: ElementRef<SideNavigationItem> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2307,6 +2323,7 @@ exports[`Snapshot test Fiori Side Navigation Sub Item should match the snapshot 
   booleanAttribute,
   inject,
 } from '@angular/core';
+import { SideNavigationItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigationItemBase.js';
 import { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
 import SideNavigationSubItem from '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
@@ -2429,7 +2446,7 @@ Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\`
   /**
      Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
     */
-  ui5Click!: EventEmitter<void>;
+  ui5Click!: EventEmitter<SideNavigationItemClickEventDetail>;
 
   private elementRef: ElementRef<SideNavigationSubItem> = inject(ElementRef);
   private zone = inject(NgZone);

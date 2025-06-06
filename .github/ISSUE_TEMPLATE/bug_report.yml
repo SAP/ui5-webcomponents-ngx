@@ -1,0 +1,160 @@
+name: Bug Report
+description: File a bug to help us improve the project.
+title: "[Bug]: "
+labels: ["bug"]
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing!  
+        Before submitting, please:
+        - [Search existing or closed issues to avoid duplicates](https://github.com/SAP/ui5-webcomponents-ngx/issues?q=is%3Aissue)
+        - **IMPORTANT:** Please refrain from providing any internal or sensitive information like: internal urls, login credentials, screenshots of applications or features in development, as this project is open-source, and its contents are accessible to anyone.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe the bug in detail.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expect to happen.
+      placeholder: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps to reproduce the bug.
+      placeholder: |
+        1. Go to '...'
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: isolated-example
+    attributes:
+      label: Isolated Example
+      description: If possible, provide a link to an isolated example (e.g., Stackblitz, CodeSandbox, etc.).
+      placeholder: Paste link here
+    validations:
+      required: false
+
+  - type: input
+    id: ui5-version
+    attributes:
+      label: UI5 Web Components version
+      placeholder: e.g., 1.0.0
+    validations:
+      required: false
+
+  - type: input
+    id: ui5-angular-version
+    attributes:
+      label: UI5 Web Components for Angular version
+      placeholder: e.g., 1.0.0
+    validations:
+      required: false
+
+  - type: input
+    id: angular-version
+    attributes:
+      label: Angular Version
+      placeholder: e.g., 16.0.0
+    validations:
+      required: false
+
+  - type: input
+    id: os-platform
+    attributes:
+      label: OS/Platform
+      placeholder: e.g., Windows 11, macOS Ventura
+    validations:
+      required: false
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: e.g., Chrome 123, Firefox 99
+    validations:
+      required: false
+
+  - type: input
+    id: affected-component
+    attributes:
+      label: Affected Component
+      placeholder: e.g., Button, Table
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log Output / Stack Trace / Screenshots
+      description: |
+        Paste any relevant log output, stack traces, or screenshots here.
+        (Use triple backticks for code/logs.)
+      placeholder: |
+        ```
+        Paste logs or stack trace here
+        ```
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: |
+        Indicate the severity of the issue.  
+        - Breaks entire application or system: High or Very High  
+        - Accessibility issue: Medium or High  
+        - Functional issue: Medium or High  
+        - Visual issue: Low or Medium  
+        (Note: The priority may be re-evaluated by the issue processor.)
+      options:
+        - Low
+        - Medium
+        - High
+        - Very High
+      default: 1
+    validations:
+      required: true
+
+  - type: input
+    id: stakeholder-org
+    attributes:
+      label: Stakeholder Organization (if applicable)
+      placeholder: e.g., SAP, Partner Company
+    validations:
+      required: false
+
+  - type: textarea
+    id: business-impact
+    attributes:
+      label: Business Impact (if applicable)
+      description: Describe the business impact of this issue.
+      placeholder: e.g., Blocks release, affects key workflow, etc.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+        label: Declaration
+        description: By submitting this issue, I confirm to follow the recommendation not to disclose any internal or sensitive information.
+        options:
+            - label: I’m not disclosing any internal or sensitive information.
+              required: true

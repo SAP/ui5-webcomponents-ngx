@@ -1,0 +1,76 @@
+name: Feature Request
+description: Suggest an idea or improvement for this project.
+title: "[Feature]: "
+labels: ["enhancement"]
+
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Request Description
+      description: |
+        A clear and concise description of the feature you are requesting.  
+        If your feature request is related to a problem, please describe the problem as well.
+      placeholder: Describe the missing feature and any related problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: A clear and concise description of the solution you would like to see.
+      placeholder: Describe your proposed solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-alternatives
+    attributes:
+      label: Proposed Alternatives
+      description: A clear and concise description of any alternative solutions or features you have considered.
+      placeholder: List any alternative solutions or features.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, links, or screenshots related to the feature request.
+      placeholder: Add context, links, or screenshots here.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: |
+        Indicate the urgency or impact of this feature request.  
+        (Note: The priority may be re-evaluated by the team.)
+      options:
+        - Low
+        - Medium
+        - High
+        - Very High
+      default: 1
+    validations:
+      required: true
+
+  - type: input
+    id: stakeholder-org
+    attributes:
+      label: Stakeholder Organization (if applicable)
+      placeholder: e.g., SAP, Partner Company
+    validations:
+      required: false
+
+  - type: textarea
+    id: business-impact
+    attributes:
+      label: Business Impact (if applicable)
+      description: Describe the business impact or urgency of this feature.
+      placeholder: e.g., Blocks release, affects key workflow, etc.
+    validations:
+      required: false

@@ -9,7 +9,8 @@
     "types": [],
     "target": "ES2022",
     "useDefineForClassFields": false,
-    "allowJs": true
+    "allowJs": true,
+    "moduleResolution": "bundler"
   },
   "exclude": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts"],
   "include": [

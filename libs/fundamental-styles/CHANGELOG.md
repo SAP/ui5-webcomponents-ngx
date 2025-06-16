@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0-rc.0](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.9-rc.3...v0.5.0-rc.0) (2025-06-16)
+
+### chore
+
+- **deps:** angular 20 support ([#226](https://github.com/SAP/ui5-webcomponents-ngx/issues/226)) ([8e20de7](https://github.com/SAP/ui5-webcomponents-ngx/commit/8e20de764f0bf955092edbe11370c189bdc8f3c0))
+
+### BREAKING CHANGES
+
+- **deps:** angular 20 support
+
 ## [0.4.9-rc.3](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.4.9-rc.2...v0.4.9-rc.3) (2025-06-15)
 
 **Note:** Version bump only for package @fundamental-styles/theming-ngx

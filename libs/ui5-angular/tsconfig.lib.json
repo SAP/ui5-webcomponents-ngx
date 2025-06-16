@@ -8,11 +8,9 @@
     "allowSyntheticDefaultImports": true,
     "types": [],
     "target": "ES2022",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "moduleResolution": "bundler"
   },
   "exclude": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts"],
-  "include": [
-    "**/*.ts",
-    "../../node_modules/@types/node/globals.d.ts"
-  ]
+  "include": ["**/*.ts", "../../node_modules/@types/node/globals.d.ts"]
 }

@@ -39,7 +39,7 @@ export default {
 export const DefaultButton: StoryObj<AiButtonComponent> = {
   render: (args) => ({
     props: args,
-    template: `<app-ai-button></app-ai-button>`
+    template: `<ui-angular-ai-button></ui-angular-ai-button>`
   }),
 };
 

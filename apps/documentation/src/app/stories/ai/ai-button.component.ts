@@ -5,7 +5,7 @@ import { MenuComponent } from '@ui5/webcomponents-ngx/main/menu';
 import { MenuItemComponent } from '@ui5/webcomponents-ngx/main/menu-item';
 
 @Component({
-  selector: 'app-ai-button',
+  selector: 'ui-angular-ai-button',
   imports: [
     ButtonComponent, 
     ButtonStateComponent,
@@ -49,7 +49,7 @@ import { MenuItemComponent } from '@ui5/webcomponents-ngx/main/menu-item';
 })
 export class AiButtonComponent {
   buttonState: 'generate' | 'generating' | 'revise' = 'generate';
-  menuOpen: boolean = false;
+  menuOpen = false;
   private generationId: any;
 
   aiButtonClickHandler() {

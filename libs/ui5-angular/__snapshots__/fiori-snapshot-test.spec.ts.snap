@@ -1640,6 +1640,76 @@ export { SearchComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Shell Bar Branding should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/ShellBarBranding.js';
+import ShellBarBranding from '@ui5/webcomponents-fiori/dist/ShellBarBranding.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['href', 'target', 'accessibleName'])
+@ProxyOutputs(['click: ui5Click'])
+@Component({
+  standalone: true,
+  selector: 'ui5-shellbar-branding',
+  template: '<ng-content></ng-content>',
+  inputs: ['href', 'target', 'accessibleName'],
+  outputs: ['ui5Click'],
+  exportAs: 'ui5ShellbarBranding',
+})
+class ShellBarBrandingComponent {
+  /**
+        Defines the component href.
+
+**Note:** Standard hyperlink behavior is supported.
+        */
+  href!: string | undefined;
+  /**
+        Defines the component target.
+
+**Notes:**
+
+- \`_self\`
+- \`_top\`
+- \`_blank\`
+- \`_parent\`
+- \`_search\`
+
+**This property must only be used when the \`href\` property is set.**
+        */
+  target!: string | undefined;
+  /**
+        Defines the text alternative of the component.
+If not provided a default text alternative will be set, if present.
+        */
+  accessibleName!: string | undefined;
+
+  /**
+     Fired, when the logo is activated.
+    */
+  ui5Click!: EventEmitter<void>;
+
+  private elementRef: ElementRef<ShellBarBranding> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): ShellBarBranding {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { ShellBarBrandingComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Shell Bar Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -2231,7 +2301,9 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
         */
   icon!: string | undefined;
   /**
-        Defines whether the item is selected
+        Defines whether the item is selected.
+
+**Note:** Items that have a set \`href\` and \`target\` set to \`_blank\` should not be selectable.
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
@@ -2245,15 +2317,16 @@ for the \`click\` event should be registered.
   /**
         Defines the component target.
 
-**Notes:**
+Possible values:
 
 - \`_self\`
 - \`_top\`
 - \`_blank\`
 - \`_parent\`
-- \`_search\`
+- \`framename\`
 
-**This property must only be used when the \`href\` property is set.**
+**Note:** Items that have a defined \`href\` and \`target\`
+attribute set to \`_blank\` should not be selectable.
         */
   target!: string | undefined;
   /**
@@ -2263,15 +2336,15 @@ for the \`click\` event should be registered.
         */
   design!: 'Default' | 'Action';
   /**
-        Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+        Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.
 
 When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
 To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
 
 
 **Guidelines**:
-- External links should be unselectable.
-- Items that trigger actions (with design \\"Action\\") should be unselectable.
+- Items with an assigned \`href\` and a target of \`_blank\` should be marked as unselectable.
+- Items that trigger actions (with design \\"Action\\") should be marked as unselectable.
         */
   @InputDecorator({ transform: booleanAttribute })
   unselectable!: boolean;
@@ -2388,7 +2461,9 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
         */
   icon!: string | undefined;
   /**
-        Defines whether the item is selected
+        Defines whether the item is selected.
+
+**Note:** Items that have a set \`href\` and \`target\` set to \`_blank\` should not be selectable.
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
@@ -2402,15 +2477,16 @@ for the \`click\` event should be registered.
   /**
         Defines the component target.
 
-**Notes:**
+Possible values:
 
 - \`_self\`
 - \`_top\`
 - \`_blank\`
 - \`_parent\`
-- \`_search\`
+- \`framename\`
 
-**This property must only be used when the \`href\` property is set.**
+**Note:** Items that have a defined \`href\` and \`target\`
+attribute set to \`_blank\` should not be selectable.
         */
   target!: string | undefined;
   /**
@@ -2420,15 +2496,15 @@ for the \`click\` event should be registered.
         */
   design!: 'Default' | 'Action';
   /**
-        Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+        Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.
 
 When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
 To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
 
 
 **Guidelines**:
-- External links should be unselectable.
-- Items that trigger actions (with design \\"Action\\") should be unselectable.
+- Items with an assigned \`href\` and a target of \`_blank\` should be marked as unselectable.
+- Items that trigger actions (with design \\"Action\\") should be marked as unselectable.
         */
   @InputDecorator({ transform: booleanAttribute })
   unselectable!: boolean;
@@ -2848,6 +2924,7 @@ import { SearchItemGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/search-
 import { SearchMessageAreaComponent } from \\"@ui5/webcomponents-ngx/fiori/search-message-area\\";
 import { SearchScopeComponent } from \\"@ui5/webcomponents-ngx/fiori/search-scope\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
+import { ShellBarBrandingComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-branding\\";
 import { ShellBarItemComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-item\\";
 import { ShellBarSearchComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-search\\";
 import { ShellBarSpacerComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar-spacer\\";
@@ -2864,6 +2941,7 @@ import { UploadCollectionItemComponent } from \\"@ui5/webcomponents-ngx/fiori/up
 import { UserMenuComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu\\";
 import { UserMenuAccountComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-account\\";
 import { UserMenuItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item\\";
+import { UserMenuItemGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item-group\\";
 import { UserSettingsDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-dialog\\";
 import { UserSettingsItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-item\\";
 import { UserSettingsViewComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-view\\";
@@ -2896,6 +2974,7 @@ const imports = [
   SearchMessageAreaComponent,
   SearchScopeComponent,
   ShellBarComponent,
+  ShellBarBrandingComponent,
   ShellBarItemComponent,
   ShellBarSearchComponent,
   ShellBarSpacerComponent,
@@ -2912,6 +2991,7 @@ const imports = [
   UserMenuComponent,
   UserMenuAccountComponent,
   UserMenuItemComponent,
+  UserMenuItemGroupComponent,
   UserSettingsDialogComponent,
   UserSettingsItemComponent,
   UserSettingsViewComponent,
@@ -3329,6 +3409,47 @@ export { UserMenuAccountComponent };
 "
 `;
 
+exports[`Snapshot test Fiori User Menu Item Group should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserMenuItemGroup.js';
+import UserMenuItemGroup from '@ui5/webcomponents-fiori/dist/UserMenuItemGroup.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['checkMode'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-menu-item-group',
+  template: '<ng-content></ng-content>',
+  inputs: ['checkMode'],
+  exportAs: 'ui5UserMenuItemGroup',
+})
+class UserMenuItemGroupComponent {
+  /**
+        Defines the component's check mode.
+        */
+  checkMode!: 'None' | 'Single' | 'Multiple';
+
+  private elementRef: ElementRef<UserMenuItemGroup> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserMenuItemGroup {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserMenuItemGroupComponent };
+"
+`;
+
 exports[`Snapshot test Fiori User Menu Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -3362,6 +3483,7 @@ import {
   'loading',
   'loadingDelay',
   'accessibleName',
+  'checked',
 ])
 @ProxyOutputs([
   'detail-click: ui5DetailClick',
@@ -3369,6 +3491,7 @@ import {
   'open: ui5Open',
   'before-close: ui5BeforeClose',
   'close: ui5Close',
+  'check: ui5Check',
 ])
 @Component({
   standalone: true,
@@ -3388,6 +3511,7 @@ import {
     'loading',
     'loadingDelay',
     'accessibleName',
+    'checked',
   ],
   outputs: [
     'ui5DetailClick',
@@ -3395,6 +3519,7 @@ import {
     'ui5Open',
     'ui5BeforeClose',
     'ui5Close',
+    'ui5Check',
   ],
   exportAs: 'ui5UserMenuItem',
 })
@@ -3460,27 +3585,37 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
         */
   icon!: string | undefined;
   /**
-        Defines whether \`ui5-menu-item\` is in disabled state.
+        Defines whether menu item is in disabled state.
 
-**Note:** A disabled \`ui5-menu-item\` is noninteractive.
+**Note:** A disabled menu item is noninteractive.
         */
   @InputDecorator({ transform: booleanAttribute })
   disabled!: boolean;
   /**
-        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
 
-**Note:** If set to \`true\` a \`ui5-busy-indicator\` component will be displayed into the related one to the current \`ui5-menu-item\` sub-menu popover.
+**Note:** If set to \`true\` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.
         */
   @InputDecorator({ transform: booleanAttribute })
   loading!: boolean;
   /**
-        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+        Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
         */
   loadingDelay!: number;
   /**
         Defines the accessible ARIA name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines whether menu item is in checked state.
+
+**Note:** checked state is only taken into account when menu item is added to menu item group
+with \`checkMode\` other than \`None\`.
+
+**Note:** A checked menu item has a checkmark displayed at its end.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  checked!: boolean;
 
   /**
      Fired when the user clicks on the detail button when type is \`Detail\`.
@@ -3504,6 +3639,10 @@ See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-
      Fired after the menu is closed.
     */
   ui5Close!: EventEmitter<void>;
+  /**
+     Fired when an item is checked or unchecked.
+    */
+  ui5Check!: EventEmitter<void>;
 
   private elementRef: ElementRef<UserMenuItem> = inject(ElementRef);
   private zone = inject(NgZone);

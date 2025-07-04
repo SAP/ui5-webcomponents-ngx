@@ -27,7 +27,7 @@ export default {
 } as Meta;
 
 
-export const ShellbarItem: StoryObj<ShellBarSpacerComponent> = {
+export const ShellbarSpacer: StoryObj<ShellBarSpacerComponent> = {
 	render: (args) => ({
 	  props: args,
 	  template: `

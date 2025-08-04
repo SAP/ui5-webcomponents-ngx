@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Snapshot test Main Avatar Group should match the snapshot 1`] = `
 "import {
@@ -578,6 +578,8 @@ import {
   'accessibleDescription',
   'type',
   'accessibleRole',
+  'loading',
+  'loadingDelay',
 ])
 @ProxyOutputs(['click: ui5Click'])
 @Component({
@@ -597,6 +599,8 @@ import {
     'accessibleDescription',
     'type',
     'accessibleRole',
+    'loading',
+    'loadingDelay',
   ],
   outputs: ['ui5Click'],
   exportAs: 'ui5Button',
@@ -691,6 +695,17 @@ Accepts a lowercase string value.
 **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
         */
   accessibleRole!: 'Button' | 'Link';
+  /**
+        Defines whether the button shows a loading indicator.
+
+**Note:** If set to \`true\`, a busy indicator component will be displayed on the related button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Specifies the delay in milliseconds before the loading indicator appears within the associated button.
+        */
+  loadingDelay!: number;
 
   /**
      Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
@@ -1016,13 +1031,13 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the minimum date available for selection.
 
-**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   minDate!: string;
   /**
         Determines the maximum date available for selection.
 
-**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   maxDate!: string;
   /**
@@ -1650,7 +1665,7 @@ class ColorPalettePopoverComponent {
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string | undefined;
+  opener!: HTMLElement | string | null | undefined;
 
   /**
      Fired when the user selects a color.
@@ -1800,13 +1815,13 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
 import ComboBoxItemGroup from '@ui5/webcomponents/dist/ComboBoxItemGroup.js';
 import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
-@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
 @ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-cb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerAccessibleName'],
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
   outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5CbItemGroup',
 })
@@ -1819,6 +1834,20 @@ class ComboBoxItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -2204,13 +2233,13 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the minimum date available for selection.
 
-**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   minDate!: string;
   /**
         Determines the maximum date available for selection.
 
-**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   maxDate!: string;
   /**
@@ -2445,13 +2474,13 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the minimum date available for selection.
 
-**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   minDate!: string;
   /**
         Determines the maximum date available for selection.
 
-**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   maxDate!: string;
   /**
@@ -2689,13 +2718,13 @@ If not set, the calendar will only show the primary calendar type.
   /**
         Determines the minimum date available for selection.
 
-**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   minDate!: string;
   /**
         Determines the maximum date available for selection.
 
-**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
         */
   maxDate!: string;
   /**
@@ -3136,6 +3165,9 @@ import {
   'value',
   'maxFileSize',
   'valueState',
+  'required',
+  'accessibleName',
+  'accessibleNameRef',
 ])
 @ProxyOutputs(['change: ui5Change', 'file-size-exceed: ui5FileSizeExceed'])
 @Component({
@@ -3152,6 +3184,9 @@ import {
     'value',
     'maxFileSize',
     'valueState',
+    'required',
+    'accessibleName',
+    'accessibleNameRef',
   ],
   outputs: ['ui5Change', 'ui5FileSizeExceed'],
   exportAs: 'ui5FileUploader',
@@ -3167,6 +3202,8 @@ class FileUploaderComponent {
   accept!: string | undefined;
   /**
         If set to \\"true\\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.
+
+**Note:** Use this property in combination with the default slot to achieve a button-only file uploader design.
         */
   @InputDecorator({ transform: booleanAttribute })
   hideInput!: boolean;
@@ -3204,6 +3241,19 @@ class FileUploaderComponent {
         Defines the value state of the component.
         */
   valueState!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+  /**
+        Defines whether the component is required.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  required!: boolean;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that label the input.
+        */
+  accessibleNameRef!: string | undefined;
 
   /**
      Event is fired when the value of the file path has been changed.
@@ -4171,13 +4221,13 @@ import {
   default as ListItemGroup,
   ListItemGroupMoveEventDetail,
 } from '@ui5/webcomponents/dist/ListItemGroup.js';
-@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
 @ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-li-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerAccessibleName'],
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
   outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5LiGroup',
 })
@@ -4190,6 +4240,20 @@ class ListItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -4414,6 +4478,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/List.js';
 import {
   default as List,
+  ListAccessibilityAttributes,
   ListItemClickEventDetail,
   ListItemCloseEventDetail,
   ListItemDeleteEventDetail,
@@ -4433,6 +4498,7 @@ import {
   'loading',
   'loadingDelay',
   'accessibleName',
+  'accessibilityAttributes',
   'accessibleNameRef',
   'accessibleDescription',
   'accessibleDescriptionRef',
@@ -4464,6 +4530,7 @@ import {
     'loading',
     'loadingDelay',
     'accessibleName',
+    'accessibilityAttributes',
     'accessibleNameRef',
     'accessibleDescription',
     'accessibleDescriptionRef',
@@ -4545,6 +4612,21 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
         Defines the accessible name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines additional accessibility attributes on different areas of the component.
+
+The accessibilityAttributes object has the following field:
+
+ - **growingButton**: \`growingButton.name\`.
+
+ The accessibility attributes support the following values:
+
+- **name**: Defines the accessible ARIA name of the growing button.
+Accepts any string.
+
+ **Note:** The \`accessibilityAttributes\` property is in an experimental state and is a subject to change.
+        */
+  accessibilityAttributes!: ListAccessibilityAttributes;
   /**
         Defines the IDs of the elements that label the component.
         */
@@ -4999,7 +5081,7 @@ class MenuComponent {
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string | undefined;
+  opener!: HTMLElement | string | null | undefined;
 
   /**
      Fired when an item is being clicked.
@@ -5132,13 +5214,13 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
 import '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
 import MultiComboBoxItemGroup from '@ui5/webcomponents/dist/MultiComboBoxItemGroup.js';
-@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
 @ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-mcb-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerAccessibleName'],
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
   outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5McbItemGroup',
 })
@@ -5151,6 +5233,20 @@ class MultiComboBoxItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -6084,7 +6180,7 @@ over the target.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string | undefined;
+  opener!: HTMLElement | string | null | undefined;
 
   /**
      Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
@@ -6781,7 +6877,7 @@ over the target.
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string | undefined;
+  opener!: HTMLElement | string | null | undefined;
 
   /**
      Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
@@ -7351,20 +7447,31 @@ exports[`Snapshot test Main Split Button should match the snapshot 1`] = `
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/SplitButton.js';
-import SplitButton from '@ui5/webcomponents/dist/SplitButton.js';
+import {
+  default as SplitButton,
+  SplitButtonAccessibilityAttributes,
+} from '@ui5/webcomponents/dist/SplitButton.js';
 @ProxyInputs([
   'icon',
   'activeArrowButton',
   'design',
   'disabled',
   'accessibleName',
+  'accessibilityAttributes',
 ])
 @ProxyOutputs(['click: ui5Click', 'arrow-click: ui5ArrowClick'])
 @Component({
   standalone: true,
   selector: 'ui5-split-button',
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'activeArrowButton', 'design', 'disabled', 'accessibleName'],
+  inputs: [
+    'icon',
+    'activeArrowButton',
+    'design',
+    'disabled',
+    'accessibleName',
+    'accessibilityAttributes',
+  ],
   outputs: ['ui5Click', 'ui5ArrowClick'],
   exportAs: 'ui5SplitButton',
 })
@@ -7404,6 +7511,25 @@ focused, and it is not in the tab chain.
         Defines the accessible ARIA name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The \`accessibilityAttributes\` property accepts an object with the following optional fields:
+
+- **root**: Attributes that will be applied to the main (text) button.
+  - **hasPopup**: Indicates the presence and type of popup triggered by the button.
+    Accepts string values: \`\\"dialog\\"\`, \`\\"grid\\"\`, \`\\"listbox\\"\`, \`\\"menu\\"\`, or \`\\"tree\\"\`.
+  - **roleDescription**: Provides a human-readable description for the role of the button.
+    Accepts any string value.
+  - **title**: Specifies a tooltip or description for screen readers.
+    Accepts any string value.
+
+- **arrowButton**: Attributes applied specifically to the arrow (split) button.
+  - **hasPopup**: Indicates the presence and type of popup triggered by the arrow button.
+    Accepts string values: \`\\"dialog\\"\`, \`\\"grid\\"\`, \`\\"listbox\\"\`, \`\\"menu\\"\`, or \`\\"tree\\"\`.
+  - **expanded**: Indicates whether the popup triggered by the arrow button is currently expanded.
+    Accepts boolean values: \`true\` or \`false\`.
+        */
+  accessibilityAttributes!: SplitButtonAccessibilityAttributes;
 
   /**
      Fired when the user clicks on the default action.
@@ -7638,13 +7764,13 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
 import '@ui5/webcomponents/dist/SuggestionItemGroup.js';
 import SuggestionItemGroup from '@ui5/webcomponents/dist/SuggestionItemGroup.js';
-@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
 @ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-suggestion-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerAccessibleName'],
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
   outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5SuggestionItemGroup',
 })
@@ -7657,6 +7783,20 @@ class SuggestionItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -8599,7 +8739,7 @@ class TableRowComponent {
         */
   rowKey!: string | undefined;
   /**
-        Defines the position of the row related to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
+        Defines the 0-based position of the row related to the total number of rows within the table when the \`ui5-table-virtualizer\` feature is used.
         */
   position!: number | undefined;
   /**
@@ -9687,6 +9827,8 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
   'accessibleDescription',
   'type',
   'accessibleRole',
+  'loading',
+  'loadingDelay',
   'pressed',
 ])
 @ProxyOutputs(['click: ui5Click'])
@@ -9707,6 +9849,8 @@ import ToggleButton from '@ui5/webcomponents/dist/ToggleButton.js';
     'accessibleDescription',
     'type',
     'accessibleRole',
+    'loading',
+    'loadingDelay',
     'pressed',
   ],
   outputs: ['ui5Click'],
@@ -9802,6 +9946,17 @@ Accepts a lowercase string value.
 **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
         */
   accessibleRole!: 'Button' | 'Link';
+  /**
+        Defines whether the button shows a loading indicator.
+
+**Note:** If set to \`true\`, a busy indicator component will be displayed on the related button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  loading!: boolean;
+  /**
+        Specifies the delay in milliseconds before the loading indicator appears within the associated button.
+        */
+  loadingDelay!: number;
   /**
         Determines whether the component is displayed as pressed.
         */

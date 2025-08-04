@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Snapshot test Fiori Barcode Scanner Dialog should match the snapshot 1`] = `
 "import {
@@ -1302,13 +1302,13 @@ import '@ui5/webcomponents-fiori/dist/SearchItemGroup.js';
 import SearchItemGroup from '@ui5/webcomponents-fiori/dist/SearchItemGroup.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
-@ProxyInputs(['headerText', 'headerAccessibleName'])
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
 @ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
 @Component({
   standalone: true,
   selector: 'ui5-search-item-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerAccessibleName'],
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
   outputs: ['ui5MoveOver', 'ui5Move'],
   exportAs: 'ui5SearchItemGroup',
 })
@@ -1321,6 +1321,20 @@ class SearchItemGroupComponent {
         Defines the accessible name of the header.
         */
   headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
 
   /**
      Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -1365,13 +1379,20 @@ exports[`Snapshot test Fiori Search Item should match the snapshot 1`] = `
 import '@ui5/webcomponents-fiori/dist/SearchItem.js';
 import SearchItem from '@ui5/webcomponents-fiori/dist/SearchItem.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text', 'description', 'icon', 'selected', 'scopeName'])
+@ProxyInputs([
+  'text',
+  'description',
+  'icon',
+  'selected',
+  'deletable',
+  'scopeName',
+])
 @ProxyOutputs(['delete: ui5Delete'])
 @Component({
   standalone: true,
   selector: 'ui5-search-item',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'description', 'icon', 'selected', 'scopeName'],
+  inputs: ['text', 'description', 'icon', 'selected', 'deletable', 'scopeName'],
   outputs: ['ui5Delete'],
   exportAs: 'ui5SearchItem',
 })
@@ -1394,6 +1415,11 @@ class SearchItemComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
+  /**
+        Defines whether the search item is deletable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  deletable!: boolean;
   /**
         Defines the scope of the search item
         */
@@ -1814,6 +1840,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'placeholder',
   'accessibleName',
   'accessibleDescription',
+  'autoOpen',
 ])
 @ProxyOutputs([
   'open: ui5Open',
@@ -1835,6 +1862,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'placeholder',
     'accessibleName',
     'accessibleDescription',
+    'autoOpen',
   ],
   outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
   exportAs: 'ui5ShellbarSearch',
@@ -1879,6 +1907,11 @@ component has no value.
         Defines the accessible ARIA description of the field.
         */
   accessibleDescription!: string | undefined;
+  /**
+        Indicates whether the suggestions popover should be opened on focus.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  autoOpen!: boolean;
 
   /**
      Fired when the popup is opened.
@@ -3731,7 +3764,7 @@ class UserMenuComponent {
 When using this attribute in a declarative way, you must only use the \`id\` (as a string) of the element at which you want to show the popover.
 You can only set the \`opener\` attribute to a DOM Reference when using JavaScript.
         */
-  opener!: HTMLElement | string | undefined;
+  opener!: HTMLElement | string | null | undefined;
   /**
         Defines if the User Menu shows the Manage Account option.
         */

@@ -5,12 +5,12 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@ui5/webcomponents": "2.13.2",
-    "@ui5/webcomponents-ai": "2.13.2",
-    "@ui5/webcomponents-base": "2.13.2",
-    "@ui5/webcomponents-fiori": "2.13.2",
-    "@ui5/webcomponents-icons": "2.13.2",
-    "@ui5/webcomponents-icons-business-suite": "2.13.2",
-    "@ui5/webcomponents-icons-tnt": "2.13.2"
+    "@ui5/webcomponents": "2.13.3",
+    "@ui5/webcomponents-ai": "2.13.3",
+    "@ui5/webcomponents-base": "2.13.3",
+    "@ui5/webcomponents-fiori": "2.13.3",
+    "@ui5/webcomponents-icons": "2.13.3",
+    "@ui5/webcomponents-icons-business-suite": "2.13.3",
+    "@ui5/webcomponents-icons-tnt": "2.13.3"
   }
 }

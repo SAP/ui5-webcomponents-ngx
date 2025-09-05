@@ -216,7 +216,8 @@ If \`colorScheme\` is set to \`Auto\`, the avatar will be displayed with the \`A
     | 'Accent8'
     | 'Accent9'
     | 'Accent10'
-    | 'Placeholder';
+    | 'Placeholder'
+    | 'Transparent';
   /**
         Defines the text alternative of the component.
 If not provided a default text alternative will be set, if present.
@@ -977,6 +978,8 @@ import {
   'primaryCalendarType',
   'secondaryCalendarType',
   'formatPattern',
+  'displayFormat',
+  'valueFormat',
   'minDate',
   'maxDate',
   'calendarWeekNumbering',
@@ -992,6 +995,8 @@ import {
     'primaryCalendarType',
     'secondaryCalendarType',
     'formatPattern',
+    'displayFormat',
+    'valueFormat',
     'minDate',
     'maxDate',
     'calendarWeekNumbering',
@@ -1028,6 +1033,14 @@ If not set, the calendar will only show the primary calendar type.
         Determines the format, displayed in the input field.
         */
   formatPattern!: string | undefined;
+  /**
+        Determines the format, displayed in the input field.
+        */
+  displayFormat!: string | undefined;
+  /**
+        Determines the format, used for the value attribute.
+        */
+  valueFormat!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2144,6 +2157,8 @@ import {
   'primaryCalendarType',
   'secondaryCalendarType',
   'formatPattern',
+  'displayFormat',
+  'valueFormat',
   'minDate',
   'maxDate',
   'calendarWeekNumbering',
@@ -2158,6 +2173,8 @@ import {
   'open',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -2174,6 +2191,8 @@ import {
     'primaryCalendarType',
     'secondaryCalendarType',
     'formatPattern',
+    'displayFormat',
+    'valueFormat',
     'minDate',
     'maxDate',
     'calendarWeekNumbering',
@@ -2188,6 +2207,8 @@ import {
     'open',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: [
     'ui5Change',
@@ -2230,6 +2251,14 @@ If not set, the calendar will only show the primary calendar type.
         Determines the format, displayed in the input field.
         */
   formatPattern!: string | undefined;
+  /**
+        Determines the format, displayed in the input field.
+        */
+  displayFormat!: string | undefined;
+  /**
+        Determines the format, used for the value attribute.
+        */
+  valueFormat!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2309,6 +2338,14 @@ the week numbers are not displayed regardless of what is set.
         Receives id(or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -2383,6 +2420,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   'primaryCalendarType',
   'secondaryCalendarType',
   'formatPattern',
+  'displayFormat',
+  'valueFormat',
   'minDate',
   'maxDate',
   'calendarWeekNumbering',
@@ -2397,6 +2436,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
   'open',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'delimiter',
 ])
 @ProxyOutputs([
@@ -2414,6 +2455,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'primaryCalendarType',
     'secondaryCalendarType',
     'formatPattern',
+    'displayFormat',
+    'valueFormat',
     'minDate',
     'maxDate',
     'calendarWeekNumbering',
@@ -2428,6 +2471,8 @@ import DateRangePicker from '@ui5/webcomponents/dist/DateRangePicker.js';
     'open',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'delimiter',
   ],
   outputs: [
@@ -2471,6 +2516,14 @@ If not set, the calendar will only show the primary calendar type.
         Determines the format, displayed in the input field.
         */
   formatPattern!: string | undefined;
+  /**
+        Determines the format, displayed in the input field.
+        */
+  displayFormat!: string | undefined;
+  /**
+        Determines the format, used for the value attribute.
+        */
+  valueFormat!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2550,6 +2603,14 @@ the week numbers are not displayed regardless of what is set.
         Receives id(or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Determines the symbol which separates the dates.
 If not supplied, the default time interval delimiter for the current locale will be used.
@@ -2629,6 +2690,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   'primaryCalendarType',
   'secondaryCalendarType',
   'formatPattern',
+  'displayFormat',
+  'valueFormat',
   'minDate',
   'maxDate',
   'calendarWeekNumbering',
@@ -2643,6 +2706,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
   'open',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -2659,6 +2724,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'primaryCalendarType',
     'secondaryCalendarType',
     'formatPattern',
+    'displayFormat',
+    'valueFormat',
     'minDate',
     'maxDate',
     'calendarWeekNumbering',
@@ -2673,6 +2740,8 @@ import DateTimePicker from '@ui5/webcomponents/dist/DateTimePicker.js';
     'open',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: [
     'ui5Change',
@@ -2715,6 +2784,14 @@ If not set, the calendar will only show the primary calendar type.
         Determines the format, displayed in the input field.
         */
   formatPattern!: string | undefined;
+  /**
+        Determines the format, displayed in the input field.
+        */
+  displayFormat!: string | undefined;
+  /**
+        Determines the format, used for the value attribute.
+        */
+  valueFormat!: string | undefined;
   /**
         Determines the minimum date available for selection.
 
@@ -2794,6 +2871,14 @@ the week numbers are not displayed regardless of what is set.
         Receives id(or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by pressing Enter or on focusout.
@@ -3168,6 +3253,8 @@ import {
   'required',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs(['change: ui5Change', 'file-size-exceed: ui5FileSizeExceed'])
 @Component({
@@ -3187,6 +3274,8 @@ import {
     'required',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: ['ui5Change', 'ui5FileSizeExceed'],
   exportAs: 'ui5FileUploader',
@@ -3254,6 +3343,14 @@ class FileUploaderComponent {
         Receives id(or many ids) of the elements that label the input.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Event is fired when the value of the file path has been changed.
@@ -6931,6 +7028,8 @@ import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js'
   'tooltip',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'icon',
 ])
 @Component({
@@ -6943,6 +7042,8 @@ import SegmentedButtonItem from '@ui5/webcomponents/dist/SegmentedButtonItem.js'
     'tooltip',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'icon',
   ],
   exportAs: 'ui5SegmentedButtonItem',
@@ -6974,6 +7075,14 @@ focused, and it is not in the tab chain.
         Receives id(or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Defines the IDs of the HTML Elements that describe the component.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines the icon, displayed as graphical element within the component.
 The SAP-icons font provides numerous options.
@@ -7014,13 +7123,25 @@ import {
   default as SegmentedButton,
   SegmentedButtonSelectionChangeEventDetail,
 } from '@ui5/webcomponents/dist/SegmentedButton.js';
-@ProxyInputs(['accessibleName', 'selectionMode'])
+@ProxyInputs([
+  'accessibleName',
+  'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
+  'selectionMode',
+])
 @ProxyOutputs(['selection-change: ui5SelectionChange'])
 @Component({
   standalone: true,
   selector: 'ui5-segmented-button',
   template: '<ng-content></ng-content>',
-  inputs: ['accessibleName', 'selectionMode'],
+  inputs: [
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'selectionMode',
+  ],
   outputs: ['ui5SelectionChange'],
   exportAs: 'ui5SegmentedButton',
 })
@@ -7029,6 +7150,18 @@ class SegmentedButtonComponent {
         Defines the accessible ARIA name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines the IDs of the HTML Elements that label the component.
+        */
+  accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Defines the IDs of the HTML Elements that describe the component.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines the component selection mode.
         */
@@ -7082,6 +7215,8 @@ import {
   'readonly',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
   'tooltip',
   'value',
 ])
@@ -7103,6 +7238,8 @@ import {
     'readonly',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'tooltip',
     'value',
   ],
@@ -7150,6 +7287,14 @@ but still provides visual feedback upon user interaction.
         Receives id(or many ids) of the elements that label the select.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the select.
+        */
+  accessibleDescriptionRef!: string | undefined;
   /**
         Defines the tooltip of the select.
         */
@@ -9256,7 +9401,10 @@ exports[`Snapshot test Main Text Area should match the snapshot 1`] = `
 import { GenericControlValueAccessor } from '@ui5/webcomponents-ngx/generic-cva';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/TextArea.js';
-import TextArea from '@ui5/webcomponents/dist/TextArea.js';
+import {
+  default as TextArea,
+  TextAreaInputEventDetail,
+} from '@ui5/webcomponents/dist/TextArea.js';
 @ProxyInputs([
   'value',
   'disabled',
@@ -9401,7 +9549,7 @@ paste and the counter below the component displays their number.
      Fired when the value of the component changes at each keystroke or when
 something is pasted.
     */
-  ui5Input!: EventEmitter<void>;
+  ui5Input!: EventEmitter<TextAreaInputEventDetail>;
   /**
      Fired when some text has been selected.
     */
@@ -9531,6 +9679,8 @@ import {
   'required',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -9554,6 +9704,8 @@ import {
     'required',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5Open', 'ui5Close'],
   exportAs: 'ui5TimePicker',
@@ -9623,6 +9775,14 @@ mm:ss -> 12:04 (only minutes and seconds)
         Receives id (or many ids) of the elements that label the component.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the input.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Fired when the input operation has finished by clicking the \\"OK\\" button or

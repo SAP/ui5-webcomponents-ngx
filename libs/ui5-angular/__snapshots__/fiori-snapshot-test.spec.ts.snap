@@ -1365,6 +1365,56 @@ export { SearchItemGroupComponent };
 "
 `;
 
+exports[`Snapshot test Fiori Search Item Show More should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/SearchItemShowMore.js';
+import SearchItemShowMore from '@ui5/webcomponents-fiori/dist/SearchItemShowMore.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['itemsToShowCount', 'selected'])
+@Component({
+  standalone: true,
+  selector: 'ui5-search-item-show-more',
+  template: '<ng-content></ng-content>',
+  inputs: ['itemsToShowCount', 'selected'],
+  exportAs: 'ui5SearchItemShowMore',
+})
+class SearchItemShowMoreComponent {
+  /**
+        Specifies the number of additional items available to show.
+This value replaces the placeholder (N) in the \\"Show more (N)\\" text.
+If not set, the placeholder will remain as (N).
+        */
+  itemsToShowCount!: number | undefined;
+  /**
+        Defines whether the show more item is selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+
+  private elementRef: ElementRef<SearchItemShowMore> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): SearchItemShowMore {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { SearchItemShowMoreComponent };
+"
+`;
+
 exports[`Snapshot test Fiori Search Item should match the snapshot 1`] = `
 "import {
   ChangeDetectorRef,
@@ -2006,6 +2056,7 @@ import {
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail,
+  ShellBarSearchFieldClearEventDetail,
   ShellBarSearchFieldToggleEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -2028,6 +2079,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'menu-item-click: ui5MenuItemClick',
   'search-button-click: ui5SearchButtonClick',
   'search-field-toggle: ui5SearchFieldToggle',
+  'search-field-clear: ui5SearchFieldClear',
   'content-item-visibility-change: ui5ContentItemVisibilityChange',
 ])
 @Component({
@@ -2053,6 +2105,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'ui5MenuItemClick',
     'ui5SearchButtonClick',
     'ui5SearchFieldToggle',
+    'ui5SearchFieldClear',
     'ui5ContentItemVisibilityChange',
   ],
   exportAs: 'ui5Shellbar',
@@ -2172,6 +2225,13 @@ Accepts any string.
      Fired, when the search field is expanded or collapsed.
     */
   ui5SearchFieldToggle!: EventEmitter<ShellBarSearchFieldToggleEventDetail>;
+  /**
+     Fired, when the search cancel button is activated.
+
+**Note:** You can prevent the default behavior (clearing the search field value) by calling \`event.preventDefault()\`. The search will still be closed.
+**Note:** The \`search-field-clear\` event is in an experimental state and is a subject to change.
+    */
+  ui5SearchFieldClear!: EventEmitter<ShellBarSearchFieldClearEventDetail>;
   /**
      Fired, when an item from the content slot is hidden or shown.
 **Note:** The \`content-item-visibility-change\` event is in an experimental state and is a subject to change.
@@ -2954,6 +3014,7 @@ import { ProductSwitchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/produ
 import { SearchComponent } from \\"@ui5/webcomponents-ngx/fiori/search\\";
 import { SearchItemComponent } from \\"@ui5/webcomponents-ngx/fiori/search-item\\";
 import { SearchItemGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/search-item-group\\";
+import { SearchItemShowMoreComponent } from \\"@ui5/webcomponents-ngx/fiori/search-item-show-more\\";
 import { SearchMessageAreaComponent } from \\"@ui5/webcomponents-ngx/fiori/search-message-area\\";
 import { SearchScopeComponent } from \\"@ui5/webcomponents-ngx/fiori/search-scope\\";
 import { ShellBarComponent } from \\"@ui5/webcomponents-ngx/fiori/shell-bar\\";
@@ -3004,6 +3065,7 @@ const imports = [
   SearchComponent,
   SearchItemComponent,
   SearchItemGroupComponent,
+  SearchItemShowMoreComponent,
   SearchMessageAreaComponent,
   SearchScopeComponent,
   ShellBarComponent,

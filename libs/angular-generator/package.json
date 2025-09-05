@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-ngx-generator",
-  "version": "0.5.5",
+  "version": "0.5.6-rc.0",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "type": "commonjs",

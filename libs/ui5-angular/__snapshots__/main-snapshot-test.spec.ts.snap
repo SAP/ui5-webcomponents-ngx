@@ -676,6 +676,11 @@ Accepts the following string values: \`true\` or \`false\`
 - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
 
+- **ariaLabel**: Defines the accessible ARIA name of the component.
+Accepts any string value.
+
+ - **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.
+
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
         */
@@ -2131,6 +2136,16 @@ but still provides visual feedback upon user interaction.
 }
 export { ComboBoxComponent };
 "
+`;
+
+exports[`Snapshot test Main DS Store should match the snapshot 1`] = `
+"   Bud1                                                                      i n gbwspbl                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @      �                                        @      �                                          @      �                                          @                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  t h e m i n gbwspblob   �bplist00�]ShowStatusBar[ShowToolbar[ShowTabView_ContainerShowSidebar\\\\WindowBounds[ShowSidebar		_{{500, 459}, {920, 436}}	#/;R_klmno�             
+               �    t h e m i n glsvCblob  Sbplist00�	
+
+WXYZ[_viewOptionsVersion_showIconPreviewWcolumns_calculateAllSizes_scrollPositionYXtextSize_scrollPositionXZsortColumnXiconSize_useRelativeDates               	�$(-27<@EIMQ�ZidentifierYascendingUwidthWvisibleTname	,	�UwidthYascendingWvisibleXubiquity#� \\"\\\\dateModified�	�%\\"[dateCreated�)+Tsizea	�.0Tkind	s	�35Ulabel	d�8:Wversion	K�=Xcomments	�AC^dateLastOpened��FCZshareOwner�JC_shareLastEditor�N\\"YdateAdded�SU�_invitationStatus#        #@*      #�b�     Tname#@0      	   2 D L \` r { � � � � � � � � � � �
+$,5789BOPRS\\\\hijsxy{|����������������������������\\",-.78:;NOXajox             ]              y    t h e m i n glsvpblob  �bplist00�	
+
+GHIJK_viewOptionsVersion_showIconPreviewWcolumns_calculateAllSizes_scrollPositionYXtextSize_scrollPositionXZsortColumnXiconSize_useRelativeDates               	� %*/48=AXcommentsUlabelWversion[dateCreatedTsize\\\\dateModifiedTkindTname^dateLastOpened�WvisibleYascendingUwidthUindex	,�#$	d�()	K�-.��23	a�-7	�;<		s�@		 �DE�#        #@*      #�b�     Tname#@0      	   2 D L \` r { � � � � � � � � � � �'08BHNOPSU^_\`bdmnoqs|}~�������������������������������             M              �    t h e m i n gvSrnlong                                                                                                                                                                                                                      E                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         DSDB                                 \`          �                                        @      �                                          @      �                                          @       XZsortColumnXiconSize_useRelativeDates               	� %*/48=AXcommentsUlabelWversion[dateCreatedTsize\\\\dateModifiedTkindTname^dateLastOpened�WvisibleYascendingUwidthUindex	,�#$	d�()	K�-.��23	a�-7	�;<		s�@		 �DE�#        #@*      #�b�     Tname#@0      	   2 D L \` r { � � � � � � � � � � �'08BHNOPSU^_\`bdmnoqs|}~�������������������������������             M              �    t h e m i n gvSrnlong                                                                                                                                                                                                          "
 `;
 
 exports[`Snapshot test Main Date Picker should match the snapshot 1`] = `
@@ -7667,6 +7682,7 @@ The \`accessibilityAttributes\` property accepts an object with the following op
     Accepts any string value.
   - **title**: Specifies a tooltip or description for screen readers.
     Accepts any string value.
+	- **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.
 
 - **arrowButton**: Attributes applied specifically to the arrow (split) button.
   - **hasPopup**: Indicates the presence and type of popup triggered by the arrow button.
@@ -10086,6 +10102,11 @@ Accepts the following string values: \`true\` or \`false\`
 - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
 Accepts the following string values: \`dialog\`, \`grid\`, \`listbox\`, \`menu\` or \`tree\`.
 
+- **ariaLabel**: Defines the accessible ARIA name of the component.
+Accepts any string value.
+
+ - **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.
+
 - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
 Accepts a lowercase string value.
         */
@@ -10215,6 +10236,7 @@ import {
 @ProxyInputs([
   'readonly',
   'multiLine',
+  'name',
   'showClearAll',
   'disabled',
   'accessibleName',
@@ -10231,6 +10253,7 @@ import {
   inputs: [
     'readonly',
     'multiLine',
+    'name',
     'showClearAll',
     'disabled',
     'accessibleName',
@@ -10255,6 +10278,14 @@ but still provides visual feedback upon user interaction.
         */
   @InputDecorator({ transform: booleanAttribute })
   multiLine!: boolean;
+  /**
+        Determines the name by which the component will be identified upon submission in an HTML form.
+
+**Note:** This property is only applicable within the context of an HTML Form element.
+**Note:** When the component is used inside a form element,
+the value is sent as the first element in the form data, even if it's empty.
+        */
+  name!: string | undefined;
   /**
         Defines whether \\"Clear All\\" button is present. Ensure \`multiLine\` is enabled, otherwise \`showClearAll\` will have no effect.
 
@@ -10538,6 +10569,7 @@ import {
   'disabled',
   'accessibleName',
   'accessibleNameRef',
+  'value',
 ])
 @ProxyOutputs(['change: ui5Change', 'open: ui5Open', 'close: ui5Close'])
 @Component({
@@ -10552,6 +10584,7 @@ import {
     'disabled',
     'accessibleName',
     'accessibleNameRef',
+    'value',
   ],
   outputs: ['ui5Change', 'ui5Open', 'ui5Close'],
   exportAs: 'ui5ToolbarSelect',
@@ -10593,6 +10626,10 @@ It will close by default.
         Receives id(or many ids) of the elements that label the select.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the value of the component:
+        */
+  value!: string | undefined;
 
   /**
      Fired when the selected option changes.

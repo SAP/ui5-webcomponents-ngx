@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'ui5-angular-theming',
   preset: '../../jest.preset.js',
   globals: {},

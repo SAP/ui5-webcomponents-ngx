@@ -1,9 +1,9 @@
 /* eslint-disable */
-export default {
-  displayName: 'transformer',
+module.exports = {
+  displayName: 'ui5-angular',
   preset: '../../jest.preset.js',
   globals: {},
-  coverageDirectory: '../../coverage/libs/transformer',
+  coverageDirectory: '../../coverage/libs/ui5-angular',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

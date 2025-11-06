@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'commit-fs-commit',
   preset: '../../../jest.preset.js',
   globals: {},

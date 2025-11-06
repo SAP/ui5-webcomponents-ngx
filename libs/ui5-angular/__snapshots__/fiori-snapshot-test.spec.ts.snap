@@ -345,11 +345,11 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 })
 class FilterItemOptionComponent {
   /**
-        Defines the text of the component.
+        Defines the text of the filter option.
         */
   text!: string | undefined;
   /**
-        Defines if the component is selected.
+        Defines if the filter option is selected.
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
@@ -391,11 +391,12 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 })
 class FilterItemComponent {
   /**
-        Defines the text of the component.
+        Defines the text of the filter item.
         */
   text!: string | undefined;
   /**
-        Defines the additional text of the component.
+        Defines the additional text of the filter item.
+This text is typically used to show the number of selected filter options within this category.
         */
   additionalText!: string | undefined;
 
@@ -511,6 +512,54 @@ or by changing the component size due to resizing.
   }
 }
 export { FlexibleColumnLayoutComponent };
+"
+`;
+
+exports[`Snapshot test Fiori Group Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/GroupItem.js';
+import GroupItem from '@ui5/webcomponents-fiori/dist/GroupItem.js';
+import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'selected'])
+@Component({
+  standalone: true,
+  selector: 'ui5-group-item',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'selected'],
+  exportAs: 'ui5GroupItem',
+})
+class GroupItemComponent {
+  /**
+        Defines the text of the group item.
+        */
+  text!: string | undefined;
+  /**
+        Defines if the group item is selected.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+
+  private elementRef: ElementRef<GroupItem> = inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): GroupItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { GroupItemComponent };
 "
 `;
 
@@ -2715,11 +2764,11 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 })
 class SortItemComponent {
   /**
-        Defines the text of the component.
+        Defines the text of the sort item.
         */
   text!: string | undefined;
   /**
-        Defines if the component is selected.
+        Defines if the sort item is selected.
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
@@ -3001,6 +3050,7 @@ import { DynamicSideContentComponent } from \\"@ui5/webcomponents-ngx/fiori/dyna
 import { FilterItemComponent } from \\"@ui5/webcomponents-ngx/fiori/filter-item\\";
 import { FilterItemOptionComponent } from \\"@ui5/webcomponents-ngx/fiori/filter-item-option\\";
 import { FlexibleColumnLayoutComponent } from \\"@ui5/webcomponents-ngx/fiori/flexible-column-layout\\";
+import { GroupItemComponent } from \\"@ui5/webcomponents-ngx/fiori/group-item\\";
 import { IllustratedMessageComponent } from \\"@ui5/webcomponents-ngx/fiori/illustrated-message\\";
 import { MediaGalleryComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery\\";
 import { MediaGalleryItemComponent } from \\"@ui5/webcomponents-ngx/fiori/media-gallery-item\\";
@@ -3052,6 +3102,7 @@ const imports = [
   FilterItemComponent,
   FilterItemOptionComponent,
   FlexibleColumnLayoutComponent,
+  GroupItemComponent,
   IllustratedMessageComponent,
   MediaGalleryComponent,
   MediaGalleryItemComponent,
@@ -4165,7 +4216,7 @@ import {
   ViewSettingsDialogConfirmEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['sortDescending', 'open'])
+@ProxyInputs(['sortDescending', 'groupDescending', 'open'])
 @ProxyOutputs([
   'confirm: ui5Confirm',
   'cancel: ui5Cancel',
@@ -4177,7 +4228,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   standalone: true,
   selector: 'ui5-view-settings-dialog',
   template: '<ng-content></ng-content>',
-  inputs: ['sortDescending', 'open'],
+  inputs: ['sortDescending', 'groupDescending', 'open'],
   outputs: ['ui5Confirm', 'ui5Cancel', 'ui5BeforeOpen', 'ui5Open', 'ui5Close'],
   exportAs: 'ui5ViewSettingsDialog',
 })
@@ -4187,6 +4238,11 @@ class ViewSettingsDialogComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   sortDescending!: boolean;
+  /**
+        Defines the initial group order.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  groupDescending!: boolean;
   /**
         Indicates if the dialog is open.
         */

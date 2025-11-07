@@ -432,16 +432,31 @@ import {
   FCLAccessibilityAttributes,
   default as FlexibleColumnLayout,
   FlexibleColumnLayoutLayoutChangeEventDetail,
+  FlexibleColumnLayoutLayoutConfigurationChangeEventDetail,
+  LayoutConfiguration,
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['layout', 'disableResizing', 'accessibilityAttributes'])
-@ProxyOutputs(['layout-change: ui5LayoutChange'])
+@ProxyInputs([
+  'layout',
+  'disableResizing',
+  'accessibilityAttributes',
+  'layoutsConfiguration',
+])
+@ProxyOutputs([
+  'layout-change: ui5LayoutChange',
+  'layout-configuration-change: ui5LayoutConfigurationChange',
+])
 @Component({
   standalone: true,
   selector: 'ui5-flexible-column-layout',
   template: '<ng-content></ng-content>',
-  inputs: ['layout', 'disableResizing', 'accessibilityAttributes'],
-  outputs: ['ui5LayoutChange'],
+  inputs: [
+    'layout',
+    'disableResizing',
+    'accessibilityAttributes',
+    'layoutsConfiguration',
+  ],
+  outputs: ['ui5LayoutChange', 'ui5LayoutConfigurationChange'],
   exportAs: 'ui5FlexibleColumnLayout',
 })
 class FlexibleColumnLayoutComponent {
@@ -492,12 +507,30 @@ Accepts the following values: \`none\`, \`complementary\`, \`contentinfo\`, \`ma
 Accepts any string.
         */
   accessibilityAttributes!: FCLAccessibilityAttributes;
+  /**
+        Allows to customize the column proportions per screen size and layout.
+If no custom proportion provided for a specific layout, the default will be used.
+
+**Notes:**
+
+- The proportions should be given in percentages. For example [\\"30%\\", \\"40%\\", \\"30%\\"], [\\"70%\\", \\"30%\\", 0], etc.
+- The proportions should add up to 100%.
+- Hidden columns are marked as \\"0px\\", e.g. [\\"0px\\", \\"70%\\", \\"30%\\"]. Specifying 0 or \\"0%\\" for hidden columns is also valid.
+- If the proportions do not match the layout (e.g. if provided proportions [\\"70%\\", \\"30%\\", \\"0px\\"] for \\"OneColumn\\" layout), then the default proportions will be used instead.
+- Whenever the user drags the columns separator to resize the columns, the \`layoutsConfiguration\` object will be updated with the user-specified proportions for the given layout (and the \`layout-configuration-change\` event will be fired).
+- No custom configuration available for the phone screen size, as the default of 100% column width is always used there.
+        */
+  layoutsConfiguration!: LayoutConfiguration;
 
   /**
      Fired when the layout changes via user interaction by dragging the separators
 or by changing the component size due to resizing.
     */
   ui5LayoutChange!: EventEmitter<FlexibleColumnLayoutLayoutChangeEventDetail>;
+  /**
+     Fired when the \`layoutsConfiguration\` changes via user interaction by dragging the separators.
+    */
+  ui5LayoutConfigurationChange!: EventEmitter<FlexibleColumnLayoutLayoutConfigurationChangeEventDetail>;
 
   private elementRef: ElementRef<FlexibleColumnLayout> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1419,20 +1452,26 @@ exports[`Snapshot test Fiori Search Item Show More should match the snapshot 1`]
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input as InputDecorator,
   NgZone,
   booleanAttribute,
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SearchItemShowMore.js';
-import SearchItemShowMore from '@ui5/webcomponents-fiori/dist/SearchItemShowMore.js';
-import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
+import {
+  default as SearchItemShowMore,
+  ShowMoreItemClickEventDetail,
+} from '@ui5/webcomponents-fiori/dist/SearchItemShowMore.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 @ProxyInputs(['itemsToShowCount', 'selected'])
+@ProxyOutputs(['click: ui5Click'])
 @Component({
   standalone: true,
   selector: 'ui5-search-item-show-more',
   template: '<ng-content></ng-content>',
   inputs: ['itemsToShowCount', 'selected'],
+  outputs: ['ui5Click'],
   exportAs: 'ui5SearchItemShowMore',
 })
 class SearchItemShowMoreComponent {
@@ -1447,6 +1486,12 @@ If not set, the placeholder will remain as (N).
         */
   @InputDecorator({ transform: booleanAttribute })
   selected!: boolean;
+
+  /**
+     Fired when the component is activated, either with a mouse/tap
+or by pressing the Enter or Space keys.
+    */
+  ui5Click!: EventEmitter<ShowMoreItemClickEventDetail>;
 
   private elementRef: ElementRef<SearchItemShowMore> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -2712,6 +2757,12 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
 class SideNavigationComponent {
   /**
         Defines whether the \`ui5-side-navigation\` is expanded or collapsed.
+
+**Note:** The collapsed mode is not supported on phones.
+The \`ui5-side-navigation\` component is intended to be used within a \`ui5-navigation-layout\`
+component to ensure proper responsive behavior. If you choose not to use the
+\`ui5-navigation-layout\`, you will need to implement the appropriate responsive patterns yourself,
+particularly for phones where the collapsed mode should not be used.
         */
   @InputDecorator({ transform: booleanAttribute })
   collapsed!: boolean;
@@ -3388,6 +3439,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'selectionMode',
   'noDataDescription',
   'noDataText',
+  'noDataHeaderLevel',
   'hideDragOverlay',
   'accessibleName',
 ])
@@ -3403,6 +3455,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'selectionMode',
     'noDataDescription',
     'noDataText',
+    'noDataHeaderLevel',
     'hideDragOverlay',
     'accessibleName',
   ],
@@ -3428,6 +3481,10 @@ class UploadCollectionComponent {
         Allows you to set your own text for the 'No data' text.
         */
   noDataText!: string | undefined;
+  /**
+        Defines the header level of the 'No data' text.
+        */
+  noDataHeaderLevel!: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   /**
         By default there will be drag and drop overlay shown over the \`ui5-upload-collection\` when files
 are dragged. If you don't intend to use drag and drop, set this property.
@@ -3489,6 +3546,7 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
   'titleText',
   'subtitleText',
   'description',
+  'additionalInfo',
   'selected',
   'loading',
 ])
@@ -3502,6 +3560,7 @@ import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
     'titleText',
     'subtitleText',
     'description',
+    'additionalInfo',
     'selected',
     'loading',
   ],
@@ -3528,6 +3587,10 @@ class UserMenuAccountComponent {
         Defines description of the user.
         */
   description!: string;
+  /**
+        Defines additional information for the user.
+        */
+  additionalInfo!: string;
   /**
         Defines if the user is selected.
         */

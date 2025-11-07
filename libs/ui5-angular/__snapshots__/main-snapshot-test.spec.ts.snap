@@ -3405,12 +3405,24 @@ exports[`Snapshot test Main Form Group should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/FormGroup.js';
 import FormGroup from '@ui5/webcomponents/dist/FormGroup.js';
-@ProxyInputs(['headerText', 'headerLevel', 'columnSpan'])
+@ProxyInputs([
+  'headerText',
+  'headerLevel',
+  'columnSpan',
+  'accessibleName',
+  'accessibleNameRef',
+])
 @Component({
   standalone: true,
   selector: 'ui5-form-group',
   template: '<ng-content></ng-content>',
-  inputs: ['headerText', 'headerLevel', 'columnSpan'],
+  inputs: [
+    'headerText',
+    'headerLevel',
+    'columnSpan',
+    'accessibleName',
+    'accessibleNameRef',
+  ],
   exportAs: 'ui5FormGroup',
 })
 class FormGroupComponent {
@@ -3428,6 +3440,14 @@ set by the \`headerText\`.
 e.g how many columns the group should span to.
         */
   columnSpan!: number | undefined;
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Defines id (or many ids) of the element (or elements) that label the component.
+        */
+  accessibleNameRef!: string | undefined;
 
   private elementRef: ElementRef<FormGroup> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -3504,6 +3524,8 @@ import '@ui5/webcomponents/dist/Form.js';
 import Form from '@ui5/webcomponents/dist/Form.js';
 @ProxyInputs([
   'accessibleName',
+  'accessibleNameRef',
+  'accessibleMode',
   'layout',
   'labelSpan',
   'emptySpan',
@@ -3517,6 +3539,8 @@ import Form from '@ui5/webcomponents/dist/Form.js';
   template: '<ng-content></ng-content>',
   inputs: [
     'accessibleName',
+    'accessibleNameRef',
+    'accessibleMode',
     'layout',
     'labelSpan',
     'emptySpan',
@@ -3531,6 +3555,21 @@ class FormComponent {
         Defines the accessible ARIA name of the component.
         */
   accessibleName!: string | undefined;
+  /**
+        Defines id (or many ids) of the element (or elements) that label the component.
+        */
+  accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessibility mode of the component in \\"edit\\" and \\"display\\" use-cases.
+
+Based on the mode, the component renders different HTML elements and ARIA attributes,
+which are appropriate for the use-case.
+
+**Usage:**
+- Set this property to \\"Display\\", when the form consists of non-editable (e.g. texts) form items.
+- Set this property to \\"Edit\\", when the form consists of editable (e.g. input fields) form items.
+        */
+  accessibleMode!: 'Display' | 'Edit';
   /**
         Defines the number of columns to distribute the form content by breakpoint.
 
@@ -3577,9 +3616,9 @@ set by the \`headerText\`.
   /**
         Defines the vertical spacing between form items.
 
-**Note:** If the Form is meant to be switched between \\"non-edit\\" and \\"edit\\" modes,
-we recommend using \\"Large\\" item spacing in \\"non-edit\\" mode, and \\"Normal\\" - for \\"edit\\" mode,
-to avoid \\"jumping\\" effect, caused by the hight difference between texts in \\"non-edit\\" mode and the input fields in \\"edit\\" mode.
+**Note:** If the Form is meant to be switched between \\"display\\"(\\"non-edit\\") and \\"edit\\" modes,
+we recommend using \\"Large\\" item spacing in \\"display\\"(\\"non-edit\\") mode, and \\"Normal\\" - for \\"edit\\" mode,
+to avoid \\"jumping\\" effect, caused by the hight difference between texts in \\"display\\"(\\"non-edit\\") mode and the input fields in \\"edit\\" mode.
         */
   itemSpacing!: 'Normal' | 'Large';
 
@@ -4719,11 +4758,14 @@ on IE the component will fallback to \`growing=\\"Button\\"\`.
 
 The accessibilityAttributes object has the following field:
 
- - **growingButton**: \`growingButton.name\`.
+ - **growingButton**: \`growingButton.name\`, \`growingButton.description\`.
 
  The accessibility attributes support the following values:
 
 - **name**: Defines the accessible ARIA name of the growing button.
+Accepts any string.
+
+- **description**: Defines the accessible ARIA description of the growing button.
 Accepts any string.
 
  **Note:** The \`accessibilityAttributes\` property is in an experimental state and is a subject to change.
@@ -5122,6 +5164,7 @@ import {
 @ProxyInputs([
   'headerText',
   'open',
+  'placement',
   'horizontalAlign',
   'loading',
   'loadingDelay',
@@ -5141,6 +5184,7 @@ import {
   inputs: [
     'headerText',
     'open',
+    'placement',
     'horizontalAlign',
     'loading',
     'loadingDelay',
@@ -5165,6 +5209,10 @@ class MenuComponent {
         */
   @InputDecorator({ transform: booleanAttribute })
   open!: boolean;
+  /**
+        Determines on which side the component is placed at.
+        */
+  placement!: 'Start' | 'End' | 'Top' | 'Bottom';
   /**
         Determines the horizontal alignment of the menu relative to its opener control.
         */
@@ -7119,7 +7167,9 @@ exports[`Snapshot test Main Segmented Button should match the snapshot 1`] = `
   Component,
   ElementRef,
   EventEmitter,
+  Input as InputDecorator,
   NgZone,
+  booleanAttribute,
   inject,
 } from '@angular/core';
 import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
@@ -7134,6 +7184,7 @@ import {
   'accessibleDescription',
   'accessibleDescriptionRef',
   'selectionMode',
+  'itemsFitContent',
 ])
 @ProxyOutputs(['selection-change: ui5SelectionChange'])
 @Component({
@@ -7146,6 +7197,7 @@ import {
     'accessibleDescription',
     'accessibleDescriptionRef',
     'selectionMode',
+    'itemsFitContent',
   ],
   outputs: ['ui5SelectionChange'],
   exportAs: 'ui5SegmentedButton',
@@ -7171,6 +7223,14 @@ class SegmentedButtonComponent {
         Defines the component selection mode.
         */
   selectionMode!: 'Single' | 'Multiple';
+  /**
+        Determines whether the segmented button items should be sized to fit their content.
+
+If set to \`true\`, each item will be sized to fit its content, with any extra space distributed after the last item.
+If set to \`false\` (the default), all items will be equally sized to fill the available space.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  itemsFitContent!: boolean;
 
   /**
      Fired when the selected item changes.
@@ -7223,6 +7283,7 @@ import {
   'accessibleDescription',
   'accessibleDescriptionRef',
   'tooltip',
+  'textSeparator',
   'value',
 ])
 @ProxyOutputs([
@@ -7246,6 +7307,7 @@ import {
     'accessibleDescription',
     'accessibleDescriptionRef',
     'tooltip',
+    'textSeparator',
     'value',
   ],
   outputs: ['ui5Change', 'ui5LiveChange', 'ui5Open', 'ui5Close'],
@@ -7304,6 +7366,10 @@ but still provides visual feedback upon user interaction.
         Defines the tooltip of the select.
         */
   tooltip!: string | undefined;
+  /**
+        Defines the separator type for the two columns layout when Select is in read-only mode.
+        */
+  textSeparator!: 'Bullet' | 'Dash' | 'VerticalLine';
   /**
         Defines the value of the component:
 
@@ -9181,6 +9247,7 @@ import {
   'loading',
   'loadingDelay',
   'rowActionCount',
+  'alternateRowColors',
 ])
 @ProxyOutputs([
   'row-click: ui5RowClick',
@@ -9200,6 +9267,7 @@ import {
     'loading',
     'loadingDelay',
     'rowActionCount',
+    'alternateRowColors',
   ],
   outputs: ['ui5RowClick', 'ui5MoveOver', 'ui5Move', 'ui5RowActionClick'],
   exportAs: 'ui5Table',
@@ -9243,6 +9311,11 @@ Available options are:
 **Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.
         */
   rowActionCount!: number;
+  /**
+        Determines whether the table rows are displayed with alternating background colors.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  alternateRowColors!: boolean;
 
   /**
      Fired when an interactive row is clicked.
@@ -9426,6 +9499,8 @@ import {
   'name',
   'accessibleName',
   'accessibleNameRef',
+  'accessibleDescription',
+  'accessibleDescriptionRef',
 ])
 @ProxyOutputs([
   'change: ui5Change',
@@ -9452,6 +9527,8 @@ import {
     'name',
     'accessibleName',
     'accessibleNameRef',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
   ],
   outputs: ['ui5Change', 'ui5Input', 'ui5Select', 'ui5Scroll'],
   exportAs: 'ui5Textarea',
@@ -9546,6 +9623,14 @@ paste and the counter below the component displays their number.
         Receives id(or many ids) of the elements that label the textarea.
         */
   accessibleNameRef!: string | undefined;
+  /**
+        Defines the accessible description of the component.
+        */
+  accessibleDescription!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that describe the textarea.
+        */
+  accessibleDescriptionRef!: string | undefined;
 
   /**
      Fired when the text has changed and the focus leaves the component.

@@ -134,5 +134,5 @@
       "yarn eslint --fix"
     ]
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.11.0"
 }

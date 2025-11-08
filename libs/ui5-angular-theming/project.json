@@ -13,15 +13,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/ui5-angular-theming"],
       "options": {
-        "project": "libs/ui5-angular-theming/ng-package.json"
+        "project": "libs/ui5-angular-theming/ng-package.json",
+        "tsConfig": "libs/ui5-angular-theming/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "libs/ui5-angular-theming/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "libs/ui5-angular-theming/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     },

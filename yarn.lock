@@ -564,15 +564,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:20.3.9":
-  version: 20.3.9
-  resolution: "@angular/common@npm:20.3.9"
+"@angular/common@npm:20.3.14":
+  version: 20.3.14
+  resolution: "@angular/common@npm:20.3.14"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/core": 20.3.9
+    "@angular/core": 20.3.14
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/97911961ebe9eecac3e57be4ded33faa7daf27e9996a4bd7ea1c5cfd34bca8f0247696a989485d6a4e4ef377e4bdb7129824d660203e40aab82a3d0368ce7227
+  checksum: 10/d09c2b072afa851d7e74dde11db220422e688d713de19a869fc795e4da0c2afe145b1d229bf315d07c992a5a872e0d3311b6c9459eb95be0a74e665600606917
   languageName: node
   linkType: hard
 
@@ -27668,7 +27668,7 @@ __metadata:
     "@angular-eslint/template-parser": "npm:20.5.1"
     "@angular/animations": "npm:20.3.9"
     "@angular/cli": "npm:~20.3.0"
-    "@angular/common": "npm:20.3.9"
+    "@angular/common": "npm:20.3.14"
     "@angular/compiler": "npm:20.3.9"
     "@angular/compiler-cli": "npm:20.3.9"
     "@angular/core": "npm:20.3.9"

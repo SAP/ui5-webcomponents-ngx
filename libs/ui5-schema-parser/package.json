@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-schema-parser",
-  "version": "0.5.9-rc.1",
+  "version": "0.5.9-rc.2",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "type": "commonjs"

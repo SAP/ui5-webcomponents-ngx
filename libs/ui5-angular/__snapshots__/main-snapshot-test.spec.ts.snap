@@ -267,12 +267,17 @@ exports[`Snapshot test Main Bar should match the snapshot 1`] = `
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
 import '@ui5/webcomponents/dist/Bar.js';
 import Bar from '@ui5/webcomponents/dist/Bar.js';
-@ProxyInputs(['design', 'accessibleRole'])
+@ProxyInputs([
+  'design',
+  'accessibleRole',
+  'accessibleName',
+  'accessibleNameRef',
+])
 @Component({
   standalone: true,
   selector: 'ui5-bar',
   template: '<ng-content></ng-content>',
-  inputs: ['design', 'accessibleRole'],
+  inputs: ['design', 'accessibleRole', 'accessibleName', 'accessibleNameRef'],
   exportAs: 'ui5Bar',
 })
 class BarComponent {
@@ -290,6 +295,14 @@ class BarComponent {
 - If there is only one or no active element, it is recommended to avoid using the \\"toolbar\\" role, as it implies a grouping of multiple interactive controls.
         */
   accessibleRole!: 'Toolbar' | 'None';
+  /**
+        Defines the accessible ARIA name of the component.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Receives id(or many ids) of the elements that label the bar.
+        */
+  accessibleNameRef!: string | undefined;
 
   private elementRef: ElementRef<Bar> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -10438,6 +10451,7 @@ import {
   'accessibleNameRef',
   'accessibilityAttributes',
   'text',
+  'showOverflowText',
   'width',
 ])
 @ProxyOutputs(['click: ui5Click'])
@@ -10457,6 +10471,7 @@ import {
     'accessibleNameRef',
     'accessibilityAttributes',
     'text',
+    'showOverflowText',
     'width',
   ],
   outputs: ['ui5Click'],
@@ -10543,6 +10558,16 @@ Accepts a lowercase string value.
         Button text
         */
   text!: string | undefined;
+  /**
+        Defines whether the button text should only be displayed in the overflow popover.
+
+When set to \`true\`, the button appears as icon-only in the main toolbar,
+but shows both icon and text when moved to the overflow popover.
+
+**Note:** This property only takes effect when the \`text\` property is also set.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  showOverflowText!: boolean;
   /**
         Defines the width of the button.
 

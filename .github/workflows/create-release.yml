@@ -18,6 +18,9 @@ jobs:
   create-release:
     name: Create release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - name: Fetch from origin repo
         uses: actions/checkout@v4.2.2
@@ -56,6 +59,7 @@ jobs:
           package: dist/libs/ui5-angular/package.json
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
+          provenance: true
 
       - name: Publish on npm ui5-angular-theming
         uses: JS-DevTools/npm-publish@v4.1.1
@@ -63,6 +67,7 @@ jobs:
           package: dist/libs/ui5-angular-theming/package.json
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
+          provenance: true
 
       - name: Push changes
         if: env.IS_MANUAL == 'false'

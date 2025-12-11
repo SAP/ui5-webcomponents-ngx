@@ -54,20 +54,12 @@ jobs:
         run: npx nx run-many --target=prepare --all
 
       - name: Publish on npm ui5-angular
-        uses: JS-DevTools/npm-publish@v4.1.1
-        with:
-          package: dist/libs/ui5-angular/package.json
-          tag: ${{ steps.bumpVersion.outputs.releaseTag }}
-          access: public
-          provenance: true
+        run: npm publish --provenance --access public --tag ${{ steps.bumpVersion.outputs.releaseTag }}
+        working-directory: dist/libs/ui5-angular
 
       - name: Publish on npm ui5-angular-theming
-        uses: JS-DevTools/npm-publish@v4.1.1
-        with:
-          package: dist/libs/ui5-angular-theming/package.json
-          tag: ${{ steps.bumpVersion.outputs.releaseTag }}
-          access: public
-          provenance: true
+        run: npm publish --provenance --access public --tag ${{ steps.bumpVersion.outputs.releaseTag }}
+        working-directory: dist/libs/ui5-angular-theming
 
       - name: Push changes
         if: env.IS_MANUAL == 'false'

@@ -51,14 +51,14 @@ jobs:
         run: npx nx run-many --target=prepare --all
 
       - name: Publish on npm ui5-angular
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4.1.1
         with:
           package: dist/libs/ui5-angular/package.json
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
 
       - name: Publish on npm ui5-angular-theming
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4.1.1
         with:
           package: dist/libs/ui5-angular-theming/package.json
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}

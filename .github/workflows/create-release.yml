@@ -60,8 +60,13 @@ jobs:
       - name: Configure npm for trusted publishing
         run: npm config delete //registry.npmjs.org/:_authToken || true
 
-      - name: Publish packages to NPM
-        run: npx nx release publish --projects=ui5-angular,ui5-angular-theming --tag="${{ steps.bumpVersion.outputs.releaseTag }}" --registry=https://registry.npmjs.org/
+      - name: Publish @ui5/webcomponents-ngx to NPM
+        working-directory: dist/libs/ui5-angular
+        run: npm publish --provenance --access public --tag ${{ steps.bumpVersion.outputs.releaseTag }}
+
+      - name: Publish @ui5/theming-ngx to NPM
+        working-directory: dist/libs/ui5-angular-theming
+        run: npm publish --provenance --access public --tag ${{ steps.bumpVersion.outputs.releaseTag }}
 
       - name: Push changes
         if: env.IS_MANUAL == 'false'

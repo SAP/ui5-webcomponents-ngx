@@ -61,7 +61,7 @@ jobs:
         run: npm config delete //registry.npmjs.org/:_authToken || true
 
       - name: Publish packages to NPM
-        run: npx nx release publish --tag="${{ steps.bumpVersion.outputs.releaseTag }}" --registry=https://registry.npmjs.org/
+        run: npx nx release publish --projects=ui5-angular,ui5-angular-theming --tag="${{ steps.bumpVersion.outputs.releaseTag }}" --registry=https://registry.npmjs.org/
 
       - name: Push changes
         if: env.IS_MANUAL == 'false'

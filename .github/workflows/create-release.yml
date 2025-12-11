@@ -54,7 +54,6 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           package: dist/libs/ui5-angular/package.json
-          token: ${{ secrets.NPM_TOKEN }}
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
 
@@ -62,7 +61,6 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           package: dist/libs/ui5-angular-theming/package.json
-          token: ${{ secrets.NPM_TOKEN }}
           tag: ${{ steps.bumpVersion.outputs.releaseTag }}
           access: public
 

@@ -60,6 +60,28 @@ And that is it, you can now use any component described in
 the [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents)
 documentation.
 
+### Using Angular Components Inside UI5 Components
+
+Angular components often use selectors with hyphens (e.g. `<app-item>`, `<app-value>`).
+UI5 interprets such tags as custom elements and may wait **up to 1 second** for their registration, causing delayed rendering inside components like `<ui5-table-cell>`.
+
+To avoid this, configure UI5 to ignore Angular component prefixes:
+
+```ts
+// ui5-init.ts
+import { ignoreCustomElements } from '@ui5/webcomponents-base/dist/IgnoreCustomElements.js';
+
+ignoreCustomElements('app-');
+```
+
+Import it before Angular bootstraps:
+```ts
+// main.ts
+import './ui5-init';
+```
+
+This prevents unnecessary waiting, ensures smooth rendering, and improves performance when mixing Angular components with UI5 Web Components.
+
 ### Angular Forms
 
 Every form-capable component can be used with Angular's native form approaches. Meaning all the
@@ -90,6 +112,3 @@ Copyright 2022 SAP SE or an SAP affiliate company and ui5-webcomponents-ngx cont
 our [LICENSE](https://github.com/SAP/ui5-webcomponents-ngx/blob/main/LICENSES/Apache-2.0.txt) for copyright and license
 information. Detailed information including third-party components and their licensing/copyright information is
 available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-ngx).
-
-
-

@@ -1640,20 +1640,18 @@ exports[`Snapshot test Fiori Search Scope should match the snapshot 1`] = `
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Input as InputDecorator,
   NgZone,
-  booleanAttribute,
   inject,
 } from '@angular/core';
 import '@ui5/webcomponents-fiori/dist/SearchScope.js';
 import SearchScope from '@ui5/webcomponents-fiori/dist/SearchScope.js';
 import { ProxyInputs } from '@ui5/webcomponents-ngx/utils';
-@ProxyInputs(['text', 'selected'])
+@ProxyInputs(['text', 'value'])
 @Component({
   standalone: true,
   selector: 'ui5-search-scope',
   template: '<ng-content></ng-content>',
-  inputs: ['text', 'selected'],
+  inputs: ['text', 'value'],
   exportAs: 'ui5SearchScope',
 })
 class SearchScopeComponent {
@@ -1662,10 +1660,10 @@ class SearchScopeComponent {
         */
   text!: string;
   /**
-        Indicates whether the item is selected
+        Defines the value of the \`ui5-search-scope\`.
+Used for selection in Search scopes.
         */
-  @InputDecorator({ transform: booleanAttribute })
-  selected!: boolean;
+  value!: string | undefined;
 
   private elementRef: ElementRef<SearchScope> = inject(ElementRef);
   private zone = inject(NgZone);
@@ -1707,6 +1705,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'placeholder',
   'accessibleName',
   'accessibleDescription',
+  'scopeValue',
 ])
 @ProxyOutputs([
   'open: ui5Open',
@@ -1728,6 +1727,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'placeholder',
     'accessibleName',
     'accessibleDescription',
+    'scopeValue',
   ],
   outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
   exportAs: 'ui5Search',
@@ -1772,6 +1772,15 @@ component has no value.
         Defines the accessible ARIA description of the field.
         */
   accessibleDescription!: string | undefined;
+  /**
+        Defines the value of the component:
+
+Applications are responsible for setting the correct scope value.
+
+**Note:** If the given value does not match any existing scopes,
+no scope will be selected and the SearchField scope component will be displayed as empty.
+        */
+  scopeValue!: string | undefined;
 
   /**
      Fired when the popup is opened.
@@ -1984,6 +1993,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
   'placeholder',
   'accessibleName',
   'accessibleDescription',
+  'scopeValue',
   'autoOpen',
 ])
 @ProxyOutputs([
@@ -2006,6 +2016,7 @@ import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
     'placeholder',
     'accessibleName',
     'accessibleDescription',
+    'scopeValue',
     'autoOpen',
   ],
   outputs: ['ui5Open', 'ui5Close', 'ui5Input', 'ui5ScopeChange', 'ui5Search'],
@@ -2051,6 +2062,15 @@ component has no value.
         Defines the accessible ARIA description of the field.
         */
   accessibleDescription!: string | undefined;
+  /**
+        Defines the value of the component:
+
+Applications are responsible for setting the correct scope value.
+
+**Note:** If the given value does not match any existing scopes,
+no scope will be selected and the SearchField scope component will be displayed as empty.
+        */
+  scopeValue!: string | undefined;
   /**
         Indicates whether the suggestions popover should be opened on focus.
         */
@@ -3138,6 +3158,9 @@ import { UserMenuAccountComponent } from \\"@ui5/webcomponents-ngx/fiori/user-me
 import { UserMenuItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item\\";
 import { UserMenuItemGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/user-menu-item-group\\";
 import { UserSettingsAccountViewComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-account-view\\";
+import { UserSettingsAppearanceViewComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-appearance-view\\";
+import { UserSettingsAppearanceViewGroupComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-appearance-view-group\\";
+import { UserSettingsAppearanceViewItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-appearance-view-item\\";
 import { UserSettingsDialogComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-dialog\\";
 import { UserSettingsItemComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-item\\";
 import { UserSettingsViewComponent } from \\"@ui5/webcomponents-ngx/fiori/user-settings-view\\";
@@ -3191,6 +3214,9 @@ const imports = [
   UserMenuItemComponent,
   UserMenuItemGroupComponent,
   UserSettingsAccountViewComponent,
+  UserSettingsAppearanceViewComponent,
+  UserSettingsAppearanceViewGroupComponent,
+  UserSettingsAppearanceViewItemComponent,
   UserSettingsDialogComponent,
   UserSettingsItemComponent,
   UserSettingsViewComponent,
@@ -4084,6 +4110,290 @@ and controls the visibility of the back button.
   }
 }
 export { UserSettingsAccountViewComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings Appearance View Group should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceViewGroup.js';
+import UserSettingsAppearanceViewGroup from '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceViewGroup.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
+@ProxyInputs(['headerText', 'headerAccessibleName', 'wrappingType'])
+@ProxyOutputs(['move-over: ui5MoveOver', 'move: ui5Move'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-appearance-view-group',
+  template: '<ng-content></ng-content>',
+  inputs: ['headerText', 'headerAccessibleName', 'wrappingType'],
+  outputs: ['ui5MoveOver', 'ui5Move'],
+  exportAs: 'ui5UserSettingsAppearanceViewGroup',
+})
+class UserSettingsAppearanceViewGroupComponent {
+  /**
+        Defines the header text of the <code>ui5-li-group</code>.
+        */
+  headerText!: string | undefined;
+  /**
+        Defines the accessible name of the header.
+        */
+  headerAccessibleName!: string | undefined;
+  /**
+        Defines if the text of the component should wrap when it's too long.
+When set to \\"Normal\\", the content (title, description) will be wrapped
+using the \`ui5-expandable-text\` component.<br/>
+
+The text can wrap up to 100 characters on small screens (size S) and
+up to 300 characters on larger screens (size M and above). When text exceeds
+these limits, it truncates with an ellipsis followed by a text expansion trigger.
+
+Available options are:
+- \`None\` (default) - The text will truncate with an ellipsis.
+- \`Normal\` - The text will wrap (without truncation).
+        */
+  wrappingType!: 'None' | 'Normal';
+
+  /**
+     Fired when a movable list item is moved over a potential drop target during a dragging operation.
+
+If the new position is valid, prevent the default action of the event using \`preventDefault()\`.
+    */
+  ui5MoveOver!: EventEmitter<ListItemGroupMoveEventDetail>;
+  /**
+     Fired when a movable list item is dropped onto a drop target.
+
+**Note:** \`move\` event is fired only if there was a preceding \`move-over\` with prevented default action.
+    */
+  ui5Move!: EventEmitter<ListItemGroupMoveEventDetail>;
+
+  private elementRef: ElementRef<UserSettingsAppearanceViewGroup> =
+    inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsAppearanceViewGroup {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsAppearanceViewGroupComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings Appearance View Item should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceViewItem.js';
+import UserSettingsAppearanceViewItem from '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceViewItem.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+import { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+@ProxyInputs([
+  'type',
+  'accessibilityAttributes',
+  'navigated',
+  'tooltip',
+  'highlight',
+  'selected',
+  'movable',
+  'accessibleName',
+  'itemKey',
+  'text',
+  'icon',
+  'colorScheme',
+])
+@ProxyOutputs(['detail-click: ui5DetailClick'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-appearance-view-item',
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'type',
+    'accessibilityAttributes',
+    'navigated',
+    'tooltip',
+    'highlight',
+    'selected',
+    'movable',
+    'accessibleName',
+    'itemKey',
+    'text',
+    'icon',
+    'colorScheme',
+  ],
+  outputs: ['ui5DetailClick'],
+  exportAs: 'ui5UserSettingsAppearanceViewItem',
+})
+class UserSettingsAppearanceViewItemComponent {
+  /**
+        Defines the visual indication and behavior of the list items.
+Available options are \`Active\` (by default), \`Inactive\`, \`Detail\` and \`Navigation\`.
+
+**Note:** When set to \`Active\` or \`Navigation\`, the item will provide visual response upon press and hover,
+while with type \`Inactive\` and \`Detail\` - will not.
+        */
+  type!: 'Inactive' | 'Active' | 'Detail' | 'Navigation';
+  /**
+        Defines the additional accessibility attributes that will be applied to the component.
+The following fields are supported:
+
+- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set \`-1\`.
+
+	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+        */
+  accessibilityAttributes!: ListItemAccessibilityAttributes;
+  /**
+        The navigated state of the list item.
+If set to \`true\`, a navigation indicator is displayed at the end of the list item.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  navigated!: boolean;
+  /**
+        Defines the text of the tooltip that would be displayed for the list item.
+        */
+  tooltip!: string | undefined;
+  /**
+        Defines the highlight state of the list items.
+Available options are: \`\\"None\\"\` (by default), \`\\"Positive\\"\`, \`\\"Critical\\"\`, \`\\"Information\\"\` and \`\\"Negative\\"\`.
+        */
+  highlight!: 'None' | 'Positive' | 'Critical' | 'Negative' | 'Information';
+  /**
+        Defines the selected state of the component.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Defines whether the item is movable.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  movable!: boolean;
+  /**
+        Defines the text alternative of the component.
+
+**Note**: If not provided a default text alternative will be set, if present.
+        */
+  accessibleName!: string | undefined;
+  /**
+        Defines the unique identifier of the item.
+        */
+  itemKey!: string;
+  /**
+        Defines the text label displayed for the appearance item.
+        */
+  text!: string;
+  /**
+        Defines the icon of the appearance item.
+        */
+  icon!: string;
+  /**
+        Defines the color scheme of the avatar.
+        */
+  colorScheme!: string;
+
+  /**
+     Fired when the user clicks on the detail button when type is \`Detail\`.
+    */
+  ui5DetailClick!: EventEmitter<void>;
+
+  private elementRef: ElementRef<UserSettingsAppearanceViewItem> =
+    inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsAppearanceViewItem {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsAppearanceViewItemComponent };
+"
+`;
+
+exports[`Snapshot test Fiori User Settings Appearance View should match the snapshot 1`] = `
+"import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input as InputDecorator,
+  NgZone,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
+import '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceView.js';
+import {
+  default as UserSettingsAppearanceView,
+  UserSettingsAppearanceViewItemSelectEventDetail,
+} from '@ui5/webcomponents-fiori/dist/UserSettingsAppearanceView.js';
+import { ProxyInputs, ProxyOutputs } from '@ui5/webcomponents-ngx/utils';
+@ProxyInputs(['text', 'selected', 'secondary'])
+@ProxyOutputs(['selection-change: ui5SelectionChange'])
+@Component({
+  standalone: true,
+  selector: 'ui5-user-settings-appearance-view',
+  template: '<ng-content></ng-content>',
+  inputs: ['text', 'selected', 'secondary'],
+  outputs: ['ui5SelectionChange'],
+  exportAs: 'ui5UserSettingsAppearanceView',
+})
+class UserSettingsAppearanceViewComponent {
+  /**
+        Defines the title text of the user settings view.
+        */
+  text!: string | undefined;
+  /**
+        Defines whether the view is selected. There can be just one selected view at a time.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  selected!: boolean;
+  /**
+        Indicates whether the view is secondary. It is relevant only if the view is used in \`pages\` slot of \`ui5-user-settings-item\`
+and controls the visibility of the back button.
+        */
+  @InputDecorator({ transform: booleanAttribute })
+  secondary!: boolean;
+
+  /**
+     Fired when an item is selected.
+    */
+  ui5SelectionChange!: EventEmitter<UserSettingsAppearanceViewItemSelectEventDetail>;
+
+  private elementRef: ElementRef<UserSettingsAppearanceView> =
+    inject(ElementRef);
+  private zone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
+  get element(): UserSettingsAppearanceView {
+    return this.elementRef.nativeElement;
+  }
+
+  constructor() {
+    this.cdr.detach();
+  }
+}
+export { UserSettingsAppearanceViewComponent };
 "
 `;
 

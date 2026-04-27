@@ -6,7 +6,7 @@
 
 > [!WARNING]
 > **This library is deprecated and no longer actively maintained.**
-> Please migrate to the Angular web component wrappers available in [Fundamental NGX](https://sap.github.io/fundamental-ngx/#/home), which provides the actively maintained SAP alternative.
+> Please migrate to the Angular web component wrappers available in [Fundamental NGX](https://sap.github.io/fundamental-ngx/#/home), which provide the actively maintained SAP alternative.
 
 ## About this project
 

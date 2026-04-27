@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.11-rc.19](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.5.11-rc.18...v0.5.11-rc.19) (2026-04-27)
+
+**Note:** Version bump only for package ui5-webcomponents-ngx
+
 ## [0.5.11-rc.18](https://github.com/SAP/ui5-webcomponents-ngx/compare/v0.5.11-rc.17...v0.5.11-rc.18) (2026-04-27)
 
 **Note:** Version bump only for package ui5-webcomponents-ngx

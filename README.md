@@ -4,6 +4,10 @@
 
 # UI5 Web Components for Angular
 
+> [!WARNING]
+> **This library is deprecated and no longer actively maintained.**
+> Please migrate to the Angular web component wrappers available in [Fundamental NGX](https://sap.github.io/fundamental-ngx/#/home), which provide the actively maintained SAP alternative.
+
 ## About this project
 
 This is a wrapper around [@ui5/webcomponents](https://sap.github.io/ui5-webcomponents) project to make it work with

@@ -24,12 +24,16 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      # Use GITHUB_TOKEN instead of long-lived PAT for security:
+      # - Short-lived token (expires after workflow run)
+      # - Automatically scoped to this repository
+      # - No manual secret rotation needed
       - name: Fetch from origin repo
         uses: actions/checkout@v4.2.2
         with:
           ref: ${{ fromJSON('["tmp_hotfix_branch", "main"]')[env.IS_HOTFIX] }}
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up git user
         run: |

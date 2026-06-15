@@ -652,13 +652,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:20.3.9":
-  version: 20.3.9
-  resolution: "@angular/core@npm:20.3.9"
+"@angular/core@npm:20.3.25":
+  version: 20.3.25
+  resolution: "@angular/core@npm:20.3.25"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 20.3.9
+    "@angular/compiler": 20.3.25
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0
   peerDependenciesMeta:
@@ -666,7 +666,7 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10/b95cda3d461064210d3c1eee53f66d86177de051b90ac7253a26d52ff786bf029dd71b291af3f10d8b82ae3843a8bbd383716b839f7450f887b8cee512639324
+  checksum: 10/ae40d42aa37d9599a9ca830f2520771646bad0e06ddaf71b9d69c155539786ef3b6fa27298ec6e19ab960bc8cc5d043f9bb7333f6578a730d7c2c8c56bbc24c0
   languageName: node
   linkType: hard
 
@@ -28089,7 +28089,7 @@ __metadata:
     "@angular/common": "npm:20.3.9"
     "@angular/compiler": "npm:20.3.9"
     "@angular/compiler-cli": "npm:20.3.9"
-    "@angular/core": "npm:20.3.9"
+    "@angular/core": "npm:20.3.25"
     "@angular/forms": "npm:20.3.9"
     "@angular/language-service": "npm:20.3.9"
     "@angular/platform-browser": "npm:20.3.9"

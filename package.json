@@ -106,7 +106,7 @@
     "jsonc-eslint-parser": "2.1.0",
     "lerna": "^8.1.2",
     "ng-packagr": "20.3.0",
-    "nx": "22.0.2",
+    "nx": "22.7.7",
     "patch-package": "^8.0.0",
     "postcss": "8.5.10",
     "postcss-import": "14.1.0",
@@ -123,7 +123,7 @@
     "webpack": "^5.64.0"
   },
   "resolutions": {
-    "nx": "22.0.2",
+    "nx": "22.7.7",
     "rollup": "4.44.1"
   },
   "lint-staged": {
